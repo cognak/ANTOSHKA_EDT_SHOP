@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>День</dataPath>
+			<field>День</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДокументПродажи</dataPath>
+			<field>ДокументПродажи</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<attributeUseRestriction>
+				<condition>true</condition>
+			</attributeUseRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоДнейВПериоде</dataPath>
+			<field>КоличествоДнейВПериоде</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоОстатокСкладЗаказчик</dataPath>
+			<field>КоличествоОстатокСкладЗаказчик</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Получатель (остаток)</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоОстатокСкладПоставщик</dataPath>
+			<field>КоличествоОстатокСкладПоставщик</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отправитель (остаток)</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Номенклатура</dataPath>
+			<field>Номенклатура</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Потребность</dataPath>
+			<field>Потребность</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Продавец</dataPath>
+			<field>Продавец</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<attributeUseRestriction>
+				<condition>true</condition>
+			</attributeUseRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Склад</dataPath>
+			<field>Склад</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<attributeUseRestriction>
+				<condition>true</condition>
+			</attributeUseRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СреднееКоличествоПродажЗаДень</dataPath>
+			<field>СреднееКоличествоПродажЗаДень</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Характеристика</dataPath>
+			<field>Характеристика</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КПеремещению</dataPath>
+			<field>КПеремещению</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Важно</dataPath>
+			<field>Важно</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Отправитель</dataPath>
+			<field>Отправитель</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ХарактеристикиИспользуются</dataPath>
+			<field>ХарактеристикиИспользуются</field>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ТоварыНаСкладахОстатки.Склад КАК Склад,
+	ТоварыНаСкладахОстатки.Номенклатура КАК Номенклатура,
+	ТоварыНаСкладахОстатки.Характеристика КАК Характеристика,
+	ТоварыНаСкладахОстатки.КоличествоОстаток КАК КоличествоОстаток
+ПОМЕСТИТЬ ОстаткиТоваров
+ИЗ
+	РегистрНакопления.ТоварыНаСкладах.Остатки(
+			&amp;Дата,
+			Склад = &amp;СкладПолучатель
+				И Номенклатура.ТипНоменклатуры = ЗНАЧЕНИЕ(Перечисление.ТипыНоменклатуры.Товар) {(Номенклатура).* КАК Номенклатура, (Характеристика).* КАК Характеристика}) КАК ТоварыНаСкладахОстатки
+
+ИНДЕКСИРОВАТЬ ПО
+	Склад,
+	Номенклатура,
+	Характеристика,
+	КоличествоОстаток
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ТоварыНаСкладахОстатки.Склад КАК Склад,
+	ТоварыНаСкладахОстатки.Номенклатура КАК Номенклатура,
+	ТоварыНаСкладахОстатки.Характеристика КАК Характеристика,
+	ТоварыНаСкладахОстатки.КоличествоОстаток КАК КоличествоОстаток
+ПОМЕСТИТЬ ОстаткиТоваровСкладПоставщик
+ИЗ
+	РегистрНакопления.ТоварыНаСкладах.Остатки(
+			&amp;Дата,
+			Склад В (&amp;СкладыПоставщики)
+				И Номенклатура.ТипНоменклатуры = ЗНАЧЕНИЕ(Перечисление.ТипыНоменклатуры.Товар) {(Номенклатура).* КАК Номенклатура, (Характеристика).* КАК Характеристика}) КАК ТоварыНаСкладахОстатки
+
+ИНДЕКСИРОВАТЬ ПО
+	Склад,
+	Номенклатура,
+	Характеристика,
+	КоличествоОстаток
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ПродажиОбороты.Номенклатура КАК Номенклатура,
+	ПродажиОбороты.Характеристика КАК Характеристика,
+	ПродажиОбороты.КоличествоОборот КАК КоличествоОборот
+ПОМЕСТИТЬ Продажи
+ИЗ
+	РегистрНакопления.Продажи.Обороты(&amp;НачалоПериода, &amp;КонецПериода, , Склад = &amp;СкладПолучатель {(Номенклатура).* КАК Номенклатура, (Характеристика).* КАК Характеристика}) КАК ПродажиОбороты
+
+ИНДЕКСИРОВАТЬ ПО
+	Номенклатура,
+	Характеристика
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ОстаткиТоваровСкладПоставщик.Склад КАК Отправитель,
+	Продажи.Номенклатура КАК Номенклатура,
+	Продажи.Характеристика КАК Характеристика,
+	РАЗНОСТЬДАТ(&amp;НачалоПериода, &amp;ДатаОкончанияДляРасчетаДнейТорговли, ДЕНЬ) + 1 КАК КоличествоДнейВПериоде,
+	ВЫРАЗИТЬ(ВЫБОР
+			КОГДА Продажи.КоличествоОборот = 0
+				ТОГДА 0
+			ИНАЧЕ ЕСТЬNULL(ОстаткиТоваровСкладПолучатель.КоличествоОстаток, 0) / Продажи.КоличествоОборот * (РАЗНОСТЬДАТ(&amp;НачалоПериода, &amp;ДатаОкончанияДляРасчетаДнейТорговли, ДЕНЬ) + 1)
+		КОНЕЦ КАК ЧИСЛО(10, 1)) КАК День,
+	ЕСТЬNULL(ОстаткиТоваровСкладПоставщик.КоличествоОстаток, 0) КАК КоличествоОстатокСкладПоставщик,
+	ЕСТЬNULL(ОстаткиТоваровСкладПолучатель.КоличествоОстаток, 0) КАК КоличествоОстатокСкладЗаказчик,
+	ВЫРАЗИТЬ(Продажи.КоличествоОборот / (РАЗНОСТЬДАТ(&amp;НачалоПериода, &amp;ДатаОкончанияДляРасчетаДнейТорговли, ДЕНЬ) + 1) * &amp;КоличествоДнейРасчетаКПеремещению - ЕСТЬNULL(ОстаткиТоваровСкладПолучатель.КоличествоОстаток, 0) + Продажи.КоличествоОборот / (РАЗНОСТЬДАТ(&amp;НачалоПериода, &amp;ДатаОкончанияДляРасчетаДнейТорговли, ДЕНЬ) + 1) * &amp;ПланируемыйОстатокНаКоличествоДней КАК ЧИСЛО(15, 0)) КАК Потребность,
+	ВЫРАЗИТЬ(Продажи.КоличествоОборот / (РАЗНОСТЬДАТ(&amp;НачалоПериода, &amp;ДатаОкончанияДляРасчетаДнейТорговли, ДЕНЬ) + 1) КАК ЧИСЛО(15, 2)) КАК СреднееКоличествоПродажЗаДень,
+	ВЫРАЗИТЬ(ВЫБОР
+			КОГДА Продажи.Важно
+				ТОГДА 0
+			ИНАЧЕ ВЫБОР
+					КОГДА ЕСТЬNULL(ОстаткиТоваровСкладПоставщик.КоличествоОстаток, 0) &lt;= (ВЫРАЗИТЬ(Продажи.КоличествоОборот / (РАЗНОСТЬДАТ(&amp;НачалоПериода, &amp;ДатаОкончанияДляРасчетаДнейТорговли, ДЕНЬ) + 1) * &amp;КоличествоДнейРасчетаКПеремещению - ЕСТЬNULL(ОстаткиТоваровСкладПолучатель.КоличествоОстаток, 0) + Продажи.КоличествоОборот / (РАЗНОСТЬДАТ(&amp;НачалоПериода, &amp;ДатаОкончанияДляРасчетаДнейТорговли, ДЕНЬ) + 1) * &amp;ПланируемыйОстатокНаКоличествоДней КАК ЧИСЛО(15, 0)))
+						ТОГДА ЕСТЬNULL(ОстаткиТоваровСкладПоставщик.КоличествоОстаток, 0)
+					ИНАЧЕ ВЫРАЗИТЬ(Продажи.КоличествоОборот / (РАЗНОСТЬДАТ(&amp;НачалоПериода, &amp;ДатаОкончанияДляРасчетаДнейТорговли, ДЕНЬ) + 1) * &amp;КоличествоДнейРасчетаКПеремещению - ЕСТЬNULL(ОстаткиТоваровСкладПолучатель.КоличествоОстаток, 0) + Продажи.КоличествоОборот / (РАЗНОСТЬДАТ(&amp;НачалоПериода, &amp;ДатаОкончанияДляРасчетаДнейТорговли, ДЕНЬ) + 1) * &amp;ПланируемыйОстатокНаКоличествоДней КАК ЧИСЛО(15, 0))
+				КОНЕЦ
+		КОНЕЦ КАК ЧИСЛО(15, 0)) КАК КПеремещению,
+	Продажи.Важно,
+	ВЫБОР
+		КОГДА Продажи.Номенклатура.ВидНоменклатуры.ИспользованиеХарактеристик = ЗНАЧЕНИЕ(Перечисление.ВариантыВеденияДополнительныхДанныхПоНоменклатуре.НеИспользовать)
+			ТОГДА ЛОЖЬ
+		ИНАЧЕ ИСТИНА
+	КОНЕЦ КАК ХарактеристикиИспользуются
+ИЗ
+	(ВЫБРАТЬ
+		Продажи.Номенклатура КАК Номенклатура,
+		Продажи.Характеристика КАК Характеристика,
+		МАКСИМУМ(Продажи.КоличествоОборот) КАК КоличествоОборот,
+		ВЫБОР
+			КОГДА КОЛИЧЕСТВО(ОстаткиТоваровСкладПоставщик.Склад) &gt; 1
+				ТОГДА ИСТИНА
+			ИНАЧЕ ЛОЖЬ
+		КОНЕЦ КАК Важно
+	ИЗ
+		Продажи КАК Продажи
+			ЛЕВОЕ СОЕДИНЕНИЕ ОстаткиТоваровСкладПоставщик КАК ОстаткиТоваровСкладПоставщик
+			ПО (ОстаткиТоваровСкладПоставщик.Номенклатура = Продажи.Номенклатура)
+				И (ОстаткиТоваровСкладПоставщик.Характеристика = Продажи.Характеристика)
+	
+	СГРУППИРОВАТЬ ПО
+		Продажи.Номенклатура,
+		Продажи.Характеристика) КАК Продажи
+		ЛЕВОЕ СОЕДИНЕНИЕ ОстаткиТоваров КАК ОстаткиТоваровСкладПолучатель
+		ПО (ОстаткиТоваровСкладПолучатель.Номенклатура = Продажи.Номенклатура)
+			И (ОстаткиТоваровСкладПолучатель.Характеристика = Продажи.Характеристика)
+		ЛЕВОЕ СОЕДИНЕНИЕ ОстаткиТоваровСкладПоставщик КАК ОстаткиТоваровСкладПоставщик
+		ПО (ОстаткиТоваровСкладПоставщик.Номенклатура = Продажи.Номенклатура)
+			И (ОстаткиТоваровСкладПоставщик.Характеристика = Продажи.Характеристика)
+ГДЕ
+	ЕСТЬNULL(ОстаткиТоваровСкладПоставщик.КоличествоОстаток, 0) &gt; 0
+	И (ВЫРАЗИТЬ(ВЫБОР
+				КОГДА Продажи.КоличествоОборот = 0
+					ТОГДА 0
+				ИНАЧЕ ЕСТЬNULL(ОстаткиТоваровСкладПолучатель.КоличествоОстаток, 0) / Продажи.КоличествоОборот * (РАЗНОСТЬДАТ(&amp;НачалоПериода, &amp;ДатаОкончанияДляРасчетаДнейТорговли, ДЕНЬ) + 1)
+			КОНЕЦ КАК ЧИСЛО(15, 1))) &lt;= &amp;ВДняхТорговли
+
+УПОРЯДОЧИТЬ ПО
+	День</query>
+	</dataSet>
+	<totalField>
+		<dataPath>КоличествоОстатокСкладЗаказчик</dataPath>
+		<expression>Сумма(КоличествоОстатокСкладЗаказчик)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>КоличествоОстатокСкладПоставщик</dataPath>
+		<expression>Сумма(КоличествоОстатокСкладПоставщик)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Важно</dataPath>
+		<expression>Максимум(Важно)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Потребность</dataPath>
+		<expression>Сумма(Потребность)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>КПеремещению</dataPath>
+		<expression>Сумма(КПеремещению)</expression>
+	</totalField>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>КонецПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>ДатаОкончанияДляРасчетаДнейТорговли</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата окончания для расчета дней торговли</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>ПланируемыйОстатокНаКоличествоДней</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Планируемый остаток на количество дней</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:decimal</v8:Type>
+			<v8:NumberQualifiers>
+				<v8:Digits>0</v8:Digits>
+				<v8:FractionDigits>0</v8:FractionDigits>
+				<v8:AllowedSign>Any</v8:AllowedSign>
+			</v8:NumberQualifiers>
+		</valueType>
+		<value xsi:type="xs:decimal">0</value>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>СкладПолучатель</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Склад получатель</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Склады</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Справочник.Склады.ПустаяСсылка</value>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>СкладыПоставщики</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Склады поставщики</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Склады</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Справочник.Склады.ПустаяСсылка</value>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>КоличествоДнейРасчетаКПеремещению</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Количество дней расчета к перемещению</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:decimal</v8:Type>
+			<v8:NumberQualifiers>
+				<v8:Digits>0</v8:Digits>
+				<v8:FractionDigits>0</v8:FractionDigits>
+				<v8:AllowedSign>Any</v8:AllowedSign>
+			</v8:NumberQualifiers>
+		</valueType>
+		<value xsi:type="xs:decimal">0</value>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>ВДняхТорговли</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>В днях торговли</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:decimal</v8:Type>
+			<v8:NumberQualifiers>
+				<v8:Digits>0</v8:Digits>
+				<v8:FractionDigits>0</v8:FractionDigits>
+				<v8:AllowedSign>Any</v8:AllowedSign>
+			</v8:NumberQualifiers>
+		</valueType>
+		<value xsi:type="xs:decimal">0</value>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>Дата</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>День</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>КоличествоДнейВПериоде</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Номенклатура</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Отправитель</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СреднееКоличествоПродажЗаДень</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Характеристика</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ХарактеристикиИспользуются</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Важно</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>КПеремещению</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>КоличествоОстатокСкладПоставщик</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>КоличествоОстатокСкладЗаказчик</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Потребность</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Номенклатура</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.Номенклатура.ПустаяСсылка</dcsset:right>
+					<dcsset:userSettingID>d7cabd27-e54d-472d-9f6c-4776e300267b</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Характеристика</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.ХарактеристикиНоменклатуры.ПустаяСсылка</dcsset:right>
+					<dcsset:userSettingID>cac6fd58-bcd6-4c97-a6b1-a6f564841bfe</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">КоличествоОстатокСкладЗаказчик</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
+					<dcsset:userSettingID>3b393340-9154-4a9c-bbc4-ef84581aecc4</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Важно</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					<dcsset:userSettingID>d0363337-0e6f-42de-a1fa-6f17a0f71254</dcsset:userSettingID>
+				</dcsset:item>
+			</dcsset:filter>
+			<dcsset:order>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>День</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+			</dcsset:order>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

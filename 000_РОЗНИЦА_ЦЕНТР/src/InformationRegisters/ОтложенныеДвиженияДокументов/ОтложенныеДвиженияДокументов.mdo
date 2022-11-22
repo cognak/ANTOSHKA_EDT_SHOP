@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="3d633def-738f-4373-98e0-eb60c78e889d">
+  <producedTypes>
+    <selectionType typeId="de48c073-403b-4a46-8c47-22c96d5b8038" valueTypeId="5867a237-9dbc-40c3-b6b0-4e5ab0d37c1e"/>
+    <listType typeId="8fdd4738-b373-41b2-a09b-6784292de023" valueTypeId="347fccd4-7726-499e-85de-d93b9262379c"/>
+    <managerType typeId="d18c6e1a-0cb8-429d-a2db-b709db5dfec8" valueTypeId="998d8544-2f39-4775-ade0-cf1110a41301"/>
+    <recordSetType typeId="62e15d62-12fc-4186-b6d1-5d1c59d392bd" valueTypeId="0ed6a52a-3a0d-4707-bfc8-a548f3751884"/>
+    <recordKeyType typeId="06b8a0af-a7f8-4a13-bd0b-f35e10b89158" valueTypeId="1bbcb751-31c8-4d8e-937a-d4b002885b62"/>
+    <recordType typeId="40ce5c26-0d12-4c8f-a84a-d3d393886607" valueTypeId="496efd85-a27c-47dd-a71b-ca25e14b543f"/>
+    <recordManagerType typeId="71ea048d-8726-4f61-8c2a-695136804f53" valueTypeId="b80524a9-7eaf-4a21-a157-d3ef4213766c"/>
+  </producedTypes>
+  <name>ОтложенныеДвиженияДокументов</name>
+  <synonym>
+    <key>ru</key>
+    <value>Отложенные движения документов</value>
+  </synonym>
+  <editType>InDialog</editType>
+  <defaultRecordForm>InformationRegister.ОтложенныеДвиженияДокументов.Form.ФормаЗаписи</defaultRecordForm>
+  <defaultListForm>InformationRegister.ОтложенныеДвиженияДокументов.Form.ФормаСписка</defaultListForm>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <resources uuid="cba3e29d-728f-431b-9d19-0985ceb1f92f">
+    <name>ДатаДокумента</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата документа</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <indexing>Index</indexing>
+  </resources>
+  <resources uuid="e2abc1b7-aee6-4c66-88c8-622e236256ec">
+    <name>КоличествоНеудачныхПроведений</name>
+    <synonym>
+      <key>ru</key>
+      <value>Количество неудачных проведений</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>10</precision>
+        <nonNegative>true</nonNegative>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <indexing>Index</indexing>
+  </resources>
+  <resources uuid="b54b87bc-2a0e-411a-b50c-469ff3069edd">
+    <name>СообщениеОбОшибкеПроведения</name>
+    <synonym>
+      <key>ru</key>
+      <value>Сообщение об ошибке проведения</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers/>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <attributes uuid="68196e24-75d7-4a92-b3ea-0ff6df80e637">
+    <name>ДатаИзменения</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата изменения</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <dimensions uuid="aa34ebc2-44ff-427a-9c0c-4ec500a886d2">
+    <name>Документ</name>
+    <synonym>
+      <key>ru</key>
+      <value>Документ</value>
+    </synonym>
+    <type>
+      <types>DocumentRef</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="67c389c1-3961-421a-98fc-d468e5f46170">
+    <name>ЭлементСтруктуры</name>
+    <synonym>
+      <key>ru</key>
+      <value>Элемент структуры узлов</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.СтруктураУзлов</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <forms uuid="e5dd9e0c-43d4-41eb-98f0-7d170d336e74">
+    <name>ФормаЗаписи</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма записи</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <forms uuid="1e79469d-9f43-49d0-b2b9-9bb92a9038fc">
+    <name>ФормаСписка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма списка</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <commands uuid="03c6902d-79c6-427d-884f-6f8c0e4f2a0c">
+    <name>ОтложенныеДвижения</name>
+    <synonym>
+      <key>ru</key>
+      <value>Отложенные движения</value>
+    </synonym>
+    <group>NavigationPanelOrdinary</group>
+    <commandParameterType/>
+    <representation>Auto</representation>
+  </commands>
+</mdclass:InformationRegister>

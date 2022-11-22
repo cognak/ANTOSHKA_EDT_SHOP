@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="c10e70e9-4fb7-4c86-ae00-d4cdc871a616">
+  <producedTypes>
+    <selectionType typeId="eb5674dc-bf2a-432e-b969-432a755dd8ed" valueTypeId="921b2404-125b-4ac7-ac38-5693bfe3eaa4"/>
+    <listType typeId="9216e6d2-ada5-418a-a864-f8d4895551ae" valueTypeId="ee7363f8-2b8c-4f0a-a26d-097538c9d1b5"/>
+    <managerType typeId="cad928d9-2754-4590-98e5-b478557b5e9c" valueTypeId="568edad9-c5a6-4d2a-a769-b65901a13b0e"/>
+    <recordSetType typeId="ecad0705-383c-4d5e-9989-263ac57bfdfc" valueTypeId="29129138-2518-4c5f-bb50-c4f92f7b5955"/>
+    <recordKeyType typeId="15dc55ce-6289-454a-9522-019457b8fe5a" valueTypeId="ace072ea-827a-4b03-bceb-671a951d4702"/>
+    <recordType typeId="e02145fd-1de9-4b75-8441-08552c7e8fdf" valueTypeId="b5b74f3f-1da7-4bba-b8a2-4c2b76a15d4f"/>
+    <recordManagerType typeId="903eb205-d95f-4aa2-bebf-c8e375d16ccd" valueTypeId="d136758e-003a-4613-8583-c8d5232bf2ff"/>
+  </producedTypes>
+  <name>ОбъектыДляОбработки</name>
+  <synonym>
+    <key>ru</key>
+    <value>Объекты для обработки</value>
+  </synonym>
+  <editType>InDialog</editType>
+  <defaultRecordForm>InformationRegister.ОбъектыДляОбработки.Form.ФормаЗаписи</defaultRecordForm>
+  <defaultListForm>InformationRegister.ОбъектыДляОбработки.Form.ФормаСписка</defaultListForm>
+  <informationRegisterPeriodicity>Second</informationRegisterPeriodicity>
+  <mainFilterOnPeriod>true</mainFilterOnPeriod>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <resources uuid="921a482a-24c5-4c32-890a-1b3695653e75">
+    <name>IDN</name>
+    <synonym>
+      <key>ru</key>
+      <value>IDN (идентификатор)</value>
+    </synonym>
+    <comment>Идентификатор объекта в Navision (или другая информация)</comment>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>512</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+  </resources>
+  <resources uuid="aa7748ee-4f51-4991-9d21-44d22b4efa81">
+    <name>ДействиеКоманда</name>
+    <synonym>
+      <key>ru</key>
+      <value>Действие/Команда</value>
+    </synonym>
+    <comment>Задается литерально для облегчения использования в коде</comment>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>50</length>
+      </stringQualifiers>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>В общем, как-то перекликается с заданиями Navision.
+Например:
+ОБНОВИТЬ_ТОВАР_ЦЕНА
+ОБНОВИТЬ_ТОВАР
+ОБНОВИТЬ_ТОВАР_ЕД_ИЗМ</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+  </resources>
+  <resources uuid="6f1adf16-1756-4492-b7d0-d3c3bcce343a">
+    <name>Объект</name>
+    <synonym>
+      <key>ru</key>
+      <value>Объект</value>
+    </synonym>
+    <comment>Некторый объект</comment>
+    <type>
+      <types>Date</types>
+      <types>BusinessProcessRef</types>
+      <types>DocumentRef</types>
+      <types>TaskRef</types>
+      <types>CatalogRef</types>
+      <dateQualifiers/>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Может использоваться при поиске &quot;потерянной&quot; ссылки по всем узлам.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="445412b4-c118-45af-825e-580a950b6d83">
+    <name>Хранилище</name>
+    <synonym>
+      <key>ru</key>
+      <value>Хранилище</value>
+    </synonym>
+    <comment>Любая другая дополнительная информация, назначенная для обработки командой</comment>
+    <type>
+      <types>ValueStorage</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="017a2f28-03ae-483b-b8a5-613962b55894">
+    <name>Выполнен</name>
+    <synonym>
+      <key>ru</key>
+      <value>Выполнен</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="43de2d02-d52c-4146-b7ff-fa6d2a432abb">
+    <name>КоличествоПопыток</name>
+    <synonym>
+      <key>ru</key>
+      <value>Количество попыток</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>4</precision>
+        <nonNegative>true</nonNegative>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <attributes uuid="8b1d8c2d-f47b-4333-8afa-595904eb650c">
+    <name>ТипОбъектаСтрокой</name>
+    <synonym>
+      <key>ru</key>
+      <value>Тип объекта строкой</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>512</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+  </attributes>
+  <dimensions uuid="cbfe79e7-ca77-46dd-8781-cbfef685c2a9">
+    <name>Магазин</name>
+    <synonym>
+      <key>ru</key>
+      <value>Магазин</value>
+    </synonym>
+    <comment>Пустой - по всем магазинам</comment>
+    <type>
+      <types>CatalogRef.Магазины</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="7257430a-32de-4846-be67-393f9b6c80f3">
+    <name>Индекс</name>
+    <synonym>
+      <key>ru</key>
+      <value>Индекс</value>
+    </synonym>
+    <comment>Во избежание случайных совпадений</comment>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>10</precision>
+        <nonNegative>true</nonNegative>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <forms uuid="99502733-dc1a-4c31-b678-8f598d71a9a4">
+    <name>ФормаЗаписи</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма записи</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <forms uuid="db28a3b5-9deb-493c-9586-f75c2c6f10be">
+    <name>ФормаСписка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма списка</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <commands uuid="21109175-8cbf-4a78-bb03-0834cbb5f461">
+    <name>ОбъектыДляОбработкиФормаСписка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Объекты для обработки</value>
+    </synonym>
+    <group>NavigationPanelOrdinary</group>
+    <commandParameterType/>
+    <representation>Auto</representation>
+    <picture xsi:type="core:PictureRef">
+      <picture>StdPicture.InformationRegister</picture>
+    </picture>
+  </commands>
+</mdclass:InformationRegister>

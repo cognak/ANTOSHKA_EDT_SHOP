@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="fc681ab2-2345-47b5-96b0-6e7aab3d01a6">
+  <producedTypes>
+    <objectType typeId="421ae293-e37e-4bf6-b191-455584957eea" valueTypeId="38f2bcfb-3419-49c2-b768-6bd367cda125"/>
+    <refType typeId="36f42fd4-85c8-4fa8-aad5-1557cd223d32" valueTypeId="f692380b-68da-49fc-8600-71e859d857cf"/>
+    <selectionType typeId="2d68c51d-5125-4627-b440-07b3f91ab46c" valueTypeId="a49c6099-262e-45fe-9d40-42becad211b1"/>
+    <listType typeId="b1de4be5-6792-49a5-9087-87373308f762" valueTypeId="1e3fa303-9063-4095-aa13-277c49796cbb"/>
+    <managerType typeId="5691acae-3f17-4687-a62c-54a6ad3872f3" valueTypeId="71f60a98-6341-4a12-9e3c-6c648843a488"/>
+  </producedTypes>
+  <name>УстановкаЛимитовРучныхСкидокРегион</name>
+  <synonym>
+    <key>ru</key>
+    <value>Установка лимитов  ручных скидок для региона</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <inputByString>Document.УстановкаЛимитовРучныхСкидокРегион.StandardAttribute.Number</inputByString>
+  <fullTextSearchOnInputByString>DontUse</fullTextSearchOnInputByString>
+  <createOnInput>Use</createOnInput>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <fullTextSearch>Use</fullTextSearch>
+  <listPresentation>
+    <key>ru</key>
+    <value>Установки лимитов ручных скидок для регионов</value>
+  </listPresentation>
+  <numberType>String</numberType>
+  <numberLength>11</numberLength>
+  <numberAllowedLength>Variable</numberAllowedLength>
+  <numberPeriodicity>Year</numberPeriodicity>
+  <checkUnique>true</checkUnique>
+  <autonumbering>true</autonumbering>
+  <defaultObjectForm>Document.УстановкаЛимитовРучныхСкидокРегион.Form.ФормаДокумента</defaultObjectForm>
+  <realTimePosting>Deny</realTimePosting>
+  <registerRecordsDeletion>AutoDeleteOff</registerRecordsDeletion>
+  <registerRecords>InformationRegister.ЛимитыРучныхСкидокУстановлены</registerRecords>
+  <registerRecords>AccumulationRegister.ЛимитыРучныхСкидокРегионы</registerRecords>
+  <postInPrivilegedMode>true</postInPrivilegedMode>
+  <unpostInPrivilegedMode>true</unpostInPrivilegedMode>
+  <attributes uuid="1f183c38-1a55-4959-8f96-420e21609b1c">
+    <name>Комментарий</name>
+    <synonym>
+      <key>ru</key>
+      <value>Комментарий</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers/>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Комментарий к документу</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="5a05b138-4ee9-4174-b353-02c7a485ca80">
+    <name>ОбособленноеПодразделениеОрганизации</name>
+    <synonym>
+      <key>ru</key>
+      <value>Регион (филиал)</value>
+    </synonym>
+    <comment>Определяет филиал</comment>
+    <type>
+      <types>CatalogRef.ОбособленныеПодразделенияОрганизаций</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <indexing>Index</indexing>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="0d56e04a-134d-4ce4-a108-631a46261315">
+    <name>Ответственный</name>
+    <synonym>
+      <key>ru</key>
+      <value>Ответственный</value>
+    </synonym>
+    <comment>(Общ)</comment>
+    <type>
+      <types>CatalogRef.Пользователи</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Ответственный за документ</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="6f4e8342-8602-4401-bc23-3c85a7fae37f">
+    <name>СуммаДокумента</name>
+    <synonym>
+      <key>ru</key>
+      <value>Сумма документа</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <scale>2</scale>
+        <nonNegative>true</nonNegative>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <forms uuid="c8ff1cae-ef06-4d80-8467-89bbe2c5efe2">
+    <name>ФормаДокумента</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма документа</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <tabularSections uuid="25cb2431-e8bd-4eee-8e66-7ce7669a4746">
+    <producedTypes>
+      <objectType typeId="43275181-a78b-4662-abc0-212435a07117" valueTypeId="c720afd7-1aa9-4f4a-baca-c4f526f98d25"/>
+      <rowType typeId="cba400ce-55fb-4d4d-9e1f-edd9f7ddb342" valueTypeId="a9a71a76-5c83-42c6-8e6c-8286d88ac703"/>
+    </producedTypes>
+    <name>Лимиты</name>
+    <synonym>
+      <key>ru</key>
+      <value>Лимиты</value>
+    </synonym>
+    <fillChecking>ShowError</fillChecking>
+    <attributes uuid="ef290d3b-1eae-4413-92d8-08c3fac1aecd">
+      <name>ПричинаРучнойСкидки</name>
+      <synonym>
+        <key>ru</key>
+        <value>Причина ручной скидки</value>
+      </synonym>
+      <type>
+        <types>CatalogRef.ПричиныРучнойСкидки</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <fillChecking>ShowError</fillChecking>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="d2044bc6-52b3-4e4d-b140-16964b21394c">
+      <name>Сумма</name>
+      <synonym>
+        <key>ru</key>
+        <value>Сумма</value>
+      </synonym>
+      <type>
+        <types>Number</types>
+        <numberQualifiers>
+          <precision>15</precision>
+          <scale>2</scale>
+          <nonNegative>true</nonNegative>
+        </numberQualifiers>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+  </tabularSections>
+</mdclass:Document>

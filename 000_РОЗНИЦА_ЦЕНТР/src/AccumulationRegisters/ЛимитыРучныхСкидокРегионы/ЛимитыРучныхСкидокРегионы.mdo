@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:AccumulationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="e0248fc0-76a3-4824-8f74-e69042caaebe">
+  <producedTypes>
+    <selectionType typeId="28fdd331-6d27-4666-9dbc-07e9d750e958" valueTypeId="32f28a63-6ec3-4e99-b54d-887d13eee47a"/>
+    <listType typeId="2939c5bc-bde5-4f30-b78a-66aed6898f28" valueTypeId="31fa8493-b9cd-4ab4-b49b-6ff2a0071e06"/>
+    <managerType typeId="5d4161d3-168f-4baa-89bb-dc6e8cdc4f67" valueTypeId="89e1acd5-4b5a-48f1-852b-54e86c6d711c"/>
+    <recordSetType typeId="0af69fed-3bf9-46e0-95c9-b69b28aaa3f2" valueTypeId="2b948193-d5b4-4215-8e3a-f35276c74c8b"/>
+    <recordKeyType typeId="52bdfe2a-ae00-45d3-b3a4-b218d9fc1629" valueTypeId="0da55a93-688d-4c24-a8d4-44caea9cecb4"/>
+    <recordType typeId="63fe3e5d-3df9-4e3a-a4b6-5cdb40d81817" valueTypeId="7f38c3c0-a3ee-4296-ac81-b8c7279fde4b"/>
+  </producedTypes>
+  <name>ЛимитыРучныхСкидокРегионы</name>
+  <synonym>
+    <key>ru</key>
+    <value>Лимиты ручных скидок по регионам</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <enableTotalsSplitting>true</enableTotalsSplitting>
+  <resources uuid="e4d46301-1f0b-4b6a-9d52-6b617f658b41">
+    <name>Сумма</name>
+    <synonym>
+      <key>ru</key>
+      <value>Сумма</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <scale>2</scale>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </resources>
+  <attributes uuid="dc81c96d-9cda-499c-93f4-fc7ee226568c">
+    <name>ДатаИзменения</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата изменения</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </attributes>
+  <attributes uuid="811aad44-c65c-40ee-9cdd-bbfe40c80185">
+    <name>Пользователь</name>
+    <synonym>
+      <key>ru</key>
+      <value>Пользователь</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Пользователи</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </attributes>
+  <dimensions uuid="385cca3d-9bb6-473c-a201-b494f726a1e2">
+    <name>ПериодЛимита</name>
+    <synonym>
+      <key>ru</key>
+      <value>Период лимита</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers>
+        <dateFractions>Date</dateFractions>
+      </dateQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="9849c641-a167-47a6-9ce5-cb16de078730">
+    <name>ПричинаРучнойСкидки</name>
+    <synonym>
+      <key>ru</key>
+      <value>Причина ручной скидки</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ПричиныРучнойСкидки</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="3320d1c4-3fb9-49ec-b70a-bb49b82bc9c2">
+    <name>ОбособленноеПодразделениеОрганизации</name>
+    <synonym>
+      <key>ru</key>
+      <value>Регион (филиал)</value>
+    </synonym>
+    <comment>Определяет филиал</comment>
+    <type>
+      <types>CatalogRef.ОбособленныеПодразделенияОрганизаций</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <indexing>Index</indexing>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+</mdclass:AccumulationRegister>

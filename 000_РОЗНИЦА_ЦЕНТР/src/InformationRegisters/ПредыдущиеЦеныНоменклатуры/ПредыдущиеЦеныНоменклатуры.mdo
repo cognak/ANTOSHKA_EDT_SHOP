@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="d11dde31-2dc2-46ad-8161-a610b48e82a8">
+  <producedTypes>
+    <selectionType typeId="aa3a4ce9-69b2-446c-add1-5d57c2cdbe3f" valueTypeId="ca586947-3237-4634-9d73-b47a23121d1e"/>
+    <listType typeId="f4044670-1459-4ce4-8be3-6efb7afef605" valueTypeId="12dae782-e9e3-4df8-93e8-d75c920910be"/>
+    <managerType typeId="21c263b4-ea69-4c04-b0c5-b4425ced9dda" valueTypeId="fe2f273f-c3da-434a-a146-f1dc0a5f8dfb"/>
+    <recordSetType typeId="c09e7567-bbc4-48f9-a84b-579357f9ee3d" valueTypeId="edbba746-2dfd-47a2-96a2-34a9636d71eb"/>
+    <recordKeyType typeId="9a3d3eff-bc4e-45fc-b6f6-22456dd2ea2f" valueTypeId="93570bfd-2447-4613-bab8-d74d271150a1"/>
+    <recordType typeId="9466bb94-3544-4f54-86b9-6605ff3e8fbf" valueTypeId="f2d3d964-4d60-4476-8442-ed8f962ff41f"/>
+    <recordManagerType typeId="e643029b-91f4-450b-8b17-8b53d9831887" valueTypeId="5afa90c0-b498-4ef3-81a0-66e0367c111c"/>
+  </producedTypes>
+  <name>ПредыдущиеЦеныНоменклатуры</name>
+  <synonym>
+    <key>ru</key>
+    <value>Предыдущие цены номенклатуры</value>
+  </synonym>
+  <comment>Предыдущие цены относительно действующих цен.</comment>
+  <editType>InDialog</editType>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <resources uuid="eca382fa-8290-46d2-b80f-0d406e1b1b7e">
+    <name>Цена</name>
+    <synonym>
+      <key>ru</key>
+      <value>Цена</value>
+    </synonym>
+    <comment>Розничная цена</comment>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <scale>2</scale>
+        <nonNegative>true</nonNegative>
+      </numberQualifiers>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Используется в качестве розничной цены в магазине.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="dbe8996d-c874-4220-8dd3-bfd42b7ef9a6">
+    <name>Упаковка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Упаковка</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.УпаковкиНоменклатуры</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Заполняется в случае, когда цена задана за упаковку</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <choiceParameterLinks>
+      <name>Номенклатура</name>
+      <field>InformationRegister.ПредыдущиеЦеныНоменклатуры.Dimension.Номенклатура</field>
+    </choiceParameterLinks>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="a25373a3-cf99-42ec-80f3-46f43f1f0fd1">
+    <name>Акция</name>
+    <synonym>
+      <key>ru</key>
+      <value>Акция</value>
+    </synonym>
+    <comment>Признак акционной цены</comment>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Цена является акционной - никаких скидок на эту цену не начисляется</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <attributes uuid="eb049308-aebe-4e33-a5a4-3fa7a28cfa48">
+    <name>ВремяИзменения</name>
+    <synonym>
+      <key>ru</key>
+      <value>Время изменения</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <dimensions uuid="c27b9744-5e15-429b-aac6-cf8f39ff97e8">
+    <name>ОбъектЦенообразования</name>
+    <synonym>
+      <key>ru</key>
+      <value>Объект ценообразования</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Магазины</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Магазин, в котором применены цены</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="494d5ac6-bafd-4c78-86e6-93f588d9f5a6">
+    <name>Номенклатура</name>
+    <synonym>
+      <key>ru</key>
+      <value>Номенклатура</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Номенклатура</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Номенклатура, цены которой были применены</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="62b59714-fef8-4324-a103-f906d6ba6312">
+    <name>Характеристика</name>
+    <synonym>
+      <key>ru</key>
+      <value>Характеристика</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ХарактеристикиНоменклатуры</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Характеристика номенклатуры</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+</mdclass:InformationRegister>

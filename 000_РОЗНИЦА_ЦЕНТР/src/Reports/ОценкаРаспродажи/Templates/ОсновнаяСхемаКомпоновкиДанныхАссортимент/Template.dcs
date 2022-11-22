@@ -1,0 +1,2924 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИнформационнаяБаза</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>Запрос</name>
+		<field xsi:type="DataSetFieldFolder">
+			<dataPath>ДоАкции</dataPath>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>До акции</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldFolder">
+			<dataPath>Акция</dataPath>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Во время акции</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Акция.ВаловаяПрибыльАкции</dataPath>
+			<field>ВаловаяПрибыльАкции</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Прибыль во время акции</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДоАкции.ВаловаяПрибыльДоАкции</dataPath>
+			<field>ВаловаяПрибыльДоАкции</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Прибыль до акции</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДокументПродажи</dataPath>
+			<field>ДокументПродажи</field>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>0</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДополнительныйДоходАкции</dataPath>
+			<field>ДополнительныйДоходАкции</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменение прибыли</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>0</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЕдиницаХранения</dataPath>
+			<field>ЕдиницаХранения</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ЕИ</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Акция.КоличествоОборотАкции</dataPath>
+			<field>КоличествоОборотАкции</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Кол-во проданное акции</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>0</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=3; ЧРД=.; ЧРГ=' '</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДоАкции.КоличествоОборотДоАкции</dataPath>
+			<field>КоличествоОборотДоАкции</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Кол-во проданное до акции</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>0</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=3; ЧРД=.; ЧРГ=' '</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоОстатокВходящий</dataPath>
+			<field>КоличествоОстатокВходящий</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество вх.</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:balance>true</dcscom:balance>
+				<dcscom:balanceGroupName>КоличествоОстаток</dcscom:balanceGroupName>
+				<dcscom:balanceType>OpeningBalance</dcscom:balanceType>
+			</role>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>0</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=3; ЧРД=.; ЧРГ=' '</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоОстатокИсходящий</dataPath>
+			<field>КоличествоОстатокИсходящий</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество исх.</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:balance>true</dcscom:balance>
+				<dcscom:balanceGroupName>КоличествоОстаток</dcscom:balanceGroupName>
+				<dcscom:balanceType>ClosingBalance</dcscom:balanceType>
+			</role>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>0</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=3; ЧРД=.; ЧРГ=' '</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Магазин</dataPath>
+			<field>Магазин</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+				<dcscom:parentDimension>Склад</dcscom:parentDimension>
+			</role>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Магазины</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Номенклатура</dataPath>
+			<field>Номенклатура</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Номенклатура</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НоменклатураНоменклатурнаяГруппа</dataPath>
+			<field>НоменклатураНоменклатурнаяГруппа</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номенклатурная группа</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ОбнаруженыПродажиПоНулевойСебестоимости</dataPath>
+			<field>ОбнаруженыПродажиПоНулевойСебестоимости</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обнаружены продажи по нулевой себестоимости</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Продавец</dataPath>
+			<field>Продавец</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СебестоимостьВходящий</dataPath>
+			<field>СебестоимостьВходящий</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>С/с-ть остатка вх.</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>0</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2; ЧРД=.; ЧРГ=' '</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СебестоимостьИсходящий</dataPath>
+			<field>СебестоимостьИсходящий</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>С/с-ть остатка исх.</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>0</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2; ЧРД=.; ЧРГ=' '</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Акция.СебестоимостьПродажАкции</dataPath>
+			<field>СебестоимостьПродажАкции</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>С/с-ть продаж акции</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>0</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2; ЧРД=.; ЧРГ=' '</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДоАкции.СебестоимостьПродажДоАкции</dataPath>
+			<field>СебестоимостьПродажДоАкции</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>С/с-ть продаж до акции</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>0</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2; ЧРД=.; ЧРГ=' '</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Акция.СкидкаАкции</dataPath>
+			<field>СкидкаАкции</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма скидки акции</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>0</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2; ЧРД=.; ЧРГ=' '</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДоАкции.СкидкаДоАкции</dataPath>
+			<field>СкидкаДоАкции</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма скидки до акции</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>0</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2; ЧРД=.; ЧРГ=' '</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Склад</dataPath>
+			<field>Склад</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Склады</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Акция.СтоимостьОборотАкции</dataPath>
+			<field>СтоимостьОборотАкции</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма продаж акции</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>0</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2; ЧРД=.; ЧРГ=' '</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДоАкции.СтоимостьОборотДоАкции</dataPath>
+			<field>СтоимостьОборотДоАкции</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма продаж до акции</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>0</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2; ЧРД=.; ЧРГ=' '</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаВходящий</dataPath>
+			<field>СуммаВходящий</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма розн. вх.</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>0</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2; ЧРД=.; ЧРГ=' '</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаИсходящий</dataPath>
+			<field>СуммаИсходящий</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма розн. исх.</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>0</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2; ЧРД=.; ЧРГ=' '</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Характеристика</dataPath>
+			<field>Характеристика</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.ХарактеристикиНоменклатуры</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЦенаРозничнаяВходящая</dataPath>
+			<field>ЦенаРозничнаяВходящая</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Цена розн. вх.</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>0</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2; ЧРД=.; ЧРГ=' '</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЦенаРозничнаяИсходящая</dataPath>
+			<field>ЦенаРозничнаяИсходящая</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Цена розн. исх.</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>0</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2; ЧРД=.; ЧРГ=' '</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Период</dataPath>
+			<field>Период</field>
+			<role>
+				<dcscom:periodNumber>1</dcscom:periodNumber>
+				<dcscom:periodType>Main</dcscom:periodType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВаловаяПрибыль</dataPath>
+			<field>ВаловаяПрибыль</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Валовая прибыль</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>0</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2; ЧРД=.; ЧРГ=' '</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоОборот</dataPath>
+			<field>КоличествоОборот</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество продаж</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>0</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=3; ЧРД=.; ЧРГ=' '</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СебестоимостьПродаж</dataPath>
+			<field>СебестоимостьПродаж</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Себестоимость продаж</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>0</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2; ЧРД=.; ЧРГ=' '</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Скидка</dataPath>
+			<field>Скидка</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма скидки</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>0</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2; ЧРД=.; ЧРГ=' '</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СтоимостьОборот</dataPath>
+			<field>СтоимостьОборот</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма продаж</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>0</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2; ЧРД=.; ЧРГ=' '</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<dataSource>ИнформационнаяБаза</dataSource>
+		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ТоварыНаСкладахОстаткиИОбороты.Склад.Магазин КАК Магазин,
+	ТоварыНаСкладахОстаткиИОбороты.Номенклатура КАК Номенклатура,
+	ТоварыНаСкладахОстаткиИОбороты.Характеристика КАК Характеристика,
+	ТоварыНаСкладахОстаткиИОбороты.Склад КАК Склад,
+	ТоварыНаСкладахОстаткиИОбороты.КоличествоНачальныйОстаток КАК КоличествоОстатокВходящий,
+	ТоварыНаСкладахОстаткиИОбороты.КоличествоКонечныйОстаток КАК КоличествоОстатокИсходящий
+ПОМЕСТИТЬ ТоварыНаСкладахОстаткиИОбороты
+ИЗ
+	РегистрНакопления.ТоварыНаСкладах.ОстаткиИОбороты(&amp;ПериодНачалаАкции {(&amp;ПериодНачалаАкции)}, &amp;КонецПериода {(&amp;КонецПериода)}, , , ) КАК ТоварыНаСкладахОстаткиИОбороты
+
+ИНДЕКСИРОВАТЬ ПО
+	Магазин,
+	Номенклатура,
+	Характеристика,
+	Склад
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	Магазины.Ссылка КАК Магазин
+ПОМЕСТИТЬ втМагазиныСПрименениемЦен
+ИЗ
+	Справочник.Магазины КАК Магазины
+ГДЕ
+	&amp;ИспользоватьПрименениеЦен
+	И Магазины.ИспользоватьПрименениеЦен
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	Магазины.Ссылка КАК Магазин,
+	Магазины.ФорматМагазина КАК ФорматМагазина
+ПОМЕСТИТЬ втМагазиныСАссортиментом
+ИЗ
+	Справочник.Магазины КАК Магазины
+ГДЕ
+	Магазины.КонтролироватьАссортимент
+	И НЕ(&amp;ИспользоватьПрименениеЦен
+				И Магазины.ИспользоватьПрименениеЦен)
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	Магазины.Ссылка КАК Магазин,
+	Магазины.ПравилоЦенообразования КАК ПравилоЦенообразования,
+	Магазины.ПравилоЦенообразования.ВидЦен КАК ВидЦены
+ПОМЕСТИТЬ втМагазиныОбычные
+ИЗ
+	Справочник.Магазины КАК Магазины
+ГДЕ
+	НЕ Магазины.КонтролироватьАссортимент
+	И НЕ(&amp;ИспользоватьПрименениеЦен
+				И Магазины.ИспользоватьПрименениеЦен)
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	МагазиныОбычные.Магазин КАК Магазин,
+	ПравилаЦенообразованияЦеновыеГруппы.ЦеноваяГруппа КАК ЦеноваяГруппа,
+	ПравилаЦенообразованияЦеновыеГруппы.ВидЦен КАК ВидЦены
+ПОМЕСТИТЬ втПравилаОбычныхМагазинов
+ИЗ
+	Справочник.ПравилаЦенообразования.ЦеновыеГруппы КАК ПравилаЦенообразованияЦеновыеГруппы
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ втМагазиныОбычные КАК МагазиныОбычные
+		ПО (МагазиныОбычные.ПравилоЦенообразования = ПравилаЦенообразованияЦеновыеГруппы.Ссылка)
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ДействующиеЦены.ОбъектЦенообразования КАК Магазин,
+	ДействующиеЦены.Номенклатура КАК Номенклатура,
+	ДействующиеЦены.Характеристика КАК Характеристика,
+	ВЫБОР
+		КОГДА ЕСТЬNULL(ДействующиеЦены.Упаковка.Коэффициент, 0) = 0
+			ТОГДА ДействующиеЦены.Цена
+		ИНАЧЕ ВЫРАЗИТЬ(ДействующиеЦены.Цена / ДействующиеЦены.Упаковка.Коэффициент КАК ЧИСЛО(15, 2))
+	КОНЕЦ КАК Цена
+ПОМЕСТИТЬ втЦеныДействующие
+ИЗ
+	РегистрСведений.ДействующиеЦеныНоменклатуры.СрезПоследних(
+			&amp;ПериодНачалаАкцииКонецДня {(&amp;ПериодНачалаАкцииКонецДня)},
+			ОбъектЦенообразования В
+					(ВЫБРАТЬ
+						Т.Магазин
+					ИЗ
+						втМагазиныСПрименениемЦен КАК Т)
+				И Номенклатура В
+					(ВЫБРАТЬ
+						Т.Номенклатура
+					ИЗ
+						ТоварыНаСкладахОстаткиИОбороты КАК Т)) КАК ДействующиеЦены
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	Ассортимент.Номенклатура КАК Номенклатура,
+	МагазиныСАссортиментом.Магазин КАК Магазин,
+	Ассортимент.ВидЦен КАК ВидЦен
+ПОМЕСТИТЬ втАссортимент
+ИЗ
+	РегистрСведений.Ассортимент.СрезПоследних(
+			&amp;ПериодНачалаАкцииКонецДня {(&amp;ПериодНачалаАкцииКонецДня)},
+			ОбъектПланирования В
+					(ВЫБРАТЬ РАЗЛИЧНЫЕ
+						Т.ФорматМагазина
+					ИЗ
+						втМагазиныСАссортиментом КАК Т)
+				И Номенклатура В
+					(ВЫБРАТЬ
+						Т.Номенклатура
+					ИЗ
+						ТоварыНаСкладахОстаткиИОбороты КАК Т)) КАК Ассортимент
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ втМагазиныСАссортиментом КАК МагазиныСАссортиментом
+		ПО (МагазиныСАссортиментом.ФорматМагазина = Ассортимент.ОбъектПланирования)
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	Ассортимент.Магазин КАК Магазин,
+	Ассортимент.Номенклатура КАК Номенклатура,
+	ЦеныНоменклатуры.Характеристика КАК Характеристика,
+	ВЫБОР
+		КОГДА ЕСТЬNULL(ЦеныНоменклатуры.Упаковка.Коэффициент, 0) = 0
+			ТОГДА ЦеныНоменклатуры.Цена
+		ИНАЧЕ ВЫРАЗИТЬ(ЦеныНоменклатуры.Цена / ЦеныНоменклатуры.Упаковка.Коэффициент КАК ЧИСЛО(15, 2))
+	КОНЕЦ КАК Цена
+ПОМЕСТИТЬ втЦеныАссортиментные
+ИЗ
+	втАссортимент КАК Ассортимент
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.ЦеныНоменклатуры.СрезПоследних(
+				&amp;ПериодНачалаАкцииКонецДня {(&amp;ПериодНачалаАкцииКонецДня)},
+				ВидЦены В
+						(ВЫБРАТЬ РАЗЛИЧНЫЕ
+							Т.ВидЦен
+						ИЗ
+							втАссортимент КАК Т)
+					И Номенклатура В
+						(ВЫБРАТЬ
+							Т.Номенклатура
+						ИЗ
+							ТоварыНаСкладахОстаткиИОбороты КАК Т)) КАК ЦеныНоменклатуры
+		ПО Ассортимент.Номенклатура = ЦеныНоменклатуры.Номенклатура
+			И Ассортимент.ВидЦен = ЦеныНоменклатуры.ВидЦены
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ТаблицаТовары.Ссылка КАК Номенклатура,
+	МагазиныОбычные.Магазин КАК Магазин,
+	ЕСТЬNULL(ПравилаОбычныхМагазинов.ВидЦены, МагазиныОбычные.ВидЦены) КАК ВидЦены
+ПОМЕСТИТЬ втВидыЦенПоПравилам
+ИЗ
+	Справочник.Номенклатура КАК ТаблицаТовары
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ втМагазиныОбычные КАК МагазиныОбычные
+		ПО (ИСТИНА)
+		ЛЕВОЕ СОЕДИНЕНИЕ втПравилаОбычныхМагазинов КАК ПравилаОбычныхМагазинов
+		ПО (ПравилаОбычныхМагазинов.Магазин = МагазиныОбычные.Магазин)
+			И (ПравилаОбычныхМагазинов.ЦеноваяГруппа = ТаблицаТовары.ЦеноваяГруппа)
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ВидыЦенПоПравилам.Магазин КАК Магазин,
+	ВидыЦенПоПравилам.Номенклатура КАК Номенклатура,
+	ЦеныНоменклатуры.Характеристика КАК Характеристика,
+	ВЫБОР
+		КОГДА ЕСТЬNULL(ЦеныНоменклатуры.Упаковка.Коэффициент, 0) = 0
+			ТОГДА ЦеныНоменклатуры.Цена
+		ИНАЧЕ ВЫРАЗИТЬ(ЦеныНоменклатуры.Цена / ЦеныНоменклатуры.Упаковка.Коэффициент КАК ЧИСЛО(15, 2))
+	КОНЕЦ КАК Цена
+ПОМЕСТИТЬ втЦеныПравильные
+ИЗ
+	втВидыЦенПоПравилам КАК ВидыЦенПоПравилам
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.ЦеныНоменклатуры.СрезПоследних(
+				&amp;ПериодНачалаАкцииКонецДня {(&amp;ПериодНачалаАкцииКонецДня)},
+				ВидЦены В
+					(ВЫБРАТЬ РАЗЛИЧНЫЕ
+						Т.ВидЦены
+					ИЗ
+						втВидыЦенПоПравилам КАК Т)) КАК ЦеныНоменклатуры
+		ПО (ЦеныНоменклатуры.ВидЦены = ВидыЦенПоПравилам.ВидЦены)
+			И (ЦеныНоменклатуры.Номенклатура = ВидыЦенПоПравилам.Номенклатура)
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	Подзапрос.Магазин КАК Магазин,
+	Подзапрос.Номенклатура КАК Номенклатура,
+	Подзапрос.Характеристика КАК Характеристика,
+	Подзапрос.Цена КАК РозничнаяЦена
+ПОМЕСТИТЬ ЦеныВходящие
+ИЗ
+	(ВЫБРАТЬ
+		ЦеныПравильные.Магазин КАК Магазин,
+		ЦеныПравильные.Номенклатура КАК Номенклатура,
+		ЦеныПравильные.Характеристика КАК Характеристика,
+		ЦеныПравильные.Цена КАК Цена
+	ИЗ
+		втЦеныПравильные КАК ЦеныПравильные
+	
+	ОБЪЕДИНИТЬ ВСЕ
+	
+	ВЫБРАТЬ
+		ЦеныАссортиментные.Магазин,
+		ЦеныАссортиментные.Номенклатура,
+		ЦеныАссортиментные.Характеристика,
+		ЦеныАссортиментные.Цена
+	ИЗ
+		втЦеныАссортиментные КАК ЦеныАссортиментные
+	
+	ОБЪЕДИНИТЬ ВСЕ
+	
+	ВЫБРАТЬ
+		ЦеныДействующие.Магазин,
+		ЦеныДействующие.Номенклатура,
+		ЦеныДействующие.Характеристика,
+		ЦеныДействующие.Цена
+	ИЗ
+		втЦеныДействующие КАК ЦеныДействующие) КАК Подзапрос
+;
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ДействующиеЦены.ОбъектЦенообразования КАК Магазин,
+	ДействующиеЦены.Номенклатура КАК Номенклатура,
+	ДействующиеЦены.Характеристика КАК Характеристика,
+	ВЫБОР
+		КОГДА ЕСТЬNULL(ДействующиеЦены.Упаковка.Коэффициент, 0) = 0
+			ТОГДА ДействующиеЦены.Цена
+		ИНАЧЕ ВЫРАЗИТЬ(ДействующиеЦены.Цена / ДействующиеЦены.Упаковка.Коэффициент КАК ЧИСЛО(15, 2))
+	КОНЕЦ КАК Цена
+ПОМЕСТИТЬ втЦеныДействующиеИсходящие
+ИЗ
+	РегистрСведений.ДействующиеЦеныНоменклатуры.СрезПоследних(
+			&amp;КонецПериода {(&amp;КонецПериода)},
+			ОбъектЦенообразования В
+					(ВЫБРАТЬ
+						Т.Магазин
+					ИЗ
+						втМагазиныСПрименениемЦен КАК Т)
+				И Номенклатура В
+					(ВЫБРАТЬ
+						Т.Номенклатура
+					ИЗ
+						ТоварыНаСкладахОстаткиИОбороты КАК Т)) КАК ДействующиеЦены
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	Ассортимент.Номенклатура КАК Номенклатура,
+	МагазиныСАссортиментом.Магазин КАК Магазин,
+	Ассортимент.ВидЦен КАК ВидЦен
+ПОМЕСТИТЬ втАссортиментИсходящий
+ИЗ
+	РегистрСведений.Ассортимент.СрезПоследних(
+			&amp;КонецПериода {(&amp;КонецПериода)},
+			ОбъектПланирования В
+					(ВЫБРАТЬ РАЗЛИЧНЫЕ
+						Т.ФорматМагазина
+					ИЗ
+						втМагазиныСАссортиментом КАК Т)
+				И Номенклатура В
+					(ВЫБРАТЬ
+						Т.Номенклатура
+					ИЗ
+						ТоварыНаСкладахОстаткиИОбороты КАК Т)) КАК Ассортимент
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ втМагазиныСАссортиментом КАК МагазиныСАссортиментом
+		ПО (МагазиныСАссортиментом.ФорматМагазина = Ассортимент.ОбъектПланирования)
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	Ассортимент.Магазин КАК Магазин,
+	Ассортимент.Номенклатура КАК Номенклатура,
+	ЦеныНоменклатуры.Характеристика КАК Характеристика,
+	ВЫБОР
+		КОГДА ЕСТЬNULL(ЦеныНоменклатуры.Упаковка.Коэффициент, 0) = 0
+			ТОГДА ЦеныНоменклатуры.Цена
+		ИНАЧЕ ВЫРАЗИТЬ(ЦеныНоменклатуры.Цена / ЦеныНоменклатуры.Упаковка.Коэффициент КАК ЧИСЛО(15, 2))
+	КОНЕЦ КАК Цена
+ПОМЕСТИТЬ втЦеныАссортиментныеИсходящие
+ИЗ
+	втАссортиментИсходящий КАК Ассортимент
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.ЦеныНоменклатуры.СрезПоследних(
+				&amp;КонецПериода {(&amp;КонецПериода)},
+				ВидЦены В
+						(ВЫБРАТЬ РАЗЛИЧНЫЕ
+							Т.ВидЦен
+						ИЗ
+							втАссортиментИсходящий КАК Т)
+					И Номенклатура В
+						(ВЫБРАТЬ
+							Т.Номенклатура
+						ИЗ
+							ТоварыНаСкладахОстаткиИОбороты КАК Т)) КАК ЦеныНоменклатуры
+		ПО Ассортимент.Номенклатура = ЦеныНоменклатуры.Номенклатура
+			И Ассортимент.ВидЦен = ЦеныНоменклатуры.ВидЦены
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ВидыЦенПоПравилам.Магазин КАК Магазин,
+	ВидыЦенПоПравилам.Номенклатура КАК Номенклатура,
+	ЦеныНоменклатуры.Характеристика КАК Характеристика,
+	ВЫБОР
+		КОГДА ЕСТЬNULL(ЦеныНоменклатуры.Упаковка.Коэффициент, 0) = 0
+			ТОГДА ЦеныНоменклатуры.Цена
+		ИНАЧЕ ВЫРАЗИТЬ(ЦеныНоменклатуры.Цена / ЦеныНоменклатуры.Упаковка.Коэффициент КАК ЧИСЛО(15, 2))
+	КОНЕЦ КАК Цена
+ПОМЕСТИТЬ втЦеныПравильныеИсходящие
+ИЗ
+	втВидыЦенПоПравилам КАК ВидыЦенПоПравилам
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.ЦеныНоменклатуры.СрезПоследних(
+				&amp;КонецПериода {(&amp;КонецПериода)},
+				ВидЦены В
+					(ВЫБРАТЬ РАЗЛИЧНЫЕ
+						Т.ВидЦены
+					ИЗ
+						втВидыЦенПоПравилам КАК Т)) КАК ЦеныНоменклатуры
+		ПО (ЦеныНоменклатуры.ВидЦены = ВидыЦенПоПравилам.ВидЦены)
+			И (ЦеныНоменклатуры.Номенклатура = ВидыЦенПоПравилам.Номенклатура)
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	Подзапрос.Магазин КАК Магазин,
+	Подзапрос.Номенклатура КАК Номенклатура,
+	Подзапрос.Характеристика КАК Характеристика,
+	Подзапрос.Цена КАК РозничнаяЦена
+ПОМЕСТИТЬ ЦеныИсходящие
+ИЗ
+	(ВЫБРАТЬ
+		ЦеныПравильные.Магазин КАК Магазин,
+		ЦеныПравильные.Номенклатура КАК Номенклатура,
+		ЦеныПравильные.Характеристика КАК Характеристика,
+		ЦеныПравильные.Цена КАК Цена
+	ИЗ
+		втЦеныПравильныеИсходящие КАК ЦеныПравильные
+	
+	ОБЪЕДИНИТЬ ВСЕ
+	
+	ВЫБРАТЬ
+		ЦеныАссортиментные.Магазин,
+		ЦеныАссортиментные.Номенклатура,
+		ЦеныАссортиментные.Характеристика,
+		ЦеныАссортиментные.Цена
+	ИЗ
+		втЦеныАссортиментныеИсходящие КАК ЦеныАссортиментные
+	
+	ОБЪЕДИНИТЬ ВСЕ
+	
+	ВЫБРАТЬ
+		ЦеныДействующие.Магазин,
+		ЦеныДействующие.Номенклатура,
+		ЦеныДействующие.Характеристика,
+		ЦеныДействующие.Цена
+	ИЗ
+		втЦеныДействующиеИсходящие КАК ЦеныДействующие) КАК Подзапрос
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ТоварыНаСкладахОстаткиИОбороты.Магазин КАК Магазин,
+	ТоварыНаСкладахОстаткиИОбороты.Номенклатура КАК Номенклатура,
+	ТоварыНаСкладахОстаткиИОбороты.Характеристика КАК Характеристика,
+	ТоварыНаСкладахОстаткиИОбороты.Склад КАК Склад,
+	ТоварыНаСкладахОстаткиИОбороты.КоличествоОстатокВходящий КАК КоличествоОстатокВходящий,
+	ТоварыНаСкладахОстаткиИОбороты.КоличествоОстатокИсходящий КАК КоличествоОстатокИсходящий,
+	ЕСТЬNULL(ЦеныВходящие.РозничнаяЦена, 0) КАК ЦенаРозничнаяВходящая,
+	ЕСТЬNULL(ЦеныИсходящие.РозничнаяЦена, 0) КАК ЦенаРозничнаяИсходящая
+ПОМЕСТИТЬ ТаблицаОстатковСЦенами
+ИЗ
+	ТоварыНаСкладахОстаткиИОбороты КАК ТоварыНаСкладахОстаткиИОбороты
+		ЛЕВОЕ СОЕДИНЕНИЕ ЦеныВходящие КАК ЦеныВходящие
+		ПО (ЦеныВходящие.Магазин = ТоварыНаСкладахОстаткиИОбороты.Магазин)
+			И (ЦеныВходящие.Номенклатура = ТоварыНаСкладахОстаткиИОбороты.Номенклатура)
+			И (ЦеныВходящие.Характеристика = ТоварыНаСкладахОстаткиИОбороты.Характеристика)
+		ЛЕВОЕ СОЕДИНЕНИЕ ЦеныИсходящие КАК ЦеныИсходящие
+		ПО (ЦеныИсходящие.Магазин = ТоварыНаСкладахОстаткиИОбороты.Магазин)
+			И (ЦеныИсходящие.Номенклатура = ТоварыНаСкладахОстаткиИОбороты.Номенклатура)
+			И (ЦеныИсходящие.Характеристика = ТоварыНаСкладахОстаткиИОбороты.Характеристика)
+
+ИНДЕКСИРОВАТЬ ПО
+	Магазин,
+	Номенклатура,
+	Характеристика,
+	Склад
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ТоварыНаСкладахОстаткиИОбороты.Номенклатура,
+	ТоварыНаСкладахОстаткиИОбороты.Склад.Магазин КАК Магазин,
+	ТоварыНаСкладахОстаткиИОбороты.Характеристика,
+	СУММА(ТоварыНаСкладахОстаткиИОбороты.КоличествоОстатокВходящий) КАК КоличествоОстатокВходящий,
+	СУММА(ТоварыНаСкладахОстаткиИОбороты.КоличествоОстатокИсходящий) КАК КоличествоОстатокИсходящий,
+	СУММА(ВЫБОР
+			КОГДА ТоварыНаСкладахОстаткиИОбороты.Номенклатура.ТипНоменклатуры = ЗНАЧЕНИЕ(Перечисление.ТипыНоменклатуры.Услуга)
+				ТОГДА 0
+			ИНАЧЕ СебестоимостьНоменклатурыСрезПоследнихНачало.Цена
+		КОНЕЦ * ТоварыНаСкладахОстаткиИОбороты.КоличествоОстатокВходящий) КАК СебестоимостьВходящий,
+	СУММА(ВЫБОР
+			КОГДА ТоварыНаСкладахОстаткиИОбороты.Номенклатура.ТипНоменклатуры = ЗНАЧЕНИЕ(Перечисление.ТипыНоменклатуры.Услуга)
+				ТОГДА 0
+			ИНАЧЕ СебестоимостьНоменклатурыСрезПоследнихКонец.Цена
+		КОНЕЦ * ТоварыНаСкладахОстаткиИОбороты.КоличествоОстатокИсходящий) КАК СебестоимостьИсходящий,
+	ТоварыНаСкладахОстаткиИОбороты.Склад,
+	ТоварыНаСкладахОстаткиИОбороты.ЦенаРозничнаяВходящая,
+	ТоварыНаСкладахОстаткиИОбороты.ЦенаРозничнаяИсходящая
+ПОМЕСТИТЬ ТаблицаОстатков
+ИЗ
+	ТаблицаОстатковСЦенами КАК ТоварыНаСкладахОстаткиИОбороты
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СебестоимостьНоменклатуры.СрезПоследних(&amp;КонецПериода {(&amp;КонецПериода)}, ) КАК СебестоимостьНоменклатурыСрезПоследнихКонец
+		ПО ТоварыНаСкладахОстаткиИОбороты.Номенклатура = СебестоимостьНоменклатурыСрезПоследнихКонец.Номенклатура
+			И ТоварыНаСкладахОстаткиИОбороты.Характеристика = СебестоимостьНоменклатурыСрезПоследнихКонец.Характеристика
+			И ТоварыНаСкладахОстаткиИОбороты.Склад.Магазин = СебестоимостьНоменклатурыСрезПоследнихКонец.Магазин
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СебестоимостьНоменклатуры.СрезПоследних(&amp;ПериодНачалаАкции {(&amp;ПериодНачалаАкции)}, ) КАК СебестоимостьНоменклатурыСрезПоследнихНачало
+		ПО ТоварыНаСкладахОстаткиИОбороты.Номенклатура = СебестоимостьНоменклатурыСрезПоследнихНачало.Номенклатура
+			И ТоварыНаСкладахОстаткиИОбороты.Характеристика = СебестоимостьНоменклатурыСрезПоследнихНачало.Характеристика
+			И ТоварыНаСкладахОстаткиИОбороты.Склад.Магазин = СебестоимостьНоменклатурыСрезПоследнихНачало.Магазин
+
+СГРУППИРОВАТЬ ПО
+	ТоварыНаСкладахОстаткиИОбороты.Склад.Магазин,
+	ТоварыНаСкладахОстаткиИОбороты.Характеристика,
+	ТоварыНаСкладахОстаткиИОбороты.Номенклатура,
+	ТоварыНаСкладахОстаткиИОбороты.Склад,
+	ТоварыНаСкладахОстаткиИОбороты.ЦенаРозничнаяВходящая,
+	ТоварыНаСкладахОстаткиИОбороты.ЦенаРозничнаяИсходящая
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ВложенныйЗапрос.Номенклатура КАК Номенклатура,
+	ВложенныйЗапрос.ОбнаруженыПродажиПоНулевойСебестоимости,
+	ВложенныйЗапрос.ЕдиницаХранения КАК ЕдиницаХранения,
+	ВложенныйЗапрос.Магазин КАК Магазин,
+	ВложенныйЗапрос.КоличествоОборотДоАкции,
+	ВложенныйЗапрос.СтоимостьОборотДоАкции,
+	ВложенныйЗапрос.КоличествоОборотАкции,
+	ВложенныйЗапрос.СтоимостьОборотАкции,
+	ВложенныйЗапрос.СебестоимостьПродажДоАкции,
+	ВложенныйЗапрос.ВаловаяПрибыльДоАкции,
+	ВложенныйЗапрос.СебестоимостьПродажАкции,
+	ВложенныйЗапрос.ВаловаяПрибыльАкции,
+	ВложенныйЗапрос.Характеристика КАК Характеристика,
+	ВложенныйЗапрос.НоменклатураНоменклатурнаяГруппа КАК НоменклатураНоменклатурнаяГруппа,
+	ВложенныйЗапрос.СкидкаДоАкции,
+	ВложенныйЗапрос.СкидкаАкции,
+	ВложенныйЗапрос.ДополнительныйДоходАкции,
+	ВложенныйЗапрос.КоличествоОстатокВходящий,
+	ВложенныйЗапрос.КоличествоОстатокИсходящий,
+	ВложенныйЗапрос.СебестоимостьВходящий,
+	ВложенныйЗапрос.СебестоимостьИсходящий,
+	ВложенныйЗапрос.СуммаВходящий,
+	ВложенныйЗапрос.СуммаИсходящий,
+	ВложенныйЗапрос.Склад,
+	ВложенныйЗапрос.ЦенаРозничнаяВходящая,
+	ВложенныйЗапрос.ЦенаРозничнаяИсходящая,
+	НАЧАЛОПЕРИОДА(ВложенныйЗапрос.ПериодПродажи, ДЕНЬ) КАК Период,
+	ВложенныйЗапрос.КоличествоОборот,
+	ВложенныйЗапрос.СтоимостьОборот,
+	ВложенныйЗапрос.Скидка,
+	ВложенныйЗапрос.СебестоимостьПродаж,
+	ВложенныйЗапрос.ВаловаяПрибыль
+ИЗ
+	(ВЫБРАТЬ
+		ЕСТЬNULL(ВложенныйЗапрос.Номенклатура, ТаблицаОстатков.Номенклатура) КАК Номенклатура,
+		ВложенныйЗапрос.ОбнаруженыПродажиПоНулевойСебестоимости КАК ОбнаруженыПродажиПоНулевойСебестоимости,
+		ЕСТЬNULL(ВложенныйЗапрос.ЕдиницаХранения, ТаблицаОстатков.Номенклатура.ЕдиницаИзмерения) КАК ЕдиницаХранения,
+		ЕСТЬNULL(ВложенныйЗапрос.Магазин, ТаблицаОстатков.Магазин) КАК Магазин,
+		ВложенныйЗапрос.КоличествоОборотДоАкции КАК КоличествоОборотДоАкции,
+		ВложенныйЗапрос.СтоимостьОборотДоАкции КАК СтоимостьОборотДоАкции,
+		ВложенныйЗапрос.КоличествоОборотАкции КАК КоличествоОборотАкции,
+		ВложенныйЗапрос.СтоимостьОборотАкции КАК СтоимостьОборотАкции,
+		ВложенныйЗапрос.СебестоимостьПродажДоАкции КАК СебестоимостьПродажДоАкции,
+		ВложенныйЗапрос.ВаловаяПрибыльДоАкции КАК ВаловаяПрибыльДоАкции,
+		ВложенныйЗапрос.СебестоимостьПродажАкции КАК СебестоимостьПродажАкции,
+		ВложенныйЗапрос.ВаловаяПрибыльАкции КАК ВаловаяПрибыльАкции,
+		ЕСТЬNULL(ВложенныйЗапрос.Характеристика, ТаблицаОстатков.Характеристика) КАК Характеристика,
+		ЕСТЬNULL(ВложенныйЗапрос.НоменклатураНоменклатурнаяГруппа, ТаблицаОстатков.Номенклатура.НоменклатурнаяГруппа) КАК НоменклатураНоменклатурнаяГруппа,
+		ВложенныйЗапрос.СкидкаДоАкции КАК СкидкаДоАкции,
+		ВложенныйЗапрос.СкидкаАкции КАК СкидкаАкции,
+		ВложенныйЗапрос.ДополнительныйДоходАкции КАК ДополнительныйДоходАкции,
+		ТаблицаОстатков.КоличествоОстатокВходящий КАК КоличествоОстатокВходящий,
+		ТаблицаОстатков.КоличествоОстатокИсходящий КАК КоличествоОстатокИсходящий,
+		ТаблицаОстатков.СебестоимостьВходящий КАК СебестоимостьВходящий,
+		ТаблицаОстатков.СебестоимостьИсходящий КАК СебестоимостьИсходящий,
+		ТаблицаОстатков.КоличествоОстатокВходящий * ТаблицаОстатков.ЦенаРозничнаяВходящая КАК СуммаВходящий,
+		ТаблицаОстатков.КоличествоОстатокИсходящий * ТаблицаОстатков.ЦенаРозничнаяИсходящая КАК СуммаИсходящий,
+		ЕСТЬNULL(ВложенныйЗапрос.Склад, ТаблицаОстатков.Склад) КАК Склад,
+		ТаблицаОстатков.ЦенаРозничнаяВходящая КАК ЦенаРозничнаяВходящая,
+		ТаблицаОстатков.ЦенаРозничнаяИсходящая КАК ЦенаРозничнаяИсходящая,
+		ВложенныйЗапрос.Период КАК ПериодПродажи,
+		ВложенныйЗапрос.КоличествоОборот КАК КоличествоОборот,
+		ВложенныйЗапрос.СтоимостьОборот КАК СтоимостьОборот,
+		ВложенныйЗапрос.Скидка КАК Скидка,
+		ВложенныйЗапрос.СебестоимостьПродаж КАК СебестоимостьПродаж,
+		ВложенныйЗапрос.ВаловаяПрибыль КАК ВаловаяПрибыль
+	ИЗ
+		(ВЫБРАТЬ
+			ВложенныйЗапрос.Номенклатура КАК Номенклатура,
+			ВЫБОР
+				КОГДА МИНИМУМ(ЕСТЬNULL(СебестоимостьНоменклатуры.Цена, 0)) = 0
+						И ВложенныйЗапрос.Номенклатура.ТипНоменклатуры &lt;&gt; ЗНАЧЕНИЕ(Перечисление.ТипыНоменклатуры.Услуга)
+					ТОГДА ИСТИНА
+				ИНАЧЕ ЛОЖЬ
+			КОНЕЦ КАК ОбнаруженыПродажиПоНулевойСебестоимости,
+			ВложенныйЗапрос.Номенклатура.ЕдиницаИзмерения КАК ЕдиницаХранения,
+			ВложенныйЗапрос.Склад.Магазин КАК Магазин,
+			СУММА(ВЫБОР
+					КОГДА &amp;КоличествоПериодовДоАкции = 0
+						ТОГДА 0
+					ИНАЧЕ ВложенныйЗапрос.КоличествоОборотДоАкции / &amp;КоличествоПериодовДоАкции
+				КОНЕЦ) КАК КоличествоОборотДоАкции,
+			СУММА(ВЫБОР
+					КОГДА &amp;КоличествоПериодовДоАкции = 0
+						ТОГДА 0
+					ИНАЧЕ ВложенныйЗапрос.СтоимостьОборотДоАкции / &amp;КоличествоПериодовДоАкции
+				КОНЕЦ) КАК СтоимостьОборотДоАкции,
+			СУММА(ВЫБОР
+					КОГДА &amp;КоличествоПериодовАкции = 0
+						ТОГДА 0
+					ИНАЧЕ ВложенныйЗапрос.КоличествоОборотАкции / &amp;КоличествоПериодовАкции
+				КОНЕЦ) КАК КоличествоОборотАкции,
+			СУММА(ВЫБОР
+					КОГДА &amp;КоличествоПериодовАкции = 0
+						ТОГДА 0
+					ИНАЧЕ ВложенныйЗапрос.СтоимостьОборотАкции / &amp;КоличествоПериодовАкции
+				КОНЕЦ) КАК СтоимостьОборотАкции,
+			СУММА(ВЫБОР
+					КОГДА &amp;КоличествоПериодовДоАкции = 0
+						ТОГДА 0
+					ИНАЧЕ ЕСТЬNULL(ВЫБОР
+								КОГДА ВложенныйЗапрос.Номенклатура.ТипНоменклатуры = ЗНАЧЕНИЕ(Перечисление.ТипыНоменклатуры.Услуга)
+									ТОГДА 0
+								ИНАЧЕ СебестоимостьНоменклатуры.Цена
+							КОНЕЦ, 0) * ВложенныйЗапрос.КоличествоОборотДоАкции / &amp;КоличествоПериодовДоАкции
+				КОНЕЦ) КАК СебестоимостьПродажДоАкции,
+			СУММА(ВЫБОР
+					КОГДА &amp;КоличествоПериодовДоАкции = 0
+						ТОГДА 0
+					ИНАЧЕ (ВложенныйЗапрос.СтоимостьОборотДоАкции - ЕСТЬNULL(ВЫБОР
+								КОГДА ВложенныйЗапрос.Номенклатура.ТипНоменклатуры = ЗНАЧЕНИЕ(Перечисление.ТипыНоменклатуры.Услуга)
+									ТОГДА 0
+								ИНАЧЕ СебестоимостьНоменклатуры.Цена
+							КОНЕЦ, 0) * ВложенныйЗапрос.КоличествоОборотДоАкции) / &amp;КоличествоПериодовДоАкции
+				КОНЕЦ) КАК ВаловаяПрибыльДоАкции,
+			СУММА(ВЫБОР
+					КОГДА &amp;КоличествоПериодовАкции = 0
+						ТОГДА 0
+					ИНАЧЕ ЕСТЬNULL(ВЫБОР
+								КОГДА ВложенныйЗапрос.Номенклатура.ТипНоменклатуры = ЗНАЧЕНИЕ(Перечисление.ТипыНоменклатуры.Услуга)
+									ТОГДА 0
+								ИНАЧЕ СебестоимостьНоменклатуры.Цена
+							КОНЕЦ, 0) * ВложенныйЗапрос.КоличествоОборотАкции / &amp;КоличествоПериодовАкции
+				КОНЕЦ) КАК СебестоимостьПродажАкции,
+			СУММА(ВЫБОР
+					КОГДА &amp;КоличествоПериодовАкции = 0
+						ТОГДА 0
+					ИНАЧЕ (ВложенныйЗапрос.СтоимостьОборотАкции - ЕСТЬNULL(ВЫБОР
+								КОГДА ВложенныйЗапрос.Номенклатура.ТипНоменклатуры = ЗНАЧЕНИЕ(Перечисление.ТипыНоменклатуры.Услуга)
+									ТОГДА 0
+								ИНАЧЕ СебестоимостьНоменклатуры.Цена
+							КОНЕЦ, 0) * ВложенныйЗапрос.КоличествоОборотАкции) / &amp;КоличествоПериодовАкции
+				КОНЕЦ) КАК ВаловаяПрибыльАкции,
+			ВложенныйЗапрос.Характеристика КАК Характеристика,
+			ВложенныйЗапрос.Номенклатура.НоменклатурнаяГруппа КАК НоменклатураНоменклатурнаяГруппа,
+			СУММА(ВЫБОР
+					КОГДА &amp;КоличествоПериодовДоАкции = 0
+						ТОГДА 0
+					ИНАЧЕ ВложенныйЗапрос.СкидкаДоАкции / &amp;КоличествоПериодовДоАкции
+				КОНЕЦ) КАК СкидкаДоАкции,
+			СУММА(ВЫБОР
+					КОГДА &amp;КоличествоПериодовАкции = 0
+						ТОГДА 0
+					ИНАЧЕ ВложенныйЗапрос.СкидкаАкции / &amp;КоличествоПериодовАкции
+				КОНЕЦ) КАК СкидкаАкции,
+			СУММА(ВЫБОР
+					КОГДА &amp;КоличествоПериодовАкции = 0
+							ИЛИ &amp;КоличествоПериодовДоАкции = 0
+						ТОГДА 0
+					ИНАЧЕ (ВложенныйЗапрос.СтоимостьОборотАкции - ЕСТЬNULL(ВЫБОР
+								КОГДА ВложенныйЗапрос.Номенклатура.ТипНоменклатуры = ЗНАЧЕНИЕ(Перечисление.ТипыНоменклатуры.Услуга)
+									ТОГДА 0
+								ИНАЧЕ СебестоимостьНоменклатуры.Цена
+							КОНЕЦ, 0) * ВложенныйЗапрос.КоличествоОборотАкции) / &amp;КоличествоПериодовАкции - (ВложенныйЗапрос.СтоимостьОборотДоАкции - ЕСТЬNULL(ВЫБОР
+								КОГДА ВложенныйЗапрос.Номенклатура.ТипНоменклатуры = ЗНАЧЕНИЕ(Перечисление.ТипыНоменклатуры.Услуга)
+									ТОГДА 0
+								ИНАЧЕ СебестоимостьНоменклатуры.Цена
+							КОНЕЦ, 0) * ВложенныйЗапрос.КоличествоОборотДоАкции) / &amp;КоличествоПериодовДоАкции
+				КОНЕЦ) КАК ДополнительныйДоходАкции,
+			ВложенныйЗапрос.Склад КАК Склад,
+			ВложенныйЗапрос.Период КАК Период,
+			СУММА(ВложенныйЗапрос.КоличествоОборот) КАК КоличествоОборот,
+			СУММА(ВложенныйЗапрос.СтоимостьОборот) КАК СтоимостьОборот,
+			СУММА(ВложенныйЗапрос.Скидка) КАК Скидка,
+			СУММА(ЕСТЬNULL(ВЫБОР
+						КОГДА ВложенныйЗапрос.Номенклатура.ТипНоменклатуры = ЗНАЧЕНИЕ(Перечисление.ТипыНоменклатуры.Услуга)
+							ТОГДА 0
+						ИНАЧЕ СебестоимостьНоменклатуры.Цена
+					КОНЕЦ, 0) * ВложенныйЗапрос.КоличествоОборотАкции) КАК СебестоимостьПродаж,
+			СУММА(ВложенныйЗапрос.СтоимостьОборотАкции - ЕСТЬNULL(ВЫБОР
+						КОГДА ВложенныйЗапрос.Номенклатура.ТипНоменклатуры = ЗНАЧЕНИЕ(Перечисление.ТипыНоменклатуры.Услуга)
+							ТОГДА 0
+						ИНАЧЕ СебестоимостьНоменклатуры.Цена
+					КОНЕЦ, 0) * ВложенныйЗапрос.КоличествоОборотАкции) КАК ВаловаяПрибыль
+		ИЗ
+			(ВЫБРАТЬ
+				СебестоимостьНоменклатурыПоПериодам.Период КАК Период,
+				ПродажиОбороты.Номенклатура КАК Номенклатура,
+				ПродажиОбороты.Магазин КАК Магазин,
+				ПродажиОбороты.Регистратор КАК Регистратор,
+				МАКСИМУМ(СебестоимостьНоменклатурыПоПериодам.Регистратор) КАК РегистраторСебестоимости,
+				ПродажиОбороты.Характеристика КАК Характеристика,
+				ПродажиОбороты.Склад КАК Склад,
+				ПродажиОбороты.КоличествоОборотДоАкции КАК КоличествоОборотДоАкции,
+				ПродажиОбороты.СтоимостьОборотДоАкции КАК СтоимостьОборотДоАкции,
+				ПродажиОбороты.КоличествоОборотАкции КАК КоличествоОборотАкции,
+				ПродажиОбороты.СтоимостьОборотАкции КАК СтоимостьОборотАкции,
+				ПродажиОбороты.СкидкаДоАкции КАК СкидкаДоАкции,
+				ПродажиОбороты.СкидкаАкции КАК СкидкаАкции,
+				СебестоимостьНоменклатурыПоПериодам.Магазин КАК МагазинСебестоимость,
+				ПродажиОбороты.КоличествоОборот КАК КоличествоОборот,
+				ПродажиОбороты.СтоимостьОборот КАК СтоимостьОборот,
+				ПродажиОбороты.Скидка КАК Скидка
+			ИЗ
+				(ВЫБРАТЬ
+					МАКСИМУМ(СебестоимостьНоменклатурыПоПериодам.Период) КАК Период,
+					ПродажиОбороты.Номенклатура КАК Номенклатура,
+					ПродажиОбороты.Магазин КАК Магазин,
+					ПродажиОбороты.Регистратор КАК Регистратор,
+					ПродажиОбороты.Характеристика КАК Характеристика,
+					ПродажиОбороты.Склад КАК Склад,
+					ПродажиОбороты.КоличествоОборотДоАкции КАК КоличествоОборотДоАкции,
+					ПродажиОбороты.СтоимостьОборотДоАкции КАК СтоимостьОборотДоАкции,
+					ПродажиОбороты.КоличествоОборотАкции КАК КоличествоОборотАкции,
+					ПродажиОбороты.СтоимостьОборотАкции КАК СтоимостьОборотАкции,
+					ПродажиОбороты.СкидкаДоАкции КАК СкидкаДоАкции,
+					ПродажиОбороты.СкидкаАкции КАК СкидкаАкции,
+					СебестоимостьНоменклатурыПоПериодам.Магазин КАК МагазинСебестоимость,
+					ПродажиОбороты.КоличествоОборот КАК КоличествоОборот,
+					ПродажиОбороты.СтоимостьОборот КАК СтоимостьОборот,
+					ПродажиОбороты.Скидка КАК Скидка
+				ИЗ
+					(ВЫБРАТЬ
+						ПродажиОборотыСМагазином.Номенклатура КАК Номенклатура,
+						ВЫБОР
+							КОГДА ПродажиОборотыСМагазином.Период &lt; &amp;ПериодНачалаАкции
+								ТОГДА ПродажиОборотыСМагазином.КоличествоОборот
+							ИНАЧЕ 0
+						КОНЕЦ КАК КоличествоОборотДоАкции,
+						ВЫБОР
+							КОГДА ПродажиОборотыСМагазином.Период &lt; &amp;ПериодНачалаАкции
+								ТОГДА ВЫБОР
+										КОГДА Константы.СебестоимостьВключаетНДС
+											ТОГДА ПродажиОборотыСМагазином.СтоимостьОборот
+										ИНАЧЕ ПродажиОборотыСМагазином.СтоимостьОборот - ПродажиОборотыСМагазином.НДСОборот
+									КОНЕЦ
+							ИНАЧЕ 0
+						КОНЕЦ КАК СтоимостьОборотДоАкции,
+						ПродажиОборотыСМагазином.Период КАК Период,
+						ПродажиОборотыСМагазином.Регистратор КАК Регистратор,
+						ПродажиОборотыСМагазином.Склад.Магазин КАК Магазин,
+						Константы.СебестоимостьВключаетНДС КАК СебестоимостьВключаетНДС,
+						ПродажиОборотыСМагазином.Характеристика КАК Характеристика,
+						ПродажиОборотыСМагазином.Склад КАК Склад,
+						ВЫБОР
+							КОГДА ПродажиОборотыСМагазином.Период &gt;= &amp;ПериодНачалаАкции
+									И (ПродажиОборотыСМагазином.Период &lt;= &amp;КонецПериода
+										ИЛИ &amp;КонецПериода = &amp;ПустаяДата)
+								ТОГДА ПродажиОборотыСМагазином.КоличествоОборот
+							ИНАЧЕ 0
+						КОНЕЦ КАК КоличествоОборотАкции,
+						ВЫБОР
+							КОГДА ПродажиОборотыСМагазином.Период &gt;= &amp;ПериодНачалаАкции
+									И (ПродажиОборотыСМагазином.Период &lt;= &amp;КонецПериода
+										ИЛИ &amp;КонецПериода = &amp;ПустаяДата)
+								ТОГДА ВЫБОР
+										КОГДА Константы.СебестоимостьВключаетНДС
+											ТОГДА ПродажиОборотыСМагазином.СтоимостьОборот
+										ИНАЧЕ ПродажиОборотыСМагазином.СтоимостьОборот - ПродажиОборотыСМагазином.НДСОборот
+									КОНЕЦ
+							ИНАЧЕ 0
+						КОНЕЦ КАК СтоимостьОборотАкции,
+						ВЫБОР
+							КОГДА ПродажиОборотыСМагазином.Период &lt; &amp;ПериодНачалаАкции
+								ТОГДА ПродажиОборотыСМагазином.СтоимостьБезСкидокОборот - ПродажиОборотыСМагазином.СтоимостьОборот
+							ИНАЧЕ 0
+						КОНЕЦ КАК СкидкаДоАкции,
+						ВЫБОР
+							КОГДА ПродажиОборотыСМагазином.Период &gt;= &amp;ПериодНачалаАкции
+									И (ПродажиОборотыСМагазином.Период &lt;= &amp;КонецПериода
+										ИЛИ &amp;КонецПериода = &amp;ПустаяДата)
+								ТОГДА ПродажиОборотыСМагазином.СтоимостьБезСкидокОборот - ПродажиОборотыСМагазином.СтоимостьОборот
+							ИНАЧЕ 0
+						КОНЕЦ КАК СкидкаАкции,
+						ПродажиОборотыСМагазином.КоличествоОборот КАК КоличествоОборот,
+						ВЫБОР
+							КОГДА Константы.СебестоимостьВключаетНДС
+								ТОГДА ПродажиОборотыСМагазином.СтоимостьОборот
+							ИНАЧЕ ПродажиОборотыСМагазином.СтоимостьОборот - ПродажиОборотыСМагазином.НДСОборот
+						КОНЕЦ КАК СтоимостьОборот,
+						ПродажиОборотыСМагазином.СтоимостьБезСкидокОборот - ПродажиОборотыСМагазином.СтоимостьОборот КАК Скидка
+					ИЗ
+						РегистрНакопления.Продажи.Обороты(&amp;НачалоПериода {(&amp;НачалоПериода)}, &amp;КонецПериода {(&amp;КонецПериода)}, Регистратор, {(Номенклатура).* КАК Номенклатура, (Склад.Магазин).* КАК Магазин}) КАК ПродажиОборотыСМагазином
+							ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+								ПродажиОбороты.Номенклатура КАК Номенклатура,
+								ПродажиОбороты.Характеристика КАК Характеристика,
+								ПродажиОбороты.Склад.Магазин КАК СкладМагазин,
+								СУММА(ВЫБОР
+										КОГДА ПродажиОбороты.Период &lt; &amp;ПериодНачалаАкции
+											ТОГДА ПродажиОбороты.КоличествоОборот
+										ИНАЧЕ 0
+									КОНЕЦ) КАК КоличествоОборотДоАкции,
+								СУММА(ВЫБОР
+										КОГДА ПродажиОбороты.Период &gt;= &amp;ПериодНачалаАкции
+												И (ПродажиОбороты.Период &lt;= &amp;КонецПериода
+													ИЛИ &amp;КонецПериода = &amp;ПустаяДата)
+											ТОГДА ПродажиОбороты.КоличествоОборот
+										ИНАЧЕ 0
+									КОНЕЦ) КАК КоличествоОборотАкции,
+								СУММА(ВЫБОР
+										КОГДА ПродажиОбороты.Период &lt; &amp;ПериодНачалаАкции
+											ТОГДА ПродажиОбороты.СтоимостьОборот
+										ИНАЧЕ 0
+									КОНЕЦ) КАК СтоимостьОборотДоАкции,
+								СУММА(ВЫБОР
+										КОГДА ПродажиОбороты.Период &gt;= &amp;ПериодНачалаАкции
+												И (ПродажиОбороты.Период &lt;= &amp;КонецПериода
+													ИЛИ &amp;КонецПериода = &amp;ПустаяДата)
+											ТОГДА ПродажиОбороты.СтоимостьОборот
+										ИНАЧЕ 0
+									КОНЕЦ) КАК СтоимостьОборотАкции
+							ИЗ
+								РегистрНакопления.Продажи.Обороты(&amp;НачалоПериода {(&amp;НачалоПериода)}, &amp;КонецПериода {(&amp;КонецПериода)}, День, ) КАК ПродажиОбороты
+							
+							СГРУППИРОВАТЬ ПО
+								ПродажиОбороты.Номенклатура,
+								ПродажиОбороты.Характеристика,
+								ПродажиОбороты.Склад.Магазин) КАК СредниеЦеныПродаж
+							ПО ПродажиОборотыСМагазином.Номенклатура = СредниеЦеныПродаж.Номенклатура
+								И ПродажиОборотыСМагазином.Склад.Магазин = СредниеЦеныПродаж.СкладМагазин
+								И ПродажиОборотыСМагазином.Характеристика = СредниеЦеныПродаж.Характеристика,
+						Константы КАК Константы) КАК ПродажиОбороты
+						ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СебестоимостьНоменклатуры КАК СебестоимостьНоменклатурыПоПериодам
+						ПО ПродажиОбороты.Период &gt;= СебестоимостьНоменклатурыПоПериодам.Период
+							И ПродажиОбороты.Номенклатура = СебестоимостьНоменклатурыПоПериодам.Номенклатура
+							И ПродажиОбороты.Характеристика = СебестоимостьНоменклатурыПоПериодам.Характеристика
+							И (ПродажиОбороты.Магазин = СебестоимостьНоменклатурыПоПериодам.Магазин
+								ИЛИ СебестоимостьНоменклатурыПоПериодам.Магазин = ЗНАЧЕНИЕ(Справочник.Магазины.ПустаяСсылка))
+				
+				СГРУППИРОВАТЬ ПО
+					ПродажиОбороты.Номенклатура,
+					ПродажиОбороты.Магазин,
+					ПродажиОбороты.Регистратор,
+					ПродажиОбороты.Характеристика,
+					ПродажиОбороты.Склад,
+					ПродажиОбороты.КоличествоОборотДоАкции,
+					ПродажиОбороты.СтоимостьОборотДоАкции,
+					ПродажиОбороты.КоличествоОборотАкции,
+					ПродажиОбороты.СтоимостьОборотАкции,
+					ПродажиОбороты.СкидкаДоАкции,
+					ПродажиОбороты.СкидкаАкции,
+					СебестоимостьНоменклатурыПоПериодам.Магазин,
+					ПродажиОбороты.КоличествоОборот,
+					ПродажиОбороты.СтоимостьОборот,
+					ПродажиОбороты.Скидка) КАК ПродажиОбороты
+					ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СебестоимостьНоменклатуры КАК СебестоимостьНоменклатурыПоПериодам
+					ПО ПродажиОбороты.Номенклатура = СебестоимостьНоменклатурыПоПериодам.Номенклатура
+						И ПродажиОбороты.Характеристика = СебестоимостьНоменклатурыПоПериодам.Характеристика
+						И ПродажиОбороты.МагазинСебестоимость = СебестоимостьНоменклатурыПоПериодам.Магазин
+						И ПродажиОбороты.Период = СебестоимостьНоменклатурыПоПериодам.Период
+			
+			СГРУППИРОВАТЬ ПО
+				СебестоимостьНоменклатурыПоПериодам.Магазин,
+				ПродажиОбороты.Номенклатура,
+				ПродажиОбороты.Магазин,
+				ПродажиОбороты.Регистратор,
+				ПродажиОбороты.Характеристика,
+				ПродажиОбороты.Склад,
+				ПродажиОбороты.КоличествоОборотДоАкции,
+				ПродажиОбороты.СтоимостьОборотДоАкции,
+				ПродажиОбороты.КоличествоОборотАкции,
+				ПродажиОбороты.СтоимостьОборотАкции,
+				ПродажиОбороты.СкидкаДоАкции,
+				ПродажиОбороты.СкидкаАкции,
+				СебестоимостьНоменклатурыПоПериодам.Период,
+				ПродажиОбороты.КоличествоОборот,
+				ПродажиОбороты.Скидка,
+				ПродажиОбороты.СтоимостьОборот) КАК ВложенныйЗапрос
+				ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СебестоимостьНоменклатуры КАК СебестоимостьНоменклатуры
+				ПО ВложенныйЗапрос.Период = СебестоимостьНоменклатуры.Период
+					И ВложенныйЗапрос.Номенклатура = СебестоимостьНоменклатуры.Номенклатура
+					И ВложенныйЗапрос.РегистраторСебестоимости = СебестоимостьНоменклатуры.Регистратор
+					И ВложенныйЗапрос.Характеристика = СебестоимостьНоменклатуры.Характеристика
+					И ВложенныйЗапрос.МагазинСебестоимость = СебестоимостьНоменклатуры.Магазин
+		
+		СГРУППИРОВАТЬ ПО
+			ВложенныйЗапрос.Номенклатура,
+			ВложенныйЗапрос.Номенклатура.ЕдиницаИзмерения,
+			ВложенныйЗапрос.Склад.Магазин,
+			ВложенныйЗапрос.Характеристика,
+			ВложенныйЗапрос.Номенклатура.НоменклатурнаяГруппа,
+			ВложенныйЗапрос.Склад,
+			ВложенныйЗапрос.Период,
+			ВложенныйЗапрос.Номенклатура.ТипНоменклатуры) КАК ВложенныйЗапрос
+			ПОЛНОЕ СОЕДИНЕНИЕ ТаблицаОстатков КАК ТаблицаОстатков
+			ПО ВложенныйЗапрос.Магазин = ТаблицаОстатков.Магазин
+				И ВложенныйЗапрос.Номенклатура = ТаблицаОстатков.Номенклатура
+				И ВложенныйЗапрос.Характеристика = ТаблицаОстатков.Характеристика
+				И ВложенныйЗапрос.Склад = ТаблицаОстатков.Склад) КАК ВложенныйЗапрос</query>
+	</dataSet>
+	<dataSet xsi:type="DataSetQuery">
+		<name>СегментыНоменклатуры</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Номенклатура</dataPath>
+			<field>Номенклатура</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номенклатура</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Сегмент</dataPath>
+			<field>Сегмент</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сегмент</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ХарактеристикаНоменклатурыСегмента</dataPath>
+			<field>ХарактеристикаНоменклатурыСегмента</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Характеристика номенклатуры сегмента</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИнформационнаяБаза</dataSource>
+		<query>ВЫБРАТЬ
+	НоменклатураСегмента.Сегмент,
+	НоменклатураСегмента.Номенклатура,
+	НоменклатураСегмента.Характеристика КАК ХарактеристикаНоменклатурыСегмента
+ИЗ
+	РегистрСведений.НоменклатураСегмента КАК НоменклатураСегмента</query>
+	</dataSet>
+	<dataSetLink>
+		<sourceDataSet>Запрос</sourceDataSet>
+		<destinationDataSet>СегментыНоменклатуры</destinationDataSet>
+		<sourceExpression>Номенклатура</sourceExpression>
+		<destinationExpression>Номенклатура</destinationExpression>
+	</dataSetLink>
+	<dataSetLink>
+		<sourceDataSet>Запрос</sourceDataSet>
+		<destinationDataSet>СегментыНоменклатуры</destinationDataSet>
+		<sourceExpression>Характеристика</sourceExpression>
+		<destinationExpression>ХарактеристикаНоменклатурыСегмента</destinationExpression>
+	</dataSetLink>
+	<calculatedField>
+		<dataPath>ЭластичностьАкции</dataPath>
+		<expression>ВЫБОР
+    КОГДА 
+	ВЫБОР
+	    КОГДА ЕСТЬNULL(Сумма(ДоАкции.КоличествоОборотДоАкции), 0) = 0
+	        ТОГДА 0
+	    ИНАЧЕ 
+	    ЕСТЬNULL(Сумма(ДоАкции.СтоимостьОборотДоАкции), 0) / Сумма(ДоАкции.КоличествоОборотДоАкции)
+	КОНЕЦ = 0
+    
+	ИЛИ 
+	
+	ВЫБОР
+	    КОГДА ЕСТЬNULL(Сумма(Акция.КоличествоОборотАкции), 0) = 0
+	        ТОГДА 0
+	    ИНАЧЕ 
+	    ЕСТЬNULL(Сумма(Акция.СтоимостьОборотАкции), 0) / Сумма(Акция.КоличествоОборотАкции)
+	КОНЕЦ = 0
+	
+    
+    ИЛИ
+    
+	ВЫБОР
+	    КОГДА ЕСТЬNULL(Сумма(Акция.КоличествоОборотАкции), 0) = 0
+	        ТОГДА 0
+	    ИНАЧЕ 
+	    ЕСТЬNULL(Сумма(Акция.СтоимостьОборотАкции), 0) / Сумма(Акция.КоличествоОборотАкции)
+	КОНЕЦ  =
+	
+	ВЫБОР
+	    КОГДА ЕСТЬNULL(Сумма(ДоАкции.КоличествоОборотДоАкции), 0) = 0
+	        ТОГДА 0
+	    ИНАЧЕ 
+	    ЕСТЬNULL(Сумма(ДоАкции.СтоимостьОборотДоАкции), 0) / Сумма(ДоАкции.КоличествоОборотДоАкции)
+	КОНЕЦ
+
+        ТОГДА 0
+    ИНАЧЕ 
+    (Сумма(Акция.КоличествоОборотАкции) - Сумма(ДоАкции.КоличествоОборотДоАкции)) / Сумма(ДоАкции.КоличествоОборотДоАкции)  / 
+    
+    ((
+		ВЫБОР
+		    КОГДА ЕСТЬNULL(Сумма(ДоАкции.КоличествоОборотДоАкции), 0) = 0
+		        ТОГДА 0
+		    ИНАЧЕ 
+		    ЕСТЬNULL(Сумма(ДоАкции.СтоимостьОборотДоАкции), 0) / Сумма(ДоАкции.КоличествоОборотДоАкции)
+		КОНЕЦ
+     - 
+	ВЫБОР
+	    КОГДА ЕСТЬNULL(Сумма(Акция.КоличествоОборотАкции), 0) = 0
+	        ТОГДА 0
+	    ИНАЧЕ 
+	    ЕСТЬNULL(Сумма(Акция.СтоимостьОборотАкции), 0) / Сумма(Акция.КоличествоОборотАкции)
+	КОНЕЦ) /
+		ВЫБОР
+		    КОГДА ЕСТЬNULL(Сумма(ДоАкции.КоличествоОборотДоАкции), 0) = 0
+		        ТОГДА 0
+		    ИНАЧЕ 
+		    ЕСТЬNULL(Сумма(ДоАкции.СтоимостьОборотДоАкции), 0) / Сумма(ДоАкции.КоличествоОборотДоАкции)
+		КОНЕЦ)
+КОНЕЦ
+</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Эластичность продаж по цене</v8:content>
+			</v8:item>
+		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>Формат</dcscor:parameter>
+				<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2; ЧРД=.; ЧРГ=' '</dcscor:value>
+			</dcscor:item>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>МаксимальнаяШирина</dcscor:parameter>
+				<dcscor:value xsi:type="xs:decimal">30</dcscor:value>
+			</dcscor:item>
+		</appearance>
+		<valueType>
+			<v8:Type>xs:decimal</v8:Type>
+			<v8:NumberQualifiers>
+				<v8:Digits>0</v8:Digits>
+				<v8:FractionDigits>0</v8:FractionDigits>
+				<v8:AllowedSign>Any</v8:AllowedSign>
+			</v8:NumberQualifiers>
+		</valueType>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>ИзменениеЦены</dataPath>
+		<expression>ВЫБОР
+	КОГДА ЕСТЬNULL(ЦенаРозничнаяВходящая, 0) = 0 ИЛИ ЕстьNULL(ЦенаРозничнаяИсходящая,0) = 0
+		ТОГДА 0
+	ИНАЧЕ 
+	((ЦенаРозничнаяИсходящая - ЦенаРозничнаяВходящая) / ЦенаРозничнаяВходящая)*100
+КОНЕЦ</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>% изм. розн. цены</v8:content>
+			</v8:item>
+		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>Формат</dcscor:parameter>
+				<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2; ЧРД=.; ЧРГ=' '</dcscor:value>
+			</dcscor:item>
+		</appearance>
+		<valueType>
+			<v8:Type>xs:decimal</v8:Type>
+			<v8:NumberQualifiers>
+				<v8:Digits>0</v8:Digits>
+				<v8:FractionDigits>0</v8:FractionDigits>
+				<v8:AllowedSign>Any</v8:AllowedSign>
+			</v8:NumberQualifiers>
+		</valueType>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>ИзменениеКоличества</dataPath>
+		<expression>ВЫБОР
+    КОГДА ЕСТЬNULL(Сумма(КоличествоОстатокВходящий), 0) = 0
+ИЛИ ЕСТЬNULL(Сумма(КоличествоОстатокИсходящий), 0) = 0        ТОГДА 0
+    ИНАЧЕ 
+    ((Сумма(КоличествоОстатокИсходящий) - Сумма(КоличествоОстатокВходящий)) / Сумма(КоличествоОстатокВходящий))*100
+КОНЕЦ
+ </expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>% изм. кол-ва остатка</v8:content>
+			</v8:item>
+		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>Формат</dcscor:parameter>
+				<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2; ЧРД=.; ЧРГ=' '</dcscor:value>
+			</dcscor:item>
+		</appearance>
+		<valueType>
+			<v8:Type>xs:decimal</v8:Type>
+			<v8:NumberQualifiers>
+				<v8:Digits>0</v8:Digits>
+				<v8:FractionDigits>0</v8:FractionDigits>
+				<v8:AllowedSign>Any</v8:AllowedSign>
+			</v8:NumberQualifiers>
+		</valueType>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>ИзменениеСебестоимость</dataPath>
+		<expression>ВЫБОР
+    КОГДА ЕСТЬNULL(Сумма(СебестоимостьВходящий), 0) = 0 ИЛИ ЕСТЬNULL(Сумма(СебестоимостьИсходящий), 0) = 0
+        ТОГДА 0
+    ИНАЧЕ 
+    ((Сумма(СебестоимостьИсходящий) - Сумма(СебестоимостьВходящий)) / Сумма(СебестоимостьВходящий))*100
+КОНЕЦ
+</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>% изм. с/с-ти остатка</v8:content>
+			</v8:item>
+		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>Формат</dcscor:parameter>
+				<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2; ЧРД=.; ЧРГ=' '</dcscor:value>
+			</dcscor:item>
+		</appearance>
+		<valueType>
+			<v8:Type>xs:decimal</v8:Type>
+			<v8:NumberQualifiers>
+				<v8:Digits>0</v8:Digits>
+				<v8:FractionDigits>0</v8:FractionDigits>
+				<v8:AllowedSign>Any</v8:AllowedSign>
+			</v8:NumberQualifiers>
+		</valueType>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>ИзменениеСуммы</dataPath>
+		<expression>ВЫБОР
+    КОГДА ЕСТЬNULL(Сумма(СуммаВходящий), 0) = 0 ИЛИ  ЕСТЬNULL(Сумма(СуммаИсходящий), 0) = 0
+        ТОГДА 0
+    ИНАЧЕ 
+    ((Сумма(СуммаИсходящий) - Сумма(СуммаВходящий)) / Сумма(СуммаВходящий))*100
+КОНЕЦ
+</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>% изм. розн. суммы остатка</v8:content>
+			</v8:item>
+		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>Формат</dcscor:parameter>
+				<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2; ЧРД=.; ЧРГ=' '</dcscor:value>
+			</dcscor:item>
+		</appearance>
+		<valueType>
+			<v8:Type>xs:decimal</v8:Type>
+			<v8:NumberQualifiers>
+				<v8:Digits>0</v8:Digits>
+				<v8:FractionDigits>0</v8:FractionDigits>
+				<v8:AllowedSign>Any</v8:AllowedSign>
+			</v8:NumberQualifiers>
+		</valueType>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>ЕдиницаХраненияВходящие</dataPath>
+		<expression>ЕдиницаХранения</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>ЕИ</v8:content>
+			</v8:item>
+		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>ГоризонтальноеПоложение</dcscor:parameter>
+				<dcscor:value xsi:type="v8ui:HorizontalAlign">Center</dcscor:value>
+			</dcscor:item>
+		</appearance>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>ЕдиницаХраненияИсходящие</dataPath>
+		<expression>ЕдиницаХранения</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>ЕИ</v8:content>
+			</v8:item>
+		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>ГоризонтальноеПоложение</dcscor:parameter>
+				<dcscor:value xsi:type="v8ui:HorizontalAlign">Center</dcscor:value>
+			</dcscor:item>
+		</appearance>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>ЕдиницаХраненияАкция</dataPath>
+		<expression>ЕдиницаХранения</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>ЕИ</v8:content>
+			</v8:item>
+		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>ГоризонтальноеПоложение</dcscor:parameter>
+				<dcscor:value xsi:type="v8ui:HorizontalAlign">Center</dcscor:value>
+			</dcscor:item>
+		</appearance>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>ИзменениеКоличестваПродаж</dataPath>
+		<expression>ВЫБОР
+    КОГДА ЕСТЬNULL(Сумма(ДоАкции.КоличествоОборотДоАкции), 0) = 0
+ИЛИ ЕСТЬNULL(Сумма(Акция.КоличествоОборотАкции), 0) = 0        ТОГДА 0
+    ИНАЧЕ 
+    ((Сумма(Акция.КоличествоОборотАкции) - Сумма(ДоАкции.КоличествоОборотДоАкции)) / Сумма(ДоАкции.КоличествоОборотДоАкции))*100
+КОНЕЦ</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>% изм. кол-ва продаж</v8:content>
+			</v8:item>
+		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>Формат</dcscor:parameter>
+				<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2; ЧРД=.; ЧРГ=' '</dcscor:value>
+			</dcscor:item>
+		</appearance>
+		<valueType>
+			<v8:Type>xs:decimal</v8:Type>
+			<v8:NumberQualifiers>
+				<v8:Digits>0</v8:Digits>
+				<v8:FractionDigits>0</v8:FractionDigits>
+				<v8:AllowedSign>Any</v8:AllowedSign>
+			</v8:NumberQualifiers>
+		</valueType>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>ИзменениеСебестоимостьПродаж</dataPath>
+		<expression>ВЫБОР
+    КОГДА ЕСТЬNULL(Сумма(ДоАкции.СебестоимостьПродажДоАкции), 0) = 0 ИЛИ ЕСТЬNULL(Сумма(Акция.СебестоимостьПродажАкции), 0) = 0
+        ТОГДА 0
+    ИНАЧЕ 
+    ((Сумма(Акция.СебестоимостьПродажАкции) - Сумма(ДоАкции.СебестоимостьПродажДоАкции)) / Сумма(ДоАкции.СебестоимостьПродажДоАкции))*100
+КОНЕЦ
+</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>% изм. с/с-ти продаж</v8:content>
+			</v8:item>
+		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>Формат</dcscor:parameter>
+				<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2; ЧРД=.; ЧРГ=' '</dcscor:value>
+			</dcscor:item>
+		</appearance>
+		<valueType>
+			<v8:Type>xs:decimal</v8:Type>
+			<v8:NumberQualifiers>
+				<v8:Digits>0</v8:Digits>
+				<v8:FractionDigits>0</v8:FractionDigits>
+				<v8:AllowedSign>Any</v8:AllowedSign>
+			</v8:NumberQualifiers>
+		</valueType>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>ИзменениеСуммыПродаж</dataPath>
+		<expression>ВЫБОР
+    КОГДА ЕСТЬNULL(Сумма(ДоАкции.СтоимостьОборотДоАкции), 0) = 0 ИЛИ  ЕСТЬNULL(Сумма(Акция.СтоимостьОборотАкции), 0) = 0
+        ТОГДА 0
+    ИНАЧЕ 
+    ((Сумма(Акция.СтоимостьОборотАкции) - Сумма(ДоАкции.СтоимостьОборотДоАкции)) / Сумма(ДоАкции.СтоимостьОборотДоАкции))*100
+КОНЕЦ</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>% изм. суммы продаж</v8:content>
+			</v8:item>
+		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>Формат</dcscor:parameter>
+				<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2; ЧРД=.; ЧРГ=' '</dcscor:value>
+			</dcscor:item>
+		</appearance>
+		<valueType>
+			<v8:Type>xs:decimal</v8:Type>
+			<v8:NumberQualifiers>
+				<v8:Digits>0</v8:Digits>
+				<v8:FractionDigits>0</v8:FractionDigits>
+				<v8:AllowedSign>Any</v8:AllowedSign>
+			</v8:NumberQualifiers>
+		</valueType>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>ИзменениеДоходаПродаж</dataPath>
+		<expression>ВЫБОР
+    КОГДА ЕСТЬNULL(Сумма(ДоАкции.ВаловаяПрибыльДоАкции), 0) = 0 ИЛИ  ЕСТЬNULL(Сумма(Акция.ВаловаяПрибыльАкции), 0) = 0
+        ТОГДА 0
+    ИНАЧЕ 
+    ((Сумма(Акция.ВаловаяПрибыльАкции) - Сумма(ДоАкции.ВаловаяПрибыльДоАкции)) / Сумма(ДоАкции.ВаловаяПрибыльДоАкции))*100
+КОНЕЦ</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>% изм. прибыли</v8:content>
+			</v8:item>
+		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>Формат</dcscor:parameter>
+				<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2; ЧРД=.; ЧРГ=' '</dcscor:value>
+			</dcscor:item>
+		</appearance>
+		<valueType>
+			<v8:Type>xs:decimal</v8:Type>
+			<v8:NumberQualifiers>
+				<v8:Digits>0</v8:Digits>
+				<v8:FractionDigits>0</v8:FractionDigits>
+				<v8:AllowedSign>Any</v8:AllowedSign>
+			</v8:NumberQualifiers>
+		</valueType>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>ЭластичностьОстатка</dataPath>
+		<expression>ВЫБОР
+    КОГДА ЕСТЬNULL(ЦенаРозничнаяВходящая, 0) = 0
+            ИЛИ ЕСТЬNULL(ЦенаРозничнаяИсходящая, 0) = ЕСТЬNULL(ЦенаРозничнаяВходящая, 0)
+            ИЛИ ЕСТЬNULL(ЦенаРозничнаяИсходящая, 0) = 0
+            ИЛИ ЕСТЬNULL(Сумма(КоличествоОстатокВходящий), 0) = 0
+            ИЛИ ЕСТЬNULL(Сумма(КоличествоОстатокИсходящий), 0) = 0
+        ТОГДА 0
+    ИНАЧЕ 
+    (Сумма(КоличествоОстатокВходящий) - Сумма(КоличествоОстатокИсходящий)) / Сумма(КоличествоОстатокВходящий)  / ((ЦенаРозничнаяВходящая - ЦенаРозничнаяИсходящая) / ЦенаРозничнаяВходящая)
+КОНЕЦ</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Эластичность остатка по цене</v8:content>
+			</v8:item>
+		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>Формат</dcscor:parameter>
+				<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2; ЧРД=.; ЧРГ=' '</dcscor:value>
+			</dcscor:item>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>МаксимальнаяШирина</dcscor:parameter>
+				<dcscor:value xsi:type="xs:decimal">30</dcscor:value>
+			</dcscor:item>
+		</appearance>
+		<valueType>
+			<v8:Type>xs:decimal</v8:Type>
+			<v8:NumberQualifiers>
+				<v8:Digits>0</v8:Digits>
+				<v8:FractionDigits>0</v8:FractionDigits>
+				<v8:AllowedSign>Any</v8:AllowedSign>
+			</v8:NumberQualifiers>
+		</valueType>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>ЦенаДоАкции</dataPath>
+		<expression>ВЫБОР
+    КОГДА ЕСТЬNULL(Сумма(ДоАкции.КоличествоОборотДоАкции), 0) = 0
+        ТОГДА 0
+    ИНАЧЕ 
+    ЕСТЬNULL(Сумма(ДоАкции.СтоимостьОборотДоАкции), 0) / Сумма(ДоАкции.КоличествоОборотДоАкции)
+КОНЕЦ</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Средн. цена продаж до акции</v8:content>
+			</v8:item>
+		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>Формат</dcscor:parameter>
+				<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2; ЧРД=.; ЧРГ=' '</dcscor:value>
+			</dcscor:item>
+		</appearance>
+		<valueType>
+			<v8:Type>xs:decimal</v8:Type>
+			<v8:NumberQualifiers>
+				<v8:Digits>0</v8:Digits>
+				<v8:FractionDigits>0</v8:FractionDigits>
+				<v8:AllowedSign>Any</v8:AllowedSign>
+			</v8:NumberQualifiers>
+		</valueType>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>ЦенаАкции</dataPath>
+		<expression>ВЫБОР
+    КОГДА ЕСТЬNULL(Сумма(Акция.КоличествоОборотАкции), 0) = 0
+        ТОГДА 0
+    ИНАЧЕ 
+    ЕСТЬNULL(Сумма(Акция.СтоимостьОборотАкции), 0) / Сумма(Акция.КоличествоОборотАкции)
+КОНЕЦ</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Средн. цена продаж акции</v8:content>
+			</v8:item>
+		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>Формат</dcscor:parameter>
+				<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2; ЧРД=.; ЧРГ=' '</dcscor:value>
+			</dcscor:item>
+		</appearance>
+		<valueType>
+			<v8:Type>xs:decimal</v8:Type>
+			<v8:NumberQualifiers>
+				<v8:Digits>0</v8:Digits>
+				<v8:FractionDigits>0</v8:FractionDigits>
+				<v8:AllowedSign>Any</v8:AllowedSign>
+			</v8:NumberQualifiers>
+		</valueType>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>Цена</dataPath>
+		<expression>ВЫБОР КОГДА ЕСТЬNULL(КоличествоОборот, 0) = 0 Тогда 0
+Иначе СтоимостьОборот / КоличествоОборот
+Конец</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Средн. цена продаж</v8:content>
+			</v8:item>
+		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>Формат</dcscor:parameter>
+				<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2; ЧРД=.; ЧРГ=' '</dcscor:value>
+			</dcscor:item>
+		</appearance>
+		<valueType>
+			<v8:Type>xs:decimal</v8:Type>
+			<v8:NumberQualifiers>
+				<v8:Digits>0</v8:Digits>
+				<v8:FractionDigits>0</v8:FractionDigits>
+				<v8:AllowedSign>Any</v8:AllowedSign>
+			</v8:NumberQualifiers>
+		</valueType>
+	</calculatedField>
+	<totalField>
+		<dataPath>Акция.ВаловаяПрибыльАкции</dataPath>
+		<expression>Сумма(Акция.ВаловаяПрибыльАкции)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Акция.КоличествоОборотАкции</dataPath>
+		<expression>Сумма(Акция.КоличествоОборотАкции)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Акция.СебестоимостьПродажАкции</dataPath>
+		<expression>Сумма(Акция.СебестоимостьПродажАкции)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Акция.СтоимостьОборотАкции</dataPath>
+		<expression>Сумма(Акция.СтоимостьОборотАкции)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ДоАкции.ВаловаяПрибыльДоАкции</dataPath>
+		<expression>Сумма(ДоАкции.ВаловаяПрибыльДоАкции)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ДоАкции.КоличествоОборотДоАкции</dataPath>
+		<expression>Сумма(ДоАкции.КоличествоОборотДоАкции)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ДоАкции.СебестоимостьПродажДоАкции</dataPath>
+		<expression>Сумма(ДоАкции.СебестоимостьПродажДоАкции)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ДоАкции.СтоимостьОборотДоАкции</dataPath>
+		<expression>Сумма(ДоАкции.СтоимостьОборотДоАкции)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Акция.СкидкаАкции</dataPath>
+		<expression>Сумма(Акция.СкидкаАкции)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ДоАкции.СкидкаДоАкции</dataPath>
+		<expression>Сумма(ДоАкции.СкидкаДоАкции)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ДополнительныйДоходАкции</dataPath>
+		<expression>Сумма(ДополнительныйДоходАкции)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ЭластичностьАкции</dataPath>
+		<expression>ЭластичностьАкции</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СебестоимостьВходящий</dataPath>
+		<expression>Сумма(СебестоимостьВходящий)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СебестоимостьИсходящий</dataPath>
+		<expression>Сумма(СебестоимостьИсходящий)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>КоличествоОстатокВходящий</dataPath>
+		<expression>Сумма(КоличествоОстатокВходящий)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>КоличествоОстатокИсходящий</dataPath>
+		<expression>Сумма(КоличествоОстатокИсходящий)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СуммаВходящий</dataPath>
+		<expression>Сумма(СуммаВходящий)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СуммаИсходящий</dataPath>
+		<expression>Сумма(СуммаИсходящий)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ИзменениеЦены</dataPath>
+		<expression>ИзменениеЦены</expression>
+		<group>Номенклатура</group>
+		<group>Характеристика</group>
+	</totalField>
+	<totalField>
+		<dataPath>ИзменениеКоличества</dataPath>
+		<expression>ИзменениеКоличества</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ИзменениеСебестоимость</dataPath>
+		<expression>ИзменениеСебестоимость</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ИзменениеСуммы</dataPath>
+		<expression>ИзменениеСуммы</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ЕдиницаХранения</dataPath>
+		<expression>ЕдиницаХранения</expression>
+		<group>Номенклатура</group>
+		<group>Характеристика</group>
+	</totalField>
+	<totalField>
+		<dataPath>ЕдиницаХраненияАкция</dataPath>
+		<expression>ЕдиницаХраненияАкция</expression>
+		<group>Номенклатура</group>
+		<group>Характеристика</group>
+	</totalField>
+	<totalField>
+		<dataPath>ЕдиницаХраненияВходящие</dataPath>
+		<expression>ЕдиницаХраненияВходящие</expression>
+		<group>Номенклатура</group>
+		<group>Характеристика</group>
+	</totalField>
+	<totalField>
+		<dataPath>ЕдиницаХраненияИсходящие</dataPath>
+		<expression>ЕдиницаХраненияИсходящие</expression>
+		<group>Номенклатура</group>
+		<group>Характеристика</group>
+	</totalField>
+	<totalField>
+		<dataPath>ОбнаруженыПродажиПоНулевойСебестоимости</dataPath>
+		<expression>Максимум(ОбнаруженыПродажиПоНулевойСебестоимости)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ИзменениеКоличестваПродаж</dataPath>
+		<expression>ИзменениеКоличестваПродаж</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ИзменениеСебестоимостьПродаж</dataPath>
+		<expression>ИзменениеСебестоимостьПродаж</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ИзменениеСуммыПродаж</dataPath>
+		<expression>ИзменениеСуммыПродаж</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ИзменениеДоходаПродаж</dataPath>
+		<expression>ИзменениеДоходаПродаж</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ЦенаРозничнаяВходящая</dataPath>
+		<expression>ЦенаРозничнаяВходящая</expression>
+		<group>Номенклатура</group>
+		<group>Характеристика</group>
+	</totalField>
+	<totalField>
+		<dataPath>ЦенаРозничнаяИсходящая</dataPath>
+		<expression>ЦенаРозничнаяИсходящая</expression>
+		<group>Номенклатура</group>
+		<group>Характеристика</group>
+	</totalField>
+	<totalField>
+		<dataPath>ЭластичностьОстатка</dataPath>
+		<expression>ЭластичностьОстатка</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ЦенаДоАкции</dataPath>
+		<expression>ЦенаДоАкции</expression>
+		<group>Номенклатура</group>
+		<group>Характеристика</group>
+	</totalField>
+	<totalField>
+		<dataPath>ЦенаАкции</dataPath>
+		<expression>ЦенаАкции</expression>
+		<group>Номенклатура</group>
+		<group>Характеристика</group>
+	</totalField>
+	<totalField>
+		<dataPath>ВаловаяПрибыль</dataPath>
+		<expression>Сумма(ВаловаяПрибыль)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>КоличествоОборот</dataPath>
+		<expression>Сумма(КоличествоОборот)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СебестоимостьПродаж</dataPath>
+		<expression>Сумма(СебестоимостьПродаж)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Скидка</dataPath>
+		<expression>Сумма(Скидка)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СтоимостьОборот</dataPath>
+		<expression>Сумма(СтоимостьОборот)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Цена</dataPath>
+		<expression>Цена</expression>
+	</totalField>
+	<parameter>
+		<name>КонецПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаОкончания</expression>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаНачала</expression>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>ПериодНачалаАкции</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период начала акции</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;ПериодАкции.ДатаНачала</expression>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>ПустаяДата</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Пустая дата</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>Date</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;ПериодАкции.ДатаОкончания</expression>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>КоличествоПериодовАкции</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Количество периодов акции</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:decimal</v8:Type>
+			<v8:NumberQualifiers>
+				<v8:Digits>0</v8:Digits>
+				<v8:FractionDigits>0</v8:FractionDigits>
+				<v8:AllowedSign>Any</v8:AllowedSign>
+			</v8:NumberQualifiers>
+		</valueType>
+		<value xsi:type="xs:decimal">1</value>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>КоличествоПериодовДоАкции</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Количество периодов до акции</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:decimal</v8:Type>
+			<v8:NumberQualifiers>
+				<v8:Digits>0</v8:Digits>
+				<v8:FractionDigits>0</v8:FractionDigits>
+				<v8:AllowedSign>Any</v8:AllowedSign>
+			</v8:NumberQualifiers>
+		</valueType>
+		<value xsi:type="xs:decimal">1</value>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>ПериодОкончанияАкции</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период окончания акции</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>Date</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>ОписаниеПериодаПриведения</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Описание периода приведения</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:string</v8:Type>
+			<v8:StringQualifiers>
+				<v8:Length>0</v8:Length>
+				<v8:AllowedLength>Variable</v8:AllowedLength>
+			</v8:StringQualifiers>
+		</valueType>
+		<value xsi:type="xs:string"/>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>ПериодАкции</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период акции</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>ИспользоватьПрименениеЦен</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Использовать применение цен</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:boolean</v8:Type>
+		</valueType>
+		<value xsi:type="xs:boolean">false</value>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<parameter>
+		<name>ПериодНачалаАкцииКонецДня</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период начала акции конец дня</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>КонецПериода(&amp;ПериодАкции.ДатаНачала, "День")</expression>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>ОценкаРаспродажи</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Оценка распродажи</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+					<dcsset:title>Входящие остатки</dcsset:title>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ЦенаРозничнаяВходящая</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>КоличествоОстатокВходящий</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ЕдиницаХраненияВходящие</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>СебестоимостьВходящий</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>СуммаВходящий</dcsset:field>
+					</dcsset:item>
+					<dcsset:placement>Auto</dcsset:placement>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+					<dcsset:title>Исходящие остатки</dcsset:title>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ЦенаРозничнаяИсходящая</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>КоличествоОстатокИсходящий</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ЕдиницаХраненияИсходящие</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>СебестоимостьИсходящий</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>СуммаИсходящий</dcsset:field>
+					</dcsset:item>
+					<dcsset:placement>Auto</dcsset:placement>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+					<dcsset:title>Показатели эффективности</dcsset:title>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ИзменениеЦены</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ИзменениеКоличества</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ЭластичностьОстатка</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ИзменениеСебестоимость</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ИзменениеСуммы</dcsset:field>
+					</dcsset:item>
+					<dcsset:placement>Auto</dcsset:placement>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+					<dcsset:field>ДоАкции</dcsset:field>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ЦенаДоАкции</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ДоАкции.КоличествоОборотДоАкции</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ЕдиницаХранения</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ДоАкции.СебестоимостьПродажДоАкции</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ДоАкции.СтоимостьОборотДоАкции</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ДоАкции.ВаловаяПрибыльДоАкции</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ДоАкции.СкидкаДоАкции</dcsset:field>
+					</dcsset:item>
+					<dcsset:placement>Auto</dcsset:placement>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+					<dcsset:field>Акция</dcsset:field>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ЦенаАкции</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Акция.КоличествоОборотАкции</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ЕдиницаХраненияАкция</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Акция.СебестоимостьПродажАкции</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Акция.СтоимостьОборотАкции</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Акция.ВаловаяПрибыльАкции</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ДополнительныйДоходАкции</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Акция.СкидкаАкции</dcsset:field>
+					</dcsset:item>
+					<dcsset:placement>Auto</dcsset:placement>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+					<dcsset:title>Изменение продаж</dcsset:title>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ИзменениеКоличестваПродаж</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ЭластичностьАкции</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ИзменениеСебестоимостьПродаж</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ИзменениеСуммыПродаж</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ИзменениеДоходаПродаж</dcsset:field>
+					</dcsset:item>
+					<dcsset:placement>Auto</dcsset:placement>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Магазин</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.Магазины.ПустаяСсылка</dcsset:right>
+					<dcsset:userSettingID>ff43e49f-ed3d-4bef-8035-115b56112cec</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Сегмент</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.СегментыНоменклатуры.ПустаяСсылка</dcsset:right>
+					<dcsset:userSettingID>d5eda303-4982-4887-83d5-d2fd1d98cfb2</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Склад</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.Склады.ПустаяСсылка</dcsset:right>
+					<dcsset:userSettingID>abca120a-6dc4-4111-9214-d70bfaa11554</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Номенклатура</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.Номенклатура.ПустаяСсылка</dcsset:right>
+					<dcsset:userSettingID>9ee2d991-834f-4abc-8c37-9d818f6ad65e</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:userSettingID>ec53d518-3e61-409c-ae45-d06b44cf5343</dcsset:userSettingID>
+			</dcsset:filter>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Период</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+					</dcscor:value>
+					<dcsset:userSettingID>33ce8755-ad8f-4df8-ab8f-cf547b9dc6c1</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ПериодАкции</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+					</dcscor:value>
+					<dcsset:userSettingID>d0f471ae-f8a1-435c-a161-1e930e945b39</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:order>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:userSettingID>b6572b26-5092-4248-a896-14cda688927c</dcsset:userSettingID>
+			</dcsset:order>
+			<dcsset:conditionalAppearance>
+				<dcsset:item>
+					<dcsset:selection>
+						<dcsset:item>
+							<dcsset:field>Номенклатура</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>Характеристика</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:use>false</dcsset:use>
+							<dcsset:field>Поставщик</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>ИзменениеСебестоимость</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>Акция.ВаловаяПрибыльАкции</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>ДополнительныйДоходАкции</dcsset:field>
+						</dcsset:item>
+					</dcsset:selection>
+					<dcsset:filter>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ОбнаруженыПродажиПоНулевойСебестоимости</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+							<dcsset:presentation xsi:type="xs:string">Не удалось корректно рассчитать себестоимость продаж!</dcsset:presentation>
+						</dcsset:item>
+					</dcsset:filter>
+					<dcsset:appearance>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>ЦветТекста</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:Color">style:SpecialTextColor</dcscor:value>
+						</dcscor:item>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:use>false</dcscor:use>
+							<dcscor:parameter>Шрифт</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="false" italic="true" underline="false" strikeout="false" kind="WindowsFont"/>
+						</dcscor:item>
+					</dcsset:appearance>
+					<dcsset:presentation xsi:type="xs:string">Не удалось корректно рассчитать себестоимость продаж!</dcsset:presentation>
+				</dcsset:item>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:userSettingID>217c15f2-5800-4c1e-bdd5-9986b8c6cf60</dcsset:userSettingID>
+			</dcsset:conditionalAppearance>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МакетОформления</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">Основной</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>РасположениеИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">Auto</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">Output</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Заголовок</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Оценка распродажи</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemTable">
+				<dcsset:name>Таблица</dcsset:name>
+				<dcsset:row>
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Магазин</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+					<dcsset:outputParameters>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:use>false</dcscor:use>
+							<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
+							<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+						</dcscor:item>
+					</dcsset:outputParameters>
+					<dcsset:item>
+						<dcsset:groupItems>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>Склад</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+						</dcsset:groupItems>
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						</dcsset:selection>
+						<dcsset:item>
+							<dcsset:name>Детали</dcsset:name>
+							<dcsset:groupItems>
+								<dcsset:item xsi:type="dcsset:GroupItemField">
+									<dcsset:field>Номенклатура</dcsset:field>
+									<dcsset:groupType>Items</dcsset:groupType>
+									<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+									<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+									<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+								</dcsset:item>
+								<dcsset:item xsi:type="dcsset:GroupItemField">
+									<dcsset:field>Характеристика</dcsset:field>
+									<dcsset:groupType>Items</dcsset:groupType>
+									<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+									<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+									<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+								</dcsset:item>
+							</dcsset:groupItems>
+							<dcsset:order>
+								<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+							</dcsset:order>
+							<dcsset:selection>
+								<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+							</dcsset:selection>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:row>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+	<settingsVariant>
+		<dcsset:name>ОценкаРаспродажиДиаграмма</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Оценка распродажи (Диаграмма)</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>КоличествоОборот</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:field>ВаловаяПрибыль</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:field>СебестоимостьПродаж</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:field>Скидка</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:field>СтоимостьОборот</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:field>Цена</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Магазин</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.Магазины.ПустаяСсылка</dcsset:right>
+					<dcsset:userSettingID>ff43e49f-ed3d-4bef-8035-115b56112cec</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Сегмент</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.СегментыНоменклатуры.ПустаяСсылка</dcsset:right>
+					<dcsset:userSettingID>d5eda303-4982-4887-83d5-d2fd1d98cfb2</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Склад</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.Склады.ПустаяСсылка</dcsset:right>
+					<dcsset:userSettingID>abca120a-6dc4-4111-9214-d70bfaa11554</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Номенклатура</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.Номенклатура.ПустаяСсылка</dcsset:right>
+					<dcsset:userSettingID>9ee2d991-834f-4abc-8c37-9d818f6ad65e</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:userSettingID>ec53d518-3e61-409c-ae45-d06b44cf5343</dcsset:userSettingID>
+			</dcsset:filter>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Период</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+					</dcscor:value>
+					<dcsset:userSettingID>33ce8755-ad8f-4df8-ab8f-cf547b9dc6c1</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ПериодАкции</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+					</dcscor:value>
+					<dcsset:userSettingID>d0f471ae-f8a1-435c-a161-1e930e945b39</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:order>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:userSettingID>b6572b26-5092-4248-a896-14cda688927c</dcsset:userSettingID>
+			</dcsset:order>
+			<dcsset:conditionalAppearance>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:userSettingID>217c15f2-5800-4c1e-bdd5-9986b8c6cf60</dcsset:userSettingID>
+			</dcsset:conditionalAppearance>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МакетОформления</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">Основной</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>РасположениеИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">Auto</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВертикальноеРасположениеОбщихИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">Output</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Заголовок</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Оценка распродажи</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemChart">
+				<dcsset:point>
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Период</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+				</dcsset:point>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

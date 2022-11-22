@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:AccumulationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="257ed5a3-526a-41a2-91ef-5f28dcb8e527">
+  <producedTypes>
+    <selectionType typeId="e6df3a83-adf2-4897-8cbf-45dbc19d5483" valueTypeId="14712c94-3680-452b-a2f3-74db4e250866"/>
+    <listType typeId="dd07a45a-5022-44f0-afff-0b3db14cf23e" valueTypeId="1c09edde-b418-44b6-a5c9-9576d7e67197"/>
+    <managerType typeId="3171bb9b-9d76-4f39-a168-e74fcb44213f" valueTypeId="02025bfd-1ef1-41e9-a189-cd3411b955bb"/>
+    <recordSetType typeId="5326b48c-dad7-4f6c-bcd7-adf2b825550f" valueTypeId="e5504ce9-1eda-4ae8-a40c-4765941b2e11"/>
+    <recordKeyType typeId="4405f179-f8a0-4207-9f5d-1d604a0d9c3f" valueTypeId="4f23ef72-b67f-413d-960c-7a171a6eb49b"/>
+    <recordType typeId="8de7b170-7ef7-4417-ab72-631e4fa4beff" valueTypeId="6f18d29f-3146-4058-a7b4-8a28374d4ae0"/>
+  </producedTypes>
+  <name>РабочийГрафик</name>
+  <synonym>
+    <key>ru</key>
+    <value>Рабочий график</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <registerType>Turnovers</registerType>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <enableTotalsSplitting>true</enableTotalsSplitting>
+  <resources uuid="c5d8c80b-1dde-4f97-b10c-7a82d2660789">
+    <name>Часы</name>
+    <synonym>
+      <key>ru</key>
+      <value>Часы</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>5</precision>
+        <scale>3</scale>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </resources>
+  <attributes uuid="621b40ff-2026-4713-ac29-4473efb8fc31">
+    <name>Организация</name>
+    <synonym>
+      <key>ru</key>
+      <value>Организация</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Организации</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </attributes>
+  <attributes uuid="4c4aae31-a72b-44ab-9024-70e317752234">
+    <name>Магазин</name>
+    <synonym>
+      <key>ru</key>
+      <value>Магазин</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Магазины</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </attributes>
+  <dimensions uuid="eb5db0e3-2c8e-490c-890a-83104e1e82ea">
+    <name>Сотрудник</name>
+    <synonym>
+      <key>ru</key>
+      <value>Сотрудник</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ФизическиеЛица</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="d9c17b4f-29ab-49f5-b1d2-fe4b4fea471e">
+    <name>ПериодРегистрации</name>
+    <synonym>
+      <key>ru</key>
+      <value>Период регистрации</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers>
+        <dateFractions>Date</dateFractions>
+      </dateQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </dimensions>
+</mdclass:AccumulationRegister>

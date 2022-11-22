@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:DataProcessor xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="5cb16e2e-804d-4654-a7f6-b4cf2c64d1b0">
+  <producedTypes>
+    <objectType typeId="180b74b2-ba1b-4209-9976-89c376a6807b" valueTypeId="1fc7e655-18db-432e-923a-08adf020ffca"/>
+    <managerType typeId="efc4a6ae-f9fd-4e52-9c13-00d99a68ef5f" valueTypeId="82a17d41-b943-4c51-a638-e1e4d65a43e3"/>
+  </producedTypes>
+  <name>ЗаполнениеДиапазонаПодарочныхСертификатов</name>
+  <synonym>
+    <key>ru</key>
+    <value>Заполнение диапазона подарочных сертификатов, 01.001 (2020-01-24)</value>
+  </synonym>
+  <defaultForm>DataProcessor.ЗаполнениеДиапазонаПодарочныхСертификатов.Form.Форма</defaultForm>
+  <attributes uuid="fe3afa9a-721f-48f8-8040-c90d53ca5b34">
+    <name>Номенклатура</name>
+    <synonym>
+      <key>ru</key>
+      <value>Номенклатура сертификата</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Номенклатура</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <choiceParameters>
+      <name>Отбор.ИспользоватьСерийныеНомера</name>
+      <value xsi:type="core:BooleanValue">
+        <value>true</value>
+      </value>
+    </choiceParameters>
+    <choiceParameters>
+      <name>Отбор.ТипНоменклатуры</name>
+      <value xsi:type="core:ReferenceValue">
+        <value>Enum.ТипыНоменклатуры.EnumValue.ПодарочныйСертификат</value>
+      </value>
+    </choiceParameters>
+    <choiceParameters>
+      <name>Отбор.ЭтоГруппа</name>
+      <value xsi:type="core:BooleanValue"/>
+    </choiceParameters>
+  </attributes>
+  <attributes uuid="38de63be-f57c-4da5-8498-f72795098332">
+    <name>ТипСертификата</name>
+    <synonym>
+      <key>ru</key>
+      <value>Тип сертификата</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>2</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <attributes uuid="9441c69f-be88-4f75-a228-33ff51982542">
+    <name>Количество</name>
+    <synonym>
+      <key>ru</key>
+      <value>Количество экземляров</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>5</precision>
+        <nonNegative>true</nonNegative>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <attributes uuid="2bcb0e3c-207d-4e9e-a5f8-fc9b25c87614">
+    <name>НомерПервый</name>
+    <synonym>
+      <key>ru</key>
+      <value>Номер первый</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>9</precision>
+        <nonNegative>true</nonNegative>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <forms uuid="4508f44c-8a2a-4d96-9200-049140481809">
+    <name>Форма</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+</mdclass:DataProcessor>

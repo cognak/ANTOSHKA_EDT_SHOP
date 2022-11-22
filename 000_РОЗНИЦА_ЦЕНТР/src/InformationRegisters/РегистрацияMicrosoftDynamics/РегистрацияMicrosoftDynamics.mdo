@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="e189a1e3-6a70-4a7b-b904-21673fa7f2f4">
+  <producedTypes>
+    <selectionType typeId="db082a60-5f56-4d5b-86c6-d64cb2c62d88" valueTypeId="e87a9030-329e-4112-bac5-caca1f629a41"/>
+    <listType typeId="2aba8bb2-b43a-4b99-87c2-f0d67e816b2e" valueTypeId="04c3f276-3a7c-4207-a527-6695815d5d84"/>
+    <managerType typeId="b36afbe2-aee3-48fd-8c7b-7d32f0956221" valueTypeId="d2d06d24-52cb-48ba-9e7e-81c4cbc65bb7"/>
+    <recordSetType typeId="de075bd0-b3fa-4604-bd70-58888cf126c5" valueTypeId="48cdd6c6-459c-4a12-a749-3b101ed2631e"/>
+    <recordKeyType typeId="e8b7edec-c434-42a3-8952-66a779b4eb00" valueTypeId="f22ac781-b79d-4cf5-84b6-735c424620a6"/>
+    <recordType typeId="cb75be14-4993-48f6-9dce-225030753ed2" valueTypeId="0a8f4e36-61d2-4837-a83c-5506f5249cbf"/>
+    <recordManagerType typeId="f0fc871d-49e4-4a2f-a325-9958e4c96ad4" valueTypeId="5205960a-56dd-4ada-9198-7f4308261662"/>
+  </producedTypes>
+  <name>РегистрацияMicrosoftDynamics</name>
+  <synonym>
+    <key>ru</key>
+    <value>Регистрация Microsoft Dynamics</value>
+  </synonym>
+  <editType>InDialog</editType>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <resources uuid="ccbd8961-d590-40f5-b319-3127ff25b5f0">
+    <name>Значение</name>
+    <synonym>
+      <key>ru</key>
+      <value>Значение</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+      <types>Date</types>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>10</precision>
+      </numberQualifiers>
+      <dateQualifiers>
+        <dateFractions>Date</dateFractions>
+      </dateQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="0c9b036d-52cd-412a-9852-ef0dde79930a">
+    <name>Уточнение</name>
+    <synonym>
+      <key>ru</key>
+      <value>Уточнение</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ВидыЦен</types>
+      <types>String</types>
+      <stringQualifiers>
+        <length>10</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+  </resources>
+  <attributes uuid="3adac136-2b9e-4c6b-a5a9-183b3482ce83">
+    <name>ДатаИзменения</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата изменения</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <dimensions uuid="0251068a-241b-423c-9e9a-4bb271b161bd">
+    <name>ТипРегистрации</name>
+    <synonym>
+      <key>ru</key>
+      <value>Тип регистрации</value>
+    </synonym>
+    <type>
+      <types>EnumRef.ТипыРегистрацийMicrosoftDynamics</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="33625424-9b64-4c01-a04b-21dd5b0e9cab">
+    <name>Измерение_1</name>
+    <synonym>
+      <key>ru</key>
+      <value>Измерение 1</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Склады</types>
+      <types>CatalogRef.Магазины</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Наименование номенклатурной позиции</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="4a4870aa-f603-4761-bfc4-886a1b006e93">
+    <name>Измерение_2</name>
+    <synonym>
+      <key>ru</key>
+      <value>Измерение 2</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Номенклатура</types>
+      <types>CatalogRef.Склады</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Наименование номенклатурной позиции</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="5c1f0cfd-cda4-470b-80d0-4f07e2fe041a">
+    <name>Измерение_3</name>
+    <synonym>
+      <key>ru</key>
+      <value>Измерение 3</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Номенклатура</types>
+      <types>CatalogRef.ХарактеристикиНоменклатуры</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Наименование номенклатурной позиции</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+</mdclass:InformationRegister>

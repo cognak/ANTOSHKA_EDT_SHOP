@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Report xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="a95a3367-5e8e-456b-8fc4-e4bcd84031b8">
+  <producedTypes>
+    <objectType typeId="b20eee11-91eb-4d85-9577-53dad8b7835a" valueTypeId="9a0b5738-3929-4041-bc59-70dba45f92c9"/>
+    <managerType typeId="c9689125-96b2-4302-b955-2d85a55367fe" valueTypeId="a2f86cf4-9a15-4131-abde-e1617d9e3fcc"/>
+  </producedTypes>
+  <name>АктАннулированныхТоваров</name>
+  <synonym>
+    <key>ru</key>
+    <value>Акт аннулированных товаров</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <defaultForm>Report.АктАннулированныхТоваров.Form.ФормаОтчета</defaultForm>
+  <attributes uuid="5da1c23e-9e18-4cc8-9d5d-1b8030645b53">
+    <name>НачалоПериода</name>
+    <synonym>
+      <key>ru</key>
+      <value>Начало периода</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers>
+        <dateFractions>Date</dateFractions>
+      </dateQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+  </attributes>
+  <attributes uuid="a996571e-5162-44bb-badf-7076c2e9f146">
+    <name>ОкончаниеПериода</name>
+    <synonym>
+      <key>ru</key>
+      <value>Окончание периода</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers>
+        <dateFractions>Date</dateFractions>
+      </dateQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+  </attributes>
+  <attributes uuid="c4a4122b-54a6-4ef5-ae92-1f04d2fb4ef8">
+    <name>Магазин</name>
+    <synonym>
+      <key>ru</key>
+      <value>Магазин</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Магазины</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+  </attributes>
+  <attributes uuid="0cf86418-281c-4365-ace7-e0b6bdecb815">
+    <name>КассаККМ</name>
+    <synonym>
+      <key>ru</key>
+      <value>Касса ККМ</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.КассыККМ</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <choiceParameterLinks>
+      <name>Отбор.Магазин</name>
+      <field>Report.АктАннулированныхТоваров.Attribute.Магазин</field>
+    </choiceParameterLinks>
+  </attributes>
+  <attributes uuid="5dc50375-fec9-4547-a824-22321ed7f052">
+    <name>Продавец</name>
+    <synonym>
+      <key>ru</key>
+      <value>Продавец</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Пользователи</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <forms uuid="8cca434e-0cf2-4c0c-90a1-4438ba12c8d8">
+    <name>ФормаОтчета</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма отчета</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <templates uuid="855f4083-5073-46b2-8014-2aa96dcf0fc8">
+    <name>АктАннуляции</name>
+    <synonym>
+      <key>ru</key>
+      <value>Акт аннуляции</value>
+    </synonym>
+  </templates>
+</mdclass:Report>

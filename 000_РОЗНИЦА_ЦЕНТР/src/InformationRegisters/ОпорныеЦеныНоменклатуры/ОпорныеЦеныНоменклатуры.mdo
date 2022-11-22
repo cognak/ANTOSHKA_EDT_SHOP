@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="a5c73c7c-5dee-4e5a-85d0-afd931108ce6">
+  <producedTypes>
+    <selectionType typeId="44b71e1e-028f-4db4-9def-9163048d244b" valueTypeId="ec169622-6e1d-47a2-8d07-8202673ab103"/>
+    <listType typeId="4c8d178b-cbc1-408b-ae32-4183fe7c80f2" valueTypeId="64ad3d8f-6e4d-4399-bbc6-cae10e4a5cd0"/>
+    <managerType typeId="3251fa03-45a6-474b-bf69-4ccf63fa9454" valueTypeId="060564fb-3e74-4215-967d-fc994c7953b0"/>
+    <recordSetType typeId="9dfec9a9-24ae-4127-b750-6d875a5814e1" valueTypeId="0478bf18-a08e-4453-b562-15655fd6c0ea"/>
+    <recordKeyType typeId="23a3ebe4-14b9-4593-99ae-ee79a8e4b927" valueTypeId="a319ed29-e277-4e00-9e20-afe8349e9ac2"/>
+    <recordType typeId="ea214507-0452-4841-96d5-2c73f6983686" valueTypeId="7a18184e-fe34-4566-a224-27d1d71f05c9"/>
+    <recordManagerType typeId="3a6af664-bf7e-459a-8a3d-5fcf2f3e2fb8" valueTypeId="5424bdc6-f1fd-4202-a20c-e9c37accfb90"/>
+  </producedTypes>
+  <name>ОпорныеЦеныНоменклатуры</name>
+  <synonym>
+    <key>ru</key>
+    <value>Опорные цены номенклатуры</value>
+  </synonym>
+  <comment>Опорные - последние &quot;стабильные&quot; цены товаров</comment>
+  <useStandardCommands>true</useStandardCommands>
+  <editType>InDialog</editType>
+  <defaultListForm>InformationRegister.ОпорныеЦеныНоменклатуры.Form.ФормаСписка</defaultListForm>
+  <informationRegisterPeriodicity>Second</informationRegisterPeriodicity>
+  <mainFilterOnPeriod>true</mainFilterOnPeriod>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <resources uuid="5d8b3870-ed97-4517-9a4c-e34bee71aef6">
+    <name>Цена</name>
+    <synonym>
+      <key>ru</key>
+      <value>Цена</value>
+    </synonym>
+    <comment>Розничная цена</comment>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <scale>2</scale>
+        <nonNegative>true</nonNegative>
+      </numberQualifiers>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Используется в качестве розничной цены в магазине.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="112c2672-970d-4802-a3aa-9de93315773c">
+    <name>Упаковка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Упаковка</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.УпаковкиНоменклатуры</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Заполняется в случае, когда цена задана за упаковку</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <attributes uuid="584a5368-08dd-4680-9815-5377a2a5b4bf">
+    <name>ВремяИзменения</name>
+    <synonym>
+      <key>ru</key>
+      <value>Время изменения</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <dimensions uuid="caa6421b-35be-4e4f-845e-7711cf944265">
+    <name>Магазин</name>
+    <synonym>
+      <key>ru</key>
+      <value>Магазин</value>
+    </synonym>
+    <comment>Если пустой - значит, по всем магазинам, для которых НЕТ конкретной записи</comment>
+    <type>
+      <types>CatalogRef.Магазины</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="bb5b6167-15a4-4285-b68d-f294d7430182">
+    <name>Номенклатура</name>
+    <synonym>
+      <key>ru</key>
+      <value>Номенклатура</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Номенклатура</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Номенклатура, цены которой были применены</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="28af91b1-2134-4832-942b-8622ebc41cb6">
+    <name>Характеристика</name>
+    <synonym>
+      <key>ru</key>
+      <value>Характеристика</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ХарактеристикиНоменклатуры</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Характеристика номенклатуры</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <forms uuid="fb1567a4-6845-4063-ba60-1a0c50e6742d">
+    <name>ФормаСписка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма списка</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+</mdclass:InformationRegister>

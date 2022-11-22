@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:DataProcessor xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="7b34d904-2940-465e-a265-37849433de7a">
+  <producedTypes>
+    <objectType typeId="04c6879a-6e3b-4647-9659-3168a5137328" valueTypeId="b6c3ea57-8532-43ee-a275-fd6ed0c08ff4"/>
+    <managerType typeId="d44ce20e-c299-440f-9fbd-79b3b9d8715d" valueTypeId="646324bd-3480-496a-9ed3-3ee3eec74bab"/>
+  </producedTypes>
+  <name>ПрименениеЦенНоменклатуры</name>
+  <synonym>
+    <key>ru</key>
+    <value>Применение цен номенклатуры</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <defaultForm>DataProcessor.ПрименениеЦенНоменклатуры.Form.Форма</defaultForm>
+  <includeHelpInContents>true</includeHelpInContents>
+  <help>
+    <pages>
+      <lang>ru</lang>
+    </pages>
+  </help>
+  <explanation>
+    <key>ru</key>
+    <value>Обработка предназначена для сравнения назначенных и действующих цен, примения цен</value>
+  </explanation>
+  <attributes uuid="b3f5103a-299e-42dc-b0dc-e3c6ad523464">
+    <name>ОбъектЦенообразования</name>
+    <synonym>
+      <key>ru</key>
+      <value>Объект ценообразования</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Склады</types>
+      <types>CatalogRef.Магазины</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Магазин в котором производится применение цен</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <choiceParameters>
+      <name>Отбор.ИспользоватьПрименениеЦен</name>
+      <value xsi:type="core:BooleanValue">
+        <value>true</value>
+      </value>
+    </choiceParameters>
+  </attributes>
+  <attributes uuid="3480ac32-0f0c-456e-bb3c-72b38ae978ec">
+    <name>ДатаАнализа</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата анализа</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+  </attributes>
+  <attributes uuid="779da2bb-8c33-4dae-b371-cbfe97670dd9">
+    <name>Ответственный</name>
+    <synonym>
+      <key>ru</key>
+      <value>Ответственный</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Пользователи</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+  </attributes>
+  <attributes uuid="52e8813c-e844-4611-b871-0a7d53f2ccb1">
+    <name>ПравилоЦенообразования</name>
+    <synonym>
+      <key>ru</key>
+      <value>Правило ценообразования</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ПравилаЦенообразования</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <attributes uuid="79f248b8-d7ec-4b15-8d44-99332ca272f1">
+    <name>ФорматМагазина</name>
+    <synonym>
+      <key>ru</key>
+      <value>Формат магазина</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ФорматыМагазинов</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <forms uuid="113f50b6-4702-403d-8cdd-a2936a2e62f1">
+    <name>Форма</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <commands uuid="4e738391-7b34-430d-b561-6a484b530a87">
+    <name>ОткрытьПрименениеЦенНоменклатуры</name>
+    <synonym>
+      <key>ru</key>
+      <value>Применение цен номенклатуры</value>
+    </synonym>
+    <group>NavigationPanelOrdinary</group>
+    <commandParameterType/>
+    <representation>Auto</representation>
+  </commands>
+</mdclass:DataProcessor>

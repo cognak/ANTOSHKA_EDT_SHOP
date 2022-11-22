@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="a7c4b606-5a3c-4e10-af78-0ee78a44a0b6">
+  <producedTypes>
+    <selectionType typeId="6cd07644-5148-4a6c-924c-2a1807152c15" valueTypeId="cd5f8462-a476-486f-97e6-47eab0e1f08e"/>
+    <listType typeId="c846544e-b651-490c-92a4-ccfc65b69966" valueTypeId="d16e4951-5092-4411-8186-90758209d3e4"/>
+    <managerType typeId="9f791f7c-bdbd-4ee8-b67c-7dde5a28134c" valueTypeId="686a6456-709e-4be3-9dc6-be5da968df38"/>
+    <recordSetType typeId="ecc335f1-d0a3-4ee1-b562-d8f6a10bc910" valueTypeId="e1a8fe4b-9a66-4c97-af8a-762c70bd6b36"/>
+    <recordKeyType typeId="d95e49a7-d2a1-41a8-bb90-990cbd883504" valueTypeId="dd14d497-f055-4553-aa10-03d9f8f13258"/>
+    <recordType typeId="360efefa-4c73-44ad-a7df-929339326164" valueTypeId="23339aa0-7eff-4df6-ad8c-e54db4e89526"/>
+    <recordManagerType typeId="2c93a82b-1746-4a7e-9ebe-5689dc5d3830" valueTypeId="2dcd4e33-3f29-4de6-a5f3-7900534be7ce"/>
+  </producedTypes>
+  <name>ИнформативныеОстаткиТоваровПоМагазинам</name>
+  <synonym>
+    <key>ru</key>
+    <value>Информативные остатки товаров по магазинам</value>
+  </synonym>
+  <defaultListForm>InformationRegister.ИнформативныеОстаткиТоваровПоМагазинам.Form.ФормаСписка</defaultListForm>
+  <includeHelpInContents>true</includeHelpInContents>
+  <help>
+    <pages>
+      <lang>ru</lang>
+    </pages>
+  </help>
+  <resources uuid="eeccea29-8b71-4a40-8d95-65dfebe870c3">
+    <name>Количество</name>
+    <synonym>
+      <key>ru</key>
+      <value>Количество</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>12</precision>
+        <scale>3</scale>
+      </numberQualifiers>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Остаток</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <attributes uuid="beedfbb6-41a8-4902-8c4c-7530f7b6bc93">
+    <name>ДатаИзменения</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата изменения</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <indexing>Index</indexing>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <dimensions uuid="172e9a38-4876-4dc1-ba57-71fc20af0f1c">
+    <name>Магазин</name>
+    <synonym>
+      <key>ru</key>
+      <value>Магазин</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Магазины</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Магазин, хранящий товар</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <indexing>Index</indexing>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="e247146d-359b-4430-85d8-ac31f7d26cda">
+    <name>Номенклатура</name>
+    <synonym>
+      <key>ru</key>
+      <value>Номенклатура</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Номенклатура</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Наименование номенклатурной позиции</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="9c237198-ebe6-4cef-a514-d0967a954b12">
+    <name>Характеристика</name>
+    <synonym>
+      <key>ru</key>
+      <value>Характеристика</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ХарактеристикиНоменклатуры</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Характеристика номенклатуры, если у выбранной номенклатуры используются характеристики.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <forms uuid="873cd969-b13d-4922-9aa6-adf5eb89a4c9">
+    <name>ФормаСписка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма списка</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+</mdclass:InformationRegister>

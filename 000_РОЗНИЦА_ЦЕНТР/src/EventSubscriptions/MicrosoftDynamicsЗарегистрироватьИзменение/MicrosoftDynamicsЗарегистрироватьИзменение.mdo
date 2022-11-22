@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:EventSubscription xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="55f3e2bd-2511-415f-9310-c70ee4e24acb">
+  <name>MicrosoftDynamicsЗарегистрироватьИзменение</name>
+  <synonym>
+    <key>ru</key>
+    <value>MSDYN: зарегистрировать изменение объекта</value>
+  </synonym>
+  <source>
+    <types>CatalogObject.Номенклатура</types>
+    <types>CatalogObject.Контрагенты</types>
+    <types>CatalogObject.Склады</types>
+    <types>CatalogObject.Магазины</types>
+    <types>CatalogObject.ИнформационныеКарты</types>
+    <types>CatalogObject.ИменаЛюдей</types>
+  </source>
+  <event>BeforeWrite</event>
+  <handler>CommonModule.ОбменMicrosoftDynamicsСобытия.MicrosoftDynamicsЗарегистрироватьИзменение</handler>
+</mdclass:EventSubscription>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="0bddc6e6-298d-4f12-b70b-a57044b078b0">
+  <producedTypes>
+    <selectionType typeId="f3c3a32c-4963-4f39-8772-eaa9cf633e3e" valueTypeId="74e34364-1308-4d7f-b899-a51e831c2976"/>
+    <listType typeId="d31e05fd-1bcd-4815-b85e-812b2f6d67c2" valueTypeId="5235d98d-3bda-4b99-8578-ef6015663106"/>
+    <managerType typeId="c1908af4-6b9c-45fb-b3ae-ca976fce2aaf" valueTypeId="4badaf76-d652-4e95-842b-b6f4d6221e5f"/>
+    <recordSetType typeId="22b5eee0-b607-4a25-8a5e-333507aa1055" valueTypeId="722d53f4-aa77-4f5a-b35b-ab78c8ce85cc"/>
+    <recordKeyType typeId="32667fb8-d77e-487a-902e-dc6611046ee2" valueTypeId="d2e3fd08-c06e-488e-8407-c1c82b1a02cd"/>
+    <recordType typeId="126a6267-011c-43f7-a52b-7461540ceb80" valueTypeId="23759bc8-8e54-46cb-99ac-b6d7fa4f4aeb"/>
+    <recordManagerType typeId="633ba1d6-7273-4476-afd9-13ce42d69d42" valueTypeId="b01fec66-1212-4d93-99e7-66b10feef8f9"/>
+  </producedTypes>
+  <name>ТабельУчетаРабочегоВремениИсторияИзменений</name>
+  <synonym>
+    <key>ru</key>
+    <value>Табель учета рабочего времени история изменений</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <editType>InDialog</editType>
+  <informationRegisterPeriodicity>Second</informationRegisterPeriodicity>
+  <mainFilterOnPeriod>true</mainFilterOnPeriod>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <resources uuid="11c8b244-ce7b-45e1-9ec2-24209ee43b4e">
+    <name>Часов</name>
+    <synonym>
+      <key>ru</key>
+      <value>Часов</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>5</precision>
+        <scale>2</scale>
+      </numberQualifiers>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Ч</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <attributes uuid="21329d21-8cfb-44ca-a2c2-25a6a773ba0f">
+    <name>Комментарий</name>
+    <synonym>
+      <key>ru</key>
+      <value>Комментарий</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>500</length>
+      </stringQualifiers>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Ч</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <attributes uuid="887ee74f-7170-4685-8840-0940012b1ca6">
+    <name>Ответсвенный</name>
+    <synonym>
+      <key>ru</key>
+      <value>Ответсвенный</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Пользователи</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <dimensions uuid="b6d43eff-48b0-48d6-8d43-07801b823688">
+    <name>ТабельУчетаРабочегоВремени</name>
+    <synonym>
+      <key>ru</key>
+      <value>Табель учета рабочего времени</value>
+    </synonym>
+    <type>
+      <types>DocumentRef.ТабельУчетаРабочегоВремени</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="ba3e7215-67b8-40d8-8671-478510a5bc9c">
+    <name>Сотрудник</name>
+    <synonym>
+      <key>ru</key>
+      <value>Сотрудник</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ФизическиеЛица</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="7e31bcc5-579a-4c52-b7d9-1d1d7a73fb37">
+    <name>НомерДня</name>
+    <synonym>
+      <key>ru</key>
+      <value>Номер дня</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>2</precision>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:StringValue">
+      <value>1</value>
+    </minValue>
+    <maxValue xsi:type="core:StringValue">
+      <value>31</value>
+    </maxValue>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+</mdclass:InformationRegister>

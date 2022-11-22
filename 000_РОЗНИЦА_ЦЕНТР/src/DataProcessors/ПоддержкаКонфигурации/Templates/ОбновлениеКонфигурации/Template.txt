@@ -1,0 +1,100 @@
+//	mupdater.js
+//	"Ведущий" скрипт композиции
+
+function include(fileName)
+{
+    var stream = new ActiveXObject("Adodb.Stream");
+    stream.CharSet = "UNICODE";
+    stream.Type = 2;    // adTypeText 
+    stream.Open();
+    stream.LoadFromFile(fileName);
+    var code = stream.readText();
+    stream.Close();
+    return code;
+}
+
+var globalCounter     = 0;
+var oFileSystemObject = new ActiveXObject("Scripting.FileSystemObject");
+
+var scriptFileName    = WScript.ScriptFullName;
+var scriptDir         = scriptFileName.substr(0, scriptFileName.lastIndexOf("\\") + 1);
+
+var oShell = new ActiveXObject("WScript.Shell");
+oShell.CurrentDirectory = scriptDir;
+
+eval(include(scriptDir + "addfunctions.js"));
+eval(include(scriptDir + "mainfunctions.js"));
+
+MainProcess();	//	Точка входа в программный процесс
+
+function MainProcess()
+{
+	log(0, "Процедура обновления конфигурации (на поддержке) запущена.", false);
+
+	if (!dynamicUpdate)
+	{
+	//	Делаем два рестарта службы... в некоторых случаях без предварительного рестарта не можем подсоединиться к процессу... хрень какая-то.
+		log(1, "Остановка службы 1С:Предприятие.", false);
+		ret = stopService("1C:Enterprise", true);
+
+		log(1, "Запуск службы 1С:Предприятие.", false);
+		ret = startService("1C:Enterprise");
+
+		log(1, "Установка блокировки доступа к информационной базе. Ключ доступа = [ПакетноеОбновлениеКонфигурацииИБ].", false);
+		DeniedBaseAccess();
+
+		log(1, "Остановка службы 1С:Предприятие.", false);
+		ret = stopService("1C:Enterprise", true);
+
+		log(1, "Запуск службы 1С:Предприятие.", false);
+		ret = startService("1C:Enterprise");
+	}
+
+	log(1, "Загрузка файла обновления в основную конфигурацию.", false);
+	ret = updateCfg(cfgFileName);
+
+    if (ret != 0)   // Если не удалось загрузить файл, возможно конфигурация не находится на поддержке.
+		log(2, "Обновление основной конфигурации не было загружено. Возможно, конфигурация текущей ИБ снята с поддержки!", true);
+	else
+	{
+		log(1, "Применение полученного обновления к конфигурации БД.", false);
+		ret = updateDbCfg(cfgFileName);
+
+		if (ret !=0)	//	не удалось применить полученные изменения... проблема!
+			log(2, "Конфигурация БД не была применена. Возможно, не удалось обеспечить монопольный режим!", true);
+		{
+			log(1, "Конфигурация БД, вероятно, применена - первый административный запуск приложения в режиме '1С:Предприятие'.", false);
+			runEnterprise();
+		}
+
+	}
+
+	finalize(true);
+
+	log(1, "Операции регламента 'Применение обновления конфигурации' завершены.", false);
+}
+
+// Финализация
+function finalize(success)
+{
+    if (success == undefined)	success = false;
+
+	if (success)
+	{
+		AllowBaseAccess();
+		ClearTempFiles();
+	}
+
+	CollectGarbage();
+}
+
+function ClearTempFiles()
+{
+//	Удаляем временные файлы
+	try
+	{
+		oFileSystemObject.DeleteFile(scriptDir + '\\mainfunctions.js');
+		oFileSystemObject.DeleteFile(scriptDir + '\\addfunctions.js');
+	}
+	catch(e) {}
+}

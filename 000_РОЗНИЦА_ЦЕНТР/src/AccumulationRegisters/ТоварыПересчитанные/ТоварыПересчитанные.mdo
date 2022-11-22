@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:AccumulationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="3e204310-32bf-46db-8afd-51f8d7a64b9d">
+  <producedTypes>
+    <selectionType typeId="22be5c93-f8c0-47f6-9068-2a591d0dafb5" valueTypeId="a842976f-5637-4273-b04c-7f85b63e815e"/>
+    <listType typeId="0f752b0b-700d-41d3-867f-244f482097f2" valueTypeId="fb39c285-3a0c-4561-8251-e528e8353b7f"/>
+    <managerType typeId="61fa7ff8-f8ec-4a8f-b3fc-e847e5a9c1c2" valueTypeId="35d6327c-6742-495c-a15a-8b0ec005b94e"/>
+    <recordSetType typeId="419382e2-0113-4c79-8507-fdc315d86c25" valueTypeId="1d0225e8-4953-43ad-a84c-0bf7cb10009f"/>
+    <recordKeyType typeId="827c688d-6df7-47aa-9b0b-ab1c6cdbe224" valueTypeId="15a4db6c-a542-41f6-84c4-2518f080be43"/>
+    <recordType typeId="961a7f4e-57c6-43b6-8d94-fa868f7fd853" valueTypeId="85589314-5c9a-4a1e-a900-f9e04fcb07cc"/>
+  </producedTypes>
+  <name>ТоварыПересчитанные</name>
+  <synonym>
+    <key>ru</key>
+    <value>Товары пересчитанные</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <enableTotalsSplitting>true</enableTotalsSplitting>
+  <resources uuid="72efbc3d-7ba3-4b47-9986-1576e2164b61">
+    <name>Количество</name>
+    <synonym>
+      <key>ru</key>
+      <value>Количество</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <scale>3</scale>
+      </numberQualifiers>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Количество товара в единицах хранения</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </resources>
+  <dimensions uuid="95958dfe-0ce3-4271-b286-a955f26552ef">
+    <name>ДокументОснование</name>
+    <synonym>
+      <key>ru</key>
+      <value>Документ основание</value>
+    </synonym>
+    <type>
+      <types>DocumentRef.ПриказНаПроведениеИнвентаризацииТоваров</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Документ, являющийся основанием для оформления излишков и недостач товаров.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="1f0a8735-e071-4298-9595-33a9452f1b02">
+    <name>Ведомость</name>
+    <synonym>
+      <key>ru</key>
+      <value>Ведомость</value>
+    </synonym>
+    <type>
+      <types>DocumentRef.ВедомостьИнвентаризационная</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Ведомость, по которой проходил пересчёт</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="4ec9cd1e-9444-4fc3-9f90-227ca974dced">
+    <name>Номенклатура</name>
+    <synonym>
+      <key>ru</key>
+      <value>Номенклатура</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Номенклатура</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Номенклатура, по которой выявлены излишки или недостачи товаров.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="d2170582-0f3a-469a-abeb-80d2a19a8026">
+    <name>Характеристика</name>
+    <synonym>
+      <key>ru</key>
+      <value>Характеристика</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ХарактеристикиНоменклатуры</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Характеристика номенклатуры</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <choiceParameterLinks>
+      <name>Номенклатура</name>
+      <field>AccumulationRegister.ТоварыПересчитанные.Dimension.Номенклатура</field>
+    </choiceParameterLinks>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+</mdclass:AccumulationRegister>

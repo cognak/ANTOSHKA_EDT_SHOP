@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Table xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="f9dfadae-33a8-4542-b7b2-e6b50558238e">
+  <producedTypes>
+    <refType typeId="92f04ca7-dfbf-4fda-a9e6-75b850239a5f" valueTypeId="20f3b872-b824-416d-9dac-5d024acda2ac"/>
+    <listType typeId="d8da4f22-440c-4138-b7cc-b0f40f6d78d4" valueTypeId="fb57cbe8-54fb-440f-b797-22ba60673eb9"/>
+    <objectType typeId="9b027499-6595-4a76-85b1-7256bb99e7f5" valueTypeId="294e6a2e-ce79-4f95-91a2-961ae254a885"/>
+    <managerType typeId="a337241d-c90c-4074-8eb3-dbf1a3f83b86" valueTypeId="43a74e82-1928-4e2f-b37f-f742de7eb1d6"/>
+    <recordManagerType typeId="87571d8f-ea97-4cb6-85d8-39e9d3b6e402" valueTypeId="ead65b2a-2563-4eea-ba04-3824dec30d7a"/>
+    <recordSetType typeId="26597ced-8768-4ad5-b767-30f058e94d6b" valueTypeId="df7c1de8-aef0-424a-b9af-4d57f75590eb"/>
+    <recordType typeId="f39790ca-5c4a-41a4-b43a-d9ca037cd3a2" valueTypeId="41ede880-d4bf-4a6e-806d-3e7f8c110544"/>
+    <recordKeyType typeId="b5fe4ab4-41c0-4e51-91ec-ed9d064e665e" valueTypeId="f2c40bf2-2865-4d16-9773-5a116ffac399"/>
+  </producedTypes>
+  <name>ШтампВремениSKU</name>
+  <synonym>
+    <key>ru</key>
+    <value>Штамп времени SKU</value>
+  </synonym>
+  <parentDataSource>ExternalDataSource.EuroProd</parentDataSource>
+  <tableType>Expression</tableType>
+  <expressionInDataSource>(select t.Но_ as sku, cast(cast(t.timestamp as bigint) as varchar(40)) as erp_version from dbo.[Европродукт 2009$Товар] as t with(readuncommitted))</expressionInDataSource>
+  <tableDataType>NonobjectData</tableDataType>
+  <unfilledParentValue xsi:type="core:UndefinedValue"/>
+  <useStandardCommands>true</useStandardCommands>
+  <transactionsIsolationLevel>ReadUncommitted</transactionsIsolationLevel>
+  <editType>InDialog</editType>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <tableFields uuid="1f134d2b-da98-4120-b138-9ae682e05296">
+    <name>SKU</name>
+    <synonym>
+      <key>ru</key>
+      <value>SKU</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>20</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+    <nameInDataSource>sku</nameInDataSource>
+    <allowNull>true</allowNull>
+  </tableFields>
+  <tableFields uuid="4c8956e7-fc8d-487b-b41e-5eff4b5c577c">
+    <name>КодИзменения</name>
+    <synonym>
+      <key>ru</key>
+      <value>Код изменения</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>10</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+    <nameInDataSource>erp_version</nameInDataSource>
+    <allowNull>true</allowNull>
+  </tableFields>
+</mdclass:Table>

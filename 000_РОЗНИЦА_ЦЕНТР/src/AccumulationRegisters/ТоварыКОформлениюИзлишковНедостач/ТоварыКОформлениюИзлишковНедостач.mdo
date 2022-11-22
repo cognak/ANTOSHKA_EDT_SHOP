@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:AccumulationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="567136e6-a043-4454-abe0-fbc6a2baee2e">
+  <producedTypes>
+    <selectionType typeId="138169c8-111b-4918-83be-a9df6f7bcbe3" valueTypeId="9b5f72fa-1232-4cd6-b5dc-bb3738bbb329"/>
+    <listType typeId="decb2f7e-2c24-4a2c-9bb8-91a8548335a1" valueTypeId="ad0e7b6c-5428-48f0-aa35-266923c78931"/>
+    <managerType typeId="2505b442-8508-49a5-8ecf-ee29fc1261fb" valueTypeId="d7c9130d-2986-4f06-80c5-0aacce2bf325"/>
+    <recordSetType typeId="61724503-29eb-4701-98e8-125e265f052b" valueTypeId="f7452377-e82c-49b7-8234-02badb51cc70"/>
+    <recordKeyType typeId="8f2df16c-b3e9-42f7-83a0-79c33eec068c" valueTypeId="60d7f0a6-ac7d-4c5f-a658-9447832c5ca6"/>
+    <recordType typeId="57a1ee14-2b14-4e3f-bcd5-5a55c532cc19" valueTypeId="21e0b425-15f9-4032-8167-aeee7307c342"/>
+  </producedTypes>
+  <name>ТоварыКОформлениюИзлишковНедостач</name>
+  <synonym>
+    <key>ru</key>
+    <value>Товары к оформлению излишков и недостач</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <standardAttributes>
+    <dataHistory>Use</dataHistory>
+    <name>RecordType</name>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </standardAttributes>
+  <standardAttributes>
+    <dataHistory>Use</dataHistory>
+    <name>Active</name>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </standardAttributes>
+  <standardAttributes>
+    <dataHistory>Use</dataHistory>
+    <name>LineNumber</name>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </standardAttributes>
+  <standardAttributes>
+    <dataHistory>Use</dataHistory>
+    <name>Recorder</name>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </standardAttributes>
+  <standardAttributes>
+    <dataHistory>Use</dataHistory>
+    <name>Period</name>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fullTextSearch>Use</fullTextSearch>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </standardAttributes>
+  <resources uuid="301d5bf2-ea2a-453f-8b15-98480ce0c410">
+    <name>КОформлениюАктов</name>
+    <synonym>
+      <key>ru</key>
+      <value>К оформлению актов</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <scale>3</scale>
+      </numberQualifiers>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Количество товара в единицах хранения, по которому необходимо оформить складские акты.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </resources>
+  <resources uuid="97213596-3c1b-46e9-93a8-7c1df07eea9c">
+    <name>КОформлениюОрдеров</name>
+    <synonym>
+      <key>ru</key>
+      <value>К оформлению ордеров</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <scale>3</scale>
+      </numberQualifiers>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Количество товара в единицах хранения, по которому необходимо оформить ордера на отражение излишков и недостач товаров.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </resources>
+  <dimensions uuid="adb850ba-a361-4e08-b632-461bc730f43a">
+    <name>ДокументОснование</name>
+    <synonym>
+      <key>ru</key>
+      <value>Документ основание</value>
+    </synonym>
+    <type>
+      <types>DocumentRef.ИзменениеАссортимента</types>
+      <types>DocumentRef.ОрдерНаОтражениеРезультатовПересчетовТоваров</types>
+      <types>DocumentRef.ОрдерНаОтражениеНедостачТоваров</types>
+      <types>DocumentRef.ПриказНаПроведениеИнвентаризацииТоваров</types>
+      <types>DocumentRef.ОрдерНаОтражениеИзлишковТоваров</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Документ, являющийся основанием для оформления излишков и недостач товаров.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="b45b3a14-5852-42e9-97b1-f968240322f0">
+    <name>Склад</name>
+    <synonym>
+      <key>ru</key>
+      <value>Склад</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Склады</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Складская территория на которой выявлены излишки и недостачи товаров.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="0c5f3096-a879-4bb4-9363-fa1a35d4b6c7">
+    <name>Номенклатура</name>
+    <synonym>
+      <key>ru</key>
+      <value>Номенклатура</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Номенклатура</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Номенклатура, по которой выявлены излишки или недостачи товаров.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="2788304f-3240-4a46-8355-1e952b35709d">
+    <name>Характеристика</name>
+    <synonym>
+      <key>ru</key>
+      <value>Характеристика</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ХарактеристикиНоменклатуры</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Характеристика номенклатуры, по которой выявлены излишки, недостачи или порча товаров.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <choiceParameterLinks>
+      <name>Номенклатура</name>
+      <field>AccumulationRegister.ТоварыКОформлениюИзлишковНедостач.Dimension.Номенклатура</field>
+    </choiceParameterLinks>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+</mdclass:AccumulationRegister>

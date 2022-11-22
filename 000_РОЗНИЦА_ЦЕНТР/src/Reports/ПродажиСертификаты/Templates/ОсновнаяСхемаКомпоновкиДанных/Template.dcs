@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Магазин</dataPath>
+			<field>Магазин</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаПродажи</dataPath>
+			<field>СуммаПродажи</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаВсехСкидок</dataPath>
+			<field>СуммаВсехСкидок</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаСертификатов</dataPath>
+			<field>СуммаСертификатов</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма сертификатов</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Ссылка</dataPath>
+			<field>Ссылка</field>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	ЧекККМОплата.Ссылка КАК Ссылка,
+	СУММА(ЧекККМОплата.Сумма) КАК Сумма
+ПОМЕСТИТЬ ТабЧеки
+ИЗ
+	Документ.ЧекККМ.Оплата КАК ЧекККМОплата
+ГДЕ
+	ЧекККМОплата.Ссылка.Дата МЕЖДУ &amp;ДатаС И &amp;ДатаПо
+	И ЧекККМОплата.ВидОплаты = &amp;ВидОплаты
+	И ЧекККМОплата.Ссылка.Проведен = ИСТИНА
+
+СГРУППИРОВАТЬ ПО
+	ЧекККМОплата.Ссылка
+
+ИНДЕКСИРОВАТЬ ПО
+	Ссылка
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ТабЧеки.Ссылка.Магазин КАК Магазин,
+	ТабЧеки.Ссылка КАК Ссылка,
+	СУММА(ЧекККМТовары.Сумма) КАК СуммаПродажи,
+	СУММА(ЧекККМТовары.СуммаАвтоматическойСкидки + ЧекККМТовары.СуммаРучнойСкидки) КАК СуммаВсехСкидок,
+	МАКСИМУМ(ТабЧеки.Сумма) КАК Сумма
+ПОМЕСТИТЬ ТабОтчет
+ИЗ
+	ТабЧеки КАК ТабЧеки
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.ЧекККМ.Товары КАК ЧекККМТовары
+		ПО ТабЧеки.Ссылка = ЧекККМТовары.Ссылка
+
+СГРУППИРОВАТЬ ПО
+	ТабЧеки.Ссылка.Магазин,
+	ТабЧеки.Ссылка
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ЧекККМТовары.Ссылка.Магазин КАК Магазин,
+	ЧекККМТовары.Ссылка КАК Ссылка,
+	СУММА(ЧекККМТовары.Сумма) КАК СуммаПродажи,
+	СУММА(ЧекККМТовары.СуммаРучнойСкидки + ЧекККМТовары.СуммаАвтоматическойСкидки) КАК СуммаВсехСкидок,
+	МАКСИМУМ(0) КАК Поле1
+ПОМЕСТИТЬ ТабОтчетВозвраты
+ИЗ
+	Документ.ЧекККМ.Товары КАК ЧекККМТовары
+ГДЕ
+	ЧекККМТовары.Ссылка.ЧекККМПродажа В
+			(ВЫБРАТЬ
+				ЧекККМОплата.Ссылка КАК Ссылка
+			ИЗ
+				Документ.ЧекККМ.Оплата КАК ЧекККМОплата
+			ГДЕ
+				ЧекККМОплата.Ссылка.Дата МЕЖДУ &amp;ДатаМесяцНазад И &amp;ДатаПо
+				И ЧекККМОплата.ВидОплаты = &amp;ВидОплаты
+			СГРУППИРОВАТЬ ПО
+				ЧекККМОплата.Ссылка)
+	И ЧекККМТовары.Ссылка.Дата МЕЖДУ &amp;ДатаС И &amp;ДатаПо
+	И ЧекККМТовары.Ссылка.Проведен = ИСТИНА
+
+СГРУППИРОВАТЬ ПО
+	ЧекККМТовары.Ссылка.Магазин,
+	ЧекККМТовары.Ссылка
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ТабОтчетВозвраты.Магазин КАК Магазин,
+	ТабОтчетВозвраты.СуммаПродажи КАК СуммаПродажи,
+	ТабОтчетВозвраты.СуммаВсехСкидок КАК СуммаВсехСкидок,
+	ТабОтчетВозвраты.Поле1 КАК СуммаСертификатов,
+	ТабОтчетВозвраты.Ссылка КАК Ссылка
+ИЗ
+	ТабОтчетВозвраты КАК ТабОтчетВозвраты
+
+ОБЪЕДИНИТЬ
+
+ВЫБРАТЬ
+	ТабОтчет.Магазин,
+	ТабОтчет.СуммаПродажи,
+	ТабОтчет.СуммаВсехСкидок,
+	ТабОтчет.Сумма,
+	ТабОтчет.Ссылка
+ИЗ
+	ТабОтчет КАК ТабОтчет</query>
+	</dataSet>
+	<totalField>
+		<dataPath>СуммаВсехСкидок</dataPath>
+		<expression>Сумма(СуммаВсехСкидок)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СуммаПродажи</dataPath>
+		<expression>Сумма(СуммаПродажи)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СуммаСертификатов</dataPath>
+		<expression>Сумма(СуммаСертификатов)</expression>
+	</totalField>
+	<parameter>
+		<name>ВидОплаты</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Вид оплаты</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.ВидыОплатЧекаККМ</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Справочник.ВидыОплатЧекаККМ.ОплатаПодарочнымСертификатом</value>
+		<useRestriction>true</useRestriction>
+		<use>Always</use>
+	</parameter>
+	<parameter>
+		<name>ДатаПо</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата по</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаОкончания</expression>
+		<use>Always</use>
+	</parameter>
+	<parameter>
+		<name>ДатаС</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата С</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаНачала</expression>
+		<use>Always</use>
+	</parameter>
+	<parameter>
+		<name>ДатаМесяцНазад</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата месяц назад</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+		<expression>ДОБАВИТЬКДАТЕ(&amp;ДатаС, "месяц",-1) </expression>
+		<use>Always</use>
+	</parameter>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>ПродажиСертификаты</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Продажи сертификаты</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Магазин</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Ссылка</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СуммаВсехСкидок</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СуммаПродажи</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СуммаСертификатов</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ДатаПо</dcscor:parameter>
+					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+					<dcsset:userSettingID>9662ee87-5fb0-4c79-bf3f-c9d1101a47a6</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ДатаС</dcscor:parameter>
+					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+					<dcsset:userSettingID>ec2273e5-da4a-4096-91e3-ad593a7e9d38</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Период</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+					</dcscor:value>
+					<dcsset:userSettingID>f946b675-14d2-4e1d-8bbe-5ea2d7e1f54d</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВыводитьПараметрыДанных</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВыводитьОтбор</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+				</dcscor:item>
+			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Магазин</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+				</dcsset:item>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

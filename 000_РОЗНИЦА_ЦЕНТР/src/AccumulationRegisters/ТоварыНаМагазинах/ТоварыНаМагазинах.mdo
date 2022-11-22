@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:AccumulationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="dcb3d8da-662c-413a-bd27-b22d6e811609">
+  <producedTypes>
+    <selectionType typeId="ebee92ba-5b7b-44cf-82c4-fee6f8de6c4b" valueTypeId="0a521245-0976-49d1-b87d-6bae04740e8c"/>
+    <listType typeId="7497b290-0417-424b-8295-8d2ddad2cb1a" valueTypeId="ba80cbc3-5f44-4c27-83fa-839c84cca1e7"/>
+    <managerType typeId="4276ff20-1aeb-4cd5-b5fa-43c3ce6c8b7d" valueTypeId="c527c455-41e9-4f78-88d9-faae0ba66e4e"/>
+    <recordSetType typeId="079ab9d9-093e-4fc5-a4e6-35301a0299d8" valueTypeId="722e42db-75c6-48f3-bdd2-ca1bf2180046"/>
+    <recordKeyType typeId="0ce7b4fc-d9d3-49e2-b9b5-56fcde486e26" valueTypeId="89bd727e-7fe6-4b0f-80bb-2add1f58c8e9"/>
+    <recordType typeId="f61d6e3d-e091-4050-9ca7-6b89cf12f925" valueTypeId="f2779cf9-544b-4ed8-8943-96a047b625ad"/>
+  </producedTypes>
+  <name>ТоварыНаМагазинах</name>
+  <synonym>
+    <key>ru</key>
+    <value>Товары на магазинах</value>
+  </synonym>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <enableTotalsSplitting>true</enableTotalsSplitting>
+  <resources uuid="f35adf48-f8cc-4a15-88f7-151062da6445">
+    <name>Количество</name>
+    <synonym>
+      <key>ru</key>
+      <value>Количество</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <scale>3</scale>
+      </numberQualifiers>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Количество учитываемой номенклатуры в магазине в целом, без учета складов</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fullTextSearch>Use</fullTextSearch>
+  </resources>
+  <attributes uuid="326f57a9-9572-4ff5-8fff-7575c0355560">
+    <name>АналитикаХозяйственнойОперации</name>
+    <synonym>
+      <key>ru</key>
+      <value>Аналитика хозяйственной операции</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.АналитикаХозяйственныхОпераций</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Аналитика движения номенклатуры</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </attributes>
+  <dimensions uuid="5927db11-1b48-44dd-a026-4aeeb96bc60c">
+    <name>Магазин</name>
+    <synonym>
+      <key>ru</key>
+      <value>Магазин</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Магазины</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Магазин, на котором учитываются остатки номенклатуры.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="cbf083c9-f7da-464f-9d4b-63c11bee63ea">
+    <name>Номенклатура</name>
+    <synonym>
+      <key>ru</key>
+      <value>Номенклатура</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Номенклатура</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Номенклатура, остатки которой учитываются на складах.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="514d5292-af14-4a83-b086-f39bbebe011a">
+    <name>Характеристика</name>
+    <synonym>
+      <key>ru</key>
+      <value>Характеристика</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ХарактеристикиНоменклатуры</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Характеристика номенклатуры, остатки которой учитываются на складах.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+</mdclass:AccumulationRegister>

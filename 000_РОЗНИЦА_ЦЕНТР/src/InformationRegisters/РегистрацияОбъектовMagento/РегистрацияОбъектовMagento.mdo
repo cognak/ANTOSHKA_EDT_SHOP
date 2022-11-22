@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="3ef2d6a4-8e31-4a9e-b152-0764e7b89081">
+  <producedTypes>
+    <selectionType typeId="8cb6f950-f839-44a4-9ab4-1eaf0a6d0673" valueTypeId="b095efb6-e364-4d4f-b596-fe107df181b9"/>
+    <listType typeId="964ece16-e389-4b2e-9ece-a807d440bea0" valueTypeId="353defd2-7cbd-448d-a488-dcdb51d28498"/>
+    <managerType typeId="af43f635-8641-473f-b41e-1f806e99acb4" valueTypeId="0251a173-c298-413b-9732-b9c1573f92ec"/>
+    <recordSetType typeId="e969ae4e-e7ec-4b6c-8792-8c3230e6bd23" valueTypeId="5c7295fe-e3ec-47c9-af5d-31a6ec3a70f0"/>
+    <recordKeyType typeId="a0b2017e-be75-424d-98e4-ec03fbdaeddc" valueTypeId="4cb0f564-9dde-4293-98c0-996a5fa38e80"/>
+    <recordType typeId="c293506e-adaf-457e-82bf-82c14ee7277a" valueTypeId="112e9e1f-e0f5-46a6-9641-c5c0cf35f586"/>
+    <recordManagerType typeId="1376c7f5-c755-4ad7-b189-2755dd86df5f" valueTypeId="6a028587-d319-474e-b081-59d4fc375cc5"/>
+  </producedTypes>
+  <name>РегистрацияОбъектовMagento</name>
+  <synonym>
+    <key>ru</key>
+    <value>Регистрация объектов Magento</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <editType>InDialog</editType>
+  <defaultListForm>InformationRegister.РегистрацияОбъектовMagento.Form.ФормаСписка</defaultListForm>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <explanation>
+    <key>ru</key>
+    <value>Регистр предназначен для регистрации объектов, предназначенных для выгрузки в КСУ NAV.
+При этом соблюдается уникальность выгружаемых объектов во избежание повторной выгрузки.</value>
+  </explanation>
+  <resources uuid="915f07f0-aeba-4605-b868-e62be3dcadf0">
+    <name>Выгружен</name>
+    <synonym>
+      <key>ru</key>
+      <value>Выгружен</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Объект был выгружен в NAV</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <indexing>Index</indexing>
+  </resources>
+  <resources uuid="03eee08b-7ba2-4586-84f1-c29344a2f086">
+    <name>ДатаВыгружен</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата &quot;Выгружен&quot;</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Дата фактической выгрузки в NAV, при которой устанавливается флаг &quot;Выгружен&quot;</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="78e383a5-9f3a-46be-8950-a92630bf82c1">
+    <name>ДатаНачисления</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата начисления</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Дата определяет, в какой &quot;кассовый&quot; день объект должен быть выгружен в NAV.
+Может отличаться от &quot;ДатаВыгружен&quot;.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <attributes uuid="19ab3a19-9980-4677-864b-b2dc379d6b8a">
+    <name>ДатаИзменения</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата изменения</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <dimensions uuid="382112a1-56d2-4d48-8cec-2bfdd479230a">
+    <name>Объект</name>
+    <synonym>
+      <key>ru</key>
+      <value>Объект</value>
+    </synonym>
+    <type>
+      <types>DocumentRef.ЗаказПокупателя</types>
+      <types>String</types>
+      <stringQualifiers>
+        <length>128</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="2ce58df4-b2a5-4d4e-a390-39a6c30bb20a">
+    <name>ТипРегистрации</name>
+    <synonym>
+      <key>ru</key>
+      <value>Тип регистрации</value>
+    </synonym>
+    <type>
+      <types>EnumRef.ТипыРегистрацииMagento</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <indexing>Index</indexing>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <forms uuid="3daa64b5-eef4-465d-8f42-6f6e96a6dbed">
+    <name>ФормаСписка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма списка</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+</mdclass:InformationRegister>

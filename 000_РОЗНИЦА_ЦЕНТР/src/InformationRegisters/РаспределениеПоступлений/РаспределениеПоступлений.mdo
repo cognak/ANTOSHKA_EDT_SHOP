@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="da90735e-eb2a-4e20-9809-5564a5f0dc73">
+  <producedTypes>
+    <selectionType typeId="8c778f77-00ba-4300-b4ea-b64661b41f70" valueTypeId="7bb021f7-10f4-4bad-a939-3c4c41cfa7b0"/>
+    <listType typeId="25d5e077-9908-4ed8-93f8-2a6fc44596b7" valueTypeId="909ab71d-d414-4bec-9b54-31c1c5c7c7c4"/>
+    <managerType typeId="913e254c-d755-40ad-8b08-54e077e79df4" valueTypeId="9de5714a-63ac-4e62-baba-c3a76ab4bddb"/>
+    <recordSetType typeId="2cfd643c-ed24-47d5-a023-bbcd44f72e70" valueTypeId="b1558fad-40b7-4ad0-9b87-ad4cb36c2fd2"/>
+    <recordKeyType typeId="f4f4653a-6ce3-4930-bee3-878945165c25" valueTypeId="9d5d55a4-2714-4710-aebc-b9fdf4417911"/>
+    <recordType typeId="eb28df10-6b81-437b-b2ad-723a4199ae02" valueTypeId="6cdc51b4-662c-4b7a-b3b8-f1fd0c3c5f14"/>
+    <recordManagerType typeId="783c35dd-1b31-4c44-95b3-bd98d1425e0e" valueTypeId="b00ba803-b67c-45bf-88b3-5f19e48d877d"/>
+  </producedTypes>
+  <name>РаспределениеПоступлений</name>
+  <synonym>
+    <key>ru</key>
+    <value>Распределение поступлений</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <defaultListForm>InformationRegister.РаспределениеПоступлений.Form.ФормаСписка</defaultListForm>
+  <includeHelpInContents>true</includeHelpInContents>
+  <help>
+    <pages>
+      <lang>ru</lang>
+    </pages>
+  </help>
+  <resources uuid="5e175d4e-fd27-452d-b7ef-9b9b12a4b710">
+    <name>Склад</name>
+    <synonym>
+      <key>ru</key>
+      <value>Склад</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Склады</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Склад, на который осуществляются поступления товаров выбранной номенклатурной группы</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <dimensions uuid="55dd1151-4e3b-442e-a447-79fde69b9e83">
+    <name>Магазин</name>
+    <synonym>
+      <key>ru</key>
+      <value>Магазин</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Магазины</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Магазин, по складам которого распределяются поступления товаров</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="d52c7fde-1183-4c66-8678-0fe9e3a08365">
+    <name>НоменклатурнаяГруппа</name>
+    <synonym>
+      <key>ru</key>
+      <value>Номенклатурная группа</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.НоменклатурныеГруппы</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Номенклатурная группа товара</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <forms uuid="b88ecc00-9f86-4219-8def-a9d25c67d529">
+    <name>ФормаСписка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма списка</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+</mdclass:InformationRegister>

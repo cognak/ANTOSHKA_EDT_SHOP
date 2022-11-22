@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="5e47b6e8-2b3f-480a-89d9-d5de1dc577af">
+  <producedTypes>
+    <selectionType typeId="376063ad-0e89-4b0b-8fbc-3d6de0f76d96" valueTypeId="a521ee83-a044-4a83-8759-2438a137ea19"/>
+    <listType typeId="eafff7ff-a8f7-4a68-979a-9723956f9bad" valueTypeId="1e04e9b7-72d1-4a3e-98ce-0c04540fd114"/>
+    <managerType typeId="1f7530f3-ecef-4a3d-800c-a17944b518e4" valueTypeId="f42e27d6-aae5-488f-9229-5d87e5c841ac"/>
+    <recordSetType typeId="cd55bed1-2a89-4a85-af5e-13fe3b998f7b" valueTypeId="2720d6d4-ebb4-4578-af1d-87b9d99a7186"/>
+    <recordKeyType typeId="32bc7948-cbf8-4187-b39b-ddfff0b39c9a" valueTypeId="b75838fa-da0c-4707-9a16-4bf6c5be7af0"/>
+    <recordType typeId="d97cc710-2f11-4f59-9723-76dcf538d56e" valueTypeId="0aaf7fb7-dae6-44ef-8a9d-1f9aaf1c089d"/>
+    <recordManagerType typeId="19c5d9fb-d4b3-41c0-a0a6-3d95b5000172" valueTypeId="5f4cd856-b056-41ad-9eb4-17255af1c66d"/>
+  </producedTypes>
+  <name>ОграниченияДвиженийПоИнвентаризации</name>
+  <synonym>
+    <key>ru</key>
+    <value>Ограничения движений по инвентаризации</value>
+  </synonym>
+  <editType>InDialog</editType>
+  <informationRegisterPeriodicity>RecorderPosition</informationRegisterPeriodicity>
+  <writeMode>RecorderSubordinate</writeMode>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <resources uuid="4cce37e2-642e-4708-9023-3a2c12d5dbb1">
+    <name>ГраницаЗапрета</name>
+    <synonym>
+      <key>ru</key>
+      <value>Граница запрета</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="41e4cac6-815e-4b5f-aafc-a021b26a6cf1">
+    <name>СкладУдалить</name>
+    <synonym>
+      <key>ru</key>
+      <value>Склад удалить</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Склады</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <dimensions uuid="4b7a7836-d34c-4b84-b375-199513883af9">
+    <name>Магазин</name>
+    <synonym>
+      <key>ru</key>
+      <value>Магазин</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Магазины</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="a2e1aa90-1984-469d-a94f-3436c4b42890">
+    <name>Склад</name>
+    <synonym>
+      <key>ru</key>
+      <value>Склад</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Склады</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="b448f00d-0787-400c-93a2-42652b1fff0e">
+    <name>ДокументОграничения</name>
+    <synonym>
+      <key>ru</key>
+      <value>Документ ограничения</value>
+    </synonym>
+    <type>
+      <types>DocumentRef.ПриказНаПроведениеИнвентаризацииТоваров</types>
+      <types>DocumentRef.ПересчетТоваровСамостоятельный</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+</mdclass:InformationRegister>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:EventSubscription xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="4fd05943-5b56-4bee-b2b0-736ebb3ed7db">
+  <name>ПоУстройствамАнтошкаЗарегистрироватьИзменение</name>
+  <synonym>
+    <key>ru</key>
+    <value>По устройствам Антошка зарегистрировать изменение</value>
+  </synonym>
+  <source>
+    <types>CatalogObject.ХарактеристикиНоменклатуры</types>
+    <types>CatalogObject.Номенклатура</types>
+    <types>CatalogObject.УпаковкиНоменклатуры</types>
+    <types>CatalogObject.Склады</types>
+    <types>CatalogObject.ВидыНоменклатуры</types>
+  </source>
+  <event>BeforeWrite</event>
+  <handler>CommonModule.ОбменДаннымиADCTСобытия.ПоУстройствамАнтошкаЗарегистрироватьИзменениеПередЗаписью</handler>
+</mdclass:EventSubscription>

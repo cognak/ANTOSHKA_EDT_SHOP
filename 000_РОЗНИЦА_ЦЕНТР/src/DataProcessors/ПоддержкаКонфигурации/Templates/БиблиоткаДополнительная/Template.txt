@@ -1,0 +1,199 @@
+// addfunctions.js
+// Вспомогательные функции.
+
+var errorMarker   = "{ERR}";
+var successMarker = "{OK }";
+
+var SW_HIDE = 0
+var SW_SHOWNORMAL = 1
+var SW_SHOWMINIMIZED = 2
+var SW_SHOWMAXIMIZED = 3
+var SW_MAXIMIZE = 3
+var SW_SHOWNOACTIVATE = 4
+var SW_SHOW = 5
+var SW_MINIMIZE = 6
+var SW_SHOWMINNOACTIVE = 7
+var SW_SHOWNA = 8
+var SW_RESTORE = 9
+var SW_SHOWDEFAULT = 10
+
+var ForReading = 1; // Open a file for reading only. You can't write to this file.
+var ForWriting = 2; // Open a file for writing.
+var ForAppending = 8; // Open a file and write to the end of the file.
+var TristateUseDefault = -2, TristateTrue = -1, TristateFalse = 0;
+
+var EVENT_SUCCESS = 0;
+var EVENT_CRITICAL = 1;
+var EVENT_WARNING = 2;
+var EVENT_INFO = 4;
+
+
+function SWtoString(SW_flag)
+{
+    switch (SW_flag)
+    {
+        case SW_HIDE:               return "SW_HIDE";
+        case SW_SHOWNORMAL:         return "SW_SHOWNORMAL";
+        case SW_SHOWMINIMIZED:      return "SW_SHOWMINIMIZED";
+        case SW_SHOWMAXIMIZED:      return "SW_SHOWMAXIMIZED";
+        case SW_MAXIMIZE:           return "SW_MAXIMIZE";
+        case SW_SHOWNOACTIVATE:     return "SW_SHOWNOACTIVATE";
+        case SW_SHOW:               return "SW_SHOW";
+        case SW_MINIMIZE:           return "SW_MINIMIZE";
+        case SW_SHOWMINNOACTIVE:    return "SW_SHOWMINNOACTIVE";
+        case SW_SHOWNA:             return "SW_SHOWNA";
+        case SW_RESTORE:            return "SW_RESTORE";
+        case SW_SHOWDEFAULT:        return "SW_SHOWDEFAULT";
+        default:
+            return format("N/A: {0}", SW_flag);
+    }
+}
+    
+function format(str)
+{
+    for(var i = 1; i < arguments.length; i++)
+    {
+        str = str.replace("{" + (i - 1) + "}", arguments[i]);
+    }
+    return str;
+}
+
+// Записать текст в лог
+function log(level, text, failed) {
+    if (failed == undefined)
+        failed = false;
+
+    logFile(level, text, failed);
+}
+
+// Записать текст в лог-файл
+function logFile(level, text, failed) {
+    var f;
+	var sNumber	= ('0' + (globalCounter++)).split('').reverse().slice(0,3).reverse().join('');
+	var sTabs   = ((level == 0) ? '\n' : '') + sNumber + '. ' + ((level == 0) ? dateStamp(true, true, ':') : dateStamp(false, true, ':')) + ' ', i;
+
+	for (i = 0; i < level; i++)	sTabs = sTabs + '\t';
+    
+    try {
+        f = oFileSystemObject.OpenTextFile(outFileName, ForAppending, true, TristateTrue);
+    }
+    catch (e) { return; }
+    try {
+        var status = (failed == false ? successMarker : errorMarker);
+        f.WriteLine(format("{0} {1} {2}", sTabs, status, replacer(text)));
+    }
+    finally {
+        try {
+            f.Close();
+        }
+        catch (e) { return; }
+    }
+}
+
+function replacer(text)
+{
+	var newText = text;
+
+	if (clasterAdminPass != "")
+		newText = newText.split(clasterAdminPass).join("*****");
+	if (infoBasesAdminPass != "")
+		newText = newText.split(infoBasesAdminPass).join("*****");
+
+	return newText;
+}
+
+// Записать текст из временного лог-файла
+function appendLog() {
+    var f;
+    var outf;
+    var text;
+    try {
+        f = oFileSystemObject.OpenTextFile(tempLogFileName, ForReading, false, TristateFalse);
+        outf = oFileSystemObject.OpenTextFile(outFileName, ForAppending, true, TristateTrue);
+    }
+    catch (e) { return; }
+    try {
+        if (!f.AtEndOfStream) {
+            text = f.ReadAll();
+            outf.WriteLine(text);
+        }
+    }
+    finally {
+        try {
+            f.Close();
+            outf.Close();
+        }
+        catch (e) { return; }
+    }
+}
+
+function dateStamp(addDate, addTime, div, MonthOnly)
+{
+	var curDate = new Date();
+	var Stamp	= '';
+	var sDay	= ('0' + curDate.getDate()).split('').reverse().slice(0,2).reverse().join('');
+	var sMonth	= ('0' + (curDate.getMonth() + 1)).split('').reverse().slice(0,2).reverse().join('');
+
+	var sHour	= ('0' + curDate.getHours()).split('').reverse().slice(0,2).reverse().join('');
+	var sMins	= ('0' + curDate.getMinutes()).split('').reverse().slice(0,2).reverse().join('');
+	var sSecs	= ('0' + curDate.getSeconds()).split('').reverse().slice(0,2).reverse().join('');
+
+	MonthOnly	= (MonthOnly == undefined) ? false:MonthOnly;
+
+	if (addDate)
+		Stamp	= curDate.getFullYear() + sMonth;
+
+	if (!MonthOnly)
+	{
+		Stamp	= Stamp + sDay;
+		div	= (div == undefined) ? '':div;
+
+		if (addTime)
+			Stamp	= Stamp + '(' + sHour + div + sMins + div + sSecs + ')';
+	}
+
+	return Stamp; 
+}
+
+function clearEntireDirectory(objFolder)
+{
+	listFolders = new Enumerator(objFolder.SubFolders);
+
+//	для начала пройдёмся рекурсивно по всем подкаталогам...
+	for (;!listFolders.atEnd(); listFolders.moveNext())
+	{
+		clearEntireDirectory(listFolders.item());
+	}
+
+	listFiles = new Enumerator(objFolder.Files);
+
+//	а вот теперь убиваем все файлы, входящие в каталог
+	for (;!listFiles.atEnd(); listFiles.moveNext())
+	{
+		try
+		{
+			oFileSystemObject.DeleteFile(listFiles.item().Path, true);
+		}
+		catch (e)
+		{	log(3, format("... при удалении файла ({0}): {1} <{2}>", e.name, e.message, listFiles.item().Path), true);
+		}
+	}
+}
+
+function killProcesses()
+{
+	killProcess("ragent.exe");
+	killProcess("rmngr.exe");
+	killProcess("rphost.exe");
+}
+
+function killProcess(nameProc)
+{
+	var listProcs = new Enumerator(GetObject("winmgmts:{impersonationLevel=impersonate}").ExecQuery("Select * from Win32_Process Where Name = '" + nameProc + "'"));
+
+	for(;!listProcs.atEnd();listProcs.moveNext())
+	{
+		listProcs.item().Terminate();
+	}
+}
+

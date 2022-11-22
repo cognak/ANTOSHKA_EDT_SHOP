@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:EventSubscription xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="be386ffe-f01e-4746-9ef9-eb14b283f311">
+  <name>ЗаполнитьНаборыЗначенийДоступаТабличныхЧастейДокументов</name>
+  <synonym>
+    <key>ru</key>
+    <value>Заполнить наборы значений доступа табличных частей документов</value>
+  </synonym>
+  <source>
+    <types>DocumentObject.ПередачаТоваровМеждуОрганизациями</types>
+    <types>DocumentObject.УстановкаЦенНоменклатуры</types>
+    <types>DocumentObject.ИзменениеАссортимента</types>
+    <types>DocumentObject.МаркетинговаяАкция</types>
+  </source>
+  <event>BeforeWrite</event>
+  <handler>CommonModule.УправлениеДоступом.ЗаполнитьНаборыЗначенийДоступаТабличныхЧастей</handler>
+</mdclass:EventSubscription>

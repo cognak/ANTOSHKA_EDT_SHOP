@@ -1,0 +1,24 @@
+<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://www.redhead.ua/2017/XMLSchema">
+	<import namespace="http://www.w3.org/2001/XMLSchema"/>
+	<objectType name="Goods">
+		<property name="IDN" type="xs:string" nillable="false" form="Attribute"/>
+		<property name="Name" type="xs:string" nillable="true" form="Element"/>
+		<property name="NameUA" type="xs:string"/>
+		<property name="Manufacturer" type="xs:string"/>
+		<property xmlns:d3p1="http://www.redhead.ua/2017/XMLSchema" name="Stock" type="d3p1:Stock" lowerBound="0" upperBound="-1"/>
+		<property xmlns:d3p1="http://www.redhead.ua/2017/XMLSchema" name="Barcode" type="d3p1:Barcode" lowerBound="0" upperBound="-1"/>
+	</objectType>
+	<objectType name="GoodsPakage">
+		<property xmlns:d3p1="http://www.redhead.ua/2017/XMLSchema" name="Row" type="d3p1:Goods" lowerBound="0" upperBound="-1" nillable="false"/>
+	</objectType>
+	<objectType name="Stock">
+		<property name="IDN" type="xs:string" nillable="false" form="Attribute"/>
+		<property name="Name" type="xs:string" nillable="true" form="Element"/>
+		<property name="StockAdress" type="xs:string"/>
+		<property name="Quantity" type="xs:decimal" nillable="true" form="Element"/>
+		<property name="Price" type="xs:decimal"/>
+	</objectType>
+	<objectType name="Barcode">
+		<property name="Code" type="xs:string" form="Attribute"/>
+	</objectType>
+</package>

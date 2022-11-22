@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="e94b303a-246e-4aab-8fbc-b8930a826fd8">
+  <producedTypes>
+    <objectType typeId="1f82e41e-8535-4954-a1af-c8cb23b2710c" valueTypeId="ed0e0573-050f-43ff-8a24-75dd81af3bfc"/>
+    <refType typeId="7f6a47b9-87f5-4a8c-b70c-12a2f15f6cb7" valueTypeId="c7764bfd-44c3-4f76-9001-d934fff0ae26"/>
+    <selectionType typeId="d26e3c4c-a49f-4ccd-be91-5e29b837e5bf" valueTypeId="c3a2bd56-b303-4001-87e1-9d952ae60e08"/>
+    <listType typeId="eebb3755-54a3-440d-904b-9dcc305ec08e" valueTypeId="0de66674-b1d6-48a7-b51a-a840fd9177c2"/>
+    <managerType typeId="7f5e607c-2e49-40f6-a518-989047f351ee" valueTypeId="8a8059fd-dfda-4d60-bc99-d129473b9336"/>
+  </producedTypes>
+  <name>ВыдачаДисконтныхКарт</name>
+  <synonym>
+    <key>ru</key>
+    <value>Выдача дисконтных карт</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <inputByString>Document.ВыдачаДисконтныхКарт.StandardAttribute.Number</inputByString>
+  <fullTextSearchOnInputByString>DontUse</fullTextSearchOnInputByString>
+  <createOnInput>Use</createOnInput>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <fullTextSearch>Use</fullTextSearch>
+  <numberType>String</numberType>
+  <numberLength>11</numberLength>
+  <numberAllowedLength>Variable</numberAllowedLength>
+  <numberPeriodicity>Year</numberPeriodicity>
+  <checkUnique>true</checkUnique>
+  <autonumbering>true</autonumbering>
+  <defaultObjectForm>Document.ВыдачаДисконтныхКарт.Form.ФормаДокумента</defaultObjectForm>
+  <realTimePosting>Deny</realTimePosting>
+  <registerRecordsDeletion>AutoDeleteOff</registerRecordsDeletion>
+  <postInPrivilegedMode>true</postInPrivilegedMode>
+  <unpostInPrivilegedMode>true</unpostInPrivilegedMode>
+  <attributes uuid="36c03f45-c0bf-476d-a6ac-753695fe51ba">
+    <name>Магазин</name>
+    <synonym>
+      <key>ru</key>
+      <value>Магазин</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Магазины</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Магазин, в котором производится замена</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="e63f7aee-8ef9-4357-a2a4-a75ae7a89c5e">
+    <name>Комментарий</name>
+    <synonym>
+      <key>ru</key>
+      <value>Комментарий</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers/>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Комментарий к документу</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="8ae4f609-2e40-4389-8976-12d5177cf65c">
+    <name>Ответственный</name>
+    <synonym>
+      <key>ru</key>
+      <value>Ответственный</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Пользователи</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Ответственный за документ</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <forms uuid="3e004a6f-cffc-4613-85c5-bd65fe57eaa7">
+    <name>ФормаДокумента</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма документа</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <tabularSections uuid="23e2bee2-b2c0-424d-b89d-10e005d699dc">
+    <producedTypes>
+      <objectType typeId="475dda02-298f-4447-966e-b7b2ff35cb5f" valueTypeId="3ef803f0-f539-4c1d-8fdb-67bdf63300b5"/>
+      <rowType typeId="7109dba4-bbf1-4d4e-80e0-eeeb874170d8" valueTypeId="f833eac3-fec7-47f3-bd56-e3f29c7e5199"/>
+    </producedTypes>
+    <name>КартыПокупателей</name>
+    <synonym>
+      <key>ru</key>
+      <value>Карты покупателей</value>
+    </synonym>
+    <fillChecking>ShowError</fillChecking>
+    <attributes uuid="5b0108ba-783c-4916-aa17-6ec83c3cbb44">
+      <name>ВладелецКарты</name>
+      <synonym>
+        <key>ru</key>
+        <value>Владелец карты</value>
+      </synonym>
+      <type>
+        <types>CatalogRef.Контрагенты</types>
+        <types>CatalogRef.ФизическиеЛица</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <fillChecking>ShowError</fillChecking>
+      <dataHistory>Use</dataHistory>
+      <indexing>Index</indexing>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="f19f5c90-8b42-4f8f-bf60-80ebdc76c0ed">
+      <name>ДисконтнаяКарта</name>
+      <synonym>
+        <key>ru</key>
+        <value>Дисконтная карта</value>
+      </synonym>
+      <type>
+        <types>CatalogRef.ИнформационныеКарты</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <fillChecking>ShowError</fillChecking>
+      <choiceParameters>
+        <name>Отбор.ВидДисконтнойКарты</name>
+        <value xsi:type="core:ReferenceValue">
+          <value>Catalog.ВидыДисконтныхКарт.ПредварительныеКартыЛояльности</value>
+        </value>
+      </choiceParameters>
+      <choiceParameters>
+        <name>Отбор.ВладелецКарты</name>
+        <value xsi:type="core:UndefinedValue"/>
+      </choiceParameters>
+      <dataHistory>Use</dataHistory>
+      <indexing>Index</indexing>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+  </tabularSections>
+</mdclass:Document>

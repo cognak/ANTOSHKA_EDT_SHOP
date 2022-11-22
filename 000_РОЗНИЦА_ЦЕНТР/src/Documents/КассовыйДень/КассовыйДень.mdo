@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="bfb7a00e-e44b-4219-b577-d1e6c46fa56b">
+  <producedTypes>
+    <objectType typeId="079f0905-381c-4fa8-844d-11955c0de224" valueTypeId="4d1b0409-a7ad-4113-b6e6-b9da2e471a47"/>
+    <refType typeId="fa8333d3-aada-421c-9ad8-8841dd7cda9e" valueTypeId="6ba22c93-9d73-4084-a7a0-b5ceaa4fa2a1"/>
+    <selectionType typeId="707829a4-d989-4468-bda9-ac65743031ad" valueTypeId="47f570c9-237f-42e9-a3c4-6b914c0c24d9"/>
+    <listType typeId="2f7b7215-4816-4d3d-8586-f516377e7aa9" valueTypeId="4d1302ea-0b23-4b0c-82a8-52e3dd725ce9"/>
+    <managerType typeId="411e321e-0290-4b28-8b01-bdafd68062ef" valueTypeId="a0c4de4a-e0ae-43eb-9820-0ef61354f704"/>
+  </producedTypes>
+  <name>КассовыйДень</name>
+  <synonym>
+    <key>ru</key>
+    <value>Кассовый день</value>
+  </synonym>
+  <synonym>
+    <key>uk</key>
+    <value>Касовий день</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <inputByString>Document.КассовыйДень.StandardAttribute.Number</inputByString>
+  <inputByString>CommonAttribute.IDN</inputByString>
+  <fullTextSearchOnInputByString>DontUse</fullTextSearchOnInputByString>
+  <createOnInput>Use</createOnInput>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <fullTextSearch>Use</fullTextSearch>
+  <listPresentation>
+    <key>ru</key>
+    <value>Кассовые дни (магазинов)</value>
+  </listPresentation>
+  <numberType>String</numberType>
+  <numberLength>11</numberLength>
+  <numberAllowedLength>Variable</numberAllowedLength>
+  <checkUnique>true</checkUnique>
+  <autonumbering>true</autonumbering>
+  <defaultObjectForm>Document.КассовыйДень.Form.ФормаДокумента</defaultObjectForm>
+  <defaultListForm>Document.КассовыйДень.Form.ФормаСписка</defaultListForm>
+  <defaultChoiceForm>Document.КассовыйДень.Form.ФормаВыбора</defaultChoiceForm>
+  <registerRecordsDeletion>AutoDeleteOff</registerRecordsDeletion>
+  <postInPrivilegedMode>true</postInPrivilegedMode>
+  <unpostInPrivilegedMode>true</unpostInPrivilegedMode>
+  <attributes uuid="5ddba57e-c5c8-48e1-b768-79ae77e9b23c">
+    <name>Магазин</name>
+    <synonym>
+      <key>ru</key>
+      <value>Магазин</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Магазины</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Магазин, которому принадлежит касса ККМ</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="10eb0213-b9db-4e68-8379-ecac215898d9">
+    <name>НачалоКассовогоДня</name>
+    <synonym>
+      <key>ru</key>
+      <value>Начало кассового дня</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Дата начала кассовой смены.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <indexing>Index</indexing>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="47495e71-3ec7-4656-9215-036b2a1c95ad">
+    <name>ОкончаниеКассовогоДня</name>
+    <synonym>
+      <key>ru</key>
+      <value>Окончание кассового дня</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Дата окончания кассовой смены.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="4801c8b2-03eb-40a9-9562-10ed94538812">
+    <name>СтатусКассовогоДня</name>
+    <synonym>
+      <key>ru</key>
+      <value>Статус кассового дня</value>
+    </synonym>
+    <type>
+      <types>EnumRef.СтатусыКассовойСмены</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Статус кассовой смены.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <indexing>Index</indexing>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="2cb732e4-a478-4d4f-96c5-3f2e45efba90">
+    <name>СуммаДокумента</name>
+    <synonym>
+      <key>ru</key>
+      <value>Сумма документа</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <scale>2</scale>
+      </numberQualifiers>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Итоговая сумма документа</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <forms uuid="632bb908-7789-4c99-ba98-676e12140ddf">
+    <name>ФормаДокумента</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма документа</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <forms uuid="a99570f7-7714-4663-9466-4703b82b14d1">
+    <name>ФормаСписка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма списка</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <forms uuid="4bad9f13-476b-4dd3-96c2-e980a9ec9f82">
+    <name>ФормаВыбора</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма выбора</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <forms uuid="4ac9f229-5e85-4d72-9163-f9f9950e5209">
+    <name>ФормаСпискаАдминистративная</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма списка административная</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <templates uuid="a49964ae-7d06-41bb-bcdb-72d2184e01f7">
+    <name>ПФ_MXL_ПроверкаОтклоненийКонтрольныхСумм</name>
+    <synonym>
+      <key>ru</key>
+      <value>П ф MXL проверка отклонений контрольных сумм</value>
+    </synonym>
+  </templates>
+  <commands uuid="fd4cb4e9-a964-465e-9f45-85ac7f970f21">
+    <name>ПроверкаОтклоненийКонтрольныхСумм</name>
+    <synonym>
+      <key>ru</key>
+      <value>Проверка отклонений контрольных сумм</value>
+    </synonym>
+    <group>CommandGroup.Печать</group>
+    <commandParameterType>
+      <types>DocumentRef.КассовыйДень</types>
+    </commandParameterType>
+    <parameterUseMode>Multiple</parameterUseMode>
+    <representation>Auto</representation>
+  </commands>
+</mdclass:Document>

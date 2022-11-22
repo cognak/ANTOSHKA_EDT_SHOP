@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="7ae33002-0bcb-4c4f-8640-22ecfc931d7d">
+  <producedTypes>
+    <selectionType typeId="2b69547c-31ca-4ea4-88c0-0984aa9eaa5f" valueTypeId="43b089b9-e159-4939-bdfd-d0febb2ae690"/>
+    <listType typeId="c5534400-1eac-4b3f-bedb-223a09391004" valueTypeId="58cadd9a-7387-400d-9b61-f50939e4e2ef"/>
+    <managerType typeId="a99ceb78-c4b7-4701-855d-3a2b3f4fc1fb" valueTypeId="086cc8c2-7cb7-43bc-93b2-2fa08594ee92"/>
+    <recordSetType typeId="ad5a3e70-3527-4050-bfa4-e296144a5f54" valueTypeId="b97e4cd3-445d-4aff-bc99-06957372fbe9"/>
+    <recordKeyType typeId="d25262f9-4f15-4a14-b563-8bd4073429d7" valueTypeId="8bba1bdd-7af6-4a40-9576-681c5314e7b1"/>
+    <recordType typeId="aa65a0bb-ab01-4995-b379-ec157533e9c2" valueTypeId="e0ca47b7-8bb2-428a-8ddc-d116a02c31a7"/>
+    <recordManagerType typeId="2a1bf594-033d-4cf7-be75-44471541cfbe" valueTypeId="df7a2252-5bd1-48ca-ab16-7a57b3422d5a"/>
+  </producedTypes>
+  <name>НоменклатураСегмента</name>
+  <synonym>
+    <key>ru</key>
+    <value>Номенклатура сегмента</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <defaultRecordForm>InformationRegister.НоменклатураСегмента.Form.ФормаЗаписи</defaultRecordForm>
+  <defaultListForm>InformationRegister.НоменклатураСегмента.Form.ФормаСписка</defaultListForm>
+  <includeHelpInContents>true</includeHelpInContents>
+  <help>
+    <pages>
+      <lang>ru</lang>
+    </pages>
+  </help>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <dimensions uuid="ac6b7ad9-a760-4727-97be-e61d8c413c6c">
+    <name>Номенклатура</name>
+    <synonym>
+      <key>ru</key>
+      <value>Номенклатура</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Номенклатура</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Номенклатура, входящая в состав сегмента</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="7546da69-8c85-436e-a0a9-f54b22a5901a">
+    <name>Сегмент</name>
+    <synonym>
+      <key>ru</key>
+      <value>Сегмент</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.СегментыНоменклатуры</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Сегмент номенклатуры, состав которого заполняется</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="54868e73-b6a5-4a38-8da1-650264f2fb59">
+    <name>Характеристика</name>
+    <synonym>
+      <key>ru</key>
+      <value>Характеристика</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ХарактеристикиНоменклатуры</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Характеристика номенклатуры, входящей в состав сегмента (в случае наличия у номенклатуры характеристик)</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <forms uuid="e1d0e3e4-b535-45c7-8cf2-e79be89493be">
+    <name>ФормаСписка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма списка</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <forms uuid="14e863d3-1b77-4866-89b4-25e968d8f18b">
+    <name>ФормаЗаписи</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма записи</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+</mdclass:InformationRegister>

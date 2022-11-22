@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СкидкаСложнаяТипКомпенсации</dataPath>
+			<field>СкидкаСложнаяТипКомпенсации</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Скидка сложная тип компенсации</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СкидкаСложнаяПоставщик</dataPath>
+			<field>СкидкаСложнаяПоставщик</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Скидка сложная поставщик</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СкидкаСложнаяДоляКомпенсации</dataPath>
+			<field>СкидкаСложнаяДоляКомпенсации</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Скидка сложная доля компенсации</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Стоимость</dataPath>
+			<field>Стоимость</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаКомпенсации</dataPath>
+			<field>СуммаКомпенсации</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма компенсации</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Количество</dataPath>
+			<field>Количество</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СтоимостьБезСкидок</dataPath>
+			<field>СтоимостьБезСкидок</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НоменклатураIDN</dataPath>
+			<field>НоменклатураIDN</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НоменклатураПроизводительIDN</dataPath>
+			<field>НоменклатураПроизводительIDN</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Номенклатура</dataPath>
+			<field>Номенклатура</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СкладМагазин</dataPath>
+			<field>СкладМагазин</field>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	НоменклатураСегмента.Номенклатура КАК Номенклатура,
+	ДействиеСкидокНаценок.СкидкаНаценка КАК СкидкаСложная,
+	ДействиеСкидокНаценок.Период КАК Период,
+	ДействиеСкидокНаценок.ДатаОкончания КАК ДатаОкончания,
+	ДействиеСкидокНаценок.Магазин КАК Магазин,
+	ДействиеСкидокНаценок.СкидкаНаценка.ТипКомпенсации КАК ТипКомпенсации,
+	ДействиеСкидокНаценок.СкидкаНаценка.Поставщик КАК Поставщик,
+	ДействиеСкидокНаценок.СкидкаНаценка.ДоляКомпенсации КАК ДоляКомпенсации
+ПОМЕСТИТЬ ТабАкции
+ИЗ
+	РегистрСведений.ДействиеСкидокНаценок КАК ДействиеСкидокНаценок
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.НоменклатураСегмента КАК НоменклатураСегмента
+		ПО ДействиеСкидокНаценок.СкидкаНаценка.СегментНоменклатурыПредоставления = НоменклатураСегмента.Сегмент
+ГДЕ
+	ДействиеСкидокНаценок.СкидкаНаценка = &amp;СкидкаНаценка
+	И НЕ ДействиеСкидокНаценок.СкидкаНаценка.ТипКомпенсации = ЗНАЧЕНИЕ(Перечисление.ТипКомпенсации.пустаяСсылка)
+
+СГРУППИРОВАТЬ ПО
+	НоменклатураСегмента.Номенклатура,
+	ДействиеСкидокНаценок.СкидкаНаценка,
+	ДействиеСкидокНаценок.Период,
+	ДействиеСкидокНаценок.ДатаОкончания,
+	ДействиеСкидокНаценок.Магазин,
+	ДействиеСкидокНаценок.СкидкаНаценка.ТипКомпенсации,
+	ДействиеСкидокНаценок.СкидкаНаценка.Поставщик,
+	ДействиеСкидокНаценок.СкидкаНаценка.ДоляКомпенсации
+
+ИНДЕКСИРОВАТЬ ПО
+	Номенклатура,
+	Период
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	МАКСИМУМ(СебестоимостьНоменклатуры.Период) КАК Период,
+	СебестоимостьНоменклатуры.Магазин КАК Магазин,
+	СебестоимостьНоменклатуры.Номенклатура КАК Номенклатура
+ПОМЕСТИТЬ ТабСрезСебестоимость
+ИЗ
+	ТабАкции КАК ТабАкции
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СебестоимостьНоменклатуры КАК СебестоимостьНоменклатуры
+		ПО ТабАкции.ДатаОкончания &lt;= СебестоимостьНоменклатуры.Период
+
+СГРУППИРОВАТЬ ПО
+	СебестоимостьНоменклатуры.Магазин,
+	СебестоимостьНоменклатуры.Номенклатура
+
+ИНДЕКСИРОВАТЬ ПО
+	Период,
+	Магазин,
+	Номенклатура
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ТабСрезСебестоимость.Магазин КАК Магазин,
+	ТабСрезСебестоимость.Номенклатура КАК Номенклатура,
+	СебестоимостьНоменклатуры.Цена КАК Цена
+ПОМЕСТИТЬ ТабСрезСебестоимостьИтог
+ИЗ
+	ТабСрезСебестоимость КАК ТабСрезСебестоимость
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СебестоимостьНоменклатуры КАК СебестоимостьНоменклатуры
+		ПО ТабСрезСебестоимость.Период = СебестоимостьНоменклатуры.Период
+
+ИНДЕКСИРОВАТЬ ПО
+	Магазин,
+	Номенклатура
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	МАКСИМУМ(ЦеныНоменклатуры.Период) КАК Период,
+	ЦеныНоменклатуры.Номенклатура КАК Номенклатура
+ПОМЕСТИТЬ ТабСрезОптовыеЦены
+ИЗ
+	ТабАкции КАК ТабАкции
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ЦеныНоменклатуры КАК ЦеныНоменклатуры
+		ПО ТабАкции.ДатаОкончания &lt;= ЦеныНоменклатуры.Период
+ГДЕ
+	ЦеныНоменклатуры.ВидЦены = &amp;ВидЦены
+
+СГРУППИРОВАТЬ ПО
+	ЦеныНоменклатуры.Номенклатура
+
+ИНДЕКСИРОВАТЬ ПО
+	Период,
+	Номенклатура
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ТабСрезОптовыеЦены.Номенклатура КАК Номенклатура,
+	ЦеныНоменклатуры.Цена КАК Цена
+ПОМЕСТИТЬ ТабСрезОптовыеЦеныИтог
+ИЗ
+	ТабСрезОптовыеЦены КАК ТабСрезОптовыеЦены
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ЦеныНоменклатуры КАК ЦеныНоменклатуры
+		ПО ТабСрезОптовыеЦены.Период = ЦеныНоменклатуры.Период
+			И ТабСрезОптовыеЦены.Номенклатура = ЦеныНоменклатуры.Номенклатура
+ГДЕ
+	ЦеныНоменклатуры.ВидЦены = &amp;ВидЦены
+
+ИНДЕКСИРОВАТЬ ПО
+	Номенклатура
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ТабАкции.СкидкаСложная.ДоляКомпенсации КАК СкидкаСложнаяДоляКомпенсации,
+	ТабАкции.СкидкаСложная.Поставщик КАК СкидкаСложнаяПоставщик,
+	ТабАкции.СкидкаСложная.ТипКомпенсации КАК СкидкаСложнаяТипКомпенсации,
+	ВЫБОР
+		КОГДА ТабАкции.ТипКомпенсации = ЗНАЧЕНИЕ(Перечисление.ТипКомпенсации.ОтСебестоимости)
+			ТОГДА ТабСрезСебестоимостьИтог.Цена / 100 * ТабАкции.ДоляКомпенсации
+		КОГДА ТабАкции.ТипКомпенсации = ЗНАЧЕНИЕ(Перечисление.ТипКомпенсации.ОтЦеныПолки)
+			ТОГДА Продажи.СтоимостьБезСкидок / 100 * ТабАкции.ДоляКомпенсации
+		КОГДА ТабАкции.ТипКомпенсации = ЗНАЧЕНИЕ(Перечисление.ТипКомпенсации.ОтОптовойЦены)
+			ТОГДА ТабСрезОптовыеЦеныИтог.Цена / 100 * ТабАкции.ДоляКомпенсации
+	КОНЕЦ КАК СуммаКомпенсации,
+	Продажи.Количество КАК Количество,
+	Продажи.Стоимость КАК Стоимость,
+	Продажи.СтоимостьБезСкидок КАК СтоимостьБезСкидок,
+	Продажи.Склад.Магазин КАК СкладМагазин,
+	Продажи.Номенклатура.Производитель.IDN КАК НоменклатураПроизводительIDN,
+	Продажи.Номенклатура КАК Номенклатура,
+	Продажи.Номенклатура.IDN КАК НоменклатураIDN
+ИЗ
+	ТабАкции КАК ТабАкции
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрНакопления.Продажи КАК Продажи
+		ПО ТабАкции.Номенклатура = Продажи.Номенклатура
+			И ТабАкции.Магазин = Продажи.Склад.Магазин
+			И ТабАкции.Период &lt;= Продажи.Период
+			И ТабАкции.ДатаОкончания &gt;= Продажи.Период
+		ЛЕВОЕ СОЕДИНЕНИЕ ТабСрезСебестоимостьИтог КАК ТабСрезСебестоимостьИтог
+		ПО ТабАкции.Номенклатура = ТабСрезСебестоимостьИтог.Номенклатура
+			И ТабАкции.Магазин = ТабСрезСебестоимостьИтог.Магазин
+		ЛЕВОЕ СОЕДИНЕНИЕ ТабСрезОптовыеЦеныИтог КАК ТабСрезОптовыеЦеныИтог
+		ПО ТабАкции.Номенклатура = ТабСрезОптовыеЦеныИтог.Номенклатура</query>
+	</dataSet>
+	<totalField>
+		<dataPath>Стоимость</dataPath>
+		<expression>Сумма(Стоимость)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СтоимостьБезСкидок</dataPath>
+		<expression>Сумма(СтоимостьБезСкидок)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СуммаКомпенсации</dataPath>
+		<expression>Сумма(СуммаКомпенсации)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Количество</dataPath>
+		<expression>Сумма(Количество)</expression>
+	</totalField>
+	<parameter>
+		<name>СкидкаНаценка</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Скидка наценка</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.СкидкиНаценки</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>ВидЦены</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Вид цены</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.ВидыЦен</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Справочник.ВидыЦен.ОптовыеЦены</value>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>СписокКомпенсацииАкция</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Список компенсации акция</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>uk</v8:lang>
+				<v8:content>Основной</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Количество</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Номенклатура</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>НоменклатураIDN</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>НоменклатураПроизводительIDN</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СкидкаСложнаяДоляКомпенсации</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СкидкаСложнаяПоставщик</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СкидкаСложнаяТипКомпенсации</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СкладМагазин</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Стоимость</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СтоимостьБезСкидок</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СуммаКомпенсации</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>СкидкаНаценка</dcscor:parameter>
+					<dcscor:value xsi:nil="true"/>
+					<dcsset:userSettingID>e133d737-b13f-4be0-b3a3-e11a5abcb5e0</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>Запрос</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЗаказПоставщику</dataPath>
+			<field>ЗаказПоставщику</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заказ поставщику</v8:content>
+				</v8:item>
+			</title>
+			<attributeUseRestriction>
+				<field>true</field>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</attributeUseRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоЗаказанного</dataPath>
+			<field>КоличествоЗаказанного</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Кол-во</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</useRestriction>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧДЦ=3</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоПоступления</dataPath>
+			<field>КоличествоПоступления</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Кол-во</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</useRestriction>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧДЦ=3</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Номенклатура</dataPath>
+			<field>Номенклатура</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номенклатура</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<field>true</field>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</useRestriction>
+			<attributeUseRestriction>
+				<field>true</field>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</attributeUseRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НоменклатураЗаказа</dataPath>
+			<field>НоменклатураЗаказа</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номенклатура</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НоменклатураПоступления</dataPath>
+			<field>НоменклатураПоступления</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номенклатура</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Поступление</dataPath>
+			<field>Поступление</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поступление</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаЗаказанного</dataPath>
+			<field>СуммаЗаказанного</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</useRestriction>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2; ЧРД=,; ЧРГ=' '</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаПоступления</dataPath>
+			<field>СуммаПоступления</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</useRestriction>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2; ЧРД=,; ЧРГ=' '</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ХарактеристикаЗаказа</dataPath>
+			<field>ХарактеристикаЗаказа</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Характеристика</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ХарактеристикаПоступления</dataPath>
+			<field>ХарактеристикаПоступления</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Характеристика</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Характеристика</dataPath>
+			<field>Характеристика</field>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ИтоговаяТаблица.ЗаказПоставщику       КАК ЗаказПоставщику,
+	ИтоговаяТаблица.Поступление           КАК Поступление,
+	ИтоговаяТаблица.Номенклатура          КАК Номенклатура,
+	ИтоговаяТаблица.Характеристика        КАК Характеристика,
+	ВЫБОР	КОГДА ИтоговаяТаблица.ДанныеЗаказа = ИСТИНА
+			ТОГДА ИтоговаяТаблица.Номенклатура
+			ИНАЧЕ NULL
+	КОНЕЦ                                 КАК НоменклатураЗаказа,
+	ВЫБОР	КОГДА ИтоговаяТаблица.ДанныеЗаказа = ИСТИНА
+			ТОГДА ИтоговаяТаблица.Характеристика
+			ИНАЧЕ NULL
+	КОНЕЦ                                 КАК ХарактеристикаЗаказа,
+	ВЫБОР	КОГДА ИтоговаяТаблица.ДанныеПоступления = ИСТИНА
+			ТОГДА ИтоговаяТаблица.Номенклатура
+			ИНАЧЕ NULL
+	КОНЕЦ                                 КАК НоменклатураПоступления,
+	ВЫБОР	КОГДА ИтоговаяТаблица.ДанныеПоступления = ИСТИНА
+			ТОГДА ИтоговаяТаблица.Характеристика
+			ИНАЧЕ NULL
+	КОНЕЦ                                 КАК ХарактеристикаПоступления,
+	ИтоговаяТаблица.КоличествоЗаказанного КАК КоличествоЗаказанного,
+	ИтоговаяТаблица.СуммаЗаказанного      КАК СуммаЗаказанного,
+	ИтоговаяТаблица.КоличествоПоступления КАК КоличествоПоступления,
+	ИтоговаяТаблица.СуммаПоступления      КАК СуммаПоступления
+ИЗ
+	(ВЫБРАТЬ
+		ИтоговаяТаблица.ЗаказПоставщику              КАК ЗаказПоставщику,
+		ИтоговаяТаблица.Поступление                  КАК Поступление,
+		ИтоговаяТаблица.Номенклатура                 КАК Номенклатура,
+		ИтоговаяТаблица.Характеристика               КАК Характеристика,
+		МАКСИМУМ(ИтоговаяТаблица.НомерЗаказа)        КАК НомерЗаказа,
+		МАКСИМУМ(ИтоговаяТаблица.НомерПоступления)   КАК НомерПоступления,
+		СУММА(ИтоговаяТаблица.КоличествоЗаказанного) КАК КоличествоЗаказанного,
+		СУММА(ИтоговаяТаблица.СуммаЗаказанного)      КАК СуммаЗаказанного,
+		СУММА(ИтоговаяТаблица.КоличествоПоступления) КАК КоличествоПоступления,
+		СУММА(ИтоговаяТаблица.СуммаПоступления)      КАК СуммаПоступления,
+		МАКСИМУМ(ИтоговаяТаблица.ДанныеЗаказа)       КАК ДанныеЗаказа,
+		МАКСИМУМ(ИтоговаяТаблица.ДанныеПоступления)  КАК ДанныеПоступления
+	ИЗ
+		(
+		ВЫБРАТЬ
+			ДокументЗаказПоставщику.Ссылка                               КАК ЗаказПоставщику,
+			ДокументЗаказПоставщику.Номер                                КАК НомерЗаказа,
+			ЕСТЬNULL(ПоступлениеТоваров.Ссылка, ЗНАЧЕНИЕ(Документ.ПоступлениеТоваров.ПустаяСсылка)) КАК Поступление,
+			ЕСТЬNULL(ПоступлениеТоваров.Номер, """")                     КАК НомерПоступления,
+			ЗаказПоставщикуТовары.Номенклатура                           КАК Номенклатура,
+			ЗаказПоставщикуТовары.Характеристика                         КАК Характеристика,
+			ЗаказПоставщикуТовары.Количество                             КАК КоличествоЗаказанного,
+			ЗаказПоставщикуТовары.Сумма +
+			ВЫБОР	КОГДА ДокументЗаказПоставщику.ЦенаВключаетНДС
+					ТОГДА 0.00
+					ИНАЧЕ ЗаказПоставщикуТовары.СуммаНДС
+			КОНЕЦ                                                        КАК СуммаЗаказанного,
+			0.00                                                         КАК КоличествоПоступления,
+			0.00                                                         КАК СуммаПоступления,
+			ИСТИНА                                                       КАК ДанныеЗаказа,
+			ЛОЖЬ                                                         КАК ДанныеПоступления
+		ИЗ
+			Документ.ЗаказПоставщику КАК ДокументЗаказПоставщику
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ
+			Документ.ЗаказПоставщику.Товары КАК ЗаказПоставщикуТовары
+		ПО
+			ЗаказПоставщикуТовары.Ссылка = ДокументЗаказПоставщику.Ссылка
+		ЛЕВОЕ СОЕДИНЕНИЕ
+			Документ.ПоступлениеТоваров КАК ПоступлениеТоваров
+		ПО
+			ПоступлениеТоваров.ЗаказПоставщику = ДокументЗаказПоставщику.Ссылка
+			И ПоступлениеТоваров.Проведен
+		ГДЕ
+			ДокументЗаказПоставщику.Ссылка = &amp;ЗаказПоствщику
+			И ДокументЗаказПоставщику.Проведен
+			И ((// Выполненные Поступления по заказу
+				ПоступлениеТоваров.Проведен
+				И ПоступлениеТоваров.ЗаказПоставщику &lt;&gt; ЗНАЧЕНИЕ(Документ.ЗаказПоставщику.ПустаяСсылка))
+				// Нет поступления по заказу
+				ИЛИ ПоступлениеТоваров.Ссылка ЕСТЬ NULL)
+			И // Заказ закрыт без поступления, удаляются из множества
+			НЕ (ДокументЗаказПоставщику.Закрыт И ПоступлениеТоваров.Ссылка ЕСТЬ NULL)
+		
+		ОБЪЕДИНИТЬ ВСЕ
+		/////////////////////////////////////////////////////////
+		// Запрос 2. только по выполненным поставкам по заказу //
+		/////////////////////////////////////////////////////////
+		ВЫБРАТЬ
+			ДокументЗаказПоставщику.Ссылка                               КАК ЗаказПоставщику,
+			ДокументЗаказПоставщику.Номер                                КАК НомерЗаказа,
+			ДокументПоступлениеТоваров.Ссылка                            КАК Поступление,
+			ДокументПоступлениеТоваров.Номер                             КАК НомерПоступления,
+			ПоступлениеТоваровТовары.Номенклатура                        КАК Номенклатура,
+			ПоступлениеТоваровТовары.Характеристика                      КАК Характеристика,
+			0.00                                                         КАК КоличествоЗаказанного,
+			0.00                                                         КАК СуммаЗаказанного,
+			ПоступлениеТоваровТовары.Количество                          КАК КоличествоПоступления,
+			ПоступлениеТоваровТовары.Сумма +
+			ВЫБОР	КОГДА ДокументЗаказПоставщику.ЦенаВключаетНДС
+					ТОГДА 0.00
+					ИНАЧЕ ПоступлениеТоваровТовары.СуммаНДС
+			КОНЕЦ                                                        КАК СуммаПоступления,
+			ЛОЖЬ                                                         КАК ДанныеЗаказа,
+			ИСТИНА                                                       КАК ДанныеПоступления
+		ИЗ
+			Документ.ПоступлениеТоваров КАК ДокументПоступлениеТоваров
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ
+			Документ.ПоступлениеТоваров.Товары КАК ПоступлениеТоваровТовары
+		ПО
+			ПоступлениеТоваровТовары.Ссылка = ДокументПоступлениеТоваров.Ссылка
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ
+			Документ.ЗаказПоставщику КАК ДокументЗаказПоставщику
+		ПО
+			ДокументЗаказПоставщику.Ссылка = ДокументПоступлениеТоваров.ЗаказПоставщику
+		ГДЕ
+			ДокументЗаказПоставщику.Ссылка = &amp;ЗаказПоствщику
+			И ДокументЗаказПоставщику.Проведен
+			И ДокументПоступлениеТоваров.Проведен
+		) КАК ИтоговаяТаблица
+	СГРУППИРОВАТЬ ПО
+		ИтоговаяТаблица.ЗаказПоставщику,
+		ИтоговаяТаблица.Поступление,
+		ИтоговаяТаблица.Номенклатура,
+		ИтоговаяТаблица.Характеристика
+	) КАК ИтоговаяТаблица</query>
+	</dataSet>
+	<totalField>
+		<dataPath>КоличествоЗаказанного</dataPath>
+		<expression>Сумма(КоличествоЗаказанного)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>КоличествоПоступления</dataPath>
+		<expression>Сумма(КоличествоПоступления)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СуммаЗаказанного</dataPath>
+		<expression>Сумма(СуммаЗаказанного)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СуммаПоступления</dataPath>
+		<expression>Сумма(СуммаПоступления)</expression>
+	</totalField>
+	<parameter>
+		<name>ЗаказПоствщику</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Заказ поствщику</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:DocumentRef.ЗаказПоставщику</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Документ.ЗаказПоставщику.ПустаяСсылка</value>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+					<dcsset:title>Показатели заказа</dcsset:title>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>КоличествоЗаказанного</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>СуммаЗаказанного</dcsset:field>
+					</dcsset:item>
+					<dcsset:placement>Auto</dcsset:placement>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+					<dcsset:title>Показатели поступления</dcsset:title>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>КоличествоПоступления</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>СуммаПоступления</dcsset:field>
+					</dcsset:item>
+					<dcsset:placement>Auto</dcsset:placement>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МакетОформления</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">Основной</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Заголовок</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">Состав заказа и соответствующей поставки</dcscor:value>
+				</dcscor:item>
+			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>НоменклатураЗаказа</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ХарактеристикаЗаказа</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>НоменклатураПоступления</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ХарактеристикаПоступления</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+						<dcsset:title>Номенклатура заказа</dcsset:title>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>НоменклатураЗаказа</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>ХарактеристикаЗаказа</dcsset:field>
+						</dcsset:item>
+						<dcsset:placement>Auto</dcsset:placement>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+						<dcsset:title>Номенклатура поступления</dcsset:title>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>НоменклатураПоступления</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>ХарактеристикаПоступления</dcsset:field>
+						</dcsset:item>
+						<dcsset:placement>Auto</dcsset:placement>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+						<dcsset:title>Показатели заказа</dcsset:title>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>КоличествоЗаказанного</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>СуммаЗаказанного</dcsset:field>
+						</dcsset:item>
+						<dcsset:placement>Auto</dcsset:placement>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+						<dcsset:title>Показатели Поступления</dcsset:title>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>КоличествоПоступления</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>СуммаПоступления</dcsset:field>
+						</dcsset:item>
+						<dcsset:placement>Auto</dcsset:placement>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:conditionalAppearance>
+					<dcsset:item>
+						<dcsset:selection>
+							<dcsset:item>
+								<dcsset:field>НоменклатураЗаказа</dcsset:field>
+							</dcsset:item>
+							<dcsset:item>
+								<dcsset:field>НоменклатураПоступления</dcsset:field>
+							</dcsset:item>
+							<dcsset:item>
+								<dcsset:field>ХарактеристикаЗаказа</dcsset:field>
+							</dcsset:item>
+							<dcsset:item>
+								<dcsset:field>ХарактеристикаПоступления</dcsset:field>
+							</dcsset:item>
+							<dcsset:item>
+								<dcsset:field>КоличествоЗаказанного</dcsset:field>
+							</dcsset:item>
+							<dcsset:item>
+								<dcsset:field>КоличествоПоступления</dcsset:field>
+							</dcsset:item>
+							<dcsset:item>
+								<dcsset:field>СуммаЗаказанного</dcsset:field>
+							</dcsset:item>
+							<dcsset:item>
+								<dcsset:field>СуммаПоступления</dcsset:field>
+							</dcsset:item>
+						</dcsset:selection>
+						<dcsset:filter>
+							<dcsset:item xsi:type="dcsset:FilterItemGroup">
+								<dcsset:groupType>OrGroup</dcsset:groupType>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">КоличествоЗаказанного</dcsset:left>
+									<dcsset:comparisonType>NotEqual</dcsset:comparisonType>
+									<dcsset:right xsi:type="dcscor:Field">КоличествоПоступления</dcsset:right>
+								</dcsset:item>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">СуммаЗаказанного</dcsset:left>
+									<dcsset:comparisonType>NotEqual</dcsset:comparisonType>
+									<dcsset:right xsi:type="dcscor:Field">СуммаПоступления</dcsset:right>
+								</dcsset:item>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:FilterItemGroup">
+								<dcsset:groupType>AndGroup</dcsset:groupType>
+								<dcsset:item xsi:type="dcsset:FilterItemGroup">
+									<dcsset:groupType>OrGroup</dcsset:groupType>
+									<dcsset:item xsi:type="dcsset:FilterItemComparison">
+										<dcsset:left xsi:type="dcscor:Field">НоменклатураЗаказа</dcsset:left>
+										<dcsset:comparisonType>Equal</dcsset:comparisonType>
+										<dcsset:right xsi:type="dcscor:Field">НоменклатураЗаказа</dcsset:right>
+									</dcsset:item>
+									<dcsset:item xsi:type="dcsset:FilterItemComparison">
+										<dcsset:left xsi:type="dcscor:Field">НоменклатураПоступления</dcsset:left>
+										<dcsset:comparisonType>Equal</dcsset:comparisonType>
+										<dcsset:right xsi:type="dcscor:Field">НоменклатураПоступления</dcsset:right>
+									</dcsset:item>
+									<dcsset:item xsi:type="dcsset:FilterItemComparison">
+										<dcsset:left xsi:type="dcscor:Field">ХарактеристикаЗаказа</dcsset:left>
+										<dcsset:comparisonType>Equal</dcsset:comparisonType>
+										<dcsset:right xsi:type="dcscor:Field">ХарактеристикаЗаказа</dcsset:right>
+									</dcsset:item>
+									<dcsset:item xsi:type="dcsset:FilterItemComparison">
+										<dcsset:left xsi:type="dcscor:Field">ХарактеристикаПоступления</dcsset:left>
+										<dcsset:comparisonType>Equal</dcsset:comparisonType>
+										<dcsset:right xsi:type="dcscor:Field">ХарактеристикаПоступления</dcsset:right>
+									</dcsset:item>
+								</dcsset:item>
+							</dcsset:item>
+						</dcsset:filter>
+						<dcsset:appearance>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>ЦветФона</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:Color">#DDF8DE</dcscor:value>
+							</dcscor:item>
+						</dcsset:appearance>
+					</dcsset:item>
+				</dcsset:conditionalAppearance>
+				<dcsset:outputParameters>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>РасположениеПолейГруппировки</dcscor:parameter>
+						<dcscor:value xsi:type="dcsset:DataCompositionGroupFieldsPlacement">Separately</dcscor:value>
+					</dcscor:item>
+				</dcsset:outputParameters>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

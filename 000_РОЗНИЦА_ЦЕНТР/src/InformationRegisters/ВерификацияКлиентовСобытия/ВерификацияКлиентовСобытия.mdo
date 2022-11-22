@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="47f4a4b9-4807-4720-b6ce-f505ccf2f17a">
+  <producedTypes>
+    <selectionType typeId="78b13fa4-920d-478f-98e2-9133bad68689" valueTypeId="43f54f3b-2211-424e-af92-73b542ae3503"/>
+    <listType typeId="a866ebe8-460f-4063-822e-e163359384bc" valueTypeId="32a2c3d9-ab49-4976-8a16-966c61b37e2b"/>
+    <managerType typeId="15229dcb-d4b4-47f5-a369-e28ca42faf2e" valueTypeId="5700b558-bea8-4319-a508-e055dc07d6ce"/>
+    <recordSetType typeId="30db4c8e-f1cc-4d65-a35d-c1f478a6ebc5" valueTypeId="b51ea9d7-7dff-4683-8dd2-b3f439e65c23"/>
+    <recordKeyType typeId="b4e069a4-dccb-4530-9025-1f26298e2c8d" valueTypeId="1cfe0b30-cc19-4263-b6ff-f664b9f8993c"/>
+    <recordType typeId="c88110fa-909b-4114-8d5a-6787b693d1b5" valueTypeId="afef955b-a055-49d6-ab5f-287bdfa1d07b"/>
+    <recordManagerType typeId="171e28c1-d7fb-4693-9295-7078f015f945" valueTypeId="ec2b3c59-6257-4812-9fcf-28caad228edf"/>
+  </producedTypes>
+  <name>ВерификацияКлиентовСобытия</name>
+  <synonym>
+    <key>ru</key>
+    <value>Верификация клиентов события</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <editType>InDialog</editType>
+  <defaultRecordForm>InformationRegister.ВерификацияКлиентовСобытия.Form.ФормаЗаписи</defaultRecordForm>
+  <defaultListForm>InformationRegister.ВерификацияКлиентовСобытия.Form.ФормаСписка</defaultListForm>
+  <informationRegisterPeriodicity>Second</informationRegisterPeriodicity>
+  <mainFilterOnPeriod>true</mainFilterOnPeriod>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <resources uuid="c895f141-246a-423b-8978-53b758749ca9">
+    <name>Событие</name>
+    <synonym>
+      <key>ru</key>
+      <value>Событие</value>
+    </synonym>
+    <type>
+      <types>EnumRef.СобытияВерификацииПокупателей</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="07137ff4-6f86-4562-9995-28f63e0ca7a3">
+    <name>Количество</name>
+    <synonym>
+      <key>ru</key>
+      <value>Количество</value>
+    </synonym>
+    <comment>Счётчик событий отказа</comment>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>2</precision>
+        <nonNegative>true</nonNegative>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="1eae24e0-b65b-4830-9612-c5584e7ef992">
+    <name>ИнформационнаяКарта</name>
+    <synonym>
+      <key>ru</key>
+      <value>Информационная карта</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ИнформационныеКарты</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <indexing>Index</indexing>
+  </resources>
+  <attributes uuid="2efe21e0-cc45-4e27-b613-31460ddd3a81">
+    <name>ДатаИзменения</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата изменения</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <dimensions uuid="01061f7e-b9f1-46a7-a54c-101650b1d237">
+    <name>Контрагент</name>
+    <synonym>
+      <key>ru</key>
+      <value>Контрагент</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Контрагенты</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="a8d7af80-e8b3-40b4-baf8-75f15f121d96">
+    <name>Нормальный</name>
+    <synonym>
+      <key>ru</key>
+      <value>Нормальный</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Приобретает значение &quot;Ложь&quot; в случае отказа клиента от верификации. После верификации такая запись переписывается в состояние Нормальный = Истина.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <forms uuid="d973822b-fdb9-4c6d-b9c7-0e334ee080b1">
+    <name>ФормаЗаписи</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма записи</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <forms uuid="8ccafa8c-b206-4463-b953-861835e321c0">
+    <name>ФормаСписка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма списка</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <commands uuid="7c4c2c76-7eba-4b87-a51d-ec33618a84f0">
+    <name>ВерификацияКлиентовСобытия</name>
+    <synonym>
+      <key>ru</key>
+      <value>События верификации клиентов</value>
+    </synonym>
+    <group>NavigationPanelImportant</group>
+    <commandParameterType/>
+    <representation>Auto</representation>
+  </commands>
+</mdclass:InformationRegister>

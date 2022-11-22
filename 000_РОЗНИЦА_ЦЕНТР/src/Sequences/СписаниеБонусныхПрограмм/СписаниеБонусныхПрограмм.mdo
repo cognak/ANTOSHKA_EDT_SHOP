@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Sequence xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="b9d71880-0d77-4638-a226-1fa53a687bd6">
+  <producedTypes>
+    <recordType typeId="fce53149-827c-4be1-9c6d-00030d35902b" valueTypeId="2c746fd3-d376-47e9-a7da-d759b658c891"/>
+    <managerType typeId="e032fbee-5da5-415c-8e02-acd542907c56" valueTypeId="a3739202-4d1e-4e97-b861-920a2d38249e"/>
+    <recordSetType typeId="84bac593-c223-4bad-82a2-8924849f7a6a" valueTypeId="91f4d4a4-23ef-467f-92db-fb5d463bc1b3"/>
+  </producedTypes>
+  <name>СписаниеБонусныхПрограмм</name>
+  <synonym>
+    <key>ru</key>
+    <value>Списание бонусных программ</value>
+  </synonym>
+  <comment>Последовательность соблюдается только в Центральном Узле!</comment>
+  <moveBoundaryOnPosting>DontMove</moveBoundaryOnPosting>
+  <documents>Document.ВозвратТоваровОтПокупателя</documents>
+  <documents>Document.НачислениеИСписаниеБонусныхБаллов</documents>
+  <documents>Document.ОтчетОРозничныхПродажах</documents>
+  <documents>Document.РеализацияТоваров</documents>
+  <documents>Document.ЧекККМ</documents>
+  <documents>Document.ЗаказПокупателя</documents>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <dimensions uuid="f99d2fa8-00d0-4a90-9d65-d81276dc2265">
+    <name>Контрагент</name>
+    <synonym>
+      <key>ru</key>
+      <value>Контрагент</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Контрагенты</types>
+      <types>CatalogRef.ФизическиеЛица</types>
+    </type>
+    <documentMap>Document.ВозвратТоваровОтПокупателя.Attribute.ВладелецДисконтнойКарты</documentMap>
+    <documentMap>Document.РеализацияТоваров.Attribute.ВладелецДисконтнойКарты</documentMap>
+    <documentMap>Document.ЧекККМ.Attribute.ВладелецДисконтнойКарты</documentMap>
+  </dimensions>
+</mdclass:Sequence>

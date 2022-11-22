@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="58a91bfb-8168-4f85-83b5-5b9428152489">
+  <producedTypes>
+    <selectionType typeId="4e11cd1d-ac26-45b7-be57-328c51d83d2d" valueTypeId="87528388-20d9-4e7c-911c-fcec0f7d1fbc"/>
+    <listType typeId="8b7d47dc-1815-49fe-8366-992f9f0c98fb" valueTypeId="3c3ca337-1083-4ff7-a9a8-940e22954722"/>
+    <managerType typeId="a4a50ff9-9e3d-4f33-a5d8-0d6fed0621b2" valueTypeId="1b6e1ede-0eb5-4d0d-8231-4f2c4c1bd675"/>
+    <recordSetType typeId="c5ae14b2-8d60-4e10-a59f-18b8ae7cb068" valueTypeId="a4f299c6-e87d-4ae3-ba00-3868ff0006da"/>
+    <recordKeyType typeId="54a9c7e0-a708-436a-a7ce-855ab7258f8d" valueTypeId="229f374c-bbba-4a4f-90d0-91ee6bb77329"/>
+    <recordType typeId="0ac99e1d-525e-4168-968b-cd113ff17790" valueTypeId="815762e2-26aa-4237-8926-4bca954d1f07"/>
+    <recordManagerType typeId="73013f8a-9934-478b-bb25-2a9c16fc6758" valueTypeId="3d6a0a36-8040-4f04-b7e9-d2e50ab08974"/>
+  </producedTypes>
+  <name>ОтложенныеПроцессы</name>
+  <synonym>
+    <key>ru</key>
+    <value>Отложенные процессы (задачи различного характера)</value>
+  </synonym>
+  <editType>InDialog</editType>
+  <defaultRecordForm>InformationRegister.ОтложенныеПроцессы.Form.ФормаЗаписи</defaultRecordForm>
+  <informationRegisterPeriodicity>Second</informationRegisterPeriodicity>
+  <mainFilterOnPeriod>true</mainFilterOnPeriod>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <resources uuid="cdb6772a-3e6e-4549-88da-bb6fb8483cad">
+    <name>ИмяПроцесса</name>
+    <synonym>
+      <key>ru</key>
+      <value>Имя процесса</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>100</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+  </resources>
+  <resources uuid="668555c2-1593-4300-ad20-a39d70cf0787">
+    <name>Идентификатор</name>
+    <synonym>
+      <key>ru</key>
+      <value>Идентификатор</value>
+    </synonym>
+    <comment>Используется как флаг &quot;уже обрабатывался&quot; данным процессом</comment>
+    <type>
+      <types>UUID</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Служит для снижения транзакционной нагрузки при массовых переоценках, выполняемых с помощью отложенных процессов</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="3a8d1ae2-7ece-4fcb-b857-d4c4f3dca793">
+    <name>ДанныеПроцесса</name>
+    <synonym>
+      <key>ru</key>
+      <value>Данные процесса</value>
+    </synonym>
+    <type>
+      <types>ValueStorage</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="51d4d0c6-5d42-4a25-a4aa-f9419bc24ba9">
+    <name>ИнтервалВыполнения</name>
+    <synonym>
+      <key>ru</key>
+      <value>Интервал выполнения</value>
+    </synonym>
+    <comment>Количество секунд, через которое можно повторно выполнить невыполненный процесс</comment>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>6</precision>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="a28f02e2-6742-4ff7-afe4-60749661ce69">
+    <name>ПоследнееВыполнение</name>
+    <synonym>
+      <key>ru</key>
+      <value>Последнее выполнение</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <forms uuid="c0b417cc-bd6e-4365-b7ad-bc5020d97582">
+    <name>ФормаЗаписи</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма записи</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <commands uuid="334014e4-1ec3-4c5b-8940-b42a29244876">
+    <name>ОтложенныеПроцессы</name>
+    <synonym>
+      <key>ru</key>
+      <value>Отложенные процессы</value>
+    </synonym>
+    <group>NavigationPanelOrdinary</group>
+    <commandParameterType/>
+    <representation>Auto</representation>
+  </commands>
+</mdclass:InformationRegister>

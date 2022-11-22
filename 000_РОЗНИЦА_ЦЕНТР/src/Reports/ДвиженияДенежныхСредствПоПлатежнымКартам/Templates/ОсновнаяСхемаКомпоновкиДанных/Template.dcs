@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВидОплаты</dataPath>
+			<field>ВидОплаты</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Документ</dataPath>
+			<field>Документ</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Магазин</dataPath>
+			<field>Магазин</field>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МинимальнаяШирина</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">45</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаВозврат</dataPath>
+			<field>СуммаВозврат</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Возврат, грн.</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2; ЧГ=3,0</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МинимальнаяШирина</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">15</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МаксимальнаяШирина</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">20</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаПродажа</dataPath>
+			<field>СуммаПродажа</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Продажа, грн.</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2; ЧГ=3,0</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МинимальнаяШирина</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">15</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МаксимальнаяШирина</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">20</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДоговорЭквайринга</dataPath>
+			<field>ДоговорЭквайринга</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЭквайринговыйТерминал</dataPath>
+			<field>ЭквайринговыйТерминал</field>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+    ОтчетОРозничныхПродажахОплатаПлатежнымиКартами.ВидОплаты,
+    ОтчетОРозничныхПродажахОплатаПлатежнымиКартами.Сумма,
+    ОтчетОРозничныхПродажахОплатаПлатежнымиКартами.Ссылка КАК Документ,
+    ОтчетОРозничныхПродажахОплатаПлатежнымиКартами.ЭквайринговыйТерминал
+ПОМЕСТИТЬ ДвиженияДСОтчетыОПродажах
+ИЗ
+    Документ.ОтчетОРозничныхПродажах.ОплатаПлатежнымиКартами КАК ОтчетОРозничныхПродажахОплатаПлатежнымиКартами
+ГДЕ
+    ОтчетОРозничныхПродажахОплатаПлатежнымиКартами.Ссылка.Проведен
+{ГДЕ
+    (ОтчетОРозничныхПродажахОплатаПлатежнымиКартами.Ссылка.Дата МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода)}
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+    ЧекККМОплата.ВидОплаты,
+    ЧекККМОплата.Сумма,
+    ЧекККМОплата.Ссылка КАК ДокументПродажи,
+    ЧекККМОплата.ЭквайринговыйТерминал
+ПОМЕСТИТЬ ЧекиККМПродажа
+ИЗ
+    Документ.ЧекККМ.Оплата КАК ЧекККМОплата
+ГДЕ
+    ЧекККМОплата.Ссылка.Проведен
+    И ЧекККМОплата.Ссылка.ВидОперации = ЗНАЧЕНИЕ(Перечисление.ВидыОперацийЧекККМ.Продажа)
+    И ЧекККМОплата.Ссылка.СтатусЧекаККМ = ЗНАЧЕНИЕ(Перечисление.СтатусыЧековККМ.Пробитый)
+    И ЧекККМОплата.ВидОплаты.ТипОплаты = ЗНАЧЕНИЕ(Перечисление.ТипыОплатЧекаККМ.ПлатежнаяКарта)
+{ГДЕ
+    (ЧекККМОплата.Ссылка.Дата МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода)}
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+    ЧекиККМПродажа.ВидОплаты,
+    ЧекиККМПродажа.Сумма,
+    ЧекиККМПродажа.ДокументПродажи КАК Документ,
+    ЧекиККМПродажа.ЭквайринговыйТерминал
+ПОМЕСТИТЬ ЧекиККМ
+ИЗ
+    ЧекиККМПродажа КАК ЧекиККМПродажа
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+    ЧекККМОплата.ВидОплаты,
+    -ЧекККМОплата.Сумма,
+    ЧекККМОплата.Ссылка.ЧекККМПродажа,
+    ЧекККМОплата.ЭквайринговыйТерминал
+ИЗ
+    Документ.ЧекККМ.Оплата КАК ЧекККМОплата
+ГДЕ
+    ЧекККМОплата.Ссылка.Проведен
+    И ЧекККМОплата.Ссылка.ВидОперации = ЗНАЧЕНИЕ(Перечисление.ВидыОперацийЧекККМ.Возврат)
+    И ЧекККМОплата.Ссылка.ЧекККМПродажа В
+            (ВЫБРАТЬ РАЗЛИЧНЫЕ
+                ЧекиККМПродажа.ДокументПродажи
+            ИЗ
+                ЧекиККМПродажа КАК ЧекиККМПродажа)
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+    ОплатаОтПокупателяПлатежнойКартой.ВидОплаты КАК ВидОплаты,
+    ОплатаОтПокупателяПлатежнойКартой.СуммаДокумента КАК Сумма,
+    ОплатаОтПокупателяПлатежнойКартой.Ссылка КАК Документ,
+    ОплатаОтПокупателяПлатежнойКартой.ЭквайринговыйТерминал
+ПОМЕСТИТЬ ЭквайринговыеОперации
+ИЗ
+    Документ.ОплатаОтПокупателяПлатежнойКартой КАК ОплатаОтПокупателяПлатежнойКартой
+ГДЕ
+    ОплатаОтПокупателяПлатежнойКартой.Проведен
+    И ОплатаОтПокупателяПлатежнойКартой.ХозяйственнаяОперация = ЗНАЧЕНИЕ(Перечисление.ХозяйственныеОперации.ПоступлениеОплатыОтКлиента)
+{ГДЕ
+    (ОплатаОтПокупателяПлатежнойКартой.Дата МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода)}
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+    ОплатаОтПокупателяПлатежнойКартой.ВидОплаты КАК ВидОплаты,
+    ОплатаОтПокупателяПлатежнойКартой.СуммаДокумента КАК Сумма,
+    ОплатаОтПокупателяПлатежнойКартой.Ссылка КАК Документ,
+    ОплатаОтПокупателяПлатежнойКартой.ЭквайринговыйТерминал
+ПОМЕСТИТЬ ЭквайринговыеОперацииВозврат
+ИЗ
+    Документ.ОплатаОтПокупателяПлатежнойКартой КАК ОплатаОтПокупателяПлатежнойКартой
+ГДЕ
+    ОплатаОтПокупателяПлатежнойКартой.Проведен
+    И ОплатаОтПокупателяПлатежнойКартой.ХозяйственнаяОперация = ЗНАЧЕНИЕ(Перечисление.ХозяйственныеОперации.ВозвратОплатыКлиенту)
+{ГДЕ
+    (ОплатаОтПокупателяПлатежнойКартой.Дата МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода)}
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+    ДвиженияДСОтчетыОПродажах.ВидОплаты,
+    ДвиженияДСОтчетыОПродажах.Сумма КАК СуммаПродажа,
+    0 КАК СуммаВозврат,
+    ДвиженияДСОтчетыОПродажах.Документ,
+    ДвиженияДСОтчетыОПродажах.Документ.Магазин КАК Магазин,
+    ДвиженияДСОтчетыОПродажах.ЭквайринговыйТерминал
+ПОМЕСТИТЬ Результат
+ИЗ
+    ДвиженияДСОтчетыОПродажах КАК ДвиженияДСОтчетыОПродажах
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+    Чеки.ВидОплаты,
+    Чеки.Сумма,
+    0,
+    Чеки.Документ,
+    Чеки.Документ.Магазин,
+    Чеки.ЭквайринговыйТерминал
+ИЗ
+    (ВЫБРАТЬ
+        ЧекиККМ.ВидОплаты КАК ВидОплаты,
+        СУММА(ЧекиККМ.Сумма) КАК Сумма,
+        ЧекиККМ.Документ КАК Документ,
+        ЧекиККМ.ЭквайринговыйТерминал КАК ЭквайринговыйТерминал
+    ИЗ
+        ЧекиККМ КАК ЧекиККМ
+    
+    СГРУППИРОВАТЬ ПО
+        ЧекиККМ.ВидОплаты,
+        ЧекиККМ.Документ,
+        ЧекиККМ.ЭквайринговыйТерминал) КАК Чеки
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+    ЭквайринговыеОперации.ВидОплаты,
+    ЭквайринговыеОперации.Сумма,
+    0,
+    ЭквайринговыеОперации.Документ,
+    ЭквайринговыеОперации.Документ.Магазин,
+    ЭквайринговыеОперации.ЭквайринговыйТерминал
+ИЗ
+    ЭквайринговыеОперации КАК ЭквайринговыеОперации
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+    ЭквайринговыеОперацииВозврат.ВидОплаты,
+    0,
+    ЭквайринговыеОперацииВозврат.Сумма,
+    ЭквайринговыеОперацииВозврат.Документ,
+    ЭквайринговыеОперацииВозврат.Документ.Магазин,
+    ЭквайринговыеОперацииВозврат.ЭквайринговыйТерминал
+ИЗ
+    ЭквайринговыеОперацииВозврат КАК ЭквайринговыеОперацииВозврат
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+    Результат.ВидОплаты,
+    СУММА(Результат.СуммаПродажа) КАК СуммаПродажа,
+    СУММА(Результат.СуммаВозврат) КАК СуммаВозврат,
+    Результат.Документ,
+    Результат.Магазин,
+    Результат.ЭквайринговыйТерминал,
+    Результат.ЭквайринговыйТерминал.Владелец КАК ДоговорЭквайринга
+ИЗ
+    Результат КАК Результат
+ГДЕ
+    (Результат.СуммаПродажа &lt;&gt; 0
+            ИЛИ Результат.СуммаВозврат &lt;&gt; 0)
+
+СГРУППИРОВАТЬ ПО
+    Результат.ВидОплаты,
+    Результат.Документ,
+    Результат.Магазин,
+    Результат.ЭквайринговыйТерминал,
+    Результат.ЭквайринговыйТерминал.Владелец</query>
+	</dataSet>
+	<calculatedField>
+		<dataPath>Выручка</dataPath>
+		<expression>0</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Выручка, грн.</v8:content>
+			</v8:item>
+		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>Формат</dcscor:parameter>
+				<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2; ЧГ=3,0</dcscor:value>
+			</dcscor:item>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>МинимальнаяШирина</dcscor:parameter>
+				<dcscor:value xsi:type="xs:decimal">15</dcscor:value>
+			</dcscor:item>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>МаксимальнаяШирина</dcscor:parameter>
+				<dcscor:value xsi:type="xs:decimal">20</dcscor:value>
+			</dcscor:item>
+		</appearance>
+	</calculatedField>
+	<totalField>
+		<dataPath>СуммаВозврат</dataPath>
+		<expression>Сумма(СуммаВозврат)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СуммаПродажа</dataPath>
+		<expression>Сумма(СуммаПродажа)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Выручка</dataPath>
+		<expression>Сумма(СуммаПродажа) - Сумма(СуммаВозврат)</expression>
+	</totalField>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаНачала</expression>
+	</parameter>
+	<parameter>
+		<name>КонецПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаОкончания</expression>
+	</parameter>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
+		</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>ДвиженияДенежныхСредствПоПлатежнымКартам</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Движения ДС по платежным картам</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Магазин</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ВидОплаты</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СуммаПродажа</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СуммаВозврат</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Выручка</dcsset:field>
+				</dcsset:item>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:userSettingID>ad91b836-f155-4912-ad77-ce1589e772c6</dcsset:userSettingID>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Магазин</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>284ad5ad-8635-4473-a642-f0379fe72ea0</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:userSettingID>8abe9893-a24c-4e15-940b-3eb73aab1001</dcsset:userSettingID>
+			</dcsset:filter>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Период</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
+					</dcscor:value>
+					<dcsset:userSettingID>000e2edb-b0e2-4e03-8dc4-7d46c8890222</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:order>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:userSettingID>c39423f6-c9e3-43e9-a489-d0efc6d0acf4</dcsset:userSettingID>
+			</dcsset:order>
+			<dcsset:conditionalAppearance>
+				<dcsset:item>
+					<dcsset:selection>
+						<dcsset:item>
+							<dcsset:field>ЭквайринговыйТерминал</dcsset:field>
+						</dcsset:item>
+					</dcsset:selection>
+					<dcsset:filter>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ЭквайринговыйТерминал</dcsset:left>
+							<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+						</dcsset:item>
+					</dcsset:filter>
+					<dcsset:appearance>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>ЦветТекста</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:Color">style:ЦветТекстаОтмененнойСтрокиДокумента</dcscor:value>
+						</dcscor:item>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>Текст</dcscor:parameter>
+							<dcscor:value xsi:type="v8:LocalStringType">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>&lt;терминал не указан&gt;</v8:content>
+								</v8:item>
+							</dcscor:value>
+						</dcscor:item>
+					</dcsset:appearance>
+				</dcsset:item>
+				<dcsset:item>
+					<dcsset:selection>
+						<dcsset:item>
+							<dcsset:field>ДоговорЭквайринга</dcsset:field>
+						</dcsset:item>
+					</dcsset:selection>
+					<dcsset:filter>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ДоговорЭквайринга</dcsset:left>
+							<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+						</dcsset:item>
+					</dcsset:filter>
+					<dcsset:appearance>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>ЦветТекста</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:Color">style:ЦветТекстаОтмененнойСтрокиДокумента</dcscor:value>
+						</dcscor:item>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>Текст</dcscor:parameter>
+							<dcscor:value xsi:type="v8:LocalStringType">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>&lt;терминал не указан&gt;</v8:content>
+								</v8:item>
+							</dcscor:value>
+						</dcscor:item>
+					</dcsset:appearance>
+				</dcsset:item>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:userSettingID>c5d25b29-1de9-4e8f-8881-bcabbe497af5</dcsset:userSettingID>
+			</dcsset:conditionalAppearance>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>РасположениеПолейГруппировки</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionGroupFieldsPlacement">Together</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ГоризонтальноеРасположениеОбщихИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Заголовок</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Движения денежных средств по платежным картам</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Магазин</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>ДоговорЭквайринга</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>ДоговорЭквайринга.Эквайрер</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+					<dcsset:item xsi:type="dcsset:StructureItemGroup">
+						<dcsset:groupItems>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>ЭквайринговыйТерминал</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+						</dcsset:groupItems>
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						</dcsset:selection>
+						<dcsset:item xsi:type="dcsset:StructureItemGroup">
+							<dcsset:groupItems>
+								<dcsset:item xsi:type="dcsset:GroupItemField">
+									<dcsset:field>ВидОплаты</dcsset:field>
+									<dcsset:groupType>Items</dcsset:groupType>
+									<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+									<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+									<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+								</dcsset:item>
+							</dcsset:groupItems>
+							<dcsset:order>
+								<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+							</dcsset:order>
+							<dcsset:selection>
+								<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+							</dcsset:selection>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:item>
+			</dcsset:item>
+			<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+			<dcsset:itemsUserSettingID>13357bd3-7912-4256-a12a-b3ce190485eb</dcsset:itemsUserSettingID>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

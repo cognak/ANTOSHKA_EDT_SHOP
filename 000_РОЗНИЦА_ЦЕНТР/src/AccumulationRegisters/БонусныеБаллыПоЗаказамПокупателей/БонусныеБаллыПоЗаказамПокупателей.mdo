@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:AccumulationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="c59cd4c3-a2ee-4e74-88cd-b11b376d2dc7">
+  <producedTypes>
+    <selectionType typeId="29186ec4-5900-4513-8391-b173714d22f6" valueTypeId="56b36362-f72d-42b6-8dc2-4c9a7d13f8d2"/>
+    <listType typeId="4660e8e1-940b-4e3b-8765-ab59fbcded1b" valueTypeId="e701b41a-eb86-46bf-a595-0a61eb3120a9"/>
+    <managerType typeId="194c3efb-45bf-4cf1-8c9a-5b109c6ba24b" valueTypeId="869fe61a-35d7-4bab-b426-72440ef9e08c"/>
+    <recordSetType typeId="eeed32fc-cabf-460d-915e-02c05390f3be" valueTypeId="d82ed7dc-6507-443e-aeef-a586e821e715"/>
+    <recordKeyType typeId="2145b6b2-297a-4a4d-8e29-22c3fffdf81a" valueTypeId="24ae1201-522d-4584-9d4c-4ccda234f153"/>
+    <recordType typeId="ff1b29a3-307d-4713-9317-2074d14522e5" valueTypeId="f3f200ba-f99b-41d4-a85a-213d0d7975c6"/>
+  </producedTypes>
+  <name>БонусныеБаллыПоЗаказамПокупателей</name>
+  <synonym>
+    <key>ru</key>
+    <value>Бонусные баллы по заказам покупателей</value>
+  </synonym>
+  <comment>Резервирование интернет-магазина</comment>
+  <useStandardCommands>true</useStandardCommands>
+  <defaultListForm>AccumulationRegister.БонусныеБаллыПоЗаказамПокупателей.Form.ФормаСписка</defaultListForm>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <enableTotalsSplitting>true</enableTotalsSplitting>
+  <resources uuid="ec83e14a-f45c-499c-8465-4f15300b4abe">
+    <name>СуммаБонусныхБаллов</name>
+    <synonym>
+      <key>ru</key>
+      <value>Сумма бонусных баллов</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <scale>2</scale>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </resources>
+  <attributes uuid="1928a394-f93d-4112-9a6a-78fafa6ba404">
+    <name>ДатаИзменения</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата изменения</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <indexing>Index</indexing>
+  </attributes>
+  <dimensions uuid="57956715-434d-415d-a79d-478a32b44d9c">
+    <name>Контрагент</name>
+    <synonym>
+      <key>ru</key>
+      <value>Контрагент</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Контрагенты</types>
+      <types>CatalogRef.ФизическиеЛица</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="86ae039a-8ab6-4677-910b-520c95b994e1">
+    <name>ЗаказПокупателя</name>
+    <synonym>
+      <key>ru</key>
+      <value>Заказ покупателя</value>
+    </synonym>
+    <type>
+      <types>DocumentRef.ЗаказПокупателя</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="317686e2-cf2b-47d0-b416-f463cff4b6dc">
+    <name>ПрограммаЛояльности</name>
+    <synonym>
+      <key>ru</key>
+      <value>Программа лояльности</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ПрограммыЛояльности</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <forms uuid="57976cea-a88b-4194-add3-9a78e221a523">
+    <name>ФормаСписка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма списка</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+</mdclass:AccumulationRegister>

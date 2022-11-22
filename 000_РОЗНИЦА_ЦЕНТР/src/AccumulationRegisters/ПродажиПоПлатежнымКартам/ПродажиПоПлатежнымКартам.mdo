@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:AccumulationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="b51da0f1-6755-497e-87ba-b16ed1635a60">
+  <producedTypes>
+    <selectionType typeId="8245b8be-2472-4004-98c8-213e94037008" valueTypeId="e1a38d30-057b-4c67-ab48-f2ed342b6188"/>
+    <listType typeId="d8cba8d3-9266-463d-b224-3d160f099b1d" valueTypeId="73d1a3ee-eb06-479c-afcf-54a6a61b1a88"/>
+    <managerType typeId="17016c85-8600-450e-8892-fa0f9c5db7dc" valueTypeId="782539ed-ff11-4f75-a2b0-d2f1ffaca34c"/>
+    <recordSetType typeId="1463f62b-bbc6-4143-8bfc-079fde296d2f" valueTypeId="13efd50b-1398-4b21-8b7d-2f7ea204446f"/>
+    <recordKeyType typeId="3f40bae5-8e2b-408f-92c6-94923091a0b3" valueTypeId="02b19edc-f699-4eb3-a21b-10d29e0d7a05"/>
+    <recordType typeId="b2a5015e-74ee-4054-aebf-339d8897da22" valueTypeId="a610f4eb-70f8-46d5-8da5-8f481b09ba90"/>
+  </producedTypes>
+  <name>ПродажиПоПлатежнымКартам</name>
+  <synonym>
+    <key>ru</key>
+    <value>Продажи по платежным картам</value>
+  </synonym>
+  <registerType>Turnovers</registerType>
+  <resources uuid="4f254a76-6c56-44e1-84d1-71eb46246ee3">
+    <name>Сумма</name>
+    <synonym>
+      <key>ru</key>
+      <value>Сумма</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <scale>2</scale>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </resources>
+  <resources uuid="db5454f1-d3ab-4d40-94ad-008cc4e97f56">
+    <name>СуммаТорговойУступки</name>
+    <synonym>
+      <key>ru</key>
+      <value>Сумма торговой уступки</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <scale>2</scale>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </resources>
+  <dimensions uuid="5da3090a-23c9-40f7-bdf3-6c8bbb1383c0">
+    <name>ДоговорЭквайринга</name>
+    <synonym>
+      <key>ru</key>
+      <value>Договор эквайринга</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ДоговорыЭквайринга</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="2ae21915-9b38-416f-8e7a-b71a2ee7bc6f">
+    <name>ЭквайринговыйТерминал</name>
+    <synonym>
+      <key>ru</key>
+      <value>Эквайринговый терминал</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ЭквайринговыеТерминалы</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="197e9828-eaaf-49cf-bef1-d6815bbfe2d4">
+    <name>Магазин</name>
+    <synonym>
+      <key>ru</key>
+      <value>Магазин</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Магазины</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="2d013f7a-644f-44ce-8bad-0480ef503fe0">
+    <name>ВидОплаты</name>
+    <synonym>
+      <key>ru</key>
+      <value>Вид оплаты</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ВидыОплатЧекаККМ</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+</mdclass:AccumulationRegister>

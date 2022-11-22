@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="8a3f049f-4b3d-4cb8-a96b-4a7ac941e945">
+  <producedTypes>
+    <selectionType typeId="3e3eaca7-de1a-4f5c-959b-bcb4abc0a61d" valueTypeId="421f9e7a-9492-4833-a8d7-42faba0b6a4f"/>
+    <listType typeId="9dc78e82-2aa5-4242-a913-30f75c632a7d" valueTypeId="4a0472bc-76f8-4192-97ce-1f08e5d1bdbd"/>
+    <managerType typeId="847a244b-ae0c-4317-884a-b91f09badc0c" valueTypeId="ac43cc1b-2013-478d-a97c-c30ef49bc93a"/>
+    <recordSetType typeId="72a8b092-212a-49ac-9436-63d4f27c038f" valueTypeId="ed323f54-641d-4113-969e-381d73f8561d"/>
+    <recordKeyType typeId="f2f5a0de-4ed4-4b4e-8312-9c8647247bb2" valueTypeId="ef729ae6-8162-474d-a968-4376ac72eccd"/>
+    <recordType typeId="72d1001e-bc31-4447-a93d-8229a1b69cc6" valueTypeId="20e17044-4b64-4a6c-9f89-22aa5510ec3b"/>
+    <recordManagerType typeId="7da09d90-e080-458a-9b08-3f5c9b9decf1" valueTypeId="3d09a29a-b267-4397-a99b-2629ac86be4e"/>
+  </producedTypes>
+  <name>ОрганизацииПодразделений</name>
+  <synonym>
+    <key>ru</key>
+    <value>Организации подразделений</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <editType>InDialog</editType>
+  <informationRegisterPeriodicity>Day</informationRegisterPeriodicity>
+  <mainFilterOnPeriod>true</mainFilterOnPeriod>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <resources uuid="e7398cb1-234a-4b57-97a5-dd09019d6b36">
+    <name>Организация</name>
+    <synonym>
+      <key>ru</key>
+      <value>Организация</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Организации</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <dimensions uuid="0b6f5274-9295-4bc7-852a-3f6b50f38c3f">
+    <name>Владелец</name>
+    <synonym>
+      <key>ru</key>
+      <value>Владелец</value>
+    </synonym>
+    <comment>строка для обеспечения множественного типа... временно</comment>
+    <type>
+      <types>String</types>
+      <types>CatalogRef.Магазины</types>
+      <stringQualifiers>
+        <length>10</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+</mdclass:InformationRegister>

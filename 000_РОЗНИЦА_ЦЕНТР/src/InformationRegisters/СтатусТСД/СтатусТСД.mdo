@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="351bc66a-a0c1-4ece-bf0e-7e7dcea3dd23">
+  <producedTypes>
+    <selectionType typeId="79f5c21f-8eb4-47a6-85f4-e5e9a8233e25" valueTypeId="7b33bcad-c29f-4d21-a762-2807bbac6dbf"/>
+    <listType typeId="164ed031-2050-41f8-9c0a-419d28615e12" valueTypeId="9184f5e5-040e-48c0-b194-513c2d160cde"/>
+    <managerType typeId="c3739741-d9e6-4186-8b9d-3c14a9280cb9" valueTypeId="6e5044c5-5e12-4bca-a69f-3d77dcb17372"/>
+    <recordSetType typeId="3a6d7fd0-4039-4b33-b39f-6b3182b45899" valueTypeId="597cf089-4e39-4823-8453-4deb5f8ccc08"/>
+    <recordKeyType typeId="a7835787-8ca1-413a-aa72-17b78c16f6a0" valueTypeId="f202b9d2-1b50-40ba-bd69-e4341eeb92ba"/>
+    <recordType typeId="de2a9618-25bf-4934-b56b-ac2bba1562e9" valueTypeId="f55de306-742b-473c-a8c2-03a8f43163cc"/>
+    <recordManagerType typeId="2b84a756-e726-4790-9d54-207128c38fe8" valueTypeId="b28d917f-27a0-495a-b2b7-d7ea99f89298"/>
+  </producedTypes>
+  <name>СтатусТСД</name>
+  <synonym>
+    <key>ru</key>
+    <value>СтатусТСД</value>
+  </synonym>
+  <editType>InDialog</editType>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <resources uuid="d03590bc-9686-4641-be81-e3a6ba9795dd">
+    <name>СтатусТСД</name>
+    <synonym>
+      <key>ru</key>
+      <value>Статус ТСД</value>
+    </synonym>
+    <comment>Признак акционной цены</comment>
+    <type>
+      <types>EnumRef.СтатусДокТСД</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Цена является акционной - никаких скидок на эту цену не начисляется</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="2a889875-722f-4cb9-bc02-d4575fb51c7f">
+    <name>Проект</name>
+    <synonym>
+      <key>ru</key>
+      <value>Проект</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ВидыНоменклатуры</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <attributes uuid="60088509-2062-40db-906a-6ec70ba46018">
+    <name>ВремяИзменения</name>
+    <synonym>
+      <key>ru</key>
+      <value>Время изменения</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <dimensions uuid="5bb84b86-9179-498a-bff4-ed3c40af3200">
+    <name>Магазин</name>
+    <synonym>
+      <key>ru</key>
+      <value>Магазин</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Магазины</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Магазин, в котором применены цены</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="d44e25ab-f13e-410d-adb5-7dcad90a2223">
+    <name>Объект</name>
+    <synonym>
+      <key>ru</key>
+      <value>Объект</value>
+    </synonym>
+    <type>
+      <types>DocumentRef.ПереоценкаТоваровНаСкладах</types>
+      <types>DocumentRef.ПеремещениеТоваров</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Номенклатура, цены которой были применены</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+</mdclass:InformationRegister>

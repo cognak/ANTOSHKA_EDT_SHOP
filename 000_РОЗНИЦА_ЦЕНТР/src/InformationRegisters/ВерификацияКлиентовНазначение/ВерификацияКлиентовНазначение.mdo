@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="0b0b05b9-0462-4f8f-ae62-aa5caa1a9bd6">
+  <producedTypes>
+    <selectionType typeId="b57150d2-a5c2-41f2-bd44-7762f3edc679" valueTypeId="d7c293de-5842-4dba-a246-8b02a991c904"/>
+    <listType typeId="19c94e56-57cc-4d80-9110-339ce28c4cb9" valueTypeId="4bacf62a-f7cf-4c87-9f9a-b02a9e9ab3f5"/>
+    <managerType typeId="a0fc1195-161f-4ca7-945e-b788f56aae73" valueTypeId="cc58916c-1fdf-4c7c-b4f0-af954be39cb8"/>
+    <recordSetType typeId="30e34d2e-41be-46eb-926b-0d16e26e3ccc" valueTypeId="6f736186-8c9a-438c-a38d-aa9f7f2888be"/>
+    <recordKeyType typeId="c2bbd8b0-cc1e-487b-9475-99c20fb3ef96" valueTypeId="10e9d0fd-5d25-487f-a9a1-983e93e7be67"/>
+    <recordType typeId="ebcdf554-5fa4-4b47-838e-a0b13c73a345" valueTypeId="27908fab-574e-4947-b86e-35677bc58c81"/>
+    <recordManagerType typeId="f46f66b0-cebf-4a25-bb96-3a974e59ec37" valueTypeId="9d2b8193-ebd9-44d2-9a16-036c4016b060"/>
+  </producedTypes>
+  <name>ВерификацияКлиентовНазначение</name>
+  <synonym>
+    <key>ru</key>
+    <value>Верификация клиентов назначение</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <editType>InDialog</editType>
+  <defaultRecordForm>InformationRegister.ВерификацияКлиентовНазначение.Form.ФормаЗаписи</defaultRecordForm>
+  <informationRegisterPeriodicity>Day</informationRegisterPeriodicity>
+  <mainFilterOnPeriod>true</mainFilterOnPeriod>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <resources uuid="8d97a0bd-503a-4200-bb98-ab937c24415d">
+    <name>ВидВерификации</name>
+    <synonym>
+      <key>ru</key>
+      <value>Вид верификации</value>
+    </synonym>
+    <type>
+      <types>EnumRef.ВидыВерификацииПокупателей</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <attributes uuid="309b5e7c-1060-4972-a232-43b1dd1ad266">
+    <name>ДатаИзменения</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата изменения</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <indexing>Index</indexing>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <dimensions uuid="f49b918a-055d-4a9a-aef2-ecd592890f6a">
+    <name>Контрагент</name>
+    <synonym>
+      <key>ru</key>
+      <value>Контрагент</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Контрагенты</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <forms uuid="c6e06fce-a913-4762-b87e-9cc0f11b0af3">
+    <name>ФормаЗаписи</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма записи</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+</mdclass:InformationRegister>

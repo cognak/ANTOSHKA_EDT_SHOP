@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:EventSubscription xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="2cd6a644-51c6-4ee8-bfea-52a6867ff8c4">
+  <name>ПоРабочемуМестуЗарегистрироватьИзменениеДокумента</name>
+  <synonym>
+    <key>ru</key>
+    <value>По рабочему месту зарегистрировать изменение документа</value>
+  </synonym>
+  <source>
+    <types>DocumentObject.ЧекККМ</types>
+    <types>DocumentObject.КассовыйДень</types>
+    <types>DocumentObject.ЗакрытиеЛистаЖеланий</types>
+    <types>DocumentObject.РасходныйКассовыйОрдер</types>
+    <types>DocumentObject.ЗакрытиеЗаказовПокупателей</types>
+    <types>DocumentObject.УстановкаКвотАссортимента</types>
+    <types>DocumentObject.КорректировкаЛистаЖеланий</types>
+    <types>DocumentObject.ВыемкаДенежныхСредствИзКассыККМ</types>
+    <types>DocumentObject.ОтчетОРозничныхПродажах</types>
+    <types>DocumentObject.ЗаказПокупателя</types>
+    <types>DocumentObject.МотивационнаяПрограмма</types>
+    <types>DocumentObject.ИзменениеАссортимента</types>
+    <types>DocumentObject.КассоваяСмена</types>
+    <types>DocumentObject.ЛистЖеланий</types>
+    <types>DocumentObject.ПриходныйКассовыйОрдер</types>
+    <types>DocumentObject.ВнесениеДенежныхСредствВКассуККМ</types>
+  </source>
+  <event>BeforeWrite</event>
+  <handler>CommonModule.ОбменДаннымиСобытияРТ.ОбменДаннымиПоРабочемуМестуПередЗаписьюДокумента</handler>
+</mdclass:EventSubscription>

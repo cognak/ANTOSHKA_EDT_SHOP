@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:AccumulationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="5c967116-511d-4f4d-be89-dbfba4350bfb">
+  <producedTypes>
+    <selectionType typeId="37ba9e11-afeb-40b7-a3db-2d1314e3934b" valueTypeId="add2a283-0056-4c2e-8008-8bc05d70a1c8"/>
+    <listType typeId="2aa2e3e0-63e7-43d7-a54a-fffe3b617187" valueTypeId="b08da75f-5085-4a49-b2d5-c7a94ae554d4"/>
+    <managerType typeId="2740b86c-4083-4d2f-9d2f-535356233694" valueTypeId="cff1adb7-3f11-4e45-8b88-e28146437a03"/>
+    <recordSetType typeId="c965cddf-f024-4197-b81d-fd472d43192d" valueTypeId="b381c1f4-858a-4b39-819a-849c3feb8f15"/>
+    <recordKeyType typeId="0637a5b3-156b-45d1-84d1-57e39a985877" valueTypeId="438dd622-2457-4b3d-9a67-658ef43979e8"/>
+    <recordType typeId="d16ca826-1844-476a-a0c2-b8cd40a4eca3" valueTypeId="e64e2e0a-483a-41d8-b1ad-97803a12fc78"/>
+  </producedTypes>
+  <name>ЛимитыРучныхСкидокМагазины</name>
+  <synonym>
+    <key>ru</key>
+    <value>Лимиты ручных скидок по магазинам</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <enableTotalsSplitting>true</enableTotalsSplitting>
+  <resources uuid="ce6f9846-9f21-40f8-ba1f-71df1fe22aad">
+    <name>Сумма</name>
+    <synonym>
+      <key>ru</key>
+      <value>Сумма</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <scale>2</scale>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </resources>
+  <attributes uuid="f8cd7aac-f640-4734-850a-08ecf853cf16">
+    <name>ДатаИзменения</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата изменения</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </attributes>
+  <attributes uuid="0963f810-81a4-4119-8547-4c5971c609a9">
+    <name>Пользователь</name>
+    <synonym>
+      <key>ru</key>
+      <value>Пользователь</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Пользователи</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </attributes>
+  <dimensions uuid="919ef1fa-b664-4232-ad33-28efe349b6aa">
+    <name>ПериодЛимита</name>
+    <synonym>
+      <key>ru</key>
+      <value>Период лимита</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers>
+        <dateFractions>Date</dateFractions>
+      </dateQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="c91b843d-c70a-4e08-90c5-699c66ff8049">
+    <name>ПричинаРучнойСкидки</name>
+    <synonym>
+      <key>ru</key>
+      <value>Причина ручной скидки</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ПричиныРучнойСкидки</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="872e09aa-60a7-4a42-a365-5243fa00a69e">
+    <name>Магазин</name>
+    <synonym>
+      <key>ru</key>
+      <value>Магазин</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Магазины</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+</mdclass:AccumulationRegister>

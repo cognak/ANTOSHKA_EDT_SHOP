@@ -1,0 +1,829 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Магазин</dataPath>
+			<field>Магазин</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Магазин</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Номенклатура</dataPath>
+			<field>Номенклатура</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номенклатура</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Характеристика</dataPath>
+			<field>Характеристика</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АналитикаХозяйственнойОперации</dataPath>
+			<field>АналитикаХозяйственнойОперации</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Поставщик</dataPath>
+			<field>Поставщик</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>[Розничная цена]</dataPath>
+			<field>Цена</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущая розничная цена, грн.</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧДЦ='2'</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоПоступления</dataPath>
+			<field>КоличествоПоступления</field>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧДЦ=3</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МинимальнаяШирина</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">14</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаПоступления</dataPath>
+			<field>СуммаПоступления</field>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧДЦ=2</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МинимальнаяШирина</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">14</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоВозврат</dataPath>
+			<field>КоличествоВозврат</field>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧДЦ=3</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МинимальнаяШирина</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">14</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаВозврат</dataPath>
+			<field>СуммаВозврат</field>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧДЦ=2</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МинимальнаяШирина</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">14</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ЗакупкиТоваровОбороты.Магазин КАК Магазин,
+	ЗакупкиТоваровОбороты.Поставщик КАК Поставщик,
+	ЗакупкиТоваровОбороты.АналитикаХозяйственнойОперации КАК АналитикаХозяйственнойОперации,
+	ЗакупкиТоваровОбороты.Номенклатура КАК Номенклатура,
+	ЗакупкиТоваровОбороты.Характеристика КАК Характеристика,
+	ЗакупкиТоваровОбороты.Номенклатура.ЦеноваяГруппа КАК ЦеноваяГруппа,
+	СУММА(ВЫБОР
+			КОГДА ЗакупкиТоваровОбороты.АналитикаХозяйственнойОперации = ЗНАЧЕНИЕ(Справочник.АналитикаХозяйственныхОпераций.ПоступлениеТоваров)
+				ТОГДА ЗакупкиТоваровОбороты.СуммаОборот
+			ИНАЧЕ 0
+		КОНЕЦ) КАК СуммаПоступления,
+	СУММА(ВЫБОР
+			КОГДА ЗакупкиТоваровОбороты.АналитикаХозяйственнойОперации.ХозяйственнаяОперация = ЗНАЧЕНИЕ(Перечисление.ХозяйственныеОперации.ВозвратПоставщику)
+				ТОГДА -ЗакупкиТоваровОбороты.СуммаОборот
+			ИНАЧЕ 0
+		КОНЕЦ) КАК СуммаВозврата,
+	СУММА(ВЫБОР
+			КОГДА ЗакупкиТоваровОбороты.АналитикаХозяйственнойОперации = ЗНАЧЕНИЕ(Справочник.АналитикаХозяйственныхОпераций.ПоступлениеТоваров)
+				ТОГДА ЗакупкиТоваровОбороты.КоличествоОборот
+			ИНАЧЕ 0
+		КОНЕЦ) КАК КоличествоПоступления,
+	СУММА(ВЫБОР
+			КОГДА ЗакупкиТоваровОбороты.АналитикаХозяйственнойОперации.ХозяйственнаяОперация = ЗНАЧЕНИЕ(Перечисление.ХозяйственныеОперации.ВозвратПоставщику)
+				ТОГДА -ЗакупкиТоваровОбороты.КоличествоОборот
+			ИНАЧЕ 0
+		КОНЕЦ) КАК КоличествоВозврата
+ПОМЕСТИТЬ ЗакупкиВозвраты
+ИЗ
+	РегистрНакопления.ЗакупкиТоваров.Обороты({(&amp;НачалоПериода)}, {(&amp;КонецПериода)}, Регистратор, {(ВЫБОР
+			    КОГДА АналитикаХозяйственнойОперации
+			        ТОГДА ИСТИНА
+			КОНЕЦ) КАК АналитикаХозяйственнойОперации}) КАК ЗакупкиТоваровОбороты
+{ГДЕ
+	(ВЫБОР
+			КОГДА ЗакупкиТоваровОбороты.АналитикаХозяйственнойОперации
+				ТОГДА ИСТИНА
+		КОНЕЦ) КАК АналитикаХозяйственнойОперации}
+
+СГРУППИРОВАТЬ ПО
+	ЗакупкиТоваровОбороты.Характеристика,
+	ЗакупкиТоваровОбороты.Поставщик,
+	ЗакупкиТоваровОбороты.Номенклатура,
+	ЗакупкиТоваровОбороты.Магазин,
+	ЗакупкиТоваровОбороты.АналитикаХозяйственнойОперации,
+	ЗакупкиТоваровОбороты.Номенклатура.ЦеноваяГруппа
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	Магазины.Ссылка КАК Магазин
+ПОМЕСТИТЬ втМагазиныСПрименениемЦен
+ИЗ
+	Справочник.Магазины КАК Магазины
+ГДЕ
+	&amp;ИспользоватьПрименениеЦен
+	И Магазины.ИспользоватьПрименениеЦен
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	Магазины.Ссылка КАК Магазин,
+	Магазины.ФорматМагазина КАК ФорматМагазина
+ПОМЕСТИТЬ втМагазиныСАссортиментом
+ИЗ
+	Справочник.Магазины КАК Магазины
+ГДЕ
+	Магазины.КонтролироватьАссортимент
+	И НЕ(&amp;ИспользоватьПрименениеЦен
+				И Магазины.ИспользоватьПрименениеЦен)
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	Магазины.Ссылка КАК Магазин,
+	Магазины.ПравилоЦенообразования КАК ПравилоЦенообразования,
+	Магазины.ПравилоЦенообразования.ВидЦен КАК ВидЦены
+ПОМЕСТИТЬ втМагазиныОбычные
+ИЗ
+	Справочник.Магазины КАК Магазины
+ГДЕ
+	НЕ Магазины.КонтролироватьАссортимент
+	И НЕ(&amp;ИспользоватьПрименениеЦен
+				И Магазины.ИспользоватьПрименениеЦен)
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	МагазиныОбычные.Магазин КАК Магазин,
+	ПравилаЦенообразованияЦеновыеГруппы.ЦеноваяГруппа КАК ЦеноваяГруппа,
+	ПравилаЦенообразованияЦеновыеГруппы.ВидЦен КАК ВидЦены
+ПОМЕСТИТЬ втПравилаОбычныхМагазинов
+ИЗ
+	Справочник.ПравилаЦенообразования.ЦеновыеГруппы КАК ПравилаЦенообразованияЦеновыеГруппы
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ втМагазиныОбычные КАК МагазиныОбычные
+		ПО (МагазиныОбычные.ПравилоЦенообразования = ПравилаЦенообразованияЦеновыеГруппы.Ссылка)
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ЗакупкиВозвраты.Магазин КАК Магазин,
+	ИСТИНА КАК ИспользоватьПрименениеЦен,
+	ЗакупкиВозвраты.Номенклатура КАК Номенклатура,
+	ЗакупкиВозвраты.Характеристика КАК Характеристика,
+	ЗакупкиВозвраты.ЦеноваяГруппа КАК ЦеноваяГруппа,
+	ЗНАЧЕНИЕ(Справочник.ВидыЦен.ПустаяСсылка) КАК ВидЦен,
+	ЗакупкиВозвраты.СуммаПоступления КАК СуммаПоступления,
+	ЗакупкиВозвраты.СуммаВозврата КАК СуммаВозврата,
+	ЗакупкиВозвраты.КоличествоПоступления КАК КоличествоПоступления,
+	ЗакупкиВозвраты.КоличествоВозврата КАК КоличествоВозврата,
+	ЗакупкиВозвраты.АналитикаХозяйственнойОперации КАК АналитикаХозяйственнойОперации,
+	ЗакупкиВозвраты.Поставщик КАК Поставщик
+ПОМЕСТИТЬ ЗакупкиВозвратыВидыЦен
+ИЗ
+	ЗакупкиВозвраты КАК ЗакупкиВозвраты
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ втМагазиныСПрименениемЦен КАК МагазиныСПрименениемЦен
+		ПО (МагазиныСПрименениемЦен.Магазин = ЗакупкиВозвраты.Магазин)
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ЗакупкиВозвраты.Магазин,
+	ЛОЖЬ,
+	ЗакупкиВозвраты.Номенклатура,
+	ЗакупкиВозвраты.Характеристика,
+	ЗакупкиВозвраты.ЦеноваяГруппа,
+	ЕСТЬNULL(ПравилаОбычныхМагазинов.ВидЦены, МагазиныОбычные.ВидЦены),
+	ЗакупкиВозвраты.СуммаПоступления,
+	ЗакупкиВозвраты.СуммаВозврата,
+	ЗакупкиВозвраты.КоличествоПоступления,
+	ЗакупкиВозвраты.КоличествоВозврата,
+	ЗакупкиВозвраты.АналитикаХозяйственнойОперации,
+	ЗакупкиВозвраты.Поставщик
+ИЗ
+	ЗакупкиВозвраты КАК ЗакупкиВозвраты
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ втМагазиныОбычные КАК МагазиныОбычные
+		ПО (МагазиныОбычные.Магазин = ЗакупкиВозвраты.Магазин)
+		ЛЕВОЕ СОЕДИНЕНИЕ втПравилаОбычныхМагазинов КАК ПравилаОбычныхМагазинов
+		ПО (ПравилаОбычныхМагазинов.ЦеноваяГруппа = ЗакупкиВозвраты.ЦеноваяГруппа)
+			И (ПравилаОбычныхМагазинов.Магазин = МагазиныОбычные.Магазин)
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ЗакупкиВозвраты.Магазин,
+	ЛОЖЬ,
+	ЗакупкиВозвраты.Номенклатура,
+	ЗакупкиВозвраты.Характеристика,
+	ЗакупкиВозвраты.ЦеноваяГруппа,
+	ЕСТЬNULL(Ассортимент.ВидЦен, ЗНАЧЕНИЕ(Справочник.ВидыЦен.ПустаяСсылка)),
+	ЗакупкиВозвраты.СуммаПоступления,
+	ЗакупкиВозвраты.СуммаВозврата,
+	ЗакупкиВозвраты.КоличествоПоступления,
+	ЗакупкиВозвраты.КоличествоВозврата,
+	ЗакупкиВозвраты.АналитикаХозяйственнойОперации,
+	ЗакупкиВозвраты.Поставщик
+ИЗ
+	ЗакупкиВозвраты КАК ЗакупкиВозвраты
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ втМагазиныСАссортиментом КАК МагазиныСАссортиментом
+		ПО (МагазиныСАссортиментом.Магазин = ЗакупкиВозвраты.Магазин)
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.Ассортимент.СрезПоследних(КОНЕЦПЕРИОДА(&amp;КонецПериода, ДЕНЬ), ) КАК Ассортимент
+		ПО (Ассортимент.Номенклатура = ЗакупкиВозвраты.Номенклатура)
+			И (Ассортимент.ОбъектПланирования = МагазиныСАссортиментом.ФорматМагазина)
+
+ИНДЕКСИРОВАТЬ ПО
+	Номенклатура,
+	Характеристика,
+	ВидЦен
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ЗакупкиВозвратыВидыЦен.Магазин,
+	ЗакупкиВозвратыВидыЦен.Номенклатура,
+	ЗакупкиВозвратыВидыЦен.Характеристика,
+	СУММА(ЗакупкиВозвратыВидыЦен.СуммаПоступления) КАК СуммаПоступления,
+	СУММА(ЗакупкиВозвратыВидыЦен.СуммаВозврата) КАК СуммаВозврата,
+	СУММА(ЗакупкиВозвратыВидыЦен.КоличествоПоступления) КАК КоличествоПоступления,
+	СУММА(ЗакупкиВозвратыВидыЦен.КоличествоВозврата) КАК КоличествоВозврата,
+	ЕСТЬNULL(ВЫБОР
+			КОГДА ЗакупкиВозвратыВидыЦен.ИспользоватьПрименениеЦен
+				ТОГДА ВЫБОР
+						КОГДА ДействующиеЦеныНоменклатурыСрезПоследних.Упаковка = ЗНАЧЕНИЕ(Справочник.УпаковкиНоменклатуры.ПустаяСсылка)
+							ТОГДА ДействующиеЦеныНоменклатурыСрезПоследних.Цена
+						ИНАЧЕ ДействующиеЦеныНоменклатурыСрезПоследних.Цена / ДействующиеЦеныНоменклатурыСрезПоследних.Упаковка.Коэффициент
+					КОНЕЦ
+			ИНАЧЕ ВЫБОР
+					КОГДА ЦеныНоменклатурыСрезПоследних.Упаковка = ЗНАЧЕНИЕ(Справочник.УпаковкиНоменклатуры.ПустаяСсылка)
+						ТОГДА ЦеныНоменклатурыСрезПоследних.Цена
+					ИНАЧЕ ЦеныНоменклатурыСрезПоследних.Цена / ЦеныНоменклатурыСрезПоследних.Упаковка.Коэффициент
+				КОНЕЦ
+		КОНЕЦ, 0) КАК Цена,
+	ЗакупкиВозвратыВидыЦен.АналитикаХозяйственнойОперации,
+	ЗакупкиВозвратыВидыЦен.Поставщик
+ПОМЕСТИТЬ Результат
+ИЗ
+	ЗакупкиВозвратыВидыЦен КАК ЗакупкиВозвратыВидыЦен
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ЦеныНоменклатуры.СрезПоследних(
+				,
+				(ВидЦены, Номенклатура, Характеристика) В
+					(ВЫБРАТЬ РАЗЛИЧНЫЕ
+						ЗакупкиВозвратыВидыЦен.ВидЦен,
+						ЗакупкиВозвратыВидыЦен.Номенклатура,
+						ЗакупкиВозвратыВидыЦен.Характеристика
+					ИЗ
+						ЗакупкиВозвратыВидыЦен КАК ЗакупкиВозвратыВидыЦен)) КАК ЦеныНоменклатурыСрезПоследних
+		ПО ЗакупкиВозвратыВидыЦен.Номенклатура = ЦеныНоменклатурыСрезПоследних.Номенклатура
+			И ЗакупкиВозвратыВидыЦен.Характеристика = ЦеныНоменклатурыСрезПоследних.Характеристика
+			И ЗакупкиВозвратыВидыЦен.ВидЦен = ЦеныНоменклатурыСрезПоследних.ВидЦены
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ДействующиеЦеныНоменклатуры.СрезПоследних(
+				,
+				(ОбъектЦенообразования, Номенклатура, Характеристика) В
+					(ВЫБРАТЬ РАЗЛИЧНЫЕ
+						ЗакупкиВозвратыВидыЦен.Магазин,
+						ЗакупкиВозвратыВидыЦен.Номенклатура,
+						ЗакупкиВозвратыВидыЦен.Характеристика
+					ИЗ
+						ЗакупкиВозвратыВидыЦен КАК ЗакупкиВозвратыВидыЦен)) КАК ДействующиеЦеныНоменклатурыСрезПоследних
+		ПО ЗакупкиВозвратыВидыЦен.Номенклатура = ДействующиеЦеныНоменклатурыСрезПоследних.Номенклатура
+			И ЗакупкиВозвратыВидыЦен.Характеристика = ДействующиеЦеныНоменклатурыСрезПоследних.Характеристика
+			И ЗакупкиВозвратыВидыЦен.Магазин = ДействующиеЦеныНоменклатурыСрезПоследних.ОбъектЦенообразования
+
+СГРУППИРОВАТЬ ПО
+	ЗакупкиВозвратыВидыЦен.Характеристика,
+	ЗакупкиВозвратыВидыЦен.Магазин,
+	ЗакупкиВозвратыВидыЦен.Номенклатура,
+	ЗакупкиВозвратыВидыЦен.АналитикаХозяйственнойОперации,
+	ЗакупкиВозвратыВидыЦен.Поставщик,
+	ЕСТЬNULL(ВЫБОР
+			КОГДА ЗакупкиВозвратыВидыЦен.ИспользоватьПрименениеЦен
+				ТОГДА ВЫБОР
+						КОГДА ДействующиеЦеныНоменклатурыСрезПоследних.Упаковка = ЗНАЧЕНИЕ(Справочник.УпаковкиНоменклатуры.ПустаяСсылка)
+							ТОГДА ДействующиеЦеныНоменклатурыСрезПоследних.Цена
+						ИНАЧЕ ДействующиеЦеныНоменклатурыСрезПоследних.Цена / ДействующиеЦеныНоменклатурыСрезПоследних.Упаковка.Коэффициент
+					КОНЕЦ
+			ИНАЧЕ ВЫБОР
+					КОГДА ЦеныНоменклатурыСрезПоследних.Упаковка = ЗНАЧЕНИЕ(Справочник.УпаковкиНоменклатуры.ПустаяСсылка)
+						ТОГДА ЦеныНоменклатурыСрезПоследних.Цена
+					ИНАЧЕ ЦеныНоменклатурыСрезПоследних.Цена / ЦеныНоменклатурыСрезПоследних.Упаковка.Коэффициент
+				КОНЕЦ
+		КОНЕЦ, 0)
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	Закупки.Магазин,
+	Закупки.Поставщик,
+	Закупки.Номенклатура,
+	Закупки.Характеристика,
+	Закупки.АналитикаХозяйственнойОперации,
+	Результат.КоличествоПоступления КАК КоличествоПоступления,
+	Результат.СуммаПоступления КАК СуммаПоступления,
+	Результат.КоличествоВозврата КАК КоличествоВозврат,
+	Результат.СуммаВозврата КАК СуммаВозврат,
+	Результат.Цена КАК Цена
+ИЗ
+	(ВЫБРАТЬ
+		ЗакупкиВозвраты.Магазин КАК Магазин,
+		ЗакупкиВозвраты.Поставщик КАК Поставщик,
+		ЗакупкиВозвраты.Номенклатура КАК Номенклатура,
+		ЗакупкиВозвраты.Характеристика КАК Характеристика,
+		ЗакупкиВозвраты.КоличествоПоступления КАК КоличествоПоступления,
+		ЗакупкиВозвраты.СуммаПоступления КАК СуммаПоступления,
+		АналитикиВозвратов.АналитикаХозяйственнойОперации КАК АналитикаХозяйственнойОперации
+	ИЗ
+		ЗакупкиВозвраты КАК ЗакупкиВозвраты,
+		(ВЫБРАТЬ РАЗЛИЧНЫЕ
+			ЗакупкиВозвраты.АналитикаХозяйственнойОперации КАК АналитикаХозяйственнойОперации
+		ИЗ
+			ЗакупкиВозвраты КАК ЗакупкиВозвраты
+		ГДЕ
+			ЗакупкиВозвраты.АналитикаХозяйственнойОперации.ХозяйственнаяОперация = ЗНАЧЕНИЕ(Перечисление.ХозяйственныеОперации.ВозвратПоставщику)) КАК АналитикиВозвратов
+	ГДЕ
+		ЗакупкиВозвраты.АналитикаХозяйственнойОперации = ЗНАЧЕНИЕ(Справочник.АналитикаХозяйственныхОпераций.ПоступлениеТоваров)
+	{ГДЕ
+		(ВЫБОР
+				КОГДА ЗакупкиВозвраты.АналитикаХозяйственнойОперации
+					ТОГДА ИСТИНА
+			КОНЕЦ) КАК АналитикаХозяйственнойОперации}) КАК Закупки
+		ЛЕВОЕ СОЕДИНЕНИЕ Результат КАК Результат
+		ПО Закупки.Магазин = Результат.Магазин
+			И Закупки.Поставщик = Результат.Поставщик
+			И Закупки.Номенклатура = Результат.Номенклатура
+			И Закупки.Характеристика = Результат.Характеристика</query>
+	</dataSet>
+	<calculatedField>
+		<dataPath>ДоляПоступления</dataPath>
+		<expression>ВЫБОР КОГДА Сумма(СуммаПоступления) = 0 ТОГДА 0
+ИНАЧЕ 100* СУММА(СуммаВозврат)/Сумма(СуммаПоступления)
+КОНЕЦ</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Доля возврата в поступлении, %</v8:content>
+			</v8:item>
+		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>Формат</dcscor:parameter>
+				<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2</dcscor:value>
+			</dcscor:item>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>МинимальнаяШирина</dcscor:parameter>
+				<dcscor:value xsi:type="xs:decimal">10</dcscor:value>
+			</dcscor:item>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>МаксимальнаяШирина</dcscor:parameter>
+				<dcscor:value xsi:type="xs:decimal">20</dcscor:value>
+			</dcscor:item>
+		</appearance>
+		<valueType>
+			<v8:Type>xs:decimal</v8:Type>
+			<v8:NumberQualifiers>
+				<v8:Digits>0</v8:Digits>
+				<v8:FractionDigits>0</v8:FractionDigits>
+				<v8:AllowedSign>Any</v8:AllowedSign>
+			</v8:NumberQualifiers>
+		</valueType>
+	</calculatedField>
+	<totalField>
+		<dataPath>ДоляПоступления</dataPath>
+		<expression>ДоляПоступления</expression>
+	</totalField>
+	<totalField>
+		<dataPath>[Розничная цена]</dataPath>
+		<expression>Сумма([Розничная цена])</expression>
+		<group>Номенклатура</group>
+	</totalField>
+	<totalField>
+		<dataPath>КоличествоПоступления</dataPath>
+		<expression>Сумма(КоличествоПоступления)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СуммаПоступления</dataPath>
+		<expression>Сумма(СуммаПоступления)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>КоличествоВозврат</dataPath>
+		<expression>Сумма(КоличествоВозврат)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СуммаВозврат</dataPath>
+		<expression>Сумма(СуммаВозврат)</expression>
+	</totalField>
+	<parameter>
+		<name>КонецПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;ПериодОтчета.ДатаОкончания</expression>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;ПериодОтчета.ДатаНачала</expression>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>ПериодОтчета</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>ИспользоватьПрименениеЦен</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Использовать применение цен</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:boolean</v8:Type>
+		</valueType>
+		<value xsi:type="xs:boolean">false</value>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>ПричиныВозвратовПоставщикам</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Анализ причин возвратов поставщикам</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Номенклатура</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Характеристика</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Номенклатура.ЕдиницаИзмерения</dcsset:field>
+						<dcsset:lwsTitle>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Ед. изм.</v8:content>
+							</v8:item>
+						</dcsset:lwsTitle>
+					</dcsset:item>
+					<dcsset:placement>Together</dcsset:placement>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>[Розничная цена]</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+					<dcsset:title>Поступление</dcsset:title>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>КоличествоПоступления</dcsset:field>
+						<dcsset:lwsTitle>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Количество</v8:content>
+							</v8:item>
+						</dcsset:lwsTitle>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>СуммаПоступления</dcsset:field>
+						<dcsset:lwsTitle>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Сумма, грн.</v8:content>
+							</v8:item>
+						</dcsset:lwsTitle>
+					</dcsset:item>
+					<dcsset:placement>Auto</dcsset:placement>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+					<dcsset:title>Возврат</dcsset:title>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>КоличествоВозврат</dcsset:field>
+						<dcsset:lwsTitle>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Количество</v8:content>
+							</v8:item>
+						</dcsset:lwsTitle>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>СуммаВозврат</dcsset:field>
+						<dcsset:lwsTitle>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Сумма, грн.</v8:content>
+							</v8:item>
+						</dcsset:lwsTitle>
+					</dcsset:item>
+					<dcsset:placement>Auto</dcsset:placement>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ДоляПоступления</dcsset:field>
+				</dcsset:item>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:userSettingID>91a0866f-8336-4070-8457-209d0a69da73</dcsset:userSettingID>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Поставщик</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.Контрагенты.ПустаяСсылка</dcsset:right>
+					<dcsset:userSettingID>7157456a-1ef3-4a2c-b24a-feb37a227fe4</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Магазин</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.Магазины.ПустаяСсылка</dcsset:right>
+					<dcsset:userSettingID>b3d5499d-1082-42a2-8c9a-e39a5b144c1a</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:left xsi:type="dcscor:Field">КоличествоВозврат</dcsset:left>
+					<dcsset:comparisonType>Greater</dcsset:comparisonType>
+					<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
+					<dcsset:presentation xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Только возвраты</v8:content>
+						</v8:item>
+					</dcsset:presentation>
+					<dcsset:userSettingID>01a40cfa-1203-45cb-8087-ff09744dafb3</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:userSettingID>e1700d19-354d-41b5-a5d0-2bf130a5c6d0</dcsset:userSettingID>
+			</dcsset:filter>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Период</dcscor:parameter>
+					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+					<dcsset:userSettingID>a4f9916e-1379-43ea-8790-0183b558ee28</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ПериодОтчета</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
+					</dcscor:value>
+					<dcsset:userSettingID>f25501af-c4cb-47de-b699-944861d5be0a</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:order>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>ДоляПоступления</dcsset:field>
+					<dcsset:orderType>Desc</dcsset:orderType>
+				</dcsset:item>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:userSettingID>34143d27-f2ae-4308-9f4f-1a3e3c5d2655</dcsset:userSettingID>
+			</dcsset:order>
+			<dcsset:conditionalAppearance>
+				<dcsset:item>
+					<dcsset:selection>
+						<dcsset:item>
+							<dcsset:field>[Розничная цена]</dcsset:field>
+						</dcsset:item>
+					</dcsset:selection>
+					<dcsset:filter>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">[Розничная цена]</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
+						</dcsset:item>
+					</dcsset:filter>
+					<dcsset:appearance>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>ЦветТекста</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:Color">style:ЦветТекстаОтмененнойСтрокиДокумента</dcscor:value>
+						</dcscor:item>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>ГоризонтальноеПоложение</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:HorizontalAlign">Right</dcscor:value>
+						</dcscor:item>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>Текст</dcscor:parameter>
+							<dcscor:value xsi:type="v8:LocalStringType">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>&lt;не установлена&gt;</v8:content>
+								</v8:item>
+							</dcscor:value>
+						</dcscor:item>
+					</dcsset:appearance>
+				</dcsset:item>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:userSettingID>f7a489d1-1ba0-4b58-b2c9-e08a988430ac</dcsset:userSettingID>
+			</dcsset:conditionalAppearance>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>МакетОформления</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">Основной</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВертикальноеРасположениеОбщихИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">Auto</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Заголовок</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Анализ причин возвратов поставщику</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>АналитикаХозяйственнойОперации</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Магазин</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+					<dcsset:item xsi:type="dcsset:StructureItemGroup">
+						<dcsset:groupItems>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>Поставщик</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+						</dcsset:groupItems>
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						</dcsset:selection>
+						<dcsset:item xsi:type="dcsset:StructureItemGroup">
+							<dcsset:groupItems>
+								<dcsset:item xsi:type="dcsset:GroupItemField">
+									<dcsset:field>Номенклатура</dcsset:field>
+									<dcsset:groupType>Items</dcsset:groupType>
+									<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+									<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+									<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+								</dcsset:item>
+								<dcsset:item xsi:type="dcsset:GroupItemField">
+									<dcsset:field>Характеристика</dcsset:field>
+									<dcsset:groupType>Items</dcsset:groupType>
+									<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+									<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+									<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+								</dcsset:item>
+							</dcsset:groupItems>
+							<dcsset:order>
+								<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+							</dcsset:order>
+							<dcsset:selection>
+								<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+							</dcsset:selection>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:item>
+			</dcsset:item>
+			<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+			<dcsset:itemsUserSettingID>4521ace8-95c9-464e-9b88-94057e937d4c</dcsset:itemsUserSettingID>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

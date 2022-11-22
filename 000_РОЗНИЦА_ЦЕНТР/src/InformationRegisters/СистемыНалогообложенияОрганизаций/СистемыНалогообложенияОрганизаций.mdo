@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="02b2c48d-b451-472c-8286-da33818157be">
+  <producedTypes>
+    <selectionType typeId="876827ec-356d-4500-a7de-840589999799" valueTypeId="b4b9493a-05c7-48e8-a53a-0508cb890565"/>
+    <listType typeId="5ebdc843-6d0a-4769-8f75-cea965e27b6e" valueTypeId="7989c9b1-2225-40bf-890a-9a99c35d23b9"/>
+    <managerType typeId="d99323d7-b53e-4775-bc10-3eedd257bd4b" valueTypeId="8ad1e469-6ac5-4862-b618-aa2ea7d9148a"/>
+    <recordSetType typeId="51e49166-2191-42ff-8885-c88881c7bfd5" valueTypeId="c6c456fb-99ef-43c4-b01e-f5672d1d14be"/>
+    <recordKeyType typeId="5efd1573-15ed-4008-ab65-cae240d7d10f" valueTypeId="edf3ce10-f7bb-4ba7-a9a2-634c96d6c196"/>
+    <recordType typeId="d5f05c28-a2af-4ec7-bbc0-ba7f18a9fa00" valueTypeId="eb8b73bc-3f09-4640-9835-f83ac1e7c5d8"/>
+    <recordManagerType typeId="39fa36b2-f3b9-4f19-9ff4-a97c214cca99" valueTypeId="75bf6673-31d6-45af-a9d6-d4dd05845faa"/>
+  </producedTypes>
+  <name>СистемыНалогообложенияОрганизаций</name>
+  <synonym>
+    <key>ru</key>
+    <value>Системы налогообложения организаций</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <defaultRecordForm>InformationRegister.СистемыНалогообложенияОрганизаций.Form.ФормаЗаписи</defaultRecordForm>
+  <defaultListForm>InformationRegister.СистемыНалогообложенияОрганизаций.Form.ФормаСписка</defaultListForm>
+  <informationRegisterPeriodicity>Month</informationRegisterPeriodicity>
+  <mainFilterOnPeriod>true</mainFilterOnPeriod>
+  <recordPresentation>
+    <key>ru</key>
+    <value>Система налогообложения организации</value>
+  </recordPresentation>
+  <listPresentation>
+    <key>ru</key>
+    <value>Системы налогообложения</value>
+  </listPresentation>
+  <resources uuid="75ef954b-cda7-4244-a4c9-b474d7e9dfac">
+    <name>СистемаНалогообложения</name>
+    <synonym>
+      <key>ru</key>
+      <value>Система налогообложения</value>
+    </synonym>
+    <type>
+      <types>EnumRef.СистемыНалогообложения</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:ReferenceValue"/>
+  </resources>
+  <resources uuid="e957eb35-3350-484c-a60e-548e7805d4b5">
+    <name>ИННПлательщикаНДС</name>
+    <synonym>
+      <key>ru</key>
+      <value>ИНН</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>12</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+  </resources>
+  <resources uuid="c6111a08-fa18-4be6-80a1-cc8a686e643e">
+    <name>НомерСвидетельстваПлательщикаНДС</name>
+    <synonym>
+      <key>ru</key>
+      <value>Номер свидетельства</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>15</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+  </resources>
+  <resources uuid="b85ba91c-4ead-433b-8bd7-84a274ab6861">
+    <name>ИнформацияОСтатусеПлательщикаНалогов</name>
+    <synonym>
+      <key>ru</key>
+      <value>Информация о плательщике для печати</value>
+    </synonym>
+    <synonym>
+      <key>uk</key>
+      <value>Інформація про платника для друку</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>500</length>
+      </stringQualifiers>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Можно указать информацию об организации, как о плательщике налогов, для вывода в печатных формах документов. Информация выводится в расходных накладных и актах оказания услуг</value>
+    </toolTip>
+    <multiLine>true</multiLine>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+  </resources>
+  <resources uuid="77429035-0eaa-4710-8ac4-25de3a743f81">
+    <name>РазрешитьПродажуПодарочныхСертификатов</name>
+    <synonym>
+      <key>ru</key>
+      <value>Разрешить продажу подарочных сертификатов</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="bf793e2e-9cbd-4d93-9e45-f9e4bd338975">
+    <name>РазрешитьОплатуПодарочнымиСертификатами</name>
+    <synonym>
+      <key>ru</key>
+      <value>Разрешить оплату подарочными сертификатами</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <dimensions uuid="75d1fb40-9fe1-4c18-b13a-73a1d35e6a8e">
+    <name>Организация</name>
+    <synonym>
+      <key>ru</key>
+      <value>Организация</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Организации</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Организация, для которой задается система налогообложения</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <forms uuid="327cddba-003c-49ee-8e4e-7672f751564c">
+    <name>ФормаСписка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма списка</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <forms uuid="ec7d5e5b-9096-4940-9b30-0460d6f9287b">
+    <name>ФормаЗаписи</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма записи</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+</mdclass:InformationRegister>

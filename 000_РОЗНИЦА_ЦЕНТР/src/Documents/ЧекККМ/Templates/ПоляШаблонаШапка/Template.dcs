@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанныхЗапрос</name>
+		<field xsi:type="DataSetFieldFolder">
+			<dataPath>Скидки</dataPath>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Скидки</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Скидки.ПроцентРучнойСкидки</dataPath>
+			<field>ПроцентРучнойСкидки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Процент ручной скидки</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Скидки.СуммаАвтоматическойСкидки</dataPath>
+			<field>СуммаАвтоматическойСкидки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма автоматической скидки</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Скидки.СуммаРучнойСкидки</dataPath>
+			<field>СуммаРучнойСкидки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма ручной скидки</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Ссылка</dataPath>
+			<field>Ссылка</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Реквизиты шапки и подвала</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Скидки.ПроцентСкидки</dataPath>
+			<field>ПроцентСкидки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Процент скидки</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Скидки.СуммаСкидки</dataPath>
+			<field>СуммаСкидки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма скидки</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Товары.Количество</dataPath>
+			<field>Количество</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Итоговое количество</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Товары.Сумма</dataPath>
+			<field>Сумма</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Итоговая сумма</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldFolder">
+			<dataPath>Товары</dataPath>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Реквизиты итогов табличных частей</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Скидки.ПроцентАвтоматическойСкидки</dataPath>
+			<field>ПроцентАвтоматическойСкидки</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Скидки.СуммаБезСкидки</dataPath>
+			<field>СуммаБезСкидки</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Товары.КлючСвязиСерийныхНомеров</dataPath>
+			<field>КлючСвязиСерийныхНомеров</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Скидки.СуммаНакопления</dataPath>
+			<field>СуммаНакопления</field>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	
+	Товары.Ссылка КАК Ссылка,
+	Товары.КлючСвязиСерийныхНомеров  КАК КлючСвязиСерийныхНомеров,
+	
+	// Проценты
+	Товары.ПроцентАвтоматическойСкидки КАК ПроцентАвтоматическойСкидки,
+	Товары.ПроцентРучнойСкидки КАК ПроцентРучнойСкидки,
+	(Товары.ПроцентРучнойСкидки + Товары.ПроцентАвтоматическойСкидки) КАК ПроцентСкидки,
+	
+	ВЫБОР	КОГДА Товары.Упаковка = ЗНАЧЕНИЕ(Справочник.УпаковкиНоменклатуры.ПустаяСсылка)
+			ТОГДА Товары.Количество
+			ИНАЧЕ Товары.КоличествоУпаковок
+	КОНЕЦ КАК Количество,
+	Товары.Сумма      КАК Сумма,
+	
+	// Скидки
+	Товары.СуммаАвтоматическойСкидки + Товары.СуммаРучнойСкидки КАК СуммаСкидки,
+	Товары.СуммаАвтоматическойСкидки КАК СуммаАвтоматическойСкидки,
+	Товары.СуммаРучнойСкидки КАК СуммаРучнойСкидки,
+	Товары.Сумма + Товары.СуммаАвтоматическойСкидки + Товары.СуммаРучнойСкидки КАК СуммаБезСкидки,
+	0.00 КАК СуммаНакопления
+	
+ИЗ
+	Документ.ЧекККМ.Товары КАК Товары
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	
+	Подарки.Ссылка КАК Ссылка,
+	0  КАК КлючСтроки,
+	
+	// Проценты
+	0.00 КАК ПроцентАвтоматическойСкидки,
+	0.00 КАК ПроцентРучнойСкидки,
+	0.00 КАК ПроцентСкидки,
+	
+	ВЫБОР	КОГДА Подарки.Упаковка = ЗНАЧЕНИЕ(Справочник.УпаковкиНоменклатуры.ПустаяСсылка)
+			ТОГДА Подарки.Количество
+			ИНАЧЕ Подарки.КоличествоУпаковок
+	КОНЕЦ КАК Количество,
+	Подарки.Сумма КАК Сумма,
+	
+	// Скидки
+	0.00 КАК СуммаСкидки,
+	0.00 КАК СуммаАвтоматическойСкидки,
+	0.00 КАК СуммаРучнойСкидки,
+	0.00 КАК СуммаБезСкидки,
+	0.00 КАК СуммаНакопления
+	
+
+ИЗ
+	Документ.ЧекККМ.Подарки КАК Подарки
+
+</query>
+	</dataSet>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ГоризонтальноеРасположениеОбщихИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВертикальноеРасположениеОбщихИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+				</dcscor:item>
+			</dcsset:outputParameters>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

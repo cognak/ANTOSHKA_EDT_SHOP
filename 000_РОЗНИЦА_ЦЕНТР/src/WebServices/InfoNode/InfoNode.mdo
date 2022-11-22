@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:WebService xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="514f3c56-cc8c-4117-9e09-6635da41a012">
+  <name>InfoNode</name>
+  <synonym>
+    <key>ru</key>
+    <value>Info node</value>
+  </synonym>
+  <namespace>http://antoshka/retail/infonode</namespace>
+  <descriptorFileName>inode83.1cws</descriptorFileName>
+  <sessionMaxAge>20</sessionMaxAge>
+  <operations uuid="25ff1f53-463e-43b8-ae8a-b29015bb9dbd">
+    <name>AssignAccumulation</name>
+    <synonym>
+      <key>ru</key>
+      <value>Assign accumulation</value>
+    </synonym>
+    <xdtoReturningValueType>
+      <name>boolean</name>
+      <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+    </xdtoReturningValueType>
+    <procedureName>AssignAccumulation</procedureName>
+    <dataLockControlMode>Managed</dataLockControlMode>
+    <parameters uuid="0b964236-02fb-401b-a55f-16ca82bee0ed">
+      <name>RequestData</name>
+      <synonym>
+        <key>ru</key>
+        <value>Request data</value>
+      </synonym>
+      <xdtoValueType>
+        <name>string</name>
+        <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+      </xdtoValueType>
+    </parameters>
+  </operations>
+  <operations uuid="39638623-dc48-4256-8837-08709e5fb0b3">
+    <name>Coupon</name>
+    <synonym>
+      <key>ru</key>
+      <value>Coupon</value>
+    </synonym>
+    <xdtoReturningValueType>
+      <name>string</name>
+      <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+    </xdtoReturningValueType>
+    <procedureName>Coupon</procedureName>
+    <dataLockControlMode>Managed</dataLockControlMode>
+    <parameters uuid="f3456aa3-137d-4aaf-b38c-1efd4efca667">
+      <name>Number</name>
+      <synonym>
+        <key>ru</key>
+        <value>Number</value>
+      </synonym>
+      <xdtoValueType>
+        <name>string</name>
+        <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+      </xdtoValueType>
+    </parameters>
+    <parameters uuid="8b43460e-7fd4-44f7-a0bb-dd533ee42570">
+      <name>Command</name>
+      <synonym>
+        <key>ru</key>
+        <value>Command</value>
+      </synonym>
+      <xdtoValueType>
+        <name>string</name>
+        <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+      </xdtoValueType>
+    </parameters>
+  </operations>
+  <operations uuid="84f40c8a-9155-416f-99fd-e78bc4286992">
+    <name>CreditProgram</name>
+    <synonym>
+      <key>ru</key>
+      <value>Credit program</value>
+    </synonym>
+    <xdtoReturningValueType>
+      <name>string</name>
+      <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+    </xdtoReturningValueType>
+    <procedureName>CreditProgram</procedureName>
+    <dataLockControlMode>Managed</dataLockControlMode>
+    <parameters uuid="52498ea5-d1a3-4ab0-b3cb-a9399cb1b274">
+      <name>Command</name>
+      <synonym>
+        <key>ru</key>
+        <value>Command</value>
+      </synonym>
+      <xdtoValueType>
+        <name>string</name>
+        <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+      </xdtoValueType>
+      <nillable>true</nillable>
+    </parameters>
+    <parameters uuid="8bd1c5b3-bfb2-46c7-9073-1c7343992bbf">
+      <name>SKU</name>
+      <synonym>
+        <key>ru</key>
+        <value>SKU</value>
+      </synonym>
+      <xdtoValueType>
+        <name>string</name>
+        <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+      </xdtoValueType>
+      <nillable>true</nillable>
+    </parameters>
+  </operations>
+  <operations uuid="e4724430-0760-4ab6-b8d3-2399a854691d">
+    <name>FetchRest</name>
+    <synonym>
+      <key>ru</key>
+      <value>Fetch rest</value>
+    </synonym>
+    <comment>Получить остаток товара(ов) на складах</comment>
+    <xdtoReturningValueType>
+      <name>string</name>
+      <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+    </xdtoReturningValueType>
+    <procedureName>FetchRest</procedureName>
+    <dataLockControlMode>Managed</dataLockControlMode>
+    <parameters uuid="bde828e5-b851-42f8-9c47-a34fbc30b0f4">
+      <name>SKU</name>
+      <synonym>
+        <key>ru</key>
+        <value>SKU</value>
+      </synonym>
+      <comment>Код(ы) товара, по которым требуется получить остатки. Разделитель - запятая</comment>
+      <xdtoValueType>
+        <name>string</name>
+        <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+      </xdtoValueType>
+    </parameters>
+  </operations>
+  <operations uuid="00399c21-28d1-4546-8ef7-b6326b757ed1">
+    <name>FetchRestTotal</name>
+    <synonym>
+      <key>ru</key>
+      <value>Fetch rest total</value>
+    </synonym>
+    <xdtoReturningValueType>
+      <name>string</name>
+      <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+    </xdtoReturningValueType>
+    <procedureName>FetchRestTotal</procedureName>
+    <dataLockControlMode>Managed</dataLockControlMode>
+    <parameters uuid="44524fab-58a1-405a-b5db-60b9ae4cd3f4">
+      <name>SKU</name>
+      <synonym>
+        <key>ru</key>
+        <value>SKU</value>
+      </synonym>
+      <comment>Код(ы) товара, по которым требуется получить остатки. Разделитель - запятая</comment>
+      <xdtoValueType>
+        <name>string</name>
+        <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+      </xdtoValueType>
+    </parameters>
+  </operations>
+  <operations uuid="3fd7145a-dc9e-4fba-b4ad-cc899f6cda03">
+    <name>GetBuyerAccumSum</name>
+    <synonym>
+      <key>ru</key>
+      <value>Get buyer accum sum</value>
+    </synonym>
+    <comment>Получить сумму накоплений покупателя по номеру карты</comment>
+    <xdtoReturningValueType>
+      <name>float</name>
+      <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+    </xdtoReturningValueType>
+    <procedureName>GetBuyerAccumSum</procedureName>
+    <dataLockControlMode>Managed</dataLockControlMode>
+    <parameters uuid="ac42d1ce-f568-4166-8e49-cc1b42de7d67">
+      <name>CardNumber</name>
+      <synonym>
+        <key>ru</key>
+        <value>Card number</value>
+      </synonym>
+      <comment>Номер дисконтной карты</comment>
+      <xdtoValueType>
+        <name>string</name>
+        <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+      </xdtoValueType>
+    </parameters>
+  </operations>
+  <operations uuid="5e97e762-4a26-407b-a8dd-5b1b29ebf95f">
+    <name>GetBuyerBonusInfo</name>
+    <synonym>
+      <key>ru</key>
+      <value>Get buyer bonus info</value>
+    </synonym>
+    <comment>Возвращает информацию о бонусных накоплениях контрагента</comment>
+    <xdtoReturningValueType>
+      <name>string</name>
+      <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+    </xdtoReturningValueType>
+    <procedureName>GetBuyerBonusInfo</procedureName>
+    <dataLockControlMode>Managed</dataLockControlMode>
+    <parameters uuid="679600fd-c108-4728-a2e6-513139a05982">
+      <name>Command</name>
+      <synonym>
+        <key>ru</key>
+        <value>Command</value>
+      </synonym>
+      <xdtoValueType>
+        <name>string</name>
+        <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+      </xdtoValueType>
+      <nillable>true</nillable>
+    </parameters>
+    <parameters uuid="203824c1-4c07-4363-b89f-dc4a1cae2f5e">
+      <name>RequestData</name>
+      <synonym>
+        <key>ru</key>
+        <value>Request data</value>
+      </synonym>
+      <xdtoValueType>
+        <name>string</name>
+        <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+      </xdtoValueType>
+    </parameters>
+  </operations>
+  <operations uuid="f1396762-f43d-42c6-a29d-e206df943fba">
+    <name>GetBuyerExtendedInfo</name>
+    <synonym>
+      <key>ru</key>
+      <value>Get buyer extended info</value>
+    </synonym>
+    <comment>новый вариант обмена с Magento</comment>
+    <xdtoReturningValueType>
+      <name>string</name>
+      <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+    </xdtoReturningValueType>
+    <procedureName>GetBuyerExtendedInfo</procedureName>
+    <dataLockControlMode>Managed</dataLockControlMode>
+    <parameters uuid="a7e315db-4d89-4c84-af95-0cf15a194234">
+      <name>RequestData</name>
+      <synonym>
+        <key>ru</key>
+        <value>Request data</value>
+      </synonym>
+      <xdtoValueType>
+        <name>string</name>
+        <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+      </xdtoValueType>
+    </parameters>
+  </operations>
+  <operations uuid="f568ccf9-8dbf-4891-9b44-f24eddf7a92b">
+    <name>GetBuyerInfo</name>
+    <synonym>
+      <key>ru</key>
+      <value>Get buyer informations</value>
+    </synonym>
+    <xdtoReturningValueType>
+      <name>string</name>
+      <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+    </xdtoReturningValueType>
+    <procedureName>GetBuyerInfo</procedureName>
+    <dataLockControlMode>Managed</dataLockControlMode>
+    <parameters uuid="9006c189-a5a9-41b2-aa8b-875d61c8f277">
+      <name>RequestData</name>
+      <synonym>
+        <key>ru</key>
+        <value>Request data</value>
+      </synonym>
+      <xdtoValueType>
+        <name>string</name>
+        <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+      </xdtoValueType>
+    </parameters>
+  </operations>
+  <operations uuid="d754f13c-81fe-4f70-87ac-3fa053c66645">
+    <name>GetDiscountCalc</name>
+    <synonym>
+      <key>ru</key>
+      <value>Get discount calculation</value>
+    </synonym>
+    <comment>Получить расчёт скидки</comment>
+    <xdtoReturningValueType>
+      <name>string</name>
+      <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+    </xdtoReturningValueType>
+    <procedureName>GetDiscountCalc</procedureName>
+    <dataLockControlMode>Managed</dataLockControlMode>
+    <parameters uuid="00d44a3a-f08d-48f8-8732-a2ac3de614dc">
+      <name>RequestData</name>
+      <synonym>
+        <key>ru</key>
+        <value>Request data</value>
+      </synonym>
+      <xdtoValueType>
+        <name>string</name>
+        <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+      </xdtoValueType>
+    </parameters>
+  </operations>
+  <operations uuid="5b671a06-bbcd-4f0f-abc7-fe364fb940e7">
+    <name>GetDistributedBonus</name>
+    <synonym>
+      <key>ru</key>
+      <value>Get distributed bonus</value>
+    </synonym>
+    <comment>Получить распределение списаний (оплата) бонусных баллов</comment>
+    <xdtoReturningValueType>
+      <name>string</name>
+      <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+    </xdtoReturningValueType>
+    <procedureName>GetDistributedBonus</procedureName>
+    <dataLockControlMode>Managed</dataLockControlMode>
+    <parameters uuid="61f4e997-8793-4e97-a994-b0ea32306909">
+      <name>RequestData</name>
+      <synonym>
+        <key>ru</key>
+        <value>Request data</value>
+      </synonym>
+      <xdtoValueType>
+        <name>string</name>
+        <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+      </xdtoValueType>
+    </parameters>
+  </operations>
+  <operations uuid="c4ce7a5e-1942-4902-8817-8b0bd5cbf6a5">
+    <name>GetGoodsPrice</name>
+    <synonym>
+      <key>ru</key>
+      <value>Get goods price</value>
+    </synonym>
+    <comment>Получить цены товаров</comment>
+    <xdtoReturningValueType>
+      <name>string</name>
+      <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+    </xdtoReturningValueType>
+    <procedureName>GetGoodsPrice</procedureName>
+    <dataLockControlMode>Managed</dataLockControlMode>
+    <parameters uuid="325a8583-a635-43d4-9af1-d0331cbf11c6">
+      <name>SKU</name>
+      <synonym>
+        <key>ru</key>
+        <value>SKU</value>
+      </synonym>
+      <comment>Код(ы) товара, по которым требуется получить остатки. Разделитель - запятая</comment>
+      <xdtoValueType>
+        <name>string</name>
+        <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+      </xdtoValueType>
+    </parameters>
+  </operations>
+  <operations uuid="6df620ed-cee8-4d18-973c-9892223775a2">
+    <name>GetRegisteredBalances</name>
+    <synonym>
+      <key>ru</key>
+      <value>Get registered balances</value>
+    </synonym>
+    <comment>Получить зарегистрированные остатки товаров</comment>
+    <xdtoReturningValueType>
+      <name>string</name>
+      <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+    </xdtoReturningValueType>
+    <procedureName>GetRegisteredBalances</procedureName>
+    <dataLockControlMode>Managed</dataLockControlMode>
+    <parameters uuid="99f647f1-e7e4-4540-a13d-0f4f20d0aa57">
+      <name>RequestData</name>
+      <synonym>
+        <key>ru</key>
+        <value>Request data</value>
+      </synonym>
+      <xdtoValueType>
+        <name>string</name>
+        <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+      </xdtoValueType>
+    </parameters>
+  </operations>
+  <operations uuid="1291befe-2d28-4036-a1a0-deaff1157e04">
+    <name>NameClassifier</name>
+    <synonym>
+      <key>ru</key>
+      <value>Name classifier</value>
+    </synonym>
+    <xdtoReturningValueType>
+      <name>string</name>
+      <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+    </xdtoReturningValueType>
+    <procedureName>NameClassifier</procedureName>
+    <dataLockControlMode>Managed</dataLockControlMode>
+  </operations>
+  <operations uuid="050d6c59-0fd5-4252-8fab-5399d3b735b8">
+    <name>OrderBuyer</name>
+    <synonym>
+      <key>ru</key>
+      <value>Order buyer</value>
+    </synonym>
+    <xdtoReturningValueType>
+      <name>string</name>
+      <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+    </xdtoReturningValueType>
+    <procedureName>OrderBuyer</procedureName>
+    <dataLockControlMode>Managed</dataLockControlMode>
+    <parameters uuid="cc02416c-033c-4c21-b5a5-e0330f011f9c">
+      <name>Number</name>
+      <synonym>
+        <key>ru</key>
+        <value>Number</value>
+      </synonym>
+      <xdtoValueType>
+        <name>string</name>
+        <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+      </xdtoValueType>
+    </parameters>
+    <parameters uuid="5383915d-0e9b-4bf6-a7ae-6e4817bf4ad1">
+      <name>Command</name>
+      <synonym>
+        <key>ru</key>
+        <value>Command</value>
+      </synonym>
+      <xdtoValueType>
+        <name>string</name>
+        <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+      </xdtoValueType>
+    </parameters>
+  </operations>
+  <operations uuid="c15fb165-ba35-45a4-bb17-a11df4eba3dd">
+    <name>PutOrderBuyer</name>
+    <synonym>
+      <key>ru</key>
+      <value>Put order buyer</value>
+    </synonym>
+    <comment>Входящий обмен с Magento по заказам покупателей</comment>
+    <xdtoReturningValueType>
+      <name>string</name>
+      <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+    </xdtoReturningValueType>
+    <procedureName>PutOrderBuyer</procedureName>
+    <dataLockControlMode>Managed</dataLockControlMode>
+    <parameters uuid="5f553889-4630-4787-a2eb-fe787d509a17">
+      <name>Command</name>
+      <synonym>
+        <key>ru</key>
+        <value>Command</value>
+      </synonym>
+      <xdtoValueType>
+        <name>string</name>
+        <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+      </xdtoValueType>
+    </parameters>
+    <parameters uuid="298235d5-b6c6-44a5-b10d-60e3d9fa645f">
+      <name>RequestData</name>
+      <synonym>
+        <key>ru</key>
+        <value>Request data</value>
+      </synonym>
+      <xdtoValueType>
+        <name>string</name>
+        <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+      </xdtoValueType>
+    </parameters>
+  </operations>
+</mdclass:WebService>

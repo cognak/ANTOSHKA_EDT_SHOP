@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="4bc5e945-6caa-4452-975e-ea4672d0e505">
+  <producedTypes>
+    <objectType typeId="2929c031-1d72-43b3-8867-0711829c8db0" valueTypeId="0833dee0-e26d-4e15-a9b8-4730ed23151a"/>
+    <refType typeId="91cc2e25-2cc9-4457-9296-3f3e505c2b62" valueTypeId="8f8615e5-36f0-4203-8f4d-52d5fcece501"/>
+    <selectionType typeId="b6b5b24a-baf2-4fb1-9c7c-3f355b1928d6" valueTypeId="062cf134-cdf8-4c1b-81c4-a7673c3d6b91"/>
+    <listType typeId="e57ffaf7-7da7-4122-9415-8867e942e4f4" valueTypeId="95ad77fa-2919-4e64-89a6-1cbf8e6e3db3"/>
+    <managerType typeId="8eb8a37b-5b33-4671-81de-0959e0297005" valueTypeId="69a4e5a5-43a8-4da7-a18b-1fb1ca687b0e"/>
+  </producedTypes>
+  <name>УслугиБанка</name>
+  <synonym>
+    <key>ru</key>
+    <value>Услуги банка</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <inputByString>Catalog.УслугиБанка.StandardAttribute.Description</inputByString>
+  <inputByString>Catalog.УслугиБанка.StandardAttribute.Code</inputByString>
+  <fullTextSearchOnInputByString>DontUse</fullTextSearchOnInputByString>
+  <createOnInput>DontUse</createOnInput>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <fullTextSearch>Use</fullTextSearch>
+  <hierarchical>true</hierarchical>
+  <levelCount>2</levelCount>
+  <foldersOnTop>true</foldersOnTop>
+  <codeLength>9</codeLength>
+  <descriptionLength>100</descriptionLength>
+  <codeType>String</codeType>
+  <codeAllowedLength>Variable</codeAllowedLength>
+  <checkUnique>true</checkUnique>
+  <autonumbering>true</autonumbering>
+  <defaultPresentation>AsDescription</defaultPresentation>
+  <predefined>
+    <items id="4adaf439-4a06-4ba1-be81-a53d92caf6db">
+      <name>МгновеннаяРассрочка</name>
+      <description>Мгновенная рассрочка</description>
+      <code xsi:type="core:StringValue">
+        <value>000.00001</value>
+      </code>
+    </items>
+  </predefined>
+  <editType>InDialog</editType>
+  <choiceMode>BothWays</choiceMode>
+  <defaultObjectForm>Catalog.УслугиБанка.Form.ФормаЭлемента</defaultObjectForm>
+  <defaultListForm>Catalog.УслугиБанка.Form.ФормаСписка</defaultListForm>
+  <defaultChoiceForm>Catalog.УслугиБанка.Form.ФормаВыбора</defaultChoiceForm>
+  <choiceHistoryOnInput>DontUse</choiceHistoryOnInput>
+  <attributes uuid="d59ba42f-5c9b-45cb-9909-354359b9f145">
+    <name>Банк</name>
+    <synonym>
+      <key>ru</key>
+      <value>Банк (синоним эквайрера)</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.КлассификаторБанков</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="c6199933-bc62-44e8-902e-b078b40beccd">
+    <name>Блокирован</name>
+    <synonym>
+      <key>ru</key>
+      <value>Блокирован</value>
+    </synonym>
+    <comment>Услуга заблокирована</comment>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <indexing>Index</indexing>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="ff181250-49c7-4189-9892-e548d94fee7d">
+    <name>ИдентификаторПрограммы</name>
+    <synonym>
+      <key>ru</key>
+      <value>ID программы кредитования</value>
+    </synonym>
+    <comment>Банковский идентификатор кредитования</comment>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>50</length>
+      </stringQualifiers>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Банковский идентификатор</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="9934f57e-cc12-493a-ac49-31308452f4d4">
+    <name>ИспользоватьСкидкиНаценки</name>
+    <synonym>
+      <key>ru</key>
+      <value>Использовать скидки наценки</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Разрешено использование скидок/наценок при продаже.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="b8ad6c08-13e9-4d94-96a8-9f6ea4c98295">
+    <name>КомиссияБанка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Комиссия банка</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>10</precision>
+        <scale>2</scale>
+        <nonNegative>true</nonNegative>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="6cd03a7c-9701-4d46-88c9-6eea53c075f8">
+    <name>Описание</name>
+    <synonym>
+      <key>ru</key>
+      <value>Описание</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers/>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="ff82fe8c-3ded-4a7d-8ce1-4b7ad653422a">
+    <name>ПериодПредоставления</name>
+    <synonym>
+      <key>ru</key>
+      <value>Период предоставления (платежи)</value>
+    </synonym>
+    <comment>Период, например, рассрочки платежа - в платежах (например 6 платежей)</comment>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>3</precision>
+        <nonNegative>true</nonNegative>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:StringValue">
+      <value>1</value>
+    </minValue>
+    <maxValue xsi:type="core:StringValue">
+      <value>999</value>
+    </maxValue>
+    <fillChecking>ShowError</fillChecking>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="a9ed8354-08ba-4f21-82e7-281f132cdc9b">
+    <name>ТипУслуги</name>
+    <synonym>
+      <key>ru</key>
+      <value>Тип услуги</value>
+    </synonym>
+    <type>
+      <types>EnumRef.ТипыУслугБанка</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fillValue xsi:type="core:ReferenceValue">
+      <value>Enum.ТипыУслугБанка.EnumValue.ОплатаЧастями</value>
+    </fillValue>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="cc42cd2f-3a36-424b-a6ce-3d2d7635a067">
+    <name>Эквайрер</name>
+    <synonym>
+      <key>ru</key>
+      <value>Эквайрер</value>
+    </synonym>
+    <comment>Эквайрер по умолчанию</comment>
+    <type>
+      <types>CatalogRef.Контрагенты</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Контрагент который предоставляет услуги эквайринга</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <tabularSections uuid="8897598f-70bf-4eb0-af7e-196b992b1cae">
+    <producedTypes>
+      <objectType typeId="fc3955a2-09c2-4f6f-ae6c-3b3eafb83016" valueTypeId="c4c76788-eb62-4809-8506-dd41c10b5d90"/>
+      <rowType typeId="618ef6b9-8d86-4f8e-851a-074509f423a4" valueTypeId="e1ce0cf2-13db-433f-9cd9-5a2c8699e5fd"/>
+    </producedTypes>
+    <name>НоменклатураИсключения</name>
+    <synonym>
+      <key>ru</key>
+      <value>Номенклатура исключения</value>
+    </synonym>
+    <standardAttributes>
+      <dataHistory>Use</dataHistory>
+      <name>LineNumber</name>
+      <fillValue xsi:type="core:UndefinedValue"/>
+      <fullTextSearch>Use</fullTextSearch>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+    </standardAttributes>
+    <attributes uuid="9490b5d9-7148-4f45-b93d-75625a02be1a">
+      <name>Номенклатура</name>
+      <synonym>
+        <key>ru</key>
+        <value>Номенклатура</value>
+      </synonym>
+      <type>
+        <types>CatalogRef.Номенклатура</types>
+        <types>CatalogRef.СегментыНоменклатуры</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <fillChecking>ShowError</fillChecking>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+  </tabularSections>
+  <tabularSections uuid="1833787f-af0b-4ca2-a663-19ac3814b568">
+    <producedTypes>
+      <objectType typeId="0889e9b4-652f-49a2-a05c-0b1c5fb3d2a7" valueTypeId="fc703be7-ab67-4121-b566-5ae3d72ce358"/>
+      <rowType typeId="722c04e5-4b5a-4855-924c-a3940f7e3b49" valueTypeId="3d3ca35d-b8a5-45ad-a7db-b05b786de065"/>
+    </producedTypes>
+    <name>НоменклатураПредоставления</name>
+    <synonym>
+      <key>ru</key>
+      <value>Номенклатура предоставления</value>
+    </synonym>
+    <standardAttributes>
+      <dataHistory>Use</dataHistory>
+      <name>LineNumber</name>
+      <fillValue xsi:type="core:UndefinedValue"/>
+      <fullTextSearch>Use</fullTextSearch>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+    </standardAttributes>
+    <attributes uuid="717c1370-a029-4747-bed9-337abe84a058">
+      <name>Номенклатура</name>
+      <synonym>
+        <key>ru</key>
+        <value>Номенклатура</value>
+      </synonym>
+      <type>
+        <types>CatalogRef.Номенклатура</types>
+        <types>CatalogRef.СегментыНоменклатуры</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <fillChecking>ShowError</fillChecking>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+  </tabularSections>
+  <forms uuid="529c6792-b827-4fb3-8bf5-21813ac1f769">
+    <name>ФормаЭлемента</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма элемента</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+  </forms>
+  <forms uuid="164bf0e0-e2d8-49cc-af7b-63f81f8fd7c6">
+    <name>ФормаСписка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма списка</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <forms uuid="59accfd0-379e-4c74-a9fd-44b47b02c71d">
+    <name>ФормаВыбора</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма выбора</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+</mdclass:Catalog>

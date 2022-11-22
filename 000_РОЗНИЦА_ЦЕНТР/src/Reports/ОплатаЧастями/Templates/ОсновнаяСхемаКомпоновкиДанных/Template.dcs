@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Номенклатура</dataPath>
+			<field>Номенклатура</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Склад</dataPath>
+			<field>Склад</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Характеристика</dataPath>
+			<field>Характеристика</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СсылкаПериодПредоставления</dataPath>
+			<field>СсылкаПериодПредоставления</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоОстаток</dataPath>
+			<field>КоличествоОстаток</field>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	УслугиБанкаНоменклатураПредоставления.Ссылка КАК Ссылка,
+	УслугиБанкаНоменклатураПредоставления.Номенклатура КАК Номенклатура
+ПОМЕСТИТЬ Таб
+ИЗ
+	Справочник.УслугиБанка.НоменклатураПредоставления КАК УслугиБанкаНоменклатураПредоставления,
+	РегистрСведений.НоменклатураСегмента КАК НоменклатураСегмента1
+ГДЕ
+	УслугиБанкаНоменклатураПредоставления.Ссылка.ПометкаУдаления = ЛОЖЬ
+	И УслугиБанкаНоменклатураПредоставления.Ссылка.Блокирован = ЛОЖЬ
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	УслугиБанкаНоменклатураПредоставления.Ссылка,
+	КОЛИЧЕСТВО(РАЗЛИЧНЫЕ НоменклатураСегмента1.Номенклатура)
+ИЗ
+	Справочник.УслугиБанка.НоменклатураПредоставления КАК УслугиБанкаНоменклатураПредоставления,
+	РегистрСведений.НоменклатураСегмента КАК НоменклатураСегмента1
+ГДЕ
+	УслугиБанкаНоменклатураПредоставления.Ссылка.ПометкаУдаления = ЛОЖЬ
+	И УслугиБанкаНоменклатураПредоставления.Ссылка.Блокирован = ЛОЖЬ
+
+СГРУППИРОВАТЬ ПО
+	УслугиБанкаНоменклатураПредоставления.Ссылка
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	УслугиИсключения.Ссылка КАК Ссылка,
+	КОЛИЧЕСТВО(РАЗЛИЧНЫЕ УслугиИсключения.Номенклатура) КАК Номенклатура
+ПОМЕСТИТЬ ТабИсключение
+ИЗ
+	Справочник.УслугиБанка.НоменклатураИсключения КАК УслугиИсключения,
+	РегистрСведений.НоменклатураСегмента КАК НоменклатураСегмента1
+ГДЕ
+	УслугиИсключения.Ссылка.ПометкаУдаления = ЛОЖЬ
+	И УслугиИсключения.Ссылка.Блокирован = ЛОЖЬ
+
+СГРУППИРОВАТЬ ПО
+	УслугиИсключения.Ссылка
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	УслугиИсключения.Ссылка,
+	КОЛИЧЕСТВО(РАЗЛИЧНЫЕ НоменклатураСегмента1.Номенклатура)
+ИЗ
+	Справочник.УслугиБанка.НоменклатураИсключения КАК УслугиИсключения,
+	РегистрСведений.НоменклатураСегмента КАК НоменклатураСегмента1
+ГДЕ
+	УслугиИсключения.Ссылка.ПометкаУдаления = ЛОЖЬ
+	И УслугиИсключения.Ссылка.Блокирован = ЛОЖЬ
+
+СГРУППИРОВАТЬ ПО
+	УслугиИсключения.Ссылка
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	Таб.Номенклатура КАК Номенклатура,
+	МАКСИМУМ(Таб.Ссылка.ПериодПредоставления) КАК СсылкаПериодПредоставления
+ПОМЕСТИТЬ ТабМакс
+ИЗ
+	Таб КАК Таб
+		ЛЕВОЕ СОЕДИНЕНИЕ ТабИсключение КАК ТабИсключение
+		ПО Таб.Ссылка = ТабИсключение.Ссылка
+			И Таб.Номенклатура = ТабИсключение.Номенклатура
+ГДЕ
+	ТабИсключение.Номенклатура ЕСТЬ NULL
+
+СГРУППИРОВАТЬ ПО
+	Таб.Номенклатура
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ТоварыНаСкладахОстатки.Номенклатура КАК Номенклатура,
+	ТоварыНаСкладахОстатки.КоличествоОстаток КАК КоличествоОстаток,
+	ТабМакс.СсылкаПериодПредоставления КАК СсылкаПериодПредоставления
+ИЗ
+	РегистрНакопления.ТоварыНаСкладах.Остатки({(&amp;Период)}, {(Склад = &amp;Склад)}) КАК ТоварыНаСкладахОстатки
+		ЛЕВОЕ СОЕДИНЕНИЕ ТабМакс КАК ТабМакс
+		ПО ТоварыНаСкладахОстатки.Номенклатура = ТабМакс.Номенклатура</query>
+	</dataSet>
+	<totalField>
+		<dataPath>КоличествоОстаток</dataPath>
+		<expression>Сумма(КоличествоОстаток)</expression>
+	</totalField>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>ТекущаяДата()</expression>
+		<use>Always</use>
+	</parameter>
+	<parameter>
+		<name>Склад</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Склад</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Склады</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>ОплатаЧастями</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Оплата частями</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>uk</v8:lang>
+				<v8:content>Основной</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Номенклатура</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>КоличествоОстаток</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СсылкаПериодПредоставления</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="4d89b19f-990c-4589-ad45-33eb567dfd26">
+  <producedTypes>
+    <objectType typeId="cf29c45f-4e49-49b5-a31d-4bc240e9c68f" valueTypeId="91e4d0b6-0153-4f45-b262-4fa0eda24855"/>
+    <refType typeId="5c59a6fd-fd9f-4af6-bc85-a96145f0e7f2" valueTypeId="56ba520d-ce57-498f-a3af-c5d972c04314"/>
+    <selectionType typeId="2dfbc962-09d9-4fab-9ae2-4775f5bec10a" valueTypeId="c1284435-1bf1-4792-8b6b-bbd9fac4c7ba"/>
+    <listType typeId="36cf0ef5-f8fa-4bb4-9bd7-6851361e39cf" valueTypeId="78aac251-0f00-42d2-956a-42dcc1eb0844"/>
+    <managerType typeId="5bf5c35a-555b-4cc9-a8bf-0ba09cfe68b4" valueTypeId="d83628b9-cfb3-4e6e-88de-86bef25d2a97"/>
+  </producedTypes>
+  <name>РегистрацияПодсчетаПосетителей</name>
+  <synonym>
+    <key>ru</key>
+    <value>Регистрация подсчета посетителей</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <inputByString>Document.РегистрацияПодсчетаПосетителей.StandardAttribute.Number</inputByString>
+  <fullTextSearchOnInputByString>DontUse</fullTextSearchOnInputByString>
+  <createOnInput>Use</createOnInput>
+  <includeHelpInContents>true</includeHelpInContents>
+  <help>
+    <pages>
+      <lang>ru</lang>
+    </pages>
+  </help>
+  <fullTextSearch>Use</fullTextSearch>
+  <listPresentation>
+    <key>ru</key>
+    <value>Подсчет посетителей</value>
+  </listPresentation>
+  <numberType>String</numberType>
+  <numberLength>11</numberLength>
+  <numberPeriodicity>Year</numberPeriodicity>
+  <checkUnique>true</checkUnique>
+  <autonumbering>true</autonumbering>
+  <defaultObjectForm>Document.РегистрацияПодсчетаПосетителей.Form.ФормаДокумента</defaultObjectForm>
+  <defaultListForm>Document.РегистрацияПодсчетаПосетителей.Form.ФормаСписка</defaultListForm>
+  <defaultChoiceForm>Document.РегистрацияПодсчетаПосетителей.Form.ФормаВыбора</defaultChoiceForm>
+  <realTimePosting>Deny</realTimePosting>
+  <registerRecordsDeletion>AutoDeleteOff</registerRecordsDeletion>
+  <registerRecords>AccumulationRegister.Посетители</registerRecords>
+  <postInPrivilegedMode>true</postInPrivilegedMode>
+  <unpostInPrivilegedMode>true</unpostInPrivilegedMode>
+  <attributes uuid="13c03e3b-5c82-4a17-b426-48ace23a1adb">
+    <name>Магазин</name>
+    <synonym>
+      <key>ru</key>
+      <value>Магазин</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Магазины</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Магазин подсчета</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="584464b7-3aa1-445d-bbdf-53971f63f97b">
+    <name>СчетчикПодсчетаПосетителей</name>
+    <synonym>
+      <key>ru</key>
+      <value>Счетчик подсчета посетителей</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.СчетчикиПодсчетаПосетителей</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Наименование счетчика посетителей</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="246c4771-35bd-44a6-9124-f18e39ac1395">
+    <name>Комментарий</name>
+    <synonym>
+      <key>ru</key>
+      <value>Комментарий</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers/>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Комментарий к документу</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="57eda222-6791-4959-af06-2a50cffcc7a9">
+    <name>Ответственный</name>
+    <synonym>
+      <key>ru</key>
+      <value>Ответственный</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Пользователи</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Ответственный за документ</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <forms uuid="ec31ba92-c1df-4fde-97dc-e76d2218cf7c">
+    <name>ФормаВыбора</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма выбора</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <forms uuid="657edce4-df3a-422a-9356-95ebac9e2c00">
+    <name>ФормаСписка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма списка</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <forms uuid="4f5f9cce-6b80-4a54-b05e-7e360ef07f8f">
+    <name>ФормаДокумента</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма документа</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <tabularSections uuid="c8d2450e-865c-4747-9e9b-765ccf5cc88c">
+    <producedTypes>
+      <objectType typeId="b874d3ce-f04b-462d-ad73-c06837b3f87c" valueTypeId="28ed3bef-e917-471a-b123-9c4c46b5b9cb"/>
+      <rowType typeId="2a2e197f-3d9c-493d-ae81-96b332c81945" valueTypeId="5e08ee7b-81d4-451e-a01d-142f5742e73f"/>
+    </producedTypes>
+    <name>ДанныеПодсчета</name>
+    <synonym>
+      <key>ru</key>
+      <value>Данные подсчета</value>
+    </synonym>
+    <attributes uuid="a292acca-dacf-4728-9982-477a3e627679">
+      <name>ВремяРегистрации</name>
+      <synonym>
+        <key>ru</key>
+        <value>Время регистрации</value>
+      </synonym>
+      <type>
+        <types>Date</types>
+        <dateQualifiers>
+          <dateFractions>Time</dateFractions>
+        </dateQualifiers>
+      </type>
+      <toolTip>
+        <key>ru</key>
+        <value>Время регистрации подсчета</value>
+      </toolTip>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="451ad177-3a9c-422d-8e5e-ffa52814387d">
+      <name>КоличествоВходящих</name>
+      <synonym>
+        <key>ru</key>
+        <value>Количество входящих</value>
+      </synonym>
+      <type>
+        <types>Number</types>
+        <numberQualifiers>
+          <precision>15</precision>
+          <scale>1</scale>
+        </numberQualifiers>
+      </type>
+      <toolTip>
+        <key>ru</key>
+        <value>Количество входящих посетителей</value>
+      </toolTip>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="fd69da61-d042-4a7a-b021-7d23fb5524cb">
+      <name>КоличествоВыходящих</name>
+      <synonym>
+        <key>ru</key>
+        <value>Количество выходящих</value>
+      </synonym>
+      <type>
+        <types>Number</types>
+        <numberQualifiers>
+          <precision>15</precision>
+          <scale>1</scale>
+        </numberQualifiers>
+      </type>
+      <toolTip>
+        <key>ru</key>
+        <value>Количество выходящих посетителей</value>
+      </toolTip>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+  </tabularSections>
+  <tabularSections uuid="0e7a4ea3-68fd-40a5-8be4-5fe16ec38497">
+    <producedTypes>
+      <objectType typeId="23067e6f-f938-48bd-bbb3-72eaaa9dc465" valueTypeId="18355006-aa6d-4a76-96a1-f3e8df6fd33a"/>
+      <rowType typeId="ab69b6ff-ab00-4afd-b933-4216865b5e7c" valueTypeId="c1f92b2e-804f-48a0-abd2-98b2cf3f6f7e"/>
+    </producedTypes>
+    <name>СтатистикаПодсчетаСотрудников</name>
+    <synonym>
+      <key>ru</key>
+      <value>Статистика подсчета сотрудников</value>
+    </synonym>
+    <attributes uuid="9625d0da-8709-4dc7-8d97-cf70ccebe0dc">
+      <name>ВремяРегистрации</name>
+      <synonym>
+        <key>ru</key>
+        <value>Время регистрации</value>
+      </synonym>
+      <type>
+        <types>Date</types>
+        <dateQualifiers>
+          <dateFractions>Time</dateFractions>
+        </dateQualifiers>
+      </type>
+      <toolTip>
+        <key>ru</key>
+        <value>Время регистрации подсчета</value>
+      </toolTip>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="d560bb70-383a-4f14-a086-089488eb69c1">
+      <name>КоличествоПроходов</name>
+      <synonym>
+        <key>ru</key>
+        <value>Количество проходов</value>
+      </synonym>
+      <type>
+        <types>Number</types>
+        <numberQualifiers>
+          <precision>15</precision>
+          <scale>1</scale>
+        </numberQualifiers>
+      </type>
+      <toolTip>
+        <key>ru</key>
+        <value>Количество проходов сотрудников</value>
+      </toolTip>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+  </tabularSections>
+</mdclass:Document>

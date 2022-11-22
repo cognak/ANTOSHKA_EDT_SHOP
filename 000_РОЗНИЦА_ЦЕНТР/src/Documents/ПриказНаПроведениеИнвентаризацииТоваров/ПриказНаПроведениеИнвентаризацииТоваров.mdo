@@ -1,0 +1,605 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="633757c4-1f68-4382-9d47-f24326ce3c5d">
+  <producedTypes>
+    <objectType typeId="f475ecd7-1161-48c1-9657-2498f08bfb0e" valueTypeId="f19ae348-c45c-43c2-a3d0-a866967c425b"/>
+    <refType typeId="7c2d1627-f967-45b5-8f59-0808ff29a662" valueTypeId="962d86e9-ee83-443a-a1ce-f6bad6d06272"/>
+    <selectionType typeId="a33b1197-d6b8-4e71-be0b-e1c71e0b2a5d" valueTypeId="2abe04c4-0c0f-4e75-90e6-5aae07ae65ea"/>
+    <listType typeId="9342fc67-0e0e-4efe-8fbc-30029d4be4b9" valueTypeId="79da0c97-463a-422f-bb1a-2b2d0b6cece4"/>
+    <managerType typeId="a026340c-f18f-41bd-b2a2-09313264c547" valueTypeId="2b8ec918-7693-46c7-80e6-ff818d855849"/>
+  </producedTypes>
+  <name>ПриказНаПроведениеИнвентаризацииТоваров</name>
+  <synonym>
+    <key>ru</key>
+    <value>Приказ на проведение инвентаризации товаров</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <inputByString>Document.ПриказНаПроведениеИнвентаризацииТоваров.StandardAttribute.Number</inputByString>
+  <fullTextSearchOnInputByString>DontUse</fullTextSearchOnInputByString>
+  <createOnInput>Use</createOnInput>
+  <includeHelpInContents>true</includeHelpInContents>
+  <help>
+    <pages>
+      <lang>ru</lang>
+    </pages>
+  </help>
+  <fullTextSearch>Use</fullTextSearch>
+  <objectPresentation>
+    <key>ru</key>
+    <value>Приказ на пересчет товаров</value>
+  </objectPresentation>
+  <extendedObjectPresentation>
+    <key>ru</key>
+    <value>Приказ на пересчет товаров (инвентаризацию)</value>
+  </extendedObjectPresentation>
+  <listPresentation>
+    <key>ru</key>
+    <value>Приказы на пересчет товаров</value>
+  </listPresentation>
+  <extendedListPresentation>
+    <key>ru</key>
+    <value>Приказы на пересчет товаров (инвентаризацию)</value>
+  </extendedListPresentation>
+  <explanation>
+    <key>ru</key>
+    <value>Основание для выполнения пересчетов товаров и последующего оформления выявленных расхождений между фактическим наличием товаров и учетными данными.</value>
+  </explanation>
+  <numberType>String</numberType>
+  <numberLength>11</numberLength>
+  <numberAllowedLength>Variable</numberAllowedLength>
+  <numberPeriodicity>Year</numberPeriodicity>
+  <checkUnique>true</checkUnique>
+  <autonumbering>true</autonumbering>
+  <defaultObjectForm>Document.ПриказНаПроведениеИнвентаризацииТоваров.Form.ФормаДокумента</defaultObjectForm>
+  <defaultListForm>Document.ПриказНаПроведениеИнвентаризацииТоваров.Form.ФормаСписка</defaultListForm>
+  <defaultChoiceForm>Document.ПриказНаПроведениеИнвентаризацииТоваров.Form.ФормаВыбора</defaultChoiceForm>
+  <registerRecordsDeletion>AutoDeleteOff</registerRecordsDeletion>
+  <registerRecords>InformationRegister.ОграниченияДвиженийПоИнвентаризации</registerRecords>
+  <postInPrivilegedMode>true</postInPrivilegedMode>
+  <unpostInPrivilegedMode>true</unpostInPrivilegedMode>
+  <attributes uuid="8b23a55c-4c8d-423f-b4b4-cca42f8d66d1">
+    <name>ДатаНачала</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата начала</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers>
+        <dateFractions>Date</dateFractions>
+      </dateQualifiers>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Период проведения инвентаризационной кампании.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="df3cef65-0006-437a-8b01-f1c3f6911841">
+    <name>ДатаОкончания</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата окончания</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers>
+        <dateFractions>Date</dateFractions>
+      </dateQualifiers>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Период проведения инвентаризационной кампании.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="859087a3-ca0a-4624-b3b8-c097f5b6d51b">
+    <name>Комментарий</name>
+    <synonym>
+      <key>ru</key>
+      <value>Комментарий</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers/>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Произвольный текст</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="7b9045ca-e975-4637-a130-a795c85c9f3b">
+    <name>Магазин</name>
+    <synonym>
+      <key>ru</key>
+      <value>Магазин</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Магазины</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Магазин, на котором проводится инвентаризация.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <choiceParameters>
+      <name>Отбор.СкладУправляющейСистемы</name>
+      <value xsi:type="core:BooleanValue"/>
+    </choiceParameters>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="021eeccb-9e40-410d-8ae6-4f60850ac6c2">
+    <name>НастройкиКомпоновкиДанных</name>
+    <synonym>
+      <key>ru</key>
+      <value>Настройки компоновки данных</value>
+    </synonym>
+    <type>
+      <types>ValueStorage</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Служебный реквизит. Хранит настройки СКД</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="857a1140-3293-4a32-bd69-57b403750934">
+    <name>Описание</name>
+    <synonym>
+      <key>ru</key>
+      <value>Описание</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers/>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Описание условий проведения инвентаризационной кампании.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="c797c0f7-c687-4359-9a6b-a1f4f3e4640b">
+    <name>Организация</name>
+    <synonym>
+      <key>ru</key>
+      <value>Организация</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Организации</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Организация, от имени которой оформляется документ</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:ReferenceValue">
+      <value>Catalog.Организации.EmptyRef</value>
+    </fillValue>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="dbac72a4-9bf4-48be-8dad-16f6016d9e1d">
+    <name>Ответственный</name>
+    <synonym>
+      <key>ru</key>
+      <value>Ответственный</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Пользователи</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Пользователь, оформивший документ  и ответственный за его обработку.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fillValue xsi:type="core:ReferenceValue">
+      <value>Catalog.Пользователи.EmptyRef</value>
+    </fillValue>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="ca572cc6-928e-4a21-80a1-6095374bb9a9">
+    <name>ПравилаОтбораТоваровИнвентаризации</name>
+    <synonym>
+      <key>ru</key>
+      <value>Правила отбора товаров</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ПравилаОтбораТоваров</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Настройки отбора, учитываемые при пересчете товаров</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="f23187ee-a5d8-4b6a-a17f-60eab845da72">
+    <name>Склад</name>
+    <synonym>
+      <key>ru</key>
+      <value>Склад</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Склады</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Склад, на котором проводится инвентаризация.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:ReferenceValue">
+      <value>Catalog.Склады.EmptyRef</value>
+    </fillValue>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="c03bebe2-751f-494c-b7dc-f97cd8a157a5">
+    <name>Статус</name>
+    <synonym>
+      <key>ru</key>
+      <value>Статус</value>
+    </synonym>
+    <type>
+      <types>EnumRef.СтатусыПриказовНаПроведениеИнвентаризацийТоваров</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Статус приказа</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fillValue xsi:type="core:ReferenceValue">
+      <value>Enum.СтатусыПриказовНаПроведениеИнвентаризацийТоваров.EnumValue.ВРаботе</value>
+    </fillValue>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="8e848501-2222-4179-bf1d-a3ba369fc044">
+    <name>ПредседательКомиссии</name>
+    <synonym>
+      <key>ru</key>
+      <value>Председатель комиссии</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ФизическиеЛица</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>ФИО председателя комиссии (может быть указано путем выбора из справочника)</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="dc24d8a4-1a20-40d8-87f2-d1eca414cca5">
+    <name>ЧленКомиссии1</name>
+    <synonym>
+      <key>ru</key>
+      <value>Первый член комиссии</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ФизическиеЛица</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>ФИО члена комиссии (может быть указано путем выбора из справочника)</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="c18c8d5d-0da7-42bf-a263-95a466272749">
+    <name>ЧленКомиссии2</name>
+    <synonym>
+      <key>ru</key>
+      <value>Второй член комиссии</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ФизическиеЛица</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>ФИО члена комиссии (может быть указано путем выбора из справочника)</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="82deae4b-4d36-4b87-8945-5024b7926fe5">
+    <name>ЧленКомиссии3</name>
+    <synonym>
+      <key>ru</key>
+      <value>Третий член комиссии</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ФизическиеЛица</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>ФИО члена комиссии (может быть указано путем выбора из справочника)</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="1398e365-b46d-450c-9053-4cfd47ad0d50">
+    <name>ДолжностьПредседателяКомиссии</name>
+    <synonym>
+      <key>ru</key>
+      <value>Должность председателя комиссии</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>100</length>
+      </stringQualifiers>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Должность председателя комиссии</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="a07987bd-62f0-48e0-a528-395ed01ead0b">
+    <name>ДолжностьЧленаКомиссии1</name>
+    <synonym>
+      <key>ru</key>
+      <value>Должность первого члена комиссии</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>100</length>
+      </stringQualifiers>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Должность члена комиссии</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="b0d63280-2382-4e51-ba6f-791279e3dd4d">
+    <name>ДолжностьЧленаКомиссии2</name>
+    <synonym>
+      <key>ru</key>
+      <value>Должность второго члена комиссии</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>100</length>
+      </stringQualifiers>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Должность члена комиссии</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="fdc2a130-a9d1-4306-b609-6d6a67227025">
+    <name>ДолжностьЧленаКомиссии3</name>
+    <synonym>
+      <key>ru</key>
+      <value>Должность третьего члена комиссии</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>100</length>
+      </stringQualifiers>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Должность члена комиссии</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <forms uuid="72cd70b1-1577-4c98-b265-65237425f793">
+    <name>ФормаДокумента</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма документа</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <forms uuid="77996766-0a34-40df-8f76-1b52c846f492">
+    <name>ФормаСписка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма списка</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <forms uuid="2bbe973e-309f-4667-ab09-645e1b6854d8">
+    <name>ФормаВыбора</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма выбора</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <forms uuid="8f5e2fe6-f83c-4002-bf50-385fb7ddd916">
+    <name>ФормаСводныхРезультатовИнвентаризаций</name>
+    <synonym>
+      <key>ru</key>
+      <value>Сводные результаты инвентаризаций</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <templates uuid="6e617051-5ca0-4772-a6a9-a30d3bfd7240">
+    <name>ПФ_MXL_М21</name>
+    <synonym>
+      <key>ru</key>
+      <value>Инвентаризационная опись М-21</value>
+    </synonym>
+    <synonym>
+      <key>uk</key>
+      <value>Інвентаризаційний опис (М21)</value>
+    </synonym>
+    <comment>Инвентаризационная опись (Типовая форма № М-21)</comment>
+  </templates>
+  <commands uuid="7852c370-8da7-454e-b504-c5f67ea4c043">
+    <name>ЗаполнитьПересортицуТоваров</name>
+    <synonym>
+      <key>ru</key>
+      <value>Зачет пересортицы</value>
+    </synonym>
+    <group>CommandGroup.Сервис</group>
+    <commandParameterType>
+      <types>DocumentRef.ПриказНаПроведениеИнвентаризацииТоваров</types>
+    </commandParameterType>
+    <representation>Auto</representation>
+  </commands>
+  <commands uuid="769fb951-7e2e-43ce-87f7-2055238caffa">
+    <name>ЗаполнитьПричиныСписания</name>
+    <synonym>
+      <key>ru</key>
+      <value>Заполнить причины списания</value>
+    </synonym>
+    <group>CommandGroup.Сервис</group>
+    <commandParameterType>
+      <types>DocumentRef.ПриказНаПроведениеИнвентаризацииТоваров</types>
+    </commandParameterType>
+    <representation>Auto</representation>
+  </commands>
+  <commands uuid="cf7fb8df-7171-4a60-942a-cb8d9d7ecf35">
+    <name>ПечатьМ21</name>
+    <synonym>
+      <key>ru</key>
+      <value>Инвентаризационная опись (М-21)</value>
+    </synonym>
+    <group>CommandGroup.Печать</group>
+    <commandParameterType>
+      <types>DocumentRef.ПриказНаПроведениеИнвентаризацииТоваров</types>
+    </commandParameterType>
+    <parameterUseMode>Multiple</parameterUseMode>
+    <representation>Auto</representation>
+  </commands>
+  <commands uuid="c5fb2277-a981-4fa0-a2bf-1546ed23691d">
+    <name>СводныеРезультатыИнвентаризаций</name>
+    <synonym>
+      <key>ru</key>
+      <value>Сводные результаты инвентаризаций</value>
+    </synonym>
+    <group>CommandGroup.Сервис</group>
+    <commandParameterType>
+      <types>DocumentRef.ПриказНаПроведениеИнвентаризацииТоваров</types>
+    </commandParameterType>
+    <parameterUseMode>Multiple</parameterUseMode>
+    <representation>Auto</representation>
+    <picture xsi:type="core:PictureRef">
+      <picture>CommonPicture.ВыгрузитьДополнительныйОтчетИлиОбработку</picture>
+    </picture>
+  </commands>
+  <commands uuid="f47e66df-e6e0-4678-a0ed-0d6aa90a32fe">
+    <name>СоздатьОприходованияТоваровПоПроектам</name>
+    <synonym>
+      <key>ru</key>
+      <value>Создать оприходования товаров по проектам</value>
+    </synonym>
+    <group>FormCommandBarCreateBasedOn</group>
+    <commandParameterType>
+      <types>DocumentRef.ПриказНаПроведениеИнвентаризацииТоваров</types>
+    </commandParameterType>
+    <representation>Auto</representation>
+    <picture xsi:type="core:PictureRef">
+      <picture>CommonPicture.БыстрыйДоступДобавить</picture>
+    </picture>
+  </commands>
+  <commands uuid="5d68e608-c83f-4fef-a320-a39dbabc1fc9">
+    <name>СоздатьСписанияТоваровПоПроектам</name>
+    <synonym>
+      <key>ru</key>
+      <value>Создать списания товаров по проектам</value>
+    </synonym>
+    <group>FormCommandBarCreateBasedOn</group>
+    <commandParameterType>
+      <types>DocumentRef.ПриказНаПроведениеИнвентаризацииТоваров</types>
+    </commandParameterType>
+    <representation>Auto</representation>
+    <picture xsi:type="core:PictureRef">
+      <picture>CommonPicture.БыстрыйДоступУдалить</picture>
+    </picture>
+  </commands>
+</mdclass:Document>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="c9bd2da7-e797-4068-b086-b2043e72fc7f">
+  <producedTypes>
+    <objectType typeId="0a66f855-bce3-439c-a604-779a58730ce2" valueTypeId="e1479a96-ffaf-4868-8893-95c303cbd42e"/>
+    <refType typeId="295c656f-477a-4043-a5d8-0cffed8fc0bd" valueTypeId="cb63745c-dd1f-47da-abe0-d99a4e5cc620"/>
+    <selectionType typeId="80ae5abb-b563-4fc0-bca8-637483d26a42" valueTypeId="d1c221a6-e1eb-4b49-833c-7f365dd271b3"/>
+    <listType typeId="553af795-fa34-4b89-915f-4c72ccc2bc45" valueTypeId="47a60f10-5368-444d-b481-72c5a8874fe5"/>
+    <managerType typeId="b2bc1abe-0801-49f8-956b-a610b1c88384" valueTypeId="b162f0ee-04aa-4df2-ab29-de3f62200602"/>
+  </producedTypes>
+  <name>СвойстваНоменклатуры</name>
+  <synonym>
+    <key>ru</key>
+    <value>Свойства номенклатуры</value>
+  </synonym>
+  <comment>Различные свойства товаров, такие как материал, модель и тому подобное</comment>
+  <useStandardCommands>true</useStandardCommands>
+  <inputByString>Catalog.СвойстваНоменклатуры.StandardAttribute.Description</inputByString>
+  <inputByString>Catalog.СвойстваНоменклатуры.StandardAttribute.Code</inputByString>
+  <fullTextSearchOnInputByString>DontUse</fullTextSearchOnInputByString>
+  <createOnInput>DontUse</createOnInput>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <fullTextSearch>Use</fullTextSearch>
+  <levelCount>2</levelCount>
+  <foldersOnTop>true</foldersOnTop>
+  <codeLength>11</codeLength>
+  <descriptionLength>100</descriptionLength>
+  <codeType>String</codeType>
+  <codeAllowedLength>Variable</codeAllowedLength>
+  <checkUnique>true</checkUnique>
+  <autonumbering>true</autonumbering>
+  <defaultPresentation>AsDescription</defaultPresentation>
+  <editType>InDialog</editType>
+  <choiceMode>BothWays</choiceMode>
+  <defaultListForm>Catalog.СвойстваНоменклатуры.Form.ФормаСписка</defaultListForm>
+  <defaultChoiceForm>Catalog.СвойстваНоменклатуры.Form.ФормаВыбора</defaultChoiceForm>
+  <choiceHistoryOnInput>DontUse</choiceHistoryOnInput>
+  <attributes uuid="f0906b1e-5ad8-4402-b7d0-bff529a58d64">
+    <name>ТипСвойства</name>
+    <synonym>
+      <key>ru</key>
+      <value>Тип свойства</value>
+    </synonym>
+    <type>
+      <types>EnumRef.ТипыСвойствНоменклатуры</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="7b0c5b2e-583f-42ad-b560-0195d531168f">
+    <name>IDN</name>
+    <synonym>
+      <key>ru</key>
+      <value>SKU (Navision)</value>
+    </synonym>
+    <comment>NAV: Код товарной единицы в Navision</comment>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>20</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+    <indexing>Index</indexing>
+    <fullTextSearch>Use</fullTextSearch>
+    <use>ForFolderAndItem</use>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <forms uuid="a51dca66-0f35-4ee0-9afc-06a3bfa925ce">
+    <name>ФормаСписка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма списка</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <forms uuid="90148af0-3681-42af-bb8f-2f4e28ba6a6b">
+    <name>ФормаВыбора</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма выбора</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <commands uuid="f80746d6-e93e-4b71-917b-efe40461adda">
+    <name>СписокМатериалТовара</name>
+    <synonym>
+      <key>ru</key>
+      <value>Список материалов для товаров</value>
+    </synonym>
+    <group>NavigationPanelSeeAlso</group>
+    <commandParameterType/>
+    <representation>Auto</representation>
+  </commands>
+  <commands uuid="613d4e57-54ab-48e8-86c3-2b60196ac0e5">
+    <name>СписокМодельТовара</name>
+    <synonym>
+      <key>ru</key>
+      <value>Список моделей товаров</value>
+    </synonym>
+    <group>NavigationPanelSeeAlso</group>
+    <commandParameterType/>
+    <representation>Auto</representation>
+  </commands>
+  <commands uuid="e82fe94c-4a06-4b05-abbd-5d44ef4aa593">
+    <name>СписокФурнитураТовара</name>
+    <synonym>
+      <key>ru</key>
+      <value>Список фурнитуры товаров</value>
+    </synonym>
+    <group>NavigationPanelSeeAlso</group>
+    <commandParameterType/>
+    <representation>Auto</representation>
+  </commands>
+</mdclass:Catalog>

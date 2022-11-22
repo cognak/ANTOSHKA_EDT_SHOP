@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:AccumulationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="503e9a15-151d-42f6-87c2-174de2ea353d">
+  <producedTypes>
+    <selectionType typeId="3d850f20-bca6-4094-95ed-48f4d30c6d08" valueTypeId="115e66a4-705c-4386-8634-13bfe8b6b506"/>
+    <listType typeId="9af1eda1-bbd3-4888-b7cb-10ced26f7c3e" valueTypeId="5db533f3-ba06-4e1b-9d5f-d039ae8a7d08"/>
+    <managerType typeId="a87cf94e-ee0b-469c-9199-8077bde9be41" valueTypeId="c88180b4-5289-4065-9a9d-8142994e89c2"/>
+    <recordSetType typeId="9d746cc2-550a-411d-a14c-19f00a88bae0" valueTypeId="ac90b689-5e3e-44d4-bb2b-4da58b14b227"/>
+    <recordKeyType typeId="2a28f1c5-188a-4852-9e13-1ed5f5786308" valueTypeId="a393274e-4b1b-4c0c-92ff-bfbc748d673e"/>
+    <recordType typeId="2ea88c8c-13dd-4bce-ab64-643ee4a37e87" valueTypeId="4b753583-4904-4ba4-9153-1e4a923f27fd"/>
+  </producedTypes>
+  <name>БонусныеБаллы</name>
+  <synonym>
+    <key>ru</key>
+    <value>Бонусные баллы</value>
+  </synonym>
+  <comment>Основной раздел учёта системы бонусных накоплений</comment>
+  <useStandardCommands>true</useStandardCommands>
+  <defaultListForm>AccumulationRegister.БонусныеБаллы.Form.ФормаСписка</defaultListForm>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <resources uuid="783e991b-18db-4d93-8a7f-2bb7e647d7cf">
+    <name>СуммаБонусныхБаллов</name>
+    <synonym>
+      <key>ru</key>
+      <value>Сумма бонусных баллов</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <scale>2</scale>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </resources>
+  <attributes uuid="08ef7d1a-d94a-4978-814d-f4e045936b9f">
+    <name>Авария</name>
+    <synonym>
+      <key>ru</key>
+      <value>Авария</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Флаг аварийной записи.
+Устанавливается при сторнировании сумм в случае, если нет остатка.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <indexing>Index</indexing>
+  </attributes>
+  <attributes uuid="c3017987-a5e8-4dbf-a805-28c294a3bc47">
+    <name>ВидОперации</name>
+    <synonym>
+      <key>ru</key>
+      <value>Вид операции</value>
+    </synonym>
+    <type>
+      <types>EnumRef.ВидыОперацийБонусныхБаллов</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <attributes uuid="4b7d9506-f614-4671-b8ad-c6b2cc2cf3f1">
+    <name>ДатаИзменения</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата изменения</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <indexing>Index</indexing>
+  </attributes>
+  <attributes uuid="d12c152c-485e-4fc1-beb8-ad382f0a2580">
+    <name>ДатаОперации</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата операции</value>
+    </synonym>
+    <comment>Дата регистратора</comment>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Фиксируем дату регистратора, так как &quot;Период&quot; набора записей обычно может отличаться.
+Используется в анализе сдвига границы последовательности</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <attributes uuid="9deacf7c-50c0-4e00-ab76-428b43c6990c">
+    <name>ДокументОперации</name>
+    <synonym>
+      <key>ru</key>
+      <value>Документ операции</value>
+    </synonym>
+    <type>
+      <types>DocumentRef.РеализацияТоваров</types>
+      <types>DocumentRef.ЧекККМ</types>
+      <types>DocumentRef.ВозвратТоваровОтПокупателя</types>
+      <types>DocumentRef.ЗаказПокупателя</types>
+      <types>DocumentRef.НачислениеИСписаниеБонусныхБаллов</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <createOnInput>DontUse</createOnInput>
+    <indexing>Index</indexing>
+    <choiceHistoryOnInput>DontUse</choiceHistoryOnInput>
+  </attributes>
+  <attributes uuid="b757f280-add5-4c42-9186-784eb47392f4">
+    <name>Перенос_ДокументНачисления</name>
+    <synonym>
+      <key>ru</key>
+      <value>Перенос: документ начисления</value>
+    </synonym>
+    <type>
+      <types>DocumentRef.РеализацияТоваров</types>
+      <types>DocumentRef.ЧекККМ</types>
+      <types>DocumentRef.ЗаказПокупателя</types>
+      <types>DocumentRef.НачислениеИСписаниеБонусныхБаллов</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <createOnInput>DontUse</createOnInput>
+    <indexing>Index</indexing>
+    <choiceHistoryOnInput>DontUse</choiceHistoryOnInput>
+  </attributes>
+  <attributes uuid="732629e4-782a-4633-8aae-46e3da7f269e">
+    <name>Перенос_ПрограммаЛояльности</name>
+    <synonym>
+      <key>ru</key>
+      <value>Перенос: программа лояльности</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ПрограммыЛояльности</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <attributes uuid="ad070ecb-7cb6-4a03-813a-ed08fd7a1a04">
+    <name>Примечание</name>
+    <synonym>
+      <key>ru</key>
+      <value>Примечание</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>70</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </attributes>
+  <attributes uuid="c5a5371a-1b59-4d8d-88d2-93b1e1f14715">
+    <name>СписаниеПартий</name>
+    <synonym>
+      <key>ru</key>
+      <value>Списание партий</value>
+    </synonym>
+    <comment>(Служ.)</comment>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Используется в записях, образованных в результате списания по партиям</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <attributes uuid="57352c51-773b-4ae4-a280-bb860075be3b">
+    <name>СуммаБонусныхБалловОригинал</name>
+    <synonym>
+      <key>ru</key>
+      <value>Сумма бонусных баллов оригинал</value>
+    </synonym>
+    <comment>Сумма до изменения при списании</comment>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <scale>2</scale>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <dimensions uuid="564cdd0d-d782-4f7a-988b-a48faedc45ee">
+    <name>ПрограммаЛояльности</name>
+    <synonym>
+      <key>ru</key>
+      <value>Программа лояльности</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ПрограммыЛояльности</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="874b5041-c4ec-4817-8626-f969d3c2f17a">
+    <name>Контрагент</name>
+    <synonym>
+      <key>ru</key>
+      <value>Контрагент</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Контрагенты</types>
+      <types>CatalogRef.ФизическиеЛица</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="2d0397d0-fa17-4dac-adbb-0f66d18336d6">
+    <name>ДокументНачисления</name>
+    <synonym>
+      <key>ru</key>
+      <value>Документ начисления</value>
+    </synonym>
+    <type>
+      <types>DocumentRef.РеализацияТоваров</types>
+      <types>DocumentRef.ЧекККМ</types>
+      <types>DocumentRef.ЗаказПокупателя</types>
+      <types>DocumentRef.НачислениеИСписаниеБонусныхБаллов</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <createOnInput>DontUse</createOnInput>
+    <indexing>Index</indexing>
+    <fullTextSearch>Use</fullTextSearch>
+    <choiceHistoryOnInput>DontUse</choiceHistoryOnInput>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <forms uuid="d8772409-17d1-48ae-a1b6-f43d764fea47">
+    <name>ФормаСписка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма списка</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <commands uuid="efafcbba-8768-4bea-b373-64a20a299acb">
+    <name>ОткрытьФормуСписка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Таблица «Бонусные баллы»</value>
+    </synonym>
+    <group>NavigationPanelSeeAlso</group>
+    <commandParameterType/>
+    <representation>Auto</representation>
+  </commands>
+</mdclass:AccumulationRegister>

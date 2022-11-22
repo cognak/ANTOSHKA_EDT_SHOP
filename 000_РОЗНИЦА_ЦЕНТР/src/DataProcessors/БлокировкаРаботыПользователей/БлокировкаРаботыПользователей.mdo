@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:DataProcessor xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="0957e86b-c5ba-4bc4-a04e-60d7f101ffce">
+  <producedTypes>
+    <objectType typeId="62e788c1-a6d6-4d1d-9a52-d7cb492cdc06" valueTypeId="5823ea3d-c115-457a-b97d-0cbf51d3db79"/>
+    <managerType typeId="b8f0d91d-cf64-4ae3-aa08-359f0b2b2bb4" valueTypeId="600d6f4d-d5ce-4051-baf6-001f4b9337b6"/>
+  </producedTypes>
+  <name>БлокировкаРаботыПользователей</name>
+  <synonym>
+    <key>ru</key>
+    <value>Блокировка работы пользователей</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <defaultForm>DataProcessor.БлокировкаРаботыПользователей.Form.Форма</defaultForm>
+  <help>
+    <pages>
+      <lang>ru</lang>
+    </pages>
+  </help>
+  <attributes uuid="384ce427-a271-45e5-a736-e1403e4ae2c9">
+    <name>ВременноЗапретитьРаботуПользователей</name>
+    <synonym>
+      <key>ru</key>
+      <value>Временно запретить работу пользователей</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Признак того, что включена блокировка работы пользователей</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <attributes uuid="535acd2c-26d2-4f32-9ae6-cc1956317c59">
+    <name>ЗапретитьРаботуРегламентныхЗаданий</name>
+    <synonym>
+      <key>ru</key>
+      <value>Запретить работу регламентных заданий</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Признак того, что включена блокировка работы регламентных заданий</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <attributes uuid="bf88d49f-9060-4c92-b682-cc61bf64b335">
+    <name>КодДляРазблокировки</name>
+    <synonym>
+      <key>ru</key>
+      <value>Код для разблокировки</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers/>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Код разрешения, позволяющий администратору войти в заблокированную базу.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <attributes uuid="e2322171-6fab-4b10-9a91-ec679e71590d">
+    <name>НачалоДействияБлокировки</name>
+    <synonym>
+      <key>ru</key>
+      <value>Начало действия блокировки</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Момент времени, с которого начинает действовать блокировка работы пользователей</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <attributes uuid="c0aba969-1d3d-4da7-89fa-25a6cf070594">
+    <name>ОкончаниеДействияБлокировки</name>
+    <synonym>
+      <key>ru</key>
+      <value>Окончание действия блокировки</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Момент времени окончания действия блокировки работы пользователей</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <attributes uuid="06067efd-6d49-41cc-bd51-f8194e5bf7d3">
+    <name>СообщениеДляПользователей</name>
+    <synonym>
+      <key>ru</key>
+      <value>Сообщение для пользователей</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>300</length>
+      </stringQualifiers>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Причина блокировки, которая выводится пользователю при попытке войти в заблокированную ИБ</value>
+    </toolTip>
+    <multiLine>true</multiLine>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <forms uuid="7d683b2b-a5d1-48d9-8953-508da50c600b">
+    <name>Форма</name>
+    <synonym>
+      <key>ru</key>
+      <value>Блокировка соединений с информационной базой</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <forms uuid="7fa1119b-4321-4b8f-a879-1d940084145a">
+    <name>ОшибкаУстановкиМонопольногоРежима</name>
+    <synonym>
+      <key>ru</key>
+      <value>Ошибка установки монопольного режима</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+</mdclass:DataProcessor>

@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:DataProcessor xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="fafc4936-59e3-4161-9061-238c03c7f182">
+  <producedTypes>
+    <objectType typeId="3b93f726-20f6-4672-8384-eedaba59b0f2" valueTypeId="21622bab-d52b-400f-9cdc-4982d7804e5e"/>
+    <managerType typeId="c7ff8272-e475-4cca-8f35-ac3c3ce69ab0" valueTypeId="364e42c6-842c-4ad7-b88b-2e85dc3d71d4"/>
+  </producedTypes>
+  <name>ОбработчикИнформационныхКарт</name>
+  <synonym>
+    <key>ru</key>
+    <value>Обработчик информационных карт, 04.007 (2020-08-14)</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <defaultForm>DataProcessor.ОбработчикИнформационныхКарт.Form.Форма</defaultForm>
+  <attributes uuid="4ae4f8af-d6e4-466b-aedc-1a334f33d965">
+    <name>ПолноеИмяФайла</name>
+    <synonym>
+      <key>ru</key>
+      <value>Полное имя файла</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers/>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <attributes uuid="9c48b0c0-0677-409b-8fdd-720f0c38155f">
+    <name>СуммаНакопления</name>
+    <synonym>
+      <key>ru</key>
+      <value>Сумма накопления</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>17</precision>
+        <scale>2</scale>
+        <nonNegative>true</nonNegative>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <attributes uuid="841c7348-3ea6-4b79-8b6b-c3923f07e386">
+    <name>ВладелецКартыТекущий</name>
+    <synonym>
+      <key>ru</key>
+      <value>Владелец карты текущий</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Контрагенты</types>
+      <types>CatalogRef.ФизическиеЛица</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <attributes uuid="188a8f39-a3a5-48c4-a5f4-052a6d2e042a">
+    <name>ВладелецКартыНовый</name>
+    <synonym>
+      <key>ru</key>
+      <value>Владелец карты новый</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Контрагенты</types>
+      <types>CatalogRef.ФизическиеЛица</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <tabularSections uuid="bacf2b59-a3a4-4f2f-a8af-436b60e95a73">
+    <producedTypes>
+      <objectType typeId="81262b07-3f2b-496f-b2aa-9237f635396b" valueTypeId="e547752c-f4e8-4bfd-aae7-d2e690bb05d1"/>
+      <rowType typeId="e89321d8-d061-4561-9a59-7a983e8603a4" valueTypeId="5175fad6-c259-443c-9a72-0532aba36d68"/>
+    </producedTypes>
+    <name>ДанныеКарт</name>
+    <synonym>
+      <key>ru</key>
+      <value>Данные карт</value>
+    </synonym>
+    <standardAttributes>
+      <dataHistory>Use</dataHistory>
+      <name>LineNumber</name>
+      <fillValue xsi:type="core:UndefinedValue"/>
+      <fullTextSearch>Use</fullTextSearch>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+    </standardAttributes>
+    <attributes uuid="89891ff9-45a5-4bd9-a3b3-bc96c4f4980e">
+      <name>Пометка</name>
+      <synonym>
+        <key>ru</key>
+        <value>Пометка</value>
+      </synonym>
+      <type>
+        <types>Boolean</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <fillValue xsi:type="core:UndefinedValue"/>
+    </attributes>
+    <attributes uuid="a51933d9-b91d-4fab-bf0c-bb1eafcab3e9">
+      <name>КодКарты</name>
+      <synonym>
+        <key>ru</key>
+        <value>Код карты</value>
+      </synonym>
+      <type>
+        <types>String</types>
+        <stringQualifiers>
+          <length>200</length>
+        </stringQualifiers>
+      </type>
+      <toolTip>
+        <key>ru</key>
+        <value>Магнитный код карты</value>
+      </toolTip>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <fillChecking>ShowError</fillChecking>
+      <fillValue xsi:type="core:UndefinedValue"/>
+    </attributes>
+    <attributes uuid="c3dcbf26-a448-488d-95e3-556944806d9c">
+      <name>ВидДисконтнойКарты</name>
+      <synonym>
+        <key>ru</key>
+        <value>Вид дисконтной карты</value>
+      </synonym>
+      <type>
+        <types>CatalogRef.ВидыДисконтныхКарт</types>
+      </type>
+      <toolTip>
+        <key>ru</key>
+        <value>Подвид дисконтной информационной карты</value>
+      </toolTip>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <fillValue xsi:type="core:UndefinedValue"/>
+    </attributes>
+    <attributes uuid="b6acc377-f600-40c2-a58a-72c7d54cc156">
+      <name>ИнформационнаяКарта</name>
+      <synonym>
+        <key>ru</key>
+        <value>Информационная карта</value>
+      </synonym>
+      <type>
+        <types>CatalogRef.ИнформационныеКарты</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <fillValue xsi:type="core:UndefinedValue"/>
+    </attributes>
+    <attributes uuid="7a37041b-700c-4423-ad37-0bf97979c7d6">
+      <name>ВладелецКарты</name>
+      <synonym>
+        <key>ru</key>
+        <value>Владелец карты</value>
+      </synonym>
+      <type>
+        <types>CatalogRef.Контрагенты</types>
+      </type>
+      <toolTip>
+        <key>ru</key>
+        <value>Держатель карты</value>
+      </toolTip>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <fillFromFillingValue>true</fillFromFillingValue>
+      <fillValue xsi:type="core:UndefinedValue"/>
+    </attributes>
+    <attributes uuid="ca6ece9b-3c0e-414a-815e-77f2f5ab136a">
+      <name>СуммаНакопления</name>
+      <synonym>
+        <key>ru</key>
+        <value>Сумма накопления</value>
+      </synonym>
+      <type>
+        <types>Number</types>
+        <numberQualifiers>
+          <precision>17</precision>
+          <scale>2</scale>
+        </numberQualifiers>
+      </type>
+      <markNegatives>true</markNegatives>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <fillValue xsi:type="core:UndefinedValue"/>
+    </attributes>
+    <attributes uuid="520d9e20-7204-4d80-8cd5-48c631f625f0">
+      <name>ИндексКартинки</name>
+      <synonym>
+        <key>ru</key>
+        <value>Индекс картинки</value>
+      </synonym>
+      <type>
+        <types>Number</types>
+        <numberQualifiers>
+          <precision>1</precision>
+          <nonNegative>true</nonNegative>
+        </numberQualifiers>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <fillValue xsi:type="core:UndefinedValue"/>
+    </attributes>
+  </tabularSections>
+  <tabularSections uuid="292a1618-0166-4dc5-81a3-23056191a521">
+    <producedTypes>
+      <objectType typeId="587fa435-6003-4d62-b7c3-db5d6a686b09" valueTypeId="bae723c5-d7c5-4ad7-9097-a71af63a9b90"/>
+      <rowType typeId="0a11cb5d-c81e-48a3-b867-fe5006fcd055" valueTypeId="24b09628-3fef-45d3-95b5-1729bd258887"/>
+    </producedTypes>
+    <name>ПродажиПоДисконтнымКартам</name>
+    <synonym>
+      <key>ru</key>
+      <value>Продажи по дисконтным картам</value>
+    </synonym>
+    <standardAttributes>
+      <dataHistory>Use</dataHistory>
+      <name>LineNumber</name>
+      <fillValue xsi:type="core:UndefinedValue"/>
+      <fullTextSearch>Use</fullTextSearch>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+    </standardAttributes>
+    <attributes uuid="b822457b-6e07-4de8-b032-cea2193f4865">
+      <name>Пометка</name>
+      <synonym>
+        <key>ru</key>
+        <value>Пометка</value>
+      </synonym>
+      <type>
+        <types>Boolean</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <fillValue xsi:type="core:UndefinedValue"/>
+    </attributes>
+    <attributes uuid="2c0a6914-33bb-47de-b1ca-739155da4bfa">
+      <name>Период</name>
+      <synonym>
+        <key>ru</key>
+        <value>Период</value>
+      </synonym>
+      <type>
+        <types>Date</types>
+        <dateQualifiers/>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <fillValue xsi:type="core:UndefinedValue"/>
+    </attributes>
+    <attributes uuid="637c1de9-0ef4-4c64-9f1d-402d1bca7c7d">
+      <name>Регистратор</name>
+      <synonym>
+        <key>ru</key>
+        <value>Регистратор</value>
+      </synonym>
+      <type>
+        <types>DocumentRef.РеализацияТоваров</types>
+        <types>DocumentRef.ВводОстатковПоНакопительнымСкидкам</types>
+        <types>DocumentRef.ЧекККМ</types>
+        <types>DocumentRef.ВозвратТоваровОтПокупателя</types>
+        <types>DocumentRef.СверткаИзУправляющейСистемы</types>
+        <types>DocumentRef.ОтчетОРозничныхПродажах</types>
+        <types>DocumentRef.КорректировкаРегистров</types>
+        <types>DocumentRef.СчетНаОплатуПокупателю</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <fillValue xsi:type="core:UndefinedValue"/>
+    </attributes>
+    <attributes uuid="9063f75d-9b7a-4a2f-b132-dcfadc0c3fe5">
+      <name>ДисконтнаяКарта</name>
+      <synonym>
+        <key>ru</key>
+        <value>Дисконтная карта</value>
+      </synonym>
+      <type>
+        <types>CatalogRef.ИнформационныеКарты</types>
+      </type>
+      <toolTip>
+        <key>ru</key>
+        <value>Дисконтная карта, по которой зафиксирована продажа</value>
+      </toolTip>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <fillValue xsi:type="core:UndefinedValue"/>
+    </attributes>
+    <attributes uuid="8936359a-2596-46b4-892a-46aa5ba283d0">
+      <name>ВладелецДисконтнойКарты</name>
+      <synonym>
+        <key>ru</key>
+        <value>Владелец дисконтной карты</value>
+      </synonym>
+      <type>
+        <types>CatalogRef.Контрагенты</types>
+        <types>CatalogRef.ФизическиеЛица</types>
+      </type>
+      <toolTip>
+        <key>ru</key>
+        <value>Владелец дисконтной карты: контрагент или физическое лицо</value>
+      </toolTip>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <fillValue xsi:type="core:UndefinedValue"/>
+    </attributes>
+    <attributes uuid="cbc70ea8-7f44-4258-b3b8-674d730d320e">
+      <name>Номенклатура</name>
+      <synonym>
+        <key>ru</key>
+        <value>Номенклатура</value>
+      </synonym>
+      <type>
+        <types>CatalogRef.Номенклатура</types>
+      </type>
+      <toolTip>
+        <key>ru</key>
+        <value>Номенклатура, которая была продана</value>
+      </toolTip>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <fillValue xsi:type="core:UndefinedValue"/>
+    </attributes>
+    <attributes uuid="9cee2a8b-6081-44ab-9bc4-616231bf57bd">
+      <name>Сумма</name>
+      <synonym>
+        <key>ru</key>
+        <value>Сумма</value>
+      </synonym>
+      <type>
+        <types>Number</types>
+        <numberQualifiers>
+          <precision>15</precision>
+          <scale>2</scale>
+        </numberQualifiers>
+      </type>
+      <toolTip>
+        <key>ru</key>
+        <value>Сумма проданного товара</value>
+      </toolTip>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <fillValue xsi:type="core:UndefinedValue"/>
+    </attributes>
+    <attributes uuid="7c713923-fd98-4525-be8c-3a19be1f7cdf">
+      <name>Количество</name>
+      <synonym>
+        <key>ru</key>
+        <value>Количество</value>
+      </synonym>
+      <type>
+        <types>Number</types>
+        <numberQualifiers>
+          <precision>15</precision>
+          <scale>3</scale>
+        </numberQualifiers>
+      </type>
+      <toolTip>
+        <key>ru</key>
+        <value>Количество проданного товара</value>
+      </toolTip>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <fillValue xsi:type="core:UndefinedValue"/>
+    </attributes>
+  </tabularSections>
+  <forms uuid="ae0c5424-a22d-4658-bdc7-b1fbfca70873">
+    <name>Форма</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <commands uuid="3443b8bb-7433-4aa0-81c3-4b3251675792">
+    <name>ОбработчикКартДисконта</name>
+    <synonym>
+      <key>ru</key>
+      <value>Обработчик карт дисконта</value>
+    </synonym>
+    <group>NavigationPanelSeeAlso</group>
+    <commandParameterType/>
+    <representation>Auto</representation>
+  </commands>
+</mdclass:DataProcessor>

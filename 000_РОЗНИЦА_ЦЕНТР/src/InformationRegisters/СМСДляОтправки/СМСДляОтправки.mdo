@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="1b782184-f344-4002-92cb-1e246c2da6ff">
+  <producedTypes>
+    <selectionType typeId="af05c388-61de-4cdb-8b27-04d9d26ad3ff" valueTypeId="7d2c975b-163b-4c04-b285-b29bd4fa53a6"/>
+    <listType typeId="a1d9abf9-e9b3-4268-a13a-a77f2fd14159" valueTypeId="e63aae71-a29a-4f38-9b32-39f420d7f548"/>
+    <managerType typeId="974256ad-9336-4933-aee4-d9a3c39d769e" valueTypeId="5d0d95bc-2661-4dbb-94b9-2b9a3db8e8fc"/>
+    <recordSetType typeId="370b8874-08ca-40e3-b624-b591f8357a0f" valueTypeId="15ca723a-e197-41ee-8edd-f40021f4b940"/>
+    <recordKeyType typeId="836d41d5-32ae-4c0d-a86c-2619d7d81450" valueTypeId="4f4f0338-017a-4ba8-a2db-da066fee1a70"/>
+    <recordType typeId="8cd31fd7-b704-41b6-b30f-4716a4e2345c" valueTypeId="b168abf4-b61e-41c9-874f-5b4f0747fc97"/>
+    <recordManagerType typeId="f34b0bef-de0e-40f8-9f58-51d9c9dd94b9" valueTypeId="e3e00a8c-9816-4d14-8794-5149ebec3b38"/>
+  </producedTypes>
+  <name>СМСДляОтправки</name>
+  <synonym>
+    <key>ru</key>
+    <value>СМС для отправки</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <editType>InDialog</editType>
+  <defaultRecordForm>InformationRegister.СМСДляОтправки.Form.ФормаЗаписи</defaultRecordForm>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <resources uuid="d46453c7-f4a2-443e-90e8-f224d48648b0">
+    <name>СМС</name>
+    <synonym>
+      <key>ru</key>
+      <value>СМС</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers/>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+  </resources>
+  <resources uuid="90095d04-4a19-4c6e-aa86-71a8e9c47653">
+    <name>Отправлен</name>
+    <synonym>
+      <key>ru</key>
+      <value>Отправлен</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <dimensions uuid="40f7498d-dbc5-4dd6-94fd-49e4a9baf1e6">
+    <name>ОбъектДляСМС</name>
+    <synonym>
+      <key>ru</key>
+      <value>Объект для СМС</value>
+    </synonym>
+    <type>
+      <types>DocumentRef</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="4988f287-1f38-4092-8d94-8c5f994faaf0">
+    <name>ВариантСМС</name>
+    <synonym>
+      <key>ru</key>
+      <value>Вариант СМС</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ВариантыОтправкиСМС</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <forms uuid="b7f797d5-90a9-4706-8073-bb8adc0d77ca">
+    <name>ФормаЗаписи</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма записи</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+</mdclass:InformationRegister>

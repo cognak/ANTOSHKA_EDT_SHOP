@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="5b81ea68-c0a5-4b30-b3b9-5e30dfb44120">
+  <producedTypes>
+    <selectionType typeId="be18a517-b7a2-455b-bcba-2f58760de607" valueTypeId="d2c7eba9-d786-4ac5-a496-c84c8f9bc6f1"/>
+    <listType typeId="58804cb8-de7f-493a-80c1-d1f397ee6060" valueTypeId="447c6b12-1af6-4bd7-bb83-a40056d89067"/>
+    <managerType typeId="529698c4-2ffc-4c5a-9bdd-8d1bf0d46c59" valueTypeId="ea932568-7048-4a98-bda4-bd70b43a413a"/>
+    <recordSetType typeId="93191b65-2550-4f73-a702-a8b16b1847a1" valueTypeId="52b84e9f-34f2-420d-ba2b-76ec5a302c18"/>
+    <recordKeyType typeId="75a54f5e-dc6d-4c6b-832f-3dae9bf96f91" valueTypeId="19f7d685-cda8-449a-8533-f270c0fd3975"/>
+    <recordType typeId="318c8556-e101-4352-9c5d-e5db250e2c27" valueTypeId="1c29277d-4469-4bfe-9f8c-241018ba73cd"/>
+    <recordManagerType typeId="c590f5b7-c1c6-448c-9636-b3b4eb8127fc" valueTypeId="2cad2951-91cf-4447-82d3-e352da29c2fa"/>
+  </producedTypes>
+  <name>ПланируемоеРабочееВремяСотрудников</name>
+  <synonym>
+    <key>ru</key>
+    <value>Планируемое время сотрудников</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <defaultListForm>InformationRegister.ПланируемоеРабочееВремяСотрудников.Form.ФормаСписка</defaultListForm>
+  <informationRegisterPeriodicity>Second</informationRegisterPeriodicity>
+  <mainFilterOnPeriod>true</mainFilterOnPeriod>
+  <resources uuid="5d0b0c4e-8016-41ac-b694-6c977df4f705">
+    <name>ДатаОкончания</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата окончания</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="3cdcf0d2-31a6-4b00-87d6-f3e59cfc341b">
+    <name>ДлинаРабочегоВремени</name>
+    <synonym>
+      <key>ru</key>
+      <value>Длина рабочего времени</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers>
+        <dateFractions>Time</dateFractions>
+      </dateQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <dimensions uuid="75657425-153e-45d7-af82-cfec9e83063b">
+    <name>ИнтервалРаботыМагазинов</name>
+    <synonym>
+      <key>ru</key>
+      <value>Интервал работы магазинов</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ИнтервалыРаботыМагазинов</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="3c202ba6-f2cf-4142-a6a9-4906e7881837">
+    <name>РаботаВыполняемаяСотрудниками</name>
+    <synonym>
+      <key>ru</key>
+      <value>Работа выполняемая сотрудниками</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.РаботаВыполняемаяСотрудниками</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="cb5d188b-5cec-434a-b3ff-4566016d2784">
+    <name>Сотрудник</name>
+    <synonym>
+      <key>ru</key>
+      <value>Сотрудник</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ФизическиеЛица</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <forms uuid="20e3674b-e171-4f50-b281-7db412387923">
+    <name>ФормаСписка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма списка</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <templates uuid="1d4a5b55-8f1e-44da-9aa9-4b4baa102eb0">
+    <name>Макет</name>
+    <synonym>
+      <key>ru</key>
+      <value>Макет</value>
+    </synonym>
+  </templates>
+</mdclass:InformationRegister>

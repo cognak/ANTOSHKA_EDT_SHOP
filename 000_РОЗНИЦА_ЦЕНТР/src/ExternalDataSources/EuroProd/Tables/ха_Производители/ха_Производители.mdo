@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Table xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="f5d71150-f210-4cea-bd79-217cb2036637">
+  <producedTypes>
+    <refType typeId="12283a42-d30d-4ff5-b902-6c2bcc15c155" valueTypeId="1ecac156-7790-466d-b7bd-22ee189d7f23"/>
+    <listType typeId="0234ffab-9833-4b74-96b1-c35fdc2fe736" valueTypeId="c37a0c54-3245-46b8-a4bf-778108db4a69"/>
+    <objectType typeId="598a84ed-7f30-49c2-ab5d-9ffe78ab5189" valueTypeId="9561299d-9949-4e57-90b4-147465147a10"/>
+    <managerType typeId="12a8b932-28bf-4a0a-bc18-870cdb4695ce" valueTypeId="e44cd5b8-d9c6-45c1-95e4-46b62af5e5ff"/>
+    <recordManagerType typeId="8565f698-8fd0-4651-86b8-818a7b5390fc" valueTypeId="09928f8d-3b46-473f-80ef-158ab731ff81"/>
+    <recordSetType typeId="8c8ddb43-227b-4b78-b107-21ad6895c16e" valueTypeId="40e200ae-b482-44c1-b753-ba159961c5b0"/>
+    <recordType typeId="e19b901d-3d76-4de2-b77d-45dc0f21577b" valueTypeId="585cf26b-cfc2-4a67-b43e-f336dde9e324"/>
+    <recordKeyType typeId="6a91edcd-a7bf-4351-b401-d48cd1027e77" valueTypeId="31fb3836-2591-41a9-a197-3090f4eb96e3"/>
+  </producedTypes>
+  <name>ха_Производители</name>
+  <synonym>
+    <key>ru</key>
+    <value>ХА.Производители</value>
+  </synonym>
+  <parentDataSource>ExternalDataSource.EuroProd</parentDataSource>
+  <tableType>Expression</tableType>
+  <expressionInDataSource>(SELECT
+	[Код Проекта] AS Код_Проекта,
+	Код,
+	Описание AS Наименование
+FROM [Европродукт 2009$Характеристики] AS manuf with(nolock)
+	WHERE (Тип = 0) AND Код &lt;> '')</expressionInDataSource>
+  <tableDataType>NonobjectData</tableDataType>
+  <unfilledParentValue xsi:type="core:UndefinedValue"/>
+  <useStandardCommands>true</useStandardCommands>
+  <transactionsIsolationLevel>ReadUncommitted</transactionsIsolationLevel>
+  <editType>InDialog</editType>
+  <tableFields uuid="44cf7bb5-549c-4fe5-b2d4-68902b37cf56">
+    <name>Код</name>
+    <synonym>
+      <key>ru</key>
+      <value>Код</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>20</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+    <nameInDataSource>Код</nameInDataSource>
+  </tableFields>
+  <tableFields uuid="47d0e6c2-bee2-4a9d-af6a-ed733e027981">
+    <name>Код_Проекта</name>
+    <synonym>
+      <key>ru</key>
+      <value>Код проекта</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>10</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+    <nameInDataSource>Код_Проекта</nameInDataSource>
+  </tableFields>
+  <tableFields uuid="7aa69e70-7887-4430-ace9-b4d370b4754c">
+    <name>Наименование</name>
+    <synonym>
+      <key>ru</key>
+      <value>Наименование</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>30</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+    <nameInDataSource>Наименование</nameInDataSource>
+  </tableFields>
+</mdclass:Table>

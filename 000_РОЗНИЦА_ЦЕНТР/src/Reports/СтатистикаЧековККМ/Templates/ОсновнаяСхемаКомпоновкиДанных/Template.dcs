@@ -1,0 +1,1386 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>Статистика чеков ККМ</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КассаККМ</dataPath>
+			<field>КассаККМ</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Касса</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.КассыККМ</v8:Type>
+			</valueType>
+			<inputParameters>
+				<dcscor:item>
+					<dcscor:parameter>СвязиПараметровВыбора</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:ChoiceParameterLinks">
+						<dcscor:item>
+							<dcscor:choiceParameter>Отбор.Магазин</dcscor:choiceParameter>
+							<dcscor:value>Магазин</dcscor:value>
+							<dcscor:mode xmlns:d8p1="http://v8.1c.ru/8.1/data/enterprise" xsi:type="d8p1:LinkedValueChangeMode">Clear</dcscor:mode>
+						</dcscor:item>
+					</dcscor:value>
+				</dcscor:item>
+			</inputParameters>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоЧеков_Возврат</dataPath>
+			<field>КоличествоЧеков_Возврат</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Возврат (кол-во чеков)</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<group>true</group>
+			</useRestriction>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>20</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ГоризонтальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:HorizontalAlign">Right</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВертикальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:VerticalAlign">Center</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=20; ЧДЦ=2; ЧРД=,; ЧРГ=' '</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МинимальнаяШирина</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">15</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоЧеков_Продажа</dataPath>
+			<field>КоличествоЧеков_Продажа</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Продажа (кол-во чеков)</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<group>true</group>
+			</useRestriction>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>20</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ГоризонтальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:HorizontalAlign">Right</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВертикальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:VerticalAlign">Center</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=20; ЧДЦ=2; ЧРД=,; ЧРГ=' '</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МинимальнаяШирина</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">15</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоЧеков_ПродажаВсего</dataPath>
+			<field>КоличествоЧеков_ПродажаВсего</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Продажа всего (кол-во чеков)</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<group>true</group>
+			</useRestriction>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>20</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ГоризонтальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:HorizontalAlign">Right</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВертикальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:VerticalAlign">Center</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=20; ЧДЦ=2; ЧРД=,; ЧРГ=' '</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МинимальнаяШирина</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">12</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоЧеков_ПродажаСоСкидкой</dataPath>
+			<field>КоличествоЧеков_ПродажаСоСкидкой</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Продажа со скидкой (кол-во чеков)</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<group>true</group>
+			</useRestriction>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>20</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ГоризонтальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:HorizontalAlign">Right</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВертикальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:VerticalAlign">Center</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=20; ЧДЦ=2; ЧРД=,; ЧРГ=' '</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МинимальнаяШирина</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">15</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Магазин</dataPath>
+			<field>Магазин</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Магазин</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Магазины</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Оплата_БанковскийКредит</dataPath>
+			<field>Оплата_БанковскийКредит</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оплата банк. кредит</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<group>true</group>
+			</useRestriction>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>20</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ГоризонтальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:HorizontalAlign">Right</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВертикальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:VerticalAlign">Center</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=20; ЧДЦ=2; ЧРД=,; ЧРГ=' '</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МинимальнаяШирина</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">15</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Оплата_Наличные</dataPath>
+			<field>Оплата_Наличные</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оплата наличные</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<group>true</group>
+			</useRestriction>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>20</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ГоризонтальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:HorizontalAlign">Right</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВертикальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:VerticalAlign">Center</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=20; ЧДЦ=2; ЧРД=,; ЧРГ=' '</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МинимальнаяШирина</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">15</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Оплата_ПлатежнаяКарта</dataPath>
+			<field>Оплата_ПлатежнаяКарта</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оплата платеж. карта</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<group>true</group>
+			</useRestriction>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>20</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ГоризонтальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:HorizontalAlign">Right</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВертикальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:VerticalAlign">Center</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=20; ЧДЦ=2; ЧРД=,; ЧРГ=' '</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МинимальнаяШирина</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">15</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПродажаОплата_НоменклатураВозврат</dataPath>
+			<field>ПродажаОплата_НоменклатураВозврат</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Возврат (кол-во номенклатура)</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<group>true</group>
+			</useRestriction>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>20</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ГоризонтальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:HorizontalAlign">Right</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВертикальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:VerticalAlign">Center</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=20; ЧДЦ=2; ЧРД=,; ЧРГ=' '</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МинимальнаяШирина</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">15</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПродажаОплата_НоменклатураПродажа</dataPath>
+			<field>ПродажаОплата_НоменклатураПродажа</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Продажа (кол-во номенклатура)</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<group>true</group>
+			</useRestriction>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>20</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ГоризонтальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:HorizontalAlign">Right</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВертикальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:VerticalAlign">Center</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=20; ЧДЦ=2; ЧРД=,; ЧРГ=' '</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МинимальнаяШирина</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">15</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПродажаОплата_НоменклатураПродажаСоСкидкой</dataPath>
+			<field>ПродажаОплата_НоменклатураПродажаСоСкидкой</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Продажа номенклатуры со скидкой</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<group>true</group>
+			</useRestriction>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>20</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ГоризонтальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:HorizontalAlign">Right</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВертикальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:VerticalAlign">Center</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=20; ЧДЦ=2; ЧРД=,; ЧРГ=' '</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МинимальнаяШирина</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">15</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПродажаОплата_СуммаВозврат</dataPath>
+			<field>ПродажаОплата_СуммаВозврат</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма возврат</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<group>true</group>
+			</useRestriction>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>20</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ГоризонтальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:HorizontalAlign">Right</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВертикальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:VerticalAlign">Center</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=20; ЧДЦ=2; ЧРД=,; ЧРГ=' '</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МинимальнаяШирина</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">15</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПродажаОплата_СуммаПродажа</dataPath>
+			<field>ПродажаОплата_СуммаПродажа</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма продажи</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<group>true</group>
+			</useRestriction>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>20</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ГоризонтальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:HorizontalAlign">Right</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВертикальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:VerticalAlign">Center</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=20; ЧДЦ=2; ЧРД=,; ЧРГ=' '</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МинимальнаяШирина</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">15</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПродажаОплата_СуммаПродажаВсего</dataPath>
+			<field>ПродажаОплата_СуммаПродажаВсего</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма продажи всего</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<group>true</group>
+			</useRestriction>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>20</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ГоризонтальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:HorizontalAlign">Right</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВертикальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:VerticalAlign">Center</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=20; ЧДЦ=2; ЧРД=,; ЧРГ=' '</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МинимальнаяШирина</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">15</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПродажаОплата_СуммаПродажаСоСкидкой</dataPath>
+			<field>ПродажаОплата_СуммаПродажаСоСкидкой</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма продажи со скидкой</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<group>true</group>
+			</useRestriction>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>20</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ГоризонтальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:HorizontalAlign">Right</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВертикальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:VerticalAlign">Center</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=20; ЧДЦ=2; ЧРД=,; ЧРГ=' '</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МинимальнаяШирина</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">15</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПродажаОплата_НоменклатураПродажаВсего</dataPath>
+			<field>ПродажаОплата_НоменклатураПродажаВсего</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Продажа всего (кол-во номенклатура)</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<group>true</group>
+			</useRestriction>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>20</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ГоризонтальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:HorizontalAlign">Right</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВертикальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:VerticalAlign">Center</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=20; ЧДЦ=2; ЧРД=,; ЧРГ=' '</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МинимальнаяШирина</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">15</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldFolder">
+			<dataPath>Поле1</dataPath>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поле1</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Оплата_ПодарочнымСертификатом</dataPath>
+			<field>Оплата_ПодарочнымСертификатом</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оплата подар. сертификатом</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<group>true</group>
+			</useRestriction>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>20</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВертикальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:VerticalAlign">Center</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=20; ЧДЦ=2; ЧРД=,; ЧРГ=' '</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МинимальнаяШирина</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">15</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ПродажаОплата.Документ                               КАК Документ,
+	СУММА(ПродажаОплата.ОплатаНаличные)                  КАК ОплатаНаличные,
+	СУММА(ПродажаОплата.ОплатаПлатежнаяКарта)            КАК ОплатаПлатежнаяКарта,
+	СУММА(ПродажаОплата.ОплатаБанковскийКредит)          КАК ОплатаБанковскийКредит,
+	СУММА(ПродажаОплата.ОплатаПодарочнымСертификатом)    КАК ОплатаПодарочнымСертификатом,
+	СУММА(
+	ВЫБОР	КОГДА ПродажаОплата.ВидОперации = ЗНАЧЕНИЕ(Перечисление.ВидыОперацийЧекККМ.Возврат)
+			ТОГДА ПродажаОплата.КоличествоНоменклатуры
+			ИНАЧЕ 0.00
+	КОНЕЦ) КАК КолНоменклатураВозврат,
+	СУММА(
+	ВЫБОР	КОГДА ПродажаОплата.ВидОперации = ЗНАЧЕНИЕ(Перечисление.ВидыОперацийЧекККМ.Продажа) И ПродажаОплата.ПроценСкидки &gt; 0
+			ТОГДА ПродажаОплата.КоличествоНоменклатуры
+			ИНАЧЕ 0.00
+	КОНЕЦ) КАК КолПродажаНоменклатураСоСкидкой,		
+	СУММА(
+	ВЫБОР	КОГДА ПродажаОплата.ВидОперации = ЗНАЧЕНИЕ(Перечисление.ВидыОперацийЧекККМ.Продажа) И ПродажаОплата.ПроценСкидки = 0
+			ТОГДА ПродажаОплата.КоличествоНоменклатуры
+			ИНАЧЕ 0.00
+	КОНЕЦ) КАК КолПродажаНоменклатураБезСкидки,
+	СУММА(
+	ВЫБОР	КОГДА ПродажаОплата.ВидОперации = ЗНАЧЕНИЕ(Перечисление.ВидыОперацийЧекККМ.Продажа)
+			ТОГДА ПродажаОплата.СуммаПродажаВсего
+			ИНАЧЕ 0.00
+	КОНЕЦ) КАК СуммаПродажаВсего,		
+	СУММА(
+	ВЫБОР	КОГДА ПродажаОплата.ВидОперации = ЗНАЧЕНИЕ(Перечисление.ВидыОперацийЧекККМ.Продажа) И ПродажаОплата.ПроценСкидки &gt; 0
+			ТОГДА ПродажаОплата.СуммаПродажаВсего
+			ИНАЧЕ 0.00
+	КОНЕЦ) КАК СуммаПродажаСоСкидкой,
+	СУММА(
+	ВЫБОР	КОГДА ПродажаОплата.ВидОперации = ЗНАЧЕНИЕ(Перечисление.ВидыОперацийЧекККМ.Продажа) И ПродажаОплата.ПроценСкидки = 0
+			ТОГДА ПродажаОплата.СуммаПродажаВсего
+			ИНАЧЕ 0.00
+	КОНЕЦ) КАК СуммаПродажаБезСкидки,
+	СУММА(
+	ВЫБОР	КОГДА ПродажаОплата.ВидОперации = ЗНАЧЕНИЕ(Перечисление.ВидыОперацийЧекККМ.Возврат)
+			ТОГДА ПродажаОплата.СуммаПродажаВсего
+			ИНАЧЕ 0.00
+	КОНЕЦ) КАК СуммаВозврата
+ПОМЕСТИТЬ ПродажаОплата
+ИЗ
+(
+	ВЫБРАТЬ
+			ЧекККМ.ВидОперации КАК ВидОперации,
+			ЧекККМ.Ссылка КАК Документ,
+			ВЫБОР	КОГДА ВидыОплатЧекаККМ.ТипОплаты = ЗНАЧЕНИЕ(Перечисление.ТипыОплатЧекаККМ.Наличные)
+					ТОГДА ОплатаДокумент.Сумма
+					ИНАЧЕ 0.00
+			КОНЕЦ КАК ОплатаНаличные,
+			ВЫБОР	КОГДА ВидыОплатЧекаККМ.ТипОплаты = ЗНАЧЕНИЕ(Перечисление.ТипыОплатЧекаККМ.ПодарочныйСертификат)
+					ТОГДА ОплатаДокумент.Сумма
+					ИНАЧЕ 0.00
+			КОНЕЦ КАК ОплатаПодарочнымСертификатом,
+			ВЫБОР	КОГДА ВидыОплатЧекаККМ.ТипОплаты = ЗНАЧЕНИЕ(Перечисление.ТипыОплатЧекаККМ.ПлатежнаяКарта)
+					ТОГДА ОплатаДокумент.Сумма
+					ИНАЧЕ 0.00
+			КОНЕЦ КАК ОплатаПлатежнаяКарта,
+			ВЫБОР	КОГДА ВидыОплатЧекаККМ.ТипОплаты = ЗНАЧЕНИЕ(Перечисление.ТипыОплатЧекаККМ.БанковскийКредит)
+					ТОГДА ОплатаДокумент.Сумма
+					ИНАЧЕ 0.00
+			КОНЕЦ КАК ОплатаБанковскийКредит,
+			0.00 КАК КоличествоНоменклатуры,
+			0.00 КАК ПроценСкидки,
+			0.00 КАК СуммаПродажаВсего
+		ИЗ
+			Документ.ЧекККМ КАК ЧекККМ
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ
+			Документ.ЧекККМ.Оплата КАК ОплатаДокумент
+		ПО
+			ОплатаДокумент.Ссылка = ЧекККМ.Ссылка
+		ЛЕВОЕ СОЕДИНЕНИЕ
+			Справочник.ВидыОплатЧекаККМ КАК ВидыОплатЧекаККМ
+		ПО
+			ВидыОплатЧекаККМ.Ссылка = ОплатаДокумент.ВидОплаты
+		ГДЕ
+			ЧекККМ.Дата МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода И ЧекККМ.СтатусЧекаККМ = ЗНАЧЕНИЕ(Перечисление.СтатусыЧековККМ.Архивный)
+		{ГДЕ
+			ЧекККМ.Магазин.* КАК Магазин,
+			ЧекККМ.КассаККМ.* КАК КассаККМ}
+		
+	ОБЪЕДИНИТЬ ВСЕ
+
+	ВЫБРАТЬ
+		ЧекККМ.ВидОперации КАК ВидОперации,
+		ЧекККМ.Документ КАК Документ,
+		0.00 КАК ОплатаНаличные,
+		0.00 КАК ОплатаПодарочнымСертификатом,
+		0.00 КАК ОплатаПлатежнаяКарта,
+		0.00 КАК ОплатаБанковскийКредит,
+		КОЛИЧЕСТВО(*) КАК КоличествоНоменклатуры,
+		СУММА(ЧекККМ.ПроценСкидки) КАК ПроценСкидки,
+		СУММА(ЧекККМ.СуммаПродажаВсего) КАК СуммаПродажаВсего	
+	ИЗ
+	(
+		ВЫБРАТЬ
+				ЧекККМ.ВидОперации КАК ВидОперации,
+				ЧекККМ.Ссылка КАК Документ,
+				ЧекККМТовары.Номенклатура КАК Номенклатура,
+				ЧекККМТовары.Характеристика КАК ХарактеристикаНоменклатуры,
+				СУММА(ВЫБОР
+						КОГДА (ВЫРАЗИТЬ(ЧекККМТовары.Цена * ЧекККМТовары.Количество КАК ЧИСЛО(15, 2))) = ЧекККМТовары.Сумма
+								ИЛИ ЧекККМТовары.Цена * ЧекККМТовары.Количество = 0
+							ТОГДА 0
+						ИНАЧЕ 100 * (ЧекККМТовары.Цена * ЧекККМТовары.Количество - ЧекККМТовары.Сумма) / (ЧекККМТовары.Цена * ЧекККМТовары.Количество)
+					КОНЕЦ) КАК ПроценСкидки,
+				СУММА(ЧекККМТовары.Сумма) КАК СуммаПродажаВсего
+			ИЗ
+				Документ.ЧекККМ КАК ЧекККМ
+			ВНУТРЕННЕЕ СОЕДИНЕНИЕ
+				Документ.ЧекККМ.Товары КАК ЧекККМТовары
+			ПО 
+				ЧекККМТовары.Ссылка = ЧекККМ.Ссылка
+			ГДЕ
+				ЧекККМ.Дата МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода И ЧекККМ.СтатусЧекаККМ = ЗНАЧЕНИЕ(Перечисление.СтатусыЧековККМ.Архивный)
+			{ГДЕ
+				ЧекККМ.Магазин.* КАК Магазин,
+				ЧекККМ.КассаККМ.* КАК КассаККМ}
+			СГРУППИРОВАТЬ ПО
+				ЧекККМ.ВидОперации,
+				ЧекККМ.Ссылка,
+				ЧекККМТовары.Номенклатура,
+				ЧекККМТовары.Характеристика
+	) КАК ЧекККМ
+	СГРУППИРОВАТЬ ПО
+		ЧекККМ.Документ,
+		ЧекККМ.ВидОперации
+) КАК ПродажаОплата
+СГРУППИРОВАТЬ ПО 
+	ПродажаОплата.Документ
+ИНДЕКСИРОВАТЬ ПО
+	ПродажаОплата.Документ
+;
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ЧекККМ.Магазин КАК Магазин,
+	ЧекККМ.КассаККМ КАК КассаККМ,
+	// --- Количестов Чеков ККМ
+	ЕСТЬNULL(КОЛИЧЕСТВО(РАЗЛИЧНЫЕ
+			ВЫБОР	КОГДА ЧекККМ.ВидОперации = ЗНАЧЕНИЕ(Перечисление.ВидыОперацийЧекККМ.Продажа)
+					ТОГДА ЧекККМ.Ссылка
+			КОНЕЦ), 0.00) КАК КоличествоЧеков_ПродажаВсего,
+	ЕСТЬNULL(КОЛИЧЕСТВО(РАЗЛИЧНЫЕ
+			ВЫБОР	КОГДА ПродажаОплата.СуммаПродажаСоСкидкой = 0 И ЧекККМ.ВидОперации = ЗНАЧЕНИЕ(Перечисление.ВидыОперацийЧекККМ.Продажа)
+					ТОГДА ЧекККМ.Ссылка
+			КОНЕЦ), 0.00) КАК КоличествоЧеков_Продажа,
+	ЕСТЬNULL(КОЛИЧЕСТВО(РАЗЛИЧНЫЕ
+			ВЫБОР	КОГДА ПродажаОплата.СуммаПродажаСоСкидкой &lt;&gt; 0 И ЧекККМ.ВидОперации = ЗНАЧЕНИЕ(Перечисление.ВидыОперацийЧекККМ.Продажа)
+					ТОГДА ЧекККМ.Ссылка
+			КОНЕЦ), 0.00) КАК КоличествоЧеков_ПродажаСоСкидкой,
+	ЕСТЬNULL(КОЛИЧЕСТВО(РАЗЛИЧНЫЕ
+			ВЫБОР	КОГДА ЧекККМ.ВидОперации = ЗНАЧЕНИЕ(Перечисление.ВидыОперацийЧекККМ.Возврат)
+					ТОГДА ЧекККМ.Ссылка
+			КОНЕЦ), 0.00) КАК КоличествоЧеков_Возврат,
+	ЕСТЬNULL(КОЛИЧЕСТВО(РАЗЛИЧНЫЕ НАЧАЛОПЕРИОДА(ЧекККМ.Дата, День)), 0.00) КАК КоличествоДнейРаботыКассы
+ПОМЕСТИТЬ КоличествоЧеков
+ИЗ
+	Документ.ЧекККМ КАК ЧекККМ
+ЛЕВОЕ СОЕДИНЕНИЕ
+	ПродажаОплата КАК ПродажаОплата
+ПО
+	ПродажаОплата.Документ = ЧекККМ.Ссылка
+ГДЕ
+		ЧекККМ.Дата МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода И ЧекККМ.СтатусЧекаККМ = ЗНАЧЕНИЕ(Перечисление.СтатусыЧековККМ.Архивный)
+{ГДЕ
+	ЧекККМ.Магазин.* КАК Магазин,
+	ЧекККМ.КассаККМ.* КАК КассаККМ}
+СГРУППИРОВАТЬ ПО
+	ЧекККМ.Магазин,
+	ЧекККМ.КассаККМ
+ИНДЕКСИРОВАТЬ ПО
+	Магазин, КассаККМ
+;
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	КоличествоЧеков.Магазин КАК Магазин,
+	КоличествоЧеков.КассаККМ КАК КассаККМ,
+	//----- Количество чеков
+	ВЫБОР	КОГДА ЕСТЬNULL(КоличествоЧеков.КоличествоДнейРаботыКассы, 0.00) = 0.00
+			ТОГДА 0.00
+			ИНАЧЕ ЕСТЬNULL(КоличествоЧеков.КоличествоЧеков_ПродажаВсего, 0.00) / КоличествоЧеков.КоличествоДнейРаботыКассы
+	КОНЕЦ КАК КоличествоЧеков_ПродажаВсего,
+	ВЫБОР	КОГДА ЕСТЬNULL(КоличествоЧеков.КоличествоДнейРаботыКассы, 0.00) = 0.00
+			ТОГДА 0.00
+			ИНАЧЕ ЕСТЬNULL(КоличествоЧеков.КоличествоЧеков_Продажа, 0.00) / КоличествоЧеков.КоличествоДнейРаботыКассы
+	КОНЕЦ КАК КоличествоЧеков_Продажа,
+	ВЫБОР	КОГДА ЕСТЬNULL(КоличествоЧеков.КоличествоДнейРаботыКассы, 0.00) = 0.00
+			ТОГДА 0.00
+			ИНАЧЕ ЕСТЬNULL(КоличествоЧеков.КоличествоЧеков_ПродажаСоСкидкой, 0.00) / КоличествоЧеков.КоличествоДнейРаботыКассы
+	КОНЕЦ КАК КоличествоЧеков_ПродажаСоСкидкой,
+	ВЫБОР	КОГДА ЕСТЬNULL(КоличествоЧеков.КоличествоДнейРаботыКассы, 0.00) = 0.00
+			ТОГДА 0.00
+			ИНАЧЕ ЕСТЬNULL(КоличествоЧеков.КоличествоЧеков_Возврат, 0.00) / КоличествоЧеков.КоличествоДнейРаботыКассы
+	КОНЕЦ КАК КоличествоЧеков_Возврат,
+	// ----- Средняя сумма продаж
+	ВЫБОР	КОГДА ЕСТЬNULL(КоличествоЧеков.КоличествоЧеков_ПродажаВсего, 0.00) = 0.00
+			ТОГДА 0.00
+			ИНАЧЕ ЕСТЬNULL(ПродажаОплата.СуммаПродажаВсего, 0.00) / КоличествоЧеков.КоличествоЧеков_ПродажаВсего
+	КОНЕЦ КАК ПродажаОплата_СуммаПродажаВсего,
+	ВЫБОР	КОГДА ЕСТЬNULL(КоличествоЧеков.КоличествоЧеков_Продажа, 0.00) = 0.00
+			ТОГДА 0.00
+			ИНАЧЕ ЕСТЬNULL(ПродажаОплата.СуммаПродажаБезСкидки, 0.00) / КоличествоЧеков.КоличествоЧеков_Продажа
+	КОНЕЦ КАК ПродажаОплата_СуммаПродажа,
+	ВЫБОР	КОГДА ЕСТЬNULL(КоличествоЧеков.КоличествоЧеков_ПродажаСоСкидкой, 0.00) = 0.00
+			ТОГДА 0.00
+			ИНАЧЕ ЕСТЬNULL(ПродажаОплата.СуммаПродажаСоСкидкой, 0.00) / КоличествоЧеков.КоличествоЧеков_ПродажаСоСкидкой
+	КОНЕЦ КАК ПродажаОплата_СуммаПродажаСоСкидкой,
+	ВЫБОР	КОГДА ЕСТЬNULL(КоличествоЧеков.КоличествоЧеков_Возврат, 0.00) = 0.00
+			ТОГДА 0.00
+			ИНАЧЕ ЕСТЬNULL(ПродажаОплата.СуммаВозврата, 0.00) / КоличествоЧеков.КоличествоЧеков_Возврат
+	КОНЕЦ КАК ПродажаОплата_СуммаВозврат,
+	// ------ Среднее количество строк
+	ВЫБОР	КОГДА ЕСТЬNULL(КоличествоЧеков.КоличествоЧеков_ПродажаВсего, 0.00) = 0.00
+			ТОГДА 0.00
+			ИНАЧЕ (ЕСТЬNULL(ПродажаОплата.КолПродажаНоменклатураБезСкидки, 0.00) + ЕСТЬNULL(ПродажаОплата.КолПродажаНоменклатураСоСкидкой, 0.00)) / КоличествоЧеков.КоличествоЧеков_ПродажаВсего
+	КОНЕЦ КАК ПродажаОплата_НоменклатураПродажаВсего,
+	ВЫБОР	КОГДА ЕСТЬNULL(КоличествоЧеков.КоличествоЧеков_Продажа, 0.00) = 0.00
+			ТОГДА 0.00
+			ИНАЧЕ ЕСТЬNULL(ПродажаОплата.КолПродажаНоменклатураБезСкидки, 0.00) / КоличествоЧеков.КоличествоЧеков_Продажа
+	КОНЕЦ КАК ПродажаОплата_НоменклатураПродажа,
+	ВЫБОР	КОГДА ЕСТЬNULL(КоличествоЧеков.КоличествоЧеков_ПродажаСоСкидкой, 0.00) = 0.00
+			ТОГДА 0.00
+			ИНАЧЕ ЕСТЬNULL(ПродажаОплата.КолПродажаНоменклатураСоСкидкой, 0.00) / КоличествоЧеков.КоличествоЧеков_ПродажаСоСкидкой
+	КОНЕЦ КАК ПродажаОплата_НоменклатураПродажаСоСкидкой,
+	ВЫБОР	КОГДА ЕСТЬNULL(КоличествоЧеков.КоличествоЧеков_Возврат, 0.00) = 0.00
+			ТОГДА 0.00
+			ИНАЧЕ ЕСТЬNULL(ПродажаОплата.КолНоменклатураВозврат, 0.00) / КоличествоЧеков.КоличествоЧеков_Возврат
+	КОНЕЦ КАК ПродажаОплата_НоменклатураВозврат,
+	// ----- Сумма оплаты
+	ВЫБОР	КОГДА ЕСТЬNULL(КоличествоЧеков.КоличествоДнейРаботыКассы, 0.00) = 0.00
+			ТОГДА 0.00
+			ИНАЧЕ ЕСТЬNULL(ПродажаОплата.ОплатаНаличные, 0.00) / КоличествоЧеков.КоличествоДнейРаботыКассы
+	КОНЕЦ КАК Оплата_Наличные,
+	ВЫБОР	КОГДА ЕСТЬNULL(КоличествоЧеков.КоличествоДнейРаботыКассы, 0.00) = 0.00
+			ТОГДА 0.00
+			ИНАЧЕ ЕСТЬNULL(ПродажаОплата.ОплатаПодарочнымСертификатом, 0.00) / КоличествоЧеков.КоличествоДнейРаботыКассы
+	КОНЕЦ КАК Оплата_ПодарочнымСертификатом,
+	ВЫБОР	КОГДА ЕСТЬNULL(КоличествоЧеков.КоличествоДнейРаботыКассы, 0.00) = 0.00
+			ТОГДА 0.00
+			ИНАЧЕ ЕСТЬNULL(ПродажаОплата.ОплатаПлатежнаяКарта, 0.00) / КоличествоЧеков.КоличествоДнейРаботыКассы
+	КОНЕЦ КАК Оплата_ПлатежнаяКарта,
+	ВЫБОР	КОГДА ЕСТЬNULL(КоличествоЧеков.КоличествоДнейРаботыКассы, 0.00) = 0.00
+			ТОГДА 0.00
+			ИНАЧЕ ЕСТЬNULL(ПродажаОплата.ОплатаБанковскийКредит, 0.00) / КоличествоЧеков.КоличествоДнейРаботыКассы
+	КОНЕЦ КАК Оплата_БанковскийКредит
+{ВЫБРАТЬ
+	Магазин.* КАК Магазин,
+	КассаККМ.* КАК КассаККМ,
+	//----- Количество чеков
+	КоличествоЧеков_ПродажаВсего КАК КоличествоЧеков_ПродажаВсего,
+	КоличествоЧеков_Продажа КАК КоличествоЧеков_Продажа,
+	КоличествоЧеков_ПродажаСоСкидкой КАК КоличествоЧеков_ПродажаСоСкидкой,
+	КоличествоЧеков_Возврат КАК КоличествоЧеков_Возврат,
+	// ----- Средняя сумма продаж
+	ПродажаОплата_СуммаПродажаВсего КАК ПродажаОплата_СуммаПродажаВсего,
+	ПродажаОплата_СуммаПродажа КАК ПродажаОплата_СуммаПродажа,
+	ПродажаОплата_СуммаПродажаСоСкидкой КАК ПродажаОплата_СуммаПродажаСоСкидкой,
+	ПродажаОплата_СуммаВозврат КАК ПродажаОплата_СуммаВозврат,
+	// ------ Среднее количество строк
+	ПродажаОплата_НоменклатураПродажаВсего КАК ПродажаОплата_НоменклатураПродажаВсего,
+	ПродажаОплата_НоменклатураПродажа КАК ПродажаОплата_НоменклатураПродажа,
+	ПродажаОплата_НоменклатураПродажаСоСкидкой КАК ПродажаОплата_НоменклатураПродажаСоСкидкой,
+	ПродажаОплата_НоменклатураВозврат КАК ПродажаОплата_НоменклатураВозврат,
+	// ----- Сумма оплаты
+	Оплата_Наличные КАК Оплата_Наличные,
+	Оплата_ПлатежнаяКарта КАК Оплата_ПлатежнаяКарта,
+	Оплата_БанковскийКредит КАК Оплата_БанковскийКредит}	
+ИЗ
+	КоличествоЧеков КАК КоличествоЧеков
+ЛЕВОЕ СОЕДИНЕНИЕ
+(
+	ВЫБРАТЬ
+		ЧекККМ.Магазин КАК Магазин,
+		ЧекККМ.КассаККМ КАК КассаККМ,
+		СУММА(	ВЫБОР	КОГДА ЧекККМ.ВидОперации = ЗНАЧЕНИЕ(Перечисление.ВидыОперацийЧекККМ.Продажа)
+						ТОГДА ПродажаОплата.ОплатаНаличные
+						ИНАЧЕ - ПродажаОплата.ОплатаНаличные
+				КОНЕЦ) КАК ОплатаНаличные,
+		СУММА(	ВЫБОР	КОГДА ЧекККМ.ВидОперации = ЗНАЧЕНИЕ(Перечисление.ВидыОперацийЧекККМ.Продажа)
+						ТОГДА ПродажаОплата.ОплатаПодарочнымСертификатом
+						ИНАЧЕ - ПродажаОплата.ОплатаПодарочнымСертификатом
+				КОНЕЦ) КАК ОплатаПодарочнымСертификатом,
+		СУММА(	ВЫБОР	КОГДА ЧекККМ.ВидОперации = ЗНАЧЕНИЕ(Перечисление.ВидыОперацийЧекККМ.Продажа)
+						ТОГДА ПродажаОплата.ОплатаПлатежнаяКарта
+						ИНАЧЕ - ПродажаОплата.ОплатаПлатежнаяКарта
+				КОНЕЦ) КАК ОплатаПлатежнаяКарта,
+		СУММА(	ВЫБОР	КОГДА ЧекККМ.ВидОперации = ЗНАЧЕНИЕ(Перечисление.ВидыОперацийЧекККМ.Продажа)
+						ТОГДА ПродажаОплата.ОплатаБанковскийКредит
+						ИНАЧЕ - ПродажаОплата.ОплатаБанковскийКредит
+				КОНЕЦ) КАК ОплатаБанковскийКредит,
+		СУММА(ПродажаОплата.КолНоменклатураВозврат) КАК КолНоменклатураВозврат,
+		СУММА(ПродажаОплата.КолПродажаНоменклатураСоСкидкой) КАК КолПродажаНоменклатураСоСкидкой,
+		СУММА(ПродажаОплата.КолПродажаНоменклатураБезСкидки) КАК КолПродажаНоменклатураБезСкидки,
+		СУММА(ПродажаОплата.СуммаПродажаВсего) КАК СуммаПродажаВсего,
+		СУММА(ПродажаОплата.СуммаПродажаСоСкидкой) КАК СуммаПродажаСоСкидкой,
+		СУММА(ПродажаОплата.СуммаПродажаБезСкидки) КАК СуммаПродажаБезСкидки,
+		СУММА(ПродажаОплата.СуммаВозврата) КАК СуммаВозврата
+	ИЗ
+		Документ.ЧекККМ КАК ЧекККМ
+	ЛЕВОЕ СОЕДИНЕНИЕ
+		ПродажаОплата КАК ПродажаОплата
+	ПО
+		ПродажаОплата.Документ = ЧекККМ.Ссылка
+	ГДЕ
+		ЧекККМ.Дата МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода И ЧекККМ.СтатусЧекаККМ = ЗНАЧЕНИЕ(Перечисление.СтатусыЧековККМ.Архивный)
+	СГРУППИРОВАТЬ ПО
+		ЧекККМ.Магазин,
+		ЧекККМ.КассаККМ
+) КАК ПродажаОплата
+ПО
+	ПродажаОплата.Магазин = КоличествоЧеков.Магазин
+	И ПродажаОплата.КассаККМ = КоличествоЧеков.КассаККМ
+{ГДЕ
+	//----- Количество чеков
+	ВЫБОР	КОГДА ЕСТЬNULL(КоличествоЧеков.КоличествоДнейРаботыКассы, 0.00) = 0.00
+			ТОГДА 0.00
+			ИНАЧЕ ЕСТЬNULL(КоличествоЧеков.КоличествоЧеков_ПродажаВсего, 0.00) / КоличествоЧеков.КоличествоДнейРаботыКассы
+	КОНЕЦ КАК КоличествоЧеков_ПродажаВсего,
+	ВЫБОР	КОГДА ЕСТЬNULL(КоличествоЧеков.КоличествоДнейРаботыКассы, 0.00) = 0.00
+			ТОГДА 0.00
+			ИНАЧЕ ЕСТЬNULL(КоличествоЧеков.КоличествоЧеков_Продажа, 0.00) / КоличествоЧеков.КоличествоДнейРаботыКассы
+	КОНЕЦ КАК КоличествоЧеков_Продажа,
+	ВЫБОР	КОГДА ЕСТЬNULL(КоличествоЧеков.КоличествоДнейРаботыКассы, 0.00) = 0.00
+			ТОГДА 0.00
+			ИНАЧЕ ЕСТЬNULL(КоличествоЧеков.КоличествоЧеков_ПродажаСоСкидкой, 0.00) / КоличествоЧеков.КоличествоДнейРаботыКассы
+	КОНЕЦ КАК КоличествоЧеков_ПродажаСоСкидкой,
+	ВЫБОР	КОГДА ЕСТЬNULL(КоличествоЧеков.КоличествоДнейРаботыКассы, 0.00) = 0.00
+			ТОГДА 0.00
+			ИНАЧЕ ЕСТЬNULL(КоличествоЧеков.КоличествоЧеков_Возврат, 0.00) / КоличествоЧеков.КоличествоДнейРаботыКассы
+	КОНЕЦ КАК КоличествоЧеков_Возврат,
+	// ----- Средняя сумма продаж
+	ВЫБОР	КОГДА ЕСТЬNULL(КоличествоЧеков.КоличествоЧеков_ПродажаВсего, 0.00) = 0.00
+			ТОГДА 0.00
+			ИНАЧЕ ЕСТЬNULL(ПродажаОплата.СуммаПродажаВсего, 0.00) / КоличествоЧеков.КоличествоЧеков_ПродажаВсего
+	КОНЕЦ КАК ПродажаОплата_СуммаПродажаВсего,
+	ВЫБОР	КОГДА ЕСТЬNULL(КоличествоЧеков.КоличествоЧеков_Продажа, 0.00) = 0.00
+			ТОГДА 0.00
+			ИНАЧЕ ЕСТЬNULL(ПродажаОплата.СуммаПродажаБезСкидки, 0.00) / КоличествоЧеков.КоличествоЧеков_Продажа
+	КОНЕЦ КАК ПродажаОплата_СуммаПродажа,
+	ВЫБОР	КОГДА ЕСТЬNULL(КоличествоЧеков.КоличествоЧеков_ПродажаСоСкидкой, 0.00) = 0.00
+			ТОГДА 0.00
+			ИНАЧЕ ЕСТЬNULL(ПродажаОплата.СуммаПродажаСоСкидкой, 0.00) / КоличествоЧеков.КоличествоЧеков_ПродажаСоСкидкой
+	КОНЕЦ КАК ПродажаОплата_СуммаПродажаСоСкидкой,
+	ВЫБОР	КОГДА ЕСТЬNULL(КоличествоЧеков.КоличествоЧеков_Возврат, 0.00) = 0.00
+			ТОГДА 0.00
+			ИНАЧЕ ЕСТЬNULL(ПродажаОплата.СуммаВозврата, 0.00) / КоличествоЧеков.КоличествоЧеков_Возврат
+	КОНЕЦ КАК ПродажаОплата_СуммаВозврат,
+	// ------ Среднее количество строк
+	ВЫБОР	КОГДА ЕСТЬNULL(КоличествоЧеков.КоличествоЧеков_ПродажаВсего, 0.00) = 0.00
+			ТОГДА 0.00
+			ИНАЧЕ (ЕСТЬNULL(ПродажаОплата.КолПродажаНоменклатураБезСкидки, 0.00) + ЕСТЬNULL(ПродажаОплата.КолПродажаНоменклатураСоСкидкой, 0.00)) / КоличествоЧеков.КоличествоЧеков_ПродажаВсего
+	КОНЕЦ КАК ПродажаОплата_НоменклатураПродажаВсего,
+	ВЫБОР	КОГДА ЕСТЬNULL(КоличествоЧеков.КоличествоЧеков_Продажа, 0.00) = 0.00
+			ТОГДА 0.00
+			ИНАЧЕ ЕСТЬNULL(ПродажаОплата.КолПродажаНоменклатураБезСкидки, 0.00) / КоличествоЧеков.КоличествоЧеков_Продажа
+	КОНЕЦ КАК ПродажаОплата_НоменклатураПродажа,
+	ВЫБОР	КОГДА ЕСТЬNULL(КоличествоЧеков.КоличествоЧеков_ПродажаСоСкидкой, 0.00) = 0.00
+			ТОГДА 0.00
+			ИНАЧЕ ЕСТЬNULL(ПродажаОплата.КолПродажаНоменклатураСоСкидкой, 0.00) / КоличествоЧеков.КоличествоЧеков_ПродажаСоСкидкой
+	КОНЕЦ КАК ПродажаОплата_НоменклатураПродажаСоСкидкой,
+	ВЫБОР	КОГДА ЕСТЬNULL(КоличествоЧеков.КоличествоЧеков_Возврат, 0.00) = 0.00
+			ТОГДА 0.00
+			ИНАЧЕ ЕСТЬNULL(ПродажаОплата.КолНоменклатураВозврат, 0.00) / КоличествоЧеков.КоличествоЧеков_Возврат
+	КОНЕЦ КАК ПродажаОплата_НоменклатураВозврат,
+	// ----- Сумма оплаты
+	ВЫБОР	КОГДА ЕСТЬNULL(КоличествоЧеков.КоличествоДнейРаботыКассы, 0.00) = 0.00
+			ТОГДА 0.00
+			ИНАЧЕ ЕСТЬNULL(ПродажаОплата.ОплатаНаличные, 0.00) / КоличествоЧеков.КоличествоДнейРаботыКассы
+	КОНЕЦ КАК Оплата_Наличные,
+	ВЫБОР	КОГДА ЕСТЬNULL(КоличествоЧеков.КоличествоДнейРаботыКассы, 0.00) = 0.00
+			ТОГДА 0.00
+			ИНАЧЕ ЕСТЬNULL(ПродажаОплата.ОплатаПодарочнымСертификатом, 0.00) / КоличествоЧеков.КоличествоДнейРаботыКассы
+	КОНЕЦ КАК Оплата_ПодарочнымСертификатом,
+	ВЫБОР	КОГДА ЕСТЬNULL(КоличествоЧеков.КоличествоДнейРаботыКассы, 0.00) = 0.00
+			ТОГДА 0.00
+			ИНАЧЕ ЕСТЬNULL(ПродажаОплата.ОплатаПлатежнаяКарта, 0.00) / КоличествоЧеков.КоличествоДнейРаботыКассы
+	КОНЕЦ КАК Оплата_ПлатежнаяКарта,
+	ВЫБОР	КОГДА ЕСТЬNULL(КоличествоЧеков.КоличествоДнейРаботыКассы, 0.00) = 0.00
+			ТОГДА 0.00
+			ИНАЧЕ ЕСТЬNULL(ПродажаОплата.ОплатаБанковскийКредит, 0.00) / КоличествоЧеков.КоличествоДнейРаботыКассы
+	КОНЕЦ КАК Оплата_БанковскийКредит}</query>
+	</dataSet>
+	<totalField>
+		<dataPath>КоличествоЧеков_Возврат</dataPath>
+		<expression>Среднее(КоличествоЧеков_Возврат)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>КоличествоЧеков_Продажа</dataPath>
+		<expression>Среднее(КоличествоЧеков_Продажа)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>КоличествоЧеков_ПродажаВсего</dataPath>
+		<expression>Среднее(КоличествоЧеков_ПродажаВсего)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>КоличествоЧеков_ПродажаСоСкидкой</dataPath>
+		<expression>Среднее(КоличествоЧеков_ПродажаСоСкидкой)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Оплата_БанковскийКредит</dataPath>
+		<expression>Среднее(Оплата_БанковскийКредит)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Оплата_Наличные</dataPath>
+		<expression>Среднее(Оплата_Наличные)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Оплата_ПлатежнаяКарта</dataPath>
+		<expression>Среднее(Оплата_ПлатежнаяКарта)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ПродажаОплата_НоменклатураВозврат</dataPath>
+		<expression>Среднее(ПродажаОплата_НоменклатураВозврат)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ПродажаОплата_НоменклатураПродажа</dataPath>
+		<expression>Среднее(ПродажаОплата_НоменклатураПродажа)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ПродажаОплата_НоменклатураПродажаСоСкидкой</dataPath>
+		<expression>Среднее(ПродажаОплата_НоменклатураПродажаСоСкидкой)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ПродажаОплата_СуммаВозврат</dataPath>
+		<expression>Среднее(ПродажаОплата_СуммаВозврат)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ПродажаОплата_СуммаПродажа</dataPath>
+		<expression>Среднее(ПродажаОплата_СуммаПродажа)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ПродажаОплата_СуммаПродажаВсего</dataPath>
+		<expression>Среднее(ПродажаОплата_СуммаПродажаВсего)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ПродажаОплата_СуммаПродажаСоСкидкой</dataPath>
+		<expression>Среднее(ПродажаОплата_СуммаПродажаСоСкидкой)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ПродажаОплата_НоменклатураПродажаВсего</dataPath>
+		<expression>Среднее(ПродажаОплата_НоменклатураПродажаВсего)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Оплата_ПодарочнымСертификатом</dataPath>
+		<expression>Среднее(Оплата_ПодарочнымСертификатом)</expression>
+	</totalField>
+	<parameter>
+		<name>КонецПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаОкончания</expression>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаНачала</expression>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>СтатистикаЧековККМ</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Статистика чеков ККМ</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+					<dcsset:title>Среднее кол-во чеков по кассе</dcsset:title>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>КоличествоЧеков_ПродажаВсего</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>КоличествоЧеков_Продажа</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>КоличествоЧеков_ПродажаСоСкидкой</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>КоличествоЧеков_Возврат</dcsset:field>
+					</dcsset:item>
+					<dcsset:placement>Auto</dcsset:placement>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+					<dcsset:title>Средняя сумма чека</dcsset:title>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ПродажаОплата_СуммаПродажаВсего</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ПродажаОплата_СуммаПродажа</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ПродажаОплата_СуммаПродажаСоСкидкой</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ПродажаОплата_СуммаВозврат</dcsset:field>
+					</dcsset:item>
+					<dcsset:placement>Auto</dcsset:placement>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+					<dcsset:title>Среднее кол-во товаров в чеке</dcsset:title>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ПродажаОплата_НоменклатураПродажаВсего</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ПродажаОплата_НоменклатураПродажа</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ПродажаОплата_НоменклатураПродажаСоСкидкой</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ПродажаОплата_НоменклатураВозврат</dcsset:field>
+					</dcsset:item>
+					<dcsset:placement>Auto</dcsset:placement>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+					<dcsset:title>Средняя сумма по кассе по виду оплаты</dcsset:title>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Оплата_Наличные</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Оплата_БанковскийКредит</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Оплата_ПлатежнаяКарта</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Оплата_ПодарочнымСертификатом</dcsset:field>
+					</dcsset:item>
+					<dcsset:placement>Auto</dcsset:placement>
+				</dcsset:item>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:userSettingID>a9d4f602-9594-4973-8133-ccbf841b7265</dcsset:userSettingID>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Магазин</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.Магазины.ПустаяСсылка</dcsset:right>
+					<dcsset:userSettingID>a0e75d80-a1c0-4dc3-b858-697ccd70edff</dcsset:userSettingID>
+					<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Магазин</v8:content>
+						</v8:item>
+					</dcsset:userSettingPresentation>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">КассаККМ</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.КассыККМ.ПустаяСсылка</dcsset:right>
+					<dcsset:userSettingID>94970a01-075e-4cab-a139-f28ebe1438b5</dcsset:userSettingID>
+					<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Касса ККМ</v8:content>
+						</v8:item>
+					</dcsset:userSettingPresentation>
+				</dcsset:item>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:userSettingID>55f82751-a790-401c-b7c0-1095d09005f9</dcsset:userSettingID>
+			</dcsset:filter>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Период</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
+					</dcscor:value>
+					<dcsset:userSettingID>f825a9b2-5a1d-4d4b-ac65-88c94593b036</dcsset:userSettingID>
+					<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Период</v8:content>
+						</v8:item>
+					</dcsset:userSettingPresentation>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:order>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:userSettingID>1274f295-ae44-4622-9d52-155de7aca5c0</dcsset:userSettingID>
+			</dcsset:order>
+			<dcsset:conditionalAppearance>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+			</dcsset:conditionalAppearance>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МакетОформления</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">Основной</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВертикальноеРасположениеОбщихИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">Auto</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">Output</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Заголовок</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">Статистика чеков ККМ</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВыводитьПараметрыДанных</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВыводитьОтбор</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+				</dcscor:item>
+			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Магазин</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>КассаККМ</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+				</dcsset:item>
+			</dcsset:item>
+			<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

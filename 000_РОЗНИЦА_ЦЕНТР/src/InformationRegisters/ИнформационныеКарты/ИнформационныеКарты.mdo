@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="a55cc861-bd58-4111-a69d-5da740206bde">
+  <producedTypes>
+    <selectionType typeId="35671256-37d6-4413-806c-fdd7b107de8b" valueTypeId="88971338-346a-4a6c-81a8-33e04814ca70"/>
+    <listType typeId="18c8682c-8fdd-48e9-a956-f6a853796451" valueTypeId="9c30fae2-0820-41e4-94f0-253c4a7b7a14"/>
+    <managerType typeId="5f3d1a52-ece9-4dab-9266-27e1ff3f99b9" valueTypeId="09eb55ba-7fcb-4b51-9023-822909e946bf"/>
+    <recordSetType typeId="0928ae55-538c-48de-b100-c61359d5cecf" valueTypeId="797bad9c-affd-4011-a34e-1f58c9ad9406"/>
+    <recordKeyType typeId="1e4a01ca-5c25-4b80-86fe-d4b685388208" valueTypeId="e4bafaab-d773-45eb-849f-1ce3848b55e1"/>
+    <recordType typeId="bd40cecd-aabd-4393-8573-fc879d7e84e7" valueTypeId="a934f1a4-155a-4a9b-8c0f-00f55fab8d16"/>
+    <recordManagerType typeId="dd6627dc-e0c6-444a-ba90-6bbf6fca98aa" valueTypeId="393ce76a-59c0-4748-b7ab-72fb67723423"/>
+  </producedTypes>
+  <name>ИнформационныеКарты</name>
+  <synonym>
+    <key>ru</key>
+    <value>Информационные карты</value>
+  </synonym>
+  <comment>Локальная коллекция активных карт. Не подлежит миграции.</comment>
+  <useStandardCommands>true</useStandardCommands>
+  <editType>InDialog</editType>
+  <standardAttributes>
+    <dataHistory>Use</dataHistory>
+    <name>Active</name>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </standardAttributes>
+  <standardAttributes>
+    <dataHistory>Use</dataHistory>
+    <name>LineNumber</name>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </standardAttributes>
+  <standardAttributes>
+    <dataHistory>Use</dataHistory>
+    <name>Recorder</name>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </standardAttributes>
+  <standardAttributes>
+    <dataHistory>Use</dataHistory>
+    <name>Period</name>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fullTextSearch>Use</fullTextSearch>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </standardAttributes>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <resources uuid="079be75d-fb5b-4985-8eed-c1bb30a2a99a">
+    <name>ВладелецКарты</name>
+    <synonym>
+      <key>ru</key>
+      <value>Владелец карты</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Контрагенты</types>
+      <types>CatalogRef.ФизическиеЛица</types>
+      <types>CatalogRef.Пользователи</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Держатель карты, или сотрудник</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="35729d1f-0889-4431-a872-5b203ca89895">
+    <name>ИнформационнаяКарта</name>
+    <synonym>
+      <key>ru</key>
+      <value>Информационная карта</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ИнформационныеКарты</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="378af5e7-b717-43d2-a16d-96886f429f85">
+    <name>ТипКарты</name>
+    <synonym>
+      <key>ru</key>
+      <value>Тип карты</value>
+    </synonym>
+    <type>
+      <types>EnumRef.ТипыИнформационныхКарт</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Тип информационной карты</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:ReferenceValue">
+      <value>Enum.ТипыИнформационныхКарт.EnumValue.Дисконтная</value>
+    </fillValue>
+  </resources>
+  <dimensions uuid="f1327501-3da4-46b3-8aeb-42d4a0eb30ed">
+    <name>Идентификатор</name>
+    <synonym>
+      <key>ru</key>
+      <value>Идентификатор</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>200</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <indexing>Index</indexing>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+</mdclass:InformationRegister>

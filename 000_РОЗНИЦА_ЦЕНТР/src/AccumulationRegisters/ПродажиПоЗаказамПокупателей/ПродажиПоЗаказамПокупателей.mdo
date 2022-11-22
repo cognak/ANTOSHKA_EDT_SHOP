@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:AccumulationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="836951e7-fe80-42ee-9281-f73d5a4d41c5">
+  <producedTypes>
+    <selectionType typeId="156c7b16-123c-44d4-bf0e-240abd66350f" valueTypeId="c3b5eede-2ba0-4f94-8e8f-60ec8122b317"/>
+    <listType typeId="bed14ed1-38eb-4b85-a277-b2701421dbd9" valueTypeId="3f882358-d66a-473e-a11a-8278e8934197"/>
+    <managerType typeId="4818485f-6c37-4ba3-b9e4-c52057379204" valueTypeId="20b2a741-fcc1-432e-93e9-d41954dad184"/>
+    <recordSetType typeId="caf854b5-3a0e-4935-b29a-3aefd9fb658f" valueTypeId="65de9db1-a9e0-4c0b-a02f-7dcefcdfbd35"/>
+    <recordKeyType typeId="6e1e19b9-fe51-4492-829a-8bc4916a0e9a" valueTypeId="db2ef1d6-c3a6-40cb-ad3a-74a911e91688"/>
+    <recordType typeId="93c31503-1bf8-46cd-962d-d5ea51827107" valueTypeId="c1d3064e-d186-4c51-b640-c38771f2716c"/>
+  </producedTypes>
+  <name>ПродажиПоЗаказамПокупателей</name>
+  <synonym>
+    <key>ru</key>
+    <value>Продажи по заказам покупателей</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <registerType>Turnovers</registerType>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <enableTotalsSplitting>true</enableTotalsSplitting>
+  <extendedListPresentation>
+    <key>ru</key>
+    <value>Продажи (отгрузки) по заказам покупателей (интернет-заказам)</value>
+  </extendedListPresentation>
+  <explanation>
+    <key>ru</key>
+    <value>Регистрируются только продажи по заказам покупателей. Кроме того, регистрируется &quot;сборка&quot; заказа покупателя по другим магазинам (т.н. &quot;переброска&quot; с помощью документа &quot;ПеремещениеТоваров&quot; и &quot;РасходныйОрдерНаТовары&quot;).</value>
+  </explanation>
+  <resources uuid="94dbd57f-b07b-4120-87f7-1126df9ef015">
+    <name>Количество</name>
+    <synonym>
+      <key>ru</key>
+      <value>Количество</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <scale>3</scale>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </resources>
+  <resources uuid="c92d56a0-e4ca-4631-b7a4-620ab6b0e68d">
+    <name>Стоимость</name>
+    <synonym>
+      <key>ru</key>
+      <value>Стоимость</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <scale>2</scale>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </resources>
+  <resources uuid="e47f11f9-8e10-48c6-a29e-3c03fab6cc81">
+    <name>СтоимостьБезСкидок</name>
+    <synonym>
+      <key>ru</key>
+      <value>Стоимость без скидок</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <scale>2</scale>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </resources>
+  <resources uuid="4ee2b48b-c120-4a23-828e-5b16e4a7e1d3">
+    <name>НДС</name>
+    <synonym>
+      <key>ru</key>
+      <value>НДС</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <scale>2</scale>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </resources>
+  <dimensions uuid="8d6ba416-6db2-43a5-aa91-83d0b542e02f">
+    <name>Магазин</name>
+    <synonym>
+      <key>ru</key>
+      <value>Магазин</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Магазины</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Магазин, в котором был выдан товар</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="80490173-e1d5-413c-8c6c-f7a49a01f3f2">
+    <name>Заказ</name>
+    <synonym>
+      <key>ru</key>
+      <value>Заказ</value>
+    </synonym>
+    <type>
+      <types>DocumentRef.ЗаказПокупателя</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Документ «Заказ покупателя»</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="2c532ba9-b7b9-41b0-a826-8393cef6e1af">
+    <name>Номенклатура</name>
+    <synonym>
+      <key>ru</key>
+      <value>Номенклатура</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Номенклатура</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Заказанная номенклатура</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="eebd60b8-4c65-4137-92ce-260768d6097d">
+    <name>Характеристика</name>
+    <synonym>
+      <key>ru</key>
+      <value>Характеристика</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ХарактеристикиНоменклатуры</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Характеристика, уточняющая номенклатуру</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="5aeba20e-4ccc-4159-8f69-cd982f6791cf">
+    <name>ДокументПродажи</name>
+    <synonym>
+      <key>ru</key>
+      <value>Документ продажи</value>
+    </synonym>
+    <type>
+      <types>DocumentRef.РеализацияТоваров</types>
+      <types>DocumentRef.ЧекККМ</types>
+      <types>DocumentRef.ОтчетОРозничныхПродажах</types>
+      <types>DocumentRef.ПеремещениеТоваров</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="80649523-5ddf-4686-a78a-abaf7e1a26d8">
+    <name>Продавец</name>
+    <synonym>
+      <key>ru</key>
+      <value>Продавец</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ФизическиеЛица</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="a5799e79-adff-4959-b757-4c5f1ffc6432">
+    <name>МотивацияНачислена</name>
+    <synonym>
+      <key>ru</key>
+      <value>Мотивация начислена</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="5f362126-d6df-4f4c-ba75-a8d7651f7296">
+    <name>ВидОтгрузки</name>
+    <synonym>
+      <key>ru</key>
+      <value>Вид отгрузки</value>
+    </synonym>
+    <type>
+      <types>EnumRef.ВидыОтгрузкиПоЗаказуПокупателя</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="f85237db-3bed-4358-896b-2b5c90fd8dd0">
+    <name>СоставЗаказа</name>
+    <synonym>
+      <key>ru</key>
+      <value>Состав заказа</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Товар содержится в составе заказа, а не добавлен в документ продажи по этому заказу. Количество (превышение отгрузки/продажи над заказом) не учитывается.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+</mdclass:AccumulationRegister>

@@ -1,0 +1,792 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="0d9cb7f4-95cf-4b04-93d6-507c8e0a71f7">
+  <producedTypes>
+    <selectionType typeId="072e8bbd-1ae3-4482-85ea-93896445b1db" valueTypeId="c8c6520f-fac3-419d-8c4e-f7e1bdb621af"/>
+    <listType typeId="b0667704-dc67-4781-a989-55d24a627d2d" valueTypeId="bd08ade9-6246-4af3-97c7-68c6e4f367c3"/>
+    <managerType typeId="66dd5214-57a5-46b9-9a65-8ce394b9f438" valueTypeId="b841afec-3c1b-4ef2-a920-502f28823365"/>
+    <recordSetType typeId="adb84213-ab9d-47ea-881c-cdb03e2c4bc2" valueTypeId="98a23f65-117c-4553-9d43-a17082926814"/>
+    <recordKeyType typeId="e33d200d-7993-494a-af8a-f5582aa6388b" valueTypeId="cda588cb-6db6-4282-af2e-3864f3add767"/>
+    <recordType typeId="5f59ace4-dcee-4083-bebf-fca4a2b17284" valueTypeId="9d209b95-dbb1-4b87-a695-dd9080e97e65"/>
+    <recordManagerType typeId="558a77d5-0c9d-44e2-84b9-bebb778bda64" valueTypeId="ca2c1a56-16fa-4464-ab26-837ddd79aa47"/>
+  </producedTypes>
+  <name>УчетнаяПолитика</name>
+  <synonym>
+    <key>ru</key>
+    <value>Учетная политика</value>
+  </synonym>
+  <synonym>
+    <key>uk</key>
+    <value>Облікова політика</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <editType>InDialog</editType>
+  <defaultRecordForm>InformationRegister.УчетнаяПолитика.Form.ФормаЗаписи</defaultRecordForm>
+  <informationRegisterPeriodicity>Day</informationRegisterPeriodicity>
+  <mainFilterOnPeriod>true</mainFilterOnPeriod>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <resources uuid="882ebe1b-6886-42b1-b14a-e608f206a4d1">
+    <name>ОсновнаяОрганизация</name>
+    <synonym>
+      <key>ru</key>
+      <value>Основная организация</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Организации</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="f6bd1242-6157-4b92-aad1-2a574a022eb5">
+    <name>ВидЦенИнтернет</name>
+    <synonym>
+      <key>ru</key>
+      <value>Вид цен интернет-магазина (единая цена)</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ВидыЦен</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="ea133c08-5f39-4fe6-ac56-cb9429d94090">
+    <name>КонтрольОстатковПриОтменеПроведения</name>
+    <synonym>
+      <key>ru</key>
+      <value>Контроль остатков при отмене проведения</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="65cff0b6-cdf5-4443-baa1-8cc5572c4388">
+    <name>РучнаяСкидкаНаПодарочныйСертификат</name>
+    <synonym>
+      <key>ru</key>
+      <value>Ручная скидка на подарочный сертификат</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="979ce787-d091-4b42-8c0c-4f9cafa45a4e">
+    <name>МаксимальныйПроцентРучнойСкидки</name>
+    <synonym>
+      <key>ru</key>
+      <value>Максимальный процент ручной скидки</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>5</precision>
+        <scale>2</scale>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="c6435372-8fcc-4183-be87-e89459df9920">
+    <name>НомерТестовогоМагазина</name>
+    <synonym>
+      <key>ru</key>
+      <value>Номер тестового магазина</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>3</precision>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="b5681332-67ca-4bfe-a73e-91d7d07c9887">
+    <name>ДатаПереходаНаЛетнееВремя</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата перехода на летнее время</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers>
+        <dateFractions>Date</dateFractions>
+      </dateQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="5b089834-ef1a-4ff1-a5d2-890533894181">
+    <name>ДатаПереходаНаЗимнееВремя</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата перехода на зимнее время</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers>
+        <dateFractions>Date</dateFractions>
+      </dateQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="1c157acc-7819-4a50-ac93-e2ff46893f84">
+    <name>КонтрольОписанияПричиныРучнойСкидки</name>
+    <synonym>
+      <key>ru</key>
+      <value>Контроль описания причины ручной скидки</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="ba83df13-c111-4e77-b1a6-82b50f601c89">
+    <name>ИнтернетМагазин</name>
+    <synonym>
+      <key>ru</key>
+      <value>Интернет магазин</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Магазины</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="e3364eb1-a4b1-4af8-99b2-2cee43e77b4c">
+    <name>СкладЦентральныйИнтернетМагазина</name>
+    <synonym>
+      <key>ru</key>
+      <value>Склад центральный интернет магазина</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Склады</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="2c1faf34-c52c-4dc8-b0ff-338c7ace2cb1">
+    <name>ПрограммаЛояльности</name>
+    <synonym>
+      <key>ru</key>
+      <value>Программа лояльности</value>
+    </synonym>
+    <type>
+      <types>EnumRef.ВидыПрограммЛояльности</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="e9f4e596-76bb-4432-be59-b02eb2eafcd8">
+    <name>ПродажиДляCRMпослеЗакрытияСмены</name>
+    <synonym>
+      <key>ru</key>
+      <value>Продажи для CRM после закрытия смены</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="4dfc3a2a-88f0-4e07-b7c2-7e28b21151b4">
+    <name>УслугаДоставкиЗаказаПокупателя</name>
+    <synonym>
+      <key>ru</key>
+      <value>Услуга доставки заказа покупателя</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Номенклатура</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="74ffd398-fb45-4dc7-a438-da686cd8b8bb">
+    <name>СуммаОплатыЧастямиДляЦенника</name>
+    <synonym>
+      <key>ru</key>
+      <value>Сумма оплаты частями для ценника</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <scale>2</scale>
+        <nonNegative>true</nonNegative>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="1e5cf7f4-b127-4243-9493-88aeff1aad3a">
+    <name>НазваниеХарактеристикиДляПересчета</name>
+    <synonym>
+      <key>ru</key>
+      <value>Название характеристики для пересчета</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>128</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+  </resources>
+  <resources uuid="4b6d1084-4f63-4a36-a10c-de0021143a5d">
+    <name>ЗначениеХарактеристикиДляПересчета</name>
+    <synonym>
+      <key>ru</key>
+      <value>Значение характеристики для пересчета</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>128</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+  </resources>
+  <resources uuid="a329eab9-4599-46cf-a37d-0b238c7f51a9">
+    <name>КоличествоПопытокУдаления</name>
+    <synonym>
+      <key>ru</key>
+      <value>Количество попыток удаления</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>4</precision>
+        <nonNegative>true</nonNegative>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="56d79413-d3e3-4f42-9b7b-25006cf831b4">
+    <name>БлокироватьОперацииПриОтсутствииСоединенияЦБ</name>
+    <synonym>
+      <key>ru</key>
+      <value>Блокировать операции при отсутствии соединения ЦБ</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="79f93526-cd50-4328-87c4-e5ce4feb38d6">
+    <name>РазрешитьПереносДокументаВДругойПериод</name>
+    <synonym>
+      <key>ru</key>
+      <value>Разрешить перенос документа в другой период</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="e9cab380-6322-4ef3-86bb-5025613860da">
+    <name>УчитыватьNavisionПоступлениеПереброски</name>
+    <synonym>
+      <key>ru</key>
+      <value>Учитывать для NAV поступление переброски</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="f17da079-4332-4f7d-98ea-4e62913fb708">
+    <name>МаксимальнаяСуммаНакопленияЛояльности</name>
+    <synonym>
+      <key>ru</key>
+      <value>Максимальная сумма накопления лояльности</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <scale>2</scale>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="932ca04e-806a-4741-9a4c-1e9a05c0d17e">
+    <name>ПроверятьПеремещенияПоЗаказамВЦентре</name>
+    <synonym>
+      <key>ru</key>
+      <value>Проверять перемещения по заказам в центральной ИБ</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="fd87e632-ea13-4ca4-a626-860d4ad48262">
+    <name>РазрешитьТолькоТорговыйЗал</name>
+    <synonym>
+      <key>ru</key>
+      <value>Разрешить только торговый зал (выбор в документах)</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="7089d6c1-4aae-4917-b5a5-c8f03ab3f7d0">
+    <name>ИспользоватьОбменССайтомНаПериферийныхУзлах</name>
+    <synonym>
+      <key>ru</key>
+      <value>Использовать обмен с сайтом на периферийных узлах</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="dc755e37-506f-43ee-ba7f-e48479baf8bd">
+    <name>ИспользоватьБонуснуюСистему</name>
+    <synonym>
+      <key>ru</key>
+      <value>Использовать бонусную систему накоплений</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="2a2aa886-f097-4915-957c-8a6dbd971b1a">
+    <name>НеНачислятьБаллыПриОплатеБонусами</name>
+    <synonym>
+      <key>ru</key>
+      <value>Не начислять баллы при оплате бонусами</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="5b6daadf-e299-48dd-9277-4a20c6e66974">
+    <name>ИспользоватьУкраинскоеНаименование</name>
+    <synonym>
+      <key>ru</key>
+      <value>Использовать украинское наименование</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="41b0e287-6a1a-4993-bf12-af8309242456">
+    <name>РазмерПакетаВиртуальныхКартРезерва</name>
+    <synonym>
+      <key>ru</key>
+      <value>Размер пакета виртуальных карт резерва</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>7</precision>
+        <nonNegative>true</nonNegative>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="7e450d93-e632-4db7-a6dc-36195721620c">
+    <name>ВыполнятьСверкуИнформативныхОстатков</name>
+    <synonym>
+      <key>ru</key>
+      <value>Выполнять сверку информативных остатков</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="9f1aad63-4965-4d7d-9b46-eae65a2aebe4">
+    <name>ИспользоватьЧекиКакРегистраторыНачисленияБонусныхБаллов</name>
+    <synonym>
+      <key>ru</key>
+      <value>Использовать чеки как регистраторы начисления бонусных баллов</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="a677eba1-6db4-4fe8-858e-538b85dd7921">
+    <name>ДвиженияБонусныхБалловТолькоВЦентре</name>
+    <synonym>
+      <key>ru</key>
+      <value>Движения бонусных баллов только в центре</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="26709383-c598-4832-b52b-f068a949fad3">
+    <name>ЦенаПродажиМинимальная</name>
+    <synonym>
+      <key>ru</key>
+      <value>Цена продажи минимальная</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <scale>2</scale>
+        <nonNegative>true</nonNegative>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="043aa7e7-67f5-4467-864c-e26eb2153c2f">
+    <name>ПечататьВЧекеДанныеБонусногоСчета</name>
+    <synonym>
+      <key>ru</key>
+      <value>Печатать в чеке данные бонусного счета</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="02524159-6bc6-41cc-8c5c-eef5e12b44f2">
+    <name>РазрешитьПрямуюИнтеграциюMagento</name>
+    <synonym>
+      <key>ru</key>
+      <value>Разрешить прямую интеграцию с Magento (web-сервисы)</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="f8bab249-20a2-4ea3-9051-b480ec4f3052">
+    <name>РазрешитьОплатуБонусамиПоЗаказуПокупателяНаРМК</name>
+    <synonym>
+      <key>ru</key>
+      <value>Разрешить оплату бонусами по заказу покупателя на РМК</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="b057220a-79dd-4667-997f-a4eac55f41d9">
+    <name>РазрешитьОплатуБонуснымиБалламиПодарочныхСертификатов</name>
+    <synonym>
+      <key>ru</key>
+      <value>Разрешить оплату бонусными баллами подарочных сертификатов</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Разрешить использование бонусных баллов при продаже подарочных сертифкатов.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="fa892d3a-9af0-46d4-ae80-71f567bf48a2">
+    <name>TimeoutDDos</name>
+    <synonym>
+      <key>ru</key>
+      <value>Timeout DDoS</value>
+    </synonym>
+    <comment>Минимальный интервал между запросами из внешних систем</comment>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>2</precision>
+        <nonNegative>true</nonNegative>
+      </numberQualifiers>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>значение 0 отключает защиту от атак DDoS</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="3b6096be-6bac-45f2-a807-321eea77e6ea">
+    <name>ВсеПродажиБезНДС</name>
+    <synonym>
+      <key>ru</key>
+      <value>Все продажи без НДС</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="da847335-788e-4f78-847c-ac994712d234">
+    <name>ВремяУчетаКассовогоДня</name>
+    <synonym>
+      <key>ru</key>
+      <value>Время учета кассового дня</value>
+    </synonym>
+    <comment>Минимальное время, когда можно учесть КД для NAV</comment>
+    <type>
+      <types>Date</types>
+      <dateQualifiers>
+        <dateFractions>Time</dateFractions>
+      </dateQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="8b51dc27-13ea-4043-abdb-343675b5b1fb">
+    <name>ПротоколФормРМК</name>
+    <synonym>
+      <key>ru</key>
+      <value>Протокол форм РМК (версия объекта)</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="606321b3-0548-4c60-aa6c-1c4a4d0d72ba">
+    <name>ПротоколВерсииОС</name>
+    <synonym>
+      <key>ru</key>
+      <value>Протокол версии ОС</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="3e8dc417-bbad-4e15-bc43-f56f0c16e27d">
+    <name>ГлубинаОповещенияОбАннуляцииБонусныхБаллов</name>
+    <synonym>
+      <key>ru</key>
+      <value>Глубина оповещения об аннуляции бонусных баллов (дни)</value>
+    </synonym>
+    <comment>Глубина в днях</comment>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>3</precision>
+        <nonNegative>true</nonNegative>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="1340793f-2779-4591-a1ce-28f1cbe392fc">
+    <name>ВыполнятьЗагрузкуОбменаПередОбновлением</name>
+    <synonym>
+      <key>ru</key>
+      <value>Выполнять загрузку пакета обмена при обновлении конфигурации</value>
+    </synonym>
+    <synonym>
+      <key>uk</key>
+      <value>Виконати завантаження пакету обміну під час оновлення конфігурації</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Выполнять загрузку пакета обмена при обновлении конфигурации</value>
+    </toolTip>
+    <toolTip>
+      <key>uk</key>
+      <value>Виконати завантаження пакету обміну під час оновлення конфігурації</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <attributes uuid="fed15b18-7f22-4333-a47f-e1b2ff82925d">
+    <name>ДатаИзменения</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата изменения</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <forms uuid="861d1cdd-2e10-4edd-b469-d2dfd12ada69">
+    <name>ФормаЗаписи</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма записи</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+</mdclass:InformationRegister>

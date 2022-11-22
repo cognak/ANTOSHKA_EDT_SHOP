@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:AccumulationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="2e4945d5-8a14-46c1-b84f-aeb328c32a9c">
+  <producedTypes>
+    <selectionType typeId="027488d4-8777-4272-bb3b-a1283ddade9d" valueTypeId="d298ec7f-9e79-4c18-868c-4771cea20d82"/>
+    <listType typeId="9fcfc2fb-f8a2-4dee-96b5-9a45cceb11d7" valueTypeId="a41e6f30-4925-4759-9c38-0f6da6554029"/>
+    <managerType typeId="77d470af-b83f-4fcb-8df6-0060ac2d4c2d" valueTypeId="38b0a05a-a454-4ca3-92fc-1247e89715cf"/>
+    <recordSetType typeId="299fe303-0981-448a-9a76-711a2d52c2e1" valueTypeId="8ba6ccd1-03ff-4ce2-af29-495b6f018cc3"/>
+    <recordKeyType typeId="27134e61-a2a7-4b8e-aa26-ca32a71cab93" valueTypeId="3e7cd135-979e-4781-ac48-c0d9ab203055"/>
+    <recordType typeId="d9bdd43f-23b5-454d-afc9-4e3fe4ce96e6" valueTypeId="cf5e4877-a983-473b-99d5-78ef681f7040"/>
+  </producedTypes>
+  <name>ДенежныеСредстваКПоступлениюНаличные</name>
+  <synonym>
+    <key>ru</key>
+    <value>Денежные средства к поступлению (наличные)</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <enableTotalsSplitting>true</enableTotalsSplitting>
+  <resources uuid="2442cfb4-eb1c-48be-b481-dfb21b3aab59">
+    <name>Сумма</name>
+    <synonym>
+      <key>ru</key>
+      <value>Сумма</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <scale>2</scale>
+      </numberQualifiers>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Сумма денежных средств</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fullTextSearch>Use</fullTextSearch>
+  </resources>
+  <attributes uuid="622d5212-4388-4b23-b99e-b19f4679ec67">
+    <name>КассаОтправитель</name>
+    <synonym>
+      <key>ru</key>
+      <value>Касса отправитель</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Кассы</types>
+      <types>CatalogRef.КассыККМ</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fullTextSearch>Use</fullTextSearch>
+  </attributes>
+  <dimensions uuid="99d4fd4c-088a-4a10-b57c-befd2663edbd">
+    <name>Организация</name>
+    <synonym>
+      <key>ru</key>
+      <value>Организация</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Организации</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Организация, по которой ведется учет наличных денежных средств</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="7a96e91f-1db0-416c-aae5-93f45590e1f3">
+    <name>Касса</name>
+    <synonym>
+      <key>ru</key>
+      <value>Касса</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Кассы</types>
+      <types>CatalogRef.КассыККМ</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Операционная касса магазина или касса ККМ, в которую должны поступить денежные средства</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="29956a60-dfb5-45a1-9cc1-bc6c67d1ebd4">
+    <name>Документ</name>
+    <synonym>
+      <key>ru</key>
+      <value>Документ</value>
+    </synonym>
+    <type>
+      <types>DocumentRef.ВыемкаДенежныхСредствИзКассыККМ</types>
+      <types>DocumentRef.РасходныйКассовыйОрдер</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Документ, которым оформлена передача  денежных средств в другую кассу</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+</mdclass:AccumulationRegister>

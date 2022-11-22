@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:AccumulationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="5dc5b863-9eaf-4f6b-b103-5a95a3c8f01d">
+  <producedTypes>
+    <selectionType typeId="dbaf549f-2639-4da1-85a5-7e024578cdce" valueTypeId="f17bf86f-b1e9-42cc-bb23-96d2c23025e3"/>
+    <listType typeId="f911431d-1ce9-4667-b110-860d5e5afc64" valueTypeId="4a2ba5bf-54b0-4b44-9ff0-6ddb661cce86"/>
+    <managerType typeId="d94955d4-85dc-42ac-a21a-996db102baf2" valueTypeId="dc4108b7-9d35-47ea-9368-8f15427eac1a"/>
+    <recordSetType typeId="c78ac389-c28a-4d65-9ce8-04ef0bb16ee6" valueTypeId="51f90234-5c0c-42d6-8f20-d555cb275573"/>
+    <recordKeyType typeId="062a0371-099e-4f89-ab2b-8835dd2ac5b6" valueTypeId="45cf26d8-97d4-42f5-8156-ca3bcf43ad38"/>
+    <recordType typeId="548ba741-c13f-4f88-82dd-62b6f41a1707" valueTypeId="669e6e4a-e3b3-44ae-a86d-aff6b1b6acc9"/>
+  </producedTypes>
+  <name>УчетРабочегоВремени</name>
+  <synonym>
+    <key>ru</key>
+    <value>Учет рабочего времени</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <registerType>Turnovers</registerType>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <enableTotalsSplitting>true</enableTotalsSplitting>
+  <resources uuid="6a051d10-b135-4178-bd7d-81ef6c04f139">
+    <name>КоличествоЧасовПлан</name>
+    <synonym>
+      <key>ru</key>
+      <value>Количество часов план</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>3</precision>
+        <scale>1</scale>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </resources>
+  <resources uuid="43ce8910-f52e-49e6-b4a8-4275bf6b0fb3">
+    <name>КоличествоЧасовФактАвто</name>
+    <synonym>
+      <key>ru</key>
+      <value>Количество часов факт авто</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>3</precision>
+        <scale>1</scale>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </resources>
+  <resources uuid="fcee03fb-1066-4343-ae63-141a15eb485f">
+    <name>КоличествоЧасовФакт</name>
+    <synonym>
+      <key>ru</key>
+      <value>Количество часов факт (ручная корр.)</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>3</precision>
+        <scale>1</scale>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </resources>
+  <attributes uuid="4ed72f70-c8fb-4c05-b0cb-b1b6cefef007">
+    <name>Комментарий</name>
+    <synonym>
+      <key>ru</key>
+      <value>Комментарий</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>1000</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </attributes>
+  <dimensions uuid="db4b3f3b-7809-4e04-8ac9-67760ef561b5">
+    <name>Организация</name>
+    <synonym>
+      <key>ru</key>
+      <value>Организация</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Организации</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="67624cb9-f687-41ff-969f-278e7b78f03f">
+    <name>Магазин</name>
+    <synonym>
+      <key>ru</key>
+      <value>Магазин</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Магазины</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="ee92e40c-7439-4a46-9a81-564f8c5e5c86">
+    <name>Сотрудник</name>
+    <synonym>
+      <key>ru</key>
+      <value>Сотрудник</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ФизическиеЛица</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="a41819f0-5d0c-4d1f-890d-b49744bb68f5">
+    <name>ПериодРегистрации</name>
+    <synonym>
+      <key>ru</key>
+      <value>Период регистрации</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers>
+        <dateFractions>Date</dateFractions>
+      </dateQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </dimensions>
+</mdclass:AccumulationRegister>

@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="e1d26d0b-a0f0-4a81-ac88-c7ffe22fdadb">
+  <producedTypes>
+    <objectType typeId="714b11f1-dc39-4c97-b98a-4a447ce4e16e" valueTypeId="4440d68f-163a-4685-898b-b81c33dbedb5"/>
+    <refType typeId="86e4b09d-8efd-4ee4-a4f9-5df5e07ce04d" valueTypeId="6faa08ea-100b-4500-8c65-7a311d1b1e9d"/>
+    <selectionType typeId="374e64ff-2646-4459-81d6-cdd7653b0e80" valueTypeId="79275dd5-bbf6-4883-9efc-398162cf4e61"/>
+    <listType typeId="606a8666-c290-462c-8286-231353283fa7" valueTypeId="512222f4-28f3-4807-b974-9e0d51840329"/>
+    <managerType typeId="798779b1-49c3-41fd-88f4-36b9059b3ca6" valueTypeId="501f7fc6-acb2-4382-9d9a-43b8e299a2da"/>
+  </producedTypes>
+  <name>НачислениеИСписаниеБонусныхБаллов</name>
+  <synonym>
+    <key>ru</key>
+    <value>Начисление и списание бонусных баллов</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <inputByString>Document.НачислениеИСписаниеБонусныхБаллов.StandardAttribute.Number</inputByString>
+  <inputByString>CommonAttribute.IDN</inputByString>
+  <fullTextSearchOnInputByString>DontUse</fullTextSearchOnInputByString>
+  <createOnInput>Use</createOnInput>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <fullTextSearch>Use</fullTextSearch>
+  <listPresentation>
+    <key>ru</key>
+    <value>Начисления и списания бонусных баллов</value>
+  </listPresentation>
+  <numberType>String</numberType>
+  <numberLength>11</numberLength>
+  <numberPeriodicity>Year</numberPeriodicity>
+  <checkUnique>true</checkUnique>
+  <autonumbering>true</autonumbering>
+  <defaultObjectForm>Document.НачислениеИСписаниеБонусныхБаллов.Form.ФормаДокумента</defaultObjectForm>
+  <defaultListForm>Document.НачислениеИСписаниеБонусныхБаллов.Form.ФормаСписка</defaultListForm>
+  <registerRecordsDeletion>AutoDeleteOff</registerRecordsDeletion>
+  <sequenceFilling>AutoFillOff</sequenceFilling>
+  <registerRecords>AccumulationRegister.БонусныеБаллыПогашение</registerRecords>
+  <registerRecords>AccumulationRegister.БонусныеБаллы</registerRecords>
+  <registerRecords>AccumulationRegister.БонусныеБаллыВРезерве</registerRecords>
+  <registerRecords>InformationRegister.СписанныеБонусныеБаллы</registerRecords>
+  <postInPrivilegedMode>true</postInPrivilegedMode>
+  <unpostInPrivilegedMode>true</unpostInPrivilegedMode>
+  <attributes uuid="c0e19a9c-bcf1-4c9e-8685-634f966bb9e2">
+    <name>ДатаОкончанияСрокаДействия</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата окончания срока действия</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers>
+        <dateFractions>Date</dateFractions>
+      </dateQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="6ee5086a-624a-4f7b-9b88-0d8f43dae6a9">
+    <name>КодБюджета</name>
+    <synonym>
+      <key>ru</key>
+      <value>Код бюджета</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.КодыБюджетов</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="28d11b0b-0f82-4779-bd02-fe17c296f43b">
+    <name>КоличествоПериодовДействия</name>
+    <synonym>
+      <key>ru</key>
+      <value>Количество периодов действия</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>10</precision>
+        <nonNegative>true</nonNegative>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:NumberValue">
+      <value>1</value>
+    </fillValue>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="1322c972-0f97-443b-a96b-e3b45fcc6491">
+    <name>КоличествоПериодовОтсрочкиНачалаДействия</name>
+    <synonym>
+      <key>ru</key>
+      <value>Количество периодов отсрочки начала действия</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>10</precision>
+        <nonNegative>true</nonNegative>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:NumberValue">
+      <value>1</value>
+    </fillValue>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="55f02fea-4511-4405-a6ea-0ba372716f70">
+    <name>Комментарий</name>
+    <synonym>
+      <key>ru</key>
+      <value>Комментарий</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers/>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Комментарий к документу</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="044410de-fe6f-429c-9c00-d25a2522d559">
+    <name>Ответственный</name>
+    <synonym>
+      <key>ru</key>
+      <value>Ответственный</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Пользователи</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Ответственный за документ</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="febae2b3-fa06-4a5f-b553-dd6017756387">
+    <name>ПериодДействия</name>
+    <synonym>
+      <key>ru</key>
+      <value>Период действия</value>
+    </synonym>
+    <type>
+      <types>EnumRef.Периодичность</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:ReferenceValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="0f2ca090-5515-4fa4-9ab5-62f85b3560a8">
+    <name>ПериодОтсрочкиНачалаДействия</name>
+    <synonym>
+      <key>ru</key>
+      <value>Период отсрочки начала действия</value>
+    </synonym>
+    <type>
+      <types>EnumRef.Периодичность</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:ReferenceValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="f36b6561-2989-456d-b8ca-51c831280869">
+    <name>ПрограммаЛояльности</name>
+    <synonym>
+      <key>ru</key>
+      <value>Программа лояльности</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ПрограммыЛояльности</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <forms uuid="10fa7289-15a2-4d90-a591-e859c87752a6">
+    <name>ФормаДокумента</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма документа</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <forms uuid="6193797f-9128-4778-bd89-f444d185196f">
+    <name>ФормаСписка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма списка</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <tabularSections uuid="308d5bf5-6944-4a47-8fa8-5a179216e933">
+    <producedTypes>
+      <objectType typeId="dc20acca-c8d5-4edf-acca-548ef07730ee" valueTypeId="7762e469-1fa6-405f-ad17-07e20267f1a9"/>
+      <rowType typeId="fce478ac-1017-406d-b4e7-e2f6337999d7" valueTypeId="020770f1-075e-4f93-9035-0e0d6feca382"/>
+    </producedTypes>
+    <name>Начисление</name>
+    <synonym>
+      <key>ru</key>
+      <value>Начисление</value>
+    </synonym>
+    <attributes uuid="ed43d6ec-0218-4965-a1de-cb2bfb5096f5">
+      <name>Контрагент</name>
+      <synonym>
+        <key>ru</key>
+        <value>Контрагент</value>
+      </synonym>
+      <type>
+        <types>CatalogRef.Контрагенты</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <fillChecking>ShowError</fillChecking>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="b89ae087-0288-4bfa-8bad-63a8a0ba9f4a">
+      <name>СуммаБонусныхБаллов</name>
+      <synonym>
+        <key>ru</key>
+        <value>Баллы</value>
+      </synonym>
+      <type>
+        <types>Number</types>
+        <numberQualifiers>
+          <precision>15</precision>
+          <scale>2</scale>
+        </numberQualifiers>
+      </type>
+      <markNegatives>true</markNegatives>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <fillChecking>ShowError</fillChecking>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+  </tabularSections>
+  <tabularSections uuid="35b49cde-b73e-43a3-8783-85d77350e6ce">
+    <producedTypes>
+      <objectType typeId="51343351-02c4-47bf-9806-de9f535cb8cd" valueTypeId="8e564063-e6a5-4649-b820-73be20ff3ff6"/>
+      <rowType typeId="08b662a1-ab8c-4711-9de8-3ca1d3bbf015" valueTypeId="5238603b-44b2-4e35-9368-c8eff20cd7a9"/>
+    </producedTypes>
+    <name>Списание</name>
+    <synonym>
+      <key>ru</key>
+      <value>Списание</value>
+    </synonym>
+    <standardAttributes>
+      <dataHistory>Use</dataHistory>
+      <name>LineNumber</name>
+      <fillValue xsi:type="core:UndefinedValue"/>
+      <fullTextSearch>Use</fullTextSearch>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+    </standardAttributes>
+    <attributes uuid="5db6582a-fd75-4e99-90f1-de4f4a893678">
+      <name>Контрагент</name>
+      <synonym>
+        <key>ru</key>
+        <value>Контрагент</value>
+      </synonym>
+      <type>
+        <types>CatalogRef.Контрагенты</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <fillChecking>ShowError</fillChecking>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="4c3ce930-302b-4b63-948e-e2cd9872ec32">
+      <name>СуммаБонусныхБаллов</name>
+      <synonym>
+        <key>ru</key>
+        <value>Баллы</value>
+      </synonym>
+      <type>
+        <types>Number</types>
+        <numberQualifiers>
+          <precision>15</precision>
+          <scale>2</scale>
+        </numberQualifiers>
+      </type>
+      <markNegatives>true</markNegatives>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <fillChecking>ShowError</fillChecking>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+  </tabularSections>
+</mdclass:Document>

@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="52c8f230-605e-47b1-9d2c-63a0b6fdd9f5">
+  <producedTypes>
+    <selectionType typeId="4c9920e1-b082-4cb7-b394-115cab1b1b83" valueTypeId="06bd1ca4-1a53-4e94-b875-12f5ee5ca3b6"/>
+    <listType typeId="8f6671d5-cf51-4d5e-af94-33563f8add1b" valueTypeId="bb19f448-b62d-42d4-acbd-c2940a01f7bf"/>
+    <managerType typeId="437ddabf-6d6e-4923-a495-3843049d9781" valueTypeId="6bcd3e36-c1d6-4f77-958b-a4c0809f7d20"/>
+    <recordSetType typeId="2aec69c9-9fbe-43f1-be5d-88923b775bd6" valueTypeId="0e73fc52-ec14-4ee5-bbb1-afdccfe84c01"/>
+    <recordKeyType typeId="f75e5c60-e272-4a4d-97d4-cb6a923e0c52" valueTypeId="e919fad7-a30e-444b-a1a7-7c970c7054b4"/>
+    <recordType typeId="15dffd8b-b0c5-4f32-9a23-5510350e4380" valueTypeId="a9ddd518-8430-4059-8373-99719d1dcba9"/>
+    <recordManagerType typeId="0ca71584-3dba-4a46-8275-6cc2c87bdd39" valueTypeId="6306c5eb-3f0c-46fe-afaf-f67c0e27d63c"/>
+  </producedTypes>
+  <name>ОбъектУчтенВNavision</name>
+  <synonym>
+    <key>ru</key>
+    <value>Объект учтен в Navision</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <editType>InDialog</editType>
+  <defaultRecordForm>InformationRegister.ОбъектУчтенВNavision.Form.ФормаЗаписи</defaultRecordForm>
+  <defaultListForm>InformationRegister.ОбъектУчтенВNavision.Form.ФормаСписка</defaultListForm>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <resources uuid="7c5edac5-e2c4-4c2d-927c-df1a5d5146b1">
+    <name>ВидПередачи</name>
+    <synonym>
+      <key>ru</key>
+      <value>Вид передачи</value>
+    </synonym>
+    <type>
+      <types>EnumRef.ВидыПередачиNavision</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Определяет факт того, что объект либо передан, либо получен в/из Navision.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="c5a72d5b-133f-4a50-88f3-7bcc367a7de0">
+    <name>ИмяОбъекта</name>
+    <synonym>
+      <key>ru</key>
+      <value>Имя объекта</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>150</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+  </resources>
+  <resources uuid="7ee3f40d-f2ff-4faf-b65c-9aefb691fc69">
+    <name>УчтеноNavision</name>
+    <synonym>
+      <key>ru</key>
+      <value>Учтено Navision</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="4f3d509a-7a8b-41ea-a070-c23e765621db">
+    <name>ОтменаТребуется</name>
+    <synonym>
+      <key>ru</key>
+      <value>Отмена требуется</value>
+    </synonym>
+    <comment>Команда из КСУ - отменить документ!</comment>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Команда требует подтверждения на возможность отмены документа. Подтверждение даётся в периферии</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="ece4ab35-3b55-48af-b70d-a11aeeb90aff">
+    <name>ОтменаАкцептована</name>
+    <synonym>
+      <key>ru</key>
+      <value>Отмена акцептована</value>
+    </synonym>
+    <comment>Отмена действия акцептована в периферии</comment>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="5e1964b4-11ca-471a-86df-993c2d97beb0">
+    <name>ОтменаНевозможна</name>
+    <synonym>
+      <key>ru</key>
+      <value>Отмена невозможна</value>
+    </synonym>
+    <comment>Документ уже поступил в обработку или обработан</comment>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="8d3035e1-c4e5-45b1-b86c-d3d632a97992">
+    <name>КассовыйДень</name>
+    <synonym>
+      <key>ru</key>
+      <value>Кассовый день</value>
+    </synonym>
+    <comment>Используется при выгрузке продаж за день (Кассовый День)</comment>
+    <type>
+      <types>DocumentRef.КассовыйДень</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Используется для объектов, не имеющих конкретной привязки к кассовому дню. Это такие объекты, как, например, документы &quot;РеализацияТоваров&quot;, &quot;ПриходныйКассовыйОрдер&quot;, &quot;РасходныйКассовыйОрдер&quot; и т.п.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="dded9cd8-3942-44c9-9d8e-8937ddd7456b">
+    <name>ВерсияОбъекта</name>
+    <synonym>
+      <key>ru</key>
+      <value>Версия объекта</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>50</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+  </resources>
+  <attributes uuid="7bf99cd4-588b-426f-a783-52da0864b96f">
+    <name>ДатаОбновления</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата обновления</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Момент последнего обновления записи</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <attributes uuid="07d9ddc7-4116-4782-b438-5d863bd3ba90">
+    <name>ДатаРегистрации</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата регистрации</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <indexing>Index</indexing>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <attributes uuid="e5b98885-78d9-48ea-9136-d6a97eef8db8">
+    <name>Сообщение</name>
+    <synonym>
+      <key>ru</key>
+      <value>Сообщение</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>512</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+  </attributes>
+  <attributes uuid="fd588df2-8963-476c-85dd-e268478750f8">
+    <name>УведомитьNavision</name>
+    <synonym>
+      <key>ru</key>
+      <value>Уведомить Navision</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <dimensions uuid="74be499b-6f1d-4dea-8fc1-1b9466795e60">
+    <name>Объект</name>
+    <synonym>
+      <key>ru</key>
+      <value>Объект</value>
+    </synonym>
+    <type>
+      <types>DocumentRef.РеализацияТоваров</types>
+      <types>DocumentRef.ВозвратТоваровПоставщику</types>
+      <types>DocumentRef.ПоступлениеТоваров</types>
+      <types>DocumentRef.КорректировкаПеремещения</types>
+      <types>DocumentRef.ПриходныйКассовыйОрдер</types>
+      <types>DocumentRef.ЗарплатаКВыплатеОрганизаций</types>
+      <types>DocumentRef.ПереоценкаТоваровНаСкладах</types>
+      <types>DocumentRef.РегистрацияПодсчетаПосетителей</types>
+      <types>DocumentRef.ЗаказПоставщику</types>
+      <types>DocumentRef.ВозвратТоваровОтПокупателя</types>
+      <types>DocumentRef.РасходныйКассовыйОрдер</types>
+      <types>DocumentRef.ПриказНаПроведениеИнвентаризацииТоваров</types>
+      <types>DocumentRef.КассоваяСмена</types>
+      <types>DocumentRef.НачислениеИСписаниеБонусныхБаллов</types>
+      <types>DocumentRef.ПрименениеЦенНоменклатуры</types>
+      <types>DocumentRef.СписаниеТоваров</types>
+      <types>DocumentRef.ПересчетТоваровСамостоятельный</types>
+      <types>DocumentRef.ОприходованиеТоваров</types>
+      <types>DocumentRef.ОтчетОРозничныхПродажах</types>
+      <types>DocumentRef.ЗаявкаНаРасходованиеДенежныхСредств</types>
+      <types>DocumentRef.ПеремещениеТоваров</types>
+      <types>DocumentRef.РегистрацияБезналичнойОплаты</types>
+      <types>DocumentRef.ОплатаОтПокупателяПлатежнойКартой</types>
+      <types>DocumentRef.ЗаказНаПеремещение</types>
+      <types>DocumentRef.ОрдерНаПеремещениеТоваров</types>
+      <types>DocumentRef.РасходныйОрдерНаТовары</types>
+      <types>DocumentRef.УстановкаЦенНоменклатуры</types>
+      <types>DocumentRef.КорректировкаРегистров</types>
+      <types>DocumentRef.ПриходныйОрдерНаТовары</types>
+      <types>DocumentRef.ПересортицаТоваров</types>
+      <types>DocumentRef.КассовыйДень</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="8930a588-2e86-4846-8159-66139c70365f">
+    <name>Магазин</name>
+    <synonym>
+      <key>ru</key>
+      <value>Магазин</value>
+    </synonym>
+    <comment>Ресурс предназначен для фильтрации в правилах регистрации</comment>
+    <type>
+      <types>CatalogRef.Магазины</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>По этому значению нужно строить правила регистрации. Если значение не заполнено - значит запись мигрирует по всем узлам.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <forms uuid="4ab655a7-113e-49b8-8192-357bae7087bd">
+    <name>ФормаСписка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма списка</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <forms uuid="1aa69dc6-94af-4822-b2a0-3496b3a1711e">
+    <name>ФормаЗаписи</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма записи</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <commands uuid="6c266ff9-9996-457f-8217-038ac78c1d2f">
+    <name>ОбъектУчтенВNavision</name>
+    <synonym>
+      <key>ru</key>
+      <value>Объект учтен в Navision</value>
+    </synonym>
+    <group>NavigationPanelOrdinary</group>
+    <commandParameterType/>
+    <representation>Auto</representation>
+  </commands>
+</mdclass:InformationRegister>

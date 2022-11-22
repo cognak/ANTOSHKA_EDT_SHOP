@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="ef2bb4a5-bf30-4144-9b78-69a870ca8a88">
+  <producedTypes>
+    <selectionType typeId="a682905c-a5ae-4083-bcbe-e73d9722b1c3" valueTypeId="4ba5ad8f-9745-4c8c-b3a6-bfc16122a6fd"/>
+    <listType typeId="ee196ec6-b1b9-4d51-8b20-8f56b5d80488" valueTypeId="0a009f21-acbc-4910-a341-e44d22b78eae"/>
+    <managerType typeId="6947741e-713c-42a9-936f-f97943981280" valueTypeId="b978bbe7-1089-4f2e-a4c0-2baa867d19b1"/>
+    <recordSetType typeId="9b10b7f4-0d74-44ce-9bc4-c3ea600dde5e" valueTypeId="73d7a667-b631-4803-8df1-5752b6132cf8"/>
+    <recordKeyType typeId="8a04d556-293c-4d04-9dd1-4635cc161bd8" valueTypeId="fff8c000-ee64-4ec4-a166-f09365ffdbfe"/>
+    <recordType typeId="fcb3b7ea-6b97-439b-8329-024099fb8ff3" valueTypeId="116f8fbc-81c8-4af6-8df7-6bc083268799"/>
+    <recordManagerType typeId="e6b3bf92-e15e-4472-8958-29efd6517840" valueTypeId="a1527704-2fa2-4df1-9fa6-8518b50778d0"/>
+  </producedTypes>
+  <name>СоответствиеПодразделенийОрганизацийМагазинам</name>
+  <synonym>
+    <key>ru</key>
+    <value>Соответствие подразделений организаций магазинам</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <editType>InDialog</editType>
+  <defaultRecordForm>InformationRegister.СоответствиеПодразделенийОрганизацийМагазинам.Form.ФормаЗаписи</defaultRecordForm>
+  <defaultListForm>InformationRegister.СоответствиеПодразделенийОрганизацийМагазинам.Form.ФормаСписка</defaultListForm>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <resources uuid="7c90ee8f-12ef-4b01-abd4-83911624185a">
+    <name>Магазин</name>
+    <synonym>
+      <key>ru</key>
+      <value>Магазин</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Магазины</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <indexing>Index</indexing>
+  </resources>
+  <resources uuid="28c013d6-650b-4e63-a490-3db80a75d4e7">
+    <name>Организация</name>
+    <synonym>
+      <key>ru</key>
+      <value>Организация</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Организации</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <indexing>Index</indexing>
+  </resources>
+  <dimensions uuid="4573be8e-66c3-4622-bba2-4e4fad941edf">
+    <name>КодПодразделения</name>
+    <synonym>
+      <key>ru</key>
+      <value>Код подразделения в БП</value>
+    </synonym>
+    <comment>Код из бухгалтерского справочника &quot;Подразделения организаций&quot;</comment>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>9</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <indexing>Index</indexing>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <forms uuid="9e433cc7-03a0-4d27-91cc-d48479ec327b">
+    <name>ФормаЗаписи</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма записи</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <forms uuid="c5fea931-7fdb-4848-a30a-c60be4f5fa16">
+    <name>ФормаСписка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма списка</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+</mdclass:InformationRegister>

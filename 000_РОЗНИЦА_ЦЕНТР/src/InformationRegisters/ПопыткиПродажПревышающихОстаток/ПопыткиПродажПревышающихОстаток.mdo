@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="80864a8b-c05d-4f29-9510-d376f8be9b84">
+  <producedTypes>
+    <selectionType typeId="5a697517-4e35-402f-8784-25f432396b63" valueTypeId="204b8b19-2f8c-43ca-8d81-fef642867de4"/>
+    <listType typeId="933a066f-d69a-46de-9780-3223de0693f0" valueTypeId="3f437302-dfbd-4880-b9f7-4b9e96a5f3ff"/>
+    <managerType typeId="4ac70d07-6541-4063-9c29-7f62b537b896" valueTypeId="bd9f9384-60a9-44f9-8baa-f3179f45490e"/>
+    <recordSetType typeId="f7c3338c-3148-45f3-a1a6-0d4c586d6115" valueTypeId="00ba2fa8-62df-46de-9580-af27ecd29293"/>
+    <recordKeyType typeId="f4285987-d67b-4088-9feb-6b82659d5941" valueTypeId="7c73f55a-ef13-4daa-ba9b-e974e3b405e0"/>
+    <recordType typeId="6e926191-4b0b-4886-be2e-d8c134ce1e11" valueTypeId="f39d89f9-6eec-4eae-b3b4-dfcf5115d146"/>
+    <recordManagerType typeId="d9442521-06c0-4ef6-b6a4-91cfde38eb98" valueTypeId="5937b12f-a80f-438b-97d1-128e06c08433"/>
+  </producedTypes>
+  <name>ПопыткиПродажПревышающихОстаток</name>
+  <synonym>
+    <key>ru</key>
+    <value>Попытки продаж, превышающих остаток</value>
+  </synonym>
+  <editType>InDialog</editType>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <dimensions uuid="317a6354-05df-41b7-ab1e-fc9103acceb7">
+    <name>ДатаПродажи</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата продажи</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers>
+        <dateFractions>Date</dateFractions>
+      </dateQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="9215b810-b6cf-4349-9765-a9afb882f6f7">
+    <name>Склад</name>
+    <synonym>
+      <key>ru</key>
+      <value>Склад</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Склады</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Склад, с которого пытались продать в минус</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="c734bc84-2028-4024-b13a-6df70f5ecc3b">
+    <name>Номенклатура</name>
+    <synonym>
+      <key>ru</key>
+      <value>Номенклатура</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Номенклатура</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Номенклатурная позиция, которую пытались продать в минус.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:ReferenceValue">
+      <value>Catalog.Номенклатура.EmptyRef</value>
+    </fillValue>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="5660808f-3e72-4834-8de6-8fed17af9f75">
+    <name>Характеристика</name>
+    <synonym>
+      <key>ru</key>
+      <value>Характеристика</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ХарактеристикиНоменклатуры</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Характеристика номенклатурной позиции, которую пытались продать в минус.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:ReferenceValue">
+      <value>Catalog.ХарактеристикиНоменклатуры.EmptyRef</value>
+    </fillValue>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+</mdclass:InformationRegister>

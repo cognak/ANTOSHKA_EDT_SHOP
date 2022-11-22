@@ -1,0 +1,312 @@
+// mainfunctions.js
+// Основные функции.
+
+#Область ОбластьПараметров
+
+//	Параметры процедуры обновления
+"use strict";	//	"строгий" режим объявления переменных.
+var now = new Date();
+var v8conf       = [ИмяИсполняемогоФайлаКонфигуратора];	// Путь к исполняемому файлу 1С:Предприятия 8
+var v8client     = [ИмяИсполняемогоФайлаКлиента];		// Путь к исполняемому файлу 1С:Предприятия 8
+
+var outFileName  = "log" + now.valueOf() + ".txt";	// Путь к log-файлу
+var cfgFileName  = [ИмяФайлаОбновления];			// Пути к .cfu-файлу с обновлениями
+
+var infoBasePath          = [ПараметрПутиКИнформационнойБазе];
+var connectionString      = [СтрокаСоединенияИнформационнойБазы] + ';UC=AUTOSTOP'; 
+var infoBaseAuthorization = [ПараметрыАутентификацииПользователя]; 
+var dynamicUpdate         = [ВыполнитьДинамическоеОбновление]; 
+
+var serverName            = [ИмяСервера];
+var clasterPortNumber     = new Number([ПортСервера]).valueOf();
+var infoBaseName          = [ИмяИнформационнойБазы];
+
+var infoBasesAdminName    = [ИмяАдминистратора];
+var infoBasesAdminPass    = [ПарольАдминистратора];
+
+var clasterAdminName	  = [ИмяАдминистратораКластера];
+var clasterAdminPass	  = [ПарольАдминистратораКластера];
+
+var comConnectorName      = [ИмяCOMСоединителя];		// имя COM-класса для работы с объектом сервера
+
+var outFileName           = [ИмяКаталогаЖурналаСобытий] + [ИмяФайлаЖурналаСобытий];	// Путь к log-файлу
+var tempLogFileName       = "templog.txt";
+
+#КонецОбласти
+
+#Область ОбластьОбновленияКонфигурации
+
+//	Открыть файл sFilePath.
+function runApp(sFilePath, sFileArgs, show, bWaitOnReturn) {
+    if (bWaitOnReturn == undefined)
+        bWaitOnReturn = false;
+    if (show == undefined)
+        show = SW_SHOW;
+    if (sFileArgs == undefined)
+        sFileArgs = "";
+    var ret = 1;
+
+    log(2, format("Запускается: {0}; параметры: {1}; окно: {2}; ожидание: {3}",
+	    sFilePath, sFileArgs, SWtoString(show), bWaitOnReturn));
+    if (oFileSystemObject.FileExists(sFilePath)) {
+        try {
+            ret = oShell.Run(format('"{0}" {1}', sFilePath, sFileArgs), show, bWaitOnReturn);
+        }
+        catch (e) {
+            log(3, format("Исключение в runApp: {0}, {1}.", e.name, e.message), true);
+            return 1;
+        }
+        log(2, format("Код возврата: {0} (успешное завершение = 0)", ret), ret != 0);
+        return ret;
+    }
+    else
+        log(2, format("Запускаемый файл не существует: {0}", sFilePath), true);
+    return ret;
+}
+
+//	Загрузка файла обновления в основную конфигурацию - работаем только с конфигурациями на поддержке!
+function updateCfg(fileName)
+{
+//	/UpdateCfg<имя cf | cfu файла> обновление конфигурации, находящейся на поддержке
+    var ret = runApp(v8conf, format('CONFIG {0} {1} /UpdateCfg "{2}" /Out "{3}" /UCПакетноеОбновлениеКонфигурацииИБ /DisableStartupMessages',
+		infoBasePath, infoBaseAuthorization, fileName, tempLogFileName), SW_HIDE, true);
+    appendLog();
+
+    return ret;
+}
+
+//	Обновление конфигурации базы данных (применение обновлённой основной конфигурации)
+function updateDbCfg()
+{
+//	/UpdateDBCfg - обновление конфигурации базы данных
+    var ret = runApp(v8conf, format('CONFIG {0} {1} /UpdateDBCfg -Dynamic– /Out "{2}" /UCПакетноеОбновлениеКонфигурацииИБ /DisableStartupMessages',
+		infoBasePath, infoBaseAuthorization, tempLogFileName), SW_HIDE, true);
+    appendLog();
+
+    return ret;
+}
+
+//	Первый интерактивный административный запуск "1С:Предприятие"
+function runEnterprise()
+{
+	return runApp(v8client, format('ENTERPRISE {0} {1} /UCПакетноеОбновлениеКонфигурацииИБ /DisableStartupMessages',
+		infoBasePath, infoBaseAuthorization), SW_HIDE, false);
+
+    return 0;
+}
+
+function DeniedBaseAccess()
+{
+	SetConnectDenied(true);
+	WScript.sleep(2 * 1000);
+}
+
+function AllowBaseAccess()
+{
+	SetConnectDenied(false);
+	WScript.sleep(2 * 1000);
+}
+
+function SetConnectDenied(deniedFlag)	//	процесс установки / снятия запрета доступа к ИБ
+{
+	var COMConnector, ServerAgent;
+	var listClasters, objClaster, itClast;
+	var listProcesses, objProcess, itProc;
+	var workProcess, listInfoBases, objIBase, itIBase;
+	var endLoop;
+
+    try
+    {
+		log(2, "Выполняем COM соединение к ИБ ...", false);
+		COMConnector = WScript.CreateObject(comConnectorName);
+		ServerAgent  = COMConnector.ConnectAgent(serverName);
+
+		listClasters = new VBArray(ServerAgent.GetClusters());
+		endLoop      = false;
+
+		for (itClast = 0; itClast < listClasters.dimensions(); itClast++)
+		{
+			objClaster = listClasters.getItem(itClast);
+
+			if (objClaster.MainPort = clasterPortNumber)
+			{
+				ServerAgent.Authenticate(objClaster, clasterAdminName, clasterAdminPass);
+
+				listProcesses = new VBArray(ServerAgent.GetWorkingProcesses(objClaster));
+
+				for (itProc = 0; itProc <= listProcesses.ubound(); itProc++)
+				{
+					objProcess = listProcesses.getItem(itProc);
+
+					if (objProcess.Running == 1)
+					{
+						workProcess = COMConnector.ConnectWorkingProcess("tcp://" + objProcess.HostName + ":" + objProcess.MainPort);
+
+						workProcess.AuthenticateAdmin(clasterAdminName, clasterAdminPass);
+						workProcess.AddAuthentication(infoBasesAdminName, infoBasesAdminPass);
+					
+						listInfoBases = new VBArray(workProcess.GetInfoBases());
+
+						for (itIBase = 0; itIBase <= listInfoBases.ubound(listInfoBases.dimensions()); itIBase++)
+						{
+							objIBase = listInfoBases.getItem(itIBase);
+
+							if (objIBase.Name == infoBaseName)
+							{
+								if (deniedFlag)
+								{
+									objIBase.DeniedMessage  = "Выполняется обновление конфигурации - доступ запрещён";
+									objIBase.PermissionCode = "ПакетноеОбновлениеКонфигурацииИБ";
+
+									objIBase.ScheduledJobsDenied = 1;
+									objIBase.ConnectDenied       = 1;
+								}
+								else
+								{
+									objIBase.DeniedMessage  = "";
+									objIBase.PermissionCode = "";
+
+								//	эту тупую строку удалять нельзя! А то не получится снять галку!
+									objIBase.ScheduledJobsDenied = 1;
+
+									objIBase.ScheduledJobsDenied = 0;
+									objIBase.ConnectDenied       = 0;
+								}
+
+								workProcess.UpdateInfoBase(objIBase);
+
+								log(2, (deniedFlag)?"Блокировка УСТАНОВЛЕНА":"Блокировка СНЯТА", false);
+								endLoop = true;
+								break;
+							}						
+						}					
+					}
+
+					if (endLoop) break;
+				}
+
+			}
+
+			if (endLoop) break;
+		}
+
+    }
+    catch (e)
+    {	log(2, format("Исключение в createConnection: {0}, {1}", e.name, e.message), true);
+    }
+
+	delete ServerAgent;  ServerAgent  = null;
+	delete COMConnector; COMConnector = null;
+	CollectGarbage();
+}
+
+function stopService(serviceName, cleanServerPath)
+{
+	var objWMIService = GetObject("winmgmts:{impersonationLevel=impersonate}!//./root/cimv2");
+	var objItem = new Enumerator(objWMIService.ExecQuery("Select * from Win32_Service Where Name like '" + serviceName + "%'"));
+	var stopped = false;
+	var status  = "";
+	var pathServer = "", subFolders, regFolders, regDelete;
+
+	for(;!objItem.atEnd();objItem.moveNext())
+	{
+		objService = objItem.item();
+
+		if (objService.Started)
+		{
+			ret = objService.StopService();
+
+			switch (ret)
+			{
+				case 0:	 status = "служба остановлена"; break;
+				case 1:	 status = "служба НЕ остановлена"; break;
+				case 2:	 status = "у пользователя отсутствуют необходимые права"; break;
+				default: status = "нет возможности остановить службу по прочим причинам";
+			}
+			WScript.sleep(20 * 1000);	//	пауза пока сервер действительно ляжет
+			objService.Refresh_();
+			stopped = !objService.Started;
+			log(2, format("Service <{0}> STOPPED({1}) = '{2}'", objService.Name, ret, status), false);
+		}
+
+		if (cleanServerPath & !objService.Started)
+		{
+			killProcesses();	//	контрольное "убийство" зависших процессов.
+
+		//	objService.PathName
+		//	""C:\Program Files (x86)\1cv8\8.3.10.2561\bin\ragent.exe" -debug -srvc -agent -regport 1541 -port 1540 -range 1560:1591 -d "C:\Program Files (x86)\1cv8\srvinfo""
+		//	objService.SystemName = "OD000WS032"
+
+			pathServer = objService.PathName;
+			pathServer = pathServer.substr(pathServer.search(" -d ") + 4);
+			pathServer = pathServer.split("\\").join("\\\\");
+			pathServer = pathServer.split("\"").join("");
+
+			try
+			{
+				subFolders = new Enumerator(oFileSystemObject.GetFolder(pathServer).SubFolders);
+
+				for (;!subFolders.atEnd(); subFolders.moveNext())
+					{
+						try
+						{
+							regFolders = new Enumerator(subFolders.item().SubFolders);
+
+							for (;!regFolders.atEnd(); regFolders.moveNext())
+							{
+								try
+								{	oFileSystemObject.DeleteFolder(regFolders.item().Path, true);
+								}
+								catch (e)
+								{	log(3, format("Ошибка удаления каталога ({0}): {1} <{2}>", e.name, e.message, regFolders.item().Path), true);
+									clearEntireDirectory(regFolders.item());
+								}
+							}
+						}
+						catch (e)
+						{	log(3, format("Ошибка очистки каталога ({0}): {1} <{2}>", e.name, e.message, subFolders.item().Path), true);
+						}
+					}
+			}
+			catch (e)
+			{	log(3, format("Ошибка получения данных каталога ({0}): {1} <{2}>", e.name, e.message, pathServer), true);
+			}
+		}
+	}
+	return stopped;
+}
+
+function startService(serviceName)
+{
+	var objWMIService = GetObject("winmgmts:{impersonationLevel=impersonate}!//./root/cimv2");
+	var objItem = new Enumerator(objWMIService.ExecQuery("Select * from Win32_Service Where Name like '" + serviceName + "%'"));
+	var status = "";
+
+	for(;!objItem.atEnd();objItem.moveNext())
+	{
+		objService = objItem.item();
+
+		if (!objService.Started)
+		{
+			ret = objService.StartService();
+
+			switch (ret)
+			{
+				case 0:	 status = "служба запущена"; break;
+				case 1:	 status = "служба НЕ была запущена"; break;
+				case 2:	 status = "у пользователя отсутствуют необходимые права"; break;
+				default: status = "нет возможности запустить службу по прочим причинам";
+			}
+			WScript.sleep(20 * 1000);	//	пауза пока сервер действительно поднимется
+			log(2, format("Service <{0}> STARTED({1}) = {2}", objService.Name, ret, status), false);
+		}
+	}
+}
+
+#КонецОбласти
+
+
+
+
+
+

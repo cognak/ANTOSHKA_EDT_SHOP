@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Номенклатура</dataPath>
+			<field>Номенклатура</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Стоимость</dataPath>
+			<field>Стоимость</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Количество</dataPath>
+			<field>Количество</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СтоимостьБезСкидок</dataPath>
+			<field>СтоимостьБезСкидок</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Поставщик</dataPath>
+			<field>Поставщик</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДоляКомпенсации</dataPath>
+			<field>ДоляКомпенсации</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДатаНачалаДействия</dataPath>
+			<field>ДатаНачалаДействия</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДатаОкончанияДействия</dataPath>
+			<field>ДатаОкончанияДействия</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Магазин</dataPath>
+			<field>Магазин</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Магазин</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НоменклатураIDN</dataPath>
+			<field>НоменклатураIDN</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Ссылка</dataPath>
+			<field>Ссылка</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВидЦены</dataPath>
+			<field>ВидЦены</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Характеристика</dataPath>
+			<field>Характеристика</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Себестоимость</dataPath>
+			<field>Себестоимость</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Себестоимость</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаКомпенсации</dataPath>
+			<field>СуммаКомпенсации</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма компенсации</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ОптоваяЦена</dataPath>
+			<field>ОптоваяЦена</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оптовая цена</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	СоставКомпенсацииСостав.Номенклатура КАК Номенклатура,
+	СоставКомпенсацииСостав.Ссылка.ДатаНачалаДействия КАК ДатаНачалаДействия,
+	СоставКомпенсацииСостав.Ссылка.ДатаОкончанияДействия КАК ДатаОкончанияДействия,
+	СоставКомпенсацииСостав.Ссылка.Поставщик КАК Поставщик,
+	СоставКомпенсацииСостав.Ссылка.ДоляКомпенсации КАК ДоляКомпенсации,
+	СоставКомпенсацииСостав.Ссылка КАК Ссылка,
+	СоставКомпенсацииСостав.Ссылка.ТипКомпенсации КАК ТипКомпенсации,
+	СоставКомпенсацииСостав.Ссылка.РаспространениеКомпенсации КАК РаспространениеКомпенсации
+ПОМЕСТИТЬ Сотстав
+ИЗ
+	Справочник.СоставКомпенсации.Состав КАК СоставКомпенсацииСостав
+ГДЕ
+	(СоставКомпенсацииСостав.Ссылка.ДатаНачалаДействия МЕЖДУ &amp;ДатаНачалаДействия И &amp;ДатаОкончанияДействия
+			ИЛИ СоставКомпенсацииСостав.Ссылка.ДатаОкончанияДействия МЕЖДУ &amp;ДатаНачалаДействия И &amp;ДатаОкончанияДействия)
+
+СГРУППИРОВАТЬ ПО
+	СоставКомпенсацииСостав.Номенклатура,
+	СоставКомпенсацииСостав.Ссылка.ДатаОкончанияДействия,
+	СоставКомпенсацииСостав.Ссылка.Поставщик,
+	СоставКомпенсацииСостав.Ссылка.ДатаНачалаДействия,
+	СоставКомпенсацииСостав.Ссылка.ДоляКомпенсации,
+	СоставКомпенсацииСостав.Ссылка,
+	СоставКомпенсацииСостав.Ссылка.ТипКомпенсации
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	Сотстав.Номенклатура КАК Номенклатура,
+	Сотстав.ДатаНачалаДействия КАК ДатаНачалаДействия,
+	Сотстав.ДатаОкончанияДействия КАК ДатаОкончанияДействия,
+	Сотстав.Поставщик КАК Поставщик,
+	Сотстав.ДоляКомпенсации КАК ДоляКомпенсации,
+	СУММА(ВЫБОР
+			КОГДА Сотстав.РаспространениеКомпенсации = ЗНАЧЕНИЕ(Перечисление.РаспространениеКомпенсации.Все)
+				ТОГДА Продажи.Количество
+			КОГДА Сотстав.РаспространениеКомпенсации = ЗНАЧЕНИЕ(Перечисление.РаспространениеКомпенсации.Офлайн)
+				ТОГДА Продажи.Количество
+			ИНАЧЕ 0
+		КОНЕЦ) КАК Количество,
+	СУММА(ВЫБОР
+			КОГДА Сотстав.РаспространениеКомпенсации = ЗНАЧЕНИЕ(Перечисление.РаспространениеКомпенсации.Все)
+				ТОГДА Продажи.Стоимость
+			КОГДА Сотстав.РаспространениеКомпенсации = ЗНАЧЕНИЕ(Перечисление.РаспространениеКомпенсации.Офлайн)
+				ТОГДА Продажи.Стоимость
+			ИНАЧЕ 0
+		КОНЕЦ) КАК Стоимость,
+	СУММА(ВЫБОР
+			КОГДА Сотстав.РаспространениеКомпенсации = ЗНАЧЕНИЕ(Перечисление.РаспространениеКомпенсации.Все)
+				ТОГДА Продажи.СтоимостьБезСкидок
+			КОГДА Сотстав.РаспространениеКомпенсации = ЗНАЧЕНИЕ(Перечисление.РаспространениеКомпенсации.Офлайн)
+				ТОГДА Продажи.СтоимостьБезСкидок
+			ИНАЧЕ 0
+		КОНЕЦ) КАК СтоимостьБезСкидок,
+	Продажи.Склад.Магазин КАК Магазин,
+	Продажи.Номенклатура.IDN КАК НоменклатураIDN,
+	Сотстав.Ссылка КАК Ссылка,
+	СебестоимостьНоменклатурыСрезПоследних.Цена КАК ОптоваяЦена,
+	ЦеныНоменклатурыСрезПоследних.Цена КАК Себестоимость,
+	ВЫБОР
+		КОГДА Сотстав.ТипКомпенсации = ЗНАЧЕНИЕ(Перечисление.ТипКомпенсации.ОтСебестоимости)
+			ТОГДА СебестоимостьНоменклатурыСрезПоследних.Цена / 100 * Сотстав.ДоляКомпенсации
+		КОГДА Сотстав.ТипКомпенсации = ЗНАЧЕНИЕ(Перечисление.ТипКомпенсации.ОтЦеныПолки)
+			ТОГДА Продажи.СтоимостьБезСкидок / 100 * Сотстав.ДоляКомпенсации
+		КОГДА Сотстав.ТипКомпенсации = ЗНАЧЕНИЕ(Перечисление.ТипКомпенсации.ОтОптовойЦены)
+			ТОГДА ЦеныНоменклатурыСрезПоследних.Цена / 100 * Сотстав.ДоляКомпенсации
+	КОНЕЦ КАК СуммаКомпенсации
+ИЗ
+	Сотстав КАК Сотстав
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрНакопления.Продажи КАК Продажи
+		ПО Сотстав.Номенклатура = Продажи.Номенклатура
+			И Сотстав.ДатаНачалаДействия &lt;= Продажи.Период
+			И Сотстав.ДатаОкончанияДействия &gt;= Продажи.Период
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ЦеныНоменклатуры.СрезПоследних КАК ЦеныНоменклатурыСрезПоследних
+		ПО Сотстав.Номенклатура = ЦеныНоменклатурыСрезПоследних.Номенклатура
+			И (ЦеныНоменклатурыСрезПоследних.ВидЦены = &amp;ВидЦены)
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СебестоимостьНоменклатуры.СрезПоследних КАК СебестоимостьНоменклатурыСрезПоследних
+		ПО Сотстав.Номенклатура = СебестоимостьНоменклатурыСрезПоследних.Номенклатура
+ГДЕ
+	Продажи.Период МЕЖДУ &amp;ДатаНачалаДействия И &amp;ДатаОкончанияДействия
+
+СГРУППИРОВАТЬ ПО
+	Сотстав.Номенклатура,
+	Сотстав.ДатаНачалаДействия,
+	Сотстав.ДатаОкончанияДействия,
+	Сотстав.Поставщик,
+	Сотстав.ДоляКомпенсации,
+	Продажи.Склад.Магазин,
+	Продажи.Номенклатура.IDN,
+	Сотстав.Ссылка,
+	СебестоимостьНоменклатурыСрезПоследних.Цена,
+	ЦеныНоменклатурыСрезПоследних.Цена,
+	ВЫБОР
+		КОГДА Сотстав.ТипКомпенсации = ЗНАЧЕНИЕ(Перечисление.ТипКомпенсации.ОтСебестоимости)
+			ТОГДА СебестоимостьНоменклатурыСрезПоследних.Цена / 100 * Сотстав.ДоляКомпенсации
+		КОГДА Сотстав.ТипКомпенсации = ЗНАЧЕНИЕ(Перечисление.ТипКомпенсации.ОтЦеныПолки)
+			ТОГДА Продажи.СтоимостьБезСкидок / 100 * Сотстав.ДоляКомпенсации
+		КОГДА Сотстав.ТипКомпенсации = ЗНАЧЕНИЕ(Перечисление.ТипКомпенсации.ОтОптовойЦены)
+			ТОГДА ЦеныНоменклатурыСрезПоследних.Цена / 100 * Сотстав.ДоляКомпенсации
+	КОНЕЦ
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	Сотстав.Номенклатура,
+	Сотстав.ДатаНачалаДействия,
+	Сотстав.ДатаОкончанияДействия,
+	Сотстав.Поставщик,
+	Сотстав.ДоляКомпенсации,
+	СУММА(ВЫБОР
+			КОГДА Сотстав.РаспространениеКомпенсации = ЗНАЧЕНИЕ(Перечисление.РаспространениеКомпенсации.Все)
+				ТОГДА ПродажиИнтернетМагазинаИнформативные.Количество
+			КОГДА Сотстав.РаспространениеКомпенсации = ЗНАЧЕНИЕ(Перечисление.РаспространениеКомпенсации.Онлайн)
+				ТОГДА ПродажиИнтернетМагазинаИнформативные.Количество
+			ИНАЧЕ 0
+		КОНЕЦ),
+	СУММА(ВЫБОР
+			КОГДА Сотстав.РаспространениеКомпенсации = ЗНАЧЕНИЕ(Перечисление.РаспространениеКомпенсации.Все)
+				ТОГДА ПродажиИнтернетМагазинаИнформативные.Стоимость
+			КОГДА Сотстав.РаспространениеКомпенсации = ЗНАЧЕНИЕ(Перечисление.РаспространениеКомпенсации.Онлайн)
+				ТОГДА ПродажиИнтернетМагазинаИнформативные.Стоимость
+			ИНАЧЕ 0
+		КОНЕЦ),
+	СУММА(ВЫБОР
+			КОГДА Сотстав.РаспространениеКомпенсации = ЗНАЧЕНИЕ(Перечисление.РаспространениеКомпенсации.Все)
+				ТОГДА ПродажиИнтернетМагазинаИнформативные.СтоимостьБезСкидок
+			КОГДА Сотстав.РаспространениеКомпенсации = ЗНАЧЕНИЕ(Перечисление.РаспространениеКомпенсации.Онлайн)
+				ТОГДА ПродажиИнтернетМагазинаИнформативные.СтоимостьБезСкидок
+			ИНАЧЕ 0
+		КОНЕЦ),
+	ПродажиИнтернетМагазинаИнформативные.Склад.Магазин,
+	ПродажиИнтернетМагазинаИнформативные.Номенклатура.IDN,
+	Сотстав.Ссылка,
+	СебестоимостьНоменклатурыСрезПоследних.Цена,
+	ЦеныНоменклатурыСрезПоследних.Цена,
+	ВЫБОР
+		КОГДА Сотстав.ТипКомпенсации = ЗНАЧЕНИЕ(Перечисление.ТипКомпенсации.ОтСебестоимости)
+			ТОГДА СебестоимостьНоменклатурыСрезПоследних.Цена / 100 * Сотстав.ДоляКомпенсации
+		КОГДА Сотстав.ТипКомпенсации = ЗНАЧЕНИЕ(Перечисление.ТипКомпенсации.ОтЦеныПолки)
+			ТОГДА ПродажиИнтернетМагазинаИнформативные.СтоимостьБезСкидок / 100 * Сотстав.ДоляКомпенсации
+		КОГДА Сотстав.ТипКомпенсации = ЗНАЧЕНИЕ(Перечисление.ТипКомпенсации.ОтОптовойЦены)
+			ТОГДА ЦеныНоменклатурыСрезПоследних.Цена / 100 * Сотстав.ДоляКомпенсации
+	КОНЕЦ
+ИЗ
+	Сотстав КАК Сотстав
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрНакопления.ПродажиИнтернетМагазинаИнформативные КАК ПродажиИнтернетМагазинаИнформативные
+		ПО Сотстав.Номенклатура = ПродажиИнтернетМагазинаИнформативные.Номенклатура
+			И Сотстав.ДатаНачалаДействия &lt;= ПродажиИнтернетМагазинаИнформативные.Период
+			И Сотстав.ДатаОкончанияДействия &gt;= ПродажиИнтернетМагазинаИнформативные.Период
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ЦеныНоменклатуры.СрезПоследних КАК ЦеныНоменклатурыСрезПоследних
+		ПО Сотстав.Номенклатура = ЦеныНоменклатурыСрезПоследних.Номенклатура
+			И (ЦеныНоменклатурыСрезПоследних.ВидЦены = &amp;ВидЦены)
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СебестоимостьНоменклатуры.СрезПоследних КАК СебестоимостьНоменклатурыСрезПоследних
+		ПО Сотстав.Номенклатура = СебестоимостьНоменклатурыСрезПоследних.Номенклатура
+ГДЕ
+	ПродажиИнтернетМагазинаИнформативные.Период МЕЖДУ &amp;ДатаНачалаДействия И &amp;ДатаОкончанияДействия
+
+СГРУППИРОВАТЬ ПО
+	Сотстав.Номенклатура,
+	Сотстав.ДатаНачалаДействия,
+	Сотстав.ДатаОкончанияДействия,
+	Сотстав.Поставщик,
+	Сотстав.ДоляКомпенсации,
+	ПродажиИнтернетМагазинаИнформативные.Склад.Магазин,
+	ПродажиИнтернетМагазинаИнформативные.Номенклатура.IDN,
+	Сотстав.Ссылка,
+	СебестоимостьНоменклатурыСрезПоследних.Цена,
+	ЦеныНоменклатурыСрезПоследних.Цена,
+	ВЫБОР
+		КОГДА Сотстав.ТипКомпенсации = ЗНАЧЕНИЕ(Перечисление.ТипКомпенсации.ОтСебестоимости)
+			ТОГДА СебестоимостьНоменклатурыСрезПоследних.Цена / 100 * Сотстав.ДоляКомпенсации
+		КОГДА Сотстав.ТипКомпенсации = ЗНАЧЕНИЕ(Перечисление.ТипКомпенсации.ОтЦеныПолки)
+			ТОГДА ПродажиИнтернетМагазинаИнформативные.СтоимостьБезСкидок / 100 * Сотстав.ДоляКомпенсации
+		КОГДА Сотстав.ТипКомпенсации = ЗНАЧЕНИЕ(Перечисление.ТипКомпенсации.ОтОптовойЦены)
+			ТОГДА ЦеныНоменклатурыСрезПоследних.Цена / 100 * Сотстав.ДоляКомпенсации
+	КОНЕЦ</query>
+	</dataSet>
+	<totalField>
+		<dataPath>Стоимость</dataPath>
+		<expression>Сумма(Стоимость)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СтоимостьБезСкидок</dataPath>
+		<expression>Сумма(СтоимостьБезСкидок)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Количество</dataPath>
+		<expression>Сумма(Количество)</expression>
+	</totalField>
+	<parameter>
+		<name>ДатаНачалаДействия</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата начала действия</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаНачала</expression>
+	</parameter>
+	<parameter>
+		<name>ДатаОкончанияДействия</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата окончания действия</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаОкончания</expression>
+	</parameter>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>ВидЦены</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Вид цены</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.ВидыЦен</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Справочник.ВидыЦен.ОптовыеЦены</value>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>СписокКомпенсации</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Список компенсации</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>uk</v8:lang>
+				<v8:content>Основной</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Номенклатура</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>НоменклатураIDN</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Количество</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Стоимость</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СтоимостьБезСкидок</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Период</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+					</dcscor:value>
+					<dcsset:userSettingID>88842abc-a97a-45ae-8e16-aaaa2ffc2f6d</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Магазин</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Ссылка</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+					<dcsset:item xsi:type="dcsset:StructureItemGroup">
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						</dcsset:selection>
+					</dcsset:item>
+				</dcsset:item>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

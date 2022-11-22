@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанныхЗапрос</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Товары.ЕдиницаИзмерения</dataPath>
+			<field>ЕдиницаИзмерения</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Единица измерения</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Товары.Количество</dataPath>
+			<field>Количество</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Товары.НомерСтроки</dataPath>
+			<field>НомерСтроки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номер строки</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Товары.Продавец</dataPath>
+			<field>Продавец</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Продавец</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Товары.Склад</dataPath>
+			<field>Склад</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Склад</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Товары.СтавкаНДС</dataPath>
+			<field>СтавкаНДС</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ставка НДС</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Товары.Сумма</dataPath>
+			<field>Сумма</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Товары.СуммаНДС</dataPath>
+			<field>СуммаНДС</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма НДС</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldFolder">
+			<dataPath>Товары</dataPath>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>2. Реквизиты табличных частей</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Товары.СуммаБезНДС</dataPath>
+			<field>СуммаБезНДС</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма без НДС</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Товары.СуммаБезСкидки</dataPath>
+			<field>СуммаБезСкидки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма без скидки</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldFolder">
+			<dataPath>Скидки</dataPath>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>3. Скидки</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Скидки.ПроцентРучнойСкидки</dataPath>
+			<field>ПроцентРучнойСкидки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Процент ручной скидки</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Скидки.СуммаАвтоматическойСкидки</dataPath>
+			<field>СуммаАвтоматическойСкидки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма автоматической скидки</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Скидки.СуммаРучнойСкидки</dataPath>
+			<field>СуммаРучнойСкидки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма ручной скидки</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЧастьЗапроса</dataPath>
+			<field>ЧастьЗапроса</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Часть запроса</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<order>true</order>
+			</useRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Ссылка</dataPath>
+			<field>Ссылка</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>1. Реквизиты шапки и подвала</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldFolder">
+			<dataPath>Товары.Номенклатура</dataPath>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номенклатура</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Товары.Номенклатура.НоменклатураСсылка</dataPath>
+			<field>НоменклатураСсылка</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дополнительное описание</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Скидки.ПроцентСкидки</dataPath>
+			<field>ПроцентСкидки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Процент скидки</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Скидки.СуммаСкидки</dataPath>
+			<field>СуммаСкидки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма скидки</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Товары.Номенклатура.Артикул</dataPath>
+			<field>Артикул</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Артикул</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Товары.Номенклатура.Весовой</dataPath>
+			<field>Весовой</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Весовой</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Товары.Номенклатура.ВидНоменклатуры</dataPath>
+			<field>ВидНоменклатуры</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид номенклатуры</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Товары.Номенклатура.Код</dataPath>
+			<field>Код</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Код</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Товары.Номенклатура.Наименование</dataPath>
+			<field>Наименование</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Наименование</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Товары.Номенклатура.НаименованиеПолное</dataPath>
+			<field>НаименованиеПолное</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Наименование полное</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Товары.Номенклатура.Родитель</dataPath>
+			<field>Родитель</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Родитель</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Товары.Номенклатура.НоменклатурнаяГруппа</dataPath>
+			<field>НоменклатурнаяГруппа</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номенклатурная группа</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Товары.Номенклатура.Штрихкод</dataPath>
+			<field>Штрихкод</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Штрихкод</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Товары.ЦенаБезСкидки</dataPath>
+			<field>ЦенаБезСкидки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Цена без скидки</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Товары.ЦенаСоСкидкой</dataPath>
+			<field>ЦенаСоСкидкой</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Цена со скидкой</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Товары.СкидкаНаценка</dataPath>
+			<field>СкидкаНаценка</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Скидка наценка</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Товары.Характеристика</dataPath>
+			<field>Характеристика</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Товары.Номенклатура.ЕдиницаХраненияОстатков</dataPath>
+			<field>ЕдиницаХраненияОстатков</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Товары.КлючСвязиСерийныхНомеров</dataPath>
+			<field>КлючСвязиСерийныхНомеров</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Скидки.ПроцентАвтоматическихСкидок</dataPath>
+			<field>ПроцентАвтоматическихСкидок</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>% авт.</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	
+	"Товары" КАК ЧастьЗапроса,
+	
+	Товары.Ссылка КАК Ссылка,
+	Товары.НомерСтроки КАК НомерСтроки,
+	Товары.КлючСвязиСерийныхНомеров  КАК КлючСвязиСерийныхНомеров,
+
+// Поля номенклатуры
+	Товары.Номенклатура КАК НоменклатураСсылка,
+	Товары.Номенклатура.Код КАК Код,
+	Товары.Номенклатура.Родитель КАК Родитель,
+	Товары.Номенклатура.Наименование КАК Наименование,
+	Товары.Номенклатура.Артикул КАК Артикул,
+	Товары.Номенклатура.Весовой КАК Весовой,
+	Товары.Номенклатура.ВидНоменклатуры КАК ВидНоменклатуры,
+
+	Товары.Номенклатура.ЕдиницаИзмерения КАК ЕдиницаХраненияОстатков,
+	Товары.Номенклатура.НаименованиеПолное КАК НаименованиеПолное,
+	Товары.Номенклатура.НоменклатурнаяГруппа КАК НоменклатурнаяГруппа,
+	
+	Товары.Характеристика КАК Характеристика,
+	ВЫБОР	КОГДА Товары.Упаковка = ЗНАЧЕНИЕ(Справочник.УпаковкиНоменклатуры.ПустаяСсылка)
+			ТОГДА Товары.Номенклатура.ЕдиницаИзмерения
+			ИНАЧЕ Товары.Упаковка
+	КОНЕЦ КАК ЕдиницаИзмерения,
+	ВЫБОР	КОГДА Товары.Упаковка = ЗНАЧЕНИЕ(Справочник.УпаковкиНоменклатуры.ПустаяСсылка)
+			ТОГДА Товары.Количество
+			ИНАЧЕ Товары.КоличествоУпаковок
+	КОНЕЦ КАК Количество,
+	
+	Товары.Цена КАК ЦенаБезСкидки,
+	ВЫРАЗИТЬ(Товары.Сумма / ВЫБОР
+			КОГДА Товары.Количество = 0
+				ТОГДА 1
+			ИНАЧЕ ВЫБОР
+					КОГДА Товары.Упаковка = ЗНАЧЕНИЕ(Справочник.УпаковкиНоменклатуры.ПустаяСсылка)
+					ТОГДА Товары.Количество
+					ИНАЧЕ Товары.КоличествоУпаковок
+				КОНЕЦ
+		КОНЕЦ КАК ЧИСЛО(15, 2)) КАК ЦенаСоСкидкой,
+	
+	Товары.Сумма КАК Сумма,
+	Товары.СтавкаНДС КАК СтавкаНДС,
+	Товары.СуммаНДС КАК СуммаНДС,
+	Товары.Сумма - Товары.СуммаНДС КАК СуммаБезНДС,
+	
+	// Проценты
+	Товары.ПроцентАвтоматическойСкидки КАК ПроцентАвтоматическихСкидок,
+	Товары.ПроцентРучнойСкидки КАК ПроцентРучнойСкидки,
+	(Товары.ПроцентРучнойСкидки + Товары.ПроцентАвтоматическойСкидки) КАК ПроцентСкидки,
+	
+	// Скидки
+	Товары.СуммаАвтоматическойСкидки + Товары.СуммаРучнойСкидки КАК СуммаСкидки,
+	Товары.СуммаАвтоматическойСкидки КАК СуммаАвтоматическойСкидки,
+	Товары.СуммаРучнойСкидки КАК СуммаРучнойСкидки,
+	Товары.Сумма + Товары.СуммаАвтоматическойСкидки + Товары.СуммаРучнойСкидки КАК СуммаБезСкидки,
+	
+	Штрихкоды.Штрихкод КАК Штрихкод,
+	Товары.Склад КАК Склад,
+	Товары.Продавец КАК Продавец,
+
+	Null КАК СкидкаНаценка
+ИЗ
+	Документ.ЧекККМ.Товары КАК Товары
+
+		// Штрихкоды 
+		{ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+			ВЫРАЗИТЬ(Штрихкоды.Владелец КАК Справочник.Номенклатура) КАК Номенклатура,
+			Штрихкоды.Упаковка КАК Упаковка,
+			Штрихкоды.Характеристика КАК Характеристика,
+			МАКСИМУМ(Штрихкоды.Штрихкод) КАК Штрихкод
+		ИЗ
+			РегистрСведений.Штрихкоды КАК Штрихкоды
+		
+		СГРУППИРОВАТЬ ПО
+			ВЫРАЗИТЬ(Штрихкоды.Владелец КАК Справочник.Номенклатура),
+			Штрихкоды.Упаковка,
+			Штрихкоды.Характеристика) КАК Штрихкоды
+		ПО Товары.Номенклатура = Штрихкоды.Номенклатура
+			И Товары.Характеристика = Штрихкоды.Характеристика
+			И Товары.Упаковка = Штрихкоды.Упаковка}
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	
+	"Подарки" КАК ЧастьЗапроса,
+	
+	Подарки.Ссылка КАК Ссылка,
+	Подарки.НомерСтроки КАК НомерСтроки,
+	0 КАК КлючСтроки,
+
+// Поля номенклатуры
+	Подарки.Номенклатура КАК НоменклатураСсылка,
+	Подарки.Номенклатура.Код КАК Код,
+	Подарки.Номенклатура.Родитель КАК Родитель,
+	Подарки.Номенклатура.Наименование КАК Наименование,
+	Подарки.Номенклатура.Артикул КАК Артикул,
+	Подарки.Номенклатура.Весовой КАК Весовой,
+	Подарки.Номенклатура.ВидНоменклатуры КАК ВидНоменклатуры,
+
+	Подарки.Номенклатура.ЕдиницаИзмерения КАК ЕдиницаХраненияОстатков,
+	Подарки.Номенклатура.НаименованиеПолное КАК НаименованиеПолное,
+	Подарки.Номенклатура.НоменклатурнаяГруппа КАК НоменклатурнаяГруппа,
+	
+	Подарки.Характеристика КАК Характеристика,
+
+	ВЫБОР	КОГДА Подарки.Упаковка = ЗНАЧЕНИЕ(Справочник.УпаковкиНоменклатуры.ПустаяСсылка)
+			ТОГДА Подарки.Номенклатура.ЕдиницаИзмерения
+			ИНАЧЕ Подарки.Упаковка
+	КОНЕЦ КАК ЕдиницаИзмерения,
+	//Подарки.Упаковка КАК Упаковка,
+	ВЫБОР	КОГДА Подарки.Упаковка = ЗНАЧЕНИЕ(Справочник.УпаковкиНоменклатуры.ПустаяСсылка)
+			ТОГДА Подарки.Количество
+			ИНАЧЕ Подарки.КоличествоУпаковок
+	КОНЕЦ КАК Количество,
+	//Подарки.КоличествоУпаковок КАК Количество,
+	
+	Подарки.Цена КАК ЦенаБезСкидки,
+	Подарки.Цена КАК ЦенаСоСкидкой,
+	Подарки.Сумма КАК Сумма,
+	NULL КАК СтавкаНДС,
+	NULL КАК СуммаНДС,
+	NULL СуммаБезНДС,
+	
+	// Проценты
+	NULL КАК ПроцентАвтоматическихСкидок,
+	NULL КАК ПроцентРучнойСкидки,
+	NULL КАК ПроцентСкидки,
+	
+	// Скидки
+	NULL КАК СуммаСкидки,
+	NULL КАК СуммаАвтоматическойСкидки,
+	NULL КАК СуммаРучнойСкидки,
+	NULL КАК СуммаБезСкидки,
+	
+	Штрихкоды.Штрихкод КАК Штрихкод,
+	Подарки.Склад КАК Склад,
+	NULL КАК Продавец,
+
+	СкидкаНаценка.Наименование КАК СкидкаНаценка
+	
+ИЗ
+	Документ.ЧекККМ.Подарки КАК Подарки
+
+		// Штрихкоды 
+		{ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+			ВЫРАЗИТЬ(Штрихкоды.Владелец КАК Справочник.Номенклатура) КАК Номенклатура,
+			Штрихкоды.Упаковка КАК Упаковка,
+			Штрихкоды.Характеристика КАК Характеристика,
+			МАКСИМУМ(Штрихкоды.Штрихкод) КАК Штрихкод
+		ИЗ
+			РегистрСведений.Штрихкоды КАК Штрихкоды
+		
+		СГРУППИРОВАТЬ ПО
+			ВЫРАЗИТЬ(Штрихкоды.Владелец КАК Справочник.Номенклатура),
+			Штрихкоды.Упаковка,
+			Штрихкоды.Характеристика) КАК Штрихкоды
+		ПО Подарки.Номенклатура = Штрихкоды.Номенклатура
+			И Подарки.Характеристика = Штрихкоды.Характеристика
+			И Подарки.Номенклатура.ЕдиницаИзмерения = Штрихкоды.Упаковка}
+
+</query>
+	</dataSet>
+	<totalField>
+		<dataPath>Товары.Количество</dataPath>
+		<expression>Сумма(Товары.Количество)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Товары.Сумма</dataPath>
+		<expression>Сумма(Товары.Сумма)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Товары.СуммаБезНДС</dataPath>
+		<expression>Сумма(Товары.СуммаБезНДС)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Товары.СуммаБезСкидки</dataPath>
+		<expression>Сумма(Товары.СуммаБезСкидки)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Товары.СуммаНДС</dataPath>
+		<expression>Сумма(Товары.СуммаНДС)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Товары.НомерСтроки</dataPath>
+		<expression>Максимум(Товары.НомерСтроки)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Скидки.ПроцентРучнойСкидки</dataPath>
+		<expression>100*Сумма(Скидки.СуммаРучнойСкидки)/Сумма(Товары.СуммаБезСкидки)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Скидки.СуммаРучнойСкидки</dataPath>
+		<expression>Сумма(Скидки.СуммаРучнойСкидки)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Скидки.СуммаАвтоматическойСкидки</dataPath>
+		<expression>Сумма(Скидки.СуммаАвтоматическойСкидки)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Скидки.ПроцентСкидки</dataPath>
+		<expression>(1-Сумма(Товары.Сумма)/Сумма(Товары.СуммаБезСкидки))*100</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Скидки.СуммаСкидки</dataPath>
+		<expression>Сумма(Скидки.СуммаСкидки)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Товары.ЦенаБезСкидки</dataPath>
+		<expression>Среднее(Товары.ЦенаБезСкидки)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Товары.ЦенаСоСкидкой</dataPath>
+		<expression>Среднее(Товары.ЦенаСоСкидкой)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Скидки.ПроцентАвтоматическихСкидок</dataPath>
+		<expression>100*Сумма(Скидки.СуммаАвтоматическойСкидки)/Сумма(Товары.СуммаБезСкидки)</expression>
+	</totalField>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ЧастьЗапроса</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Товары.НомерСтроки</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Товары.ЦенаБезСкидки</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Ссылка.СуммаДокумента</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Товары.Количество</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Скидки.ПроцентСкидки</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Скидки.СуммаСкидки</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Товары.Сумма</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ГоризонтальноеРасположениеОбщихИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВертикальноеРасположениеОбщихИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+				</dcscor:item>
+			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ЧастьЗапроса</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+				</dcsset:item>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

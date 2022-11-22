@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВидДокумента</dataPath>
+			<field>ВидДокумента</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Заказ</dataPath>
+			<field>Заказ</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Заказано</dataPath>
+			<field>Заказано</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Магазин</dataPath>
+			<field>Магазин</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Номенклатура</dataPath>
+			<field>Номенклатура</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Поставщик</dataPath>
+			<field>Поставщик</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Поступило</dataPath>
+			<field>Поступило</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>РассчитанныйСтатус</dataPath>
+			<field>РассчитанныйСтатус</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СтатусДокумента</dataPath>
+			<field>СтатусДокумента</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Характеристика</dataPath>
+			<field>Характеристика</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЖелаемаяДатаПоступления</dataPath>
+			<field>ЖелаемаяДатаПоступления</field>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	ЗаказыТоваровОбороты.Магазин,
+	ЗаказыТоваровОбороты.Заказ КАК Заказ,
+	СУММА(ЗаказыТоваровОбороты.КоличествоПриход) КАК Заказано,
+	СУММА(ЗаказыТоваровОбороты.КоличествоРасход) КАК Поступило,
+	МАКСИМУМ(ВЫБОР
+			КОГДА ЗаказыТоваровОбороты.Заказ ССЫЛКА Документ.ЗаказПоставщику
+				ТОГДА ВЫБОР
+						КОГДА НЕ ЗаказыТоваровОбороты.Заказ.Бессрочный
+								И ДОБАВИТЬКДАТЕ(ЗаказыТоваровОбороты.Заказ.ДатаПоступления, ДЕНЬ, ЗаказыТоваровОбороты.Заказ.ДнейПросрочкиПоставки) &lt; НАЧАЛОПЕРИОДА(&amp;Дата, ДЕНЬ)
+							ТОГДА ЗНАЧЕНИЕ(Перечисление.СтатусыВнутреннихЗаказов.Закрыт)
+						ИНАЧЕ ВЫБОР
+								КОГДА ЗаказыТоваровОбороты.КоличествоРасход &lt;&gt; 0
+									ТОГДА ЗНАЧЕНИЕ(Перечисление.СтатусыВнутреннихЗаказов.Закрыт)
+								ИНАЧЕ ЗНАЧЕНИЕ(Перечисление.СтатусыВнутреннихЗаказов.КВыполнению)
+							КОНЕЦ
+					КОНЕЦ
+			ИНАЧЕ ВЫБОР
+					КОГДА ЗаказыТоваровОбороты.Заказ.МагазинОтправитель.СкладУправляющейСистемы
+						ТОГДА ЗаказыТоваровОбороты.Заказ.Статус
+					ИНАЧЕ ВЫБОР
+							КОГДА ЗаказыТоваровОбороты.Заказ.ЖелаемаяДатаПоступления &lt; НАЧАЛОПЕРИОДА(&amp;Дата, ДЕНЬ)
+								ТОГДА ЗНАЧЕНИЕ(Перечисление.СтатусыВнутреннихЗаказов.Закрыт)
+							ИНАЧЕ ВЫБОР
+									КОГДА ЗаказыТоваровОбороты.КоличествоРасход &gt;= ЗаказыТоваровОбороты.КоличествоПриход
+										ТОГДА ЗНАЧЕНИЕ(Перечисление.СтатусыВнутреннихЗаказов.Закрыт)
+									ИНАЧЕ ЗНАЧЕНИЕ(Перечисление.СтатусыВнутреннихЗаказов.КВыполнению)
+								КОНЕЦ
+						КОНЕЦ
+				КОНЕЦ
+		КОНЕЦ) КАК РассчитанныйСтатус,
+	МАКСИМУМ(ВЫБОР
+			КОГДА ЗаказыТоваровОбороты.Заказ.Закрыт ЕСТЬ NULL 
+				ТОГДА ЗаказыТоваровОбороты.Заказ.Статус
+			ИНАЧЕ ВЫБОР
+					КОГДА ЗаказыТоваровОбороты.Заказ.Закрыт
+						ТОГДА ЗНАЧЕНИЕ(Перечисление.СтатусыВнутреннихЗаказов.Закрыт)
+					ИНАЧЕ ЗНАЧЕНИЕ(Перечисление.СтатусыВнутреннихЗаказов.КВыполнению)
+				КОНЕЦ
+		КОНЕЦ) КАК СтатусДокумента,
+	ВЫБОР
+		КОГДА ЗаказыТоваровОбороты.Заказ ССЫЛКА Документ.ЗаказПоставщику
+			ТОГДА "Заказы поставщикам"
+		ИНАЧЕ ВЫБОР
+				КОГДА ЗаказыТоваровОбороты.Заказ.МагазинОтправитель.СкладУправляющейСистемы
+					ТОГДА "Заказы на перемещение (склад управляющей системы)"
+				ИНАЧЕ "Заказы на перемещение"
+			КОНЕЦ
+	КОНЕЦ КАК ВидДокумента,
+	ЕСТЬNULL(ЗаказыТоваровОбороты.Заказ.ЖелаемаяДатаПоступления, ЗаказыТоваровОбороты.Заказ.ДатаПоступления) КАК ЖелаемаяДатаПоступления
+ПОМЕСТИТЬ Результат
+ИЗ
+	РегистрНакопления.ЗаказыТоваров.Обороты КАК ЗаказыТоваровОбороты
+
+СГРУППИРОВАТЬ ПО
+	ЗаказыТоваровОбороты.Заказ,
+	ЗаказыТоваровОбороты.Магазин,
+	ВЫБОР
+		КОГДА ЗаказыТоваровОбороты.Заказ ССЫЛКА Документ.ЗаказПоставщику
+			ТОГДА "Заказы поставщикам"
+		ИНАЧЕ ВЫБОР
+				КОГДА ЗаказыТоваровОбороты.Заказ.МагазинОтправитель.СкладУправляющейСистемы
+					ТОГДА "Заказы на перемещение (склад управляющей системы)"
+				ИНАЧЕ "Заказы на перемещение"
+			КОНЕЦ
+	КОНЕЦ,
+	ЕСТЬNULL(ЗаказыТоваровОбороты.Заказ.ЖелаемаяДатаПоступления, ЗаказыТоваровОбороты.Заказ.ДатаПоступления)
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	Результат.Магазин,
+	Результат.Заказ,
+	Результат.Заказано,
+	Результат.Поступило,
+	Результат.РассчитанныйСтатус,
+	Результат.СтатусДокумента,
+	Результат.ВидДокумента,
+	Результат.ЖелаемаяДатаПоступления
+ИЗ
+	Результат КАК Результат
+ГДЕ
+	Результат.РассчитанныйСтатус &lt;&gt; Результат.СтатусДокумента</query>
+	</dataSet>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<parameter>
+		<name>КонецПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<parameter>
+		<name>Дата</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>ТекущаяДатаСеанса()</expression>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>ПроверкаАктуальностиСтатусовЗаказов</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Проверка актуальности статусов заказов</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Магазин</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ВидДокумента</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Заказ</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СтатусДокумента</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>РассчитанныйСтатус</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ЖелаемаяДатаПоступления</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Заказано</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Поступило</dcsset:field>
+				</dcsset:item>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:userSettingID>6b3b0132-2b24-4d3c-8a04-24da0c255741</dcsset:userSettingID>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Магазин</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>4aff3545-9fbe-4916-b194-0cf09a16a08a</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:userSettingID>70ee7986-0e7c-433f-ad82-dfb76502d067</dcsset:userSettingID>
+			</dcsset:filter>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Дата</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
+					</dcscor:value>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:order>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:userSettingID>02428ef1-5ac3-454b-a412-cb3f6af882fb</dcsset:userSettingID>
+			</dcsset:order>
+			<dcsset:conditionalAppearance>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:userSettingID>f3e2ea69-5236-423c-99cc-9208b3f00e37</dcsset:userSettingID>
+			</dcsset:conditionalAppearance>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Заголовок</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Проверка актуальности статусов заказов</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Магазин</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>ВидДокумента</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+					<dcsset:item xsi:type="dcsset:StructureItemGroup">
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						</dcsset:selection>
+					</dcsset:item>
+				</dcsset:item>
+			</dcsset:item>
+			<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+			<dcsset:itemsUserSettingID>98c4a303-7173-4535-81b6-609da599b3e2</dcsset:itemsUserSettingID>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

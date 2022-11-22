@@ -1,0 +1,723 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СкидкаНаценка</dataPath>
+			<field>СкидкаНаценка</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Скидка</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Магазин</dataPath>
+			<field>Магазин</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>МаркетинговаяАкция</dataPath>
+			<field>МаркетинговаяАкция</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Маркетинговая акция</v8:content>
+				</v8:item>
+			</title>
+			<presentationExpression>НаименованиеАкции</presentationExpression>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Номенклатура</dataPath>
+			<field>Номенклатура</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Сегмент</dataPath>
+			<field>Сегмент</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Производитель</dataPath>
+			<field>Производитель</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Код</dataPath>
+			<field>Код</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Склад</dataPath>
+			<field>Склад</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДатаОкончания</dataPath>
+			<field>ДатаОкончания</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Проект</dataPath>
+			<field>Проект</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проект</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоОстаток</dataPath>
+			<field>КоличествоОстаток</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НаименованиеАкции</dataPath>
+			<field>НаименованиеАкции</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Наименование акции</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Артикул</dataPath>
+			<field>Артикул</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Артикул</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НомерМагазина</dataPath>
+			<field>НомерМагазина</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номер магазина</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДатаНачала</dataPath>
+			<field>ДатаНачала</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата начала</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ РАЗЛИЧНЫЕ
+	ДействиеСкидокНаценок.Период КАК ДатаНачала,
+	ДействиеСкидокНаценок.Регистратор.Ссылка КАК МаркетинговаяАкция,
+	ДействиеСкидокНаценок.Магазин КАК Магазин,
+	ДействиеСкидокНаценок.СкидкаНаценка КАК СкидкаНаценка,
+	ДействиеСкидокНаценок.ДатаОкончания
+ПОМЕСТИТЬ ВТ_ДействующиеСкидкиНаценки
+ИЗ
+	РегистрСведений.ДействиеСкидокНаценок КАК ДействиеСкидокНаценок
+ГДЕ
+	ДействиеСкидокНаценок.Период &lt;= &amp;Дата2
+	И (ДействиеСкидокНаценок.ДатаОкончания &gt;= &amp;Дата1
+			ИЛИ ДействиеСкидокНаценок.ДатаОкончания = ДАТАВРЕМЯ(1, 1, 1, 0, 0, 0))
+	И ДействиеСкидокНаценок.Регистратор ССЫЛКА Документ.МаркетинговаяАкция
+	И ДействиеСкидокНаценок.СкидкаНаценка.СпособПредоставления &lt;&gt; ЗНАЧЕНИЕ(Перечисление.СпособыПредоставленияСкидокНаценок.Сообщение)
+{ГДЕ
+	ДействиеСкидокНаценок.Регистратор.* КАК МаркетинговаяАкция,
+	ДействиеСкидокНаценок.СкидкаНаценка.*}
+
+ИНДЕКСИРОВАТЬ ПО
+	СкидкаНаценка
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	НоменклатураСегмента.Сегмент КАК Сегмент
+ПОМЕСТИТЬ ВТ_ВсеСегменты
+ИЗ
+	РегистрСведений.НоменклатураСегмента КАК НоменклатураСегмента
+ГДЕ
+	НЕ НоменклатураСегмента.Сегмент.ПометкаУдаления
+{ГДЕ
+	НоменклатураСегмента.Сегмент.*}
+
+СГРУППИРОВАТЬ ПО
+	НоменклатураСегмента.Сегмент
+
+ИНДЕКСИРОВАТЬ ПО
+	Сегмент
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗЛИЧНЫЕ
+	ВТ_ВсеСегменты.Сегмент КАК Сегмент,
+	ВТ_ДействующиеСкидкиНаценки.Магазин КАК Магазин,
+	ВТ_ДействующиеСкидкиНаценки.СкидкаНаценка КАК СкидкаНаценка,
+	ВТ_ДействующиеСкидкиНаценки.МаркетинговаяАкция,
+	ВТ_ДействующиеСкидкиНаценки.ДатаНачала,
+	ВТ_ДействующиеСкидкиНаценки.ДатаОкончания
+ПОМЕСТИТЬ ВТ_АкционныеСегменты
+ИЗ
+	ВТ_ВсеСегменты КАК ВТ_ВсеСегменты
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ ВТ_ДействующиеСкидкиНаценки КАК ВТ_ДействующиеСкидкиНаценки
+		ПО ВТ_ВсеСегменты.Сегмент = ВТ_ДействующиеСкидкиНаценки.СкидкаНаценка.СегментНоменклатурыПредоставления
+ГДЕ
+	ВТ_ДействующиеСкидкиНаценки.СкидкаНаценка.СпособПредоставления &lt;&gt; ЗНАЧЕНИЕ(Перечисление.СпособыПредоставленияСкидокНаценок.ДиапазонПроцентов)
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ВТ_ВсеСегменты.Сегмент,
+	ВТ_ДействующиеСкидкиНаценки.Магазин,
+	ВТ_ДействующиеСкидкиНаценки.СкидкаНаценка,
+	ВТ_ДействующиеСкидкиНаценки.МаркетинговаяАкция,
+	ВТ_ДействующиеСкидкиНаценки.ДатаНачала,
+	ВТ_ДействующиеСкидкиНаценки.ДатаОкончания
+ИЗ
+	ВТ_ВсеСегменты КАК ВТ_ВсеСегменты
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ Справочник.СкидкиНаценки.УсловияПредоставления КАК СкидкиНаценкиУсловияПредоставления
+			ВНУТРЕННЕЕ СОЕДИНЕНИЕ ВТ_ДействующиеСкидкиНаценки КАК ВТ_ДействующиеСкидкиНаценки
+			ПО (ВТ_ДействующиеСкидкиНаценки.СкидкаНаценка.Ссылка = СкидкиНаценкиУсловияПредоставления.Ссылка)
+		ПО ВТ_ВсеСегменты.Сегмент = СкидкиНаценкиУсловияПредоставления.УсловиеПредоставления.СегментНоменклатурыОграничения
+ГДЕ
+	СкидкиНаценкиУсловияПредоставления.Ссылка.СпособПредоставления = ЗНАЧЕНИЕ(Перечисление.СпособыПредоставленияСкидокНаценок.ДиапазонПроцентов)
+
+ИНДЕКСИРОВАТЬ ПО
+	Сегмент,
+	СкидкаНаценка
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗЛИЧНЫЕ
+	СкидкиНаценкиНаборПодарков.Номенклатура КАК Номенклатура,
+	ВТ_ДействующиеСкидкиНаценки.Магазин КАК Магазин,
+	ВТ_ДействующиеСкидкиНаценки.СкидкаНаценка КАК СкидкаНаценка,
+	ВТ_ДействующиеСкидкиНаценки.МаркетинговаяАкция,
+	ВТ_ДействующиеСкидкиНаценки.ДатаНачала,
+	ВТ_ДействующиеСкидкиНаценки.ДатаОкончания
+ПОМЕСТИТЬ ВТ_НоменклатураВПодарках
+ИЗ
+	ВТ_ДействующиеСкидкиНаценки КАК ВТ_ДействующиеСкидкиНаценки
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ Справочник.СкидкиНаценки.НаборПодарков КАК СкидкиНаценкиНаборПодарков
+		ПО ВТ_ДействующиеСкидкиНаценки.СкидкаНаценка.Ссылка = СкидкиНаценкиНаборПодарков.Ссылка
+ГДЕ
+	ВТ_ДействующиеСкидкиНаценки.СкидкаНаценка.ПодарокИзСписка
+{ГДЕ
+	СкидкиНаценкиНаборПодарков.Номенклатура.*,
+	СкидкиНаценкиНаборПодарков.Номенклатура.IDN КАК Код,
+	СкидкиНаценкиНаборПодарков.Номенклатура.Производитель.* КАК Производитель}
+
+ИНДЕКСИРОВАТЬ ПО
+	Номенклатура,
+	СкидкаНаценка
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗЛИЧНЫЕ
+	НоменклатураСегмента.Номенклатура КАК Номенклатура,
+	ВТ_АкционныеСегменты.Сегмент КАК Сегмент,
+	ВТ_АкционныеСегменты.Магазин КАК Магазин,
+	ВТ_АкционныеСегменты.СкидкаНаценка КАК СкидкаНаценка,
+	ВТ_АкционныеСегменты.МаркетинговаяАкция,
+	ВТ_АкционныеСегменты.ДатаНачала,
+	ВТ_АкционныеСегменты.ДатаОкончания
+ПОМЕСТИТЬ ВТ_ВсяАкционнаяНоменклатураСОбщимиМагазинами
+ИЗ
+	ВТ_АкционныеСегменты КАК ВТ_АкционныеСегменты
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.НоменклатураСегмента КАК НоменклатураСегмента
+		ПО ВТ_АкционныеСегменты.Сегмент = НоменклатураСегмента.Сегмент
+{ГДЕ
+	НоменклатураСегмента.Номенклатура.*,
+	НоменклатураСегмента.Номенклатура.IDN КАК Код,
+	НоменклатураСегмента.Номенклатура.Производитель.* КАК Производитель}
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ВТ_НоменклатураВПодарках.Номенклатура,
+	ЗНАЧЕНИЕ(Справочник.СегментыНоменклатуры.ПустаяСсылка),
+	ВТ_НоменклатураВПодарках.Магазин,
+	ВТ_НоменклатураВПодарках.СкидкаНаценка,
+	ВТ_НоменклатураВПодарках.МаркетинговаяАкция,
+	ВТ_НоменклатураВПодарках.ДатаНачала,
+	ВТ_НоменклатураВПодарках.ДатаОкончания
+ИЗ
+	ВТ_НоменклатураВПодарках КАК ВТ_НоменклатураВПодарках
+
+ИНДЕКСИРОВАТЬ ПО
+	Номенклатура,
+	Сегмент,
+	СкидкаНаценка
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ВТ_ВсяАкционнаяНоменклатураСОбщимиМагазинами.Номенклатура КАК Номенклатура,
+	ВТ_ВсяАкционнаяНоменклатураСОбщимиМагазинами.Сегмент КАК Сегмент,
+	ВТ_ВсяАкционнаяНоменклатураСОбщимиМагазинами.Магазин КАК Магазин,
+	ВТ_ВсяАкционнаяНоменклатураСОбщимиМагазинами.СкидкаНаценка КАК СкидкаНаценка,
+	ВТ_ВсяАкционнаяНоменклатураСОбщимиМагазинами.МаркетинговаяАкция,
+	ВТ_ВсяАкционнаяНоменклатураСОбщимиМагазинами.ДатаНачала,
+	ВТ_ВсяАкционнаяНоменклатураСОбщимиМагазинами.ДатаОкончания
+ПОМЕСТИТЬ ВТ_АкционнаяНоменклатураПоМагазинам
+ИЗ
+	ВТ_ВсяАкционнаяНоменклатураСОбщимиМагазинами КАК ВТ_ВсяАкционнаяНоменклатураСОбщимиМагазинами
+ГДЕ
+	ВТ_ВсяАкционнаяНоменклатураСОбщимиМагазинами.Магазин &lt;&gt; ЗНАЧЕНИЕ(Справочник.Магазины.ПустаяСсылка)
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ВТ_ВсяАкционнаяНоменклатураСОбщимиМагазинами.Номенклатура,
+	ВТ_ВсяАкционнаяНоменклатураСОбщимиМагазинами.Сегмент,
+	Магазины.Ссылка,
+	ВТ_ВсяАкционнаяНоменклатураСОбщимиМагазинами.СкидкаНаценка,
+	ВТ_ВсяАкционнаяНоменклатураСОбщимиМагазинами.МаркетинговаяАкция,
+	ВТ_ВсяАкционнаяНоменклатураСОбщимиМагазинами.ДатаНачала,
+	ВТ_ВсяАкционнаяНоменклатураСОбщимиМагазинами.ДатаОкончания
+ИЗ
+	ВТ_ВсяАкционнаяНоменклатураСОбщимиМагазинами КАК ВТ_ВсяАкционнаяНоменклатураСОбщимиМагазинами
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ Справочник.Магазины КАК Магазины
+		ПО (ИСТИНА)
+ГДЕ
+	ВТ_ВсяАкционнаяНоменклатураСОбщимиМагазинами.Магазин = ЗНАЧЕНИЕ(Справочник.Магазины.ПустаяСсылка)
+	И Магазины.ВведенВЭксплуатацию
+	И НЕ Магазины.СкладУправляющейСистемы
+
+ИНДЕКСИРОВАТЬ ПО
+	Номенклатура,
+	Сегмент,
+	СкидкаНаценка
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ТоварыНаСкладахОстатки.Склад КАК Склад,
+	ТоварыНаСкладахОстатки.Номенклатура КАК Номенклатура,
+	ТоварыНаСкладахОстатки.КоличествоОстаток
+ПОМЕСТИТЬ ВТ_НоменклатураНаОстатках
+ИЗ
+	РегистрНакопления.ТоварыНаСкладах.Остатки({(&amp;Дата2)}, {(Номенклатура).*, (Склад).*}) КАК ТоварыНаСкладахОстатки
+
+ИНДЕКСИРОВАТЬ ПО
+	Номенклатура
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗЛИЧНЫЕ
+	ВТ_АкционнаяНоменклатураПоМагазинам.Номенклатура КАК Номенклатура,
+	ВТ_АкционнаяНоменклатураПоМагазинам.Сегмент КАК Сегмент,
+	ВТ_АкционнаяНоменклатураПоМагазинам.Магазин КАК Магазин,
+	ВТ_АкционнаяНоменклатураПоМагазинам.СкидкаНаценка,
+	ВТ_АкционнаяНоменклатураПоМагазинам.МаркетинговаяАкция,
+	ВТ_АкционнаяНоменклатураПоМагазинам.ДатаНачала,
+	ВТ_АкционнаяНоменклатураПоМагазинам.ДатаОкончания,
+	ВТ_НоменклатураНаОстатках.КоличествоОстаток
+ПОМЕСТИТЬ ВТ_АкционнаяНоменклатураНаОстатках
+ИЗ
+	ВТ_АкционнаяНоменклатураПоМагазинам КАК ВТ_АкционнаяНоменклатураПоМагазинам
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ ВТ_НоменклатураНаОстатках КАК ВТ_НоменклатураНаОстатках
+		ПО ВТ_АкционнаяНоменклатураПоМагазинам.Номенклатура = ВТ_НоменклатураНаОстатках.Номенклатура
+			И ВТ_АкционнаяНоменклатураПоМагазинам.Магазин = ВТ_НоменклатураНаОстатках.Склад.Магазин
+{ГДЕ
+	ВТ_АкционнаяНоменклатураПоМагазинам.Магазин.*}
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗЛИЧНЫЕ
+	ВТ_АкционнаяНоменклатураНаОстатках.Номенклатура КАК Номенклатура,
+	ВТ_АкционнаяНоменклатураНаОстатках.Сегмент КАК Сегмент,
+	ВТ_АкционнаяНоменклатураНаОстатках.Магазин КАК Магазин,
+	ВТ_АкционнаяНоменклатураНаОстатках.СкидкаНаценка КАК СкидкаНаценка,
+	ВТ_АкционнаяНоменклатураНаОстатках.МаркетинговаяАкция КАК МаркетинговаяАкция,
+	ВТ_АкционнаяНоменклатураНаОстатках.ДатаНачала КАК ДатаНачала,
+	ВТ_АкционнаяНоменклатураНаОстатках.ДатаОкончания КАК ДатаОкончания,
+	ВТ_АкционнаяНоменклатураНаОстатках.КоличествоОстаток КАК КоличествоОстаток,
+	ВТ_АкционнаяНоменклатураНаОстатках.МаркетинговаяАкция.НаименованиеАкции КАК НаименованиеАкции,
+	ВТ_АкционнаяНоменклатураНаОстатках.Номенклатура.IDN КАК Код,
+	ВТ_АкционнаяНоменклатураНаОстатках.Номенклатура.Артикул КАК Артикул,
+	ВТ_АкционнаяНоменклатураНаОстатках.Номенклатура.Производитель КАК Производитель,
+	ВТ_АкционнаяНоменклатураНаОстатках.Магазин.НомерМагазина КАК НомерМагазина,
+	ВТ_АкционнаяНоменклатураНаОстатках.Номенклатура.ВидНоменклатуры КАК Проект
+{ВЫБРАТЬ
+	Магазин.*,
+	НомерМагазина,
+	МаркетинговаяАкция.*,
+	НаименованиеАкции,
+	ДатаНачала,
+	ДатаОкончания,
+	СкидкаНаценка.*,
+	Сегмент.*,
+	Проект.*,
+	Номенклатура.*,
+	Код,
+	Артикул,
+	Производитель.*,
+	КоличествоОстаток}
+ИЗ
+	ВТ_АкционнаяНоменклатураНаОстатках КАК ВТ_АкционнаяНоменклатураНаОстатках
+{ГДЕ
+	ВТ_АкционнаяНоменклатураНаОстатках.Магазин.*,
+	ВТ_АкционнаяНоменклатураНаОстатках.Номенклатура.ВидНоменклатуры.* КАК Проект}</query>
+		<autoFillFields>false</autoFillFields>
+	</dataSet>
+	<totalField>
+		<dataPath>КоличествоОстаток</dataPath>
+		<expression>Сумма(КоличествоОстаток)</expression>
+		<group>Артикул</group>
+		<group>Код</group>
+		<group>Номенклатура</group>
+		<group>Номенклатура Иерархия</group>
+		<group>Проект</group>
+		<group>Проект Иерархия</group>
+		<group>СкидкаНаценка</group>
+	</totalField>
+	<parameter>
+		<name>Дата1</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>ДатаНачала</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>Date</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаНачала</expression>
+	</parameter>
+	<parameter>
+		<name>Дата2</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>ДатаОкончания</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>Date</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>ВЫБОР КОГДА &amp;Период.ДатаОкончания=ДАТАВРЕМЯ(1,1,1) ТОГДА ДАТАВРЕМЯ(3999,12,31,23,59,59) ИНАЧЕ ВЫБОР КОГДА &amp;Период.ДатаОкончания&lt;&amp;Период.ДатаНачала ТОГДА ДАТАВРЕМЯ(3999,12,31,23,59,59) ИНАЧЕ &amp;Период.ДатаОкончания Конец Конец</expression>
+	</parameter>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Отчет по остаткам, участвующим в акциях</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Отчет по остаткам, участвующим в акциях</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>НаименованиеАкции</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>МаркетинговаяАкция</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>НомерМагазина</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Магазин</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СкидкаНаценка</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Номенклатура</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Сегмент</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ДатаНачала</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ДатаОкончания</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Код</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Артикул</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Производитель</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>КоличествоОстаток</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Магазин</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.Магазины.ПустаяСсылка</dcsset:right>
+					<dcsset:userSettingID>1ba6d5f5-3507-4712-a87e-cd538da4a501</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Номенклатура</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.Номенклатура.ПустаяСсылка</dcsset:right>
+					<dcsset:userSettingID>f6515082-d523-4e58-b018-1e68fabe2d70</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Код</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="xs:string"/>
+					<dcsset:userSettingID>d131fc15-b074-49c8-b5ae-899d3448115d</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Производитель</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.Контрагенты.ПустаяСсылка</dcsset:right>
+					<dcsset:userSettingID>d92377be-6395-4e5c-8de1-86bb751107e1</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Проект</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.ВидыНоменклатуры.ПустаяСсылка</dcsset:right>
+					<dcsset:userSettingID>9e41af27-049c-4178-8245-f3f6023b1d87</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">МаркетинговаяАкция</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Документ.МаркетинговаяАкция.ПустаяСсылка</dcsset:right>
+					<dcsset:userSettingID>fadc7640-a822-4ded-8053-4dc5cb20d380</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Сегмент</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.СегментыНоменклатуры.ПустаяСсылка</dcsset:right>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:left xsi:type="dcscor:Field">СкидкаНаценка</dcsset:left>
+					<dcsset:comparisonType>NotInListByHierarchy</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.СкидкиНаценки.ДРМагазина</dcsset:right>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.СкидкиНаценки.ДРРебенка</dcsset:right>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.СкидкиНаценки.ДисконтныеКарты</dcsset:right>
+					<dcsset:userSettingID>5a4b6142-8d91-4f47-8137-d750bd4e2889</dcsset:userSettingID>
+				</dcsset:item>
+			</dcsset:filter>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Дата1</dcscor:parameter>
+					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+					<dcsset:userSettingID>412167f3-c296-4bae-beaa-129adcc9613e</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Дата2</dcscor:parameter>
+					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+					<dcsset:userSettingID>19a1b339-7d23-47e6-af98-99952a423ed9</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Период</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Today</v8:variant>
+					</dcscor:value>
+					<dcsset:userSettingID>af7288c6-3c0d-4389-a848-8163ccd32e69</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:order>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>НомерМагазина</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>НаименованиеАкции</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+			</dcsset:order>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Магазин</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>МаркетинговаяАкция</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+					<dcsset:item xsi:type="dcsset:StructureItemGroup">
+						<dcsset:groupItems>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>СкидкаНаценка</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>ДатаНачала</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>ДатаОкончания</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+						</dcsset:groupItems>
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						</dcsset:selection>
+						<dcsset:item xsi:type="dcsset:StructureItemGroup">
+							<dcsset:groupItems>
+								<dcsset:item xsi:type="dcsset:GroupItemField">
+									<dcsset:field>Проект</dcsset:field>
+									<dcsset:groupType>Items</dcsset:groupType>
+									<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+									<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+									<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+								</dcsset:item>
+							</dcsset:groupItems>
+							<dcsset:order>
+								<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+							</dcsset:order>
+							<dcsset:selection>
+								<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+							</dcsset:selection>
+							<dcsset:item xsi:type="dcsset:StructureItemGroup">
+								<dcsset:groupItems>
+									<dcsset:item xsi:type="dcsset:GroupItemField">
+										<dcsset:field>Номенклатура</dcsset:field>
+										<dcsset:groupType>Items</dcsset:groupType>
+										<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+										<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+										<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+									</dcsset:item>
+									<dcsset:item xsi:type="dcsset:GroupItemField">
+										<dcsset:field>Код</dcsset:field>
+										<dcsset:groupType>Items</dcsset:groupType>
+										<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+										<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+										<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+									</dcsset:item>
+									<dcsset:item xsi:type="dcsset:GroupItemField">
+										<dcsset:field>Артикул</dcsset:field>
+										<dcsset:groupType>Items</dcsset:groupType>
+										<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+										<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+										<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+									</dcsset:item>
+									<dcsset:item xsi:type="dcsset:GroupItemField">
+										<dcsset:field>Производитель</dcsset:field>
+										<dcsset:groupType>Items</dcsset:groupType>
+										<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+										<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+										<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+									</dcsset:item>
+								</dcsset:groupItems>
+								<dcsset:order>
+									<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+								</dcsset:order>
+								<dcsset:selection>
+									<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+								</dcsset:selection>
+								<dcsset:item xsi:type="dcsset:StructureItemGroup">
+									<dcsset:use>false</dcsset:use>
+									<dcsset:groupItems>
+										<dcsset:item xsi:type="dcsset:GroupItemField">
+											<dcsset:field>Сегмент</dcsset:field>
+											<dcsset:groupType>Items</dcsset:groupType>
+											<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+											<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+											<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+										</dcsset:item>
+									</dcsset:groupItems>
+									<dcsset:order>
+										<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+									</dcsset:order>
+									<dcsset:selection>
+										<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+									</dcsset:selection>
+								</dcsset:item>
+							</dcsset:item>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:item>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

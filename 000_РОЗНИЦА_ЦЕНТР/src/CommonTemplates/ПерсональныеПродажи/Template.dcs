@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Продавец</dataPath>
+			<field>Продавец</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Проект</dataPath>
+			<field>Проект</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проект</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ИНН</dataPath>
+			<field>ИНН</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ИНН</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НомерМагазина</dataPath>
+			<field>НомерМагазина</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номер магазина</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаПродаж</dataPath>
+			<field>СуммаПродаж</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма продаж</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаБезСкидки</dataPath>
+			<field>СуммаБезСкидки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма без скидки</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаБалловНачислено</dataPath>
+			<field>СуммаБалловНачислено</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма баллов начислено</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаБалловСписано</dataPath>
+			<field>СуммаБалловСписано</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма баллов списано</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Контрагент</dataPath>
+			<field>Контрагент</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаВысокомаржинальныхБезСкидки</dataPath>
+			<field>СуммаВысокомаржинальныхБезСкидки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма высокомаржинальных без скидки</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаВысокомаржинальных</dataPath>
+			<field>СуммаВысокомаржинальных</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма высокомаржинальных</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаСкидки</dataPath>
+			<field>СуммаСкидки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма скидки</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаСкидкиВысокомаржинальных</dataPath>
+			<field>СуммаСкидкиВысокомаржинальных</field>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	ВЫБОР
+		КОГДА НачисленияМотивационныхПрограмм.Ссылка.Магазин.НомерМагазина = 710
+				ИЛИ НачисленияМотивационныхПрограмм.Ссылка.Магазин.НомерМагазина = 709
+			ТОГДА 84
+		КОГДА НачисленияМотивационныхПрограмм.Ссылка.Магазин.НомерМагазина = 702
+				ИЛИ НачисленияМотивационныхПрограмм.Ссылка.Магазин.НомерМагазина = 703
+			ТОГДА 35
+		КОГДА НачисленияМотивационныхПрограмм.Ссылка.Магазин.НомерМагазина = 720
+				ИЛИ НачисленияМотивационныхПрограмм.Ссылка.Магазин.НомерМагазина = 719
+			ТОГДА 48
+		КОГДА НачисленияМотивационныхПрограмм.Ссылка.Магазин.НомерМагазина = 707
+			ТОГДА 21
+		КОГДА НачисленияМотивационныхПрограмм.Ссылка.Магазин.НомерМагазина = 715
+				ИЛИ НачисленияМотивационныхПрограмм.Ссылка.Магазин.НомерМагазина = 716
+			ТОГДА 65
+		КОГДА НачисленияМотивационныхПрограмм.Ссылка.Магазин.НомерМагазина = 721
+			ТОГДА 137
+		КОГДА НачисленияМотивационныхПрограмм.Ссылка.Магазин.НомерМагазина = 730
+			ТОГДА 70
+		КОГДА НачисленияМотивационныхПрограмм.Ссылка.Магазин.НомерМагазина = 731
+			ТОГДА 136
+		КОГДА НачисленияМотивационныхПрограмм.Ссылка.Магазин.НомерМагазина = 732
+			ТОГДА 150
+		ИНАЧЕ НачисленияМотивационныхПрограмм.Ссылка.Магазин.НомерМагазина
+	КОНЕЦ КАК НомерМагазина,
+	НачисленияМотивационныхПрограмм.Продавец.Наименование КАК Продавец,
+	СУММА(ВЫБОР
+			КОГДА НачисленияМотивационныхПрограмм.Ссылка.ВидОперации = ЗНАЧЕНИЕ(Перечисление.ВидыОперацийЧекККМ.Продажа)
+				ТОГДА НачисленияМотивационныхПрограмм.Сумма * ЕСТЬNULL(КоэффициентыМотивации.Коэффициент, 1)
+			ИНАЧЕ -(НачисленияМотивационныхПрограмм.Сумма * ЕСТЬNULL(КоэффициентыМотивации.Коэффициент, 1))
+		КОНЕЦ) КАК СуммаПродаж,
+	ВЫБОР
+		КОГДА НачисленияМотивационныхПрограмм.Номенклатура.ВидНоменклатуры.Наименование = "ДП"
+			ТОГДА "ПИТАНИЕ"
+		КОГДА НачисленияМотивационныхПрограмм.Номенклатура.ВидНоменклатуры.Наименование = "Подарочные сертификаты"
+				ИЛИ НачисленияМотивационныхПрограмм.Номенклатура.ВидНоменклатуры.Наименование = "ИГРУШКА"
+			ТОГДА "ИГРУШКИ"
+		КОГДА НачисленияМотивационныхПрограмм.Номенклатура.ВидНоменклатуры.Наименование = "Продажа услуг"
+			ТОГДА "УСЛУГИ"
+		ИНАЧЕ НачисленияМотивационныхПрограмм.Номенклатура.ВидНоменклатуры.Наименование
+	КОНЕЦ КАК Проект,
+	НачисленияМотивационныхПрограмм.Продавец.ИНН КАК ИНН,
+	СУММА(ВЫБОР
+			КОГДА НачисленияМотивационныхПрограмм.Ссылка.ВидОперации = ЗНАЧЕНИЕ(Перечисление.ВидыОперацийЧекККМ.Продажа)
+				ТОГДА НачисленияМотивационныхПрограмм.Количество * НачисленияМотивационныхПрограмм.Цена * ЕСТЬNULL(КоэффициентыМотивации.Коэффициент, 1)
+			ИНАЧЕ -(НачисленияМотивационныхПрограмм.Количество * НачисленияМотивационныхПрограмм.Цена * ЕСТЬNULL(КоэффициентыМотивации.Коэффициент, 1))
+		КОНЕЦ) КАК СуммаБезСкидки,
+	СУММА(ВЫБОР
+			КОГДА НачисленияМотивационныхПрограмм.Ссылка.ВидОперации = ЗНАЧЕНИЕ(Перечисление.ВидыОперацийЧекККМ.Продажа)
+				ТОГДА НачисленияМотивационныхПрограмм.СуммаБонусныхБалловНачислено * ЕСТЬNULL(КоэффициентыМотивации.Коэффициент, 1)
+			ИНАЧЕ -(НачисленияМотивационныхПрограмм.СуммаБонусныхБалловНачислено * ЕСТЬNULL(КоэффициентыМотивации.Коэффициент, 1))
+		КОНЕЦ) КАК СуммаБалловНачислено,
+	СУММА(ВЫБОР
+			КОГДА НачисленияМотивационныхПрограмм.Ссылка.ВидОперации = ЗНАЧЕНИЕ(Перечисление.ВидыОперацийЧекККМ.Продажа)
+				ТОГДА НачисленияМотивационныхПрограмм.СуммаБонусныхБалловСписано * ЕСТЬNULL(КоэффициентыМотивации.Коэффициент, 1)
+			ИНАЧЕ -(НачисленияМотивационныхПрограмм.СуммаБонусныхБалловСписано * ЕСТЬNULL(КоэффициентыМотивации.Коэффициент, 1))
+		КОНЕЦ) КАК СуммаБалловСписано,
+	СУММА(ВЫБОР
+			КОГДА РеквизитыКонтрагентовСрезПоследних.ПоказательМаржинальности = 1
+				ТОГДА ВЫБОР
+						КОГДА НачисленияМотивационныхПрограмм.Ссылка.ВидОперации = ЗНАЧЕНИЕ(Перечисление.ВидыОперацийЧекККМ.Продажа)
+							ТОГДА НачисленияМотивационныхПрограмм.Количество * НачисленияМотивационныхПрограмм.Цена * ЕСТЬNULL(КоэффициентыМотивации.Коэффициент, 1)
+						ИНАЧЕ -(НачисленияМотивационныхПрограмм.Количество * НачисленияМотивационныхПрограмм.Цена * ЕСТЬNULL(КоэффициентыМотивации.Коэффициент, 1))
+					КОНЕЦ
+			ИНАЧЕ 0
+		КОНЕЦ) КАК СуммаВысокомаржинальныхБезСкидки,
+	СУММА(ВЫБОР
+			КОГДА РеквизитыКонтрагентовСрезПоследних.ПоказательМаржинальности = 1
+				ТОГДА ВЫБОР
+						КОГДА НачисленияМотивационныхПрограмм.Ссылка.ВидОперации = ЗНАЧЕНИЕ(Перечисление.ВидыОперацийЧекККМ.Продажа)
+							ТОГДА НачисленияМотивационныхПрограмм.Сумма * ЕСТЬNULL(КоэффициентыМотивации.Коэффициент, 1)
+						ИНАЧЕ -(НачисленияМотивационныхПрограмм.Сумма * ЕСТЬNULL(КоэффициентыМотивации.Коэффициент, 1))
+					КОНЕЦ
+			ИНАЧЕ 0
+		КОНЕЦ) КАК СуммаВысокомаржинальных,
+	СУММА(ВЫБОР
+			КОГДА НачисленияМотивационныхПрограмм.Ссылка.ВидОперации = ЗНАЧЕНИЕ(Перечисление.ВидыОперацийЧекККМ.Продажа)
+				ТОГДА (НачисленияМотивационныхПрограмм.СуммаАвтоматическойСкидки + НачисленияМотивационныхПрограмм.СуммаРучнойСкидки) * ЕСТЬNULL(КоэффициентыМотивации.Коэффициент, 1)
+			ИНАЧЕ -((НачисленияМотивационныхПрограмм.СуммаАвтоматическойСкидки + НачисленияМотивационныхПрограмм.СуммаРучнойСкидки) * ЕСТЬNULL(КоэффициентыМотивации.Коэффициент, 1))
+		КОНЕЦ) КАК СуммаСкидки,
+	СУММА(ВЫБОР
+			КОГДА РеквизитыКонтрагентовСрезПоследних.ПоказательМаржинальности = 1
+				ТОГДА ВЫБОР
+						КОГДА НачисленияМотивационныхПрограмм.Ссылка.ВидОперации = ЗНАЧЕНИЕ(Перечисление.ВидыОперацийЧекККМ.Продажа)
+							ТОГДА (НачисленияМотивационныхПрограмм.СуммаАвтоматическойСкидки + НачисленияМотивационныхПрограмм.СуммаРучнойСкидки) * ЕСТЬNULL(КоэффициентыМотивации.Коэффициент, 1)
+						ИНАЧЕ -((НачисленияМотивационныхПрограмм.СуммаАвтоматическойСкидки + НачисленияМотивационныхПрограмм.СуммаРучнойСкидки) * ЕСТЬNULL(КоэффициентыМотивации.Коэффициент, 1))
+					КОНЕЦ
+			ИНАЧЕ 0
+		КОНЕЦ) КАК СуммаСкидкиВысокомаржинальных
+ИЗ
+	Документ.ЧекККМ.Товары КАК НачисленияМотивационныхПрограмм
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.РеквизитыКонтрагентов.СрезПоследних КАК РеквизитыКонтрагентовСрезПоследних
+		ПО НачисленияМотивационныхПрограмм.Номенклатура.Производитель = РеквизитыКонтрагентовСрезПоследних.Контрагент
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.КоэффициентыМотивации КАК КоэффициентыМотивации
+		ПО НачисленияМотивационныхПрограмм.Номенклатура = КоэффициентыМотивации.Номенклатура
+ГДЕ
+	НачисленияМотивационныхПрограмм.Ссылка.Дата МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+	И НачисленияМотивационныхПрограмм.Продавец &lt;&gt; ЗНАЧЕНИЕ(Справочник.ФизическиеЛица.ПустаяСсылка)
+	И НачисленияМотивационныхПрограмм.Продавец.ИНН &lt;&gt; """"
+	И НачисленияМотивационныхПрограмм.Ссылка.Проведен = ИСТИНА
+
+СГРУППИРОВАТЬ ПО
+	ВЫБОР
+		КОГДА НачисленияМотивационныхПрограмм.Ссылка.Магазин.НомерМагазина = 710
+				ИЛИ НачисленияМотивационныхПрограмм.Ссылка.Магазин.НомерМагазина = 709
+			ТОГДА 84
+		КОГДА НачисленияМотивационныхПрограмм.Ссылка.Магазин.НомерМагазина = 702
+				ИЛИ НачисленияМотивационныхПрограмм.Ссылка.Магазин.НомерМагазина = 703
+			ТОГДА 35
+		КОГДА НачисленияМотивационныхПрограмм.Ссылка.Магазин.НомерМагазина = 720
+				ИЛИ НачисленияМотивационныхПрограмм.Ссылка.Магазин.НомерМагазина = 719
+			ТОГДА 48
+		КОГДА НачисленияМотивационныхПрограмм.Ссылка.Магазин.НомерМагазина = 707
+			ТОГДА 21
+		КОГДА НачисленияМотивационныхПрограмм.Ссылка.Магазин.НомерМагазина = 715
+				ИЛИ НачисленияМотивационныхПрограмм.Ссылка.Магазин.НомерМагазина = 716
+			ТОГДА 65
+		КОГДА НачисленияМотивационныхПрограмм.Ссылка.Магазин.НомерМагазина = 721
+			ТОГДА 137
+		КОГДА НачисленияМотивационныхПрограмм.Ссылка.Магазин.НомерМагазина = 730
+			ТОГДА 70
+		КОГДА НачисленияМотивационныхПрограмм.Ссылка.Магазин.НомерМагазина = 731
+			ТОГДА 136
+		КОГДА НачисленияМотивационныхПрограмм.Ссылка.Магазин.НомерМагазина = 732
+			ТОГДА 150
+		ИНАЧЕ НачисленияМотивационныхПрограмм.Ссылка.Магазин.НомерМагазина
+	КОНЕЦ,
+	ВЫБОР
+		КОГДА НачисленияМотивационныхПрограмм.Номенклатура.ВидНоменклатуры.Наименование = "ДП"
+			ТОГДА "ПИТАНИЕ"
+		КОГДА НачисленияМотивационныхПрограмм.Номенклатура.ВидНоменклатуры.Наименование = "Подарочные сертификаты"
+				ИЛИ НачисленияМотивационныхПрограмм.Номенклатура.ВидНоменклатуры.Наименование = "ИГРУШКА"
+			ТОГДА "ИГРУШКИ"
+		КОГДА НачисленияМотивационныхПрограмм.Номенклатура.ВидНоменклатуры.Наименование = "Продажа услуг"
+			ТОГДА "УСЛУГИ"
+		ИНАЧЕ НачисленияМотивационныхПрограмм.Номенклатура.ВидНоменклатуры.Наименование
+	КОНЕЦ,
+	НачисленияМотивационныхПрограмм.Продавец.ИНН,
+	НачисленияМотивационныхПрограмм.Продавец.Наименование</query>
+	</dataSet>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>КонецПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ИНН</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>НомерМагазина</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Продавец</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Проект</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СуммаПродаж</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СуммаБезСкидки</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СуммаБалловНачислено</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СуммаБалловСписано</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СуммаВысокомаржинальных</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СуммаВысокомаржинальныхБезСкидки</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СуммаСкидки</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СуммаСкидкиВысокоМаржинальных</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>НачалоПериода</dcscor:parameter>
+					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+					<dcsset:userSettingID>fe35537e-2903-486c-8e7e-75270bfb8f65</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>КонецПериода</dcscor:parameter>
+					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+					<dcsset:userSettingID>1062b891-40bb-4be9-a73f-fe8fe5ec83cf</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

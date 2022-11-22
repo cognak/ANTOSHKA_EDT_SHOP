@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="368b047e-1575-44e0-9df4-37184b641afb">
+  <producedTypes>
+    <selectionType typeId="3d8cf05b-9f72-480a-8eaa-c8d3e7884903" valueTypeId="e2e19947-3e23-4153-9f28-be674f549d70"/>
+    <listType typeId="ed383f34-d7fe-4a7d-9511-fd3318ea70e8" valueTypeId="6f84763b-b34e-477a-90d3-6197792f8a03"/>
+    <managerType typeId="aecf8073-b2c9-4b0e-b19c-43dd549a4f2c" valueTypeId="b274bf30-c67e-4828-ba25-343707299197"/>
+    <recordSetType typeId="07eb6a8d-fca0-4a64-897f-6b3c8a440f1e" valueTypeId="882caedb-3daf-4d60-927c-2632eb094bdb"/>
+    <recordKeyType typeId="13322704-5247-4ee2-8952-ae428b74bbc2" valueTypeId="de7df673-e893-4b5b-bf49-73d4c46060bc"/>
+    <recordType typeId="33377d8f-a5e2-45c1-aeff-4d9baccef970" valueTypeId="270f71f1-4db4-4884-93b6-9e3a9aebb3b0"/>
+    <recordManagerType typeId="9bd2db83-33f5-4b0a-ad65-520bc6805272" valueTypeId="7bd46267-f87a-475f-82cb-e63d9831f905"/>
+  </producedTypes>
+  <name>ДействиеМотивационныхПрограмм</name>
+  <synonym>
+    <key>ru</key>
+    <value>Действие мотивационных программ</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <editType>InDialog</editType>
+  <informationRegisterPeriodicity>Day</informationRegisterPeriodicity>
+  <writeMode>RecorderSubordinate</writeMode>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <resources uuid="62d1efcd-7763-4f37-a299-0ea0b9fa58d5">
+    <name>Значение</name>
+    <synonym>
+      <key>ru</key>
+      <value>Значение</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <scale>2</scale>
+        <nonNegative>true</nonNegative>
+      </numberQualifiers>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Значение мотивационной программы. Интерпретируется в зависимости от способа предоставления</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="ccfeb6c0-4df9-4fc7-9166-37cfc34a36e5">
+    <name>СпособПредоставления</name>
+    <synonym>
+      <key>ru</key>
+      <value>Способ предоставления</value>
+    </synonym>
+    <type>
+      <types>EnumRef.СпособыПредоставленияСкидокНаценок</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Определяет способ, в соответствии с которым интерпретируется значение</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <quickChoice>Use</quickChoice>
+    <createOnInput>DontUse</createOnInput>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="c8472d2c-5b4a-4d57-85f9-a1671a097dc0">
+    <name>КритерийПредоставления</name>
+    <synonym>
+      <key>ru</key>
+      <value>Критерий предоставления</value>
+    </synonym>
+    <type>
+      <types>EnumRef.КритерииОграниченияПримененияСкидкиНаценкиЗаОбъемПродаж</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="b2a6dc4f-8ad2-4711-8a80-4f263595129c">
+    <name>ЗначениеКритерия</name>
+    <synonym>
+      <key>ru</key>
+      <value>Значение критерия</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <scale>2</scale>
+        <nonNegative>true</nonNegative>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="78044577-7b7a-4f00-9728-2b07cb3408c2">
+    <name>Приоритет</name>
+    <synonym>
+      <key>ru</key>
+      <value>Приоритет</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>2</precision>
+        <nonNegative>true</nonNegative>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <attributes uuid="8a09ed87-4025-4c2e-97d6-1ae31b5ab88b">
+    <name>ДатаОкончания</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата окончания</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers>
+        <dateFractions>Date</dateFractions>
+      </dateQualifiers>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Дата окончания действия программы (заполнена в случае, если программа не бессрочная)</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <attributes uuid="0a90b643-8299-488f-a232-33ded84e93ce">
+    <name>ПредметМотивационнойПрограммы</name>
+    <synonym>
+      <key>ru</key>
+      <value>Предмет мотивационной программы</value>
+    </synonym>
+    <type>
+      <types>EnumRef.ПредметыМотивационныхПрограмм</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:ReferenceValue">
+      <value>Enum.ПредметыМотивационныхПрограмм.EnumValue.СегментНоменклатуры</value>
+    </fillValue>
+  </attributes>
+  <attributes uuid="279f156f-d84d-466a-8f6f-ab864f5584bd">
+    <name>Программа</name>
+    <synonym>
+      <key>ru</key>
+      <value>Программа</value>
+    </synonym>
+    <comment>Мотивационная программа</comment>
+    <type>
+      <types>DocumentRef.МотивационнаяПрограмма</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <dimensions uuid="3702d3f3-e30a-4c31-ab96-d1b5aebcb892">
+    <name>Магазин</name>
+    <synonym>
+      <key>ru</key>
+      <value>Магазин</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Магазины</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Магазин, в котором работает программа. Если не заполнен, то программа распространяется на все магазины</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="ef040167-1e6b-441a-b8a4-cac8863707e1">
+    <name>ПредметПрограммы</name>
+    <synonym>
+      <key>ru</key>
+      <value>Предмет программы</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Номенклатура</types>
+      <types>CatalogRef.ВидыНоменклатуры</types>
+      <types>CatalogRef.СегментыНоменклатуры</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Элемент аналитики, на которую распространяется текущая программа мотиваций</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="b8c3b0a5-e27f-4110-837c-8b70a2202588">
+    <name>РаботаВыполняемаяСотрудниками</name>
+    <synonym>
+      <key>ru</key>
+      <value>Работа выполняемая сотрудниками</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.РаботаВыполняемаяСотрудниками</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+</mdclass:InformationRegister>

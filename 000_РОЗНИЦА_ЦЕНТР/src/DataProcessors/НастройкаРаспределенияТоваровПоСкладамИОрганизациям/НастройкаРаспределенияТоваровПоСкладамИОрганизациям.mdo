@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:DataProcessor xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="c903c892-f606-4f91-8f0c-bcc93a3820c7">
+  <producedTypes>
+    <objectType typeId="3491db4f-9804-4c9e-b025-d29e2aaf09b0" valueTypeId="d05e1b3e-8748-4426-97eb-bbb69ec5dfa1"/>
+    <managerType typeId="094406c8-b3ea-43ff-a1db-bcf7e81c90ee" valueTypeId="96169d18-9d0d-41f9-9f6c-ccba510a87a0"/>
+  </producedTypes>
+  <name>НастройкаРаспределенияТоваровПоСкладамИОрганизациям</name>
+  <synonym>
+    <key>ru</key>
+    <value>Настройка распределения товаров по складам и организациям</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <defaultForm>DataProcessor.НастройкаРаспределенияТоваровПоСкладамИОрганизациям.Form.Форма</defaultForm>
+  <includeHelpInContents>true</includeHelpInContents>
+  <help>
+    <pages>
+      <lang>ru</lang>
+    </pages>
+  </help>
+  <attributes uuid="3fff40e4-c305-4cc5-8dab-cd74e1d8de46">
+    <name>Магазин</name>
+    <synonym>
+      <key>ru</key>
+      <value>Магазин</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Магазины</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <choiceParameters>
+      <name>Отбор.СкладУправляющейСистемы</name>
+      <value xsi:type="core:BooleanValue"/>
+    </choiceParameters>
+  </attributes>
+  <forms uuid="a1a146ea-05fd-4501-b3a7-2d7c879a2b68">
+    <name>Форма</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <commands uuid="e155680c-cdf8-4476-b208-fc7da5075d2d">
+    <name>РаспределениеПоступленияПоСкладам</name>
+    <synonym>
+      <key>ru</key>
+      <value>Распределение поступлений</value>
+    </synonym>
+    <group>FormNavigationPanelGoTo</group>
+    <commandParameterType>
+      <types>CatalogRef.Магазины</types>
+    </commandParameterType>
+    <representation>Auto</representation>
+  </commands>
+  <commands uuid="062662f9-66c9-4c57-8f08-0724e68de816">
+    <name>РаспределениеПродажПоСкладам</name>
+    <synonym>
+      <key>ru</key>
+      <value>Распределение продаж</value>
+    </synonym>
+    <group>FormNavigationPanelGoTo</group>
+    <commandParameterType>
+      <types>CatalogRef.Магазины</types>
+    </commandParameterType>
+    <representation>Auto</representation>
+  </commands>
+  <commands uuid="16a7df4a-dab5-4ca9-8559-2aaec3425e4e">
+    <name>РаспределениеПродажУслуг</name>
+    <synonym>
+      <key>ru</key>
+      <value>Распределение продаж услуг</value>
+    </synonym>
+    <group>FormNavigationPanelGoTo</group>
+    <commandParameterType>
+      <types>CatalogRef.Магазины</types>
+    </commandParameterType>
+    <representation>Auto</representation>
+  </commands>
+</mdclass:DataProcessor>

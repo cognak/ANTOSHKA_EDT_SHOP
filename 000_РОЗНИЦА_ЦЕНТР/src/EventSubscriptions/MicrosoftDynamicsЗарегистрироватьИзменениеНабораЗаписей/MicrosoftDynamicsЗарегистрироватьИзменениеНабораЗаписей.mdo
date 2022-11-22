@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:EventSubscription xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="2103eb27-50ec-4bdb-b603-1245e42c7c1a">
+  <name>MicrosoftDynamicsЗарегистрироватьИзменениеНабораЗаписей</name>
+  <synonym>
+    <key>ru</key>
+    <value>MSDYN: зарегистрировать изменение набора записей</value>
+  </synonym>
+  <source>
+    <types>InformationRegisterRecordSet.ОбъектУчтенВNavision</types>
+    <types>AccumulationRegisterRecordSet.ТоварыНаСкладах</types>
+    <types>InformationRegisterRecordSet.ЦеныНоменклатуры</types>
+    <types>InformationRegisterRecordSet.СостояниеЗапросаДоступностиТоваров</types>
+    <types>InformationRegisterRecordSet.ДействующиеЦеныНоменклатуры</types>
+  </source>
+  <event>BeforeWrite</event>
+  <handler>CommonModule.ОбменMicrosoftDynamicsСобытия.MicrosoftDynamicsЗарегистрироватьИзменениеНабораЗаписей</handler>
+</mdclass:EventSubscription>

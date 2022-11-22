@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="14425866-ec6d-4841-a919-b6a5468ccea8">
+  <producedTypes>
+    <selectionType typeId="1dff36a5-4e4b-4ef0-9f8b-7ed4fcaaeaef" valueTypeId="431b6c30-a490-456b-bbae-6067682d451d"/>
+    <listType typeId="5f4e20f7-85e6-41a9-8168-463626034831" valueTypeId="171d0280-5175-4eb4-9e06-7e0d93d860be"/>
+    <managerType typeId="10ba0de3-a402-4ae5-8081-fa853e7e49d4" valueTypeId="609fcd8d-fa61-4797-9949-dfec9110061b"/>
+    <recordSetType typeId="95656733-9a3a-47a8-bb3c-77be625e19c5" valueTypeId="7593abef-9ec0-49e0-9d18-10bf68e38037"/>
+    <recordKeyType typeId="3f776ac1-636b-424a-af63-60a52e845ef1" valueTypeId="9f65a83e-9383-4e82-933d-8911f3c6032a"/>
+    <recordType typeId="a48f8582-7f98-406a-9345-f4ba67fc8bec" valueTypeId="aa3e2eb6-7f8e-46da-a95e-4df046583be2"/>
+    <recordManagerType typeId="356315e2-8154-40e4-ab00-157b5ce61688" valueTypeId="21b531a6-8a06-457c-81ac-b5a484da305d"/>
+  </producedTypes>
+  <name>ТипыПоступленийНоменклатуры</name>
+  <synonym>
+    <key>ru</key>
+    <value>Типы поступлений номенклатуры</value>
+  </synonym>
+  <editType>InDialog</editType>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <resources uuid="75632479-d1a3-4dc3-b33d-2e18868e618a">
+    <name>Тип</name>
+    <synonym>
+      <key>ru</key>
+      <value>Тип</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>3</precision>
+        <nonNegative>true</nonNegative>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="5cc6258e-1dcd-47e3-b05d-a6616df13377">
+    <name>Поставщик</name>
+    <synonym>
+      <key>ru</key>
+      <value>Поставщик</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>50</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+  </resources>
+  <attributes uuid="e3563727-2294-4f5a-9b51-ae370fe4302f">
+    <name>ДатаИзменения</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата изменения</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <dimensions uuid="c31a346e-a49a-42dd-9d0f-267a4e5d799c">
+    <name>Магазин</name>
+    <synonym>
+      <key>ru</key>
+      <value>Магазин (получатель)</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Магазины</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Магазин, принимающий товар</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="966a03a3-75b9-4ff5-944f-de7b8adbb5df">
+    <name>Производитель</name>
+    <synonym>
+      <key>ru</key>
+      <value>Производитель</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Контрагенты</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <commands uuid="9c9de0f0-15f0-4f8d-9732-1aa3fcae41ff">
+    <name>ОткрытьФормуСписка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Типы поступлений номенклатуры</value>
+    </synonym>
+    <group>NavigationPanelOrdinary</group>
+    <commandParameterType/>
+    <representation>Auto</representation>
+  </commands>
+</mdclass:InformationRegister>

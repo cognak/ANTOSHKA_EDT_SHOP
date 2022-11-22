@@ -1,0 +1,654 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПланМагазин</dataPath>
+			<field>ПланМагазин</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>План магазин</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Магазин</dataPath>
+			<field>Магазин</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Магазин</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ОсталосьДней</dataPath>
+			<field>ОсталосьДней</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Осталось дней</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Проект</dataPath>
+			<field>Проект</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проект</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>суммаМагазин</dataPath>
+			<field>суммаМагазин</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма магазин</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаИнтернет</dataPath>
+			<field>СуммаИнтернет</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма интернет</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПланИнтернет</dataPath>
+			<field>ПланИнтернет</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>План интернет</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПланОбщий</dataPath>
+			<field>ПланОбщий</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>План общий</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаОбщая</dataPath>
+			<field>СуммаОбщая</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма общая</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДнейВМесяце</dataPath>
+			<field>ДнейВМесяце</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дней в месяце</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПрошлоДней</dataPath>
+			<field>ПрошлоДней</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Прошло дней</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ВЫБОР
+		КОГДА ЧекККМТовары.Номенклатура.ВидНоменклатуры.Наименование = "ДП"
+			ТОГДА "ПИТАНИЕ"
+		КОГДА ЧекККМТовары.Номенклатура.ВидНоменклатуры.Наименование = "Подарочные сертификаты"
+			ТОГДА "ИГРУШКА"
+		ИНАЧЕ ЧекККМТовары.Номенклатура.ВидНоменклатуры.Наименование
+	КОНЕЦ КАК Проект,
+	СУММА(ЧекККМТовары.Сумма) КАК Сумма,
+	ЧекККМТовары.Ссылка.Магазин КАК Магазин,
+	НАЧАЛОПЕРИОДА(&amp;ДатаОтчета, МЕСЯЦ) КАК ПериодПродаж
+ПОМЕСТИТЬ ИнтернетПродажи
+ИЗ
+	Документ.ЧекККМ.Товары КАК ЧекККМТовары
+ГДЕ
+	ЧекККМТовары.Ссылка.Дата МЕЖДУ НАЧАЛОПЕРИОДА(&amp;ДатаОтчета, МЕСЯЦ) И КОНЕЦПЕРИОДА(&amp;ДатаОтчета, ДЕНЬ)
+	И (ЧекККМТовары.ПричинаРучнойСкидки.Наименование = "WEB заказ"
+			ИЛИ ЧекККМТовары.Ссылка.ЗаказПокупателя &lt;&gt; ЗНАЧЕНИЕ(Документ.ЗаказПокупателя.ПустаяСсылка))
+	И ЧекККМТовары.Ссылка.Проведен
+
+СГРУППИРОВАТЬ ПО
+	ВЫБОР
+		КОГДА ЧекККМТовары.Номенклатура.ВидНоменклатуры.Наименование = "ДП"
+			ТОГДА "ПИТАНИЕ"
+		КОГДА ЧекККМТовары.Номенклатура.ВидНоменклатуры.Наименование = "Подарочные сертификаты"
+			ТОГДА "ИГРУШКА"
+		ИНАЧЕ ЧекККМТовары.Номенклатура.ВидНоменклатуры.Наименование
+	КОНЕЦ,
+	ЧекККМТовары.Ссылка.Магазин
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	Продажи.Склад.Магазин КАК Магазин,
+	ВЫБОР
+		КОГДА Продажи.Номенклатура.ВидНоменклатуры.Наименование = "ДП"
+			ТОГДА "ПИТАНИЕ"
+		КОГДА Продажи.Номенклатура.ВидНоменклатуры.Наименование = "Подарочные сертификаты"
+			ТОГДА "ИГРУШКА"
+		ИНАЧЕ Продажи.Номенклатура.ВидНоменклатуры.Наименование
+	КОНЕЦ КАК Проект,
+	СУММА(Продажи.Стоимость) КАК Сумма,
+	НАЧАЛОПЕРИОДА(&amp;ДатаОтчета, МЕСЯЦ) КАК ПериодПродаж
+ПОМЕСТИТЬ ВтПродажи
+ИЗ
+	РегистрНакопления.Продажи КАК Продажи
+ГДЕ
+	Продажи.Период МЕЖДУ НАЧАЛОПЕРИОДА(&amp;ДатаОтчета, МЕСЯЦ) И КОНЕЦПЕРИОДА(&amp;ДатаОтчета, ДЕНЬ)
+	И Продажи.Активность
+
+СГРУППИРОВАТЬ ПО
+	ВЫБОР
+		КОГДА Продажи.Номенклатура.ВидНоменклатуры.Наименование = "ДП"
+			ТОГДА "ПИТАНИЕ"
+		КОГДА Продажи.Номенклатура.ВидНоменклатуры.Наименование = "Подарочные сертификаты"
+			ТОГДА "ИГРУШКА"
+		ИНАЧЕ Продажи.Номенклатура.ВидНоменклатуры.Наименование
+	КОНЕЦ,
+	Продажи.Склад.Магазин
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ВтПродажи.Магазин КАК Магазин,
+	ВтПродажи.Проект,
+	ВтПродажи.Сумма - ЕСТЬNULL(ИнтернетПродажи.Сумма, 0) КАК суммаМагазин,
+	ИнтернетПродажи.Сумма КАК СуммаИнтернет,
+	ВтПродажи.Сумма как СуммаОбщая,
+	ПланыПродаж.Сумма КАК ПланМагазин,
+	ПланыПродаж.СуммаИнтернет КАК ПланИнтернет,
+	ПланыПродаж.Сумма+ ПланыПродаж.СуммаИнтернет как ПланОбщий,
+	РАЗНОСТЬДАТ(&amp;ДатаОтчета, КОНЕЦПЕРИОДА(&amp;ДатаОтчета, МЕСЯЦ), ДЕНЬ) КАК ОсталосьДней,
+	(РАЗНОСТЬДАТ(НачалоПЕРИОДА(&amp;ДатаОтчета, МЕСЯЦ), &amp;ДатаОтчета, ДЕНЬ)+1) КАК ПрошлоДней,
+	(РАЗНОСТЬДАТ(НачалоПЕРИОДА(&amp;ДатаОтчета, МЕСЯЦ), КОНЕЦПЕРИОДА(&amp;ДатаОтчета, МЕСЯЦ),День)+1) как ДнейВМесяце
+ИЗ
+	ВтПродажи КАК ВтПродажи
+		ЛЕВОЕ СОЕДИНЕНИЕ ИнтернетПродажи КАК ИнтернетПродажи
+		ПО ВтПродажи.Магазин = ИнтернетПродажи.Магазин
+			И ВтПродажи.Проект = ИнтернетПродажи.Проект
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ПланыПродаж КАК ПланыПродаж
+		ПО ВтПродажи.Магазин = ПланыПродаж.Магазин
+			И ВтПродажи.Проект = ПланыПродаж.Проект.Наименование
+			И ВтПродажи.ПериодПродаж = ПланыПродаж.Период</query>
+	</dataSet>
+	<calculatedField>
+		<dataPath>ПроцентВыполненияМагазин</dataPath>
+		<expression>выбор когда ПланМагазин&gt;0 тогда (СуммаМагазин/ПланМагазин)*100 иначе 0 конец</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Процент выполнения магазин</v8:content>
+			</v8:item>
+		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>Формат</dcscor:parameter>
+				<dcscor:value xsi:type="xs:string">ЧЦ=12; ЧДЦ=2</dcscor:value>
+			</dcscor:item>
+		</appearance>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>ОсталосьВыполнитьМагазин</dataPath>
+		<expression>выбор
+	когда 
+(ПланМагазин - Суммамагазин)&gt;0
+тогда (ПланМагазин - Суммамагазин)
+иначе 0
+конец</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Осталось выполнить магазин</v8:content>
+			</v8:item>
+		</title>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>ОсталосьВыполнитьМагазинВДень</dataPath>
+		<expression>выбор когда ОсталосьДней&lt;&gt;0
+тогда
+(выбор
+	когда 
+(ПланМагазин - Суммамагазин)&gt;0
+тогда (ПланМагазин - Суммамагазин)
+иначе 0
+конец)/ОсталосьДней
+иначе (выбор
+	когда 
+(ПланМагазин - Суммамагазин)&gt;0
+тогда (ПланМагазин - Суммамагазин)
+иначе 0
+конец)
+конец</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Осталось выполнить магазин в день</v8:content>
+			</v8:item>
+		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>Формат</dcscor:parameter>
+				<dcscor:value xsi:type="xs:string">ЧЦ=12; ЧДЦ=2</dcscor:value>
+			</dcscor:item>
+		</appearance>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>ПроцентВыполнения</dataPath>
+		<expression>выбор когда ПланОбщий&gt;0 тогда (СуммаОбщая/ПланОбщий)*100 иначе 0 конец</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Процент выполнения</v8:content>
+			</v8:item>
+		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>Формат</dcscor:parameter>
+				<dcscor:value xsi:type="xs:string">ЧЦ=12; ЧДЦ=2</dcscor:value>
+			</dcscor:item>
+		</appearance>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>ОсталосьВыполнить</dataPath>
+		<expression>выбор
+    когда 
+(ПланОбщий- СуммаОбщая)&gt;0
+ тогда (ПланОбщий - СуммаОбщая) 
+иначе 0
+ конец</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Осталось выполнить</v8:content>
+			</v8:item>
+		</title>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>ОсталосьВыполнитьВДень</dataPath>
+		<expression>выбор когда ОсталосьДней&lt;&gt;0
+ тогда
+
+(выбор
+    когда 
+(ПланОбщий - СуммаОбщая)&gt;0 
+тогда 
+(ПланОбщий - СуммаОбщая) 
+иначе 0 
+конец)/ОсталосьДней
+ 
+иначе (выбор
+    когда 
+(ПланОбщий - СуммаОбщая)&gt;0 
+тогда 
+(ПланОбщий - СуммаОбщая)
+ иначе 0
+ конец) 
+конец</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Осталось выполнить в день</v8:content>
+			</v8:item>
+		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>Формат</dcscor:parameter>
+				<dcscor:value xsi:type="xs:string">ЧЦ=12; ЧДЦ=2</dcscor:value>
+			</dcscor:item>
+		</appearance>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>ПроцентВыполненияИнтернет</dataPath>
+		<expression>выбор когда ПланИнтернет&gt;0 тогда (СуммаИнтернет/ПланИнтернет)*100 иначе 0 конец</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Процент выполнения интернет</v8:content>
+			</v8:item>
+		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>Формат</dcscor:parameter>
+				<dcscor:value xsi:type="xs:string">ЧЦ=12; ЧДЦ=2</dcscor:value>
+			</dcscor:item>
+		</appearance>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>ОсталосьВыполнитьИнтернет</dataPath>
+		<expression>выбор
+    когда 
+(ПланИнтернет- СуммаИнтернет)&gt;0
+ тогда (ПланИнтернет - СуммаИнтернет) 
+иначе 0
+ конец</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Осталось выполнить интернет</v8:content>
+			</v8:item>
+		</title>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>ОсталосьВыполнитьИнтернетВДень</dataPath>
+		<expression>выбор когда ОсталосьДней&lt;&gt;0
+ тогда
+
+(выбор
+    когда 
+(ПланИнтернет - СуммаИнтернет)&gt;0 
+тогда 
+(ПланИнтернет - СуммаИнтернет) 
+иначе 0 
+конец)/ОсталосьДней
+ 
+иначе (выбор
+    когда 
+(ПланИнтернет - СуммаИнтернет)&gt;0 
+тогда 
+(ПланИнтернет - СуммаИнтернет)
+ иначе 0
+ конец) 
+конец</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Осталось выполнить интернет в день</v8:content>
+			</v8:item>
+		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>Формат</dcscor:parameter>
+				<dcscor:value xsi:type="xs:string">ЧЦ=12; ЧДЦ=2</dcscor:value>
+			</dcscor:item>
+		</appearance>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>ПрогнозВыполненияВПроцентах</dataPath>
+		<expression>выбор когда ПланОбщий&gt;0 тогда 
+
+	(СуммаОбщая*ДнейВМесяце/ПрошлоДней)*100/ПланОбщий 
+
+иначе 0 конец
+</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Прогноз выполнения в процентах</v8:content>
+			</v8:item>
+		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>Формат</dcscor:parameter>
+				<dcscor:value xsi:type="xs:string">ЧЦ=12; ЧДЦ=2</dcscor:value>
+			</dcscor:item>
+		</appearance>
+	</calculatedField>
+	<totalField>
+		<dataPath>ПланМагазин</dataPath>
+		<expression>Сумма(ПланМагазин)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ПланИнтернет</dataPath>
+		<expression>Сумма(ПланИнтернет)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СуммаИнтернет</dataPath>
+		<expression>Сумма(СуммаИнтернет)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>суммаМагазин</dataPath>
+		<expression>Сумма(суммаМагазин)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ПроцентВыполненияМагазин</dataPath>
+		<expression>выбор когда Сумма(ПланМагазин)&gt;0 тогда (Сумма(СуммаМагазин)/Сумма(ПланМагазин))*100 иначе 0 конец</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ПланОбщий</dataPath>
+		<expression>Сумма(ПланОбщий)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СуммаОбщая</dataPath>
+		<expression>Сумма(СуммаОбщая)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ОсталосьВыполнитьМагазинВДень</dataPath>
+		<expression>Сумма(ОсталосьВыполнитьМагазинВДень)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ПроцентВыполнения</dataPath>
+		<expression>выбор когда Сумма(ПланОбщий)&gt;0 тогда (Сумма(СуммаОбщая)/Сумма(ПланОбщий))*100 иначе 0 конец</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ОсталосьВыполнить</dataPath>
+		<expression>Сумма(ОсталосьВыполнить)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ОсталосьВыполнитьМагазин</dataPath>
+		<expression>Сумма(ОсталосьВыполнитьМагазин)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ПроцентВыполненияИнтернет</dataPath>
+		<expression>выбор когда Сумма(ПланИнтернет)&gt;0 тогда (Сумма(СуммаИнтернет)/Сумма(ПланИнтернет))*100 иначе 0 конец</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ОсталосьВыполнитьИнтернет</dataPath>
+		<expression>Сумма(ОсталосьВыполнитьИнтернет)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ОсталосьВыполнитьИнтернетВДень</dataPath>
+		<expression>Сумма(ОсталосьВыполнитьИнтернетВДень)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ОсталосьВыполнитьВДень</dataPath>
+		<expression>Сумма(ОсталосьВыполнитьВДень)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ПрогнозВыполненияВПроцентах</dataPath>
+		<expression>выбор когда Сумма(ПланОбщий)&gt;0 тогда 
+
+	(Сумма(СуммаОбщая)*ДнейВМесяце/ПрошлоДней)*100/Сумма(ПланОбщий) 
+
+иначе 0 конец
+</expression>
+	</totalField>
+	<parameter>
+		<name>ДатаОтчета</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата отчета</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+		<denyIncompleteValues>true</denyIncompleteValues>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Продажи план факт</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ПланОбщий</dcsset:field>
+					<dcsset:lwsTitle>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>План</v8:content>
+						</v8:item>
+					</dcsset:lwsTitle>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СуммаОбщая</dcsset:field>
+					<dcsset:lwsTitle>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Факт продаж</v8:content>
+						</v8:item>
+					</dcsset:lwsTitle>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ПроцентВыполнения</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ОсталосьВыполнить</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ОсталосьВыполнитьВДень</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ПрогнозВыполненияВПроцентах</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:left xsi:type="dcscor:Field">Магазин</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>c2f77ea0-8676-44ae-b8cd-7f5f6d2cbc4a</dcsset:userSettingID>
+				</dcsset:item>
+			</dcsset:filter>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ДатаОтчета</dcscor:parameter>
+					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+					<dcsset:userSettingID>765299ec-86ca-486e-9581-df028b1756d7</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:conditionalAppearance>
+				<dcsset:item>
+					<dcsset:selection>
+						<dcsset:item>
+							<dcsset:field>ПланОбщий</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>ОсталосьВыполнить</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>ОсталосьВыполнитьВДень</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>ОсталосьВыполнитьИнтернет</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>ОсталосьВыполнитьИнтернетВДень</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>ОсталосьВыполнитьМагазин</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>ОсталосьВыполнитьМагазинВДень</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>ПроцентВыполнения</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>ПроцентВыполненияИнтернет</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>ПроцентВыполненияМагазин</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>ПланИнтернет</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>суммаМагазин</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>ПланМагазин</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>СуммаОбщая</dcsset:field>
+						</dcsset:item>
+					</dcsset:selection>
+					<dcsset:filter/>
+					<dcsset:appearance>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>Формат</dcscor:parameter>
+							<dcscor:value xsi:type="v8:LocalStringType">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ЧЦ=12</v8:content>
+								</v8:item>
+							</dcscor:value>
+						</dcscor:item>
+					</dcsset:appearance>
+				</dcsset:item>
+			</dcsset:conditionalAppearance>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Магазин</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Проект</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+				</dcsset:item>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="600250eb-8993-4bd0-aa86-10b5fd4371ff">
+  <producedTypes>
+    <selectionType typeId="9a3f3c28-f142-42ab-96f9-bd7bb691dc7d" valueTypeId="df2c65e1-9800-44eb-8ec8-4ae6dfc28ef5"/>
+    <listType typeId="8e51aeff-05c8-4ed5-92ac-d47c24330990" valueTypeId="c7bc0097-f031-4df1-8618-26a407b06405"/>
+    <managerType typeId="b649d27c-d5d8-4aea-b9f9-27471b64de87" valueTypeId="f6d11df7-aaaa-4707-b4a2-2e9f77e3c187"/>
+    <recordSetType typeId="e6873379-a490-469a-8604-6d48196c4992" valueTypeId="e4a714db-8cff-49ba-83d7-358bfe059966"/>
+    <recordKeyType typeId="19256e88-4986-451b-9bea-bcf9e8bef35b" valueTypeId="30d19699-918b-42bc-b660-cc7fbc25cd42"/>
+    <recordType typeId="98490735-94b6-40ca-8624-3eb35c13f45e" valueTypeId="e80388ce-f00c-47a1-a3d6-e27353991aff"/>
+    <recordManagerType typeId="de25c2a6-fcbc-45d2-a444-9fcc37b68331" valueTypeId="7bf84b78-ce71-4af9-ac1a-157176be6b06"/>
+  </producedTypes>
+  <name>ГодоваяАктивностьПокупателя</name>
+  <synonym>
+    <key>ru</key>
+    <value>Годовая активность покупателя</value>
+  </synonym>
+  <comment>Используется в ежегодном срезе накоплений. Заполняется регламентом. Присутствует только в ЦБ.</comment>
+  <editType>InDialog</editType>
+  <informationRegisterPeriodicity>Year</informationRegisterPeriodicity>
+  <mainFilterOnPeriod>true</mainFilterOnPeriod>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <explanation>
+    <key>ru</key>
+    <value>При заполнении учитываем, что &quot;продажный год&quot; определяется с 8 января по конец дня 7 января предыдущего года. Проблема..</value>
+  </explanation>
+  <dimensions uuid="2a586310-46ec-4078-9bf0-32e94c2d1561">
+    <name>Контрагент</name>
+    <synonym>
+      <key>ru</key>
+      <value>Контрагент</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Контрагенты</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="58e57e79-e69b-4080-9e2c-c2ad3e0979a4">
+    <name>ДисконтнаяКарта</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дисконтная карта</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ИнформационныеКарты</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Дисконтная карта, по которой зафиксирована продажа</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+</mdclass:InformationRegister>

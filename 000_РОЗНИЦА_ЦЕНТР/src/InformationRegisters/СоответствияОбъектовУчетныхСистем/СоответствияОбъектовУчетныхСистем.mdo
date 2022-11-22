@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="b2272dbd-0db2-4ffc-8972-a3b5aa121c37">
+  <producedTypes>
+    <selectionType typeId="c80a387c-f2df-487d-8768-515844031713" valueTypeId="fb2f1214-c96c-4555-8b17-51ee8775ecad"/>
+    <listType typeId="aaf5e4a5-4e0a-4bdd-a839-a22c7c93ded7" valueTypeId="3eae5033-265e-4fb1-b068-92eff3134eda"/>
+    <managerType typeId="467fbeae-5194-41f6-be1f-268e04df4888" valueTypeId="dfc4dccc-a79e-434c-90fc-e7aca7907d90"/>
+    <recordSetType typeId="2f310824-7517-4b0a-a730-d155d81e5f99" valueTypeId="85371617-37cb-4008-83b7-a1d103a40f85"/>
+    <recordKeyType typeId="3b37d6da-cbbb-40a9-859f-4d2d863a9dbc" valueTypeId="5b6a5826-b640-4923-8abb-fafda8a0e43e"/>
+    <recordType typeId="2e3a8a37-9123-4ec4-be47-2eed6ea2207f" valueTypeId="57ac6e84-d4c5-478e-95cb-82e3ad736257"/>
+    <recordManagerType typeId="2ffa3013-8936-4037-96fc-c866503bb863" valueTypeId="2a56a716-66f2-4fb9-8a35-6d561022103a"/>
+  </producedTypes>
+  <name>СоответствияОбъектовУчетныхСистем</name>
+  <synonym>
+    <key>ru</key>
+    <value>Соответствия объектов учетных систем</value>
+  </synonym>
+  <editType>InDialog</editType>
+  <defaultRecordForm>InformationRegister.СоответствияОбъектовУчетныхСистем.Form.ФормаЗаписи</defaultRecordForm>
+  <defaultListForm>InformationRegister.СоответствияОбъектовУчетныхСистем.Form.ФормаСписка</defaultListForm>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <resources uuid="8b195d7d-b710-4833-ba92-1dc6c27bd7cf">
+    <name>УникальныйИдентификаторИсточника</name>
+    <synonym>
+      <key>ru</key>
+      <value>Уникальный идентификатор источника</value>
+    </synonym>
+    <comment>Локальный - 1С:Розница</comment>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>36</length>
+      </stringQualifiers>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Строка уникального идентификатора объекта ссылочного типа этой информационной базы.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <indexing>Index</indexing>
+  </resources>
+  <resources uuid="8e5b7ced-0a8b-4fd5-881e-2c9f9ea5eaf2">
+    <name>УникальныйИдентификаторПриемника</name>
+    <synonym>
+      <key>ru</key>
+      <value>Уникальный идентификатор приемника</value>
+    </synonym>
+    <comment>Внешний - другая система</comment>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>36</length>
+      </stringQualifiers>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Строка уникального идентификатора объекта ссылочного типа информационной базы корреспондента.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <indexing>Index</indexing>
+  </resources>
+  <attributes uuid="4d8bf4a1-d8a1-4267-889b-f241d9565fe1">
+    <name>ДатаИзменения</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата изменения</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <dimensions uuid="b9912118-7c53-4c1c-b485-0bff720dd2eb">
+    <name>Ссылка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Ссылка</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Контрагенты</types>
+      <types>CatalogRef.Магазины</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="9335e540-9e6a-4930-9b14-44fad1af2f28">
+    <name>УчетнаяСистема</name>
+    <synonym>
+      <key>ru</key>
+      <value>Учетная система</value>
+    </synonym>
+    <type>
+      <types>EnumRef.УчетныеСистемыКомпании</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <forms uuid="77bf0bf8-e265-4776-b728-93bb375424e9">
+    <name>ФормаЗаписи</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма записи</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <forms uuid="1790872a-fe8e-4b53-b8f3-62ed6d2371af">
+    <name>ФормаСписка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма списка</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+</mdclass:InformationRegister>

@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>КредитныеПрограммы</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>УслугаБанка</dataPath>
+			<field>УслугаБанка</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Услуга банка</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Номенклатура</dataPath>
+			<field>Номенклатура</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Номенклатура</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПериодПредоставления</dataPath>
+			<field>ПериодПредоставления</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Глубина в платежах</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ЧДЦ=</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Текст</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>(платежей)</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Эквайрер</dataPath>
+			<field>Эквайрер</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ТипУслуги</dataPath>
+			<field>ТипУслуги</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ИспользоватьСкидкиНаценки</dataPath>
+			<field>ИспользоватьСкидкиНаценки</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Разрешено</dataPath>
+			<field>Разрешено</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Разрешено</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Запрещено</dataPath>
+			<field>Запрещено</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Запрещено</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Код</dataPath>
+			<field>Код</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Код</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	ТаблицаВедущая.Ссылка КАК УслугаБанка,
+	ТаблицаВедущая.ПометкаУдаления
+		ИЛИ ТаблицаВедущая.Блокирован КАК ПометкаУдаления,
+	ТаблицаВедущая.ИспользоватьСкидкиНаценки КАК ИспользоватьСкидкиНаценки,
+	ТаблицаВедущая.ПериодПредоставления КАК ПериодПредоставления,
+	ТаблицаВедущая.ТипУслуги КАК ТипУслуги,
+	ТаблицаВедущая.Эквайрер КАК Эквайрер,
+	ТаблицаИсключение.Номенклатура КАК НоменклатураИсключение,
+	ТаблицаПредоставление.Номенклатура КАК НоменклатураПредоставление
+ПОМЕСТИТЬ Фильтр
+ИЗ
+	Справочник.УслугиБанка КАК ТаблицаВедущая
+		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.УслугиБанка.НоменклатураИсключения КАК ТаблицаИсключение
+		ПО ТаблицаВедущая.Ссылка = ТаблицаИсключение.Ссылка
+		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.УслугиБанка.НоменклатураПредоставления КАК ТаблицаПредоставление
+		ПО ТаблицаВедущая.Ссылка = ТаблицаПредоставление.Ссылка
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ТаблицаСводная.УслугаБанка КАК УслугаБанка,
+	ТаблицаСводная.ИспользоватьСкидкиНаценки КАК ИспользоватьСкидкиНаценки,
+	ТаблицаСводная.ПериодПредоставления КАК ПериодПредоставления,
+	ТаблицаСводная.ТипУслуги КАК ТипУслуги,
+	ТаблицаСводная.Эквайрер КАК Эквайрер,
+	ТаблицаСводная.Номенклатура КАК Номенклатура,
+	МАКСИМУМ(ТаблицаСводная.Разрешено) КАК Разрешено,
+	ТаблицаСводная.Запрещено КАК Запрещено,
+	ТаблицаСводная.Номенклатура.Код КАК Код
+ИЗ
+	(ВЫБРАТЬ
+		Фильтр.УслугаБанка КАК УслугаБанка,
+		Фильтр.ИспользоватьСкидкиНаценки КАК ИспользоватьСкидкиНаценки,
+		Фильтр.ПериодПредоставления КАК ПериодПредоставления,
+		Фильтр.ТипУслуги КАК ТипУслуги,
+		Фильтр.Эквайрер КАК Эквайрер,
+		Фильтр.НоменклатураПредоставление КАК Номенклатура,
+		ИСТИНА КАК Разрешено,
+		ЛОЖЬ КАК Запрещено
+	ИЗ
+		Фильтр КАК Фильтр
+	ГДЕ
+		Фильтр.НоменклатураПредоставление ССЫЛКА Справочник.Номенклатура
+	
+	ОБЪЕДИНИТЬ ВСЕ
+	
+	ВЫБРАТЬ
+		Фильтр.УслугаБанка,
+		Фильтр.ИспользоватьСкидкиНаценки,
+		Фильтр.ПериодПредоставления,
+		Фильтр.ТипУслуги,
+		Фильтр.Эквайрер,
+		ТаблицаСегменты.Номенклатура,
+		ИСТИНА,
+		ЛОЖЬ
+	ИЗ
+		РегистрСведений.НоменклатураСегмента КАК ТаблицаСегменты
+			ВНУТРЕННЕЕ СОЕДИНЕНИЕ Фильтр КАК Фильтр
+			ПО ТаблицаСегменты.Сегмент = Фильтр.НоменклатураПредоставление
+	
+	ОБЪЕДИНИТЬ ВСЕ
+	
+	ВЫБРАТЬ
+		Фильтр.УслугаБанка,
+		Фильтр.ИспользоватьСкидкиНаценки,
+		Фильтр.ПериодПредоставления,
+		Фильтр.ТипУслуги,
+		Фильтр.Эквайрер,
+		Фильтр.НоменклатураПредоставление,
+		ЛОЖЬ,
+		ИСТИНА
+	ИЗ
+		Фильтр КАК Фильтр
+	ГДЕ
+		Фильтр.НоменклатураИсключение ССЫЛКА Справочник.Номенклатура
+	
+	ОБЪЕДИНИТЬ ВСЕ
+	
+	ВЫБРАТЬ
+		Фильтр.УслугаБанка,
+		Фильтр.ИспользоватьСкидкиНаценки,
+		Фильтр.ПериодПредоставления,
+		Фильтр.ТипУслуги,
+		Фильтр.Эквайрер,
+		ТаблицаСегменты.Номенклатура,
+		ЛОЖЬ,
+		ИСТИНА
+	ИЗ
+		РегистрСведений.НоменклатураСегмента КАК ТаблицаСегменты
+			ВНУТРЕННЕЕ СОЕДИНЕНИЕ Фильтр КАК Фильтр
+			ПО ТаблицаСегменты.Сегмент = Фильтр.НоменклатураИсключение) КАК ТаблицаСводная
+
+СГРУППИРОВАТЬ ПО
+	ТаблицаСводная.УслугаБанка,
+	ТаблицаСводная.ИспользоватьСкидкиНаценки,
+	ТаблицаСводная.ПериодПредоставления,
+	ТаблицаСводная.ТипУслуги,
+	ТаблицаСводная.Эквайрер,
+	ТаблицаСводная.Номенклатура,
+	ТаблицаСводная.Запрещено,
+	ТаблицаСводная.Номенклатура.Код</query>
+	</dataSet>
+	<settingsVariant>
+		<dcsset:name>ТоварыКредитныхПрограмм</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Товары кредитных программ</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>uk</v8:lang>
+				<v8:content>Основной</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">УслугаБанка</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>9fb1d7cb-bd17-4128-a9e1-667d8dd78611</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Номенклатура</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>5b246808-7421-418f-8088-1e3fb8c9ef3d</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Разрешено</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					<dcsset:presentation xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Разрешено использование</v8:content>
+						</v8:item>
+					</dcsset:presentation>
+					<dcsset:userSettingID>1c411167-b84a-4fa0-ac5c-e9385685708f</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Запрещено</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					<dcsset:presentation xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Запрещено использование</v8:content>
+						</v8:item>
+					</dcsset:presentation>
+					<dcsset:userSettingID>d183d977-0b4d-443d-a948-1a9a025fe82a</dcsset:userSettingID>
+				</dcsset:item>
+			</dcsset:filter>
+			<dcsset:conditionalAppearance>
+				<dcsset:item>
+					<dcsset:selection/>
+					<dcsset:filter/>
+					<dcsset:appearance>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>Шрифт</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+						</dcscor:item>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:use>false</dcscor:use>
+							<dcscor:parameter>ГоризонтальноеПоложение</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:HorizontalAlign">Center</dcscor:value>
+						</dcscor:item>
+					</dcsset:appearance>
+					<dcsset:useInGroup>DontUse</dcsset:useInGroup>
+					<dcsset:useInHierarchicalGroup>DontUse</dcsset:useInHierarchicalGroup>
+					<dcsset:useInOverall>DontUse</dcsset:useInOverall>
+					<dcsset:useInHeader>DontUse</dcsset:useInHeader>
+					<dcsset:useInParameters>DontUse</dcsset:useInParameters>
+					<dcsset:useInFilter>DontUse</dcsset:useInFilter>
+				</dcsset:item>
+			</dcsset:conditionalAppearance>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ТипУслуги</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>УслугаБанка</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>ПериодПредоставления</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+					<dcsset:item xsi:type="dcsset:StructureItemGroup">
+						<dcsset:groupItems>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>Код</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>Номенклатура</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>Разрешено</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>Запрещено</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+						</dcsset:groupItems>
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						</dcsset:selection>
+					</dcsset:item>
+				</dcsset:item>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

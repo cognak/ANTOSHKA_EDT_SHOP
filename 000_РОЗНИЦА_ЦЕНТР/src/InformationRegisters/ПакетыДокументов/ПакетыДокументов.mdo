@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="69a193b0-aaf3-4f51-877c-5da4482e9405">
+  <producedTypes>
+    <selectionType typeId="b5021508-ee1e-4634-81e3-b7844e278bf3" valueTypeId="5385a55e-66b6-4552-b7cc-2aaa8844fa19"/>
+    <listType typeId="45411396-8bb5-4ad2-9e30-4a4c30b216d5" valueTypeId="5d565ad2-c726-4525-be76-e48aec926e69"/>
+    <managerType typeId="51713d88-62a9-470c-97d4-9396a551369a" valueTypeId="441c2f17-c4cb-4d73-9ecc-c1920851537e"/>
+    <recordSetType typeId="6231967f-0bd1-4578-bece-62e40afa184f" valueTypeId="e3550189-5d3f-48a8-8229-adde93d21bbc"/>
+    <recordKeyType typeId="493ca503-0edc-4a6c-ae01-fb7676dd5c7c" valueTypeId="833f9c7d-5f78-4a39-a5bc-439428f67f8b"/>
+    <recordType typeId="4f0554d9-133d-4273-9f7c-74eb4f2b8842" valueTypeId="aa18df17-3c46-49d5-abc7-639fc8577f2c"/>
+    <recordManagerType typeId="07b59525-d6e8-4636-a210-1607594597eb" valueTypeId="5c002ce5-cead-43d8-90d3-4888d111b901"/>
+  </producedTypes>
+  <name>ПакетыДокументов</name>
+  <synonym>
+    <key>ru</key>
+    <value>Пакеты документов</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <editType>InDialog</editType>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <resources uuid="41353313-ad35-4772-b507-d1042224a83c">
+    <name>НомерПакета</name>
+    <synonym>
+      <key>ru</key>
+      <value>Номер пакета</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>20</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+  </resources>
+  <resources uuid="1a0e400f-346c-4808-b706-129fd8a1a195">
+    <name>Количество</name>
+    <synonym>
+      <key>ru</key>
+      <value>Количество (размер)</value>
+    </synonym>
+    <comment>Количество документов в пакете</comment>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>10</precision>
+        <nonNegative>true</nonNegative>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <attributes uuid="11238821-8164-410b-91df-c39e0c3d4811">
+    <name>ДатаИзменения</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата изменения</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <dimensions uuid="5be7b483-5362-486f-846f-054c8c9a3ca4">
+    <name>Объект</name>
+    <synonym>
+      <key>ru</key>
+      <value>Объект</value>
+    </synonym>
+    <type>
+      <types>DocumentRef.ПеремещениеТоваров</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="08f4f678-2187-465f-b206-30d968095668">
+    <name>Магазин</name>
+    <synonym>
+      <key>ru</key>
+      <value>Магазин</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Магазины</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+</mdclass:InformationRegister>

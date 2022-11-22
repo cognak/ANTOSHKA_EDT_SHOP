@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:AccumulationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="290d4191-6885-489a-8cac-0067f6b454ca">
+  <producedTypes>
+    <selectionType typeId="66aa52e3-6076-4074-bcca-1b16d5c6166b" valueTypeId="12bb1228-4b93-4c9b-a049-77282fac2b70"/>
+    <listType typeId="5d067dde-dd70-4c4d-9d78-1ed2800a669c" valueTypeId="3bc2d14b-a2ec-43fe-b11b-2e2560232976"/>
+    <managerType typeId="2667f5e0-7f04-4378-9f5c-01db0bc02231" valueTypeId="2345f0bf-8b76-4559-a4c5-df224099ec40"/>
+    <recordSetType typeId="de3e1f7f-4e6a-4e2d-8d8c-87f8dd7dc413" valueTypeId="ac751b1d-c819-4e51-882b-bd7290d60aeb"/>
+    <recordKeyType typeId="cf7e07ac-bd30-40c9-a6e2-a64adcf1627c" valueTypeId="8a540fc0-cabb-4ef6-b0d3-9737c31a71ba"/>
+    <recordType typeId="b093ce70-59c7-4c8a-bf50-099d8f9db528" valueTypeId="e171e641-5e93-4373-a799-c20f700a9013"/>
+  </producedTypes>
+  <name>Посетители</name>
+  <synonym>
+    <key>ru</key>
+    <value>Посетители</value>
+  </synonym>
+  <registerType>Turnovers</registerType>
+  <resources uuid="c46daabe-2d64-4b03-8b20-5ce31ecffc43">
+    <name>Количество</name>
+    <synonym>
+      <key>ru</key>
+      <value>Количество</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <scale>1</scale>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </resources>
+  <resources uuid="876b3688-4c33-46b8-82e1-2a3b3308bcc9">
+    <name>КоличествоВходящих</name>
+    <synonym>
+      <key>ru</key>
+      <value>Количество входящих</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <scale>1</scale>
+      </numberQualifiers>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Количество входящих посетителей</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </resources>
+  <resources uuid="cf0b3440-a99a-41f3-882a-c8afc8af1e3b">
+    <name>КоличествоВыходящих</name>
+    <synonym>
+      <key>ru</key>
+      <value>Количество выходящих</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <scale>1</scale>
+      </numberQualifiers>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Количество выходящих посетителей</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </resources>
+  <dimensions uuid="0bf58839-129a-43b0-b8fb-980d6c435d2a">
+    <name>Магазин</name>
+    <synonym>
+      <key>ru</key>
+      <value>Магазин</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Магазины</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Магазин подсчета</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="928e418d-2320-4782-bb82-99ad87820253">
+    <name>СчетчикПодсчетаПосетителей</name>
+    <synonym>
+      <key>ru</key>
+      <value>Счетчик подсчета посетителей</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.СчетчикиПодсчетаПосетителей</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <indexing>Index</indexing>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="dc555b66-97d3-497d-a681-4e62b551589c">
+    <name>ДеньНедели</name>
+    <synonym>
+      <key>ru</key>
+      <value>День недели</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>1</precision>
+        <nonNegative>true</nonNegative>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="85537aaf-bf24-4905-ba0b-6940d0a96cdb">
+    <name>Час</name>
+    <synonym>
+      <key>ru</key>
+      <value>Час</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>2</precision>
+        <nonNegative>true</nonNegative>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+</mdclass:AccumulationRegister>

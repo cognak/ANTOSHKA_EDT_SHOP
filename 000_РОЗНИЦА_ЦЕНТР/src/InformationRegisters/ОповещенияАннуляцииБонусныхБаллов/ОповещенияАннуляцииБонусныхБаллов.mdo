@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="5dfb83e1-59e7-4bab-b8ea-50663a7729e9">
+  <producedTypes>
+    <selectionType typeId="87c2f77a-e30a-4936-930c-ad636d360c2f" valueTypeId="83c1ea1f-e4b5-4292-9953-e169d376fab2"/>
+    <listType typeId="366153b2-4d9c-4517-b0c4-1a389847fc24" valueTypeId="ce8e8ae8-93a0-46af-8242-38704228f29a"/>
+    <managerType typeId="01c2c775-541b-4a61-8873-65aba27f9094" valueTypeId="8374597d-fcc3-44a0-9859-eff6365b407a"/>
+    <recordSetType typeId="11a02034-0a7c-47ee-8fd0-b5622eacf01c" valueTypeId="7aa51dd4-aedb-4e24-9e74-5d8d342ec2b3"/>
+    <recordKeyType typeId="c7fcd758-db9e-4399-8707-801f13a9c1ca" valueTypeId="51c05f14-92d6-40e1-80da-7c22566f91b3"/>
+    <recordType typeId="538c0ce9-e000-4195-b72d-374cc7334a3a" valueTypeId="47573e5b-fe1e-4667-83c9-2812ec77c70c"/>
+    <recordManagerType typeId="e3fa9567-c44a-4229-a0ae-82669b5d43a2" valueTypeId="d2ac1374-a2dd-42b0-be66-9bb9c06388f1"/>
+  </producedTypes>
+  <name>ОповещенияАннуляцииБонусныхБаллов</name>
+  <synonym>
+    <key>ru</key>
+    <value>Оповещения аннуляции бонусных баллов</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <editType>InDialog</editType>
+  <informationRegisterPeriodicity>Day</informationRegisterPeriodicity>
+  <mainFilterOnPeriod>true</mainFilterOnPeriod>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <resources uuid="dfe04aa9-be97-4b2d-918d-20d6467356a1">
+    <name>НомерТелефона</name>
+    <synonym>
+      <key>ru</key>
+      <value>Номер телефона</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>20</length>
+      </stringQualifiers>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Полный номер телефона</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+    <indexing>Index</indexing>
+  </resources>
+  <resources uuid="bc4299da-77f6-41f5-a02d-5340212048c0">
+    <name>ДатаАннуляции</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата аннуляции</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers>
+        <dateFractions>Date</dateFractions>
+      </dateQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <indexing>Index</indexing>
+  </resources>
+  <attributes uuid="eb3bbf61-f0b3-42ed-9369-b445c26478a2">
+    <name>ДатаИзменения</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата изменения</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <attributes uuid="eb560352-3d8d-422f-82d9-85e4155f7ce2">
+    <name>Сообщение</name>
+    <synonym>
+      <key>ru</key>
+      <value>Сообщение</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>512</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <attributes uuid="dd1388e4-d39c-410e-b66b-7d1a49b7e51f">
+    <name>Хранилище</name>
+    <synonym>
+      <key>ru</key>
+      <value>Хранилище</value>
+    </synonym>
+    <type>
+      <types>ValueStorage</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <dimensions uuid="4cd8a841-291c-4b6a-9e75-0ead2b9a53ec">
+    <name>Контрагент</name>
+    <synonym>
+      <key>ru</key>
+      <value>Контрагент</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Контрагенты</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="b7ea8f88-198d-4ee8-9717-9e5f6e8833d0">
+    <name>ПрограммаЛояльности</name>
+    <synonym>
+      <key>ru</key>
+      <value>Программа лояльности</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ПрограммыЛояльности</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>на текущий момент всегда пустое значение!</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+</mdclass:InformationRegister>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="a8293d6a-10ae-4583-8c28-5f3d1615b3a0">
+  <producedTypes>
+    <selectionType typeId="91082cbf-5c86-493a-ae30-a0101c4783a6" valueTypeId="1cded3d3-5aad-450b-8978-c4909e99ae73"/>
+    <listType typeId="acb9b794-9563-43c4-9d35-516c5c62140b" valueTypeId="e779ce21-abfe-4ef0-a2a4-715f8966b2cb"/>
+    <managerType typeId="69ea54f5-c049-4c9b-b50d-f7adf7a06c13" valueTypeId="81b85af9-8427-4f43-b882-b7f1df194760"/>
+    <recordSetType typeId="8af0ea99-b803-49b4-bb5b-b0dad33787aa" valueTypeId="06ff25e6-004d-436a-b49a-b860dccf8d20"/>
+    <recordKeyType typeId="e4df972a-e015-4465-b06b-fc1b1db18338" valueTypeId="7abca7d7-adb0-4081-8881-7cf2752378e1"/>
+    <recordType typeId="4ecaf321-07ac-4442-a088-bd6206880886" valueTypeId="c5a315ed-28e2-4df0-90c3-a7e8574c33de"/>
+    <recordManagerType typeId="95dfef3c-b7d9-4a59-ad93-d7b316b623b0" valueTypeId="5419902a-5c46-4747-8c35-5e2259432c82"/>
+  </producedTypes>
+  <name>РеализацияЗаказовРегистрация</name>
+  <synonym>
+    <key>ru</key>
+    <value>Реализация заказов регистрация</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <editType>InDialog</editType>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <explanation>
+    <key>ru</key>
+    <value>Ресурс предназначен для регистрации объектов для выполнения различных действий.
+Ресурс в настоящее время локальный для каждой ИБ</value>
+  </explanation>
+  <resources uuid="4b4e9444-d7ed-45b1-be32-1a7182407d35">
+    <name>Выполнен</name>
+    <synonym>
+      <key>ru</key>
+      <value>Выполнен</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="b0ae3c94-ec0b-4a09-9ac6-2c64dcf97bf1">
+    <name>ДействиеКоманда</name>
+    <synonym>
+      <key>ru</key>
+      <value>Действие/Команда</value>
+    </synonym>
+    <comment>Задается литерально для облегчения использования в коде</comment>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>50</length>
+      </stringQualifiers>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>В общем, как-то перекликается с заданиями Navision.
+Например:
+ОБНОВИТЬ_ТОВАР_ЦЕНА
+ОБНОВИТЬ_ТОВАР
+ОБНОВИТЬ_ТОВАР_ЕД_ИЗМ</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+  </resources>
+  <attributes uuid="2421723b-d881-4ba7-821c-5eb17b35b39d">
+    <name>ДатаИзменения</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата изменения</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <indexing>Index</indexing>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <attributes uuid="bef5f27f-70e9-48e1-91ff-2f0a9a460d71">
+    <name>ТипОбъектаСтрокой</name>
+    <synonym>
+      <key>ru</key>
+      <value>Тип объекта строкой</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>512</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+  </attributes>
+  <dimensions uuid="5a015253-6fa1-40fd-8008-8feffba3500c">
+    <name>Объект</name>
+    <synonym>
+      <key>ru</key>
+      <value>Объект</value>
+    </synonym>
+    <type>
+      <types>DocumentRef.РеализацияТоваров</types>
+      <types>DocumentRef.ЧекККМ</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="4d4c8aad-b5b0-49a3-ae58-0a0a9ac8df2c">
+    <name>Магазин</name>
+    <synonym>
+      <key>ru</key>
+      <value>Магазин</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Магазины</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+</mdclass:InformationRegister>

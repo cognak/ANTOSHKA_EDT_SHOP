@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:AccumulationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="89c1c5e5-c0c7-46dc-98f1-1dd937447acc">
+  <producedTypes>
+    <selectionType typeId="fbcde9e5-7044-4b01-9679-7963cb4b681f" valueTypeId="8a19a666-fc17-4275-8aff-e72753e5ae0f"/>
+    <listType typeId="bd9d5edf-bd69-465d-9ea0-fadffa963d11" valueTypeId="81f4587e-b8ca-43ab-9662-56563f0db007"/>
+    <managerType typeId="2be3151f-2945-452f-9556-635dcb2cb6af" valueTypeId="35d56c7b-1630-497c-af85-d2b668b1ba90"/>
+    <recordSetType typeId="41b7b564-feb4-4414-a067-ce7b764b15a5" valueTypeId="ac31c8f8-f32d-4588-b156-2eb2abf7bcdf"/>
+    <recordKeyType typeId="95f5bb49-003d-4885-9a78-00439c43eb42" valueTypeId="fe721f79-8e19-413d-a805-8a608225185e"/>
+    <recordType typeId="126fc116-3a14-4f92-ab1d-eaa9f04ab8ef" valueTypeId="53dc6d9a-f97e-4e97-a7cf-0fc03af0483c"/>
+  </producedTypes>
+  <name>НачисленияМотивационныхПрограмм</name>
+  <synonym>
+    <key>ru</key>
+    <value>Начисления мотивационных программ</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <defaultListForm>AccumulationRegister.НачисленияМотивационныхПрограмм.Form.ФормаСписка</defaultListForm>
+  <registerType>Turnovers</registerType>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <enableTotalsSplitting>true</enableTotalsSplitting>
+  <resources uuid="36936582-d786-4ac0-b1ed-814d6b2d0c52">
+    <name>Сумма</name>
+    <synonym>
+      <key>ru</key>
+      <value>Сумма</value>
+    </synonym>
+    <comment>Начисленная сумма мотивации</comment>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>17</precision>
+        <scale>4</scale>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="93571259-7254-4333-aa3b-7a0023be4b8a">
+    <name>Значение</name>
+    <synonym>
+      <key>ru</key>
+      <value>Значение</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <scale>2</scale>
+        <nonNegative>true</nonNegative>
+      </numberQualifiers>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Значение мотивационной программы. Интерпретируется в зависимости от способа предоставления - процент или сумма</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="425e0164-519f-48e4-a71b-48a4860b548a">
+    <name>СуммаПродажи</name>
+    <synonym>
+      <key>ru</key>
+      <value>Сумма продажи</value>
+    </synonym>
+    <comment>Базовая сумма для начисления</comment>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>17</precision>
+        <scale>4</scale>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <dimensions uuid="e731b7bb-cdee-439e-a108-94a7cf974773">
+    <name>Склад</name>
+    <synonym>
+      <key>ru</key>
+      <value>Склад</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Склады</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="356b7958-a7ad-478b-9842-673e7934c900">
+    <name>Номенклатура</name>
+    <synonym>
+      <key>ru</key>
+      <value>Номенклатура</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Номенклатура</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="fd282db2-0564-450a-880d-9f3486dd5cc8">
+    <name>Характеристика</name>
+    <synonym>
+      <key>ru</key>
+      <value>Характеристика</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ХарактеристикиНоменклатуры</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="3670a769-61ec-45f9-9311-d40d645efdd8">
+    <name>ДокументПродажи</name>
+    <synonym>
+      <key>ru</key>
+      <value>Документ продажи</value>
+    </synonym>
+    <type>
+      <types>DocumentRef.РеализацияТоваров</types>
+      <types>DocumentRef.ЧекККМ</types>
+      <types>DocumentRef.ОтчетОРозничныхПродажах</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="838fc744-a717-4624-9644-1b5c9945d120">
+    <name>Продавец</name>
+    <synonym>
+      <key>ru</key>
+      <value>Продавец</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ФизическиеЛица</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="03cd94f8-83b3-4636-8772-fbcd33729911">
+    <name>СпособПредоставления</name>
+    <synonym>
+      <key>ru</key>
+      <value>Способ предоставления</value>
+    </synonym>
+    <type>
+      <types>EnumRef.СпособыПредоставленияСкидокНаценок</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Определяет способ, в соответствии с которым интерпретируется значение</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <quickChoice>Use</quickChoice>
+    <createOnInput>DontUse</createOnInput>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="3dd8ddf3-38af-4176-82e6-92fa66da9cb2">
+    <name>ПредметПрограммы</name>
+    <synonym>
+      <key>ru</key>
+      <value>Предмет программы</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Номенклатура</types>
+      <types>CatalogRef.ВидыНоменклатуры</types>
+      <types>CatalogRef.СегментыНоменклатуры</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Элемент аналитики, на которую распространяется текущая программа мотиваций</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="a530bb8d-8ed8-44c8-8867-903b99c57753">
+    <name>Программа</name>
+    <synonym>
+      <key>ru</key>
+      <value>Программа</value>
+    </synonym>
+    <comment>Мотивационная программа</comment>
+    <type>
+      <types>DocumentRef.МотивационнаяПрограмма</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="fedce37c-5476-478d-897e-59b33e0fc0d2">
+    <name>РаботаВыполняемаяСотрудниками</name>
+    <synonym>
+      <key>ru</key>
+      <value>Работа выполняемая сотрудниками</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.РаботаВыполняемаяСотрудниками</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="d83fb401-1e15-4819-afb2-0c59f8bccb27">
+    <name>Приоритет</name>
+    <synonym>
+      <key>ru</key>
+      <value>Приоритет</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>2</precision>
+        <nonNegative>true</nonNegative>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="bbdad514-11ce-4c32-a38f-1b878b7e99d7">
+    <name>ДополнительнаяАналитика</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дополнительная аналитика</value>
+    </synonym>
+    <comment>Пока только, как ЗаказПокупателя. Составной тип - на будущее</comment>
+    <type>
+      <types>CatalogRef.ПричиныРучнойСкидки</types>
+      <types>DocumentRef.ЗаказПокупателя</types>
+      <types>String</types>
+      <stringQualifiers>
+        <length>256</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <forms uuid="34e3ad2a-4a02-494f-88a5-3cf32252d4de">
+    <name>ФормаСписка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма списка</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+</mdclass:AccumulationRegister>

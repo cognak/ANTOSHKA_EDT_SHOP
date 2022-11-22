@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:EventSubscription xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="5418f124-40a4-4222-9eb6-69c1a82b396b">
+  <name>ОбменРозницаMagentoЗарегистрироватьИзменениеНабораЗаписей</name>
+  <synonym>
+    <key>ru</key>
+    <value>Обмен &quot;Розница-Magento&quot; перед записью</value>
+  </synonym>
+  <source>
+    <types>AccumulationRegisterRecordSet.ТоварыНаСкладах</types>
+    <types>AccumulationRegisterRecordSet.ЗаказыПокупателей</types>
+  </source>
+  <event>BeforeWrite</event>
+  <handler>CommonModule.ОбменMagentoСобытия.ОбменРозницаMagentoЗарегистрироватьИзменениеНабораЗаписей</handler>
+</mdclass:EventSubscription>

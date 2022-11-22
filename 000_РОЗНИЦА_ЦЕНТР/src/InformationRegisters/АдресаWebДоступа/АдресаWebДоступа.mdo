@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="327d9e54-4b91-4936-bd81-7ea0fb2ceaa4">
+  <producedTypes>
+    <selectionType typeId="d55f1e42-8c0f-4624-af28-aed7a91aed4a" valueTypeId="d83d9dda-ce71-4a18-b74f-108e2ab3a56c"/>
+    <listType typeId="18ab131c-a74b-44f0-a479-d1ea70192808" valueTypeId="bfddac02-9fc0-4b37-a1d9-03a6461dc8cd"/>
+    <managerType typeId="8d34267c-7b05-4f33-9de7-4ad6b5da0aca" valueTypeId="cd6b27e8-552e-4cef-8a80-9e87dc52b300"/>
+    <recordSetType typeId="b96dc8f5-455c-416b-9659-211666c47a8f" valueTypeId="c8a873ed-26ee-4d5f-9734-52db1bc1c7ee"/>
+    <recordKeyType typeId="1654b76a-778d-4bc3-bd8b-087a25c16210" valueTypeId="f13f1c55-a79e-46b1-b51c-708919461eb7"/>
+    <recordType typeId="e7de8ebf-445d-4a28-8023-9eb5b5636ec7" valueTypeId="0a64a2f6-098a-4bad-92e1-b206781f8805"/>
+    <recordManagerType typeId="85f87387-9cee-41bc-899f-948f9a35e26e" valueTypeId="f7d5960a-b858-4cc0-be40-9e831fd1cbb8"/>
+  </producedTypes>
+  <name>АдресаWebДоступа</name>
+  <synonym>
+    <key>ru</key>
+    <value>Адреса web доступа</value>
+  </synonym>
+  <editType>InDialog</editType>
+  <defaultRecordForm>InformationRegister.АдресаWebДоступа.Form.ФормаЗаписи</defaultRecordForm>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <resources uuid="917c6b97-fc69-4a9a-be0e-eb1aac617c15">
+    <name>Адрес</name>
+    <synonym>
+      <key>ru</key>
+      <value>Адрес</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>256</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+  </resources>
+  <resources uuid="73f76d0b-315d-4c28-a438-02a3518e13da">
+    <name>Порт</name>
+    <synonym>
+      <key>ru</key>
+      <value>Порт</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>10</precision>
+        <nonNegative>true</nonNegative>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="170fb80d-eb38-4459-acea-7ceca4eff2b7">
+    <name>Публикация</name>
+    <synonym>
+      <key>ru</key>
+      <value>Публикация</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>50</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+  </resources>
+  <resources uuid="ee666500-aa52-4591-8d94-5244979e2f54">
+    <name>ЗащищенноеСоединение</name>
+    <synonym>
+      <key>ru</key>
+      <value>Защищенное соединение (SSL)</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <dimensions uuid="ace2ce0d-4c2e-4dbb-8847-9618607b88a7">
+    <name>Магазин</name>
+    <synonym>
+      <key>ru</key>
+      <value>Магазин</value>
+    </synonym>
+    <comment>Если пустой - значит, по всем магазинам, для которых НЕТ конкретной записи</comment>
+    <type>
+      <types>CatalogRef.Магазины</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="c565617e-d886-4914-9279-c888146a018e">
+    <name>Протокол</name>
+    <synonym>
+      <key>ru</key>
+      <value>Протокол</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>5</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <forms uuid="3c79a942-ceae-47ea-a01c-d7f3120f71ba">
+    <name>ФормаЗаписи</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма записи</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+</mdclass:InformationRegister>

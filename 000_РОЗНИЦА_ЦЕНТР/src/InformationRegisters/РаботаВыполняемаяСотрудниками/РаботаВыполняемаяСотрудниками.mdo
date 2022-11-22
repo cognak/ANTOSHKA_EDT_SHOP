@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="dedba501-abf3-4a93-9d57-ea8fcaba2218">
+  <producedTypes>
+    <selectionType typeId="0bc100f7-2be4-4c97-8249-2fd9391c0945" valueTypeId="419ff3f0-da4f-4fe0-9f83-da015e79f637"/>
+    <listType typeId="4d12e407-d444-4ebd-975b-77452c15d41d" valueTypeId="cc5bbaa1-78f5-4b31-8d7f-7abb889ab8dd"/>
+    <managerType typeId="49c9de64-8e6e-4da3-a6f8-cdcfdb419a8e" valueTypeId="aa9a3db5-63ca-4f0d-89e9-910291bcd090"/>
+    <recordSetType typeId="8f5ac7ae-1fec-4df3-b710-bfccc6ce93e7" valueTypeId="b2f0b230-66cc-47df-9657-efe8828ee43d"/>
+    <recordKeyType typeId="033df822-33b3-4e72-aa42-1d6100506733" valueTypeId="0a82d737-4fd9-463f-84e1-c208753d2521"/>
+    <recordType typeId="66ea2668-e507-4d6b-a917-b5d8aafc955d" valueTypeId="11567a0c-99fc-4e89-89b6-04ce844aedb9"/>
+    <recordManagerType typeId="435ab27f-ea56-41fa-a654-a14e521d70a5" valueTypeId="efabdc59-dfb5-4c56-b1ad-8c729766fd83"/>
+  </producedTypes>
+  <name>РаботаВыполняемаяСотрудниками</name>
+  <synonym>
+    <key>ru</key>
+    <value>Работа выполняемая сотрудниками</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <defaultRecordForm>InformationRegister.РаботаВыполняемаяСотрудниками.Form.ФормаЗаписи</defaultRecordForm>
+  <defaultListForm>InformationRegister.РаботаВыполняемаяСотрудниками.Form.ФормаСписка</defaultListForm>
+  <informationRegisterPeriodicity>Second</informationRegisterPeriodicity>
+  <attributes uuid="d6a2caaa-29bc-407f-a7f4-6f56d438fd0a">
+    <name>ОсновноеМестоРаботы</name>
+    <synonym>
+      <key>ru</key>
+      <value>Основное место работы</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <dimensions uuid="53833adf-55e6-4531-93da-48ae0c5a4bd5">
+    <name>Сотрудник</name>
+    <synonym>
+      <key>ru</key>
+      <value>Сотрудник</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ФизическиеЛица</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <choiceParameters>
+      <name>Отбор.Сотрудник</name>
+      <value xsi:type="core:BooleanValue">
+        <value>true</value>
+      </value>
+    </choiceParameters>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="3fd1c3d2-12c6-4ffe-8a0e-6f50f0ec12a4">
+    <name>РаботаВыполняемаяСотрудниками</name>
+    <synonym>
+      <key>ru</key>
+      <value>Работа выполняемая сотрудниками</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.РаботаВыполняемаяСотрудниками</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <forms uuid="d9c1c2bb-d6bf-4fae-96a1-b2565801cadd">
+    <name>ФормаСписка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма списка</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <forms uuid="bfb67ddf-03a9-4083-8be7-ebc12e0ca90d">
+    <name>ФормаЗаписи</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма записи</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+</mdclass:InformationRegister>

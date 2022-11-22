@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:AccumulationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="aed9e0ee-0d9d-44f6-96e5-397ad5bc738d">
+  <producedTypes>
+    <selectionType typeId="10f7b493-43e1-497a-a1ee-cb629fbe7255" valueTypeId="da0cbd12-8007-44a2-b9ce-5a75adb7a4ef"/>
+    <listType typeId="80e96ede-a230-4a7b-8aae-606bfbadbe4a" valueTypeId="d6793313-161a-4797-90c3-ef39633e9486"/>
+    <managerType typeId="aed36693-fc9b-4637-b10a-31034cdad521" valueTypeId="650f707f-985c-4e3a-a140-e9da7567402e"/>
+    <recordSetType typeId="68cc2cb1-02e4-4b24-9d02-5735e17053d1" valueTypeId="d0b7f5cd-4b3d-4ac3-8712-5bba83feba23"/>
+    <recordKeyType typeId="3b57ea0e-3681-4c57-91bf-00a1ce80ca16" valueTypeId="a9f9e466-a9a2-4ff7-8e18-0eda5d4b37e5"/>
+    <recordType typeId="5321fee5-4e6c-4164-bf33-cb907f3e34cf" valueTypeId="8769562b-4464-44f7-987b-6a9f9dfd4d39"/>
+  </producedTypes>
+  <name>БонусныеБаллыВРезерве</name>
+  <synonym>
+    <key>ru</key>
+    <value>Бонусные баллы в резерве</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <defaultListForm>AccumulationRegister.БонусныеБаллыВРезерве.Form.ФормаСписка</defaultListForm>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <resources uuid="7e3215cb-791e-46f0-bd09-7e3940cfab79">
+    <name>СуммаБонусныхБаллов</name>
+    <synonym>
+      <key>ru</key>
+      <value>Сумма бонусных баллов</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <scale>2</scale>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </resources>
+  <attributes uuid="7031d098-f76b-4f7a-bdf5-69209211c357">
+    <name>ВидОперации</name>
+    <synonym>
+      <key>ru</key>
+      <value>Вид операции</value>
+    </synonym>
+    <type>
+      <types>EnumRef.ВидыОперацийБонусныхБаллов</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </attributes>
+  <attributes uuid="c5756c37-4bc6-48d3-ab7f-f361a36872a7">
+    <name>ДатаИзменения</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата изменения</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <indexing>Index</indexing>
+    <fullTextSearch>Use</fullTextSearch>
+  </attributes>
+  <attributes uuid="88e4022c-e7a6-424f-af2a-3e8debe28264">
+    <name>ДатаОперации</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата операции</value>
+    </synonym>
+    <comment>Дата регистратора</comment>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Фиксируем дату регистратора, так как &quot;Период&quot; набора записей обычно может отличаться.
+Используется в анализе сдвига границы последовательности</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <attributes uuid="b725489f-39cd-4fbd-8906-9e07c3fbef17">
+    <name>ДокументОперации</name>
+    <synonym>
+      <key>ru</key>
+      <value>Документ операции</value>
+    </synonym>
+    <type>
+      <types>DocumentRef.РеализацияТоваров</types>
+      <types>DocumentRef.ЧекККМ</types>
+      <types>DocumentRef.ВозвратТоваровОтПокупателя</types>
+      <types>DocumentRef.ЗаказПокупателя</types>
+      <types>DocumentRef.НачислениеИСписаниеБонусныхБаллов</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <createOnInput>DontUse</createOnInput>
+    <indexing>Index</indexing>
+    <choiceHistoryOnInput>DontUse</choiceHistoryOnInput>
+  </attributes>
+  <attributes uuid="14c54f7e-7c61-4020-88f9-8b924639b847">
+    <name>СписаниеПартий</name>
+    <synonym>
+      <key>ru</key>
+      <value>Списание партий</value>
+    </synonym>
+    <comment>(Служ.)</comment>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Используется в записях, образованных в результате списания по партиям</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <dimensions uuid="05a040d4-b1b5-4978-9536-93291d9c8342">
+    <name>ПрограммаЛояльности</name>
+    <synonym>
+      <key>ru</key>
+      <value>Программа лояльности</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ПрограммыЛояльности</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="725b2280-cf5d-4162-8416-19b527a65e94">
+    <name>Контрагент</name>
+    <synonym>
+      <key>ru</key>
+      <value>Контрагент</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Контрагенты</types>
+      <types>CatalogRef.ФизическиеЛица</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="64904cc7-9b80-440d-903f-a7231b36d272">
+    <name>ДокументНачисления</name>
+    <synonym>
+      <key>ru</key>
+      <value>Документ начисления</value>
+    </synonym>
+    <type>
+      <types>DocumentRef.РеализацияТоваров</types>
+      <types>DocumentRef.ЧекККМ</types>
+      <types>DocumentRef.ЗаказПокупателя</types>
+      <types>DocumentRef.НачислениеИСписаниеБонусныхБаллов</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <createOnInput>DontUse</createOnInput>
+    <indexing>Index</indexing>
+    <fullTextSearch>Use</fullTextSearch>
+    <choiceHistoryOnInput>DontUse</choiceHistoryOnInput>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <forms uuid="ddd1f268-14d9-4984-9120-dc5bdbacb6a6">
+    <name>ФормаСписка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма списка</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+</mdclass:AccumulationRegister>

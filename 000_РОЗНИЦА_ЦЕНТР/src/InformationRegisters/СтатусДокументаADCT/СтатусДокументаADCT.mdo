@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="d363713c-8432-411f-8c28-9123d417a3c7">
+  <producedTypes>
+    <selectionType typeId="c30b85ba-c40c-4589-b8e5-44a6772093a2" valueTypeId="afbf7d61-a895-48e2-8505-27fc339dc2b3"/>
+    <listType typeId="3817a89c-b5ef-4c97-8d3a-cf9b061010d8" valueTypeId="be71c387-40ea-4a1d-8f53-fe1398c3370f"/>
+    <managerType typeId="86d6b7ca-f197-4f11-81a4-745f40b890f3" valueTypeId="bdfcd6e8-10c4-4dcb-b2ce-b90524d42676"/>
+    <recordSetType typeId="26b30031-dad6-45fc-8cc0-780f590f46d9" valueTypeId="9fe6cbc1-4036-48e7-8eca-765165547492"/>
+    <recordKeyType typeId="bbe26a5a-082a-4763-917c-172c0168420b" valueTypeId="ea7636d3-67d0-4a17-bb90-97fc9ecc7779"/>
+    <recordType typeId="44724873-4c5d-419d-9182-afd3d2c0efb8" valueTypeId="cd8d7120-bed4-4ecb-871d-28bf478e35fc"/>
+    <recordManagerType typeId="3fa8ba7f-4d82-415e-9e1d-df20300a24f2" valueTypeId="c7ed0272-ed24-4c77-95a7-c7bee21b4d2a"/>
+  </producedTypes>
+  <name>СтатусДокументаADCT</name>
+  <synonym>
+    <key>ru</key>
+    <value>Статус документа в устройствах ADCT</value>
+  </synonym>
+  <editType>InDialog</editType>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <resources uuid="8e2363c6-dff1-4e55-8ca2-ccfb4ae1af50">
+    <name>СтатусТСД</name>
+    <synonym>
+      <key>ru</key>
+      <value>Статус ТСД</value>
+    </synonym>
+    <type>
+      <types>EnumRef.СтатусДокТСД</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <dimensions uuid="33418a80-1bed-4ee5-974c-e63374533114">
+    <name>Объект</name>
+    <synonym>
+      <key>ru</key>
+      <value>Объект</value>
+    </synonym>
+    <type>
+      <types>DocumentRef.ПереоценкаТоваровНаСкладах</types>
+      <types>DocumentRef.ПеремещениеТоваров</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="d2bb2d84-ebea-4e19-9f9f-f8bdbc8412a3">
+    <name>УстройствоADCT</name>
+    <synonym>
+      <key>ru</key>
+      <value>Устройство ADCT</value>
+    </synonym>
+    <type>
+      <types>ExchangePlanRef.ПоУстройствамАнтошка</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+</mdclass:InformationRegister>

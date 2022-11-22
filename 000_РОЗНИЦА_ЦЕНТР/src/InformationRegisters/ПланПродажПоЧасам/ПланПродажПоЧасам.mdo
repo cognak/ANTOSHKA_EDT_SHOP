@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="fa2b76f2-c662-4aaa-9b19-19f9d24dda9f">
+  <producedTypes>
+    <selectionType typeId="c96d5840-f27e-4650-b77d-92d90dfeb91a" valueTypeId="1bbf195b-7079-4e7c-bcca-4c719da2660f"/>
+    <listType typeId="c9a5b503-eaf4-4ca7-9411-a5a84b9c61c5" valueTypeId="7dd483b7-9c4e-4e90-b72f-8620a2d82fd1"/>
+    <managerType typeId="603f1ff7-e2b0-4bbc-a543-7b97094021db" valueTypeId="ad5d2836-a8db-4cf5-befb-0742f9a04b6a"/>
+    <recordSetType typeId="7a290941-173f-40c6-b53e-79e75abbf466" valueTypeId="ed32e3a7-6590-49d4-aa4e-31d49256786a"/>
+    <recordKeyType typeId="1cd40646-0f9a-4f8a-9077-67b991cc2d15" valueTypeId="4798efdc-0866-4a71-b74d-106ee31bba9e"/>
+    <recordType typeId="841ee9ab-4758-4b7a-9ca4-f55825cdc80e" valueTypeId="a79feed6-4947-4e80-b7b4-fc438381e0d4"/>
+    <recordManagerType typeId="1fd56845-4665-41c7-89a5-645f9144f3d2" valueTypeId="7ce1dbc8-f10b-4ad3-ac96-bb403ff6c864"/>
+  </producedTypes>
+  <name>ПланПродажПоЧасам</name>
+  <synonym>
+    <key>ru</key>
+    <value>План продаж по часам</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <editType>InDialog</editType>
+  <defaultListForm>InformationRegister.ПланПродажПоЧасам.Form.ФормаСписка</defaultListForm>
+  <informationRegisterPeriodicity>Second</informationRegisterPeriodicity>
+  <mainFilterOnPeriod>true</mainFilterOnPeriod>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <resources uuid="2e49f655-8586-4b19-90f6-c2f77a3d52bb">
+    <name>ПланПродаж</name>
+    <synonym>
+      <key>ru</key>
+      <value>План продаж</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>10</precision>
+        <scale>2</scale>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <dimensions uuid="7c47c987-d048-4d33-9483-d6e88e6d3ebd">
+    <name>Организация</name>
+    <synonym>
+      <key>ru</key>
+      <value>Организация</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Организации</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="a5c4019e-e243-4b8f-b6ac-35fe4a98925d">
+    <name>Магазин</name>
+    <synonym>
+      <key>ru</key>
+      <value>Магазин</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Магазины</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <forms uuid="cb658286-cfcb-4335-99cb-2365b1645e69">
+    <name>ФормаСписка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма списка</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+</mdclass:InformationRegister>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:AccumulationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="cd3fafeb-be9c-4891-ba34-47f8d16f0a3a">
+  <producedTypes>
+    <selectionType typeId="d492ffb5-577c-4d2e-a2c8-2246dacb2612" valueTypeId="b4c3eb95-da68-4691-b3d7-a5aa91dea9a6"/>
+    <listType typeId="f3603904-9a72-49c1-92b4-c7943dd8c654" valueTypeId="a7f8bcc5-214d-435d-91ab-14724a67e14b"/>
+    <managerType typeId="c3777bc6-043c-4123-b006-bdb2a771b6d1" valueTypeId="a4448af2-ca8e-4dc1-9911-93870080a475"/>
+    <recordSetType typeId="43490570-e26d-4aef-a842-d25a13586e36" valueTypeId="1a1522d4-22c4-45e5-a626-d4a0ff4bd957"/>
+    <recordKeyType typeId="f133bcd6-a1c2-4461-a906-5c9617cdb71d" valueTypeId="1cc76341-9baa-473b-a2d6-b7024c48de9b"/>
+    <recordType typeId="2a2bb95f-2c71-42e2-86d4-3d7d4e87d216" valueTypeId="d8336e03-d3de-4cb2-992f-318091936f8b"/>
+  </producedTypes>
+  <name>ДоговорыСтрахованияОплаченные</name>
+  <synonym>
+    <key>ru</key>
+    <value>Договоры страхования оплаченные</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <enableTotalsSplitting>true</enableTotalsSplitting>
+  <resources uuid="1e918446-2894-4542-9e06-26f860792ec4">
+    <name>Сумма</name>
+    <synonym>
+      <key>ru</key>
+      <value>Сумма</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <scale>2</scale>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </resources>
+  <attributes uuid="9996cf9b-0107-4474-80c1-4ed302feed7d">
+    <name>Магазин</name>
+    <synonym>
+      <key>ru</key>
+      <value>Магазин</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Магазины</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </attributes>
+  <dimensions uuid="5c912ed8-59c7-4064-ab59-9e38e1cc3f0e">
+    <name>Номенклатура</name>
+    <synonym>
+      <key>ru</key>
+      <value>Номенклатура</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Номенклатура</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Номенклатура, остатки которой учитываются на складах.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="8060e041-c8a5-4d1a-8909-1fe7ae81e57d">
+    <name>ДоговорСтрахования</name>
+    <synonym>
+      <key>ru</key>
+      <value>Договор страхования</value>
+    </synonym>
+    <type>
+      <types>DocumentRef.ДоговорСтрахования</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+</mdclass:AccumulationRegister>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:AccumulationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="a685cde5-6be9-467e-93a0-db6bf46a2203">
+  <producedTypes>
+    <selectionType typeId="757e2fc1-8434-4271-9204-f6f86310eb07" valueTypeId="1ff30122-5a14-400d-a5be-ac837bd0ce29"/>
+    <listType typeId="7489a83e-556e-41de-953b-a68d38efd4d6" valueTypeId="a7b765fd-124f-4b28-957b-850053c1f54b"/>
+    <managerType typeId="cf6a40f7-2df9-4432-bad8-1b156cf07357" valueTypeId="f6dba1b6-463f-4b08-8102-d10530c6aa00"/>
+    <recordSetType typeId="b3e371c1-86e3-4bfe-98b9-51a50d97ca19" valueTypeId="b73dd56c-ca9c-43dc-9492-82c7ef6dbab6"/>
+    <recordKeyType typeId="e70741ac-0d9d-456d-8b7d-84c5c2c871d4" valueTypeId="3555503f-1d43-4890-be3d-1fbf141c7271"/>
+    <recordType typeId="ada6317d-6586-45f3-b38e-bc42d497e2cc" valueTypeId="d1f5ae61-5207-4818-98ce-2712c93f197b"/>
+  </producedTypes>
+  <name>ТоварыЗастрахованные</name>
+  <synonym>
+    <key>ru</key>
+    <value>Товары застрахованные</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <enableTotalsSplitting>true</enableTotalsSplitting>
+  <resources uuid="4bc24d18-a3fc-4778-8483-308b9a791543">
+    <name>Количество</name>
+    <synonym>
+      <key>ru</key>
+      <value>Количество</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <scale>3</scale>
+      </numberQualifiers>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Количество страхуемого товара. В принципе, одна запись списания может содержать одну единицу товара.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </resources>
+  <attributes uuid="bd7f86fe-852f-466d-8225-fe46915c94f4">
+    <name>Магазин</name>
+    <synonym>
+      <key>ru</key>
+      <value>Магазин</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Магазины</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </attributes>
+  <dimensions uuid="bc87cb74-26e0-4437-9f91-87f0a085f027">
+    <name>Номенклатура</name>
+    <synonym>
+      <key>ru</key>
+      <value>Номенклатура</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Номенклатура</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Номенклатура, остатки которой учитываются на складах.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+  <dimensions uuid="115bcb4a-6a7e-498d-8e6e-3634bf776c13">
+    <name>ДокументПродажи</name>
+    <synonym>
+      <key>ru</key>
+      <value>Документ продажи</value>
+    </synonym>
+    <type>
+      <types>DocumentRef.ЧекККМ</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fullTextSearch>Use</fullTextSearch>
+    <useInTotals>true</useInTotals>
+  </dimensions>
+</mdclass:AccumulationRegister>

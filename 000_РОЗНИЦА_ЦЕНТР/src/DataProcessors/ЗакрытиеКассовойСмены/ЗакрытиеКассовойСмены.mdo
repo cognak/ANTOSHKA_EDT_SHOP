@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:DataProcessor xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="03cf300c-f48c-4895-b9f8-26171eb2bf44">
+  <producedTypes>
+    <objectType typeId="b0988a0c-1c77-4d0c-87da-cdf14a9a23d8" valueTypeId="4f547955-fb65-44d9-bdba-a118bf3dea4e"/>
+    <managerType typeId="5067b49d-a5f3-4eda-9380-201c6c01dcfa" valueTypeId="d6124e5a-c645-4b43-b6a1-c34041e8fd9a"/>
+  </producedTypes>
+  <name>ЗакрытиеКассовойСмены</name>
+  <synonym>
+    <key>ru</key>
+    <value>Закрытие кассовой смены, 04.088 (2022-11-18)</value>
+  </synonym>
+  <synonym>
+    <key>uk</key>
+    <value>Закриття касової зміни, 04.088 (2022-11-18)</value>
+  </synonym>
+  <comment>(Упр)</comment>
+  <defaultForm>DataProcessor.ЗакрытиеКассовойСмены.Form.Форма</defaultForm>
+  <includeHelpInContents>true</includeHelpInContents>
+  <help>
+    <pages>
+      <lang>ru</lang>
+    </pages>
+  </help>
+  <attributes uuid="02e2a680-6122-4f6e-8265-b13cdd7b052d">
+    <name>КассаККМ</name>
+    <synonym>
+      <key>ru</key>
+      <value>Каса ККМ</value>
+    </synonym>
+    <synonym>
+      <key>uk</key>
+      <value>Каса ККМ</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.КассыККМ</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <choiceParameters>
+      <name>Отбор.ТипКассы</name>
+      <value xsi:type="core:ReferenceValue">
+        <value>Enum.ТипыКассККМ.EnumValue.ФискальныйРегистратор</value>
+      </value>
+    </choiceParameters>
+  </attributes>
+  <forms uuid="2bcb31ce-d5d4-4103-954f-86b19da65304">
+    <name>Форма</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <forms uuid="a7729825-8ede-475e-840a-4e1d7d9c5fcc">
+    <name>ПроверкаНепробитыхЧеков</name>
+    <synonym>
+      <key>ru</key>
+      <value>Проверка непробитых чеков</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+</mdclass:DataProcessor>

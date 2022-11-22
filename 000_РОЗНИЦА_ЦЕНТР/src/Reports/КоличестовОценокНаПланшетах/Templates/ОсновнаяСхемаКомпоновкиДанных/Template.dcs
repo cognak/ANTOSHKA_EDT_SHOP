@@ -1,0 +1,627 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Оценка1</dataPath>
+			<field>Оценка1</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оценка 1</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Оценка2</dataPath>
+			<field>Оценка2</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оценка 2</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Период</dataPath>
+			<field>Период</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Месяц</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Оценка3</dataPath>
+			<field>Оценка3</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оценка 3</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Оценка4</dataPath>
+			<field>Оценка4</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оценка 4</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Период1</dataPath>
+			<field>Период1</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>День</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>УстройствоМагазин</dataPath>
+			<field>УстройствоМагазин</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>УстройствоКассаККМ</dataPath>
+			<field>УстройствоКассаККМ</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Продавец</dataPath>
+			<field>Продавец</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВсегоЧеков</dataPath>
+			<field>Поле1</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Всего чеков</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Оценка</dataPath>
+			<field>Оценка</field>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	СУММА(ВЫБОР
+			КОГДА мп_РезультатыОтветов.Оценка = 1
+				ТОГДА 1
+			ИНАЧЕ 0
+		КОНЕЦ) КАК Оценка1,
+	НАЧАЛОПЕРИОДА(мп_РезультатыОтветов.Период, МЕСЯЦ) КАК Период,
+	СУММА(ВЫБОР
+			КОГДА мп_РезультатыОтветов.Оценка = 2
+				ТОГДА 1
+			ИНАЧЕ 0
+		КОНЕЦ) КАК Оценка2,
+	СУММА(ВЫБОР
+			КОГДА мп_РезультатыОтветов.Оценка = 3
+				ТОГДА 1
+			ИНАЧЕ 0
+		КОНЕЦ) КАК Оценка3,
+	СУММА(ВЫБОР
+			КОГДА мп_РезультатыОтветов.Оценка = 4
+				ТОГДА 1
+			ИНАЧЕ 0
+		КОНЕЦ) КАК Оценка4,
+	НАЧАЛОПЕРИОДА(мп_РезультатыОтветов.Период, ДЕНЬ) КАК Период1,
+	мп_РезультатыОтветов.Устройство.Магазин КАК УстройствоМагазин,
+	мп_РезультатыОтветов.Устройство.КассаККМ КАК УстройствоКассаККМ,
+	СУММА(1) КАК Поле1,
+	ЧекККМТовары.Продавец КАК Продавец,
+	СУММА(мп_РезультатыОтветов.Оценка) КАК Оценка
+ИЗ
+	РегистрСведений.мп_РезультатыОтветов КАК мп_РезультатыОтветов
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.ЧекККМ.Товары КАК ЧекККМТовары
+		ПО (мп_РезультатыОтветов.НомерЧека = ЧекККМТовары.Ссылка.Номер
+				И (ЧекККМТовары.Ссылка.Дата МЕЖДУ &amp;ДатаС И &amp;ДатаПо))
+ГДЕ
+	мп_РезультатыОтветов.Период МЕЖДУ &amp;ДатаС И &amp;ДатаПо
+
+СГРУППИРОВАТЬ ПО
+	НАЧАЛОПЕРИОДА(мп_РезультатыОтветов.Период, МЕСЯЦ),
+	НАЧАЛОПЕРИОДА(мп_РезультатыОтветов.Период, ДЕНЬ),
+	мп_РезультатыОтветов.Устройство.Магазин,
+	мп_РезультатыОтветов.Устройство.КассаККМ,
+	ЧекККМТовары.Продавец</query>
+	</dataSet>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных2</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ИтогПериод</dataPath>
+			<field>ИтогПериод</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Месяц</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ИтогУстройствоМагазин</dataPath>
+			<field>ИтогУстройствоМагазин</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Магазин</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ИтогВсегоЧеков</dataPath>
+			<field>ИтогПоле1</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Всего чеков</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ИтогОценка1</dataPath>
+			<field>ИтогОценка1</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оценка 1</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ИтогОценка2</dataPath>
+			<field>ИтогОценка2</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оценка 2</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ИтогОценка3</dataPath>
+			<field>ИтогОценка3</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оценка 3</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ИтогОценка</dataPath>
+			<field>ИтогОценка</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оценка</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ИтогОценка4</dataPath>
+			<field>ИтогОценка4</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оценка 4</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ИтогПериод1</dataPath>
+			<field>ИтогПериод1</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>День</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ИтогУстройствоКассаККМ</dataPath>
+			<field>ИтогУстройствоКассаККМ</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Касса ККМ</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	СУММА(ВЫБОР
+			КОГДА мп_РезультатыОтветов.Оценка = 1
+				ТОГДА 1
+			ИНАЧЕ 0
+		КОНЕЦ) КАК ИтогОценка1,
+	НАЧАЛОПЕРИОДА(мп_РезультатыОтветов.Период, МЕСЯЦ) КАК ИтогПериод,
+	СУММА(ВЫБОР
+			КОГДА мп_РезультатыОтветов.Оценка = 2
+				ТОГДА 1
+			ИНАЧЕ 0
+		КОНЕЦ) КАК ИтогОценка2,
+	СУММА(ВЫБОР
+			КОГДА мп_РезультатыОтветов.Оценка = 3
+				ТОГДА 1
+			ИНАЧЕ 0
+		КОНЕЦ) КАК ИтогОценка3,
+	СУММА(ВЫБОР
+			КОГДА мп_РезультатыОтветов.Оценка = 4
+				ТОГДА 1
+			ИНАЧЕ 0
+		КОНЕЦ) КАК ИтогОценка4,
+	НАЧАЛОПЕРИОДА(мп_РезультатыОтветов.Период, ДЕНЬ) КАК ИтогПериод1,
+	мп_РезультатыОтветов.Устройство.Магазин КАК ИтогУстройствоМагазин,
+	мп_РезультатыОтветов.Устройство.КассаККМ КАК ИтогУстройствоКассаККМ,
+	СУММА(1) КАК ИтогПоле1,
+	СУММА(мп_РезультатыОтветов.Оценка) КАК ИтогОценка
+ИЗ
+	РегистрСведений.мп_РезультатыОтветов КАК мп_РезультатыОтветов
+ГДЕ
+	мп_РезультатыОтветов.Период МЕЖДУ &amp;ДатаС И &amp;ДатаПо
+
+СГРУППИРОВАТЬ ПО
+	НАЧАЛОПЕРИОДА(мп_РезультатыОтветов.Период, МЕСЯЦ),
+	НАЧАЛОПЕРИОДА(мп_РезультатыОтветов.Период, ДЕНЬ),
+	мп_РезультатыОтветов.Устройство.Магазин,
+	мп_РезультатыОтветов.Устройство.КассаККМ</query>
+	</dataSet>
+	<totalField>
+		<dataPath>Оценка1</dataPath>
+		<expression>Сумма(Оценка1)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Оценка2</dataPath>
+		<expression>Сумма(Оценка2)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Оценка3</dataPath>
+		<expression>Сумма(Оценка3)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Оценка4</dataPath>
+		<expression>Сумма(Оценка4)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ВсегоЧеков</dataPath>
+		<expression>Сумма(ВсегоЧеков)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Оценка</dataPath>
+		<expression>Сумма(Оценка)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ИтогОценка</dataPath>
+		<expression>Сумма(ИтогОценка)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ИтогОценка1</dataPath>
+		<expression>Сумма(ИтогОценка1)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ИтогОценка2</dataPath>
+		<expression>Сумма(ИтогОценка2)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ИтогОценка3</dataPath>
+		<expression>Сумма(ИтогОценка3)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ИтогОценка4</dataPath>
+		<expression>Сумма(ИтогОценка4)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ИтогВсегоЧеков</dataPath>
+		<expression>Сумма(ИтогВсегоЧеков)</expression>
+	</totalField>
+	<parameter>
+		<name>ДатаПо</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата по</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаОкончания</expression>
+		<inputParameters>
+			<dcscor:item>
+				<dcscor:parameter>БыстрыйВыбор</dcscor:parameter>
+				<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+			</dcscor:item>
+		</inputParameters>
+	</parameter>
+	<parameter>
+		<name>ДатаС</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата С</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаНачала</expression>
+		<inputParameters>
+			<dcscor:item>
+				<dcscor:parameter>БыстрыйВыбор</dcscor:parameter>
+				<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+			</dcscor:item>
+		</inputParameters>
+	</parameter>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>КолОценок</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Количество оценок на планшетах</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>uk</v8:lang>
+				<v8:content>Основной</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:userFields>
+				<dcsset:item xsi:type="dcsset:UserFieldExpression">
+					<dcsset:dataPath>ПользовательскиеПоля.Поле1</dcsset:dataPath>
+					<dcsset:lwsTitle>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Без Оценок</v8:content>
+						</v8:item>
+					</dcsset:lwsTitle>
+					<dcsset:detailExpression>ВсегоЧеков - Оценка1 - Оценка2 - Оценка3 - Оценка4</dcsset:detailExpression>
+					<dcsset:detailExpressionPresentation>[Всего чеков] - [Оценка 1] - [Оценка 2] - [Оценка 3] - [Оценка 4]</dcsset:detailExpressionPresentation>
+					<dcsset:totalExpression>Сумма(ВсегоЧеков - Оценка1 - Оценка2 - Оценка3 - Оценка4)</dcsset:totalExpression>
+					<dcsset:totalExpressionPresentation>Сумма([Всего чеков] - [Оценка 1] - [Оценка 2] - [Оценка 3] - [Оценка 4])</dcsset:totalExpressionPresentation>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:UserFieldExpression">
+					<dcsset:dataPath>ПользовательскиеПоля.Поле2</dcsset:dataPath>
+					<dcsset:lwsTitle>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Средняя оценка</v8:content>
+						</v8:item>
+					</dcsset:lwsTitle>
+					<dcsset:detailExpression>Оценка / (Оценка1 + Оценка2 + Оценка3 + Оценка4)</dcsset:detailExpression>
+					<dcsset:detailExpressionPresentation>Оценка / ([Оценка 1] + [Оценка 2] + [Оценка 3] + [Оценка 4])</dcsset:detailExpressionPresentation>
+					<dcsset:totalExpression>Сумма(Оценка) / Сумма(Оценка1 + Оценка2 + Оценка3 + Оценка4)</dcsset:totalExpression>
+					<dcsset:totalExpressionPresentation>Сумма(Оценка) / Сумма([Оценка 1] + [Оценка 2] + [Оценка 3] + [Оценка 4])</dcsset:totalExpressionPresentation>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:UserFieldExpression">
+					<dcsset:dataPath>ПользовательскиеПоля.Поле3</dcsset:dataPath>
+					<dcsset:lwsTitle>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Без Оценок итог</v8:content>
+						</v8:item>
+					</dcsset:lwsTitle>
+					<dcsset:detailExpression>ИтогВсегоЧеков - ИтогОценка1 - ИтогОценка2 - ИтогОценка3 - ИтогОценка4</dcsset:detailExpression>
+					<dcsset:detailExpressionPresentation>[Всего чеков] - [Оценка 1] - [Оценка 2] - [Оценка 3] - [Оценка 4]</dcsset:detailExpressionPresentation>
+					<dcsset:totalExpression>Сумма(ИтогВсегоЧеков - ИтогОценка1 - ИтогОценка2 - ИтогОценка3 - ИтогОценка4)</dcsset:totalExpression>
+					<dcsset:totalExpressionPresentation>Сумма([Всего чеков] - [Оценка 1] - [Оценка 2] - [Оценка 3] - [Оценка 4])</dcsset:totalExpressionPresentation>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:UserFieldExpression">
+					<dcsset:dataPath>ПользовательскиеПоля.Поле4</dcsset:dataPath>
+					<dcsset:lwsTitle>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Средняя оценка итог</v8:content>
+						</v8:item>
+					</dcsset:lwsTitle>
+					<dcsset:detailExpression>ИтогОценка / (ИтогОценка1 + ИтогОценка2 + ИтогОценка3 + ИтогОценка4)</dcsset:detailExpression>
+					<dcsset:detailExpressionPresentation>Оценка / ([Оценка 1] + [Оценка 2] + [Оценка 3] + [Оценка 4])</dcsset:detailExpressionPresentation>
+					<dcsset:totalExpression>Сумма(ИтогОценка) / Сумма(ИтогОценка1 + ИтогОценка2 + ИтогОценка3 + ИтогОценка4)</dcsset:totalExpression>
+					<dcsset:totalExpressionPresentation>Сумма(Оценка) / Сумма([Оценка 1] + [Оценка 2] + [Оценка 3] + [Оценка 4])</dcsset:totalExpressionPresentation>
+				</dcsset:item>
+			</dcsset:userFields>
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:left xsi:type="dcscor:Field">УстройствоМагазин</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>c6bb553a-42e0-4edf-861a-f14816dc413d</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:left xsi:type="dcscor:Field">УстройствоКассаККМ</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>7899d9e0-0040-4eea-8f8d-fe038be235d3</dcsset:userSettingID>
+				</dcsset:item>
+			</dcsset:filter>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Период</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+					</dcscor:value>
+					<dcsset:userSettingID>38142a56-87f9-474e-95f9-24a70a535e93</dcsset:userSettingID>
+					<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Период</v8:content>
+						</v8:item>
+					</dcsset:userSettingPresentation>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:order>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>Период</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>Период1</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+			</dcsset:order>
+			<dcsset:conditionalAppearance>
+				<dcsset:item>
+					<dcsset:selection>
+						<dcsset:item>
+							<dcsset:field>ПользовательскиеПоля.Поле4</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>ПользовательскиеПоля.Поле2</dcsset:field>
+						</dcsset:item>
+					</dcsset:selection>
+					<dcsset:filter/>
+					<dcsset:appearance>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>Формат</dcscor:parameter>
+							<dcscor:value xsi:type="v8:LocalStringType">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ЧДЦ=1</v8:content>
+								</v8:item>
+							</dcscor:value>
+						</dcscor:item>
+					</dcsset:appearance>
+				</dcsset:item>
+			</dcsset:conditionalAppearance>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>УстройствоМагазин</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>УстройствоМагазин</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Оценка1</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Оценка2</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Оценка3</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Оценка4</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ПользовательскиеПоля.Поле1</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ВсегоЧеков</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ПользовательскиеПоля.Поле2</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:conditionalAppearance>
+					<dcsset:item>
+						<dcsset:selection/>
+						<dcsset:filter/>
+						<dcsset:appearance/>
+					</dcsset:item>
+				</dcsset:conditionalAppearance>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Продавец</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+				</dcsset:item>
+			</dcsset:item>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ИтогУстройствоМагазин</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ИтогОценка1</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ИтогОценка2</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ИтогОценка3</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ИтогОценка4</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ПользовательскиеПоля.Поле3</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ИтогВсегоЧеков</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ПользовательскиеПоля.Поле4</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

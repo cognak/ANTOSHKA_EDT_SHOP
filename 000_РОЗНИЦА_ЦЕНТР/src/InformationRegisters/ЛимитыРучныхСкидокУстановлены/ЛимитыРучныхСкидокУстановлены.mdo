@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="3be1872f-c820-4d53-9711-dd6ae25a013c">
+  <producedTypes>
+    <selectionType typeId="7533243e-118f-48d4-9f99-077f5bd0dab7" valueTypeId="d8f17904-1023-4008-892a-f0775d0e39d0"/>
+    <listType typeId="d6109144-975b-47ab-bba7-5a1bc075bb61" valueTypeId="7b659b79-d810-430e-9f00-d3de78abccd9"/>
+    <managerType typeId="4f302a07-d4cd-4c1b-8e62-48865643d487" valueTypeId="b872ebff-aaf1-4433-88c7-a726ec2c700e"/>
+    <recordSetType typeId="12963ad3-d22f-43ac-af48-2f946c101915" valueTypeId="870adc69-52ba-43c6-8c22-649c507ef832"/>
+    <recordKeyType typeId="37b45ba5-84bd-487d-b6de-c553f4117569" valueTypeId="daa6232e-cf67-4b61-b57e-f20bf3e40b50"/>
+    <recordType typeId="b439192b-782b-4069-ad5a-f312d7e62f20" valueTypeId="7b62b6c6-158e-4d32-82df-be6c49f8b75b"/>
+    <recordManagerType typeId="35c76a89-9a34-4efb-a597-7db7cbba9135" valueTypeId="67b2422d-b01c-4a72-bd6a-15b40df12465"/>
+  </producedTypes>
+  <name>ЛимитыРучныхСкидокУстановлены</name>
+  <synonym>
+    <key>ru</key>
+    <value>Лимиты ручных скидок установлены</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <editType>InDialog</editType>
+  <informationRegisterPeriodicity>RecorderPosition</informationRegisterPeriodicity>
+  <writeMode>RecorderSubordinate</writeMode>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <explanation>
+    <key>ru</key>
+    <value>Регистр флагов, говорящий о том, что лимит на этот период по ручной скидке на регион установлен!
+</value>
+  </explanation>
+  <resources uuid="3bd7643a-3eee-423d-b5c7-a0057c36b191">
+    <name>Сумма</name>
+    <synonym>
+      <key>ru</key>
+      <value>Сумма</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <scale>2</scale>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <attributes uuid="0a98c38d-f71a-46e1-b427-da04ab5256e4">
+    <name>ДатаИзменения</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата изменения</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <attributes uuid="c4fb1c2e-aac4-43ac-bf82-b366839826ee">
+    <name>Пользователь</name>
+    <synonym>
+      <key>ru</key>
+      <value>Пользователь</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Пользователи</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <dimensions uuid="c7081b97-02ca-4c59-b5d9-6587f283b0a1">
+    <name>ПериодЛимита</name>
+    <synonym>
+      <key>ru</key>
+      <value>Период лимита</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers>
+        <dateFractions>Date</dateFractions>
+      </dateQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="e06b1c86-eaa8-41f6-9887-926560573f87">
+    <name>ПричинаРучнойСкидки</name>
+    <synonym>
+      <key>ru</key>
+      <value>Причина ручной скидки</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ПричиныРучнойСкидки</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="07a2ef90-f501-4995-9098-79457e6a9c50">
+    <name>ОбособленноеПодразделениеОрганизации</name>
+    <synonym>
+      <key>ru</key>
+      <value>Регион (филиал)</value>
+    </synonym>
+    <comment>Определяет филиал</comment>
+    <type>
+      <types>CatalogRef.ОбособленныеПодразделенияОрганизаций</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <indexing>Index</indexing>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+</mdclass:InformationRegister>

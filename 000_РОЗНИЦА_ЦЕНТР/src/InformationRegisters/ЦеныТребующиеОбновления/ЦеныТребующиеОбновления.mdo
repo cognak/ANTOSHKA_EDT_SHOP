@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="5e9ec167-54ac-4145-9a7e-50d87df56592">
+  <producedTypes>
+    <selectionType typeId="385b3bab-fdad-42f4-8520-66cb30c36dd8" valueTypeId="4eeb5dd0-e2d4-43e3-8066-3b1b56f8e84d"/>
+    <listType typeId="9fa61fcd-2fb5-4180-81d8-7a29358e6cce" valueTypeId="5b72b04f-6179-4af0-a1b5-c1a23cc211ad"/>
+    <managerType typeId="e46fa72d-3dd6-4dc3-aac0-eae2ca6dc692" valueTypeId="c205f18e-11fc-454c-bd97-27de457111b2"/>
+    <recordSetType typeId="d8e1f44a-21c5-4702-9f24-8cfa896fd2f2" valueTypeId="25ac7586-a292-4f6b-861f-9720b7c2924f"/>
+    <recordKeyType typeId="61877a87-15e8-48b0-aad6-f89a6b2f175d" valueTypeId="0056e20e-a22d-4e6a-8c53-e973e8b8ed95"/>
+    <recordType typeId="fce5bff5-bcc1-4356-8287-22b1decf634e" valueTypeId="3c716165-cab3-4bee-a470-a09a8236001d"/>
+    <recordManagerType typeId="6732147f-4de4-4ec7-b5f3-e64ee78aeb46" valueTypeId="129662f0-63e2-42ef-94e0-7b5fc3841904"/>
+  </producedTypes>
+  <name>ЦеныТребующиеОбновления</name>
+  <synonym>
+    <key>ru</key>
+    <value>Цены требующие обновления</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <editType>InDialog</editType>
+  <defaultListForm>InformationRegister.ЦеныТребующиеОбновления.Form.ФормаСписка</defaultListForm>
+  <informationRegisterPeriodicity>Second</informationRegisterPeriodicity>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <resources uuid="a44fc9fa-5d1c-49a7-93c5-1d8e1c96c52a">
+    <name>Выполнено</name>
+    <synonym>
+      <key>ru</key>
+      <value>Выполнено</value>
+    </synonym>
+    <comment>После выполнения всех действий нужно удалить</comment>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <attributes uuid="80565fc8-682e-407e-8d48-b336b96fca5f">
+    <name>ДатаИзменения</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата изменения</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <dimensions uuid="2ec00f2d-b490-40a1-8ac4-df109988e031">
+    <name>IDN</name>
+    <synonym>
+      <key>ru</key>
+      <value>IDN</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>20</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="93734685-ea44-4c93-888b-a2e6a4ee6648">
+    <name>КодПрайсЛиста</name>
+    <synonym>
+      <key>ru</key>
+      <value>Код прайс-листа</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>10</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="6f2dbc19-950d-4657-b048-f7250d19976e">
+    <name>НомерЗадания</name>
+    <synonym>
+      <key>ru</key>
+      <value>Номер задания</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>17</precision>
+        <nonNegative>true</nonNegative>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <forms uuid="7abc9c74-95db-4612-a177-a6a59f1c6722">
+    <name>ФормаСписка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма списка</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+</mdclass:InformationRegister>
