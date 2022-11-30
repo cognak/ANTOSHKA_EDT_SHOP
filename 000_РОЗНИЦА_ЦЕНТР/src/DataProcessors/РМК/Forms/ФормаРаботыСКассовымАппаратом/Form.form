@@ -2,7 +2,11 @@
 <form:Form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:form="http://g5.1c.ru/v8/dt/form">
   <title>
     <key>ru</key>
-    <value>F11 Работа с регистратором</value>
+    <value>(F11) Робота з реєстратором</value>
+  </title>
+  <title>
+    <key>uk</key>
+    <value>(F11) Робота з реєстратором</value>
   </title>
   <items xsi:type="form:FormGroup">
     <name>ГруппаОтчета</name>
@@ -53,8 +57,8 @@
       <showInFooter>true</showInFooter>
       <extInfo xsi:type="form:InputFieldExtInfo">
         <width>19</width>
-        <autoMaxWidth>true</autoMaxWidth>
         <autoMaxHeight>true</autoMaxHeight>
+        <horizontalStretch>false</horizontalStretch>
         <wrap>true</wrap>
         <chooseType>true</chooseType>
         <typeDomainEnabled>true</typeDomainEnabled>
@@ -441,7 +445,11 @@
     </userVisible>
     <title>
       <key>ru</key>
-      <value>Оборотная ведомость кассы</value>
+      <value>Оборотна відомість каси</value>
+    </title>
+    <title>
+      <key>uk</key>
+      <value>Оборотна відомість каси</value>
     </title>
     <toolTip>
       <key>ru</key>
@@ -917,14 +925,9 @@
     <horizontalAlign>Left</horizontalAlign>
   </autoCommandBar>
   <handlers>
-    <event>OnOpen</event>
-    <name>ПриОткрытии</name>
-  </handlers>
-  <handlers>
     <event>OnCreateAtServer</event>
     <name>ПриСозданииНаСервере</name>
   </handlers>
-  <autoTitle>true</autoTitle>
   <autoUrl>true</autoUrl>
   <group>Vertical</group>
   <autoFillCheck>true</autoFillCheck>
@@ -946,23 +949,6 @@
       <common>true</common>
     </edit>
     <main>true</main>
-  </attributes>
-  <attributes>
-    <name>НастройкаРМК</name>
-    <title>
-      <key>ru</key>
-      <value>Настройка РМК</value>
-    </title>
-    <id>2</id>
-    <valueType>
-      <types>CatalogRef.НастройкиРМК</types>
-    </valueType>
-    <view>
-      <common>true</common>
-    </view>
-    <edit>
-      <common>true</common>
-    </edit>
   </attributes>
   <attributes>
     <name>мИмяКомпьютера</name>
@@ -1017,104 +1003,6 @@
     </edit>
   </attributes>
   <attributes>
-    <name>ТаблицаКассККМОрганизаций</name>
-    <title>
-      <key>ru</key>
-      <value>Таблица касс ККМОрганизаций</value>
-    </title>
-    <id>6</id>
-    <valueType>
-      <types>ValueTable</types>
-    </valueType>
-    <view>
-      <common>true</common>
-    </view>
-    <edit>
-      <common>true</common>
-    </edit>
-    <columns>
-      <name>Организация</name>
-      <title>
-        <key>ru</key>
-        <value>Организация</value>
-      </title>
-      <id>1</id>
-      <valueType>
-        <types>CatalogRef.Организации</types>
-      </valueType>
-      <view>
-        <common>true</common>
-      </view>
-      <edit>
-        <common>true</common>
-      </edit>
-    </columns>
-    <columns>
-      <name>КассаККМ</name>
-      <title>
-        <key>ru</key>
-        <value>Касса ККМ</value>
-      </title>
-      <id>2</id>
-      <valueType>
-        <types>CatalogRef.КассыККМ</types>
-      </valueType>
-      <view>
-        <common>true</common>
-      </view>
-      <edit>
-        <common>true</common>
-      </edit>
-    </columns>
-  </attributes>
-  <attributes>
-    <name>ИспользоватьПодключаемоеОборудование</name>
-    <title>
-      <key>ru</key>
-      <value>Использовать подключаемое оборудование</value>
-    </title>
-    <id>7</id>
-    <valueType>
-      <types>Boolean</types>
-    </valueType>
-    <view>
-      <common>true</common>
-    </view>
-    <edit>
-      <common>true</common>
-    </edit>
-  </attributes>
-  <attributes>
-    <name>ДисплейПокупателяПараметры</name>
-    <title>
-      <key>ru</key>
-      <value>Дисплей покупателя параметры</value>
-    </title>
-    <id>8</id>
-    <valueType/>
-    <view>
-      <common>true</common>
-    </view>
-    <edit>
-      <common>true</common>
-    </edit>
-  </attributes>
-  <attributes>
-    <name>НаборПравИНастроек</name>
-    <title>
-      <key>ru</key>
-      <value>Набор прав и настроек</value>
-    </title>
-    <id>9</id>
-    <valueType/>
-    <view>
-      <common>true</common>
-    </view>
-    <edit>
-      <common>true</common>
-    </edit>
-  </attributes>
-  <attributes>
     <name>СуммаВсего</name>
     <title>
       <key>ru</key>
@@ -1136,31 +1024,14 @@
     </edit>
   </attributes>
   <attributes>
-    <name>СуммаСкидки</name>
-    <title>
-      <key>ru</key>
-      <value>Сумма скидки</value>
-    </title>
-    <id>11</id>
-    <valueType>
-      <types>Number</types>
-      <numberQualifiers>
-        <precision>15</precision>
-        <scale>2</scale>
-      </numberQualifiers>
-    </valueType>
-    <view>
-      <common>true</common>
-    </view>
-    <edit>
-      <common>true</common>
-    </edit>
-  </attributes>
-  <attributes>
     <name>ТекущаяДата</name>
     <title>
       <key>ru</key>
-      <value>Текущая дата</value>
+      <value>Поточна дата</value>
+    </title>
+    <title>
+      <key>uk</key>
+      <value>Поточна дата</value>
     </title>
     <id>12</id>
     <valueType>
@@ -1180,7 +1051,11 @@
     <name>СуммаВзноса</name>
     <title>
       <key>ru</key>
-      <value>Сумма взноса</value>
+      <value>Сума внеску</value>
+    </title>
+    <title>
+      <key>uk</key>
+      <value>Сума внеску</value>
     </title>
     <id>13</id>
     <valueType>
@@ -1201,7 +1076,11 @@
     <name>СуммаВыдачи</name>
     <title>
       <key>ru</key>
-      <value>Сумма выдачи</value>
+      <value>Сума виїмки</value>
+    </title>
+    <title>
+      <key>uk</key>
+      <value>Сума виїмки</value>
     </title>
     <id>14</id>
     <valueType>
@@ -1222,7 +1101,11 @@
     <name>СуммаПродажи</name>
     <title>
       <key>ru</key>
-      <value>Сумма продажи</value>
+      <value>Сума продажу</value>
+    </title>
+    <title>
+      <key>uk</key>
+      <value>Сума продажу</value>
     </title>
     <id>15</id>
     <valueType>
@@ -1243,7 +1126,11 @@
     <name>СуммаПродажВКредит</name>
     <title>
       <key>ru</key>
-      <value>Сумма продаж ЕПЗ</value>
+      <value>Сума продажів ЕПЗ</value>
+    </title>
+    <title>
+      <key>uk</key>
+      <value>Сума продажів ЕПЗ</value>
     </title>
     <id>16</id>
     <valueType>
@@ -1264,7 +1151,11 @@
     <name>СуммаОстатка</name>
     <title>
       <key>ru</key>
-      <value>Сумма остатка</value>
+      <value>Сума залишку</value>
+    </title>
+    <title>
+      <key>uk</key>
+      <value>Сума залишку</value>
     </title>
     <id>17</id>
     <valueType>
@@ -1285,7 +1176,11 @@
     <name>СуммаПодарочныхСертификатов</name>
     <title>
       <key>ru</key>
-      <value>Сумма сертификатов</value>
+      <value>Сума сертифікатів</value>
+    </title>
+    <title>
+      <key>uk</key>
+      <value>Сума сертифікатів</value>
     </title>
     <id>18</id>
     <valueType>
@@ -1319,16 +1214,41 @@
       <common>true</common>
     </edit>
   </attributes>
+  <attributes>
+    <name>РаботаемБезДисплеяПокупателя</name>
+    <title>
+      <key>ru</key>
+      <value>Работаем без дисплея покупателя</value>
+    </title>
+    <id>20</id>
+    <valueType>
+      <types>Boolean</types>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
+  </attributes>
   <formCommands>
     <name>СлужебнаяВыдача</name>
     <title>
       <key>ru</key>
-      <value>Служебная выдача (F3)</value>
+      <value>Службова видача (F3)</value>
+    </title>
+    <title>
+      <key>uk</key>
+      <value>Службова видача (F3)</value>
     </title>
     <id>1</id>
     <toolTip>
       <key>ru</key>
-      <value>Служебная выдача</value>
+      <value>Службова видача</value>
+    </toolTip>
+    <toolTip>
+      <key>uk</key>
+      <value>Службова видача</value>
     </toolTip>
     <use>
       <common>true</common>
@@ -1345,12 +1265,20 @@
     <name>СлужебныйВзнос</name>
     <title>
       <key>ru</key>
-      <value>Служебный взнос (F2)</value>
+      <value>Службовий внесок (F2)</value>
+    </title>
+    <title>
+      <key>uk</key>
+      <value>Службовий внесок (F2)</value>
     </title>
     <id>2</id>
     <toolTip>
       <key>ru</key>
-      <value>Служебный взнос</value>
+      <value>Службовий внесок</value>
+    </toolTip>
+    <toolTip>
+      <key>uk</key>
+      <value>Службовий внесок</value>
     </toolTip>
     <use>
       <common>true</common>
@@ -1367,12 +1295,20 @@
     <name>ЗакрытьФорму</name>
     <title>
       <key>ru</key>
-      <value>Закрыть (F11)</value>
+      <value>Закрити (F11)</value>
+    </title>
+    <title>
+      <key>uk</key>
+      <value>Закрити (F11)</value>
     </title>
     <id>3</id>
     <toolTip>
       <key>ru</key>
-      <value>Закрыть форму</value>
+      <value>Завершити роботу за службовими процедурами</value>
+    </toolTip>
+    <toolTip>
+      <key>uk</key>
+      <value>Завершити роботу за службовими процедурами</value>
     </toolTip>
     <use>
       <common>true</common>
@@ -1389,12 +1325,20 @@
     <name>ОборотнаяВедомость</name>
     <title>
       <key>ru</key>
-      <value>Оборотная ведомость (F5)</value>
+      <value>Оборотна відомість (F5)</value>
+    </title>
+    <title>
+      <key>uk</key>
+      <value>Оборотна відомість (F5)</value>
     </title>
     <id>4</id>
     <toolTip>
       <key>ru</key>
-      <value>Оборотная ведомость</value>
+      <value>Оборотна відомість</value>
+    </toolTip>
+    <toolTip>
+      <key>uk</key>
+      <value>Оборотна відомість</value>
     </toolTip>
     <use>
       <common>true</common>
@@ -1411,13 +1355,22 @@
     <name>ОтчетX</name>
     <title>
       <key>ru</key>
-      <value>X-отчет
+      <value>X-звіт
+(F6)</value>
+    </title>
+    <title>
+      <key>uk</key>
+      <value>X-звіт
 (F6)</value>
     </title>
     <id>5</id>
     <toolTip>
       <key>ru</key>
-      <value>Отчет X</value>
+      <value>Звіт без закриття касової зміни на фіскальному реєстраторі</value>
+    </toolTip>
+    <toolTip>
+      <key>uk</key>
+      <value>Звіт без закриття касової зміни на фіскальному реєстраторі</value>
     </toolTip>
     <use>
       <common>true</common>
@@ -1434,13 +1387,22 @@
     <name>ОтчетZ</name>
     <title>
       <key>ru</key>
-      <value>Z-отчет
+      <value>Z-звіт
+(F8)</value>
+    </title>
+    <title>
+      <key>uk</key>
+      <value>Z-звіт
 (F8)</value>
     </title>
     <id>6</id>
     <toolTip>
       <key>ru</key>
-      <value>Отчет Z</value>
+      <value>Звіт, що виконує закриття касової зміни на фіскальному реєстраторі</value>
+    </toolTip>
+    <toolTip>
+      <key>uk</key>
+      <value>Звіт, що виконує закриття касової зміни на фіскальному реєстраторі</value>
     </toolTip>
     <use>
       <common>true</common>
@@ -1457,13 +1419,22 @@
     <name>ПериодическийОтчет</name>
     <title>
       <key>ru</key>
-      <value>Периодический
-отчет (F4)</value>
+      <value>Періодичний
+звіт (F4)</value>
+    </title>
+    <title>
+      <key>uk</key>
+      <value>Періодичний
+звіт (F4)</value>
     </title>
     <id>7</id>
     <toolTip>
       <key>ru</key>
-      <value>Периодический отчет</value>
+      <value>Періодичний звіт</value>
+    </toolTip>
+    <toolTip>
+      <key>uk</key>
+      <value>Періодичний звіт</value>
     </toolTip>
     <use>
       <common>true</common>
