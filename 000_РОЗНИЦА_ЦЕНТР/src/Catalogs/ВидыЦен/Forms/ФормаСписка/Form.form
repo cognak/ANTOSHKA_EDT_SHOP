@@ -15,6 +15,53 @@
     <skipOnInput>false</skipOnInput>
     <titleLocation>None</titleLocation>
     <items xsi:type="form:FormField">
+      <name>Код</name>
+      <id>47</id>
+      <visible>true</visible>
+      <enabled>true</enabled>
+      <userVisible>
+        <common>true</common>
+      </userVisible>
+      <dataPath xsi:type="form:DataPath">
+        <segments>Список.Код</segments>
+      </dataPath>
+      <extendedTooltip>
+        <name>КодРасширеннаяПодсказка</name>
+        <id>49</id>
+        <visible>true</visible>
+        <enabled>true</enabled>
+        <userVisible>
+          <common>true</common>
+        </userVisible>
+        <type>Label</type>
+        <autoMaxWidth>true</autoMaxWidth>
+        <autoMaxHeight>true</autoMaxHeight>
+        <extInfo xsi:type="form:LabelDecorationExtInfo">
+          <horizontalAlign>Left</horizontalAlign>
+        </extInfo>
+      </extendedTooltip>
+      <contextMenu>
+        <name>КодКонтекстноеМеню</name>
+        <id>48</id>
+        <visible>true</visible>
+        <enabled>true</enabled>
+        <userVisible>
+          <common>true</common>
+        </userVisible>
+        <autoFill>true</autoFill>
+      </contextMenu>
+      <type>LabelField</type>
+      <editMode>Enter</editMode>
+      <showInHeader>true</showInHeader>
+      <headerHorizontalAlign>Left</headerHorizontalAlign>
+      <showInFooter>true</showInFooter>
+      <extInfo xsi:type="form:LabelFieldExtInfo">
+        <width>8</width>
+        <autoMaxHeight>true</autoMaxHeight>
+        <horizontalStretch>false</horizontalStretch>
+      </extInfo>
+    </items>
+    <items xsi:type="form:FormField">
       <name>ТипЦены</name>
       <id>42</id>
       <visible>true</visible>
@@ -75,7 +122,7 @@
         <common>true</common>
       </userVisible>
       <dataPath xsi:type="form:DataPath">
-        <segments>Список.Description</segments>
+        <segments>Список.Наименование</segments>
       </dataPath>
       <defaultItem>true</defaultItem>
       <extendedTooltip>
@@ -115,6 +162,53 @@
         <typeDomainEnabled>true</typeDomainEnabled>
         <textEdit>true</textEdit>
       </extInfo>
+    </items>
+    <items xsi:type="form:FormField">
+      <name>ЦенаВключаетНДС</name>
+      <id>50</id>
+      <visible>true</visible>
+      <enabled>true</enabled>
+      <userVisible>
+        <common>true</common>
+      </userVisible>
+      <dataPath xsi:type="form:DataPath">
+        <segments>Список.ЦенаВключаетНДС</segments>
+      </dataPath>
+      <titleLocation>None</titleLocation>
+      <extendedTooltip>
+        <name>ЦенаВключаетНДСРасширеннаяПодсказка</name>
+        <id>52</id>
+        <visible>true</visible>
+        <enabled>true</enabled>
+        <userVisible>
+          <common>true</common>
+        </userVisible>
+        <type>Label</type>
+        <autoMaxWidth>true</autoMaxWidth>
+        <autoMaxHeight>true</autoMaxHeight>
+        <extInfo xsi:type="form:LabelDecorationExtInfo">
+          <horizontalAlign>Left</horizontalAlign>
+        </extInfo>
+      </extendedTooltip>
+      <contextMenu>
+        <name>ЦенаВключаетНДСКонтекстноеМеню</name>
+        <id>51</id>
+        <visible>true</visible>
+        <enabled>true</enabled>
+        <userVisible>
+          <common>true</common>
+        </userVisible>
+        <autoFill>true</autoFill>
+      </contextMenu>
+      <type>CheckBoxField</type>
+      <editMode>Enter</editMode>
+      <showInHeader>true</showInHeader>
+      <headerPicture xsi:type="core:PictureRef">
+        <picture>StdPicture.GenerateReport</picture>
+      </headerPicture>
+      <headerHorizontalAlign>Left</headerHorizontalAlign>
+      <showInFooter>true</showInFooter>
+      <extInfo xsi:type="form:CheckBoxFieldExtInfo"/>
     </items>
     <items xsi:type="form:FormField">
       <name>Идентификатор</name>
@@ -204,12 +298,13 @@
       <type>PictureField</type>
       <editMode>Enter</editMode>
       <showInHeader>true</showInHeader>
+      <headerPicture xsi:type="core:PictureRef">
+        <picture>CommonPicture.СправкаВНачало</picture>
+      </headerPicture>
       <headerHorizontalAlign>Left</headerHorizontalAlign>
       <showInFooter>true</showInFooter>
       <extInfo xsi:type="form:ImageFieldExtInfo">
-        <autoMaxWidth>true</autoMaxWidth>
         <autoMaxHeight>true</autoMaxHeight>
-        <horizontalStretch>true</horizontalStretch>
         <verticalStretch>true</verticalStretch>
         <valuesPicture xsi:type="core:PictureRef">
           <picture>CommonPicture.СпособыЗаданияЦен</picture>
@@ -674,28 +769,29 @@
     <main>true</main>
     <extInfo xsi:type="form:DynamicListExtInfo">
       <queryText>ВЫБРАТЬ РАЗРЕШЕННЫЕ
-	СправочникВидыЦен.Ссылка,
-	СправочникВидыЦен.ПометкаУдаления,
-	СправочникВидыЦен.Предопределенный,
-	СправочникВидыЦен.Наименование,
-	СправочникВидыЦен.ТипЦены,
-	СправочникВидыЦен.ЦенаВключаетНДС,
-	СправочникВидыЦен.ИспользоватьПриПродаже,
-	СправочникВидыЦен.ИспользоватьПриПередачеМеждуОрганизациями,
-	СправочникВидыЦен.СпособЗаданияЦены,
-	СправочникВидыЦен.ОкруглятьВБольшуюСторону,
-	СправочникВидыЦен.РеквизитДопУпорядочивания,
-	СправочникВидыЦен.Идентификатор,
+	ТаблицаСправочник.Ссылка КАК Ссылка,
+	ТаблицаСправочник.ПометкаУдаления КАК ПометкаУдаления,
+	ТаблицаСправочник.Предопределенный КАК Предопределенный,
+	ТаблицаСправочник.Код КАК Код,
+	ТаблицаСправочник.Наименование КАК Наименование,
+	ТаблицаСправочник.ТипЦены КАК ТипЦены,
+	ТаблицаСправочник.ЦенаВключаетНДС КАК ЦенаВключаетНДС,
+	ТаблицаСправочник.ИспользоватьПриПродаже КАК ИспользоватьПриПродаже,
+	ТаблицаСправочник.ИспользоватьПриПередачеМеждуОрганизациями КАК ИспользоватьПриПередачеМеждуОрганизациями,
+	ТаблицаСправочник.СпособЗаданияЦены КАК СпособЗаданияЦены,
+	ТаблицаСправочник.ОкруглятьВБольшуюСторону КАК ОкруглятьВБольшуюСторону,
+	ТаблицаСправочник.РеквизитДопУпорядочивания КАК РеквизитДопУпорядочивания,
+	ТаблицаСправочник.Идентификатор КАК Идентификатор,
 	ВЫБОР
-		КОГДА СправочникВидыЦен.СпособЗаданияЦены = ЗНАЧЕНИЕ(Перечисление.СпособыЗаданияЦен.Вручную)
+		КОГДА ТаблицаСправочник.СпособЗаданияЦены = ЗНАЧЕНИЕ(Перечисление.СпособыЗаданияЦен.Вручную)
 			ТОГДА 0
-		КОГДА СправочникВидыЦен.СпособЗаданияЦены = ЗНАЧЕНИЕ(Перечисление.СпособыЗаданияЦен.ЗаполнятьПоДаннымИБ)
+		КОГДА ТаблицаСправочник.СпособЗаданияЦены = ЗНАЧЕНИЕ(Перечисление.СпособыЗаданияЦен.ЗаполнятьПоДаннымИБ)
 			ТОГДА 1
-		КОГДА СправочникВидыЦен.СпособЗаданияЦены = ЗНАЧЕНИЕ(Перечисление.СпособыЗаданияЦен.РассчитыватьПоДругимВидамЦен)
+		КОГДА ТаблицаСправочник.СпособЗаданияЦены = ЗНАЧЕНИЕ(Перечисление.СпособыЗаданияЦен.РассчитыватьПоДругимВидамЦен)
 			ТОГДА 2
 	КОНЕЦ КАК ИндексКартинки
 ИЗ
-	Справочник.ВидыЦен КАК СправочникВидыЦен</queryText>
+	Справочник.ВидыЦен КАК ТаблицаСправочник</queryText>
       <mainTable>Catalog.ВидыЦен</mainTable>
       <dynamicDataRead>true</dynamicDataRead>
       <autoFillAvailableFields>true</autoFillAvailableFields>
