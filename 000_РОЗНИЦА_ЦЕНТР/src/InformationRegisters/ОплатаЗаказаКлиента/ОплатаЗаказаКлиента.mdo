@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="2d0f2dd2-4a92-4968-ae4a-3cc009bcf1c0">
+  <producedTypes>
+    <selectionType typeId="775c8683-432a-4de8-85df-16f6a89ae8f8" valueTypeId="17ab1556-dab7-45cf-92b7-d97160a3ad46"/>
+    <listType typeId="10d63622-e0f2-4a1d-b719-8067861bb246" valueTypeId="fd4c84bd-c3e9-47cc-8b63-49a9132662ce"/>
+    <managerType typeId="5e7d57d3-8fd9-41ab-b881-6166f4ad77b9" valueTypeId="8577929d-bd9b-452e-af77-fa45b925da6a"/>
+    <recordSetType typeId="4fe695ee-32a3-45f3-9bfd-1405bb3a100a" valueTypeId="d63824d2-eb36-4620-bf34-7084b51fccf0"/>
+    <recordKeyType typeId="972123dc-23de-4b68-9519-e081d4d1b51e" valueTypeId="b354c8bf-7c50-4318-9f2d-1c7c25a36d79"/>
+    <recordType typeId="c35ace3e-a245-4ef2-a765-1d21c17aa7a2" valueTypeId="a6a32c2b-68de-4ff9-a06e-981388ebde38"/>
+    <recordManagerType typeId="becc7be1-4810-42fb-9007-c73baf069636" valueTypeId="00c1fab6-eb62-402b-98ba-5c3d082c85a1"/>
+  </producedTypes>
+  <name>ОплатаЗаказаКлиента</name>
+  <synonym>
+    <key>ru</key>
+    <value>Оплата заказа клиента</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <editType>InDialog</editType>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <resources uuid="3111ce03-03e2-46ba-aa2e-04243cb73a40">
+    <name>ТипОплаты</name>
+    <synonym>
+      <key>ru</key>
+      <value>Тип оплаты</value>
+    </synonym>
+    <type>
+      <types>EnumRef.ТипОплатыЗаказПокупателя</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </resources>
+  <resources uuid="e3e40fd6-73fb-40d4-868f-dbd83d1060dc">
+    <name>Сумма</name>
+    <synonym>
+      <key>ru</key>
+      <value>Сумма</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <scale>2</scale>
+        <nonNegative>true</nonNegative>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </resources>
+  <resources uuid="ab3923f6-bc45-4fc0-8d53-d43960e42f86">
+    <name>СтатусОплаты</name>
+    <synonym>
+      <key>ru</key>
+      <value>Статус оплаты</value>
+    </synonym>
+    <type>
+      <types>EnumRef.СтатусОплаты</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </resources>
+  <resources uuid="26992e6b-ccc4-4cf2-803d-3fb5ccea59f5">
+    <name>Отменён</name>
+    <synonym>
+      <key>ru</key>
+      <value>Отменён</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </resources>
+  <resources uuid="3b742314-edb0-44b6-b3c2-d6177c3044db">
+    <name>ВидОплаты</name>
+    <synonym>
+      <key>ru</key>
+      <value>Вид оплаты</value>
+    </synonym>
+    <type>
+      <types>EnumRef.ВидыОплатыЗаказаПокупателя</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </resources>
+  <attributes uuid="cd028c54-0a33-4a52-9484-7292e8c3db34">
+    <name>ДатаОплаты</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата оплаты</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <attributes uuid="f2b4e92d-2012-47de-a316-5d723cbb4bf1">
+    <name>ДатаСоздания</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата создания</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </attributes>
+  <attributes uuid="23dad702-637d-4920-8a12-2d46f139252d">
+    <name>ИДОплаты</name>
+    <synonym>
+      <key>ru</key>
+      <value>ИДОплаты</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>32</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <dimensions uuid="5d9f9cc7-6173-49f3-9ced-d2e3743a64a6">
+    <name>ЗаказКлиента</name>
+    <synonym>
+      <key>ru</key>
+      <value>Заказ клиента</value>
+    </synonym>
+    <type>
+      <types>DocumentRef.ЗаказПокупателя</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="0e2bdaa8-43fa-4e39-8e40-a68714a495dc">
+    <name>НомерОплаты</name>
+    <synonym>
+      <key>ru</key>
+      <value>Номер оплаты</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>3</precision>
+        <nonNegative>true</nonNegative>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </dimensions>
+</mdclass:InformationRegister>
