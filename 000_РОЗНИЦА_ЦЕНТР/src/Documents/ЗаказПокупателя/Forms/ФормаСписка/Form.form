@@ -4930,6 +4930,56 @@
         </extInfo>
       </items>
       <items xsi:type="form:FormField">
+        <name>СписокЗапросаДоступностиСтатусЭН</name>
+        <id>372</id>
+        <visible>true</visible>
+        <enabled>true</enabled>
+        <userVisible>
+          <common>true</common>
+        </userVisible>
+        <dataPath xsi:type="form:DataPath">
+          <segments>СписокЗапросаДоступности.СтатусЭН</segments>
+        </dataPath>
+        <extendedTooltip>
+          <name>СписокЗапросаДоступностиСтатусЭНРасширеннаяПодсказка</name>
+          <id>374</id>
+          <visible>true</visible>
+          <enabled>true</enabled>
+          <userVisible>
+            <common>true</common>
+          </userVisible>
+          <type>Label</type>
+          <autoMaxWidth>true</autoMaxWidth>
+          <autoMaxHeight>true</autoMaxHeight>
+          <extInfo xsi:type="form:LabelDecorationExtInfo">
+            <horizontalAlign>Left</horizontalAlign>
+          </extInfo>
+        </extendedTooltip>
+        <contextMenu>
+          <name>СписокЗапросаДоступностиСтатусЭНКонтекстноеМеню</name>
+          <id>373</id>
+          <visible>true</visible>
+          <enabled>true</enabled>
+          <userVisible>
+            <common>true</common>
+          </userVisible>
+          <autoFill>true</autoFill>
+        </contextMenu>
+        <type>InputField</type>
+        <editMode>Enter</editMode>
+        <showInHeader>true</showInHeader>
+        <headerHorizontalAlign>Left</headerHorizontalAlign>
+        <showInFooter>true</showInFooter>
+        <extInfo xsi:type="form:InputFieldExtInfo">
+          <autoMaxWidth>true</autoMaxWidth>
+          <autoMaxHeight>true</autoMaxHeight>
+          <wrap>true</wrap>
+          <chooseType>true</chooseType>
+          <typeDomainEnabled>true</typeDomainEnabled>
+          <textEdit>true</textEdit>
+        </extInfo>
+      </items>
+      <items xsi:type="form:FormField">
         <name>СписокЗапросаДоступностиМагазинОтправитель</name>
         <id>255</id>
         <visible>true</visible>
@@ -5728,11 +5778,18 @@
 	ДокументЗапросДоступностиТоваров.ТипДоставки КАК ТипДоставки,
 	ДокументЗапросДоступностиТоваров.ТовароТранспортнаяНакладная КАК ТовароТранспортнаяНакладная,
 	ДокументЗапросДоступностиТоваров.ДоставкаНаАдрес КАК ДоставкаНаАдрес,
-	ДокументЗапросДоступностиТоваров.Автор КАК Автор,
-	ДокументЗапросДоступностиТоваров.УзелСоздания КАК УзелСоздания,
-	ДокументЗапросДоступностиТоваров.МоментВремени КАК МоментВремени
+	ДокументЗапросДоступностиТоваров.МоментВремени КАК МоментВремени,
+	ВЫБОР
+		КОГДА ЭлектроннаяНакладная.Ссылка ЕСТЬ NULL
+			ТОГДА &quot;&quot;
+		ИНАЧЕ ЕСТЬNULL(СтатусыТТНСрезПоследних.СтатусЭН, &quot;Создана&quot;)
+	КОНЕЦ КАК СтатусЭН
 ИЗ
 	Документ.ЗапросДоступностиТоваров КАК ДокументЗапросДоступностиТоваров
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.ЭлектроннаяНакладная КАК ЭлектроннаяНакладная
+			ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СтатусыЭН.СрезПоследних КАК СтатусыТТНСрезПоследних
+			ПО ЭлектроннаяНакладная.Ссылка = СтатусыТТНСрезПоследних.ДокументРегистратор
+		ПО (ЭлектроннаяНакладная.ДокументОснование = ДокументЗапросДоступностиТоваров.Ссылка)
 ГДЕ
 	ДокументЗапросДоступностиТоваров.ДокументОснование = &amp;ДокументОснование</queryText>
       <mainTable>Document.ЗапросДоступностиТоваров</mainTable>
