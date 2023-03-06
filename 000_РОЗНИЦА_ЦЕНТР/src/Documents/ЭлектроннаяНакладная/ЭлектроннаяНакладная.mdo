@@ -26,6 +26,21 @@
   <realTimePosting>Deny</realTimePosting>
   <postInPrivilegedMode>true</postInPrivilegedMode>
   <unpostInPrivilegedMode>true</unpostInPrivilegedMode>
+  <attributes uuid="77b70cfa-0497-4208-8c5e-368964c35dcb">
+    <name>АдресОтправитель</name>
+    <synonym>
+      <key>ru</key>
+      <value>Адрес отправитель</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.АдресаСлужбыДоставки</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
   <attributes uuid="f524baf2-408a-429b-be6b-b17885c50c15">
     <name>ВнешняяСсылка</name>
     <synonym>
@@ -37,6 +52,40 @@
       <stringQualifiers>
         <length>36</length>
         <fixed>true</fixed>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="e13e1f8e-a4c6-4fe4-8db8-6241b9ce7107">
+    <name>ГородОтправитель</name>
+    <synonym>
+      <key>ru</key>
+      <value>Город отправитель</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ГородаДоставки</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="fe9ca6e3-de68-40ca-b44b-621544a16c90">
+    <name>ГородПолучатель</name>
+    <synonym>
+      <key>ru</key>
+      <value>Город получатель</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ГородаДоставки</types>
+      <types>String</types>
+      <stringQualifiers>
+        <length>150</length>
       </stringQualifiers>
     </type>
     <minValue xsi:type="core:UndefinedValue"/>
@@ -79,6 +128,220 @@
     <fullTextSearch>Use</fullTextSearch>
     <dataHistory>Use</dataHistory>
   </attributes>
+  <attributes uuid="8c878ece-6a05-42a4-995d-f703b0650d9d">
+    <name>ДомПолучатель</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дом получатель</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>50</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="db69dd70-7e48-459a-b47d-f73082cf2436">
+    <name>ДоставкаНаАдрес</name>
+    <synonym>
+      <key>ru</key>
+      <value>Доставка на адрес</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="5be2ccdb-437b-47f6-b683-bd550843a119">
+    <name>ЗаказПокупателя</name>
+    <synonym>
+      <key>ru</key>
+      <value>Заказ покупателя</value>
+    </synonym>
+    <type>
+      <types>DocumentRef.ЗаказПокупателя</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="8f43e1b3-984b-4a78-bc11-2089af4e2090">
+    <name>ИмяПолучатель</name>
+    <synonym>
+      <key>ru</key>
+      <value>Имя получатель</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>50</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="d1e916a9-dda8-4970-ab81-32cf09063f21">
+    <name>КвартираПолучатель</name>
+    <synonym>
+      <key>ru</key>
+      <value>Квартира получатель</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>50</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="ba092e13-3f4e-425a-bb1b-9e3f75710e8a">
+    <name>КонтактноеЛицоОтправитель</name>
+    <synonym>
+      <key>ru</key>
+      <value>Контактное лицо отправитель</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.КонтактныеЛицаСлужбыДоставки</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="ac3cbddd-cc03-4a37-9986-3982f55c7a46">
+    <name>КонтрагентОтправитель</name>
+    <synonym>
+      <key>ru</key>
+      <value>Контрагент отправитель</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.КонтрагентыСлужбыДоставки</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="111c1a10-6148-4252-b081-4ef0cfca21ce">
+    <name>МагазинПолучатель</name>
+    <synonym>
+      <key>ru</key>
+      <value>Магазин получатель</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Магазины</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Магазин, с которого ожидается отгрузка по заказу на перемещение.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="28805ad2-4ebd-4af4-b2c0-fbaf85c36459">
+    <name>НашаСуммаДоставки</name>
+    <synonym>
+      <key>ru</key>
+      <value>Наша сумма доставки</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <scale>2</scale>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="2eee4fcb-130c-477c-b7c1-2b3b0270cc5e">
+    <name>НомерДомаОтправитель</name>
+    <synonym>
+      <key>ru</key>
+      <value>Номер дома отправитель</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>10</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="85758f7d-d291-41f5-a330-2fbcfae0a6a5">
+    <name>НомерТелефонаОтправитель</name>
+    <synonym>
+      <key>ru</key>
+      <value>Номер телефона отправитель</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers/>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="01d562b5-c931-402c-8597-de28117d39fb">
+    <name>ОбластьПолучатель</name>
+    <synonym>
+      <key>ru</key>
+      <value>Область получатель</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>300</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
   <attributes uuid="949c6ed7-516e-41a8-8edf-d7691e1c261a">
     <name>ОператорДоставки</name>
     <synonym>
@@ -91,6 +354,76 @@
     <minValue xsi:type="core:UndefinedValue"/>
     <maxValue xsi:type="core:UndefinedValue"/>
     <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="2131bcc5-defb-4d68-8266-60fc96a8b789">
+    <name>ОтделениеОтправитель</name>
+    <synonym>
+      <key>ru</key>
+      <value>Отделение отправитель</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Отделения</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="c8555ebd-5295-488e-a5ca-92eb798e36c5">
+    <name>ОтделениеПолучатель</name>
+    <synonym>
+      <key>ru</key>
+      <value>Отделение получатель</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Почтоматы</types>
+      <types>String</types>
+      <types>CatalogRef.Отделения</types>
+      <stringQualifiers>
+        <length>150</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="2c9c71bc-f14e-4cfc-893c-b2e286d59d68">
+    <name>ОтправкаИзМагазина</name>
+    <synonym>
+      <key>ru</key>
+      <value>Отправка из магазина</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="1c626258-a261-4d1d-8a4e-a71bffba476b">
+    <name>ОтчествоПолучатель</name>
+    <synonym>
+      <key>ru</key>
+      <value>Отчество получатель</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>50</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
     <fullTextSearch>Use</fullTextSearch>
     <dataHistory>Use</dataHistory>
   </attributes>
@@ -134,6 +467,41 @@
     <fullTextSearch>Use</fullTextSearch>
     <dataHistory>Use</dataHistory>
   </attributes>
+  <attributes uuid="3bc356f4-212b-469a-a106-e3dbc49fdf1f">
+    <name>РайонПолучатель</name>
+    <synonym>
+      <key>ru</key>
+      <value>Район получатель</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>300</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="7d2a6391-9f1e-4f44-9420-c61c41ad8a29">
+    <name>Реестр</name>
+    <synonym>
+      <key>ru</key>
+      <value>Реестр</value>
+    </synonym>
+    <type>
+      <types>DocumentRef.РеестрЭН</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
   <attributes uuid="a8e60dc3-73a2-4377-86d4-16be99523609">
     <name>СуммаДоставки</name>
     <synonym>
@@ -153,57 +521,34 @@
     <fullTextSearch>Use</fullTextSearch>
     <dataHistory>Use</dataHistory>
   </attributes>
-  <attributes uuid="28805ad2-4ebd-4af4-b2c0-fbaf85c36459">
-    <name>НашаСуммаДоставки</name>
+  <attributes uuid="41254d9c-9ec5-43e0-9b7c-0337c60a1b15">
+    <name>ТелефонПолучатель</name>
     <synonym>
       <key>ru</key>
-      <value>Наша сумма доставки</value>
+      <value>Телефон получатель</value>
     </synonym>
     <type>
-      <types>Number</types>
-      <numberQualifiers>
-        <precision>15</precision>
-        <scale>2</scale>
-      </numberQualifiers>
-    </type>
-    <minValue xsi:type="core:UndefinedValue"/>
-    <maxValue xsi:type="core:UndefinedValue"/>
-    <fillValue xsi:type="core:UndefinedValue"/>
-    <fullTextSearch>Use</fullTextSearch>
-    <dataHistory>Use</dataHistory>
-  </attributes>
-  <attributes uuid="fe9ca6e3-de68-40ca-b44b-621544a16c90">
-    <name>ГородПолучатель</name>
-    <synonym>
-      <key>ru</key>
-      <value>Город получатель</value>
-    </synonym>
-    <type>
-      <types>CatalogRef.ГородаДоставки</types>
       <types>String</types>
       <stringQualifiers>
-        <length>150</length>
+        <length>12</length>
       </stringQualifiers>
     </type>
     <minValue xsi:type="core:UndefinedValue"/>
     <maxValue xsi:type="core:UndefinedValue"/>
-    <fillValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
     <fullTextSearch>Use</fullTextSearch>
     <dataHistory>Use</dataHistory>
   </attributes>
-  <attributes uuid="c8555ebd-5295-488e-a5ca-92eb798e36c5">
-    <name>ОтделениеПолучатель</name>
+  <attributes uuid="c667f933-4be3-4c91-bbd7-07181add0bc2">
+    <name>УлицаОтправитель</name>
     <synonym>
       <key>ru</key>
-      <value>Отделение получатель</value>
+      <value>Улица отправитель</value>
     </synonym>
     <type>
-      <types>CatalogRef.Почтоматы</types>
-      <types>String</types>
-      <types>CatalogRef.Отделения</types>
-      <stringQualifiers>
-        <length>150</length>
-      </stringQualifiers>
+      <types>CatalogRef.Улицы</types>
     </type>
     <minValue xsi:type="core:UndefinedValue"/>
     <maxValue xsi:type="core:UndefinedValue"/>
@@ -230,46 +575,6 @@
     <fullTextSearch>Use</fullTextSearch>
     <dataHistory>Use</dataHistory>
   </attributes>
-  <attributes uuid="8c878ece-6a05-42a4-995d-f703b0650d9d">
-    <name>ДомПолучатель</name>
-    <synonym>
-      <key>ru</key>
-      <value>Дом получатель</value>
-    </synonym>
-    <type>
-      <types>String</types>
-      <stringQualifiers>
-        <length>50</length>
-      </stringQualifiers>
-    </type>
-    <minValue xsi:type="core:UndefinedValue"/>
-    <maxValue xsi:type="core:UndefinedValue"/>
-    <fillValue xsi:type="core:StringValue">
-      <value></value>
-    </fillValue>
-    <fullTextSearch>Use</fullTextSearch>
-    <dataHistory>Use</dataHistory>
-  </attributes>
-  <attributes uuid="d1e916a9-dda8-4970-ab81-32cf09063f21">
-    <name>КвартираПолучатель</name>
-    <synonym>
-      <key>ru</key>
-      <value>Квартира получатель</value>
-    </synonym>
-    <type>
-      <types>String</types>
-      <stringQualifiers>
-        <length>50</length>
-      </stringQualifiers>
-    </type>
-    <minValue xsi:type="core:UndefinedValue"/>
-    <maxValue xsi:type="core:UndefinedValue"/>
-    <fillValue xsi:type="core:StringValue">
-      <value></value>
-    </fillValue>
-    <fullTextSearch>Use</fullTextSearch>
-    <dataHistory>Use</dataHistory>
-  </attributes>
   <attributes uuid="92ba9e4b-f1b4-4ef6-a40b-5a9f868b361c">
     <name>ФамилияПолучатель</name>
     <synonym>
@@ -287,296 +592,6 @@
     <fillValue xsi:type="core:StringValue">
       <value></value>
     </fillValue>
-    <fullTextSearch>Use</fullTextSearch>
-    <dataHistory>Use</dataHistory>
-  </attributes>
-  <attributes uuid="8f43e1b3-984b-4a78-bc11-2089af4e2090">
-    <name>ИмяПолучатель</name>
-    <synonym>
-      <key>ru</key>
-      <value>Имя получатель</value>
-    </synonym>
-    <type>
-      <types>String</types>
-      <stringQualifiers>
-        <length>50</length>
-      </stringQualifiers>
-    </type>
-    <minValue xsi:type="core:UndefinedValue"/>
-    <maxValue xsi:type="core:UndefinedValue"/>
-    <fillValue xsi:type="core:StringValue">
-      <value></value>
-    </fillValue>
-    <fullTextSearch>Use</fullTextSearch>
-    <dataHistory>Use</dataHistory>
-  </attributes>
-  <attributes uuid="1c626258-a261-4d1d-8a4e-a71bffba476b">
-    <name>ОтчествоПолучатель</name>
-    <synonym>
-      <key>ru</key>
-      <value>Отчество получатель</value>
-    </synonym>
-    <type>
-      <types>String</types>
-      <stringQualifiers>
-        <length>50</length>
-      </stringQualifiers>
-    </type>
-    <minValue xsi:type="core:UndefinedValue"/>
-    <maxValue xsi:type="core:UndefinedValue"/>
-    <fillValue xsi:type="core:StringValue">
-      <value></value>
-    </fillValue>
-    <fullTextSearch>Use</fullTextSearch>
-    <dataHistory>Use</dataHistory>
-  </attributes>
-  <attributes uuid="41254d9c-9ec5-43e0-9b7c-0337c60a1b15">
-    <name>ТелефонПолучатель</name>
-    <synonym>
-      <key>ru</key>
-      <value>Телефон получатель</value>
-    </synonym>
-    <type>
-      <types>String</types>
-      <stringQualifiers>
-        <length>12</length>
-      </stringQualifiers>
-    </type>
-    <minValue xsi:type="core:UndefinedValue"/>
-    <maxValue xsi:type="core:UndefinedValue"/>
-    <fillValue xsi:type="core:StringValue">
-      <value></value>
-    </fillValue>
-    <fullTextSearch>Use</fullTextSearch>
-    <dataHistory>Use</dataHistory>
-  </attributes>
-  <attributes uuid="3bc356f4-212b-469a-a106-e3dbc49fdf1f">
-    <name>РайонПолучатель</name>
-    <synonym>
-      <key>ru</key>
-      <value>Район получатель</value>
-    </synonym>
-    <type>
-      <types>String</types>
-      <stringQualifiers>
-        <length>300</length>
-      </stringQualifiers>
-    </type>
-    <minValue xsi:type="core:UndefinedValue"/>
-    <maxValue xsi:type="core:UndefinedValue"/>
-    <fillValue xsi:type="core:StringValue">
-      <value></value>
-    </fillValue>
-    <fullTextSearch>Use</fullTextSearch>
-    <dataHistory>Use</dataHistory>
-  </attributes>
-  <attributes uuid="01d562b5-c931-402c-8597-de28117d39fb">
-    <name>ОбластьПолучатель</name>
-    <synonym>
-      <key>ru</key>
-      <value>Область получатель</value>
-    </synonym>
-    <type>
-      <types>String</types>
-      <stringQualifiers>
-        <length>300</length>
-      </stringQualifiers>
-    </type>
-    <minValue xsi:type="core:UndefinedValue"/>
-    <maxValue xsi:type="core:UndefinedValue"/>
-    <fillValue xsi:type="core:StringValue">
-      <value></value>
-    </fillValue>
-    <fullTextSearch>Use</fullTextSearch>
-    <dataHistory>Use</dataHistory>
-  </attributes>
-  <attributes uuid="ac3cbddd-cc03-4a37-9986-3982f55c7a46">
-    <name>КонтрагентОтправитель</name>
-    <synonym>
-      <key>ru</key>
-      <value>Контрагент отправитель</value>
-    </synonym>
-    <type>
-      <types>CatalogRef.КонтрагентыСлужбыДоставки</types>
-    </type>
-    <minValue xsi:type="core:UndefinedValue"/>
-    <maxValue xsi:type="core:UndefinedValue"/>
-    <fillValue xsi:type="core:UndefinedValue"/>
-    <fullTextSearch>Use</fullTextSearch>
-    <dataHistory>Use</dataHistory>
-  </attributes>
-  <attributes uuid="ba092e13-3f4e-425a-bb1b-9e3f75710e8a">
-    <name>КонтактноеЛицоОтправитель</name>
-    <synonym>
-      <key>ru</key>
-      <value>Контактное лицо отправитель</value>
-    </synonym>
-    <type>
-      <types>CatalogRef.КонтактныеЛицаСлужбыДоставки</types>
-    </type>
-    <minValue xsi:type="core:UndefinedValue"/>
-    <maxValue xsi:type="core:UndefinedValue"/>
-    <fillValue xsi:type="core:UndefinedValue"/>
-    <fullTextSearch>Use</fullTextSearch>
-    <dataHistory>Use</dataHistory>
-  </attributes>
-  <attributes uuid="85758f7d-d291-41f5-a330-2fbcfae0a6a5">
-    <name>НомерТелефонаОтправитель</name>
-    <synonym>
-      <key>ru</key>
-      <value>Номер телефона отправитель</value>
-    </synonym>
-    <type>
-      <types>String</types>
-      <stringQualifiers/>
-    </type>
-    <minValue xsi:type="core:UndefinedValue"/>
-    <maxValue xsi:type="core:UndefinedValue"/>
-    <fillValue xsi:type="core:StringValue">
-      <value></value>
-    </fillValue>
-    <fullTextSearch>Use</fullTextSearch>
-    <dataHistory>Use</dataHistory>
-  </attributes>
-  <attributes uuid="e13e1f8e-a4c6-4fe4-8db8-6241b9ce7107">
-    <name>ГородОтправитель</name>
-    <synonym>
-      <key>ru</key>
-      <value>Город отправитель</value>
-    </synonym>
-    <type>
-      <types>CatalogRef.ГородаДоставки</types>
-    </type>
-    <minValue xsi:type="core:UndefinedValue"/>
-    <maxValue xsi:type="core:UndefinedValue"/>
-    <fillValue xsi:type="core:UndefinedValue"/>
-    <fullTextSearch>Use</fullTextSearch>
-    <dataHistory>Use</dataHistory>
-  </attributes>
-  <attributes uuid="c667f933-4be3-4c91-bbd7-07181add0bc2">
-    <name>УлицаОтправитель</name>
-    <synonym>
-      <key>ru</key>
-      <value>Улица отправитель</value>
-    </synonym>
-    <type>
-      <types>CatalogRef.Улицы</types>
-    </type>
-    <minValue xsi:type="core:UndefinedValue"/>
-    <maxValue xsi:type="core:UndefinedValue"/>
-    <fillValue xsi:type="core:UndefinedValue"/>
-    <fullTextSearch>Use</fullTextSearch>
-    <dataHistory>Use</dataHistory>
-  </attributes>
-  <attributes uuid="2eee4fcb-130c-477c-b7c1-2b3b0270cc5e">
-    <name>НомерДомаОтправитель</name>
-    <synonym>
-      <key>ru</key>
-      <value>Номер дома отправитель</value>
-    </synonym>
-    <type>
-      <types>String</types>
-      <stringQualifiers>
-        <length>10</length>
-      </stringQualifiers>
-    </type>
-    <minValue xsi:type="core:UndefinedValue"/>
-    <maxValue xsi:type="core:UndefinedValue"/>
-    <fillValue xsi:type="core:UndefinedValue"/>
-    <fullTextSearch>Use</fullTextSearch>
-    <dataHistory>Use</dataHistory>
-  </attributes>
-  <attributes uuid="77b70cfa-0497-4208-8c5e-368964c35dcb">
-    <name>АдресОтправитель</name>
-    <synonym>
-      <key>ru</key>
-      <value>Адрес отправитель</value>
-    </synonym>
-    <type>
-      <types>CatalogRef.АдресаСлужбыДоставки</types>
-    </type>
-    <minValue xsi:type="core:UndefinedValue"/>
-    <maxValue xsi:type="core:UndefinedValue"/>
-    <fillValue xsi:type="core:UndefinedValue"/>
-    <fullTextSearch>Use</fullTextSearch>
-    <dataHistory>Use</dataHistory>
-  </attributes>
-  <attributes uuid="2131bcc5-defb-4d68-8266-60fc96a8b789">
-    <name>ОтделениеОтправитель</name>
-    <synonym>
-      <key>ru</key>
-      <value>Отделение отправитель</value>
-    </synonym>
-    <type>
-      <types>CatalogRef.Отделения</types>
-    </type>
-    <minValue xsi:type="core:UndefinedValue"/>
-    <maxValue xsi:type="core:UndefinedValue"/>
-    <fillValue xsi:type="core:UndefinedValue"/>
-    <fullTextSearch>Use</fullTextSearch>
-    <dataHistory>Use</dataHistory>
-  </attributes>
-  <attributes uuid="2c9c71bc-f14e-4cfc-893c-b2e286d59d68">
-    <name>ОтправкаИзМагазина</name>
-    <synonym>
-      <key>ru</key>
-      <value>Отправка из магазина</value>
-    </synonym>
-    <type>
-      <types>Boolean</types>
-    </type>
-    <minValue xsi:type="core:UndefinedValue"/>
-    <maxValue xsi:type="core:UndefinedValue"/>
-    <fillValue xsi:type="core:UndefinedValue"/>
-    <fullTextSearch>Use</fullTextSearch>
-    <dataHistory>Use</dataHistory>
-  </attributes>
-  <attributes uuid="db69dd70-7e48-459a-b47d-f73082cf2436">
-    <name>ДоставкаНаАдрес</name>
-    <synonym>
-      <key>ru</key>
-      <value>Доставка на адрес</value>
-    </synonym>
-    <type>
-      <types>Boolean</types>
-    </type>
-    <minValue xsi:type="core:UndefinedValue"/>
-    <maxValue xsi:type="core:UndefinedValue"/>
-    <fillValue xsi:type="core:UndefinedValue"/>
-    <fullTextSearch>Use</fullTextSearch>
-    <dataHistory>Use</dataHistory>
-  </attributes>
-  <attributes uuid="5be2ccdb-437b-47f6-b683-bd550843a119">
-    <name>ЗаказПокупателя</name>
-    <synonym>
-      <key>ru</key>
-      <value>Заказ покупателя</value>
-    </synonym>
-    <type>
-      <types>DocumentRef.ЗаказПокупателя</types>
-    </type>
-    <minValue xsi:type="core:UndefinedValue"/>
-    <maxValue xsi:type="core:UndefinedValue"/>
-    <fillValue xsi:type="core:UndefinedValue"/>
-    <fullTextSearch>Use</fullTextSearch>
-    <dataHistory>Use</dataHistory>
-  </attributes>
-  <attributes uuid="111c1a10-6148-4252-b081-4ef0cfca21ce">
-    <name>МагазинПолучатель</name>
-    <synonym>
-      <key>ru</key>
-      <value>Магазин получатель</value>
-    </synonym>
-    <type>
-      <types>CatalogRef.Магазины</types>
-    </type>
-    <toolTip>
-      <key>ru</key>
-      <value>Магазин, с которого ожидается отгрузка по заказу на перемещение.</value>
-    </toolTip>
-    <minValue xsi:type="core:UndefinedValue"/>
-    <maxValue xsi:type="core:UndefinedValue"/>
-    <fillValue xsi:type="core:UndefinedValue"/>
     <fullTextSearch>Use</fullTextSearch>
     <dataHistory>Use</dataHistory>
   </attributes>
