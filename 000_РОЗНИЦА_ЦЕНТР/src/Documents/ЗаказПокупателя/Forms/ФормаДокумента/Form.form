@@ -1143,20 +1143,139 @@
     <items xsi:type="form:FormGroup">
       <name>ГруппаТовары</name>
       <id>42</id>
-      <items xsi:type="form:FormField">
-        <name>СкладСборки</name>
-        <id>851</id>
+      <items xsi:type="form:FormGroup">
+        <name>ГруппаСкладМагазин</name>
+        <id>1142</id>
+        <items xsi:type="form:FormField">
+          <name>СкладСборки</name>
+          <id>851</id>
+          <visible>true</visible>
+          <enabled>true</enabled>
+          <userVisible>
+            <common>true</common>
+          </userVisible>
+          <dataPath xsi:type="form:DataPath">
+            <segments>СкладСборки</segments>
+          </dataPath>
+          <extendedTooltip>
+            <name>СкладСборкиРасширеннаяПодсказка</name>
+            <id>853</id>
+            <visible>true</visible>
+            <enabled>true</enabled>
+            <userVisible>
+              <common>true</common>
+            </userVisible>
+            <type>Label</type>
+            <autoMaxWidth>true</autoMaxWidth>
+            <autoMaxHeight>true</autoMaxHeight>
+            <extInfo xsi:type="form:LabelDecorationExtInfo">
+              <horizontalAlign>Left</horizontalAlign>
+            </extInfo>
+          </extendedTooltip>
+          <contextMenu>
+            <name>СкладСборкиКонтекстноеМеню</name>
+            <id>852</id>
+            <visible>true</visible>
+            <enabled>true</enabled>
+            <userVisible>
+              <common>true</common>
+            </userVisible>
+            <autoFill>true</autoFill>
+          </contextMenu>
+          <type>InputField</type>
+          <editMode>Enter</editMode>
+          <showInHeader>true</showInHeader>
+          <headerHorizontalAlign>Left</headerHorizontalAlign>
+          <showInFooter>true</showInFooter>
+          <extInfo xsi:type="form:InputFieldExtInfo">
+            <handlers>
+              <event>StartChoice</event>
+              <name>СкладСборкиНачалоВыбора</name>
+            </handlers>
+            <handlers>
+              <event>ChoiceProcessing</event>
+              <name>СкладСборкиОбработкаВыбора</name>
+            </handlers>
+            <autoMaxWidth>true</autoMaxWidth>
+            <autoMaxHeight>true</autoMaxHeight>
+            <wrap>true</wrap>
+            <chooseType>true</chooseType>
+            <typeDomainEnabled>true</typeDomainEnabled>
+            <textEdit>true</textEdit>
+          </extInfo>
+        </items>
+        <items xsi:type="form:FormField">
+          <name>МагазинПолучения</name>
+          <id>1147</id>
+          <visible>true</visible>
+          <enabled>true</enabled>
+          <userVisible>
+            <common>true</common>
+          </userVisible>
+          <dataPath xsi:type="form:DataPath">
+            <segments>МагазинПолучения</segments>
+          </dataPath>
+          <handlers>
+            <event>OnChange</event>
+            <name>МагазинПолученияПриИзменении</name>
+          </handlers>
+          <extendedTooltip>
+            <name>МагазинПолученияРасширеннаяПодсказка</name>
+            <id>1149</id>
+            <visible>true</visible>
+            <enabled>true</enabled>
+            <userVisible>
+              <common>true</common>
+            </userVisible>
+            <type>Label</type>
+            <autoMaxWidth>true</autoMaxWidth>
+            <autoMaxHeight>true</autoMaxHeight>
+            <extInfo xsi:type="form:LabelDecorationExtInfo">
+              <horizontalAlign>Left</horizontalAlign>
+            </extInfo>
+          </extendedTooltip>
+          <contextMenu>
+            <name>МагазинПолученияКонтекстноеМеню</name>
+            <id>1148</id>
+            <visible>true</visible>
+            <enabled>true</enabled>
+            <userVisible>
+              <common>true</common>
+            </userVisible>
+            <autoFill>true</autoFill>
+          </contextMenu>
+          <type>InputField</type>
+          <editMode>Enter</editMode>
+          <showInHeader>true</showInHeader>
+          <headerHorizontalAlign>Left</headerHorizontalAlign>
+          <showInFooter>true</showInFooter>
+          <extInfo xsi:type="form:InputFieldExtInfo">
+            <autoMaxWidth>true</autoMaxWidth>
+            <autoMaxHeight>true</autoMaxHeight>
+            <wrap>true</wrap>
+            <chooseType>true</chooseType>
+            <typeDomainEnabled>true</typeDomainEnabled>
+            <textEdit>true</textEdit>
+            <choiceParameters>
+              <name>Отбор.СкладУправляющейСистемы</name>
+              <value xsi:type="form:FormChoiceListDesTimeValue">
+                <value xsi:type="core:BooleanValue"/>
+              </value>
+            </choiceParameters>
+          </extInfo>
+        </items>
         <visible>true</visible>
         <enabled>true</enabled>
         <userVisible>
           <common>true</common>
         </userVisible>
-        <dataPath xsi:type="form:DataPath">
-          <segments>СкладСборки</segments>
-        </dataPath>
+        <title>
+          <key>ru</key>
+          <value>Группа10</value>
+        </title>
         <extendedTooltip>
-          <name>СкладСборкиРасширеннаяПодсказка</name>
-          <id>853</id>
+          <name>ГруппаСкладМагазинРасширеннаяПодсказка</name>
+          <id>1143</id>
           <visible>true</visible>
           <enabled>true</enabled>
           <userVisible>
@@ -1169,36 +1288,14 @@
             <horizontalAlign>Left</horizontalAlign>
           </extInfo>
         </extendedTooltip>
-        <contextMenu>
-          <name>СкладСборкиКонтекстноеМеню</name>
-          <id>852</id>
-          <visible>true</visible>
-          <enabled>true</enabled>
-          <userVisible>
-            <common>true</common>
-          </userVisible>
-          <autoFill>true</autoFill>
-        </contextMenu>
-        <type>InputField</type>
-        <editMode>Enter</editMode>
-        <showInHeader>true</showInHeader>
-        <headerHorizontalAlign>Left</headerHorizontalAlign>
-        <showInFooter>true</showInFooter>
-        <extInfo xsi:type="form:InputFieldExtInfo">
-          <handlers>
-            <event>StartChoice</event>
-            <name>СкладСборкиНачалоВыбора</name>
-          </handlers>
-          <handlers>
-            <event>ChoiceProcessing</event>
-            <name>СкладСборкиОбработкаВыбора</name>
-          </handlers>
-          <autoMaxWidth>true</autoMaxWidth>
-          <autoMaxHeight>true</autoMaxHeight>
-          <wrap>true</wrap>
-          <chooseType>true</chooseType>
-          <typeDomainEnabled>true</typeDomainEnabled>
-          <textEdit>true</textEdit>
+        <type>UsualGroup</type>
+        <extInfo xsi:type="form:UsualGroupExtInfo">
+          <group>HorizontalIfPossible</group>
+          <behavior>Auto</behavior>
+          <showLeftMargin>true</showLeftMargin>
+          <united>true</united>
+          <throughAlign>Auto</throughAlign>
+          <currentRowUse>Auto</currentRowUse>
         </extInfo>
       </items>
       <items xsi:type="form:Table">
@@ -10249,6 +10346,7 @@
         <excludedCommands>ShowRowRearrangement</excludedCommands>
         <excludedCommands>SortListAsc</excludedCommands>
         <excludedCommands>SortListDesc</excludedCommands>
+        <excludedCommands>Delete</excludedCommands>
         <items xsi:type="form:FormField">
           <name>ОплатаЗаказаНомерОплаты</name>
           <id>922</id>
@@ -14772,7 +14870,6 @@
           <types>Number</types>
           <numberQualifiers>
             <precision>15</precision>
-            <scale>3</scale>
           </numberQualifiers>
         </valueType>
         <view>
@@ -15788,6 +15885,23 @@
     <id>51</id>
     <valueType>
       <types>Boolean</types>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
+  </attributes>
+  <attributes>
+    <name>МагазинПолучения</name>
+    <title>
+      <key>ru</key>
+      <value>Магазин получения</value>
+    </title>
+    <id>53</id>
+    <valueType>
+      <types>CatalogRef.Магазины</types>
     </valueType>
     <view>
       <common>true</common>
