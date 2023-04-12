@@ -674,6 +674,61 @@
               <textEdit>true</textEdit>
             </extInfo>
           </items>
+          <items xsi:type="form:FormField">
+            <name>СостояниеЗаказа</name>
+            <id>1153</id>
+            <title>
+              <key>ru</key>
+              <value>Состояние</value>
+            </title>
+            <visible>true</visible>
+            <enabled>true</enabled>
+            <userVisible>
+              <common>true</common>
+            </userVisible>
+            <dataPath xsi:type="form:DataPath">
+              <segments>СостояниеЗаказа</segments>
+            </dataPath>
+            <extendedTooltip>
+              <name>СостояниеЗаказаРасширеннаяПодсказка</name>
+              <id>1155</id>
+              <visible>true</visible>
+              <enabled>true</enabled>
+              <userVisible>
+                <common>true</common>
+              </userVisible>
+              <type>Label</type>
+              <autoMaxWidth>true</autoMaxWidth>
+              <autoMaxHeight>true</autoMaxHeight>
+              <extInfo xsi:type="form:LabelDecorationExtInfo">
+                <horizontalAlign>Left</horizontalAlign>
+              </extInfo>
+            </extendedTooltip>
+            <contextMenu>
+              <name>СостояниеЗаказаКонтекстноеМеню</name>
+              <id>1154</id>
+              <visible>true</visible>
+              <enabled>true</enabled>
+              <userVisible>
+                <common>true</common>
+              </userVisible>
+              <autoFill>true</autoFill>
+            </contextMenu>
+            <type>InputField</type>
+            <readOnly>true</readOnly>
+            <editMode>Enter</editMode>
+            <showInHeader>true</showInHeader>
+            <headerHorizontalAlign>Left</headerHorizontalAlign>
+            <showInFooter>true</showInFooter>
+            <extInfo xsi:type="form:InputFieldExtInfo">
+              <autoMaxWidth>true</autoMaxWidth>
+              <autoMaxHeight>true</autoMaxHeight>
+              <wrap>true</wrap>
+              <chooseType>true</chooseType>
+              <typeDomainEnabled>true</typeDomainEnabled>
+              <textEdit>true</textEdit>
+            </extInfo>
+          </items>
           <visible>true</visible>
           <enabled>true</enabled>
           <userVisible>
@@ -769,6 +824,7 @@
           <items xsi:type="form:FormField">
             <name>МагазинПолучатель</name>
             <id>693</id>
+            <visible>true</visible>
             <enabled>true</enabled>
             <userVisible>
               <common>true</common>
@@ -1033,7 +1089,7 @@
       </extendedTooltip>
       <type>UsualGroup</type>
       <extInfo xsi:type="form:UsualGroupExtInfo">
-        <group>HorizontalIfPossible</group>
+        <group>AlwaysHorizontal</group>
         <showLeftMargin>true</showLeftMargin>
         <united>true</united>
         <throughAlign>Auto</throughAlign>
@@ -4523,6 +4579,10 @@
         <handlers>
           <event>OnChange</event>
           <name>ТоварыПриИзменении</name>
+        </handlers>
+        <handlers>
+          <event>OnActivateRow</event>
+          <name>ТоварыПриАктивизацииСтроки</name>
         </handlers>
         <searchStringAddition>
           <visible>true</visible>
@@ -11981,6 +12041,24 @@
           <segments>Объект.ПогашениеСкидочныхКупонов</segments>
         </dataPath>
         <titleLocation>None</titleLocation>
+        <excludedCommands>CopyToClipboard</excludedCommands>
+        <excludedCommands>SearchEverywhere</excludedCommands>
+        <excludedCommands>Copy</excludedCommands>
+        <excludedCommands>MoveDown</excludedCommands>
+        <excludedCommands>ShowRowRearrangement</excludedCommands>
+        <excludedCommands>SelectAll</excludedCommands>
+        <excludedCommands>Add</excludedCommands>
+        <excludedCommands>EndEdit</excludedCommands>
+        <excludedCommands>OutputList</excludedCommands>
+        <excludedCommands>Change</excludedCommands>
+        <excludedCommands>ShowMultipleSelection</excludedCommands>
+        <excludedCommands>MoveUp</excludedCommands>
+        <excludedCommands>SortListDesc</excludedCommands>
+        <excludedCommands>SortListAsc</excludedCommands>
+        <excludedCommands>FindByCurrentValue</excludedCommands>
+        <excludedCommands>Delete</excludedCommands>
+        <excludedCommands>Find</excludedCommands>
+        <excludedCommands>CancelSearch</excludedCommands>
         <items xsi:type="form:FormField">
           <name>ПогашениеСкидочныхКупоновНомерСтроки</name>
           <id>1095</id>
@@ -12233,7 +12311,6 @@
             <common>true</common>
           </userVisible>
           <horizontalAlign>Left</horizontalAlign>
-          <autoFill>true</autoFill>
         </autoCommandBar>
         <searchStringAddition>
           <visible>true</visible>
@@ -12376,6 +12453,7 @@
           </userVisible>
           <autoFill>true</autoFill>
         </contextMenu>
+        <readOnly>true</readOnly>
         <changeRowSet>true</changeRowSet>
         <changeRowOrder>true</changeRowOrder>
         <autoMaxWidth>true</autoMaxWidth>
@@ -12650,7 +12728,6 @@
             <common>true</common>
           </userVisible>
           <horizontalAlign>Left</horizontalAlign>
-          <autoFill>true</autoFill>
         </autoCommandBar>
         <searchStringAddition>
           <visible>true</visible>
@@ -12793,6 +12870,7 @@
           </userVisible>
           <autoFill>true</autoFill>
         </contextMenu>
+        <readOnly>true</readOnly>
         <changeRowSet>true</changeRowSet>
         <changeRowOrder>true</changeRowOrder>
         <autoMaxWidth>true</autoMaxWidth>
@@ -13087,6 +13165,71 @@
         <horizontalStretch>true</horizontalStretch>
         <extInfo xsi:type="form:LabelDecorationExtInfo">
           <horizontalAlign>Left</horizontalAlign>
+        </extInfo>
+      </items>
+      <items xsi:type="form:FormField">
+        <name>СуммаБонусныхБалловСписано</name>
+        <id>1150</id>
+        <title>
+          <key>ru</key>
+          <value>Бонусов списано:</value>
+        </title>
+        <visible>true</visible>
+        <enabled>true</enabled>
+        <userVisible>
+          <common>true</common>
+        </userVisible>
+        <dataPath xsi:type="form:DataPath">
+          <segments>Объект.СуммаБонусныхБалловСписано</segments>
+        </dataPath>
+        <extendedTooltip>
+          <name>СуммаБонусныхБалловСписаноРасширеннаяПодсказка</name>
+          <id>1152</id>
+          <visible>true</visible>
+          <enabled>true</enabled>
+          <userVisible>
+            <common>true</common>
+          </userVisible>
+          <type>Label</type>
+          <autoMaxWidth>true</autoMaxWidth>
+          <autoMaxHeight>true</autoMaxHeight>
+          <extInfo xsi:type="form:LabelDecorationExtInfo">
+            <horizontalAlign>Left</horizontalAlign>
+          </extInfo>
+        </extendedTooltip>
+        <contextMenu>
+          <name>СуммаБонусныхБалловСписаноКонтекстноеМеню</name>
+          <id>1151</id>
+          <visible>true</visible>
+          <enabled>true</enabled>
+          <userVisible>
+            <common>true</common>
+          </userVisible>
+          <autoFill>true</autoFill>
+        </contextMenu>
+        <type>InputField</type>
+        <readOnly>true</readOnly>
+        <editMode>Enter</editMode>
+        <showInHeader>true</showInHeader>
+        <headerHorizontalAlign>Left</headerHorizontalAlign>
+        <showInFooter>true</showInFooter>
+        <extInfo xsi:type="form:InputFieldExtInfo">
+          <autoMaxWidth>true</autoMaxWidth>
+          <autoMaxHeight>true</autoMaxHeight>
+          <wrap>true</wrap>
+          <chooseType>true</chooseType>
+          <typeDomainEnabled>true</typeDomainEnabled>
+          <textEdit>true</textEdit>
+          <textColor xsi:type="core:ColorRef">
+            <color>Style.ИтоговыеПоказателиДокументовЦвет</color>
+          </textColor>
+          <font xsi:type="core:FontRef">
+            <font>Style.NormalTextFont</font>
+            <bold>true</bold>
+            <italic>false</italic>
+            <underline>false</underline>
+            <strikeout>false</strikeout>
+          </font>
         </extInfo>
       </items>
       <items xsi:type="form:FormGroup">
