@@ -1214,6 +1214,57 @@
         <extInfo xsi:type="form:CheckBoxFieldExtInfo"/>
       </items>
       <items xsi:type="form:FormField">
+        <name>Сообщение</name>
+        <id>384</id>
+        <visible>true</visible>
+        <enabled>true</enabled>
+        <userVisible>
+          <common>true</common>
+        </userVisible>
+        <dataPath xsi:type="form:DataPath">
+          <segments>Список.Сообщение</segments>
+        </dataPath>
+        <titleLocation>None</titleLocation>
+        <toolTip>
+          <key>ru</key>
+          <value>Есть сообщения от магазинов</value>
+        </toolTip>
+        <extendedTooltip>
+          <name>СообщениеРасширеннаяПодсказка</name>
+          <id>386</id>
+          <visible>true</visible>
+          <enabled>true</enabled>
+          <userVisible>
+            <common>true</common>
+          </userVisible>
+          <type>Label</type>
+          <autoMaxWidth>true</autoMaxWidth>
+          <autoMaxHeight>true</autoMaxHeight>
+          <extInfo xsi:type="form:LabelDecorationExtInfo">
+            <horizontalAlign>Left</horizontalAlign>
+          </extInfo>
+        </extendedTooltip>
+        <contextMenu>
+          <name>СообщениеКонтекстноеМеню</name>
+          <id>385</id>
+          <visible>true</visible>
+          <enabled>true</enabled>
+          <userVisible>
+            <common>true</common>
+          </userVisible>
+          <autoFill>true</autoFill>
+        </contextMenu>
+        <type>CheckBoxField</type>
+        <editMode>Enter</editMode>
+        <showInHeader>true</showInHeader>
+        <headerPicture xsi:type="core:PictureRef">
+          <picture>CommonPicture.Заметка</picture>
+        </headerPicture>
+        <headerHorizontalAlign>Left</headerHorizontalAlign>
+        <showInFooter>true</showInFooter>
+        <extInfo xsi:type="form:CheckBoxFieldExtInfo"/>
+      </items>
+      <items xsi:type="form:FormField">
         <name>Дата</name>
         <id>4</id>
         <visible>true</visible>
@@ -4937,6 +4988,60 @@
         </extInfo>
       </items>
       <items xsi:type="form:FormField">
+        <name>СписокЗапросаДоступностиКолСообщений</name>
+        <id>387</id>
+        <title>
+          <key>ru</key>
+          <value>К-во сообщ</value>
+        </title>
+        <visible>true</visible>
+        <enabled>true</enabled>
+        <userVisible>
+          <common>true</common>
+        </userVisible>
+        <dataPath xsi:type="form:DataPath">
+          <segments>СписокЗапросаДоступности.КолСообщений</segments>
+        </dataPath>
+        <extendedTooltip>
+          <name>СписокЗапросаДоступностиКолСообщенийРасширеннаяПодсказка</name>
+          <id>389</id>
+          <visible>true</visible>
+          <enabled>true</enabled>
+          <userVisible>
+            <common>true</common>
+          </userVisible>
+          <type>Label</type>
+          <autoMaxWidth>true</autoMaxWidth>
+          <autoMaxHeight>true</autoMaxHeight>
+          <extInfo xsi:type="form:LabelDecorationExtInfo">
+            <horizontalAlign>Left</horizontalAlign>
+          </extInfo>
+        </extendedTooltip>
+        <contextMenu>
+          <name>СписокЗапросаДоступностиКолСообщенийКонтекстноеМеню</name>
+          <id>388</id>
+          <visible>true</visible>
+          <enabled>true</enabled>
+          <userVisible>
+            <common>true</common>
+          </userVisible>
+          <autoFill>true</autoFill>
+        </contextMenu>
+        <type>InputField</type>
+        <editMode>Enter</editMode>
+        <showInHeader>true</showInHeader>
+        <headerHorizontalAlign>Left</headerHorizontalAlign>
+        <showInFooter>true</showInFooter>
+        <extInfo xsi:type="form:InputFieldExtInfo">
+          <autoMaxWidth>true</autoMaxWidth>
+          <autoMaxHeight>true</autoMaxHeight>
+          <wrap>true</wrap>
+          <chooseType>true</chooseType>
+          <typeDomainEnabled>true</typeDomainEnabled>
+          <textEdit>true</textEdit>
+        </extInfo>
+      </items>
+      <items xsi:type="form:FormField">
         <name>СписокЗапросаДоступностиСтатусЭН</name>
         <id>372</id>
         <visible>true</visible>
@@ -5395,6 +5500,9 @@
     <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
       <segments>Список.УчтеноNavision</segments>
     </notDefaultUseAlwaysAttributes>
+    <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
+      <segments>Список.ЧастичноСогласован</segments>
+    </notDefaultUseAlwaysAttributes>
     <main>true</main>
     <extInfo xsi:type="form:DynamicListExtInfo">
       <queryText>ВЫБРАТЬ
@@ -5469,7 +5577,17 @@
 			ТОГДА ЛОЖЬ
 		ИНАЧЕ ИСТИНА
 	КОНЕЦ КАК ОбработкаВМадженто,
-	ТаблицаДокументы.Телефон
+	ТаблицаДокументы.Телефон,
+	ВЫБОР
+		КОГДА ТаблицаЧестичноСогласован.ЧастичноСогласован ЕСТЬ NULL
+			ТОГДА ЛОЖЬ
+		ИНАЧЕ ИСТИНА
+	КОНЕЦ КАК ЧастичноСогласован,
+	ВЫБОР
+		КОГДА ЕстьСообщения.ЕстьСообщение ЕСТЬ NULL
+			ТОГДА ЛОЖЬ
+		ИНАЧЕ ИСТИНА
+	КОНЕЦ КАК Сообщение
 {ГДЕ
 	ТаблицаДокументы.Ссылка.*}
 ИЗ
@@ -5478,7 +5596,7 @@
 			ТаблицаРегистра.Заказ КАК Ссылка,
 			СУММА(ТаблицаРегистра.КоличествоОстаток) КАК КоличествоПоЗаказу
 		ИЗ
-			РегистрНакопления.ЗаказыПокупателей.Остатки(, {(Заказ) КАК Ссылка}) КАК ТаблицаРегистра
+			РегистрНакопления.ЗаказыПокупателей.Остатки(, {Заказ КАК Ссылка}) КАК ТаблицаРегистра
 		{ГДЕ
 			ТаблицаРегистра.Заказ.* КАК Ссылка}
 		СГРУППИРОВАТЬ ПО
@@ -5557,7 +5675,49 @@
 			ТаблицаБонусныхБаллов.Ссылка) КАК ТаблицаБонусы
 		ПО ТаблицаДокументы.Ссылка = ТаблицаБонусы.Ссылка
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.КлючевыеАтрибутыЗаказовПокупателей.СрезПоследних КАК ТаблицаАтрибутов
-		ПО (ТаблицаАтрибутов.ЗаказПокупателя = ТаблицаДокументы.Ссылка)</queryText>
+		ПО ТаблицаАтрибутов.ЗаказПокупателя = ТаблицаДокументы.Ссылка
+		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ РАЗЛИЧНЫЕ
+			ЗапросДоступностиТоваров.ДокументОснование.Ссылка КАК Ссылка,
+			ИСТИНА КАК ЧастичноСогласован
+		ИЗ
+			Документ.ЗапросДоступностиТоваров КАК ЗапросДоступностиТоваров
+		ГДЕ
+			ЗапросДоступностиТоваров.СтатусЗапроса = ЗНАЧЕНИЕ(Перечисление.СтатусыЗапросовДоступностиТоваровШапка.ЧастичноСогласован)
+		{ГДЕ
+			ЗапросДоступностиТоваров.ДокументОснование.Ссылка.*}) КАК ТаблицаЧестичноСогласован
+		ПО ТаблицаДокументы.Ссылка = ТаблицаЧестичноСогласован.Ссылка
+		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+			МИНИМУМ(ВложенныйЗапрос.ЕстьСообщение) КАК ЕстьСообщение,
+			ВложенныйЗапрос.Ссылка
+		ИЗ
+			(ВЫБРАТЬ
+				КомментарийПоСтрокам.Документ КАК ЕстьСообщение,
+				КомментарийПоСтрокам.Документ КАК Ссылка
+			ИЗ
+				РегистрСведений.КомментарийПоСтрокам КАК КомментарийПоСтрокам
+			ГДЕ
+				ТИПЗНАЧЕНИЯ(КомментарийПоСтрокам.Документ) = ТИП(Документ.ЗаказПокупателя)
+				И НЕ КомментарийПоСтрокам.Просмотрен
+			{ГДЕ
+				КомментарийПоСтрокам.Документ.* КАК Ссылка}
+
+			ОБЪЕДИНИТЬ ВСЕ
+
+			ВЫБРАТЬ
+				КомментарийПоСтрокам.Документ,
+				КомментарийПоСтрокам.Документ.ДокументОснование
+			ИЗ
+				РегистрСведений.КомментарийПоСтрокам КАК КомментарийПоСтрокам
+			ГДЕ
+				ТИПЗНАЧЕНИЯ(КомментарийПоСтрокам.Документ) = ТИП(Документ.ЗапросДоступностиТоваров)
+				И НЕ КомментарийПоСтрокам.Просмотрен
+			{ГДЕ
+				КомментарийПоСтрокам.Документ.ДокументОснование.* КАК Ссылка}) КАК ВложенныйЗапрос
+		{ГДЕ
+			ВложенныйЗапрос.Ссылка.* КАК Ссылка}
+		СГРУППИРОВАТЬ ПО
+			ВложенныйЗапрос.Ссылка) КАК ЕстьСообщения
+		ПО ТаблицаДокументы.Ссылка = ЕстьСообщения.Ссылка</queryText>
       <mainTable>Document.ЗаказПокупателя</mainTable>
       <dynamicDataRead>true</dynamicDataRead>
       <autoFillAvailableFields>true</autoFillAvailableFields>
@@ -5786,13 +5946,42 @@
 		КОГДА ЭлектроннаяНакладная.Ссылка ЕСТЬ NULL
 			ТОГДА &quot;&quot;
 		ИНАЧЕ ЕСТЬNULL(СтатусыТТНСрезПоследних.СтатусЭН, &quot;Создана&quot;)
-	КОНЕЦ КАК СтатусЭН
+	КОНЕЦ КАК СтатусЭН,
+	КоличествоСообщений.КолСообщений
 ИЗ
 	Документ.ЗапросДоступностиТоваров КАК ДокументЗапросДоступностиТоваров
 		ЛЕВОЕ СОЕДИНЕНИЕ Документ.ЭлектроннаяНакладная КАК ЭлектроннаяНакладная
 			ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СтатусыЭН.СрезПоследних КАК СтатусыТТНСрезПоследних
 			ПО ЭлектроннаяНакладная.Ссылка = СтатусыТТНСрезПоследних.ДокументРегистратор
 		ПО (ЭлектроннаяНакладная.ДокументОснование = ДокументЗапросДоступностиТоваров.Ссылка)
+		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+			ВложенныйЗапрос.Ссылка КАК Ссылка,
+			КОЛИЧЕСТВО(ВложенныйЗапрос.Дата) КАК КолСообщений
+		ИЗ
+			(ВЫБРАТЬ
+				КомментарийПоСтрокам.Дата КАК Дата,
+				ЗапросДоступностиТоваров.Ссылка КАК Ссылка
+			ИЗ
+				РегистрСведений.КомментарийПоСтрокам КАК КомментарийПоСтрокам
+					ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.ЗапросДоступностиТоваров КАК ЗапросДоступностиТоваров
+					ПО КомментарийПоСтрокам.Документ = ЗапросДоступностиТоваров.Ссылка.ДокументОснование
+			ГДЕ
+				ТИПЗНАЧЕНИЯ(КомментарийПоСтрокам.Документ) = ТИП(Документ.ЗаказПокупателя)
+				И НЕ КомментарийПоСтрокам.Просмотрен
+
+			ОБЪЕДИНИТЬ ВСЕ
+
+			ВЫБРАТЬ
+				КомментарийПоСтрокам.Дата,
+				КомментарийПоСтрокам.Документ
+			ИЗ
+				РегистрСведений.КомментарийПоСтрокам КАК КомментарийПоСтрокам
+			ГДЕ
+				ТИПЗНАЧЕНИЯ(КомментарийПоСтрокам.Документ) = ТИП(Документ.ЗапросДоступностиТоваров)
+				И НЕ КомментарийПоСтрокам.Просмотрен) КАК ВложенныйЗапрос
+		СГРУППИРОВАТЬ ПО
+			ВложенныйЗапрос.Ссылка) КАК КоличествоСообщений
+		ПО (ДокументЗапросДоступностиТоваров.Ссылка = КоличествоСообщений.Ссылка)
 ГДЕ
 	ДокументЗапросДоступностиТоваров.ДокументОснование = &amp;ДокументОснование</queryText>
       <mainTable>Document.ЗапросДоступностиТоваров</mainTable>
