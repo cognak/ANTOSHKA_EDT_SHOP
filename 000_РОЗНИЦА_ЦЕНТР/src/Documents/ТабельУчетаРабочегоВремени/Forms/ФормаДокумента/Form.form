@@ -237,9 +237,20 @@
         <autoMaxWidth>true</autoMaxWidth>
         <autoMaxHeight>true</autoMaxHeight>
         <wrap>true</wrap>
+        <listChoiceMode>true</listChoiceMode>
         <chooseType>true</chooseType>
         <typeDomainEnabled>true</typeDomainEnabled>
         <textEdit>true</textEdit>
+        <choiceList>
+          <value xsi:type="core:ReferenceValue">
+            <value>Enum.ПериодыВводаДанныхОВремени.EnumValue.ПерваяПоловинаТекущегоМесяца</value>
+          </value>
+        </choiceList>
+        <choiceList>
+          <value xsi:type="core:ReferenceValue">
+            <value>Enum.ПериодыВводаДанныхОВремени.EnumValue.ВтораяПоловинаТекущегоМесяца</value>
+          </value>
+        </choiceList>
       </extInfo>
     </items>
     <items xsi:type="form:FormField">
@@ -13798,8 +13809,16 @@
       <autoFill>true</autoFill>
     </autoCommandBar>
     <handlers>
+      <event>OnEditEnd</event>
+      <name>ДанныеОВремениПриОкончанииРедактирования</name>
+    </handlers>
+    <handlers>
       <event>BeforeDeleteRow</event>
       <name>ДанныеОВремениПередУдалением</name>
+    </handlers>
+    <handlers>
+      <event>OnActivateRow</event>
+      <name>ДанныеОВремениПриАктивизацииСтроки</name>
     </handlers>
     <searchStringAddition>
       <visible>true</visible>
@@ -13998,6 +14017,64 @@
     <enableStartDrag>true</enableStartDrag>
     <enableDrag>true</enableDrag>
     <rowFilter xsi:type="core:UndefinedValue"/>
+  </items>
+  <items xsi:type="form:FormField">
+    <name>ЧасовОтработаноИтог</name>
+    <id>959</id>
+    <title>
+      <key>ru</key>
+      <value>Итого часов отработано</value>
+    </title>
+    <visible>true</visible>
+    <enabled>true</enabled>
+    <userVisible>
+      <common>true</common>
+    </userVisible>
+    <dataPath xsi:type="form:DataPath">
+      <segments>ЧасовОтработаноИтог</segments>
+    </dataPath>
+    <extendedTooltip>
+      <name>ЧасовОтработаноИтогРасширеннаяПодсказка</name>
+      <id>961</id>
+      <visible>true</visible>
+      <enabled>true</enabled>
+      <userVisible>
+        <common>true</common>
+      </userVisible>
+      <type>Label</type>
+      <autoMaxWidth>true</autoMaxWidth>
+      <autoMaxHeight>true</autoMaxHeight>
+      <extInfo xsi:type="form:LabelDecorationExtInfo">
+        <horizontalAlign>Left</horizontalAlign>
+      </extInfo>
+    </extendedTooltip>
+    <contextMenu>
+      <name>ЧасовОтработаноИтогКонтекстноеМеню</name>
+      <id>960</id>
+      <visible>true</visible>
+      <enabled>true</enabled>
+      <userVisible>
+        <common>true</common>
+      </userVisible>
+      <autoFill>true</autoFill>
+    </contextMenu>
+    <type>LabelField</type>
+    <editMode>Enter</editMode>
+    <showInHeader>true</showInHeader>
+    <headerHorizontalAlign>Left</headerHorizontalAlign>
+    <showInFooter>true</showInFooter>
+    <extInfo xsi:type="form:LabelFieldExtInfo">
+      <autoMaxWidth>true</autoMaxWidth>
+      <autoMaxHeight>true</autoMaxHeight>
+      <font xsi:type="core:FontRef">
+        <font>Style.NormalTextFont</font>
+        <height>10.0</height>
+        <bold>true</bold>
+        <italic>false</italic>
+        <underline>false</underline>
+        <strikeout>false</strikeout>
+      </font>
+    </extInfo>
   </items>
   <items xsi:type="form:FormGroup">
     <name>Группа2</name>
@@ -15441,6 +15518,116 @@
     </edit>
     <fillChecking>ShowError</fillChecking>
     <savedData>true</savedData>
+  </attributes>
+  <attributes>
+    <name>ЧасовОтработаноИтог</name>
+    <title>
+      <key>ru</key>
+      <value>Часов отработано итог</value>
+    </title>
+    <id>3</id>
+    <valueType>
+      <types>String</types>
+      <stringQualifiers/>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
+  </attributes>
+  <attributes>
+    <name>ДанныеАванса</name>
+    <title>
+      <key>ru</key>
+      <value>Данные аванса</value>
+    </title>
+    <id>4</id>
+    <valueType>
+      <types>ValueTable</types>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
+    <columns>
+      <name>Сотрудник</name>
+      <title>
+        <key>ru</key>
+        <value>Сотрудник</value>
+      </title>
+      <id>1</id>
+      <valueType>
+        <types>CatalogRef.ФизическиеЛица</types>
+      </valueType>
+      <view>
+        <common>true</common>
+      </view>
+      <edit>
+        <common>true</common>
+      </edit>
+    </columns>
+    <columns>
+      <name>Должность</name>
+      <title>
+        <key>ru</key>
+        <value>Должность</value>
+      </title>
+      <id>2</id>
+      <valueType>
+        <types>CatalogRef.ДолжностиОрганизаций</types>
+      </valueType>
+      <view>
+        <common>true</common>
+      </view>
+      <edit>
+        <common>true</common>
+      </edit>
+    </columns>
+    <columns>
+      <name>ФактОтработано</name>
+      <title>
+        <key>ru</key>
+        <value>Факт отработано</value>
+      </title>
+      <id>3</id>
+      <valueType>
+        <types>Number</types>
+        <numberQualifiers>
+          <precision>10</precision>
+          <scale>3</scale>
+        </numberQualifiers>
+      </valueType>
+      <view>
+        <common>true</common>
+      </view>
+      <edit>
+        <common>true</common>
+      </edit>
+    </columns>
+    <columns>
+      <name>ДнейОтработано</name>
+      <title>
+        <key>ru</key>
+        <value>Дней отработано</value>
+      </title>
+      <id>4</id>
+      <valueType>
+        <types>Number</types>
+        <numberQualifiers>
+          <precision>10</precision>
+        </numberQualifiers>
+      </valueType>
+      <view>
+        <common>true</common>
+      </view>
+      <edit>
+        <common>true</common>
+      </edit>
+    </columns>
   </attributes>
   <formCommands>
     <name>Заполнить</name>

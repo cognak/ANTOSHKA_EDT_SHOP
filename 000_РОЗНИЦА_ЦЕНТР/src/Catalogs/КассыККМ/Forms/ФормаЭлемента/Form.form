@@ -527,6 +527,10 @@
         <dataPath xsi:type="form:DataPath">
           <segments>Объект.ПодключаемоеОборудование</segments>
         </dataPath>
+        <handlers>
+          <event>OnChange</event>
+          <name>ВнешнееОборудованиеПриИзменении</name>
+        </handlers>
         <extendedTooltip>
           <name>ВнешнееОборудованиеРасширеннаяПодсказка</name>
           <id>61</id>
@@ -774,6 +778,10 @@
           <dataPath xsi:type="form:DataPath">
             <segments>Объект.ПечатьЧековНаПринтер</segments>
           </dataPath>
+          <handlers>
+            <event>OnChange</event>
+            <name>ПечатьЧековНаПринтерПриИзменении</name>
+          </handlers>
           <extendedTooltip>
             <name>ПечатьЧековНаПринтерРасширеннаяПодсказка</name>
             <id>75</id>
@@ -932,20 +940,160 @@
       <items xsi:type="form:FormGroup">
         <name>ГруппаАтрибутыПраво</name>
         <id>88</id>
-        <items xsi:type="form:FormField">
-          <name>ПРРО</name>
-          <id>90</id>
+        <items xsi:type="form:FormGroup">
+          <name>ГруппаПРРО</name>
+          <id>93</id>
+          <items xsi:type="form:FormField">
+            <name>ПРРО</name>
+            <id>90</id>
+            <visible>true</visible>
+            <enabled>true</enabled>
+            <userVisible>
+              <common>true</common>
+            </userVisible>
+            <dataPath xsi:type="form:DataPath">
+              <segments>Объект.ПРРО</segments>
+            </dataPath>
+            <titleLocation>Right</titleLocation>
+            <handlers>
+              <event>OnChange</event>
+              <name>ПРРОПриИзменении</name>
+            </handlers>
+            <extendedTooltip>
+              <name>ПРРОРасширеннаяПодсказка</name>
+              <id>92</id>
+              <visible>true</visible>
+              <enabled>true</enabled>
+              <userVisible>
+                <common>true</common>
+              </userVisible>
+              <type>Label</type>
+              <autoMaxWidth>true</autoMaxWidth>
+              <autoMaxHeight>true</autoMaxHeight>
+              <extInfo xsi:type="form:LabelDecorationExtInfo">
+                <horizontalAlign>Left</horizontalAlign>
+              </extInfo>
+            </extendedTooltip>
+            <contextMenu>
+              <name>ПРРОКонтекстноеМеню</name>
+              <id>91</id>
+              <visible>true</visible>
+              <enabled>true</enabled>
+              <userVisible>
+                <common>true</common>
+              </userVisible>
+              <autoFill>true</autoFill>
+            </contextMenu>
+            <type>CheckBoxField</type>
+            <editMode>Enter</editMode>
+            <showInHeader>true</showInHeader>
+            <headerHorizontalAlign>Left</headerHorizontalAlign>
+            <showInFooter>true</showInFooter>
+            <extInfo xsi:type="form:CheckBoxFieldExtInfo"/>
+          </items>
+          <items xsi:type="form:FormField">
+            <name>ПРРО_ПД_ПечатьЧеков</name>
+            <id>98</id>
+            <visible>true</visible>
+            <enabled>true</enabled>
+            <userVisible>
+              <common>true</common>
+            </userVisible>
+            <dataPath xsi:type="form:DataPath">
+              <segments>Объект.ПРРО_ПД_ПечатьЧеков</segments>
+            </dataPath>
+            <extendedTooltip>
+              <name>ПРРО_ПД_ПечатьЧековРасширеннаяПодсказка</name>
+              <id>100</id>
+              <visible>true</visible>
+              <enabled>true</enabled>
+              <userVisible>
+                <common>true</common>
+              </userVisible>
+              <type>Label</type>
+              <autoMaxWidth>true</autoMaxWidth>
+              <autoMaxHeight>true</autoMaxHeight>
+              <extInfo xsi:type="form:LabelDecorationExtInfo">
+                <horizontalAlign>Left</horizontalAlign>
+              </extInfo>
+            </extendedTooltip>
+            <contextMenu>
+              <name>ПРРО_ПД_ПечатьЧековКонтекстноеМеню</name>
+              <id>99</id>
+              <visible>true</visible>
+              <enabled>true</enabled>
+              <userVisible>
+                <common>true</common>
+              </userVisible>
+              <autoFill>true</autoFill>
+            </contextMenu>
+            <type>CheckBoxField</type>
+            <editMode>Enter</editMode>
+            <showInHeader>true</showInHeader>
+            <headerHorizontalAlign>Left</headerHorizontalAlign>
+            <showInFooter>true</showInFooter>
+            <extInfo xsi:type="form:CheckBoxFieldExtInfo"/>
+          </items>
+          <items xsi:type="form:FormField">
+            <name>ПРРО_ПД_Печать_Z_Отчета</name>
+            <id>101</id>
+            <visible>true</visible>
+            <enabled>true</enabled>
+            <userVisible>
+              <common>true</common>
+            </userVisible>
+            <dataPath xsi:type="form:DataPath">
+              <segments>Объект.ПРРО_ПД_Печать_Z_Отчета</segments>
+            </dataPath>
+            <extendedTooltip>
+              <name>ПРРО_ПД_Печать_Z_ОтчетаРасширеннаяПодсказка</name>
+              <id>103</id>
+              <visible>true</visible>
+              <enabled>true</enabled>
+              <userVisible>
+                <common>true</common>
+              </userVisible>
+              <type>Label</type>
+              <autoMaxWidth>true</autoMaxWidth>
+              <autoMaxHeight>true</autoMaxHeight>
+              <extInfo xsi:type="form:LabelDecorationExtInfo">
+                <horizontalAlign>Left</horizontalAlign>
+              </extInfo>
+            </extendedTooltip>
+            <contextMenu>
+              <name>ПРРО_ПД_Печать_Z_ОтчетаКонтекстноеМеню</name>
+              <id>102</id>
+              <visible>true</visible>
+              <enabled>true</enabled>
+              <userVisible>
+                <common>true</common>
+              </userVisible>
+              <autoFill>true</autoFill>
+            </contextMenu>
+            <type>CheckBoxField</type>
+            <editMode>Enter</editMode>
+            <showInHeader>true</showInHeader>
+            <headerHorizontalAlign>Left</headerHorizontalAlign>
+            <showInFooter>true</showInFooter>
+            <extInfo xsi:type="form:CheckBoxFieldExtInfo"/>
+          </items>
           <visible>true</visible>
           <enabled>true</enabled>
           <userVisible>
             <common>true</common>
           </userVisible>
-          <dataPath xsi:type="form:DataPath">
-            <segments>Объект.ПРРО</segments>
-          </dataPath>
+          <title>
+            <key>ru</key>
+            <value>Настройки ПРРО</value>
+          </title>
+          <toolTip>
+            <key>ru</key>
+            <value>Группа ПРРО</value>
+          </toolTip>
+          <horizontalStretch>true</horizontalStretch>
           <extendedTooltip>
-            <name>ПРРОРасширеннаяПодсказка</name>
-            <id>92</id>
+            <name>ГруппаПРРОРасширеннаяПодсказка</name>
+            <id>94</id>
             <visible>true</visible>
             <enabled>true</enabled>
             <userVisible>
@@ -958,22 +1106,16 @@
               <horizontalAlign>Left</horizontalAlign>
             </extInfo>
           </extendedTooltip>
-          <contextMenu>
-            <name>ПРРОКонтекстноеМеню</name>
-            <id>91</id>
-            <visible>true</visible>
-            <enabled>true</enabled>
-            <userVisible>
-              <common>true</common>
-            </userVisible>
-            <autoFill>true</autoFill>
-          </contextMenu>
-          <type>CheckBoxField</type>
-          <editMode>Enter</editMode>
-          <showInHeader>true</showInHeader>
-          <headerHorizontalAlign>Left</headerHorizontalAlign>
-          <showInFooter>true</showInFooter>
-          <extInfo xsi:type="form:CheckBoxFieldExtInfo"/>
+          <type>UsualGroup</type>
+          <extInfo xsi:type="form:UsualGroupExtInfo">
+            <group>Vertical</group>
+            <representation>StrongSeparation</representation>
+            <showLeftMargin>true</showLeftMargin>
+            <united>true</united>
+            <showTitle>true</showTitle>
+            <throughAlign>Auto</throughAlign>
+            <currentRowUse>Auto</currentRowUse>
+          </extInfo>
         </items>
         <visible>true</visible>
         <enabled>true</enabled>

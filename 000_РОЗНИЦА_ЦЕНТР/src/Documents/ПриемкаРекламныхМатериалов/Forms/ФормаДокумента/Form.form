@@ -325,18 +325,35 @@
         <autoFill>true</autoFill>
       </contextMenu>
       <type>InputField</type>
-      <readOnly>true</readOnly>
       <editMode>EnterOnInput</editMode>
       <showInHeader>true</showInHeader>
       <headerHorizontalAlign>Left</headerHorizontalAlign>
       <showInFooter>true</showInFooter>
       <extInfo xsi:type="form:InputFieldExtInfo">
+        <handlers>
+          <event>StartChoice</event>
+          <name>РекламныеМатериалыРекламнаяПлоскостьНачалоВыбора</name>
+        </handlers>
+        <handlers>
+          <event>StartListChoice</event>
+          <name>РекламныеМатериалыРекламнаяПлоскостьНачалоВыбораИзСписка</name>
+        </handlers>
+        <handlers>
+          <event>Clearing</event>
+          <name>РекламныеМатериалыРекламнаяПлоскостьОчистка</name>
+        </handlers>
         <autoMaxWidth>true</autoMaxWidth>
         <autoMaxHeight>true</autoMaxHeight>
         <wrap>true</wrap>
+        <dropListButton>false</dropListButton>
+        <choiceButton>false</choiceButton>
+        <clearButton>false</clearButton>
+        <spinButton>false</spinButton>
+        <openButton>true</openButton>
+        <createButton>false</createButton>
         <chooseType>true</chooseType>
         <typeDomainEnabled>true</typeDomainEnabled>
-        <textEdit>true</textEdit>
+        <choiceHistoryOnInput>DontUse</choiceHistoryOnInput>
       </extInfo>
     </items>
     <items xsi:type="form:FormField">
@@ -350,6 +367,10 @@
       <dataPath xsi:type="form:DataPath">
         <segments>Объект.РекламныеМатериалы.РекламныйМатериал</segments>
       </dataPath>
+      <handlers>
+        <event>OnChange</event>
+        <name>РекламныеМатериалыРекламныйМатериалПриИзменении</name>
+      </handlers>
       <extendedTooltip>
         <name>РекламныеМатериалыРекламныйМатериалРасширеннаяПодсказка</name>
         <id>37</id>
@@ -376,18 +397,39 @@
         <autoFill>true</autoFill>
       </contextMenu>
       <type>InputField</type>
-      <readOnly>true</readOnly>
       <editMode>EnterOnInput</editMode>
       <showInHeader>true</showInHeader>
       <headerHorizontalAlign>Left</headerHorizontalAlign>
       <showInFooter>true</showInFooter>
       <extInfo xsi:type="form:InputFieldExtInfo">
+        <handlers>
+          <event>StartChoice</event>
+          <name>РекламныеМатериалыРекламныйМатериалНачалоВыбора</name>
+        </handlers>
+        <handlers>
+          <event>Creating</event>
+          <name>РекламныеМатериалыРекламнаяПлоскостьОчистка</name>
+        </handlers>
+        <handlers>
+          <event>StartListChoice</event>
+          <name>РекламныеМатериалыРекламнаяПлоскостьОчистка</name>
+        </handlers>
+        <handlers>
+          <event>Clearing</event>
+          <name>РекламныеМатериалыРекламнаяПлоскостьОчистка</name>
+        </handlers>
         <autoMaxWidth>true</autoMaxWidth>
         <autoMaxHeight>true</autoMaxHeight>
         <wrap>true</wrap>
+        <dropListButton>false</dropListButton>
+        <choiceButton>false</choiceButton>
+        <clearButton>false</clearButton>
+        <spinButton>false</spinButton>
+        <openButton>true</openButton>
+        <createButton>false</createButton>
         <chooseType>true</chooseType>
         <typeDomainEnabled>true</typeDomainEnabled>
-        <textEdit>true</textEdit>
+        <choiceHistoryOnInput>DontUse</choiceHistoryOnInput>
       </extInfo>
     </items>
     <items xsi:type="form:FormField">
@@ -477,7 +519,6 @@
         <autoFill>true</autoFill>
       </contextMenu>
       <type>InputField</type>
-      <readOnly>true</readOnly>
       <editMode>EnterOnInput</editMode>
       <showInHeader>true</showInHeader>
       <headerHorizontalAlign>Left</headerHorizontalAlign>
@@ -486,9 +527,15 @@
         <autoMaxWidth>true</autoMaxWidth>
         <autoMaxHeight>true</autoMaxHeight>
         <wrap>true</wrap>
+        <dropListButton>false</dropListButton>
+        <choiceButton>false</choiceButton>
+        <clearButton>false</clearButton>
+        <spinButton>false</spinButton>
+        <openButton>true</openButton>
+        <createButton>false</createButton>
         <chooseType>true</chooseType>
         <typeDomainEnabled>true</typeDomainEnabled>
-        <textEdit>true</textEdit>
+        <choiceHistoryOnInput>DontUse</choiceHistoryOnInput>
       </extInfo>
     </items>
     <autoCommandBar>
@@ -518,6 +565,36 @@
           </extInfo>
         </extendedTooltip>
         <commandName>Form.Command.Заполнить</commandName>
+        <representation>Auto</representation>
+        <autoMaxWidth>true</autoMaxWidth>
+        <autoMaxHeight>true</autoMaxHeight>
+        <placementArea>UserCmds</placementArea>
+        <representationInContextMenu>Auto</representationInContextMenu>
+      </items>
+      <items xsi:type="form:Button">
+        <name>РекламныеМатериалыЗаполнитьПросроченными</name>
+        <id>51</id>
+        <visible>true</visible>
+        <enabled>true</enabled>
+        <userVisible>
+          <common>true</common>
+        </userVisible>
+        <extendedTooltip>
+          <name>РекламныеМатериалыЗаполнитьПросроченнымиРасширеннаяПодсказка</name>
+          <id>52</id>
+          <visible>true</visible>
+          <enabled>true</enabled>
+          <userVisible>
+            <common>true</common>
+          </userVisible>
+          <type>Label</type>
+          <autoMaxWidth>true</autoMaxWidth>
+          <autoMaxHeight>true</autoMaxHeight>
+          <extInfo xsi:type="form:LabelDecorationExtInfo">
+            <horizontalAlign>Left</horizontalAlign>
+          </extInfo>
+        </extendedTooltip>
+        <commandName>Form.Command.ЗаполнитьПросроченными</commandName>
         <representation>Auto</representation>
         <autoMaxWidth>true</autoMaxWidth>
         <autoMaxHeight>true</autoMaxHeight>
@@ -858,6 +935,27 @@
     <action xsi:type="form:FormCommandHandlerContainer">
       <handler>
         <name>Заполнить</name>
+      </handler>
+    </action>
+    <currentRowUse>DontUse</currentRowUse>
+  </formCommands>
+  <formCommands>
+    <name>ЗаполнитьПросроченными</name>
+    <title>
+      <key>ru</key>
+      <value>Заполнить просроченными</value>
+    </title>
+    <id>2</id>
+    <toolTip>
+      <key>ru</key>
+      <value>Заполнить просроченными</value>
+    </toolTip>
+    <use>
+      <common>true</common>
+    </use>
+    <action xsi:type="form:FormCommandHandlerContainer">
+      <handler>
+        <name>ЗаполнитьПросроченными</name>
       </handler>
     </action>
     <currentRowUse>DontUse</currentRowUse>
