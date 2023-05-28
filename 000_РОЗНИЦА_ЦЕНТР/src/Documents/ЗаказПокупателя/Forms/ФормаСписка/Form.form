@@ -1265,6 +1265,56 @@
         <extInfo xsi:type="form:CheckBoxFieldExtInfo"/>
       </items>
       <items xsi:type="form:FormField">
+        <name>ЕстьВозврат</name>
+        <id>390</id>
+        <visible>true</visible>
+        <enabled>true</enabled>
+        <userVisible>
+          <common>true</common>
+        </userVisible>
+        <dataPath xsi:type="form:DataPath">
+          <segments>Список.ЕстьВозврат</segments>
+        </dataPath>
+        <titleLocation>None</titleLocation>
+        <toolTip>
+          <key>ru</key>
+          <value>В документе есть возврат по оплате</value>
+        </toolTip>
+        <extendedTooltip>
+          <name>ЕстьВозвратРасширеннаяПодсказка</name>
+          <id>392</id>
+          <visible>true</visible>
+          <enabled>true</enabled>
+          <userVisible>
+            <common>true</common>
+          </userVisible>
+          <type>Label</type>
+          <autoMaxWidth>true</autoMaxWidth>
+          <autoMaxHeight>true</autoMaxHeight>
+          <extInfo xsi:type="form:LabelDecorationExtInfo">
+            <horizontalAlign>Left</horizontalAlign>
+          </extInfo>
+        </extendedTooltip>
+        <contextMenu>
+          <name>ЕстьВозвратКонтекстноеМеню</name>
+          <id>391</id>
+          <visible>true</visible>
+          <enabled>true</enabled>
+          <userVisible>
+            <common>true</common>
+          </userVisible>
+          <autoFill>true</autoFill>
+        </contextMenu>
+        <type>CheckBoxField</type>
+        <editMode>Enter</editMode>
+        <showInHeader>true</showInHeader>
+        <headerPicture xsi:type="core:PictureRef">
+          <picture>CommonPicture.РМК_возврат</picture>
+        </headerPicture>
+        <showInFooter>true</showInFooter>
+        <extInfo xsi:type="form:CheckBoxFieldExtInfo"/>
+      </items>
+      <items xsi:type="form:FormField">
         <name>Дата</name>
         <id>4</id>
         <visible>true</visible>
@@ -1975,6 +2025,60 @@
         <contextMenu>
           <name>ТелефонКонтекстноеМеню</name>
           <id>376</id>
+          <visible>true</visible>
+          <enabled>true</enabled>
+          <userVisible>
+            <common>true</common>
+          </userVisible>
+          <autoFill>true</autoFill>
+        </contextMenu>
+        <type>InputField</type>
+        <editMode>Enter</editMode>
+        <showInHeader>true</showInHeader>
+        <headerHorizontalAlign>Left</headerHorizontalAlign>
+        <showInFooter>true</showInFooter>
+        <extInfo xsi:type="form:InputFieldExtInfo">
+          <autoMaxWidth>true</autoMaxWidth>
+          <autoMaxHeight>true</autoMaxHeight>
+          <wrap>true</wrap>
+          <chooseType>true</chooseType>
+          <typeDomainEnabled>true</typeDomainEnabled>
+          <textEdit>true</textEdit>
+        </extInfo>
+      </items>
+      <items xsi:type="form:FormField">
+        <name>ПочтаКлиента</name>
+        <id>393</id>
+        <title>
+          <key>ru</key>
+          <value>E-mail</value>
+        </title>
+        <visible>true</visible>
+        <enabled>true</enabled>
+        <userVisible>
+          <common>true</common>
+        </userVisible>
+        <dataPath xsi:type="form:DataPath">
+          <segments>Список.ПочтаКлиента</segments>
+        </dataPath>
+        <extendedTooltip>
+          <name>ПочтаКлиентаРасширеннаяПодсказка</name>
+          <id>395</id>
+          <visible>true</visible>
+          <enabled>true</enabled>
+          <userVisible>
+            <common>true</common>
+          </userVisible>
+          <type>Label</type>
+          <autoMaxWidth>true</autoMaxWidth>
+          <autoMaxHeight>true</autoMaxHeight>
+          <extInfo xsi:type="form:LabelDecorationExtInfo">
+            <horizontalAlign>Left</horizontalAlign>
+          </extInfo>
+        </extendedTooltip>
+        <contextMenu>
+          <name>ПочтаКлиентаКонтекстноеМеню</name>
+          <id>394</id>
           <visible>true</visible>
           <enabled>true</enabled>
           <userVisible>
@@ -5588,7 +5692,9 @@
 		КОГДА ЕстьСообщения.ЕстьСообщение ЕСТЬ NULL
 			ТОГДА ЛОЖЬ
 		ИНАЧЕ ИСТИНА
-	КОНЕЦ КАК Сообщение
+	КОНЕЦ КАК Сообщение,
+	ТаблицаВозвратов.ЕстьВозврат,
+	ЕСТЬNULL(ТаблицаКонтактыПочта.Представление, &quot;&quot;) КАК ПочтаКлиента
 {ГДЕ
 	ТаблицаДокументы.Ссылка.*}
 ИЗ
@@ -5718,7 +5824,20 @@
 			ВложенныйЗапрос.Ссылка.* КАК Ссылка}
 		СГРУППИРОВАТЬ ПО
 			ВложенныйЗапрос.Ссылка) КАК ЕстьСообщения
-		ПО ТаблицаДокументы.Ссылка = ЕстьСообщения.Ссылка</queryText>
+		ПО ТаблицаДокументы.Ссылка = ЕстьСообщения.Ссылка
+		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ РАЗЛИЧНЫЕ
+			ОплатаЗаказаКлиента.ЗаказКлиента КАК Ссылка,
+			ИСТИНА КАК ЕстьВозврат
+		ИЗ
+			РегистрСведений.ОплатаЗаказаКлиента КАК ОплатаЗаказаКлиента
+		ГДЕ
+			ОплатаЗаказаКлиента.ВидОплаты = ЗНАЧЕНИЕ(Перечисление.ВидыОплатыЗаказаПокупателя.Возврат)
+		{ГДЕ
+			ОплатаЗаказаКлиента.ЗаказКлиента.* КАК Ссылка}) КАК ТаблицаВозвратов
+		ПО ТаблицаДокументы.Ссылка = ТаблицаВозвратов.Ссылка
+		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.Контрагенты.КонтактнаяИнформация КАК ТаблицаКонтактыПочта
+		ПО ТаблицаДокументы.Контрагент = ТаблицаКонтактыПочта.Ссылка
+		И (ТаблицаКонтактыПочта.Вид = ЗНАЧЕНИЕ(Справочник.ВидыКонтактнойИнформации.EmailКонтрагента))</queryText>
       <mainTable>Document.ЗаказПокупателя</mainTable>
       <dynamicDataRead>true</dynamicDataRead>
       <autoFillAvailableFields>true</autoFillAvailableFields>
