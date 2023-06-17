@@ -127,6 +127,37 @@
       <placementArea>UserCmds</placementArea>
       <representationInContextMenu>Auto</representationInContextMenu>
     </items>
+    <items xsi:type="form:Button">
+      <name>ПосылкаПолучена</name>
+      <id>93</id>
+      <visible>true</visible>
+      <enabled>true</enabled>
+      <userVisible>
+        <common>true</common>
+      </userVisible>
+      <extendedTooltip>
+        <name>ПосылкаПолученаРасширеннаяПодсказка</name>
+        <id>94</id>
+        <visible>true</visible>
+        <enabled>true</enabled>
+        <userVisible>
+          <common>true</common>
+        </userVisible>
+        <type>Label</type>
+        <autoMaxWidth>true</autoMaxWidth>
+        <autoMaxHeight>true</autoMaxHeight>
+        <extInfo xsi:type="form:LabelDecorationExtInfo">
+          <horizontalAlign>Left</horizontalAlign>
+        </extInfo>
+      </extendedTooltip>
+      <type>UsualButton</type>
+      <commandName>Form.Command.ПосылкаПолучена</commandName>
+      <representation>Auto</representation>
+      <autoMaxWidth>true</autoMaxWidth>
+      <autoMaxHeight>true</autoMaxHeight>
+      <placementArea>UserCmds</placementArea>
+      <representationInContextMenu>Auto</representationInContextMenu>
+    </items>
     <visible>true</visible>
     <enabled>true</enabled>
     <userVisible>
@@ -172,6 +203,59 @@
         <items xsi:type="form:FormGroup">
           <name>Группа2</name>
           <id>161</id>
+          <items xsi:type="form:FormField">
+            <name>СтатусДокумента</name>
+            <id>273</id>
+            <visible>true</visible>
+            <enabled>true</enabled>
+            <userVisible>
+              <common>true</common>
+            </userVisible>
+            <dataPath xsi:type="form:DataPath">
+              <segments>СтатусДокумента</segments>
+            </dataPath>
+            <extendedTooltip>
+              <name>СтатусДокументаРасширеннаяПодсказка</name>
+              <id>275</id>
+              <visible>true</visible>
+              <enabled>true</enabled>
+              <userVisible>
+                <common>true</common>
+              </userVisible>
+              <type>Label</type>
+              <autoMaxWidth>true</autoMaxWidth>
+              <autoMaxHeight>true</autoMaxHeight>
+              <extInfo xsi:type="form:LabelDecorationExtInfo">
+                <horizontalAlign>Left</horizontalAlign>
+              </extInfo>
+            </extendedTooltip>
+            <contextMenu>
+              <name>СтатусДокументаКонтекстноеМеню</name>
+              <id>274</id>
+              <visible>true</visible>
+              <enabled>true</enabled>
+              <userVisible>
+                <common>true</common>
+              </userVisible>
+              <autoFill>true</autoFill>
+            </contextMenu>
+            <type>LabelField</type>
+            <readOnly>true</readOnly>
+            <editMode>Enter</editMode>
+            <showInHeader>true</showInHeader>
+            <headerHorizontalAlign>Left</headerHorizontalAlign>
+            <showInFooter>true</showInFooter>
+            <extInfo xsi:type="form:LabelFieldExtInfo">
+              <autoMaxWidth>true</autoMaxWidth>
+              <autoMaxHeight>true</autoMaxHeight>
+              <textColor xsi:type="core:ColorDef">
+                <red>255</red>
+              </textColor>
+              <font xsi:type="core:FontDef">
+                <height>10.0</height>
+              </font>
+            </extInfo>
+          </items>
           <items xsi:type="form:FormField">
             <name>Номер</name>
             <id>1</id>
@@ -827,52 +911,6 @@
               <chooseType>true</chooseType>
               <typeDomainEnabled>true</typeDomainEnabled>
               <textEdit>true</textEdit>
-            </extInfo>
-          </items>
-          <items xsi:type="form:FormField">
-            <name>Статус</name>
-            <id>270</id>
-            <visible>true</visible>
-            <enabled>true</enabled>
-            <userVisible>
-              <common>true</common>
-            </userVisible>
-            <dataPath xsi:type="form:DataPath">
-              <segments>Объект.Статус</segments>
-            </dataPath>
-            <extendedTooltip>
-              <name>СтатусРасширеннаяПодсказка</name>
-              <id>272</id>
-              <visible>true</visible>
-              <enabled>true</enabled>
-              <userVisible>
-                <common>true</common>
-              </userVisible>
-              <type>Label</type>
-              <autoMaxWidth>true</autoMaxWidth>
-              <autoMaxHeight>true</autoMaxHeight>
-              <extInfo xsi:type="form:LabelDecorationExtInfo">
-                <horizontalAlign>Left</horizontalAlign>
-              </extInfo>
-            </extendedTooltip>
-            <contextMenu>
-              <name>СтатусКонтекстноеМеню</name>
-              <id>271</id>
-              <visible>true</visible>
-              <enabled>true</enabled>
-              <userVisible>
-                <common>true</common>
-              </userVisible>
-              <autoFill>true</autoFill>
-            </contextMenu>
-            <type>LabelField</type>
-            <editMode>Enter</editMode>
-            <showInHeader>true</showInHeader>
-            <headerHorizontalAlign>Left</headerHorizontalAlign>
-            <showInFooter>true</showInFooter>
-            <extInfo xsi:type="form:LabelFieldExtInfo">
-              <autoMaxWidth>true</autoMaxWidth>
-              <autoMaxHeight>true</autoMaxHeight>
             </extInfo>
           </items>
           <visible>true</visible>
@@ -2438,37 +2476,6 @@
     <items xsi:type="form:FormGroup">
       <name>СтраницаСтатуса</name>
       <id>253</id>
-      <items xsi:type="form:Button">
-        <name>ПосылкаПолучена</name>
-        <id>93</id>
-        <visible>true</visible>
-        <enabled>true</enabled>
-        <userVisible>
-          <common>true</common>
-        </userVisible>
-        <extendedTooltip>
-          <name>ПосылкаПолученаРасширеннаяПодсказка</name>
-          <id>94</id>
-          <visible>true</visible>
-          <enabled>true</enabled>
-          <userVisible>
-            <common>true</common>
-          </userVisible>
-          <type>Label</type>
-          <autoMaxWidth>true</autoMaxWidth>
-          <autoMaxHeight>true</autoMaxHeight>
-          <extInfo xsi:type="form:LabelDecorationExtInfo">
-            <horizontalAlign>Left</horizontalAlign>
-          </extInfo>
-        </extendedTooltip>
-        <type>UsualButton</type>
-        <commandName>Form.Command.ПосылкаПолучена</commandName>
-        <representation>Auto</representation>
-        <autoMaxWidth>true</autoMaxWidth>
-        <autoMaxHeight>true</autoMaxHeight>
-        <placementArea>UserCmds</placementArea>
-        <representationInContextMenu>Auto</representationInContextMenu>
-      </items>
       <items xsi:type="form:Table">
         <name>Статусы</name>
         <id>131</id>
@@ -2481,6 +2488,19 @@
           <segments>Статусы</segments>
         </dataPath>
         <titleLocation>None</titleLocation>
+        <excludedCommands>DynamicListStandardSettings</excludedCommands>
+        <excludedCommands>ShowMultipleSelection</excludedCommands>
+        <excludedCommands>LoadDynamicListSettings</excludedCommands>
+        <excludedCommands>Find</excludedCommands>
+        <excludedCommands>SearchEverywhere</excludedCommands>
+        <excludedCommands>OutputList</excludedCommands>
+        <excludedCommands>ListSettings</excludedCommands>
+        <excludedCommands>Choose</excludedCommands>
+        <excludedCommands>SaveDynamicListSettings</excludedCommands>
+        <excludedCommands>CopyToClipboard</excludedCommands>
+        <excludedCommands>CancelSearch</excludedCommands>
+        <excludedCommands>FindByCurrentValue</excludedCommands>
+        <excludedCommands>Refresh</excludedCommands>
         <items xsi:type="form:FormField">
           <name>СтатусыПериод</name>
           <id>144</id>
@@ -2590,7 +2610,6 @@
             <common>true</common>
           </userVisible>
           <horizontalAlign>Left</horizontalAlign>
-          <autoFill>true</autoFill>
         </autoCommandBar>
         <searchStringAddition>
           <visible>true</visible>
@@ -2733,7 +2752,7 @@
           </userVisible>
           <autoFill>true</autoFill>
         </contextMenu>
-        <representation>HierarchicalList</representation>
+        <readOnly>true</readOnly>
         <changeRowSet>true</changeRowSet>
         <changeRowOrder>true</changeRowOrder>
         <autoMaxWidth>true</autoMaxWidth>
@@ -2753,6 +2772,7 @@
         <verticalStretch>true</verticalStretch>
         <fileDragMode>AsFileRef</fileDragMode>
         <extInfo xsi:type="form:DynamicListTableExtInfo">
+          <autoRefresh>true</autoRefresh>
           <autoRefreshPeriod>60</autoRefreshPeriod>
           <period>
             <startDate>0001-01-01T00:00:00</startDate>
@@ -2893,11 +2913,30 @@
 	РегистрСведений.СтатусыЭН КАК СтатусыТТН
 ГДЕ
 	СтатусыТТН.ДокументРегистратор = &amp;Регистратор</queryText>
+      <mainTable>InformationRegister.СтатусыЭН</mainTable>
+      <dynamicDataRead>true</dynamicDataRead>
       <autoFillAvailableFields>true</autoFillAvailableFields>
       <customQuery>true</customQuery>
       <autoSaveUserSettings>true</autoSaveUserSettings>
       <getInvisibleFieldPresentations>true</getInvisibleFieldPresentations>
     </extInfo>
+  </attributes>
+  <attributes>
+    <name>СтатусДокумента</name>
+    <title>
+      <key>ru</key>
+      <value>Статус документа</value>
+    </title>
+    <id>3</id>
+    <valueType>
+      <types>CatalogRef.КодыСтатусовТТН</types>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
   </attributes>
   <formCommands>
     <name>ПосылкаПолучена</name>

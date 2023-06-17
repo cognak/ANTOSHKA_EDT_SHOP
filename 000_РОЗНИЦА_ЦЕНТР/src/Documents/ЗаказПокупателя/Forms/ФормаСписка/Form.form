@@ -1112,57 +1112,6 @@
         <extInfo xsi:type="form:CheckBoxFieldExtInfo"/>
       </items>
       <items xsi:type="form:FormField">
-        <name>ЧастичнаяПродажа</name>
-        <id>355</id>
-        <visible>true</visible>
-        <enabled>true</enabled>
-        <userVisible>
-          <common>true</common>
-        </userVisible>
-        <dataPath xsi:type="form:DataPath">
-          <segments>Список.ЧастичнаяПродажа</segments>
-        </dataPath>
-        <titleLocation>None</titleLocation>
-        <toolTip>
-          <key>ru</key>
-          <value>Частичная продажа разрешина</value>
-        </toolTip>
-        <extendedTooltip>
-          <name>ЧастичнаяПродажаРасширеннаяПодсказка</name>
-          <id>357</id>
-          <visible>true</visible>
-          <enabled>true</enabled>
-          <userVisible>
-            <common>true</common>
-          </userVisible>
-          <type>Label</type>
-          <autoMaxWidth>true</autoMaxWidth>
-          <autoMaxHeight>true</autoMaxHeight>
-          <extInfo xsi:type="form:LabelDecorationExtInfo">
-            <horizontalAlign>Left</horizontalAlign>
-          </extInfo>
-        </extendedTooltip>
-        <contextMenu>
-          <name>ЧастичнаяПродажаКонтекстноеМеню</name>
-          <id>356</id>
-          <visible>true</visible>
-          <enabled>true</enabled>
-          <userVisible>
-            <common>true</common>
-          </userVisible>
-          <autoFill>true</autoFill>
-        </contextMenu>
-        <type>CheckBoxField</type>
-        <editMode>Enter</editMode>
-        <showInHeader>true</showInHeader>
-        <headerPicture xsi:type="core:PictureRef">
-          <picture>CommonPicture.РазделЗакупки16</picture>
-        </headerPicture>
-        <headerHorizontalAlign>Left</headerHorizontalAlign>
-        <showInFooter>true</showInFooter>
-        <extInfo xsi:type="form:CheckBoxFieldExtInfo"/>
-      </items>
-      <items xsi:type="form:FormField">
         <name>НеПерезванивать</name>
         <id>366</id>
         <visible>true</visible>
@@ -4402,7 +4351,6 @@
       <items xsi:type="form:Button">
         <name>ЧастичнаяПродажаКнопка</name>
         <id>351</id>
-        <visible>true</visible>
         <enabled>true</enabled>
         <userVisible>
           <common>true</common>
@@ -6071,10 +6019,10 @@
 ИЗ
 	Документ.ЗапросДоступностиТоваров КАК ДокументЗапросДоступностиТоваров
 		ЛЕВОЕ СОЕДИНЕНИЕ Документ.ЭлектроннаяНакладная КАК ЭлектроннаяНакладная
-			ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СтатусыЭН.СрезПоследних КАК СтатусыТТНСрезПоследних
+			ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.СтатусыЭН.СрезПоследних КАК СтатусыТТНСрезПоследних
 			ПО ЭлектроннаяНакладная.Ссылка = СтатусыТТНСрезПоследних.ДокументРегистратор
+			И НЕ СтатусыТТНСрезПоследних.СтатусЭН.СтатусПосылки = ЗНАЧЕНИЕ(Перечисление.СтатусыПосылокСлужбыДоставки.Отменена)
 		ПО ЭлектроннаяНакладная.ДокументОснование = ДокументЗапросДоступностиТоваров.Ссылка
-		И НЕ ЭлектроннаяНакладная.Статус = ЗНАЧЕНИЕ(Перечисление.СтатусыПосылокСлужбыДоставки.Отменена)
 		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
 			ВложенныйЗапрос.Ссылка КАК Ссылка,
 			КОЛИЧЕСТВО(ВложенныйЗапрос.Дата) КАК КолСообщений
