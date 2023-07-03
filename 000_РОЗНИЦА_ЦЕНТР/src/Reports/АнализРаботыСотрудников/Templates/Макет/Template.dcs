@@ -139,7 +139,8 @@
 ИЗ
 	РегистрСведений.СтатусыЗаказовПокупателей КАК СтатусыЗаказовПокупателей
 ГДЕ
-	СтатусыЗаказовПокупателей.Статус = &amp;СтатусВРаботе
+	СтатусыЗаказовПокупателей.Статус = ЗНАЧЕНИЕ(Перечисление.СтатусыЗаказовПокупателей.Вработе)
+	И СтатусыЗаказовПокупателей.Период МЕЖДУ &amp;ПериодРегистрацииС И &amp;ПериодРегистрацииПо
 
 СГРУППИРОВАТЬ ПО
 	СтатусыЗаказовПокупателей.Ответственный,
@@ -160,6 +161,7 @@
 	РегистрСведений.СтатусыЗаказовПокупателей КАК СтатусыЗаказовПокупателей
 ГДЕ
 	СтатусыЗаказовПокупателей.Ответственный = СтатусыЗаказовПокупателей.Автор
+	И СтатусыЗаказовПокупателей.Период МЕЖДУ &amp;ПериоПериодРегистрацииС И &amp;ПериодРегистрацииПо
 
 СГРУППИРОВАТЬ ПО
 	СтатусыЗаказовПокупателей.Ответственный,
@@ -180,7 +182,8 @@
 ИЗ
 	РегистрСведений.СтатусыЗаказовПокупателей КАК СтатусыЗаказовПокупателей
 ГДЕ
-	СтатусыЗаказовПокупателей.Статус = &amp;СтатусНОВЫЙ
+	СтатусыЗаказовПокупателей.Статус = ЗНАЧЕНИЕ(Перечисление.СтатусыЗаказовПокупателей.Новый)
+	И СтатусыЗаказовПокупателей.Период МЕЖДУ &amp;ПериодРегистрацииС И &amp;ПериодРегистрацииПо
 
 СГРУППИРОВАТЬ ПО
 	СтатусыЗаказовПокупателей.Ответственный,
@@ -380,6 +383,7 @@
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 		<useRestriction>true</useRestriction>
 		<expression>&amp;Период.ДатаОкончания</expression>
+		<use>Always</use>
 	</parameter>
 	<parameter>
 		<name>ПериодРегистрацииС</name>
@@ -398,33 +402,23 @@
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 		<useRestriction>true</useRestriction>
 		<expression>&amp;Период.ДатаНачала</expression>
+		<use>Always</use>
 	</parameter>
 	<parameter>
-		<name>СтатусВРаботе</name>
+		<name>ПериоПериодРегистрацииС</name>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
-				<v8:content>Статус в работе</v8:content>
+				<v8:content>Перио период регистрации С</v8:content>
 			</v8:item>
 		</title>
 		<valueType>
-			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:EnumRef.СтатусыЗаказовПокупателей</v8:Type>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
 		</valueType>
-		<value xsi:nil="true"/>
-		<useRestriction>true</useRestriction>
-	</parameter>
-	<parameter>
-		<name>СтатусНОВЫЙ</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Статус НОВЫЙ</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:EnumRef.СтатусыЗаказовПокупателей</v8:Type>
-		</valueType>
-		<value xsi:nil="true"/>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 		<useRestriction>true</useRestriction>
 	</parameter>
 	<settingsVariant>
@@ -530,7 +524,10 @@
 						</dcsset:item>
 					</dcsset:groupItems>
 					<dcsset:order>
-						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>Период</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
 					</dcsset:order>
 					<dcsset:selection>
 						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
