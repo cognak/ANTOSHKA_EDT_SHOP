@@ -31,7 +31,6 @@
     <type>UsualGroup</type>
     <extInfo xsi:type="form:UsualGroupExtInfo">
       <group>Vertical</group>
-      <behavior>Auto</behavior>
       <representation>WeakSeparation</representation>
       <showLeftMargin>true</showLeftMargin>
       <united>true</united>
@@ -52,8 +51,8 @@
     </dataPath>
     <defaultItem>true</defaultItem>
     <titleLocation>None</titleLocation>
-    <excludedCommands>Create</excludedCommands>
     <excludedCommands>Copy</excludedCommands>
+    <excludedCommands>Create</excludedCommands>
     <items xsi:type="form:FormField">
       <name>Код</name>
       <id>16</id>
@@ -321,7 +320,6 @@
     <verticalStretch>true</verticalStretch>
     <enableStartDrag>true</enableStartDrag>
     <enableDrag>true</enableDrag>
-    <fileDragMode>AsFileRef</fileDragMode>
     <rowPictureDataPath xsi:type="form:DataPath">
       <segments>Список.DefaultPicture</segments>
     </rowPictureDataPath>
@@ -380,15 +378,15 @@
     <autoFill>true</autoFill>
   </autoCommandBar>
   <handlers>
-    <event>OnCreateAtServer</event>
-    <name>ПриСозданииНаСервере</name>
-  </handlers>
-  <handlers>
     <event>OnOpen</event>
     <name>ПриОткрытии</name>
   </handlers>
-  <excludedCommands>Create</excludedCommands>
+  <handlers>
+    <event>OnCreateAtServer</event>
+    <name>ПриСозданииНаСервере</name>
+  </handlers>
   <excludedCommands>Copy</excludedCommands>
+  <excludedCommands>Create</excludedCommands>
   <excludedCommands>Delete</excludedCommands>
   <excludedCommands>SetDeletionMark</excludedCommands>
   <windowOpeningMode>LockOwnerWindow</windowOpeningMode>
@@ -484,7 +482,7 @@
         <name>ВсеОтделения</name>
       </handler>
     </action>
-    <currentRowUse>Auto</currentRowUse>
+    <currentRowUse>DontUse</currentRowUse>
   </formCommands>
   <commandInterface>
     <navigationPanel/>

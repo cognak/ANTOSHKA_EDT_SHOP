@@ -790,57 +790,6 @@
           </extInfo>
         </items>
         <items xsi:type="form:FormField">
-          <name>ТоварыНоменклатураТипНоменклатуры</name>
-          <id>1006</id>
-          <title>
-            <key>ru</key>
-            <value>Тип</value>
-          </title>
-          <visible>true</visible>
-          <enabled>true</enabled>
-          <userVisible>
-            <common>true</common>
-          </userVisible>
-          <dataPath xsi:type="form:DataPath">
-            <segments>Объект.Товары.Номенклатура.ТипНоменклатуры</segments>
-          </dataPath>
-          <extendedTooltip>
-            <name>ТоварыНоменклатураТипНоменклатурыРасширеннаяПодсказка</name>
-            <id>1008</id>
-            <visible>true</visible>
-            <enabled>true</enabled>
-            <userVisible>
-              <common>true</common>
-            </userVisible>
-            <type>Label</type>
-            <autoMaxWidth>true</autoMaxWidth>
-            <autoMaxHeight>true</autoMaxHeight>
-            <extInfo xsi:type="form:LabelDecorationExtInfo">
-              <horizontalAlign>Left</horizontalAlign>
-            </extInfo>
-          </extendedTooltip>
-          <contextMenu>
-            <name>ТоварыНоменклатураТипНоменклатурыКонтекстноеМеню</name>
-            <id>1007</id>
-            <visible>true</visible>
-            <enabled>true</enabled>
-            <userVisible>
-              <common>true</common>
-            </userVisible>
-            <autoFill>true</autoFill>
-          </contextMenu>
-          <type>LabelField</type>
-          <editMode>EnterOnInput</editMode>
-          <showInHeader>true</showInHeader>
-          <headerHorizontalAlign>Left</headerHorizontalAlign>
-          <showInFooter>true</showInFooter>
-          <extInfo xsi:type="form:LabelFieldExtInfo">
-            <width>2</width>
-            <autoMaxHeight>true</autoMaxHeight>
-            <horizontalStretch>false</horizontalStretch>
-          </extInfo>
-        </items>
-        <items xsi:type="form:FormField">
           <name>ТоварыНоменклатура</name>
           <id>184</id>
           <visible>true</visible>
@@ -2516,6 +2465,57 @@
           </extInfo>
         </items>
         <items xsi:type="form:FormField">
+          <name>ТоварыНоменклатураТипНоменклатуры</name>
+          <id>1006</id>
+          <title>
+            <key>ru</key>
+            <value>Тип</value>
+          </title>
+          <visible>true</visible>
+          <enabled>true</enabled>
+          <userVisible>
+            <common>true</common>
+          </userVisible>
+          <dataPath xsi:type="form:DataPath">
+            <segments>Объект.Товары.Номенклатура.ТипНоменклатуры</segments>
+          </dataPath>
+          <extendedTooltip>
+            <name>ТоварыНоменклатураТипНоменклатурыРасширеннаяПодсказка</name>
+            <id>1008</id>
+            <visible>true</visible>
+            <enabled>true</enabled>
+            <userVisible>
+              <common>true</common>
+            </userVisible>
+            <type>Label</type>
+            <autoMaxWidth>true</autoMaxWidth>
+            <autoMaxHeight>true</autoMaxHeight>
+            <extInfo xsi:type="form:LabelDecorationExtInfo">
+              <horizontalAlign>Left</horizontalAlign>
+            </extInfo>
+          </extendedTooltip>
+          <contextMenu>
+            <name>ТоварыНоменклатураТипНоменклатурыКонтекстноеМеню</name>
+            <id>1007</id>
+            <visible>true</visible>
+            <enabled>true</enabled>
+            <userVisible>
+              <common>true</common>
+            </userVisible>
+            <autoFill>true</autoFill>
+          </contextMenu>
+          <type>LabelField</type>
+          <editMode>EnterOnInput</editMode>
+          <showInHeader>true</showInHeader>
+          <headerHorizontalAlign>Left</headerHorizontalAlign>
+          <showInFooter>true</showInFooter>
+          <extInfo xsi:type="form:LabelFieldExtInfo">
+            <width>2</width>
+            <autoMaxHeight>true</autoMaxHeight>
+            <horizontalStretch>false</horizontalStretch>
+          </extInfo>
+        </items>
+        <items xsi:type="form:FormField">
           <name>ТоварыКлючСвязиБонусныхБаллов</name>
           <id>994</id>
           <title>
@@ -2743,6 +2743,10 @@
         <handlers>
           <event>BeforeDeleteRow</event>
           <name>ТоварыПередУдалением</name>
+        </handlers>
+        <handlers>
+          <event>BeforeRowChange</event>
+          <name>ТоварыПередНачаломИзменения</name>
         </handlers>
         <handlers>
           <event>OnStartEdit</event>
@@ -12108,6 +12112,23 @@
       <value>Режим закрытия смены</value>
     </title>
     <id>17</id>
+    <valueType>
+      <types>Boolean</types>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
+  </attributes>
+  <attributes>
+    <name>ИсключительныйРежим</name>
+    <title>
+      <key>ru</key>
+      <value>Исключительный режим</value>
+    </title>
+    <id>18</id>
     <valueType>
       <types>Boolean</types>
     </valueType>
