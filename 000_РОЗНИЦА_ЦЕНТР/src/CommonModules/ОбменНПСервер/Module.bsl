@@ -1817,7 +1817,7 @@
 		|<PaymentMethod>"+PForm+"</PaymentMethod>
 		|<VolumeGeneral>"+Объем+"</VolumeGeneral>
 		|<Weight>"+Вес+"</Weight>
-		|<SeatsAmount>"+Строка(Мест)+"</SeatsAmount>
+		|<SeatsAmount>"+Строка(Мест)+"</SeatsAmount>" + ЗаполнитьКоличествоМест(ДокССылка) + "
 		|<ServiceType>"+ServiceType+"</ServiceType>"+ДопУслуги+"
 		|<CitySender>"+CitySender+"</CitySender>
 		|<Sender>"+Sender+"</Sender>
@@ -1899,7 +1899,7 @@
 		|<PaymentMethod>"+PForm+"</PaymentMethod>
 		|<VolumeGeneral>"+Объем+"</VolumeGeneral>
 		|<Weight>"+Вес+"</Weight>
-		|<SeatsAmount>"+Строка(Мест)+"</SeatsAmount>
+		|<SeatsAmount>"+Строка(Мест)+"</SeatsAmount>" + ЗаполнитьКоличествоМест(ДокССылка) + "
 		|<ServiceType>"+ServiceType+"</ServiceType>"+ДопУслуги+"
 		|<CitySender>"+CitySender+"</CitySender>
 		|<Sender>"+Sender+"</Sender>
@@ -1981,7 +1981,7 @@
 		|<PaymentMethod>"+PForm+"</PaymentMethod>
 		|<VolumeGeneral>"+Объем+"</VolumeGeneral>
 		|<Weight>"+Вес+"</Weight>
-		|<SeatsAmount>"+Строка(Мест)+"</SeatsAmount>
+		|<SeatsAmount>"+Строка(Мест)+"</SeatsAmount>" + ЗаполнитьКоличествоМест(ДокССылка) + "
 		|<ServiceType>"+ServiceType+"</ServiceType>"+ДопУслуги+"
 		|<CitySender>"+CitySender+"</CitySender>
 		|<Sender>"+Sender+"</Sender>
@@ -2063,7 +2063,7 @@
 		|<PaymentMethod>"+PForm+"</PaymentMethod>
 		|<VolumeGeneral>"+Объем+"</VolumeGeneral>
 		|<Weight>"+Вес+"</Weight>
-		|<SeatsAmount>"+Строка(Мест)+"</SeatsAmount>
+		|<SeatsAmount>"+Строка(Мест)+"</SeatsAmount>" + ЗаполнитьКоличествоМест(ДокССылка) + "
 		|<ServiceType>"+ServiceType+"</ServiceType>"+ДопУслуги+"
 		|<CitySender>"+CitySender+"</CitySender>
 		|<Sender>"+Sender+"</Sender>
@@ -2106,7 +2106,8 @@
 КонецФункции
 
 Функция ЗаполнитьКоличествоМест(ДокССылка)  
-	Места = "";	  
+	Места = "";
+	Места = Места + "<OptionsSeat>";
 	
 	Запрос = Новый Запрос;
 	Запрос.Текст = 
@@ -2116,33 +2117,35 @@
 		|	ЗапросДоступностиТоваровУпаковки.Глубина КАК Длина,
 		|	ЗапросДоступностиТоваровУпаковки.Вес КАК Вес
 		|ИЗ
-		|	Документ.ЗапросДоступностиТоваров.Упаковки КАК ЗапросДоступностиТоваровУпаковки
+		|	Документ.ЭлектроннаяНакладная КАК ЭлектроннаяНакладная
+		|		ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.ЗапросДоступностиТоваров.Упаковки КАК ЗапросДоступностиТоваровУпаковки
+		|		ПО ЗапросДоступностиТоваровУпаковки.Ссылка = ЭлектроннаяНакладная.ДокументОснование
 		|ГДЕ
-		|	ЗапросДоступностиТоваровУпаковки.Ссылка = &Ссылка";
+		|	ЭлектроннаяНакладная.Ссылка = &Ссылка";
 	
 	Запрос.УстановитьПараметр("Ссылка", ДокССылка);
 	
 	РезультатЗапроса = Запрос.Выполнить();
 	
-	ВыборкаДетальныеЗаписи = РезультатЗапроса.Выбрать();
+	Выборка = РезультатЗапроса.Выбрать();
 	
-	Пока ВыборкаДетальныеЗаписи.Следующий() Цикл
-	
-      	Объем = ВыборкаДетальныеЗаписи.Ширина*ВыборкаДетальныеЗаписи.Длина*ВыборкаДетальныеЗаписи.Высота;
+	Пока Выборка.Следующий() Цикл
+		
+		Объем = (Выборка.Ширина*Выборка.Длина*Выборка.Высота)/1000000;
 		Места = Места + "
-		|<OptionsSeat>";
-			Места = Места + "
 			|<item>
-			|<volumetricVolume>"+Объем+"</volumetricVolume>
-			|<volumetricWidth>"+ВыборкаДетальныеЗаписи.Ширина+"</volumetricWidth>
-			|<volumetricLength>"+ВыборкаДетальныеЗаписи.Длина+"</volumetricLength>
-			|<volumetricHeight>"+ВыборкаДетальныеЗаписи.Высота+"</volumetricHeight>
-			|<weight>"+ВыборкаДетальныеЗаписи.Вес+"</weight>
+			|<volumetricVolume>"+Формат(Объем, "ЧГ=;")+"</volumetricVolume>
+			|<volumetricWidth>"+Формат(Выборка.Ширина, "ЧГ=;")+"</volumetricWidth>
+			|<volumetricLength>"+Формат(Выборка.Длина, "ЧГ=;")+"</volumetricLength>
+			|<volumetricHeight>"+Формат(Выборка.Высота, "ЧГ=;")+"</volumetricHeight>
+			|<weight>"+Формат(Выборка.Вес, "ЧГ=;")+"</weight>
 			|</item>";
-		Конеццикла;
-		Места = Места + "
-		|</OptionsSeat>";
-	Возврат Места;		
+	КонецЦикла;
+	
+	Места = Места + "</OptionsSeat>";
+	
+	Возврат Места;
+
 КонецФункции  
 
 
