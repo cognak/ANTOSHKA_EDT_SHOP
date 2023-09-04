@@ -165,24 +165,153 @@
         <items xsi:type="form:FormGroup">
           <name>Группа3</name>
           <id>878</id>
-          <items xsi:type="form:FormField">
-            <name>Контрагент</name>
-            <id>570</id>
+          <items xsi:type="form:FormGroup">
+            <name>Группа10</name>
+            <id>1176</id>
+            <items xsi:type="form:FormField">
+              <name>Контрагент</name>
+              <id>570</id>
+              <visible>true</visible>
+              <enabled>true</enabled>
+              <userVisible>
+                <common>true</common>
+              </userVisible>
+              <dataPath xsi:type="form:DataPath">
+                <segments>Объект.Контрагент</segments>
+              </dataPath>
+              <handlers>
+                <event>OnChange</event>
+                <name>КонтрагентПриИзменении</name>
+              </handlers>
+              <extendedTooltip>
+                <name>КонтрагентРасширеннаяПодсказка</name>
+                <id>572</id>
+                <visible>true</visible>
+                <enabled>true</enabled>
+                <userVisible>
+                  <common>true</common>
+                </userVisible>
+                <type>Label</type>
+                <autoMaxWidth>true</autoMaxWidth>
+                <autoMaxHeight>true</autoMaxHeight>
+                <extInfo xsi:type="form:LabelDecorationExtInfo">
+                  <horizontalAlign>Left</horizontalAlign>
+                </extInfo>
+              </extendedTooltip>
+              <contextMenu>
+                <name>КонтрагентКонтекстноеМеню</name>
+                <id>571</id>
+                <visible>true</visible>
+                <enabled>true</enabled>
+                <userVisible>
+                  <common>true</common>
+                </userVisible>
+                <autoFill>true</autoFill>
+              </contextMenu>
+              <type>InputField</type>
+              <editMode>Enter</editMode>
+              <showInHeader>true</showInHeader>
+              <headerHorizontalAlign>Left</headerHorizontalAlign>
+              <showInFooter>true</showInFooter>
+              <extInfo xsi:type="form:InputFieldExtInfo">
+                <handlers>
+                  <event>StartChoice</event>
+                  <name>КонтрагентНачалоВыбора</name>
+                </handlers>
+                <handlers>
+                  <event>Opening</event>
+                  <name>КонтрагентОткрытие</name>
+                </handlers>
+                <autoMaxWidth>true</autoMaxWidth>
+                <autoMaxHeight>true</autoMaxHeight>
+                <wrap>true</wrap>
+                <chooseType>true</chooseType>
+                <typeDomainEnabled>true</typeDomainEnabled>
+                <textEdit>true</textEdit>
+              </extInfo>
+            </items>
+            <items xsi:type="form:Button">
+              <name>ОтправитьСообщениеКлиенту</name>
+              <id>880</id>
+              <visible>true</visible>
+              <enabled>true</enabled>
+              <userVisible>
+                <common>true</common>
+              </userVisible>
+              <extendedTooltip>
+                <name>ОтправитьСообщениеКлиентуРасширеннаяПодсказка</name>
+                <id>881</id>
+                <visible>true</visible>
+                <enabled>true</enabled>
+                <userVisible>
+                  <common>true</common>
+                </userVisible>
+                <type>Label</type>
+                <autoMaxWidth>true</autoMaxWidth>
+                <autoMaxHeight>true</autoMaxHeight>
+                <extInfo xsi:type="form:LabelDecorationExtInfo">
+                  <horizontalAlign>Left</horizontalAlign>
+                </extInfo>
+              </extendedTooltip>
+              <type>UsualButton</type>
+              <commandName>Form.Command.ОтправитьСообщениеКлиенту</commandName>
+              <representation>Picture</representation>
+              <autoMaxWidth>true</autoMaxWidth>
+              <autoMaxHeight>true</autoMaxHeight>
+              <placementArea>UserCmds</placementArea>
+              <picture xsi:type="core:PictureRef">
+                <picture>CommonPicture.Конверт</picture>
+              </picture>
+              <representationInContextMenu>Auto</representationInContextMenu>
+            </items>
             <visible>true</visible>
             <enabled>true</enabled>
             <userVisible>
               <common>true</common>
             </userVisible>
-            <dataPath xsi:type="form:DataPath">
-              <segments>Объект.Контрагент</segments>
-            </dataPath>
-            <handlers>
-              <event>OnChange</event>
-              <name>КонтрагентПриИзменении</name>
-            </handlers>
+            <title>
+              <key>ru</key>
+              <value>Группа10</value>
+            </title>
             <extendedTooltip>
-              <name>КонтрагентРасширеннаяПодсказка</name>
-              <id>572</id>
+              <name>Группа10РасширеннаяПодсказка</name>
+              <id>1177</id>
+              <visible>true</visible>
+              <enabled>true</enabled>
+              <userVisible>
+                <common>true</common>
+              </userVisible>
+              <type>Label</type>
+              <autoMaxWidth>true</autoMaxWidth>
+              <autoMaxHeight>true</autoMaxHeight>
+              <extInfo xsi:type="form:LabelDecorationExtInfo">
+                <horizontalAlign>Left</horizontalAlign>
+              </extInfo>
+            </extendedTooltip>
+            <type>UsualGroup</type>
+            <extInfo xsi:type="form:UsualGroupExtInfo">
+              <group>AlwaysHorizontal</group>
+              <showLeftMargin>true</showLeftMargin>
+              <united>true</united>
+              <throughAlign>Auto</throughAlign>
+              <currentRowUse>Auto</currentRowUse>
+            </extInfo>
+          </items>
+          <items xsi:type="form:Decoration">
+            <name>ДекорацияЮрЛицо</name>
+            <id>1178</id>
+            <title>
+              <key>ru</key>
+              <value>Изменить клиента на юридическое лицо!!!</value>
+            </title>
+            <visible>true</visible>
+            <enabled>true</enabled>
+            <userVisible>
+              <common>true</common>
+            </userVisible>
+            <extendedTooltip>
+              <name>ДекорацияЮрЛицоРасширеннаяПодсказка</name>
+              <id>1180</id>
               <visible>true</visible>
               <enabled>true</enabled>
               <userVisible>
@@ -196,8 +325,8 @@
               </extInfo>
             </extendedTooltip>
             <contextMenu>
-              <name>КонтрагентКонтекстноеМеню</name>
-              <id>571</id>
+              <name>ДекорацияЮрЛицоКонтекстноеМеню</name>
+              <id>1179</id>
               <visible>true</visible>
               <enabled>true</enabled>
               <userVisible>
@@ -205,61 +334,23 @@
               </userVisible>
               <autoFill>true</autoFill>
             </contextMenu>
-            <type>InputField</type>
-            <editMode>Enter</editMode>
-            <showInHeader>true</showInHeader>
-            <headerHorizontalAlign>Left</headerHorizontalAlign>
-            <showInFooter>true</showInFooter>
-            <extInfo xsi:type="form:InputFieldExtInfo">
-              <handlers>
-                <event>StartChoice</event>
-                <name>КонтрагентНачалоВыбора</name>
-              </handlers>
-              <handlers>
-                <event>Opening</event>
-                <name>КонтрагентОткрытие</name>
-              </handlers>
-              <autoMaxWidth>true</autoMaxWidth>
-              <autoMaxHeight>true</autoMaxHeight>
-              <wrap>true</wrap>
-              <chooseType>true</chooseType>
-              <typeDomainEnabled>true</typeDomainEnabled>
-              <textEdit>true</textEdit>
-            </extInfo>
-          </items>
-          <items xsi:type="form:Button">
-            <name>ОтправитьСообщениеКлиенту</name>
-            <id>880</id>
-            <visible>true</visible>
-            <enabled>true</enabled>
-            <userVisible>
-              <common>true</common>
-            </userVisible>
-            <extendedTooltip>
-              <name>ОтправитьСообщениеКлиентуРасширеннаяПодсказка</name>
-              <id>881</id>
-              <visible>true</visible>
-              <enabled>true</enabled>
-              <userVisible>
-                <common>true</common>
-              </userVisible>
-              <type>Label</type>
-              <autoMaxWidth>true</autoMaxWidth>
-              <autoMaxHeight>true</autoMaxHeight>
-              <extInfo xsi:type="form:LabelDecorationExtInfo">
-                <horizontalAlign>Left</horizontalAlign>
-              </extInfo>
-            </extendedTooltip>
-            <type>UsualButton</type>
-            <commandName>Form.Command.ОтправитьСообщениеКлиенту</commandName>
-            <representation>Picture</representation>
+            <type>Label</type>
             <autoMaxWidth>true</autoMaxWidth>
             <autoMaxHeight>true</autoMaxHeight>
-            <placementArea>UserCmds</placementArea>
-            <picture xsi:type="core:PictureRef">
-              <picture>CommonPicture.Конверт</picture>
-            </picture>
-            <representationInContextMenu>Auto</representationInContextMenu>
+            <textColor xsi:type="core:ColorDef">
+              <red>255</red>
+            </textColor>
+            <font xsi:type="core:FontRef">
+              <font>Style.LargeTextFont</font>
+              <height>12.0</height>
+              <bold>true</bold>
+              <italic>false</italic>
+              <underline>false</underline>
+              <strikeout>false</strikeout>
+            </font>
+            <extInfo xsi:type="form:LabelDecorationExtInfo">
+              <horizontalAlign>Left</horizontalAlign>
+            </extInfo>
           </items>
           <visible>true</visible>
           <enabled>true</enabled>
@@ -283,6 +374,7 @@
           </extendedTooltip>
           <type>UsualGroup</type>
           <extInfo xsi:type="form:UsualGroupExtInfo">
+            <group>Vertical</group>
             <showLeftMargin>true</showLeftMargin>
             <united>true</united>
             <throughAlign>Auto</throughAlign>
@@ -16365,6 +16457,23 @@
       <value>Выбор типа отделения</value>
     </title>
     <id>54</id>
+    <valueType>
+      <types>Boolean</types>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
+  </attributes>
+  <attributes>
+    <name>ЮрЛицо</name>
+    <title>
+      <key>ru</key>
+      <value>Юр лицо</value>
+    </title>
+    <id>57</id>
     <valueType>
       <types>Boolean</types>
     </valueType>
