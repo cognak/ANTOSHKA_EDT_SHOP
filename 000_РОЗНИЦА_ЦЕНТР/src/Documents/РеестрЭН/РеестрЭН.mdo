@@ -60,10 +60,11 @@
   <dataLockControlMode>Managed</dataLockControlMode>
   <fullTextSearch>Use</fullTextSearch>
   <numberType>String</numberType>
-  <numberLength>9</numberLength>
+  <numberLength>36</numberLength>
   <numberAllowedLength>Variable</numberAllowedLength>
   <checkUnique>true</checkUnique>
   <autonumbering>true</autonumbering>
+  <defaultObjectForm>Document.РеестрЭН.Form.ФормаДокумента</defaultObjectForm>
   <posting>Deny</posting>
   <postInPrivilegedMode>true</postInPrivilegedMode>
   <unpostInPrivilegedMode>true</unpostInPrivilegedMode>
@@ -82,4 +83,73 @@
     <fullTextSearch>Use</fullTextSearch>
     <dataHistory>Use</dataHistory>
   </attributes>
+  <attributes uuid="352acf38-6e06-4a1c-a808-d407a489d896">
+    <name>ВнешняяСсылка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Внешняя ссылка</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>36</length>
+        <fixed>true</fixed>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="da443b7a-808e-4412-99ba-dcc51b3d7b5e">
+    <name>МагазинСклад</name>
+    <synonym>
+      <key>ru</key>
+      <value>Магазин склад</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Магазины</types>
+      <types>CatalogRef.Склады</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <forms uuid="c35a50f4-777a-45f1-ada7-9119b0251c37">
+    <name>ФормаДокумента</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма документа</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <tabularSections uuid="89aa2a46-3739-4c48-8af6-bd9183415c83">
+    <producedTypes>
+      <objectType typeId="6a8fa5e7-3140-40a6-987d-ac9fb35e82a5" valueTypeId="31363999-bb1d-45fd-845e-60e546189e92"/>
+      <rowType typeId="0373a861-0633-42f3-a081-b64afaad1e97" valueTypeId="d18e4602-dc48-4fe7-997e-7875059bd1df"/>
+    </producedTypes>
+    <name>СписокЭН</name>
+    <synonym>
+      <key>ru</key>
+      <value>Список ЭН</value>
+    </synonym>
+    <attributes uuid="43ab77c5-d020-4975-b326-76f0d46f899b">
+      <name>ЭлектронныеНакладные</name>
+      <synonym>
+        <key>ru</key>
+        <value>Электронные накладные</value>
+      </synonym>
+      <type>
+        <types>DocumentRef.ЭлектроннаяНакладная</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+  </tabularSections>
 </mdclass:Document>

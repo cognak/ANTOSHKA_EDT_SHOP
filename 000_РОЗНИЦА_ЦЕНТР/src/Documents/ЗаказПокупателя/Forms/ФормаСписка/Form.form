@@ -1163,24 +1163,24 @@
         <extInfo xsi:type="form:CheckBoxFieldExtInfo"/>
       </items>
       <items xsi:type="form:FormField">
-        <name>Сообщение</name>
-        <id>384</id>
+        <name>СообщениеМагазин</name>
+        <id>410</id>
         <visible>true</visible>
         <enabled>true</enabled>
         <userVisible>
           <common>true</common>
         </userVisible>
         <dataPath xsi:type="form:DataPath">
-          <segments>Список.Сообщение</segments>
+          <segments>Список.СообщениеМагазин</segments>
         </dataPath>
         <titleLocation>None</titleLocation>
         <toolTip>
           <key>ru</key>
-          <value>Есть сообщения от магазинов</value>
+          <value>Сообщение отправлено из магазина</value>
         </toolTip>
         <extendedTooltip>
-          <name>СообщениеРасширеннаяПодсказка</name>
-          <id>386</id>
+          <name>СообщениеМагазинРасширеннаяПодсказка</name>
+          <id>412</id>
           <visible>true</visible>
           <enabled>true</enabled>
           <userVisible>
@@ -1194,8 +1194,8 @@
           </extInfo>
         </extendedTooltip>
         <contextMenu>
-          <name>СообщениеКонтекстноеМеню</name>
-          <id>385</id>
+          <name>СообщениеМагазинКонтекстноеМеню</name>
+          <id>411</id>
           <visible>true</visible>
           <enabled>true</enabled>
           <userVisible>
@@ -1207,7 +1207,58 @@
         <editMode>Enter</editMode>
         <showInHeader>true</showInHeader>
         <headerPicture xsi:type="core:PictureRef">
-          <picture>CommonPicture.Заметка</picture>
+          <picture>CommonPicture.ТоварыЗагрузить</picture>
+        </headerPicture>
+        <headerHorizontalAlign>Left</headerHorizontalAlign>
+        <showInFooter>true</showInFooter>
+        <extInfo xsi:type="form:CheckBoxFieldExtInfo"/>
+      </items>
+      <items xsi:type="form:FormField">
+        <name>СообщениеЦентр</name>
+        <id>413</id>
+        <visible>true</visible>
+        <enabled>true</enabled>
+        <userVisible>
+          <common>true</common>
+        </userVisible>
+        <dataPath xsi:type="form:DataPath">
+          <segments>Список.СообщениеЦентр</segments>
+        </dataPath>
+        <titleLocation>None</titleLocation>
+        <toolTip>
+          <key>ru</key>
+          <value>Сообщение отправлено из КЦ</value>
+        </toolTip>
+        <extendedTooltip>
+          <name>СообщениеЦентрРасширеннаяПодсказка</name>
+          <id>415</id>
+          <visible>true</visible>
+          <enabled>true</enabled>
+          <userVisible>
+            <common>true</common>
+          </userVisible>
+          <type>Label</type>
+          <autoMaxWidth>true</autoMaxWidth>
+          <autoMaxHeight>true</autoMaxHeight>
+          <extInfo xsi:type="form:LabelDecorationExtInfo">
+            <horizontalAlign>Left</horizontalAlign>
+          </extInfo>
+        </extendedTooltip>
+        <contextMenu>
+          <name>СообщениеЦентрКонтекстноеМеню</name>
+          <id>414</id>
+          <visible>true</visible>
+          <enabled>true</enabled>
+          <userVisible>
+            <common>true</common>
+          </userVisible>
+          <autoFill>true</autoFill>
+        </contextMenu>
+        <type>CheckBoxField</type>
+        <editMode>Enter</editMode>
+        <showInHeader>true</showInHeader>
+        <headerPicture xsi:type="core:PictureRef">
+          <picture>CommonPicture.ТоварыВыгрузить</picture>
         </headerPicture>
         <headerHorizontalAlign>Left</headerHorizontalAlign>
         <showInFooter>true</showInFooter>
@@ -5061,24 +5112,131 @@
           <autoMaxHeight>true</autoMaxHeight>
         </extInfo>
       </items>
-      <items xsi:type="form:FormField">
-        <name>СписокЗапросаДоступностиКолСообщений</name>
-        <id>387</id>
-        <title>
-          <key>ru</key>
-          <value>К-во сообщ</value>
-        </title>
+      <items xsi:type="form:FormGroup">
+        <name>КоличествоСообщений</name>
+        <id>402</id>
+        <items xsi:type="form:FormField">
+          <name>СписокЗапросаДоступностиСообщениеЦентр</name>
+          <id>396</id>
+          <title>
+            <key>ru</key>
+            <value>От центра</value>
+          </title>
+          <visible>true</visible>
+          <enabled>true</enabled>
+          <userVisible>
+            <common>true</common>
+          </userVisible>
+          <dataPath xsi:type="form:DataPath">
+            <segments>СписокЗапросаДоступности.СообщениеЦентр</segments>
+          </dataPath>
+          <extendedTooltip>
+            <name>СписокЗапросаДоступностиСообщениеЦентрРасширеннаяПодсказка</name>
+            <id>398</id>
+            <visible>true</visible>
+            <enabled>true</enabled>
+            <userVisible>
+              <common>true</common>
+            </userVisible>
+            <type>Label</type>
+            <autoMaxWidth>true</autoMaxWidth>
+            <autoMaxHeight>true</autoMaxHeight>
+            <extInfo xsi:type="form:LabelDecorationExtInfo">
+              <horizontalAlign>Left</horizontalAlign>
+            </extInfo>
+          </extendedTooltip>
+          <contextMenu>
+            <name>СписокЗапросаДоступностиСообщениеЦентрКонтекстноеМеню</name>
+            <id>397</id>
+            <visible>true</visible>
+            <enabled>true</enabled>
+            <userVisible>
+              <common>true</common>
+            </userVisible>
+            <autoFill>true</autoFill>
+          </contextMenu>
+          <type>InputField</type>
+          <horizontalAlign>Center</horizontalAlign>
+          <editMode>Enter</editMode>
+          <showInHeader>true</showInHeader>
+          <headerHorizontalAlign>Center</headerHorizontalAlign>
+          <showInFooter>true</showInFooter>
+          <extInfo xsi:type="form:InputFieldExtInfo">
+            <autoMaxWidth>true</autoMaxWidth>
+            <autoMaxHeight>true</autoMaxHeight>
+            <wrap>true</wrap>
+            <chooseType>true</chooseType>
+            <typeDomainEnabled>true</typeDomainEnabled>
+            <textEdit>true</textEdit>
+          </extInfo>
+        </items>
+        <items xsi:type="form:FormField">
+          <name>СписокЗапросаДоступностиСообщениеМагазин</name>
+          <id>399</id>
+          <title>
+            <key>ru</key>
+            <value>От магазина</value>
+          </title>
+          <visible>true</visible>
+          <enabled>true</enabled>
+          <userVisible>
+            <common>true</common>
+          </userVisible>
+          <dataPath xsi:type="form:DataPath">
+            <segments>СписокЗапросаДоступности.СообщениеМагазин</segments>
+          </dataPath>
+          <extendedTooltip>
+            <name>СписокЗапросаДоступностиСообщениеМагазинРасширеннаяПодсказка</name>
+            <id>401</id>
+            <visible>true</visible>
+            <enabled>true</enabled>
+            <userVisible>
+              <common>true</common>
+            </userVisible>
+            <type>Label</type>
+            <autoMaxWidth>true</autoMaxWidth>
+            <autoMaxHeight>true</autoMaxHeight>
+            <extInfo xsi:type="form:LabelDecorationExtInfo">
+              <horizontalAlign>Left</horizontalAlign>
+            </extInfo>
+          </extendedTooltip>
+          <contextMenu>
+            <name>СписокЗапросаДоступностиСообщениеМагазинКонтекстноеМеню</name>
+            <id>400</id>
+            <visible>true</visible>
+            <enabled>true</enabled>
+            <userVisible>
+              <common>true</common>
+            </userVisible>
+            <autoFill>true</autoFill>
+          </contextMenu>
+          <type>InputField</type>
+          <horizontalAlign>Center</horizontalAlign>
+          <editMode>Enter</editMode>
+          <showInHeader>true</showInHeader>
+          <headerHorizontalAlign>Center</headerHorizontalAlign>
+          <showInFooter>true</showInFooter>
+          <extInfo xsi:type="form:InputFieldExtInfo">
+            <autoMaxWidth>true</autoMaxWidth>
+            <autoMaxHeight>true</autoMaxHeight>
+            <wrap>true</wrap>
+            <chooseType>true</chooseType>
+            <typeDomainEnabled>true</typeDomainEnabled>
+            <textEdit>true</textEdit>
+          </extInfo>
+        </items>
         <visible>true</visible>
         <enabled>true</enabled>
         <userVisible>
           <common>true</common>
         </userVisible>
-        <dataPath xsi:type="form:DataPath">
-          <segments>СписокЗапросаДоступности.КолСообщений</segments>
-        </dataPath>
+        <title>
+          <key>ru</key>
+          <value>Сообщения</value>
+        </title>
         <extendedTooltip>
-          <name>СписокЗапросаДоступностиКолСообщенийРасширеннаяПодсказка</name>
-          <id>389</id>
+          <name>КоличествоСообщенийРасширеннаяПодсказка</name>
+          <id>403</id>
           <visible>true</visible>
           <enabled>true</enabled>
           <userVisible>
@@ -5091,28 +5249,11 @@
             <horizontalAlign>Left</horizontalAlign>
           </extInfo>
         </extendedTooltip>
-        <contextMenu>
-          <name>СписокЗапросаДоступностиКолСообщенийКонтекстноеМеню</name>
-          <id>388</id>
-          <visible>true</visible>
-          <enabled>true</enabled>
-          <userVisible>
-            <common>true</common>
-          </userVisible>
-          <autoFill>true</autoFill>
-        </contextMenu>
-        <type>InputField</type>
-        <editMode>Enter</editMode>
-        <showInHeader>true</showInHeader>
-        <headerHorizontalAlign>Left</headerHorizontalAlign>
-        <showInFooter>true</showInFooter>
-        <extInfo xsi:type="form:InputFieldExtInfo">
-          <autoMaxWidth>true</autoMaxWidth>
-          <autoMaxHeight>true</autoMaxHeight>
-          <wrap>true</wrap>
-          <chooseType>true</chooseType>
-          <typeDomainEnabled>true</typeDomainEnabled>
-          <textEdit>true</textEdit>
+        <type>ColumnGroup</type>
+        <extInfo xsi:type="form:ColumnGroupExtInfo">
+          <showTitle>true</showTitle>
+          <showInHeader>true</showInHeader>
+          <headerHorizontalAlign>Center</headerHorizontalAlign>
         </extInfo>
       </items>
       <items xsi:type="form:FormField">
@@ -5655,13 +5796,18 @@
 			ТОГДА ЛОЖЬ
 		ИНАЧЕ ИСТИНА
 	КОНЕЦ КАК ЧастичноСогласован,
+	ТаблицаВозвратов.ЕстьВозврат,
+	ЕСТЬNULL(ТаблицаКонтактыПочта.Представление, &quot;&quot;) КАК ПочтаКлиента,
 	ВЫБОР
-		КОГДА ЕстьСообщения.ЕстьСообщение ЕСТЬ NULL
+		КОГДА ЕстьСообщения.ЕстьСообщениеЦентр ЕСТЬ NULL
 			ТОГДА ЛОЖЬ
 		ИНАЧЕ ИСТИНА
-	КОНЕЦ КАК Сообщение,
-	ТаблицаВозвратов.ЕстьВозврат,
-	ЕСТЬNULL(ТаблицаКонтактыПочта.Представление, &quot;&quot;) КАК ПочтаКлиента
+	КОНЕЦ КАК СообщениеЦентр,
+	ВЫБОР
+		КОГДА ЕстьСообщения.ЕстьСообщениеМагазин ЕСТЬ NULL
+			ТОГДА ЛОЖЬ
+		ИНАЧЕ ИСТИНА
+	КОНЕЦ КАК СообщениеМагазин
 {ГДЕ
 	ТаблицаДокументы.Ссылка.*}
 ИЗ
@@ -5761,12 +5907,21 @@
 			ЗапросДоступностиТоваров.ДокументОснование.Ссылка.*}) КАК ТаблицаЧестичноСогласован
 		ПО ТаблицаДокументы.Ссылка = ТаблицаЧестичноСогласован.Ссылка
 		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
-			МИНИМУМ(ВложенныйЗапрос.ЕстьСообщение) КАК ЕстьСообщение,
-			ВложенныйЗапрос.Ссылка
+			ВложенныйЗапрос.Ссылка,
+			МИНИМУМ(ВложенныйЗапрос.ЕстьСообщениеЦентр) КАК ЕстьСообщениеЦентр,
+			МИНИМУМ(ВложенныйЗапрос.ЕстьСообщениеМагазин) КАК ЕстьСообщениеМагазин
 		ИЗ
 			(ВЫБРАТЬ
-				КомментарийПоСтрокам.Документ КАК ЕстьСообщение,
-				КомментарийПоСтрокам.Документ КАК Ссылка
+				ВЫБОР
+					КОГДА КомментарийПоСтрокам.УзелСоздания.ВидУзла = ЗНАЧЕНИЕ(Перечисление.ВидыУзлов.ЦентральныйОфис)
+						ТОГДА КомментарийПоСтрокам.Документ
+				КОНЕЦ КАК ЕстьСообщениеЦентр,
+				КомментарийПоСтрокам.Документ КАК Ссылка,
+				КомментарийПоСтрокам.УзелСоздания КАК УзелСоздания,
+				ВЫБОР
+					КОГДА НЕ КомментарийПоСтрокам.УзелСоздания.ВидУзла = ЗНАЧЕНИЕ(Перечисление.ВидыУзлов.ЦентральныйОфис)
+						ТОГДА КомментарийПоСтрокам.Документ
+				КОНЕЦ КАК ЕстьСообщениеМагазин
 			ИЗ
 				РегистрСведений.КомментарийПоСтрокам КАК КомментарийПоСтрокам
 			ГДЕ
@@ -5778,8 +5933,16 @@
 			ОБЪЕДИНИТЬ ВСЕ
 
 			ВЫБРАТЬ
-				КомментарийПоСтрокам.Документ,
-				КомментарийПоСтрокам.Документ.ДокументОснование
+				ВЫБОР
+					КОГДА КомментарийПоСтрокам.УзелСоздания.ВидУзла = ЗНАЧЕНИЕ(Перечисление.ВидыУзлов.ЦентральныйОфис)
+						ТОГДА КомментарийПоСтрокам.Документ
+				КОНЕЦ,
+				КомментарийПоСтрокам.Документ.ДокументОснование,
+				КомментарийПоСтрокам.УзелСоздания,
+				ВЫБОР
+					КОГДА НЕ КомментарийПоСтрокам.УзелСоздания.ВидУзла = ЗНАЧЕНИЕ(Перечисление.ВидыУзлов.ЦентральныйОфис)
+						ТОГДА КомментарийПоСтрокам.Документ
+				КОНЕЦ
 			ИЗ
 				РегистрСведений.КомментарийПоСтрокам КАК КомментарийПоСтрокам
 			ГДЕ
@@ -6034,7 +6197,8 @@
 			ТОГДА &quot;&quot;
 		ИНАЧЕ ЕСТЬNULL(СтатусыТТНСрезПоследних.СтатусЭН, &quot;Создана&quot;)
 	КОНЕЦ КАК СтатусЭН,
-	КоличествоСообщений.КолСообщений
+	КоличествоСообщений.СообщениеЦентр,
+	КоличествоСообщений.СообщениеМагазин
 ИЗ
 	Документ.ЗапросДоступностиТоваров КАК ДокументЗапросДоступностиТоваров
 		ЛЕВОЕ СОЕДИНЕНИЕ Документ.ЭлектроннаяНакладная КАК ЭлектроннаяНакладная
@@ -6044,11 +6208,19 @@
 		ПО ЭлектроннаяНакладная.ДокументОснование = ДокументЗапросДоступностиТоваров.Ссылка
 		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
 			ВложенныйЗапрос.Ссылка КАК Ссылка,
-			КОЛИЧЕСТВО(ВложенныйЗапрос.Дата) КАК КолСообщений
+			КОЛИЧЕСТВО(РАЗЛИЧНЫЕ ВЫБОР
+				КОГДА ВложенныйЗапрос.УзелСоздания.ВидУзла = ЗНАЧЕНИЕ(Перечисление.ВидыУзлов.ЦентральныйОфис)
+					ТОГДА ВложенныйЗапрос.Дата
+			КОНЕЦ) КАК СообщениеЦентр,
+			КОЛИЧЕСТВО(РАЗЛИЧНЫЕ ВЫБОР
+				КОГДА НЕ ВложенныйЗапрос.УзелСоздания.ВидУзла = ЗНАЧЕНИЕ(Перечисление.ВидыУзлов.ЦентральныйОфис)
+					ТОГДА ВложенныйЗапрос.Дата
+			КОНЕЦ) КАК СообщениеМагазин
 		ИЗ
 			(ВЫБРАТЬ
 				КомментарийПоСтрокам.Дата КАК Дата,
-				ЗапросДоступностиТоваров.Ссылка КАК Ссылка
+				ЗапросДоступностиТоваров.Ссылка КАК Ссылка,
+				КомментарийПоСтрокам.УзелСоздания КАК УзелСоздания
 			ИЗ
 				РегистрСведений.КомментарийПоСтрокам КАК КомментарийПоСтрокам
 					ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.ЗапросДоступностиТоваров КАК ЗапросДоступностиТоваров
@@ -6061,7 +6233,8 @@
 
 			ВЫБРАТЬ
 				КомментарийПоСтрокам.Дата,
-				КомментарийПоСтрокам.Документ
+				КомментарийПоСтрокам.Документ,
+				КомментарийПоСтрокам.УзелСоздания
 			ИЗ
 				РегистрСведений.КомментарийПоСтрокам КАК КомментарийПоСтрокам
 			ГДЕ
@@ -6329,18 +6502,6 @@
     <navigationPanel/>
     <commandBar>
       <cmiFragmentRecord>
-        <command>0</command>
-        <group>CommandGroup.Печать</group>
-        <index>0</index>
-        <userVisible/>
-      </cmiFragmentRecord>
-      <cmiFragmentRecord>
-        <command>0</command>
-        <group>FormCommandBarCreateBasedOn</group>
-        <index>0</index>
-        <userVisible/>
-      </cmiFragmentRecord>
-      <cmiFragmentRecord>
         <command>Document.ЗаказПоставщику.StandardCommand.CreateBasedOn</command>
         <group>FormCommandBarCreateBasedOn</group>
         <index>1</index>
@@ -6365,15 +6526,11 @@
         <userVisible/>
       </cmiFragmentRecord>
       <cmiFragmentRecord>
-        <command>0</command>
-        <group>CommandGroup.Печать</group>
-        <index>1</index>
-        <userVisible/>
-      </cmiFragmentRecord>
-      <cmiFragmentRecord>
         <command>Report.ОтчетПоДвижениямДокумента.Command.ОтчетПоДвижениям</command>
         <index>1</index>
-        <userVisible/>
+        <userVisible>
+          <common>true</common>
+        </userVisible>
       </cmiFragmentRecord>
       <cmiFragmentRecord>
         <command>CommonCommand.ИсторияИзменений</command>
@@ -6381,12 +6538,17 @@
         <userVisible/>
       </cmiFragmentRecord>
       <cmiFragmentRecord>
-        <command>0</command>
+        <command>CommonCommand.СтруктураПодчиненности</command>
+        <index>3</index>
         <userVisible/>
       </cmiFragmentRecord>
       <cmiFragmentRecord>
-        <command>CommonCommand.СтруктураПодчиненности</command>
-        <index>3</index>
+        <command>Document.ПеремещениеТоваров.StandardCommand.CreateBasedOn</command>
+        <commandParameter xsi:type="form:DataPath">
+          <segments>Items.Список.CurrentData</segments>
+        </commandParameter>
+        <group>FormCommandBarCreateBasedOn</group>
+        <index>5</index>
         <userVisible/>
       </cmiFragmentRecord>
     </commandBar>
