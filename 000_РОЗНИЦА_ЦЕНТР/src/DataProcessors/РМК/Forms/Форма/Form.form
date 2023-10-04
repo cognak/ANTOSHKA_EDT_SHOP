@@ -960,6 +960,36 @@
               <representationInContextMenu>Auto</representationInContextMenu>
             </items>
             <items xsi:type="form:Button">
+              <name>КомандаПередатьБонусныеБаллыНаБлаготворительныйФонд</name>
+              <id>809</id>
+              <visible>true</visible>
+              <enabled>true</enabled>
+              <userVisible>
+                <common>true</common>
+              </userVisible>
+              <extendedTooltip>
+                <name>КомандаПередатьБонусныеБаллыНаБлаготворительныйФондРасширеннаяПодсказка</name>
+                <id>810</id>
+                <visible>true</visible>
+                <enabled>true</enabled>
+                <userVisible>
+                  <common>true</common>
+                </userVisible>
+                <type>Label</type>
+                <autoMaxWidth>true</autoMaxWidth>
+                <autoMaxHeight>true</autoMaxHeight>
+                <extInfo xsi:type="form:LabelDecorationExtInfo">
+                  <horizontalAlign>Left</horizontalAlign>
+                </extInfo>
+              </extendedTooltip>
+              <commandName>Form.Command.КомандаПередатьБонусныеБаллыНаБлаготворительныйФонд</commandName>
+              <representation>Auto</representation>
+              <autoMaxWidth>true</autoMaxWidth>
+              <autoMaxHeight>true</autoMaxHeight>
+              <placementArea>UserCmds</placementArea>
+              <representationInContextMenu>Auto</representationInContextMenu>
+            </items>
+            <items xsi:type="form:Button">
               <name>РМК_СчетНаОплатуПокупателю</name>
               <id>796</id>
               <visible>true</visible>
@@ -4227,7 +4257,7 @@
               </extInfo>
             </items>
             <items xsi:type="form:FormField">
-              <name>РМК2_СуммаПокупок</name>
+              <name>РМК2_СуммаНакоплений</name>
               <id>627</id>
               <visible>true</visible>
               <enabled>true</enabled>
@@ -4235,12 +4265,12 @@
                 <common>true</common>
               </userVisible>
               <dataPath xsi:type="form:DataPath">
-                <segments>РМК2_СуммаПокупок</segments>
+                <segments>РМК2_СуммаНакоплений</segments>
               </dataPath>
               <skipOnInput>true</skipOnInput>
               <titleLocation>None</titleLocation>
               <extendedTooltip>
-                <name>РМК2_СуммаПокупокРасширеннаяПодсказка</name>
+                <name>РМК2_СуммаНакопленийРасширеннаяПодсказка</name>
                 <id>629</id>
                 <visible>true</visible>
                 <enabled>true</enabled>
@@ -4255,7 +4285,7 @@
                 </extInfo>
               </extendedTooltip>
               <contextMenu>
-                <name>РМК2_СуммаПокупокКонтекстноеМеню</name>
+                <name>РМК2_СуммаНакопленийКонтекстноеМеню</name>
                 <id>628</id>
                 <visible>true</visible>
                 <enabled>true</enabled>
@@ -8951,6 +8981,45 @@
       <common>true</common>
     </edit>
   </attributes>
+  <attributes>
+    <name>РМК2_СуммаАктивныхБонусов</name>
+    <title>
+      <key>ru</key>
+      <value>РМК2 сумма активных бонусов</value>
+    </title>
+    <id>106</id>
+    <valueType>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <scale>2</scale>
+      </numberQualifiers>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
+  </attributes>
+  <attributes>
+    <name>РМК2_СуммаНакоплений</name>
+    <title>
+      <key>ru</key>
+      <value>Сумма накоплений. Только для отображения</value>
+    </title>
+    <id>107</id>
+    <valueType>
+      <types>String</types>
+      <stringQualifiers/>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
+  </attributes>
   <formCommands>
     <name>КомандаБыстрыеТоварыТовар</name>
     <title>
@@ -10957,6 +11026,38 @@
     <action xsi:type="form:FormCommandHandlerContainer">
       <handler>
         <name>КомандаСрокДействияСертификата</name>
+      </handler>
+    </action>
+    <currentRowUse>DontUse</currentRowUse>
+  </formCommands>
+  <formCommands>
+    <name>КомандаПередатьБонусныеБаллыНаБлаготворительныйФонд</name>
+    <title>
+      <key>ru</key>
+      <value>Передати бонусні бали на благодійний фонд</value>
+    </title>
+    <title>
+      <key>uk</key>
+      <value>Передати бонусні бали на благодійний фонд</value>
+    </title>
+    <id>31</id>
+    <toolTip>
+      <key>ru</key>
+      <value>Передати бонусні бали на благодійний фонд</value>
+    </toolTip>
+    <toolTip>
+      <key>uk</key>
+      <value>Передати бонусні бали на благодійний фонд</value>
+    </toolTip>
+    <use>
+      <common>true</common>
+    </use>
+    <picture xsi:type="core:PictureRef">
+      <picture>CommonPicture.ВыполнитьТестирование_ВыбранныеШаги</picture>
+    </picture>
+    <action xsi:type="form:FormCommandHandlerContainer">
+      <handler>
+        <name>КомандаПередатьБонусныеБаллыНаБлаготворительныйФонд</name>
       </handler>
     </action>
     <currentRowUse>DontUse</currentRowUse>
