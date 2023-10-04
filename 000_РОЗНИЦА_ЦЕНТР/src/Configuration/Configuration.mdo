@@ -22,7 +22,7 @@
   <defaultRoles>Role.БазовыеПрава</defaultRoles>
   <defaultRoles>Role.БазовыеПраваРТ</defaultRoles>
   <vendor>ЧПТФ «Антошка»</vendor>
-  <version>2.1.2.20</version>
+  <version>2.1.2.30</version>
   <includeHelpInContents>true</includeHelpInContents>
   <help>
     <pages>
@@ -950,6 +950,7 @@
   <roles>Role.ДобавлениеИзменениеКорректировокРегистров</roles>
   <roles>Role.ДобавлениеИзменениеМаркетинговыхАкций</roles>
   <roles>Role.ДобавлениеИзменениеМотивационныхПрограмм</roles>
+  <roles>Role.ДобавлениеИзменениеНачислениеИСписаниеБонусныхБаллов</roles>
   <roles>Role.ДобавлениеИзменениеНоменклатуры</roles>
   <roles>Role.ДобавлениеИзменениеОбщейБазовойНСИ</roles>
   <roles>Role.ДобавлениеИзменениеОбъектыПроблемныеДоВыяснения</roles>
@@ -1000,7 +1001,6 @@
   <roles>Role.ДобавлениеИзменениеЧерногоСпискаNPS</roles>
   <roles>Role.ДобавлениеИзменениеШаблонов</roles>
   <roles>Role.ДобавлениеИзменениеШтрихкодов</roles>
-  <roles>Role.ДобавлениИзменениеНачислениеИСписаниеБонусныхБаллов</roles>
   <roles>Role.ДоступКПодсистемам</roles>
   <roles>Role.ЗапускAutomation</roles>
   <roles>Role.ЗапускВебКлиента</roles>
@@ -2680,6 +2680,7 @@
   <catalogs>Catalog.УчетныеЗаписиЭлектроннойПочты</catalogs>
   <catalogs>Catalog.Файлы</catalogs>
   <catalogs>Catalog.ФизическиеЛица</catalogs>
+  <catalogs>Catalog.Фонды</catalogs>
   <catalogs>Catalog.ФорматыМагазинов</catalogs>
   <catalogs>Catalog.ХарактеристикиНоменклатуры</catalogs>
   <catalogs>Catalog.ХранилищеШаблонов</catalogs>
@@ -2796,11 +2797,13 @@
   <enums>Enum.ВидыОперацийБонусныхБаллов</enums>
   <enums>Enum.ВидыОперацийКомплектацияНоменклатуры</enums>
   <enums>Enum.ВидыОперацийКорректировкаПеремещения</enums>
+  <enums>Enum.ВидыОперацийНачислениеИСписаниеБонусныхБаллов</enums>
   <enums>Enum.ВидыОперацийПереоценкаТоваровНаСкладах</enums>
   <enums>Enum.ВидыОперацийСчетНаОплатуПокупателю</enums>
   <enums>Enum.ВидыОперацийЧекККМ</enums>
   <enums>Enum.ВидыОплатыЗаказаПокупателя</enums>
   <enums>Enum.ВидыОплатЭККР</enums>
+  <enums>Enum.ВидыОповещений</enums>
   <enums>Enum.ВидыОтгрузкиПоЗаказуПокупателя</enums>
   <enums>Enum.ВидыПередачиNavision</enums>
   <enums>Enum.ВидыПеремещенийТоваров</enums>
@@ -3034,6 +3037,7 @@
   <reports>Report.ЛиквидностьТовараСЦеной</reports>
   <reports>Report.ЛогПоЛистамЖеланий</reports>
   <reports>Report.НачисленияМотивационныхПрограмм</reports>
+  <reports>Report.ВыявлениеРазницыМеждуЗаказомиЧеком</reports>
   <reports>Report.ОбзвонКлиентов</reports>
   <reports>Report.ОбзвонКлиентовПарикмахерские</reports>
   <reports>Report.ОплатаЧастями</reports>
@@ -3058,6 +3062,7 @@
   <reports>Report.ОтчетПоКупонам</reports>
   <reports>Report.ОтчетПоОкруглению</reports>
   <reports>Report.ОтчетПоОстаткамТовараВАкциях</reports>
+  <reports>Report.ОтчетПоОтовареннымСертификатамБезНДС</reports>
   <reports>Report.ОтчетПоОтовариваниюСертификатов</reports>
   <reports>Report.ОтчетПоПереоценкамЗаПериод</reports>
   <reports>Report.ОтчетПоПересортице</reports>
@@ -3065,6 +3070,7 @@
   <reports>Report.ОтчетПоПримененнымПромокодам</reports>
   <reports>Report.ОтчетПоПримененнымПромокодамОнлайн</reports>
   <reports>Report.ОтчетПоПродажамВРазрезеПроектовИЧеков</reports>
+  <reports>Report.ОтчетПоРазмещениюРМ</reports>
   <reports>Report.ОтчетПоРеализацииСертификатов</reports>
   <reports>Report.ОтчетПоЧекамККМ</reports>
   <reports>Report.ОтчетРеестрНН</reports>
@@ -3177,7 +3183,7 @@
   <dataProcessors>DataProcessor.ЗаполенениеНастроекНП</dataProcessors>
   <dataProcessors>DataProcessor.ЗаполнениеДиапазонаПодарочныхСертификатов</dataProcessors>
   <dataProcessors>DataProcessor.ЗаполнениеДиапазонаСерийныхНомеров</dataProcessors>
-  <dataProcessors>DataProcessor.ЗаполнениеДоступныхРазмещенийРекламныхМамтериалов</dataProcessors>
+  <dataProcessors>DataProcessor.РазмещениеРекламныхМатериалов</dataProcessors>
   <dataProcessors>DataProcessor.ЗаполнениеРабочегоГрафика</dataProcessors>
   <dataProcessors>DataProcessor.ИзменениеПароляПользователяИБ</dataProcessors>
   <dataProcessors>DataProcessor.ИзменениеТекущегоМагазина</dataProcessors>
@@ -3349,7 +3355,7 @@
   <informationRegisters>InformationRegister.ОбъектыПроблемныеДоВыяснения</informationRegisters>
   <informationRegisters>InformationRegister.ОграниченияДвиженийПоИнвентаризации</informationRegisters>
   <informationRegisters>InformationRegister.ОплатаЗаказаКлиента</informationRegisters>
-  <informationRegisters>InformationRegister.ОповещенияАннуляцииБонусныхБаллов</informationRegisters>
+  <informationRegisters>InformationRegister.ОповещенияКонтрагентов</informationRegisters>
   <informationRegisters>InformationRegister.ОпорныеЦеныНоменклатуры</informationRegisters>
   <informationRegisters>InformationRegister.ОрганизацииПодразделений</informationRegisters>
   <informationRegisters>InformationRegister.ОтветственныеЛицаОрганизаций</informationRegisters>

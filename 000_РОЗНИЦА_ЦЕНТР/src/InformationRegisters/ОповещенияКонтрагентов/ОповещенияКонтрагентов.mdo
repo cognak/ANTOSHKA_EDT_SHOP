@@ -9,14 +9,18 @@
     <recordType typeId="538c0ce9-e000-4195-b72d-374cc7334a3a" valueTypeId="47573e5b-fe1e-4667-83c9-2812ec77c70c"/>
     <recordManagerType typeId="e3fa9567-c44a-4229-a0ae-82669b5d43a2" valueTypeId="d2ac1374-a2dd-42b0-be66-9bb9c06388f1"/>
   </producedTypes>
-  <name>ОповещенияАннуляцииБонусныхБаллов</name>
+  <name>ОповещенияКонтрагентов</name>
   <synonym>
     <key>ru</key>
-    <value>Оповещения аннуляции бонусных баллов</value>
+    <value>Оповещения контрагентов</value>
+  </synonym>
+  <synonym>
+    <key>uk</key>
+    <value>Оповещения контрагентов</value>
   </synonym>
   <useStandardCommands>true</useStandardCommands>
   <editType>InDialog</editType>
-  <informationRegisterPeriodicity>Day</informationRegisterPeriodicity>
+  <informationRegisterPeriodicity>Second</informationRegisterPeriodicity>
   <mainFilterOnPeriod>true</mainFilterOnPeriod>
   <dataLockControlMode>Managed</dataLockControlMode>
   <resources uuid="dfe04aa9-be97-4b2d-918d-20d6467356a1">
@@ -44,12 +48,33 @@
     </fillValue>
     <indexing>Index</indexing>
   </resources>
+  <resources uuid="236e2fd5-33a6-43ca-a213-358324253ee9">
+    <name>ПрограммаЛояльности</name>
+    <synonym>
+      <key>ru</key>
+      <value>Программа лояльности</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ПрограммыЛояльности</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>на текущий момент всегда пустое значение!</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
   <resources uuid="bc4299da-77f6-41f5-a02d-5340212048c0">
     <name>ДатаАннуляции</name>
     <synonym>
       <key>ru</key>
       <value>Дата аннуляции</value>
     </synonym>
+    <comment>заполняется, если вид сообщения - &quot;Аннуляция&quot;</comment>
     <type>
       <types>Date</types>
       <dateQualifiers>
@@ -131,26 +156,20 @@
     <master>true</master>
     <mainFilter>true</mainFilter>
   </dimensions>
-  <dimensions uuid="b7ea8f88-198d-4ee8-9717-9e5f6e8833d0">
-    <name>ПрограммаЛояльности</name>
+  <dimensions uuid="69f5c759-14a9-42b7-800f-d704b3ca7949">
+    <name>ВидОповещения</name>
     <synonym>
       <key>ru</key>
-      <value>Программа лояльности</value>
+      <value>Вид оповещения</value>
     </synonym>
     <type>
-      <types>CatalogRef.ПрограммыЛояльности</types>
+      <types>EnumRef.ВидыОповещений</types>
     </type>
-    <toolTip>
-      <key>ru</key>
-      <value>на текущий момент всегда пустое значение!</value>
-    </toolTip>
     <minValue xsi:type="core:UndefinedValue"/>
     <maxValue xsi:type="core:UndefinedValue"/>
     <fullTextSearch>Use</fullTextSearch>
     <dataHistory>Use</dataHistory>
-    <fillFromFillingValue>true</fillFromFillingValue>
     <fillValue xsi:type="core:UndefinedValue"/>
-    <master>true</master>
     <mainFilter>true</mainFilter>
   </dimensions>
 </mdclass:InformationRegister>

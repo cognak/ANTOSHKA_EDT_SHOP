@@ -228,6 +228,10 @@
             <dataPath xsi:type="form:DataPath">
               <segments>Объект.Магазин</segments>
             </dataPath>
+            <handlers>
+              <event>OnChange</event>
+              <name>МагазинПриИзменении</name>
+            </handlers>
             <extendedTooltip>
               <name>МагазинРасширеннаяПодсказка</name>
               <id>157</id>
@@ -1812,6 +1816,14 @@
           <horizontalAlign>Left</horizontalAlign>
           <autoFill>true</autoFill>
         </autoCommandBar>
+        <handlers>
+          <event>AfterDeleteRow</event>
+          <name>НачислениеПослеУдаления</name>
+        </handlers>
+        <handlers>
+          <event>OnChange</event>
+          <name>НачислениеПриИзменении</name>
+        </handlers>
         <searchStringAddition>
           <visible>true</visible>
           <enabled>true</enabled>
@@ -2221,6 +2233,64 @@
           <contextMenu>
             <name>СписаниеКонтрагентКонтекстноеМеню</name>
             <id>130</id>
+            <visible>true</visible>
+            <enabled>true</enabled>
+            <userVisible>
+              <common>true</common>
+            </userVisible>
+            <autoFill>true</autoFill>
+          </contextMenu>
+          <type>InputField</type>
+          <editMode>EnterOnInput</editMode>
+          <showInHeader>true</showInHeader>
+          <headerHorizontalAlign>Left</headerHorizontalAlign>
+          <showInFooter>true</showInFooter>
+          <extInfo xsi:type="form:InputFieldExtInfo">
+            <autoMaxWidth>true</autoMaxWidth>
+            <autoMaxHeight>true</autoMaxHeight>
+            <wrap>true</wrap>
+            <chooseType>true</chooseType>
+            <typeDomainEnabled>true</typeDomainEnabled>
+            <textEdit>true</textEdit>
+          </extInfo>
+        </items>
+        <items xsi:type="form:FormField">
+          <name>СписаниеКонтрагентПолучатель</name>
+          <id>158</id>
+          <title>
+            <key>ru</key>
+            <value>Получатель</value>
+          </title>
+          <title>
+            <key>uk</key>
+            <value>Отримувач</value>
+          </title>
+          <visible>true</visible>
+          <enabled>true</enabled>
+          <userVisible>
+            <common>true</common>
+          </userVisible>
+          <dataPath xsi:type="form:DataPath">
+            <segments>Объект.Списание.КонтрагентПолучатель</segments>
+          </dataPath>
+          <extendedTooltip>
+            <name>СписаниеКонтрагентПолучательРасширеннаяПодсказка</name>
+            <id>160</id>
+            <visible>true</visible>
+            <enabled>true</enabled>
+            <userVisible>
+              <common>true</common>
+            </userVisible>
+            <type>Label</type>
+            <autoMaxWidth>true</autoMaxWidth>
+            <autoMaxHeight>true</autoMaxHeight>
+            <extInfo xsi:type="form:LabelDecorationExtInfo">
+              <horizontalAlign>Left</horizontalAlign>
+            </extInfo>
+          </extendedTooltip>
+          <contextMenu>
+            <name>СписаниеКонтрагентПолучательКонтекстноеМеню</name>
+            <id>159</id>
             <visible>true</visible>
             <enabled>true</enabled>
             <userVisible>
@@ -2672,6 +2742,10 @@
   <handlers>
     <event>OnCreateAtServer</event>
     <name>ПриСозданииНаСервере</name>
+  </handlers>
+  <handlers>
+    <event>FillCheckProcessingAtServer</event>
+    <name>ОбработкаПроверкиЗаполненияНаСервере</name>
   </handlers>
   <autoTitle>true</autoTitle>
   <autoUrl>true</autoUrl>

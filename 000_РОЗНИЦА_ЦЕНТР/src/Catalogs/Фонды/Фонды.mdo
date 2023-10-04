@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="90f82e0a-2d5a-422a-b122-e17ac28e7eff">
+  <producedTypes>
+    <objectType typeId="eab0a42b-b3c3-48a0-8e6a-5abf6f069ea1" valueTypeId="d4d7fef8-3bd5-4ebb-bd72-ff2b302c55ff"/>
+    <refType typeId="c137ca35-1c77-4276-ad5b-b62ddffd9be6" valueTypeId="7d519fdd-3b9d-48bf-b31b-c6ff7ccaf713"/>
+    <selectionType typeId="f14090ad-94b8-43b8-b2d4-d93fcdaf398c" valueTypeId="fc855bd9-b9cb-48d9-97ea-bbfffc9ed5e7"/>
+    <listType typeId="49ade51c-ed79-446e-bb1a-379d836864eb" valueTypeId="6dfbbc44-12a9-4100-88a7-61b4452038b7"/>
+    <managerType typeId="dcee40ab-32cd-4266-9e96-cf84c99a6c69" valueTypeId="5125e526-42a8-4910-80ab-b61bf752aece"/>
+  </producedTypes>
+  <name>Фонды</name>
+  <synonym>
+    <key>ru</key>
+    <value>Фонды благотворительные</value>
+  </synonym>
+  <synonym>
+    <key>uk</key>
+    <value>Фонди благодійні</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <inputByString>Catalog.Фонды.StandardAttribute.Description</inputByString>
+  <inputByString>Catalog.Фонды.StandardAttribute.Code</inputByString>
+  <fullTextSearchOnInputByString>DontUse</fullTextSearchOnInputByString>
+  <createOnInput>Use</createOnInput>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <fullTextSearch>Use</fullTextSearch>
+  <levelCount>2</levelCount>
+  <foldersOnTop>true</foldersOnTop>
+  <codeLength>11</codeLength>
+  <descriptionLength>100</descriptionLength>
+  <codeType>String</codeType>
+  <codeAllowedLength>Variable</codeAllowedLength>
+  <checkUnique>true</checkUnique>
+  <autonumbering>true</autonumbering>
+  <defaultPresentation>AsDescription</defaultPresentation>
+  <editType>InDialog</editType>
+  <choiceMode>BothWays</choiceMode>
+  <defaultObjectForm>Catalog.Фонды.Form.ФормаЭлемента</defaultObjectForm>
+  <attributes uuid="fc7b1f62-d3c1-44c2-8a53-8bf9e69715d5">
+    <name>Блокирован</name>
+    <synonym>
+      <key>ru</key>
+      <value>Блокирован</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="66a323f9-dfa5-42b1-a50a-60d25edc062a">
+    <name>Контрагент</name>
+    <synonym>
+      <key>ru</key>
+      <value>Контрагент</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Контрагенты</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="f44f6a15-be80-4d9c-badc-8dec0911f28b">
+    <name>ПрограммаЛояльности</name>
+    <synonym>
+      <key>ru</key>
+      <value>Программа лояльности</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.ПрограммыЛояльности</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <choiceParameters>
+      <name>Отбор.ТипБонусов</name>
+      <value xsi:type="core:ReferenceValue">
+        <value>Enum.ТипыБонусов.EnumValue.Привлечение</value>
+      </value>
+    </choiceParameters>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <forms uuid="fea3dbac-70fe-4dfc-a68d-e20ee1a7ce27">
+    <name>ФормаЭлемента</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма элемента</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <commands uuid="356f0d23-0fe8-4cf7-be79-943582e5d514">
+    <name>ВыборКонтрагентаДляПередачиБонусныхБаллов</name>
+    <synonym>
+      <key>ru</key>
+      <value>Выбор контрагента для передачи бонусных баллов</value>
+    </synonym>
+    <group>NavigationPanelOrdinary</group>
+    <commandParameterType/>
+    <representation>Auto</representation>
+  </commands>
+</mdclass:Catalog>
