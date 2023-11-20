@@ -2474,9 +2474,6 @@
       <common>true</common>
     </edit>
     <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
-      <segments>Список.Ref</segments>
-    </notDefaultUseAlwaysAttributes>
-    <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
       <segments>Список.Магазин</segments>
     </notDefaultUseAlwaysAttributes>
     <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
@@ -2484,6 +2481,9 @@
     </notDefaultUseAlwaysAttributes>
     <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
       <segments>Список.Проведен</segments>
+    </notDefaultUseAlwaysAttributes>
+    <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
+      <segments>Список.Ref</segments>
     </notDefaultUseAlwaysAttributes>
     <main>true</main>
     <extInfo xsi:type="form:DynamicListExtInfo">
@@ -2497,7 +2497,7 @@
 	ТаблицаДокумента.Комментарий КАК Комментарий,
 	ТаблицаДокумента.ДокументОснование КАК ДокументОснование,
 	ТаблицаДокумента.Магазин КАК Магазин,
-	ТаблицаДокумента.Магазин.Организация КАК Организация,
+	ЕСТЬNULL(ТаблицаОрганизаций.Организация, ЗНАЧЕНИЕ(Справочник.Организации.ПустаяСсылка)) КАК Организация,
 	ТаблицаДокумента.СуммаДокумента КАК СуммаДокумента,
 	ТаблицаДокумента.Ответственный КАК Ответственный,
 	ТаблицаДокумента.ДокументОснованиеПоступление КАК ДокументОснованиеПоступление,
@@ -2549,11 +2549,13 @@
 		ПО ТаблицаДокумента.Ссылка = ТаблицаТовары.Ссылка
 		ЛЕВОЕ СОЕДИНЕНИЕ Документ.ПеремещениеТоваров КАК ТаблицаОснование
 		ПО ТаблицаДокумента.ДокументОснование = ТаблицаОснование.Ссылка}
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.ОрганизацииПодразделений.СрезПоследних КАК ТаблицаОрганизаций
+		ПО ТаблицаДокумента.Магазин = ТаблицаОрганизаций.Владелец
 ГДЕ
 	ВЫБОР
 			КОГДА &amp;Организация = НЕОПРЕДЕЛЕНО
 				ТОГДА ИСТИНА
-			ИНАЧЕ ТаблицаДокумента.Магазин.Организация = &amp;Организация
+			ИНАЧЕ ТаблицаОрганизаций.Организация = &amp;Организация
 		КОНЕЦ
 {ГДЕ
 	ТаблицаДокумента.Ссылка.*}</queryText>
