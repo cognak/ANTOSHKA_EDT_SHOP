@@ -4,6 +4,64 @@
     <name>ГруппаОтбор</name>
     <id>27</id>
     <items xsi:type="form:FormField">
+      <name>НомерЗаказа</name>
+      <id>429</id>
+      <visible>true</visible>
+      <enabled>true</enabled>
+      <userVisible>
+        <common>true</common>
+      </userVisible>
+      <dataPath xsi:type="form:DataPath">
+        <segments>НомерЗаказа</segments>
+      </dataPath>
+      <titleLocation>Top</titleLocation>
+      <handlers>
+        <event>OnChange</event>
+        <name>НомерЗаказаПриИзменении</name>
+      </handlers>
+      <extendedTooltip>
+        <name>НомерЗаказаРасширеннаяПодсказка</name>
+        <id>431</id>
+        <visible>true</visible>
+        <enabled>true</enabled>
+        <userVisible>
+          <common>true</common>
+        </userVisible>
+        <type>Label</type>
+        <autoMaxWidth>true</autoMaxWidth>
+        <autoMaxHeight>true</autoMaxHeight>
+        <extInfo xsi:type="form:LabelDecorationExtInfo">
+          <horizontalAlign>Left</horizontalAlign>
+        </extInfo>
+      </extendedTooltip>
+      <contextMenu>
+        <name>НомерЗаказаКонтекстноеМеню</name>
+        <id>430</id>
+        <visible>true</visible>
+        <enabled>true</enabled>
+        <userVisible>
+          <common>true</common>
+        </userVisible>
+        <autoFill>true</autoFill>
+      </contextMenu>
+      <type>InputField</type>
+      <editMode>Enter</editMode>
+      <showInHeader>true</showInHeader>
+      <headerHorizontalAlign>Left</headerHorizontalAlign>
+      <showInFooter>true</showInFooter>
+      <extInfo xsi:type="form:InputFieldExtInfo">
+        <autoMaxWidth>true</autoMaxWidth>
+        <autoMaxHeight>true</autoMaxHeight>
+        <horizontalStretch>false</horizontalStretch>
+        <wrap>true</wrap>
+        <clearButton>true</clearButton>
+        <openButton>false</openButton>
+        <chooseType>true</chooseType>
+        <typeDomainEnabled>true</typeDomainEnabled>
+        <textEdit>true</textEdit>
+      </extInfo>
+    </items>
+    <items xsi:type="form:FormField">
       <name>ОтборМагазин</name>
       <id>28</id>
       <visible>true</visible>
@@ -1857,6 +1915,56 @@
         </extInfo>
       </items>
       <items xsi:type="form:FormField">
+        <name>ТипОплаты</name>
+        <id>426</id>
+        <visible>true</visible>
+        <enabled>true</enabled>
+        <userVisible>
+          <common>true</common>
+        </userVisible>
+        <dataPath xsi:type="form:DataPath">
+          <segments>Список.ТипОплаты</segments>
+        </dataPath>
+        <extendedTooltip>
+          <name>ТипОплатыРасширеннаяПодсказка</name>
+          <id>428</id>
+          <visible>true</visible>
+          <enabled>true</enabled>
+          <userVisible>
+            <common>true</common>
+          </userVisible>
+          <type>Label</type>
+          <autoMaxWidth>true</autoMaxWidth>
+          <autoMaxHeight>true</autoMaxHeight>
+          <extInfo xsi:type="form:LabelDecorationExtInfo">
+            <horizontalAlign>Left</horizontalAlign>
+          </extInfo>
+        </extendedTooltip>
+        <contextMenu>
+          <name>ТипОплатыКонтекстноеМеню</name>
+          <id>427</id>
+          <visible>true</visible>
+          <enabled>true</enabled>
+          <userVisible>
+            <common>true</common>
+          </userVisible>
+          <autoFill>true</autoFill>
+        </contextMenu>
+        <type>InputField</type>
+        <editMode>Enter</editMode>
+        <showInHeader>true</showInHeader>
+        <headerHorizontalAlign>Left</headerHorizontalAlign>
+        <showInFooter>true</showInFooter>
+        <extInfo xsi:type="form:InputFieldExtInfo">
+          <autoMaxWidth>true</autoMaxWidth>
+          <autoMaxHeight>true</autoMaxHeight>
+          <wrap>true</wrap>
+          <chooseType>true</chooseType>
+          <typeDomainEnabled>true</typeDomainEnabled>
+          <textEdit>true</textEdit>
+        </extInfo>
+      </items>
+      <items xsi:type="form:FormField">
         <name>СтатусОплаты</name>
         <id>129</id>
         <title>
@@ -2301,58 +2409,6 @@
           <showTitle>true</showTitle>
           <showInHeader>true</showInHeader>
           <headerHorizontalAlign>Center</headerHorizontalAlign>
-        </extInfo>
-      </items>
-      <items xsi:type="form:FormField">
-        <name>КоличествоСтрок</name>
-        <id>101</id>
-        <title>
-          <key>ru</key>
-          <value>К-во тов.</value>
-        </title>
-        <visible>true</visible>
-        <enabled>true</enabled>
-        <userVisible>
-          <common>true</common>
-        </userVisible>
-        <dataPath xsi:type="form:DataPath">
-          <segments>Список.КоличествоСтрок</segments>
-        </dataPath>
-        <extendedTooltip>
-          <name>КоличествоСтрокРасширеннаяПодсказка</name>
-          <id>103</id>
-          <visible>true</visible>
-          <enabled>true</enabled>
-          <userVisible>
-            <common>true</common>
-          </userVisible>
-          <type>Label</type>
-          <autoMaxWidth>true</autoMaxWidth>
-          <autoMaxHeight>true</autoMaxHeight>
-          <extInfo xsi:type="form:LabelDecorationExtInfo">
-            <horizontalAlign>Left</horizontalAlign>
-          </extInfo>
-        </extendedTooltip>
-        <contextMenu>
-          <name>КоличествоСтрокКонтекстноеМеню</name>
-          <id>102</id>
-          <visible>true</visible>
-          <enabled>true</enabled>
-          <userVisible>
-            <common>true</common>
-          </userVisible>
-          <autoFill>true</autoFill>
-        </contextMenu>
-        <type>LabelField</type>
-        <editMode>Enter</editMode>
-        <showInHeader>true</showInHeader>
-        <headerHorizontalAlign>Left</headerHorizontalAlign>
-        <showInFooter>true</showInFooter>
-        <extInfo xsi:type="form:LabelFieldExtInfo">
-          <width>4</width>
-          <autoMaxWidth>true</autoMaxWidth>
-          <autoMaxHeight>true</autoMaxHeight>
-          <horizontalStretch>false</horizontalStretch>
         </extInfo>
       </items>
       <items xsi:type="form:FormField">
@@ -5597,9 +5653,9 @@
 	ТаблицаДокументы.АдресДоставки КАК АдресДоставки,
 	ТаблицаДокументы.ВладелецДисконтнойКарты КАК ВладелецДисконтнойКарты,
 	ТаблицаДокументы.Контрагент КАК Контрагент,
-	ЕСТЬNULL(ТаблицаДокументы.Контрагент.ФизЛицо.Сотрудник, ЛОЖЬ)
-	И НЕ ЕСТЬNULL(ТаблицаДокументы.Контрагент.ФизЛицо.Уволен, ЛОЖЬ) КАК СотрудникАнтошки,
-	ТаблицаДокументы.Контрагент.Код КАК КонтрагентКод,
+	ЕСТЬNULL(ФизическиеЛица.Сотрудник, ЛОЖЬ)
+	И НЕ ЕСТЬNULL(ФизическиеЛица.Уволен, ЛОЖЬ) КАК СотрудникАнтошки,
+	Контрагенты.Код КАК КонтрагентКод,
 	ТаблицаДокументы.Продавец КАК Продавец,
 	ТаблицаДокументы.ПродавецИдентификатор КАК ПродавецИдентификатор,
 	ТаблицаДокументы.Организация КАК Организация,
@@ -5618,7 +5674,6 @@
 	ТаблицаБонусы.СуммаБалловНачисление КАК СуммаБалловНачисление,
 	ТаблицаБонусы.СуммаБалловСписание КАК СуммаБалловСписание,
 	ТаблицаДокументы.Отменено КАК Отменено,
-	ТаблицаТовары.КоличествоСтрок КАК КоличествоСтрок,
 	ТаблицаДокументы.Автор КАК Автор,
 	ТаблицаДокументы.УзелСоздания КАК УзелСоздания,
 	ТаблицаДокументы.УчетнаяСистема КАК УчетнаяСистема,
@@ -5650,16 +5705,6 @@
 	КОНЕЦ КАК СообщениеМагазин
 ИЗ
 	Документ.ЗаказПокупателя КАК ТаблицаДокументы
-		{ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
-			ТаблицаТовары.Ссылка КАК Ссылка,
-			КОЛИЧЕСТВО(РАЗЛИЧНЫЕ ТаблицаТовары.Номенклатура) КАК КоличествоСтрок
-		ИЗ
-			Документ.ЗаказПокупателя.Товары КАК ТаблицаТовары
-		{ГДЕ
-			ТаблицаТовары.Ссылка.*}
-		СГРУППИРОВАТЬ ПО
-			ТаблицаТовары.Ссылка) КАК ТаблицаТовары
-		ПО (ТаблицаДокументы.Ссылка = ТаблицаТовары.Ссылка)}
 		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
 			ТаблицаБонусныхБаллов.Ссылка КАК Ссылка,
 			СУММА(ТаблицаБонусныхБаллов.СуммаБалловНачисление) КАК СуммаБалловНачисление,
@@ -5688,9 +5733,9 @@
 			ТаблицаБонусныхБаллов.Ссылка.*}
 		СГРУППИРОВАТЬ ПО
 			ТаблицаБонусныхБаллов.Ссылка) КАК ТаблицаБонусы
-		ПО (ТаблицаДокументы.Ссылка = ТаблицаБонусы.Ссылка)
+		ПО ТаблицаДокументы.Ссылка = ТаблицаБонусы.Ссылка
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.КлючевыеАтрибутыЗаказовПокупателей.СрезПоследних КАК ТаблицаАтрибутов
-		ПО (ТаблицаАтрибутов.ЗаказПокупателя = ТаблицаДокументы.Ссылка)
+		ПО ТаблицаАтрибутов.ЗаказПокупателя = ТаблицаДокументы.Ссылка
 		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
 			ВложенныйЗапрос.Ссылка КАК Ссылка,
 			МИНИМУМ(ВложенныйЗапрос.ЕстьСообщениеЦентр) КАК ЕстьСообщениеЦентр,
@@ -5698,17 +5743,19 @@
 		ИЗ
 			(ВЫБРАТЬ
 				ВЫБОР
-					КОГДА КомментарийПоСтрокам.УзелСоздания.ВидУзла = ЗНАЧЕНИЕ(Перечисление.ВидыУзлов.ЦентральныйОфис)
-						ТОГДА КомментарийПоСтрокам.Документ
+					КОГДА СтруктураУзлов.ВидУзла = ЗНАЧЕНИЕ(Перечисление.ВидыУзлов.ЦентральныйОфис)
+						ТОГДА ИСТИНА
 				КОНЕЦ КАК ЕстьСообщениеЦентр,
 				КомментарийПоСтрокам.Документ КАК Ссылка,
 				КомментарийПоСтрокам.УзелСоздания КАК УзелСоздания,
 				ВЫБОР
-					КОГДА НЕ КомментарийПоСтрокам.УзелСоздания.ВидУзла = ЗНАЧЕНИЕ(Перечисление.ВидыУзлов.ЦентральныйОфис)
-						ТОГДА КомментарийПоСтрокам.Документ
+					КОГДА НЕ СтруктураУзлов.ВидУзла = ЗНАЧЕНИЕ(Перечисление.ВидыУзлов.ЦентральныйОфис)
+						ТОГДА ИСТИНА
 				КОНЕЦ КАК ЕстьСообщениеМагазин
 			ИЗ
 				РегистрСведений.КомментарийПоСтрокам КАК КомментарийПоСтрокам
+					ВНУТРЕННЕЕ СОЕДИНЕНИЕ Справочник.СтруктураУзлов КАК СтруктураУзлов
+					ПО КомментарийПоСтрокам.УзелСоздания = СтруктураУзлов.Ссылка
 			ГДЕ
 				ТИПЗНАЧЕНИЯ(КомментарийПоСтрокам.Документ) = ТИП(Документ.ЗаказПокупателя)
 				И НЕ КомментарийПоСтрокам.Просмотрен
@@ -5719,27 +5766,31 @@
 
 			ВЫБРАТЬ
 				ВЫБОР
-					КОГДА КомментарийПоСтрокам.УзелСоздания.ВидУзла = ЗНАЧЕНИЕ(Перечисление.ВидыУзлов.ЦентральныйОфис)
-						ТОГДА КомментарийПоСтрокам.Документ
+					КОГДА СтруктураУзлов.ВидУзла = ЗНАЧЕНИЕ(Перечисление.ВидыУзлов.ЦентральныйОфис)
+						ТОГДА ИСТИНА
 				КОНЕЦ,
-				КомментарийПоСтрокам.Документ.ДокументОснование,
+				ЗапросДоступностиТоваров.ДокументОснование,
 				КомментарийПоСтрокам.УзелСоздания,
 				ВЫБОР
-					КОГДА НЕ КомментарийПоСтрокам.УзелСоздания.ВидУзла = ЗНАЧЕНИЕ(Перечисление.ВидыУзлов.ЦентральныйОфис)
-						ТОГДА КомментарийПоСтрокам.Документ
+					КОГДА НЕ СтруктураУзлов.ВидУзла = ЗНАЧЕНИЕ(Перечисление.ВидыУзлов.ЦентральныйОфис)
+						ТОГДА ИСТИНА
 				КОНЕЦ
 			ИЗ
 				РегистрСведений.КомментарийПоСтрокам КАК КомментарийПоСтрокам
+					ВНУТРЕННЕЕ СОЕДИНЕНИЕ Справочник.СтруктураУзлов КАК СтруктураУзлов
+					ПО КомментарийПоСтрокам.УзелСоздания = СтруктураУзлов.Ссылка
+					ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.ЗапросДоступностиТоваров КАК ЗапросДоступностиТоваров
+					ПО КомментарийПоСтрокам.Документ = ЗапросДоступностиТоваров.Ссылка
 			ГДЕ
 				ТИПЗНАЧЕНИЯ(КомментарийПоСтрокам.Документ) = ТИП(Документ.ЗапросДоступностиТоваров)
 				И НЕ КомментарийПоСтрокам.Просмотрен
 			{ГДЕ
-				КомментарийПоСтрокам.Документ.ДокументОснование.* КАК Ссылка}) КАК ВложенныйЗапрос
+				ЗапросДоступностиТоваров.ДокументОснование.* КАК Ссылка}) КАК ВложенныйЗапрос
 		{ГДЕ
 			ВложенныйЗапрос.Ссылка.* КАК Ссылка}
 		СГРУППИРОВАТЬ ПО
 			ВложенныйЗапрос.Ссылка) КАК ЕстьСообщения
-		ПО (ТаблицаДокументы.Ссылка = ЕстьСообщения.Ссылка)
+		ПО ТаблицаДокументы.Ссылка = ЕстьСообщения.Ссылка
 		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ РАЗЛИЧНЫЕ
 			ОплатаЗаказаКлиента.ЗаказКлиента КАК Ссылка,
 			ИСТИНА КАК ЕстьВозврат
@@ -5749,10 +5800,14 @@
 			ОплатаЗаказаКлиента.ВидОплаты = ЗНАЧЕНИЕ(Перечисление.ВидыОплатыЗаказаПокупателя.Возврат)
 		{ГДЕ
 			ОплатаЗаказаКлиента.ЗаказКлиента.* КАК Ссылка}) КАК ТаблицаВозвратов
-		ПО (ТаблицаДокументы.Ссылка = ТаблицаВозвратов.Ссылка)
+		ПО ТаблицаДокументы.Ссылка = ТаблицаВозвратов.Ссылка
 		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.Контрагенты.КонтактнаяИнформация КАК ТаблицаКонтактыПочта
-		ПО (ТаблицаДокументы.Контрагент = ТаблицаКонтактыПочта.Ссылка)
-		И (ТаблицаКонтактыПочта.Вид = ЗНАЧЕНИЕ(Справочник.ВидыКонтактнойИнформации.EmailКонтрагента))
+		ПО ТаблицаДокументы.Контрагент = ТаблицаКонтактыПочта.Ссылка
+		И ТаблицаКонтактыПочта.Вид = ЗНАЧЕНИЕ(Справочник.ВидыКонтактнойИнформации.EmailКонтрагента)
+		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.Контрагенты КАК Контрагенты
+			ЛЕВОЕ СОЕДИНЕНИЕ Справочник.ФизическиеЛица КАК ФизическиеЛица
+			ПО Контрагенты.ФизЛицо = ФизическиеЛица.Ссылка
+		ПО ТаблицаДокументы.Контрагент = Контрагенты.Ссылка
 {ГДЕ
 	ТаблицаДокументы.Ссылка.*}</queryText>
       <mainTable>Document.ЗаказПокупателя</mainTable>
@@ -6096,6 +6151,27 @@
     <id>14</id>
     <valueType>
       <types>Boolean</types>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
+  </attributes>
+  <attributes>
+    <name>НомерЗаказа</name>
+    <title>
+      <key>ru</key>
+      <value>Номер заказа</value>
+    </title>
+    <id>15</id>
+    <valueType>
+      <types>String</types>
+      <stringQualifiers>
+        <length>13</length>
+        <fixed>true</fixed>
+      </stringQualifiers>
     </valueType>
     <view>
       <common>true</common>
