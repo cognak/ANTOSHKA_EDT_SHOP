@@ -213,6 +213,16 @@
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Организация</dataPath>
+			<field>Организация</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	НАЧАЛОПЕРИОДА(ТаблицаПродажи.Дата, ДЕНЬ) КАК Дата,
@@ -227,7 +237,8 @@
 	ТаблицаПродажи.Округление КАК Округление,
 	ТаблицаПродажи.ОкруглениеВозраты КАК ОкруглениеВозраты,
 	ТаблицаПродажи.Сумма14 КАК Сумма14,
-	ТаблицаПродажи.Возвраты14 КАК Возвраты14
+	ТаблицаПродажи.Возвраты14 КАК Возвраты14,
+	ТаблицаПродажи.ДокументПродажи.Организация КАК ДокументПродажиОрганизация
 ПОМЕСТИТЬ Продажи
 ИЗ
 	(ВЫБРАТЬ
@@ -411,7 +422,8 @@
 	ТаблицаПродажи.ОкруглениеВозраты,
 	ТаблицаПродажи.Сумма14,
 	ТаблицаПродажи.Возвраты14,
-	НАЧАЛОПЕРИОДА(ТаблицаПродажи.Дата, ДЕНЬ)
+	НАЧАЛОПЕРИОДА(ТаблицаПродажи.Дата, ДЕНЬ),
+	ТаблицаПродажи.ДокументПродажи.Организация
 
 ИНДЕКСИРОВАТЬ ПО
 	ДокументПродажи,
@@ -434,7 +446,8 @@
 	СУММА(Продажи.Сумма14) КАК Сумма14,
 	СУММА(Продажи.Возвраты14) КАК Возвраты14,
 	Продажи.Магазин.Город КАК Город,
-	Продажи.Магазин.НомерМагазина КАК НомерМагазина
+	Продажи.Магазин.НомерМагазина КАК НомерМагазина,
+	Продажи.ДокументПродажиОрганизация КАК Организация
 ПОМЕСТИТЬ ТабПолная
 ИЗ
 	Продажи КАК Продажи
@@ -442,7 +455,8 @@
 			СУММА(ТабличнаяЧасть.Сумма) КАК Сумма,
 			НАЧАЛОПЕРИОДА(ТабличнаяЧасть.Ссылка.Дата, ДЕНЬ) КАК Период,
 			ТабличнаяЧасть.Ссылка.Магазин КАК Магазин,
-			ТабличнаяЧасть.Ссылка КАК ДокументПродажи
+			ТабличнаяЧасть.Ссылка КАК ДокументПродажи,
+			ТабличнаяЧасть.Ссылка.Организация КАК Организация
 		ИЗ
 			Документ.ЧекККМ.Оплата КАК ТабличнаяЧасть
 				ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.УчетнаяПолитика.СрезПоследних({(&amp;ДатаПо)}, ) КАК УчетнаяПолитика
@@ -457,24 +471,30 @@
 		СГРУППИРОВАТЬ ПО
 			НАЧАЛОПЕРИОДА(ТабличнаяЧасть.Ссылка.Дата, ДЕНЬ),
 			ТабличнаяЧасть.Ссылка.Магазин,
-			ТабличнаяЧасть.Ссылка) КАК Сертификаты
+			ТабличнаяЧасть.Ссылка,
+			ТабличнаяЧасть.Ссылка.Организация) КАК Сертификаты
 		ПО Продажи.Магазин = Сертификаты.Магазин
 			И Продажи.ДокументПродажи = Сертификаты.ДокументПродажи
 
 СГРУППИРОВАТЬ ПО
 	Продажи.Дата,
-	Продажи.Магазин
+	Продажи.Магазин,
+	Продажи.ДокументПродажиОрганизация,
+	Продажи.Магазин.Город,
+	Продажи.Магазин.НомерМагазина
 
 ИНДЕКСИРОВАТЬ ПО
 	Дата,
-	Магазин
+	Магазин,
+	Организация
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
 ВЫБРАТЬ
 	БонусныеБаллы.Регистратор.Магазин КАК РегистраторМагазин,
 	СУММА(БонусныеБаллы.СуммаБонусныхБаллов) КАК СуммаБонусныхБаллов,
-	НАЧАЛОПЕРИОДА(БонусныеБаллы.Период, ДЕНЬ) КАК Дата
+	НАЧАЛОПЕРИОДА(БонусныеБаллы.Период, ДЕНЬ) КАК Дата,
+	БонусныеБаллы.Регистратор.Организация КАК РегистраторОрганизация
 ПОМЕСТИТЬ ТабНачисление
 ИЗ
 	РегистрНакопления.БонусныеБаллы КАК БонусныеБаллы
@@ -484,18 +504,21 @@
 
 СГРУППИРОВАТЬ ПО
 	БонусныеБаллы.Регистратор.Магазин,
-	НАЧАЛОПЕРИОДА(БонусныеБаллы.Период, ДЕНЬ)
+	НАЧАЛОПЕРИОДА(БонусныеБаллы.Период, ДЕНЬ),
+	БонусныеБаллы.Регистратор.Организация
 
 ИНДЕКСИРОВАТЬ ПО
 	РегистраторМагазин,
-	Дата
+	Дата,
+	РегистраторОрганизация
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
 ВЫБРАТЬ
 	БонусныеБаллы.Регистратор.Магазин КАК РегистраторМагазин,
 	СУММА(БонусныеБаллы.СуммаБонусныхБаллов) КАК СуммаБонусныхБаллов,
-	НАЧАЛОПЕРИОДА(БонусныеБаллы.Период, ДЕНЬ) КАК Дата
+	НАЧАЛОПЕРИОДА(БонусныеБаллы.Период, ДЕНЬ) КАК Дата,
+	БонусныеБаллы.Регистратор.Организация КАК РегистраторОрганизация
 ПОМЕСТИТЬ ТабПогашение
 ИЗ
 	РегистрНакопления.БонусныеБаллы КАК БонусныеБаллы
@@ -505,18 +528,21 @@
 
 СГРУППИРОВАТЬ ПО
 	БонусныеБаллы.Регистратор.Магазин,
-	НАЧАЛОПЕРИОДА(БонусныеБаллы.Период, ДЕНЬ)
+	НАЧАЛОПЕРИОДА(БонусныеБаллы.Период, ДЕНЬ),
+	БонусныеБаллы.Регистратор.Организация
 
 ИНДЕКСИРОВАТЬ ПО
 	РегистраторМагазин,
-	Дата
+	Дата,
+	РегистраторОрганизация
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
 ВЫБРАТЬ
 	БонусныеБаллы.Регистратор.Магазин КАК РегистраторМагазин,
 	СУММА(БонусныеБаллы.СуммаБонусныхБаллов) КАК СуммаБонусныхБаллов,
-	НАЧАЛОПЕРИОДА(БонусныеБаллы.Период, ДЕНЬ) КАК Дата
+	НАЧАЛОПЕРИОДА(БонусныеБаллы.Период, ДЕНЬ) КАК Дата,
+	БонусныеБаллы.Регистратор.Организация КАК Организация
 ПОМЕСТИТЬ ТабСписание
 ИЗ
 	РегистрНакопления.БонусныеБаллы КАК БонусныеБаллы
@@ -527,11 +553,13 @@
 
 СГРУППИРОВАТЬ ПО
 	БонусныеБаллы.Регистратор.Магазин,
-	НАЧАЛОПЕРИОДА(БонусныеБаллы.Период, ДЕНЬ)
+	НАЧАЛОПЕРИОДА(БонусныеБаллы.Период, ДЕНЬ),
+	БонусныеБаллы.Регистратор.Организация
 
 ИНДЕКСИРОВАТЬ ПО
 	РегистраторМагазин,
-	Дата
+	Дата,
+	Организация
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -553,18 +581,22 @@
 	ТабПогашение.СуммаБонусныхБаллов КАК СуммаПогашенныхБалов,
 	ТабСписание.СуммаБонусныхБаллов КАК СуммаСписанныхБаллов,
 	ТабПолная.Город КАК ГородМагазин,
-	ТабПолная.НомерМагазина КАК НомерМагазина
+	ТабПолная.НомерМагазина КАК НомерМагазина,
+	ТабПолная.Организация КАК Организация
 ИЗ
 	ТабПолная КАК ТабПолная
 		ЛЕВОЕ СОЕДИНЕНИЕ ТабНачисление КАК ТабНачисление
 		ПО ТабПолная.Дата = ТабНачисление.Дата
 			И ТабПолная.Магазин = ТабНачисление.РегистраторМагазин
+			И ТабПолная.Организация = ТабНачисление.РегистраторОрганизация
 		ЛЕВОЕ СОЕДИНЕНИЕ ТабПогашение КАК ТабПогашение
 		ПО ТабПолная.Дата = ТабПогашение.Дата
 			И ТабПолная.Магазин = ТабПогашение.РегистраторМагазин
+			И ТабПолная.Организация = ТабПогашение.РегистраторОрганизация
 		ЛЕВОЕ СОЕДИНЕНИЕ ТабСписание КАК ТабСписание
 		ПО ТабПолная.Дата = ТабСписание.Дата
 			И ТабПолная.Магазин = ТабСписание.РегистраторМагазин
+			И ТабПолная.Организация = ТабСписание.Организация
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -829,9 +861,16 @@
 			</dcsset:selection>
 			<dcsset:filter>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
 					<dcsset:left xsi:type="dcscor:Field">Магазин</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:userSettingID>380f4402-c7c1-4af7-ad26-5b8ab1580ccc</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Организация</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>c1159dc9-9275-4493-98c1-e3280dfc4155</dcsset:userSettingID>
 				</dcsset:item>
 			</dcsset:filter>
 			<dcsset:dataParameters>
@@ -921,28 +960,7 @@
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
 				<dcsset:groupItems>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
-						<dcsset:field>Магазин</dcsset:field>
-						<dcsset:groupType>Items</dcsset:groupType>
-						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
-						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
-						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:GroupItemField">
-						<dcsset:field>Магазин.НомерМагазина</dcsset:field>
-						<dcsset:groupType>Items</dcsset:groupType>
-						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
-						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
-						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:GroupItemField">
-						<dcsset:field>НомерМагазина</dcsset:field>
-						<dcsset:groupType>Items</dcsset:groupType>
-						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
-						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
-						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:GroupItemField">
-						<dcsset:field>ГородМагазин</dcsset:field>
+						<dcsset:field>Организация</dcsset:field>
 						<dcsset:groupType>Items</dcsset:groupType>
 						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -954,49 +972,43 @@
 				</dcsset:order>
 				<dcsset:selection>
 					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Сумма20</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Сумма14</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Сумма7</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Сумма0</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Округление</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>СуммаСертификатов</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Возвраты20</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Возвраты14</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Возвраты7</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Возвраты0</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>ОкруглениеВозраты</dcsset:field>
-					</dcsset:item>
 				</dcsset:selection>
 				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Магазин</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Магазин.НомерМагазина</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>НомерМагазина</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>ГородМагазин</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
 					<dcsset:order>
 						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
 					</dcsset:order>
 					<dcsset:selection>
 						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
-						<dcsset:item xsi:type="dcsset:SelectedItemField">
-							<dcsset:field>Дата</dcsset:field>
-						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:SelectedItemField">
 							<dcsset:field>Сумма20</dcsset:field>
 						</dcsset:item>
@@ -1031,6 +1043,50 @@
 							<dcsset:field>ОкруглениеВозраты</dcsset:field>
 						</dcsset:item>
 					</dcsset:selection>
+					<dcsset:item xsi:type="dcsset:StructureItemGroup">
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>Дата</dcsset:field>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>Сумма20</dcsset:field>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>Сумма14</dcsset:field>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>Сумма7</dcsset:field>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>Сумма0</dcsset:field>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>Округление</dcsset:field>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>СуммаСертификатов</dcsset:field>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>Возвраты20</dcsset:field>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>Возвраты14</dcsset:field>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>Возвраты7</dcsset:field>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>Возвраты0</dcsset:field>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>ОкруглениеВозраты</dcsset:field>
+							</dcsset:item>
+						</dcsset:selection>
+					</dcsset:item>
 				</dcsset:item>
 			</dcsset:item>
 		</dcsset:settings>

@@ -420,6 +420,36 @@
             <placementArea>UserCmds</placementArea>
             <representationInContextMenu>Auto</representationInContextMenu>
           </items>
+          <items xsi:type="form:Button">
+            <name>СтатусыЗапросовДоступностиВсеЗапросы</name>
+            <id>265</id>
+            <visible>true</visible>
+            <enabled>true</enabled>
+            <userVisible>
+              <common>true</common>
+            </userVisible>
+            <extendedTooltip>
+              <name>СтатусыЗапросовДоступностиВсеЗапросыРасширеннаяПодсказка</name>
+              <id>266</id>
+              <visible>true</visible>
+              <enabled>true</enabled>
+              <userVisible>
+                <common>true</common>
+              </userVisible>
+              <type>Label</type>
+              <autoMaxWidth>true</autoMaxWidth>
+              <autoMaxHeight>true</autoMaxHeight>
+              <extInfo xsi:type="form:LabelDecorationExtInfo">
+                <horizontalAlign>Left</horizontalAlign>
+              </extInfo>
+            </extendedTooltip>
+            <commandName>Form.Command.ВсеЗапросы</commandName>
+            <representation>Auto</representation>
+            <autoMaxWidth>true</autoMaxWidth>
+            <autoMaxHeight>true</autoMaxHeight>
+            <placementArea>UserCmds</placementArea>
+            <representationInContextMenu>Auto</representationInContextMenu>
+          </items>
           <visible>true</visible>
           <enabled>true</enabled>
           <userVisible>
@@ -1480,7 +1510,8 @@
 	ИЛИ &amp;ВсеЗаказы
 	ИЛИ ЭН.Номер ПОДОБНО &amp;Номерзаказа
 	ИЛИ КонтрагентыКИ.НомерТелефона ПОДОБНО &amp;НомерЗаказа)
-	И (((ВЫБОР
+	И (((&amp;ВсеЗапросыДляОтображения
+	ИЛИ ВЫБОР
 		КОГДА &amp;УзелМагазина
 			ТОГДА ЗДТ.МагазинПолучатель = &amp;Магазин
 			И &amp;ПолучаемТовар
@@ -1669,6 +1700,23 @@
       <common>true</common>
     </edit>
   </attributes>
+  <attributes>
+    <name>ВсеЗапросы</name>
+    <title>
+      <key>ru</key>
+      <value>Все запросы</value>
+    </title>
+    <id>14</id>
+    <valueType>
+      <types>Boolean</types>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
+  </attributes>
   <formCommands>
     <name>Обновить</name>
     <title>
@@ -1832,6 +1880,23 @@
     <action xsi:type="form:FormCommandHandlerContainer">
       <handler>
         <name>НапечататьРеестр</name>
+      </handler>
+    </action>
+    <currentRowUse>DontUse</currentRowUse>
+  </formCommands>
+  <formCommands>
+    <name>ВсеЗапросы</name>
+    <title>
+      <key>ru</key>
+      <value>Все запросы</value>
+    </title>
+    <id>10</id>
+    <use>
+      <common>true</common>
+    </use>
+    <action xsi:type="form:FormCommandHandlerContainer">
+      <handler>
+        <name>ВсеЗапросы</name>
       </handler>
     </action>
     <currentRowUse>DontUse</currentRowUse>

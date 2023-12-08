@@ -1860,7 +1860,6 @@
         <extInfo xsi:type="form:UsualGroupExtInfo">
           <showLeftMargin>true</showLeftMargin>
           <united>true</united>
-          <showTitle>true</showTitle>
           <throughAlign>Auto</throughAlign>
           <currentRowUse>Auto</currentRowUse>
         </extInfo>
@@ -1874,7 +1873,7 @@
           <common>true</common>
         </userVisible>
         <dataPath xsi:type="form:DataPath">
-          <segments>Объект.Организация_У</segments>
+          <segments>Организация</segments>
         </dataPath>
         <extendedTooltip>
           <name>ОрганизацияРасширеннаяПодсказка</name>
@@ -1901,28 +1900,27 @@
           </userVisible>
           <autoFill>true</autoFill>
         </contextMenu>
-        <type>InputField</type>
+        <type>LabelField</type>
         <editMode>Enter</editMode>
         <showInHeader>true</showInHeader>
         <headerHorizontalAlign>Left</headerHorizontalAlign>
         <showInFooter>true</showInFooter>
-        <extInfo xsi:type="form:InputFieldExtInfo">
+        <extInfo xsi:type="form:LabelFieldExtInfo">
           <width>30</width>
           <autoMaxWidth>true</autoMaxWidth>
           <autoMaxHeight>true</autoMaxHeight>
           <horizontalStretch>false</horizontalStretch>
-          <wrap>true</wrap>
-          <chooseType>true</chooseType>
-          <typeDomainEnabled>true</typeDomainEnabled>
-          <textEdit>true</textEdit>
-          <choiceParameters>
-            <name>ПоказатьВсеЭлементы</name>
-            <value xsi:type="form:FormChoiceListDesTimeValue">
-              <value xsi:type="core:BooleanValue">
-                <value>true</value>
-              </value>
-            </value>
-          </choiceParameters>
+          <border xsi:type="core:BorderDef">
+            <style>Indented</style>
+            <width>1</width>
+          </border>
+          <textColor xsi:type="core:ColorRef">
+            <color>Web.MidnightBlue</color>
+          </textColor>
+          <font xsi:type="core:FontRef">
+            <font>Style.NormalTextFont</font>
+            <height>9.0</height>
+          </font>
         </extInfo>
       </items>
       <items xsi:type="form:FormField">
@@ -2392,6 +2390,23 @@
       <common>true</common>
     </edit>
   </attributes>
+  <attributes>
+    <name>Организация</name>
+    <title>
+      <key>ru</key>
+      <value>Организация</value>
+    </title>
+    <id>7</id>
+    <valueType>
+      <types>CatalogRef.Организации</types>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
+  </attributes>
   <formCommands>
     <name>ДобавитьПодпись</name>
     <title>
@@ -2464,6 +2479,74 @@
       </cmiFragmentRecord>
       <cmiFragmentRecord>
         <command>InformationRegister.ОбъектУчтенВNavision.StandardCommand.OpenByValue.Магазин</command>
+        <userVisible/>
+      </cmiFragmentRecord>
+      <cmiFragmentRecord>
+        <command>InformationRegister.ОрганизацииПодразделений.StandardCommand.OpenByValue.Владелец</command>
+        <group>FormNavigationPanelImportant</group>
+        <index>1</index>
+      </cmiFragmentRecord>
+      <cmiFragmentRecord>
+        <command>InformationRegister.УчетнаяПолитикаМагазинов.StandardCommand.OpenByValue.Магазин</command>
+        <group>FormNavigationPanelImportant</group>
+        <index>0</index>
+      </cmiFragmentRecord>
+      <cmiFragmentRecord>
+        <command>InformationRegister.ТоварыОжидаемые.StandardCommand.OpenByValue.Магазин</command>
+        <userVisible/>
+      </cmiFragmentRecord>
+      <cmiFragmentRecord>
+        <command>InformationRegister.СоответствиеДокументовNavision.StandardCommand.OpenByValue.Магазин</command>
+        <userVisible/>
+      </cmiFragmentRecord>
+      <cmiFragmentRecord>
+        <command>Catalog.Склады.Command.СкладыПоМагазину</command>
+        <group>FormNavigationPanelSeeAlso</group>
+        <index>1</index>
+      </cmiFragmentRecord>
+      <cmiFragmentRecord>
+        <command>CommonCommand.ИсторияИзменений</command>
+        <group>FormNavigationPanelSeeAlso</group>
+        <index>0</index>
+      </cmiFragmentRecord>
+      <cmiFragmentRecord>
+        <command>DataProcessor.НастройкаРаспределенияТоваровПоСкладамИОрганизациям.Command.РаспределениеПоступленияПоСкладам</command>
+        <userVisible/>
+      </cmiFragmentRecord>
+      <cmiFragmentRecord>
+        <command>DataProcessor.НастройкаРаспределенияТоваровПоСкладамИОрганизациям.Command.РаспределениеПродажПоСкладам</command>
+        <userVisible/>
+      </cmiFragmentRecord>
+      <cmiFragmentRecord>
+        <command>InformationRegister.НоменклатураПоставщиков.StandardCommand.OpenByValue.Поставщик</command>
+        <userVisible/>
+      </cmiFragmentRecord>
+      <cmiFragmentRecord>
+        <command>InformationRegister.ОпорныеЦеныНоменклатуры.StandardCommand.OpenByValue.Магазин</command>
+        <userVisible/>
+      </cmiFragmentRecord>
+      <cmiFragmentRecord>
+        <command>InformationRegister.ОбъектыПроблемныеДоВыяснения.StandardCommand.OpenByValue.Магазин</command>
+        <userVisible/>
+      </cmiFragmentRecord>
+      <cmiFragmentRecord>
+        <command>InformationRegister.ДействиеМотивационныхПрограмм.StandardCommand.OpenByValue.Магазин</command>
+        <userVisible/>
+      </cmiFragmentRecord>
+      <cmiFragmentRecord>
+        <command>InformationRegister.ДействиеСкидокНаценок.StandardCommand.OpenByValue.Магазин</command>
+        <userVisible/>
+      </cmiFragmentRecord>
+      <cmiFragmentRecord>
+        <command>DataProcessor.НастройкаРаспределенияТоваровПоСкладамИОрганизациям.Command.РаспределениеПродажУслуг</command>
+        <userVisible/>
+      </cmiFragmentRecord>
+      <cmiFragmentRecord>
+        <command>InformationRegister.РеализацияЗаказовРегистрация.StandardCommand.OpenByValue.Магазин</command>
+        <userVisible/>
+      </cmiFragmentRecord>
+      <cmiFragmentRecord>
+        <command>CommonCommand.РолиИИсполнителиЗадач</command>
         <userVisible/>
       </cmiFragmentRecord>
     </navigationPanel>

@@ -3,48 +3,26 @@
 	<item>
 		<selection>
 			<item>
-				<field>РаспоряженияРаспоряжение</field>
+				<field>ЗапросыДоступностиДата</field>
 			</item>
-		</selection>
-		<filter>
-			<item xsi:type="FilterItemGroup">
-				<groupType>OrGroup</groupType>
-				<item xsi:type="FilterItemComparison">
-					<left xsi:type="dcscor:Field">Распоряжения.Распоряжение</left>
-					<comparisonType>Contains</comparisonType>
-					<right xsi:type="xs:string">Приемка</right>
-				</item>
-				<item xsi:type="FilterItemComparison">
-					<left xsi:type="dcscor:Field">Распоряжения.Распоряжение</left>
-					<comparisonType>Contains</comparisonType>
-					<right xsi:type="xs:string">Отгрузка</right>
-				</item>
-			</item>
-		</filter>
-		<appearance>
-			<dcscor:item xsi:type="SettingsParameterValue">
-				<dcscor:parameter>Шрифт</dcscor:parameter>
-				<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-			</dcscor:item>
-		</appearance>
-	</item>
-	<item>
-		<selection>
 			<item>
-				<field>РаспоряженияРаспоряжение</field>
+				<field>ЗапросыДоступностиКолСообщений</field>
+			</item>
+			<item>
+				<field>ЗапросыДоступности</field>
 			</item>
 		</selection>
 		<filter>
 			<item xsi:type="FilterItemComparison">
-				<left xsi:type="dcscor:Field">Распоряжения.Распоряжение</left>
-				<comparisonType>Equal</comparisonType>
-				<right xsi:type="xs:string">&lt;нет распоряжений&gt;</right>
+				<left xsi:type="dcscor:Field">ЗапросыДоступности.КолСообщений</left>
+				<comparisonType>NotEqual</comparisonType>
+				<right xsi:type="xs:decimal">0</right>
 			</item>
 		</filter>
 		<appearance>
 			<dcscor:item xsi:type="SettingsParameterValue">
-				<dcscor:parameter>ЦветТекста</dcscor:parameter>
-				<dcscor:value xsi:type="v8ui:Color">style:ЦветТекстаОтмененнойСтрокиДокумента</dcscor:value>
+				<dcscor:parameter>ЦветФона</dcscor:parameter>
+				<dcscor:value xsi:type="v8ui:Color">#33CCCC</dcscor:value>
 			</dcscor:item>
 		</appearance>
 	</item>
