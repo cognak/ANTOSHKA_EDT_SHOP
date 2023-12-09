@@ -250,6 +250,9 @@
 СГРУППИРОВАТЬ ПО
 	НАЧАЛОПЕРИОДА(ТаблицаВедущая.ОтчетОРозничныхПродажах.Дата, ДЕНЬ),
 	ТаблицаВедущая.Ссылка
+
+ИНДЕКСИРОВАТЬ ПО
+	Ссылка
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -286,6 +289,10 @@
 	ТаблицаВедущая.Ссылка,
 	НАЧАЛОПЕРИОДА(ТаблицаОтчетОПродажах.Дата, ДЕНЬ),
 	ТаблицаВедущая.СуммаДокумента
+
+ИНДЕКСИРОВАТЬ ПО
+	Номенклатура,
+	Ссылка
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -321,14 +328,11 @@
 	ТабПродажи КАК ТабПродажи
 		ЛЕВОЕ СОЕДИНЕНИЕ ТабОплата КАК ТабОплата
 		ПО ТабПродажи.Ссылка = ТабОплата.Ссылка
-;
 
-////////////////////////////////////////////////////////////////////////////////
-УНИЧТОЖИТЬ ТабПродажи
-;
-
-////////////////////////////////////////////////////////////////////////////////
-УНИЧТОЖИТЬ ТабОплата
+ИНДЕКСИРОВАТЬ ПО
+	Номенклатура,
+	Магазин,
+	Регистратор
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -436,6 +440,11 @@
 	ТабПродажи.Регистратор
 ИЗ
 	ТабПродажи2 КАК ТабПродажи
+
+ИНДЕКСИРОВАТЬ ПО
+	Магазин,
+	Номенклатура,
+	Регистратор
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -462,7 +471,23 @@
 	ТаблицаПродажи.Номенклатура.ВидНоменклатуры,
 	ТаблицаПродажи.Номенклатура.Код,
 	ТаблицаПродажи.Номенклатура.Артикул,
-	ТаблицаПродажи.Регистратор</query>
+	ТаблицаПродажи.Регистратор
+;
+
+////////////////////////////////////////////////////////////////////////////////
+УНИЧТОЖИТЬ ТабОплата
+;
+
+////////////////////////////////////////////////////////////////////////////////
+УНИЧТОЖИТЬ ТабПродажи2
+;
+
+////////////////////////////////////////////////////////////////////////////////
+УНИЧТОЖИТЬ ТабПродажи
+;
+
+////////////////////////////////////////////////////////////////////////////////
+УНИЧТОЖИТЬ ТабРеализация</query>
 	</dataSet>
 	<totalField>
 		<dataPath>Сумма</dataPath>
@@ -620,6 +645,19 @@
 			</dcsset:selection>
 			<dcsset:filter>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Регистратор.Организация</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>725c3d0a-f4aa-4128-8b03-b830164a0acc</dcsset:userSettingID>
+					<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация</v8:content>
+						</v8:item>
+					</dcsset:userSettingPresentation>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
 					<dcsset:left xsi:type="dcscor:Field">Магазин</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:userSettingID>5db90cff-f12e-4547-9c6f-95a6301bf679</dcsset:userSettingID>
@@ -673,7 +711,7 @@
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
 				<dcsset:groupItems>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
-						<dcsset:field>Магазин</dcsset:field>
+						<dcsset:field>Регистратор.Организация</dcsset:field>
 						<dcsset:groupType>Items</dcsset:groupType>
 						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -687,12 +725,29 @@
 					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
 				</dcsset:selection>
 				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Магазин</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
 					<dcsset:order>
 						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
 					</dcsset:order>
 					<dcsset:selection>
 						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
 					</dcsset:selection>
+					<dcsset:item xsi:type="dcsset:StructureItemGroup">
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						</dcsset:selection>
+					</dcsset:item>
 				</dcsset:item>
 			</dcsset:item>
 		</dcsset:settings>

@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Адрес</dataPath>
+			<field>Адрес</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Ссылка</dataPath>
+			<field>Ссылка</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Телефон</dataPath>
+			<field>Телефон</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Телефон</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>МагазинСкладСсылка</dataPath>
+			<field>МагазинСкладСсылка</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Магазин</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЭлектронныеНакладные</dataPath>
+			<field>ЭлектронныеНакладные</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ОбъемныйВес</dataPath>
+			<field>ОбъемныйВес</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Объемный вес</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Мест</dataPath>
+			<field>Мест</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Мест</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	МАКСИМУМ(РеестрЭН.Дата) КАК Дата,
+	РеестрЭН.МагазинСклад КАК МагазинСклад
+ПОМЕСТИТЬ ТабДаты
+ИЗ
+	Документ.РеестрЭН КАК РеестрЭН
+ГДЕ
+	РеестрЭН.Проведен = ЛОЖЬ
+	И РеестрЭН.ПометкаУдаления = ЛОЖЬ
+
+СГРУППИРОВАТЬ ПО
+	РеестрЭН.МагазинСклад
+
+ИНДЕКСИРОВАТЬ ПО
+	Дата,
+	МагазинСклад
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	РеестрЭН.Ссылка КАК Ссылка
+ПОМЕСТИТЬ ТабСрез
+ИЗ
+	ТабДаты КАК ТабДаты
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.РеестрЭН КАК РеестрЭН
+		ПО ТабДаты.Дата = РеестрЭН.Дата
+			И (РеестрЭН.ПометкаУдаления = ЛОЖЬ)
+			И (РеестрЭН.Проведен = ЛОЖЬ)
+			И ТабДаты.МагазинСклад = РеестрЭН.МагазинСклад
+
+ИНДЕКСИРОВАТЬ ПО
+	Ссылка
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	РеестрЭНСписокЭН.Ссылка КАК Ссылка,
+	РеестрЭНСписокЭН.ЭлектронныеНакладные КАК ЭлектронныеНакладные,
+	РеестрЭНСписокЭН.Ссылка.МагазинСклад.Ссылка КАК МагазинСкладСсылка,
+	Телефон.Представление КАК Телефон,
+	Адрес.Представление КАК Адрес,
+	СУММА(250 * (ЗапросДоступностиТоваровУпаковки.Высота * ЗапросДоступностиТоваровУпаковки.Глубина * ЗапросДоступностиТоваровУпаковки.Ширина) / 1000000) КАК ОбъемныйВес,
+	МАКСИМУМ(ЗапросДоступностиТоваровУпаковки.НомерСтроки) КАК Мест
+ИЗ
+	ТабСрез КАК ТабСрез
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.РеестрЭН.СписокЭН КАК РеестрЭНСписокЭН
+			ЛЕВОЕ СОЕДИНЕНИЕ Справочник.Магазины.КонтактнаяИнформация КАК Адрес
+			ПО РеестрЭНСписокЭН.Ссылка.МагазинСклад = Адрес.Ссылка
+				И (Адрес.Вид = ЗНАЧЕНИЕ(Справочник.ВидыКонтактнойИнформации.ФактАдресМагазина))
+			ЛЕВОЕ СОЕДИНЕНИЕ Справочник.Магазины.КонтактнаяИнформация КАК Телефон
+			ПО РеестрЭНСписокЭН.Ссылка.МагазинСклад = Телефон.Ссылка
+				И (Телефон.Вид = ЗНАЧЕНИЕ(Справочник.ВидыКонтактнойИнформации.ТелефонМагазина))
+			ЛЕВОЕ СОЕДИНЕНИЕ Документ.ЗапросДоступностиТоваров.Упаковки КАК ЗапросДоступностиТоваровУпаковки
+			ПО РеестрЭНСписокЭН.ЭлектронныеНакладные.ДокументОснование = ЗапросДоступностиТоваровУпаковки.Ссылка
+		ПО ТабСрез.Ссылка = РеестрЭНСписокЭН.Ссылка
+
+СГРУППИРОВАТЬ ПО
+	Адрес.Представление,
+	РеестрЭНСписокЭН.ЭлектронныеНакладные,
+	РеестрЭНСписокЭН.Ссылка,
+	Телефон.Представление,
+	РеестрЭНСписокЭН.Ссылка.МагазинСклад.Ссылка
+;
+
+////////////////////////////////////////////////////////////////////////////////
+УНИЧТОЖИТЬ ТабДаты
+;
+
+////////////////////////////////////////////////////////////////////////////////
+УНИЧТОЖИТЬ ТабСрез</query>
+	</dataSet>
+	<totalField>
+		<dataPath>Мест</dataPath>
+		<expression>Сумма(Мест)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ОбъемныйВес</dataPath>
+		<expression>Сумма(ОбъемныйВес)</expression>
+	</totalField>
+	<settingsVariant>
+		<dcsset:name>РееестрЭН</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Рееестр ЭН</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>uk</v8:lang>
+				<v8:content>Основной</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Мест</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ОбъемныйВес</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>МагазинСкладСсылка</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Адрес</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Телефон</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+				<dcsset:outputParameters>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>РасположениеИтогов</dcscor:parameter>
+						<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">Begin</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:use>false</dcscor:use>
+						<dcscor:parameter>ВертикальноеРасположениеОбщихИтогов</dcscor:parameter>
+						<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+					</dcscor:item>
+				</dcsset:outputParameters>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>ЭлектронныеНакладные</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>ОбъемныйВес</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>Мест</dcsset:field>
+						</dcsset:item>
+					</dcsset:selection>
+				</dcsset:item>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>
