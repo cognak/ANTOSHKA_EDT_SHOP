@@ -124,9 +124,11 @@
 	СостояниеСтрокЗаказаПокупателя.Продано = ЛОЖЬ
 	И СостояниеСтрокЗаказаПокупателя.ГотовКПродаже = ИСТИНА
 	И (НЕ СостояниеСтрокЗаказаПокупателя.ЗаказПокупателя.ТипДоставки = &amp;ТипДоставки
-			ИЛИ (СостояниеСтрокЗаказаПокупателя.ЗаказПокупателя.ТипДоставки = &amp;ТипДоставки
-				И не СостояниеСтрокЗаказаПокупателя.ЗаказПокупателя.СтатусОплаты = &amp;СтатусОплаты))
+			ИЛИ СостояниеСтрокЗаказаПокупателя.ЗаказПокупателя.ТипДоставки = &amp;ТипДоставки
+				И НЕ СостояниеСтрокЗаказаПокупателя.ЗаказПокупателя.СтатусОплаты = &amp;СтатусОплаты)
 	И СостояниеСтрокЗаказаПокупателя.ЗаказПокупателя.Дата МЕЖДУ &amp;ДатаС И &amp;ДатаПо
+	И СостояниеСтрокЗаказаПокупателя.ЗаказПокупателя.ТипОплаты &lt;&gt; &amp;ТипОплаты
+	И СостояниеСтрокЗаказаПокупателя.ЗаказПокупателя.ТипОплаты &lt;&gt; &amp;ТипОплатыПостОплата
 
 СГРУППИРОВАТЬ ПО
 	СостояниеСтрокЗаказаПокупателя.ЗаказПокупателя.Ссылка,
@@ -221,6 +223,36 @@
 			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
 		</value>
 		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>ТипОплаты</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Тип оплаты</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:EnumRef.ТипОплатыЗаказПокупателя</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ТипОплатыЗаказПокупателя.БРПредоплата</value>
+		<useRestriction>true</useRestriction>
+		<use>Always</use>
+	</parameter>
+	<parameter>
+		<name>ТипОплатыПостОплата</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Тип оплаты пост оплата</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:EnumRef.ТипОплатыЗаказПокупателя</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ТипОплатыЗаказПокупателя.БРПостоплата</value>
+		<useRestriction>true</useRestriction>
+		<use>Always</use>
 	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
