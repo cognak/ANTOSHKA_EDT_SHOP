@@ -525,7 +525,8 @@ SELECT
 	,[Расчетный счет] AS РАСЧЕТНЫЙСЧЕТ
 	,[Код ЕДРПОУ] AS КОДПОЕДРПОУ
   FROM [Euro2009].[dbo].[Европродукт 2009$Поставщик]
-  ORDER BY [Но_]
+  WHERE [timestamp] >= CAST(CAST('000000000000' AS BIGINT) AS timestamp)
+  ORDER BY [timestamp], [Но_]
  
 #КонецОбласти 
 
@@ -565,7 +566,8 @@ SELECT
 	,CASE WHEN [НДС Бизнес Группа] = 'НДС20' THEN 1 ELSE 0 END AS ПЛАТЕЛЬЩИКНДС
 FROM [Euro2009].[dbo].[Европродукт 2009$Клиент]
 	WHERE [Код Страны] = 'UA' AND ([Налоговый Код] <> '' OR ИНН <> '') AND NOT [Название] LIKE '<Новый %'
-	ORDER BY [Но_]
+		AND [timestamp] >= CAST(CAST('000000000000' AS BIGINT) AS timestamp)
+	ORDER BY [timestamp], [Но_]
 
 #КонецОбласти 
 
