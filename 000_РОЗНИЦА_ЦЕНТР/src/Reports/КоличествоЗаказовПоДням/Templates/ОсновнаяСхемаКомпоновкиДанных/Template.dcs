@@ -84,7 +84,7 @@
 ГДЕ
 	ЗаказПокупателя.Дата МЕЖДУ &amp;ДатаС И &amp;ДатаПо
 	И ЗаказПокупателя.ПометкаУдаления = ЛОЖЬ
-	И ЗаказПокупателя.УчетнаяСистема = &amp;УчетнаяСистема
+	И ЗаказПокупателя.УчетнаяСистема = Значение(Перечисление.УчетныеСистемыКомпании.Magento)
 
 СГРУППИРОВАТЬ ПО
 	НАЧАЛОПЕРИОДА(ЗаказПокупателя.Дата, ДЕНЬ)
@@ -101,7 +101,7 @@
 ГДЕ
 	ЗаказПокупателя.Дата МЕЖДУ &amp;ДатаС И &amp;ДатаПо
 	И ЗаказПокупателя.ПометкаУдаления = ЛОЖЬ
-	И ЗаказПокупателя.УчетнаяСистема = &amp;УчетнаяСистема
+	И НЕ ЗаказПокупателя.УчетнаяСистема = Значение(Перечисление.УчетныеСистемыКомпании.Magento)
 
 СГРУППИРОВАТЬ ПО
 	НАЧАЛОПЕРИОДА(ЗаказПокупателя.Дата, ДЕНЬ)</query>
@@ -117,10 +117,6 @@
 	<totalField>
 		<dataPath>Сайт</dataPath>
 		<expression>Сумма(Сайт)</expression>
-	</totalField>
-	<totalField>
-		<dataPath>Розница</dataPath>
-		<expression>Сумма(Розница)</expression>
 	</totalField>
 	<parameter>
 		<name>ДатаПо</name>
@@ -159,20 +155,6 @@
 		<expression>&amp;Период.ДатаНачала</expression>
 	</parameter>
 	<parameter>
-		<name>УчетнаяСистема</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Учетная система</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:EnumRef.УчетныеСистемыКомпании</v8:Type>
-		</valueType>
-		<value xsi:type="dcscor:DesignTimeValue">Перечисление.УчетныеСистемыКомпании.Magento</value>
-		<useRestriction>true</useRestriction>
-	</parameter>
-	<parameter>
 		<name>Период</name>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
@@ -205,6 +187,18 @@
 					<dcsset:field>Розница</dcsset:field>
 				</dcsset:item>
 			</dcsset:selection>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Период</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+					</dcscor:value>
+					<dcsset:userSettingID>b19e49de-7f29-4cda-8517-59332c859e9a</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
 			<dcsset:order>
 				<dcsset:item xsi:type="dcsset:OrderItemField">
 					<dcsset:field>День</dcsset:field>
