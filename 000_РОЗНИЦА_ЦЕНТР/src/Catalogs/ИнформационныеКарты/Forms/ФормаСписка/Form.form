@@ -165,9 +165,7 @@
       </title>
       <visible>true</visible>
       <enabled>true</enabled>
-      <userVisible>
-        <common>true</common>
-      </userVisible>
+      <userVisible/>
       <dataPath xsi:type="form:DataPath">
         <segments>Список.СуммаНакоплено</segments>
       </dataPath>
@@ -1098,6 +1096,7 @@
     <event>OnClose</event>
     <name>ПриЗакрытии</name>
   </handlers>
+  <saveWindowSettings>true</saveWindowSettings>
   <autoTitle>true</autoTitle>
   <autoUrl>true</autoUrl>
   <group>Vertical</group>
@@ -1136,6 +1135,9 @@
     </notDefaultUseAlwaysAttributes>
     <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
       <segments>Список.Резерв</segments>
+    </notDefaultUseAlwaysAttributes>
+    <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
+      <segments>Список.Ссылка</segments>
     </notDefaultUseAlwaysAttributes>
     <main>true</main>
     <extInfo xsi:type="form:DynamicListExtInfo">
@@ -1180,7 +1182,7 @@
 			ИНАЧЕ НЕ Ведущая.Резерв
 		КОНЕЦ
 {ГДЕ
-	Ведущая.Ссылка.*}</queryText>
+	Ведущая.Ссылка.* КАК Ссылка}</queryText>
       <mainTable>Catalog.ИнформационныеКарты</mainTable>
       <dynamicDataRead>true</dynamicDataRead>
       <autoFillAvailableFields>true</autoFillAvailableFields>
@@ -1311,5 +1313,7 @@
     <navigationPanel/>
     <commandBar/>
   </commandInterface>
-  <extInfo xsi:type="form:DynamicListFormExtInfo"/>
+  <extInfo xsi:type="form:DynamicListFormExtInfo">
+    <groupList>2:02023637-7868-4a5f-8576-835a76e0c9ba</groupList>
+  </extInfo>
 </form:Form>

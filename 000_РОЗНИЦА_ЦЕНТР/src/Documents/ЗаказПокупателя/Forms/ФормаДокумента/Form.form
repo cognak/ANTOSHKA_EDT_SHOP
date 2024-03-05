@@ -1328,7 +1328,7 @@
       </extendedTooltip>
       <type>UsualGroup</type>
       <extInfo xsi:type="form:UsualGroupExtInfo">
-        <behavior>Auto</behavior>
+        <behavior>Collapsible</behavior>
         <showLeftMargin>true</showLeftMargin>
         <united>true</united>
         <throughAlign>Auto</throughAlign>
@@ -8170,6 +8170,7 @@
                 <autoFill>true</autoFill>
               </contextMenu>
               <type>InputField</type>
+              <readOnly>true</readOnly>
               <editMode>Enter</editMode>
               <showInHeader>true</showInHeader>
               <headerHorizontalAlign>Left</headerHorizontalAlign>
@@ -8226,6 +8227,7 @@
                 <autoFill>true</autoFill>
               </contextMenu>
               <type>InputField</type>
+              <readOnly>true</readOnly>
               <editMode>Enter</editMode>
               <showInHeader>true</showInHeader>
               <headerHorizontalAlign>Left</headerHorizontalAlign>
@@ -8362,7 +8364,6 @@
         <items xsi:type="form:FormField">
           <name>Продавец</name>
           <id>37</id>
-          <visible>true</visible>
           <enabled>true</enabled>
           <userVisible>
             <common>true</common>
@@ -8409,6 +8410,60 @@
               <style>Indented</style>
               <width>1</width>
             </border>
+          </extInfo>
+        </items>
+        <items xsi:type="form:FormField">
+          <name>ДатаРезервированияЗаказа</name>
+          <id>1193</id>
+          <visible>true</visible>
+          <enabled>true</enabled>
+          <userVisible>
+            <common>true</common>
+          </userVisible>
+          <dataPath xsi:type="form:DataPath">
+            <segments>Объект.ДатаРезервированияЗаказа</segments>
+          </dataPath>
+          <extendedTooltip>
+            <name>ДатаРезервированияЗаказаРасширеннаяПодсказка</name>
+            <id>1195</id>
+            <visible>true</visible>
+            <enabled>true</enabled>
+            <userVisible>
+              <common>true</common>
+            </userVisible>
+            <type>Label</type>
+            <autoMaxWidth>true</autoMaxWidth>
+            <autoMaxHeight>true</autoMaxHeight>
+            <extInfo xsi:type="form:LabelDecorationExtInfo">
+              <horizontalAlign>Left</horizontalAlign>
+            </extInfo>
+          </extendedTooltip>
+          <contextMenu>
+            <name>ДатаРезервированияЗаказаКонтекстноеМеню</name>
+            <id>1194</id>
+            <visible>true</visible>
+            <enabled>true</enabled>
+            <userVisible>
+              <common>true</common>
+            </userVisible>
+            <autoFill>true</autoFill>
+          </contextMenu>
+          <type>InputField</type>
+          <editMode>Enter</editMode>
+          <showInHeader>true</showInHeader>
+          <headerHorizontalAlign>Left</headerHorizontalAlign>
+          <showInFooter>true</showInFooter>
+          <extInfo xsi:type="form:InputFieldExtInfo">
+            <autoMaxWidth>true</autoMaxWidth>
+            <autoMaxHeight>true</autoMaxHeight>
+            <wrap>true</wrap>
+            <editFormat>
+              <key>ru</key>
+              <value>ДФ=dd.MM.yyyy</value>
+            </editFormat>
+            <chooseType>true</chooseType>
+            <typeDomainEnabled>true</typeDomainEnabled>
+            <textEdit>true</textEdit>
           </extInfo>
         </items>
         <visible>true</visible>
@@ -9521,19 +9576,19 @@
               </extInfo>
             </items>
             <items xsi:type="form:FormField">
-              <name>Отчество</name>
-              <id>810</id>
+              <name>Имя</name>
+              <id>789</id>
               <visible>true</visible>
               <enabled>true</enabled>
               <userVisible>
                 <common>true</common>
               </userVisible>
               <dataPath xsi:type="form:DataPath">
-                <segments>Объект.Отчество</segments>
+                <segments>Объект.Имя</segments>
               </dataPath>
               <extendedTooltip>
-                <name>ОтчествоРасширеннаяПодсказка</name>
-                <id>812</id>
+                <name>ИмяРасширеннаяПодсказка</name>
+                <id>791</id>
                 <visible>true</visible>
                 <enabled>true</enabled>
                 <userVisible>
@@ -9547,8 +9602,8 @@
                 </extInfo>
               </extendedTooltip>
               <contextMenu>
-                <name>ОтчествоКонтекстноеМеню</name>
-                <id>811</id>
+                <name>ИмяКонтекстноеМеню</name>
+                <id>790</id>
                 <visible>true</visible>
                 <enabled>true</enabled>
                 <userVisible>
@@ -9795,19 +9850,19 @@
             <name>ГруппаТретееЛицо</name>
             <id>787</id>
             <items xsi:type="form:FormField">
-              <name>Имя</name>
-              <id>789</id>
+              <name>Отчество</name>
+              <id>810</id>
               <visible>true</visible>
               <enabled>true</enabled>
               <userVisible>
                 <common>true</common>
               </userVisible>
               <dataPath xsi:type="form:DataPath">
-                <segments>Объект.Имя</segments>
+                <segments>Объект.Отчество</segments>
               </dataPath>
               <extendedTooltip>
-                <name>ИмяРасширеннаяПодсказка</name>
-                <id>791</id>
+                <name>ОтчествоРасширеннаяПодсказка</name>
+                <id>812</id>
                 <visible>true</visible>
                 <enabled>true</enabled>
                 <userVisible>
@@ -9821,8 +9876,8 @@
                 </extInfo>
               </extendedTooltip>
               <contextMenu>
-                <name>ИмяКонтекстноеМеню</name>
-                <id>790</id>
+                <name>ОтчествоКонтекстноеМеню</name>
+                <id>811</id>
                 <visible>true</visible>
                 <enabled>true</enabled>
                 <userVisible>
@@ -12514,7 +12569,7 @@
         <type>UsualGroup</type>
         <extInfo xsi:type="form:UsualGroupExtInfo">
           <group>HorizontalIfPossible</group>
-          <behavior>Auto</behavior>
+          <behavior>Collapsible</behavior>
           <showLeftMargin>true</showLeftMargin>
           <united>true</united>
           <throughAlign>Auto</throughAlign>
@@ -15289,6 +15344,7 @@
     <name>ПередЗагрузкойДанныхИзНастроекНаСервере</name>
   </handlers>
   <autoSaveDataInSettings>Use</autoSaveDataInSettings>
+  <saveWindowSettings>true</saveWindowSettings>
   <autoTitle>true</autoTitle>
   <autoUrl>true</autoUrl>
   <group>Vertical</group>

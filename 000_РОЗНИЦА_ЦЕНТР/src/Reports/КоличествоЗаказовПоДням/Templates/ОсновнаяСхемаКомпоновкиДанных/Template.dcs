@@ -12,7 +12,7 @@
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Розница</v8:content>
+					<v8:content>Звонки</v8:content>
 				</v8:item>
 			</title>
 		</field>
@@ -84,7 +84,7 @@
 ГДЕ
 	ЗаказПокупателя.Дата МЕЖДУ &amp;ДатаС И &amp;ДатаПо
 	И ЗаказПокупателя.ПометкаУдаления = ЛОЖЬ
-	И ЗаказПокупателя.УчетнаяСистема = Значение(Перечисление.УчетныеСистемыКомпании.Magento)
+	И НЕ ПОДСТРОКА(ЗаказПокупателя.Номер, 1, 1) = "3"
 
 СГРУППИРОВАТЬ ПО
 	НАЧАЛОПЕРИОДА(ЗаказПокупателя.Дата, ДЕНЬ)
@@ -101,7 +101,7 @@
 ГДЕ
 	ЗаказПокупателя.Дата МЕЖДУ &amp;ДатаС И &amp;ДатаПо
 	И ЗаказПокупателя.ПометкаУдаления = ЛОЖЬ
-	И НЕ ЗаказПокупателя.УчетнаяСистема = Значение(Перечисление.УчетныеСистемыКомпании.Magento)
+	И ПОДСТРОКА(ЗаказПокупателя.Номер, 1, 1) = "3"
 
 СГРУППИРОВАТЬ ПО
 	НАЧАЛОПЕРИОДА(ЗаказПокупателя.Дата, ДЕНЬ)</query>
@@ -173,8 +173,17 @@
 		<useRestriction>false</useRestriction>
 	</parameter>
 	<settingsVariant>
-		<dcsset:name>Основной</dcsset:name>
-		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
+		<dcsset:name>КоличествоЗаказовПоДням</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Количество заказов по дням</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>uk</v8:lang>
+				<v8:content>Основной</v8:content>
+			</v8:item>
+		</dcsset:presentation>
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:selection>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
