@@ -660,6 +660,39 @@
     <fullTextSearch>Use</fullTextSearch>
     <dataHistory>Use</dataHistory>
   </attributes>
+  <attributes uuid="7779132d-4b41-40b0-bbaa-52eb053031be">
+    <name>ФлагиПроведения</name>
+    <synonym>
+      <key>ru</key>
+      <value>Флаги проведения</value>
+    </synonym>
+    <comment>(Служ) Последовательность флагов, определяющих различные режимы.</comment>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>10</length>
+      </stringQualifiers>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Длина с запасом. При записи дополняется справа &quot;0&quot;.
+1. &quot;0&quot; или &quot;1&quot; - отправлен е-чек (ПРРО)
+2. &quot;0&quot;, &quot;1&quot;, &quot;2&quot; - нет печати, есть печать, есть печать по запросу клиента (ПРРО)</value>
+    </toolTip>
+    <toolTip>
+      <key>uk</key>
+      <value>Довжина із запасом. Під час запису доповнюється праворуч &quot;0&quot;.
+1. &quot;0&quot; або &quot;1&quot; - надіслано е-чек (ПРРО)
+2. &quot;0&quot;, &quot;1&quot;, &quot;2&quot; - немає друку, є друк, є друк на запит клієнта (ПРР)</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
   <attributes uuid="3d6112ff-7852-46d9-b0d0-27e83dca7f62">
     <name>Хранилище</name>
     <synonym>
@@ -1588,6 +1621,10 @@
       </toolTip>
       <minValue xsi:type="core:UndefinedValue"/>
       <maxValue xsi:type="core:UndefinedValue"/>
+      <choiceParameterLinks>
+        <name>Номенклатура</name>
+        <field>0:8d07d70c-87d2-4c6b-91d1-376053cb216b/0:4f80d42b-ed26-4344-b3c3-f0cd7096be67</field>
+      </choiceParameterLinks>
       <quickChoice>DontUse</quickChoice>
       <createOnInput>Use</createOnInput>
       <dataHistory>Use</dataHistory>
@@ -1722,7 +1759,9 @@
       <fillChecking>ShowError</fillChecking>
       <choiceParameters>
         <name>Отбор.ТипНоменклатуры</name>
-        <value xsi:type="core:ReferenceValue"/>
+        <value xsi:type="core:ReferenceValue">
+          <value>3b49f41c-31ae-46c8-94af-4a8f8bdd9ad0.57507687-e857-4627-84a6-131b6dc5555a</value>
+        </value>
       </choiceParameters>
       <dataHistory>Use</dataHistory>
       <fullTextSearch>Use</fullTextSearch>
@@ -1742,6 +1781,11 @@
       </toolTip>
       <minValue xsi:type="core:UndefinedValue"/>
       <maxValue xsi:type="core:UndefinedValue"/>
+      <choiceParameterLinks>
+        <name>Номенклатура</name>
+        <changeMode>DontChange</changeMode>
+        <field>0:e4e6f7dd-f5a9-485e-8bf5-eeb6579fc425/0:954d9ee5-4948-4eec-8638-f176607d3b19</field>
+      </choiceParameterLinks>
       <dataHistory>Use</dataHistory>
       <fullTextSearch>Use</fullTextSearch>
     </attributes>
@@ -2627,6 +2671,10 @@
       </toolTip>
       <minValue xsi:type="core:UndefinedValue"/>
       <maxValue xsi:type="core:UndefinedValue"/>
+      <choiceParameterLinks>
+        <name>Номенклатура</name>
+        <field>0:8d07d70c-87d2-4c6b-91d1-376053cb216b/0:4f80d42b-ed26-4344-b3c3-f0cd7096be67</field>
+      </choiceParameterLinks>
       <quickChoice>DontUse</quickChoice>
       <createOnInput>Use</createOnInput>
       <dataHistory>Use</dataHistory>

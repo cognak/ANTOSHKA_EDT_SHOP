@@ -825,9 +825,7 @@
         </title>
         <visible>true</visible>
         <enabled>true</enabled>
-        <userVisible>
-          <common>true</common>
-        </userVisible>
+        <userVisible/>
         <dataPath xsi:type="form:DataPath">
           <segments>Список.СуммаНакоплено</segments>
         </dataPath>
@@ -1038,9 +1036,7 @@
         </items>
         <visible>true</visible>
         <enabled>true</enabled>
-        <userVisible>
-          <common>true</common>
-        </userVisible>
+        <userVisible/>
         <title>
           <key>ru</key>
           <value>Юр.реквизиты</value>
@@ -1488,6 +1484,7 @@
     <name>ПриСозданииНаСервере</name>
   </handlers>
   <autoSaveDataInSettings>Use</autoSaveDataInSettings>
+  <saveWindowSettings>true</saveWindowSettings>
   <autoTitle>true</autoTitle>
   <autoUrl>true</autoUrl>
   <group>Vertical</group>
@@ -1513,13 +1510,19 @@
       <segments>Список.Code</segments>
     </notDefaultUseAlwaysAttributes>
     <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
-      <segments>Список.IDN</segments>
-    </notDefaultUseAlwaysAttributes>
-    <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
       <segments>Список.Ref</segments>
     </notDefaultUseAlwaysAttributes>
     <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
+      <segments>Список.IDN</segments>
+    </notDefaultUseAlwaysAttributes>
+    <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
       <segments>Список.Код</segments>
+    </notDefaultUseAlwaysAttributes>
+    <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
+      <segments>Список.Ссылка</segments>
+    </notDefaultUseAlwaysAttributes>
+    <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
+      <segments>Список.ЭтоГруппа</segments>
     </notDefaultUseAlwaysAttributes>
     <main>true</main>
     <extInfo xsi:type="form:DynamicListExtInfo">
@@ -1549,7 +1552,7 @@
 		{ЛЕВОЕ СОЕДИНЕНИЕ РегистрНакопления.ПродажиПоДисконтнымКартам.Остатки(, ВладелецДисконтнойКарты ССЫЛКА Справочник.Контрагенты {(ВладелецДисконтнойКарты) КАК Ссылка}) КАК ТаблицаНакоплений
 		ПО ТаблицаСправочник.Ссылка = ТаблицаНакоплений.ВладелецДисконтнойКарты}
 {ГДЕ
-	ТаблицаСправочник.Ссылка.*}</queryText>
+	ТаблицаСправочник.Ссылка.* КАК Ссылка}</queryText>
       <mainTable>Catalog.Контрагенты</mainTable>
       <dynamicDataRead>true</dynamicDataRead>
       <autoFillAvailableFields>true</autoFillAvailableFields>
