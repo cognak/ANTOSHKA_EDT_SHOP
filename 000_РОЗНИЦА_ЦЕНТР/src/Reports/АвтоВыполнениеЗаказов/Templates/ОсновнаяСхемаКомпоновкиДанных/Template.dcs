@@ -85,6 +85,8 @@
 					<v8:content>Оператор</v8:content>
 				</v8:item>
 			</title>
+			<appearance/>
+			<inputParameters/>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>ПроцентОператор</dataPath>
@@ -106,26 +108,36 @@
 					</dcscor:value>
 				</dcscor:item>
 			</appearance>
+			<inputParameters/>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СотрудникКЦ</dataPath>
+			<field>СотрудникКЦ</field>
+			<appearance/>
+			<inputParameters/>
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗЛИЧНЫЕ
 	1 КАК АвтоВыполнение,
 	0 КАК ВсевоЗаказов,
 	Заказы.Ссылка КАК ЗаказПокупателя,
-	0 КАК Оператор
+	0 КАК Оператор,
+	Пользователи.Ссылка КАК СотрудникКЦ
 ПОМЕСТИТЬ ТабЗаказы
 ИЗ
 	РегистрСведений.КлючевыеАтрибутыЗаказовПокупателей КАК КлючевыеАтрибутыЗаказовПокупателей
 		ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.ЗаказПокупателя КАК Заказы
+			ЛЕВОЕ СОЕДИНЕНИЕ Справочник.Пользователи КАК Пользователи
+			ПО Заказы.Ответственный = Пользователи.Ссылка
 		ПО КлючевыеАтрибутыЗаказовПокупателей.ЗаказПокупателя = Заказы.Ссылка
 ГДЕ
 	Заказы.Дата МЕЖДУ &amp;ДатаС И &amp;ДатаПо
 	И НЕ Заказы.ПометкаУдаления
 	И Заказы.Проведен
 	И КлючевыеАтрибутыЗаказовПокупателей.АвтоВыполнение
-
 СГРУППИРОВАТЬ ПО
-	Заказы.Ссылка
+	Заказы.Ссылка,
+	Пользователи.Ссылка
 
 ОБЪЕДИНИТЬ ВСЕ
 
@@ -133,18 +145,21 @@
 	0,
 	1,
 	Заказы.Ссылка,
-	0
+	0,
+	Пользователи.Ссылка
 ИЗ
 	РегистрСведений.КлючевыеАтрибутыЗаказовПокупателей КАК КлючевыеАтрибутыЗаказовПокупателей
 		ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.ЗаказПокупателя КАК Заказы
+			ЛЕВОЕ СОЕДИНЕНИЕ Справочник.Пользователи КАК Пользователи
+			ПО Заказы.Ответственный = Пользователи.Ссылка
 		ПО КлючевыеАтрибутыЗаказовПокупателей.ЗаказПокупателя = Заказы.Ссылка
 ГДЕ
 	Заказы.Дата МЕЖДУ &amp;ДатаС И &amp;ДатаПо
 	И НЕ Заказы.ПометкаУдаления
 	И Заказы.Проведен
-
 СГРУППИРОВАТЬ ПО
-	Заказы.Ссылка
+	Заказы.Ссылка,
+	Пользователи.Ссылка
 
 ОБЪЕДИНИТЬ ВСЕ
 
@@ -152,43 +167,49 @@
 	0,
 	0,
 	Заказы.Ссылка,
-	1
+	1,
+	Пользователи.Ссылка
 ИЗ
 	РегистрСведений.КлючевыеАтрибутыЗапросовДоступности КАК КлючевыеАтрибутыЗапросовДоступности
 		ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.ЗапросДоступностиТоваров КАК ЗапросДоступностиТоваров
 			ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.ЗаказПокупателя КАК Заказы
 				ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.КлючевыеАтрибутыЗаказовПокупателей КАК КлючевыеАтрибутыЗаказовПокупателей
-				ПО (КлючевыеАтрибутыЗаказовПокупателей.ЗаказПокупателя = Заказы.Ссылка)
+				ПО КлючевыеАтрибутыЗаказовПокупателей.ЗаказПокупателя = Заказы.Ссылка
+				ЛЕВОЕ СОЕДИНЕНИЕ Справочник.Пользователи КАК Пользователи
+				ПО Заказы.Ответственный = Пользователи.Ссылка
 			ПО ЗапросДоступностиТоваров.ДокументОснование = Заказы.Ссылка
 		ПО КлючевыеАтрибутыЗапросовДоступности.ЗапросДоступности = ЗапросДоступностиТоваров.Ссылка
 ГДЕ
 	Заказы.Дата МЕЖДУ &amp;ДатаС И &amp;ДатаПо
 	И НЕ Заказы.ПометкаУдаления
 	И Заказы.Проведен
-	И (КлючевыеАтрибутыЗапросовДоступности.СтатусЗапроса = ЗНАЧЕНИЕ(Перечисление.СтатусыЗапросовДоступностиТоваровШапка.Изменён)
-			ИЛИ КлючевыеАтрибутыЗапросовДоступности.СтатусЗапроса = ЗНАЧЕНИЕ(Перечисление.СтатусыЗапросовДоступностиТоваровШапка.Отменён))
+	И
+		(КлючевыеАтрибутыЗапросовДоступности.СтатусЗапроса = ЗНАЧЕНИЕ(Перечисление.СтатусыЗапросовДоступностиТоваровШапка.Изменён)
+	ИЛИ
+		КлючевыеАтрибутыЗапросовДоступности.СтатусЗапроса = ЗНАЧЕНИЕ(Перечисление.СтатусыЗапросовДоступностиТоваровШапка.Отменён))
 	И КлючевыеАтрибутыЗаказовПокупателей.АвтоВыполнение
-
 СГРУППИРОВАТЬ ПО
-	Заказы.Ссылка
+	Заказы.Ссылка,
+	Пользователи.Ссылка
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
-ВЫБРАТЬ
+ ВЫБРАТЬ
 	СУММА(ТабЗаказы.АвтоВыполнение) КАК АвтоВыполнение,
 	НАЧАЛОПЕРИОДА(ТабЗаказы.ЗаказПокупателя.Дата, ДЕНЬ) КАК День,
 	СУММА(ТабЗаказы.ВсевоЗаказов) КАК ВсеЗАказы,
-	СУММА(ТабЗаказы.Оператор) КАК Оператор
+	СУММА(ТабЗаказы.Оператор) КАК Оператор,
+	ТабЗаказы.СотрудникКЦ
 ПОМЕСТИТЬ ТабГруппировка
 ИЗ
 	ТабЗаказы КАК ТабЗаказы
-
 СГРУППИРОВАТЬ ПО
-	НАЧАЛОПЕРИОДА(ТабЗаказы.ЗаказПокупателя.Дата, ДЕНЬ)
+	НАЧАЛОПЕРИОДА(ТабЗаказы.ЗаказПокупателя.Дата, ДЕНЬ),
+	ТабЗаказы.СотрудникКЦ
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
-ВЫБРАТЬ
+ ВЫБРАТЬ
 	ТабГруппировка.АвтоВыполнение КАК АвтоВыполнение,
 	ТабГруппировка.День КАК День,
 	ТабГруппировка.ВсеЗАказы КАК ВсеЗАказы,
@@ -203,7 +224,8 @@
 			ТОГДА 0
 		ИНАЧЕ 100 * ТабГруппировка.Оператор / ТабГруппировка.АвтоВыполнение
 	КОНЕЦ КАК ПроцентОператор,
-	ТабГруппировка.Оператор КАК Оператор
+	ТабГруппировка.Оператор КАК Оператор,
+	ТабГруппировка.СотрудникКЦ
 ИЗ
 	ТабГруппировка КАК ТабГруппировка</query>
 	</dataSet>
@@ -231,6 +253,7 @@
    ТОГДА 100*Сумма(АвтоВыполнение)/Сумма(ВсеЗаказы)
    ИНАЧЕ 0
 КОНЕЦ</expression>
+		<group>СотрудникКЦ</group>
 		<group>ОбщийИтог</group>
 	</totalField>
 	<totalField>
@@ -249,6 +272,7 @@
    ТОГДА 100*Сумма(Оператор)/Сумма(АвтоВыполнение)
    ИНАЧЕ 0
 КОНЕЦ</expression>
+		<group>СотрудникКЦ</group>
 		<group>ОбщийИтог</group>
 	</totalField>
 	<parameter>
@@ -268,7 +292,6 @@
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 		<useRestriction>true</useRestriction>
 		<expression>&amp;Период.ДатаОкончания</expression>
-		<inputParameters/>
 	</parameter>
 	<parameter>
 		<name>ДатаС</name>
@@ -287,7 +310,6 @@
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 		<useRestriction>true</useRestriction>
 		<expression>&amp;Период.ДатаНачала</expression>
-		<inputParameters/>
 	</parameter>
 	<parameter>
 		<name>Период</name>
@@ -306,7 +328,6 @@
 			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
 		</value>
 		<useRestriction>false</useRestriction>
-		<inputParameters/>
 	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
@@ -353,7 +374,6 @@
 					<dcsset:orderType>Asc</dcsset:orderType>
 				</dcsset:item>
 			</dcsset:order>
-			<dcsset:outputParameters/>
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
 				<dcsset:order>
 					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
@@ -361,7 +381,93 @@
 				<dcsset:selection>
 					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
 				</dcsset:selection>
-				<dcsset:outputParameters/>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+	<settingsVariant>
+		<dcsset:name>ПоСотрудникам</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>По сотрудникам</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ВсеЗАказы</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>АвтоВыполнение</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Остальные</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Процент</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Оператор</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ПроцентОператор</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Период</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+					</dcscor:value>
+					<dcsset:userSettingID>e9b1c941-840f-425d-98c5-2bdaf0ee846e</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:order>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>СотрудникКЦ</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>День</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+			</dcsset:order>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>СотрудникКЦ</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>День</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+				</dcsset:item>
 			</dcsset:item>
 		</dcsset:settings>
 	</settingsVariant>
