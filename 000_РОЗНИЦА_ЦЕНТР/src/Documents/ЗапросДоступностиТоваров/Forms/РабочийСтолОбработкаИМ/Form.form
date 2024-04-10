@@ -861,6 +861,148 @@
               <autoMaxHeight>true</autoMaxHeight>
             </extInfo>
           </items>
+          <items xsi:type="form:FormGroup">
+            <name>ГруппаМагазины</name>
+            <id>285</id>
+            <items xsi:type="form:FormField">
+              <name>ЗапросыДоступностиМагазинОтправитель</name>
+              <id>287</id>
+              <title>
+                <key>ru</key>
+                <value>Отправитель</value>
+              </title>
+              <visible>true</visible>
+              <enabled>true</enabled>
+              <userVisible>
+                <common>true</common>
+              </userVisible>
+              <dataPath xsi:type="form:DataPath">
+                <segments>ЗапросыДоступности.МагазинОтправитель</segments>
+              </dataPath>
+              <extendedTooltip>
+                <name>ЗапросыДоступностиМагазинОтправительРасширеннаяПодсказка</name>
+                <id>289</id>
+                <visible>true</visible>
+                <enabled>true</enabled>
+                <userVisible>
+                  <common>true</common>
+                </userVisible>
+                <type>Label</type>
+                <autoMaxWidth>true</autoMaxWidth>
+                <autoMaxHeight>true</autoMaxHeight>
+                <extInfo xsi:type="form:LabelDecorationExtInfo">
+                  <horizontalAlign>Left</horizontalAlign>
+                </extInfo>
+              </extendedTooltip>
+              <contextMenu>
+                <name>ЗапросыДоступностиМагазинОтправительКонтекстноеМеню</name>
+                <id>288</id>
+                <visible>true</visible>
+                <enabled>true</enabled>
+                <userVisible>
+                  <common>true</common>
+                </userVisible>
+                <autoFill>true</autoFill>
+              </contextMenu>
+              <type>InputField</type>
+              <editMode>Enter</editMode>
+              <showInHeader>true</showInHeader>
+              <headerHorizontalAlign>Left</headerHorizontalAlign>
+              <showInFooter>true</showInFooter>
+              <extInfo xsi:type="form:InputFieldExtInfo">
+                <autoMaxWidth>true</autoMaxWidth>
+                <autoMaxHeight>true</autoMaxHeight>
+                <wrap>true</wrap>
+                <chooseType>true</chooseType>
+                <typeDomainEnabled>true</typeDomainEnabled>
+                <textEdit>true</textEdit>
+              </extInfo>
+            </items>
+            <items xsi:type="form:FormField">
+              <name>ЗапросыДоступностиМагазинПолучатель</name>
+              <id>290</id>
+              <title>
+                <key>ru</key>
+                <value>Получатель</value>
+              </title>
+              <visible>true</visible>
+              <enabled>true</enabled>
+              <userVisible>
+                <common>true</common>
+              </userVisible>
+              <dataPath xsi:type="form:DataPath">
+                <segments>ЗапросыДоступности.МагазинПолучатель</segments>
+              </dataPath>
+              <extendedTooltip>
+                <name>ЗапросыДоступностиМагазинПолучательРасширеннаяПодсказка</name>
+                <id>292</id>
+                <visible>true</visible>
+                <enabled>true</enabled>
+                <userVisible>
+                  <common>true</common>
+                </userVisible>
+                <type>Label</type>
+                <autoMaxWidth>true</autoMaxWidth>
+                <autoMaxHeight>true</autoMaxHeight>
+                <extInfo xsi:type="form:LabelDecorationExtInfo">
+                  <horizontalAlign>Left</horizontalAlign>
+                </extInfo>
+              </extendedTooltip>
+              <contextMenu>
+                <name>ЗапросыДоступностиМагазинПолучательКонтекстноеМеню</name>
+                <id>291</id>
+                <visible>true</visible>
+                <enabled>true</enabled>
+                <userVisible>
+                  <common>true</common>
+                </userVisible>
+                <autoFill>true</autoFill>
+              </contextMenu>
+              <type>InputField</type>
+              <editMode>Enter</editMode>
+              <showInHeader>true</showInHeader>
+              <headerHorizontalAlign>Left</headerHorizontalAlign>
+              <showInFooter>true</showInFooter>
+              <extInfo xsi:type="form:InputFieldExtInfo">
+                <autoMaxWidth>true</autoMaxWidth>
+                <autoMaxHeight>true</autoMaxHeight>
+                <wrap>true</wrap>
+                <chooseType>true</chooseType>
+                <typeDomainEnabled>true</typeDomainEnabled>
+                <textEdit>true</textEdit>
+              </extInfo>
+            </items>
+            <visible>true</visible>
+            <enabled>true</enabled>
+            <userVisible>
+              <common>true</common>
+            </userVisible>
+            <title>
+              <key>ru</key>
+              <value>Магазины</value>
+            </title>
+            <extendedTooltip>
+              <name>ГруппаМагазиныРасширеннаяПодсказка</name>
+              <id>286</id>
+              <visible>true</visible>
+              <enabled>true</enabled>
+              <userVisible>
+                <common>true</common>
+              </userVisible>
+              <type>Label</type>
+              <autoMaxWidth>true</autoMaxWidth>
+              <autoMaxHeight>true</autoMaxHeight>
+              <extInfo xsi:type="form:LabelDecorationExtInfo">
+                <horizontalAlign>Left</horizontalAlign>
+              </extInfo>
+            </extendedTooltip>
+            <type>ColumnGroup</type>
+            <extInfo xsi:type="form:ColumnGroupExtInfo">
+              <showTitle>true</showTitle>
+              <showInHeader>true</showInHeader>
+              <headerHorizontalAlign>Center</headerHorizontalAlign>
+            </extInfo>
+          </items>
           <items xsi:type="form:FormField">
             <name>ЗапросыДоступностиНомерТТН</name>
             <id>234</id>
@@ -1744,7 +1886,7 @@
 	КОНЕЦ)))
 	И ВЫБОР
 		КОГДА Склады.НазначениеСклада = ЗНАЧЕНИЕ(Перечисление.НазначенияСкладов.УправляющаяСистема)
-			ТОГДА НЕ ЗДТ.МагазинПолучатель = УчетнаяПолитикаСрезПоследних.ИнтернетМагазин
+			ТОГДА НЕ ЗДТ.МагазинПолучатель = УчетнаяПолитикаСрезПоследних.ИнтернетМагазин ИЛИ Склады.Ссылка = УчетнаяПолитикаСрезПоследних.СкладЗакупки
 		ИНАЧЕ ИСТИНА
 	КОНЕЦ
 СГРУППИРОВАТЬ ПО
