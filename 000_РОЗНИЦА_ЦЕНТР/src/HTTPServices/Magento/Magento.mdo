@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:HTTPService xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="f5d5b40c-68e6-42ce-86f3-4ce54054ff96">
+  <name>Magento</name>
+  <synonym>
+    <key>ru</key>
+    <value>Magento II</value>
+  </synonym>
+  <comment>Подсистема обменов с новым функционалом ИМ, то есть - Magenta 2</comment>
+  <rootURL>Magento</rootURL>
+  <reuseSessions>AutoUse</reuseSessions>
+  <sessionMaxAge>20</sessionMaxAge>
+  <urlTemplates uuid="d0a36a71-63bb-4743-a873-d4b5e2b33dc5">
+    <name>Customer</name>
+    <synonym>
+      <key>ru</key>
+      <value>Customer</value>
+    </synonym>
+    <synonym>
+      <key>uk</key>
+      <value>Customer</value>
+    </synonym>
+    <comment>Синхронизация 1С:Розница базы покупателей</comment>
+    <template>/Customer/{Action}</template>
+    <methods uuid="32ecbd45-26fe-40e6-93d6-e9742524990a">
+      <name>Do</name>
+      <synonym>
+        <key>ru</key>
+        <value>Do</value>
+      </synonym>
+      <comment>Получение и обработка данных покупателя, полученных из внешней системы</comment>
+      <httpMethod>POST</httpMethod>
+      <handler>CustomerDo</handler>
+    </methods>
+  </urlTemplates>
+</mdclass:HTTPService>
