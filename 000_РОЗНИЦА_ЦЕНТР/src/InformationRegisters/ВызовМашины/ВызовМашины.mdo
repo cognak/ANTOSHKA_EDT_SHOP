@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="c73a4238-13ea-4611-958f-a8c50d0e8861">
+  <producedTypes>
+    <selectionType typeId="4008f751-ab0f-432c-b06e-cb72a44b4e3c" valueTypeId="b5d2a6aa-aa39-4daa-898e-7c8a5a855328"/>
+    <listType typeId="db226ab5-5d8c-4ffa-81bf-9e719f776d75" valueTypeId="77474a4a-c3f7-4585-802a-8126813d52f1"/>
+    <managerType typeId="acc22c78-9d9a-4e53-920b-8d11bd5ac01d" valueTypeId="eb1022bb-5708-4038-bef3-f3ccdb217602"/>
+    <recordSetType typeId="3a30d5f6-e11a-408a-ac0d-b860288b58b6" valueTypeId="fcc94220-c566-41cf-bac0-4bff49bd6f1f"/>
+    <recordKeyType typeId="22b93c6d-c33e-4b8f-8b8a-39060c9802fd" valueTypeId="9d676800-41be-42b4-aa70-6433fc6b431c"/>
+    <recordType typeId="37e566cf-3d2e-49d4-99bb-d630e5c2c597" valueTypeId="4f050a4c-a1de-421e-b279-08b6f4b112d3"/>
+    <recordManagerType typeId="ebd0faff-7d72-4beb-8e0a-d6c10311b975" valueTypeId="635f5b40-4191-4fdb-8b51-aff04401ae7b"/>
+  </producedTypes>
+  <name>ВызовМашины</name>
+  <synonym>
+    <key>ru</key>
+    <value>Вызов машины</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <editType>InDialog</editType>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <resources uuid="cfa1caa8-fedf-43fb-a3db-0487b5834ae2">
+    <name>НомерВызова</name>
+    <synonym>
+      <key>ru</key>
+      <value>Номер вызова</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>12</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="6f61035d-309a-436e-8946-95f1a5963fd2">
+    <name>ВызовОтменён</name>
+    <synonym>
+      <key>ru</key>
+      <value>Вызов отменён</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <dimensions uuid="8c933dd8-c56b-4de8-910c-21ac6fff9bbb">
+    <name>Магазин</name>
+    <synonym>
+      <key>ru</key>
+      <value>Магазин</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.Магазины</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="ed36ad67-12fd-47cb-9f44-ebc4ae20345c">
+    <name>ОператорДоставки</name>
+    <synonym>
+      <key>ru</key>
+      <value>Оператор доставки</value>
+    </synonym>
+    <type>
+      <types>EnumRef.ОператорыДоставки</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="4943d2f1-a231-455f-a84a-8b5949970fc2">
+    <name>ДатаВызова</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата вызова</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+</mdclass:InformationRegister>
