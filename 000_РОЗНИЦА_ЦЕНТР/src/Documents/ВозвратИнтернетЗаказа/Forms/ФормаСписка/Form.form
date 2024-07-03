@@ -53,6 +53,110 @@
     <defaultItem>true</defaultItem>
     <titleLocation>None</titleLocation>
     <items xsi:type="form:FormField">
+      <name>ЕстьОшибки</name>
+      <id>85</id>
+      <visible>true</visible>
+      <enabled>true</enabled>
+      <userVisible>
+        <common>true</common>
+      </userVisible>
+      <dataPath xsi:type="form:DataPath">
+        <segments>Список.ЕстьОшибки</segments>
+      </dataPath>
+      <titleLocation>None</titleLocation>
+      <toolTip>
+        <key>ru</key>
+        <value>Ошибка обработки в NAV</value>
+      </toolTip>
+      <extendedTooltip>
+        <name>ЕстьОшибкиРасширеннаяПодсказка</name>
+        <id>87</id>
+        <visible>true</visible>
+        <enabled>true</enabled>
+        <userVisible>
+          <common>true</common>
+        </userVisible>
+        <type>Label</type>
+        <autoMaxWidth>true</autoMaxWidth>
+        <autoMaxHeight>true</autoMaxHeight>
+        <extInfo xsi:type="form:LabelDecorationExtInfo">
+          <horizontalAlign>Left</horizontalAlign>
+        </extInfo>
+      </extendedTooltip>
+      <contextMenu>
+        <name>ЕстьОшибкиКонтекстноеМеню</name>
+        <id>86</id>
+        <visible>true</visible>
+        <enabled>true</enabled>
+        <userVisible>
+          <common>true</common>
+        </userVisible>
+        <autoFill>true</autoFill>
+      </contextMenu>
+      <type>CheckBoxField</type>
+      <readOnly>true</readOnly>
+      <editMode>Enter</editMode>
+      <showInHeader>true</showInHeader>
+      <headerPicture xsi:type="core:PictureRef">
+        <picture>CommonPicture.ОшибкаВыполненияРегламентныхЗаданий</picture>
+      </headerPicture>
+      <headerHorizontalAlign>Left</headerHorizontalAlign>
+      <showInFooter>true</showInFooter>
+      <extInfo xsi:type="form:CheckBoxFieldExtInfo"/>
+    </items>
+    <items xsi:type="form:FormField">
+      <name>Оформлен</name>
+      <id>88</id>
+      <visible>true</visible>
+      <enabled>true</enabled>
+      <userVisible>
+        <common>true</common>
+      </userVisible>
+      <dataPath xsi:type="form:DataPath">
+        <segments>Список.Оформлен</segments>
+      </dataPath>
+      <titleLocation>None</titleLocation>
+      <toolTip>
+        <key>ru</key>
+        <value>Возврат оформлен в NAVISION</value>
+      </toolTip>
+      <extendedTooltip>
+        <name>ОформленРасширеннаяПодсказка</name>
+        <id>90</id>
+        <visible>true</visible>
+        <enabled>true</enabled>
+        <userVisible>
+          <common>true</common>
+        </userVisible>
+        <type>Label</type>
+        <autoMaxWidth>true</autoMaxWidth>
+        <autoMaxHeight>true</autoMaxHeight>
+        <extInfo xsi:type="form:LabelDecorationExtInfo">
+          <horizontalAlign>Left</horizontalAlign>
+        </extInfo>
+      </extendedTooltip>
+      <contextMenu>
+        <name>ОформленКонтекстноеМеню</name>
+        <id>89</id>
+        <visible>true</visible>
+        <enabled>true</enabled>
+        <userVisible>
+          <common>true</common>
+        </userVisible>
+        <autoFill>true</autoFill>
+      </contextMenu>
+      <type>CheckBoxField</type>
+      <readOnly>true</readOnly>
+      <editMode>Enter</editMode>
+      <showInHeader>true</showInHeader>
+      <headerPicture xsi:type="core:PictureRef">
+        <picture>CommonPicture.ЗаказНаПроизводствоВыполнен</picture>
+      </headerPicture>
+      <headerHorizontalAlign>Left</headerHorizontalAlign>
+      <showInFooter>true</showInFooter>
+      <extInfo xsi:type="form:CheckBoxFieldExtInfo"/>
+    </items>
+    <items xsi:type="form:FormField">
       <name>Номер</name>
       <id>19</id>
       <visible>true</visible>
@@ -980,6 +1084,35 @@
     </edit>
     <main>true</main>
     <extInfo xsi:type="form:DynamicListExtInfo">
+      <queryText>ВЫБРАТЬ 
+       ВозвратИнтернетЗаказа.Ссылка, 
+       ВозвратИнтернетЗаказа.ПометкаУдаления, 
+       ВозвратИнтернетЗаказа.Номер, 
+       ВозвратИнтернетЗаказа.Дата, 
+       ВозвратИнтернетЗаказа.Проведен, 
+       ВозвратИнтернетЗаказа.ВладелецДисконтнойКарты, 
+       ВозвратИнтернетЗаказа.ДисконтнаяКарта, 
+       ВозвратИнтернетЗаказа.ДокументОснование, 
+       ВозвратИнтернетЗаказа.ЕстьОшибки, 
+       ВозвратИнтернетЗаказа.Комментарий, 
+       ВозвратИнтернетЗаказа.Контрагент, 
+       ВозвратИнтернетЗаказа.МагазинВозврата, 
+       ВозвратИнтернетЗаказа.Организация, 
+       ВозвратИнтернетЗаказа.Ответственный, 
+       ВозвратИнтернетЗаказа.СкидкиРассчитаны, 
+       ВозвратИнтернетЗаказа.Статус, 
+       ВозвратИнтернетЗаказа.СтатусОплаты, 
+       ВозвратИнтернетЗаказа.СуммаДокумента, 
+       ВозвратИнтернетЗаказа.ТипВозврата, 
+       ВозвратИнтернетЗаказа.ТипОплаты, 
+       ВозвратИнтернетЗаказа.ЦенаВключаетНДС, 
+       ВозвратИнтернетЗаказа.ЭлектроннаяНакладная, 
+
+       ВозвратИнтернетЗаказа.МоментВремени
+ ИЗ 
+       Документ.ВозвратИнтернетЗаказа
+ КАК 
+       ВозвратИнтернетЗаказа</queryText>
       <mainTable>Document.ВозвратИнтернетЗаказа</mainTable>
       <dynamicDataRead>true</dynamicDataRead>
       <autoFillAvailableFields>true</autoFillAvailableFields>

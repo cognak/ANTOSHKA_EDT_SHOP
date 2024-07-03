@@ -43,40 +43,6 @@
 			<inputParameters/>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Остальные</dataPath>
-			<field>Остальные</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Остальные</v8:content>
-				</v8:item>
-			</title>
-			<appearance/>
-			<inputParameters/>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Процент</dataPath>
-			<field>Процент</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Процент</v8:content>
-				</v8:item>
-			</title>
-			<appearance>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>Формат</dcscor:parameter>
-					<dcscor:value xsi:type="v8:LocalStringType">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>ЧДЦ=2</v8:content>
-						</v8:item>
-					</dcscor:value>
-				</dcscor:item>
-			</appearance>
-			<inputParameters/>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>Оператор</dataPath>
 			<field>Оператор</field>
 			<title xsi:type="v8:LocalStringType">
@@ -89,12 +55,18 @@
 			<inputParameters/>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>ПроцентОператор</dataPath>
-			<field>ПроцентОператор</field>
+			<dataPath>СотрудникКЦ</dataPath>
+			<field>СотрудникКЦ</field>
+			<appearance/>
+			<inputParameters/>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Год</dataPath>
+			<field>Год</field>
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Процент оператор</v8:content>
+					<v8:content>Год</v8:content>
 				</v8:item>
 			</title>
 			<appearance>
@@ -103,7 +75,7 @@
 					<dcscor:value xsi:type="v8:LocalStringType">
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>ЧДЦ=2</v8:content>
+							<v8:content>ДФ=yyyy</v8:content>
 						</v8:item>
 					</dcscor:value>
 				</dcscor:item>
@@ -111,8 +83,26 @@
 			<inputParameters/>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>СотрудникКЦ</dataPath>
-			<field>СотрудникКЦ</field>
+			<dataPath>Месяц</dataPath>
+			<field>Месяц</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Месяц</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ДФ=MMMM</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
+			<inputParameters/>
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗЛИЧНЫЕ
@@ -133,6 +123,7 @@
 	И НЕ Заказы.ПометкаУдаления
 	И Заказы.Проведен
 	И КлючевыеАтрибутыЗаказовПокупателей.АвтоВыполнение
+
 СГРУППИРОВАТЬ ПО
 	Заказы.Ссылка,
 	Пользователи.Ссылка
@@ -155,6 +146,7 @@
 	Заказы.Дата МЕЖДУ &amp;ДатаС И &amp;ДатаПо
 	И НЕ Заказы.ПометкаУдаления
 	И Заказы.Проведен
+
 СГРУППИРОВАТЬ ПО
 	Заказы.Ссылка,
 	Пользователи.Ссылка
@@ -172,7 +164,7 @@
 		ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.ЗапросДоступностиТоваров КАК ЗапросДоступностиТоваров
 			ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.ЗаказПокупателя КАК Заказы
 				ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.КлючевыеАтрибутыЗаказовПокупателей КАК КлючевыеАтрибутыЗаказовПокупателей
-				ПО КлючевыеАтрибутыЗаказовПокупателей.ЗаказПокупателя = Заказы.Ссылка
+				ПО (КлючевыеАтрибутыЗаказовПокупателей.ЗаказПокупателя = Заказы.Ссылка)
 				ЛЕВОЕ СОЕДИНЕНИЕ Справочник.Пользователи КАК Пользователи
 				ПО Заказы.Ответственный = Пользователи.Ссылка
 			ПО ЗапросДоступностиТоваров.ДокументОснование = Заказы.Ссылка
@@ -181,52 +173,83 @@
 	Заказы.Дата МЕЖДУ &amp;ДатаС И &amp;ДатаПо
 	И НЕ Заказы.ПометкаУдаления
 	И Заказы.Проведен
-	И
-		(КлючевыеАтрибутыЗапросовДоступности.СтатусЗапроса = ЗНАЧЕНИЕ(Перечисление.СтатусыЗапросовДоступностиТоваровШапка.Изменён)
-	ИЛИ
-		КлючевыеАтрибутыЗапросовДоступности.СтатусЗапроса = ЗНАЧЕНИЕ(Перечисление.СтатусыЗапросовДоступностиТоваровШапка.Отменён))
+	И (КлючевыеАтрибутыЗапросовДоступности.СтатусЗапроса = ЗНАЧЕНИЕ(Перечисление.СтатусыЗапросовДоступностиТоваровШапка.Изменён)
+			ИЛИ КлючевыеАтрибутыЗапросовДоступности.СтатусЗапроса = ЗНАЧЕНИЕ(Перечисление.СтатусыЗапросовДоступностиТоваровШапка.Отменён))
 	И КлючевыеАтрибутыЗаказовПокупателей.АвтоВыполнение
+
 СГРУППИРОВАТЬ ПО
 	Заказы.Ссылка,
 	Пользователи.Ссылка
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
- ВЫБРАТЬ
-	СУММА(ТабЗаказы.АвтоВыполнение) КАК АвтоВыполнение,
+ВЫБРАТЬ
+	ТабЗаказы.АвтоВыполнение КАК АвтоВыполнение,
 	НАЧАЛОПЕРИОДА(ТабЗаказы.ЗаказПокупателя.Дата, ДЕНЬ) КАК День,
-	СУММА(ТабЗаказы.ВсевоЗаказов) КАК ВсеЗАказы,
-	СУММА(ТабЗаказы.Оператор) КАК Оператор,
-	ТабЗаказы.СотрудникКЦ
-ПОМЕСТИТЬ ТабГруппировка
+	НАЧАЛОПЕРИОДА(ТабЗаказы.ЗаказПокупателя.Дата, МЕСЯЦ) КАК Месяц,
+	НАЧАЛОПЕРИОДА(ТабЗаказы.ЗаказПокупателя.Дата, ГОД) КАК Год,
+	ТабЗаказы.ВсевоЗаказов КАК ВсеЗАказы,
+	ТабЗаказы.Оператор КАК Оператор,
+	ТабЗаказы.СотрудникКЦ КАК СотрудникКЦ
 ИЗ
-	ТабЗаказы КАК ТабЗаказы
-СГРУППИРОВАТЬ ПО
-	НАЧАЛОПЕРИОДА(ТабЗаказы.ЗаказПокупателя.Дата, ДЕНЬ),
-	ТабЗаказы.СотрудникКЦ
-;
-
-////////////////////////////////////////////////////////////////////////////////
- ВЫБРАТЬ
-	ТабГруппировка.АвтоВыполнение КАК АвтоВыполнение,
-	ТабГруппировка.День КАК День,
-	ТабГруппировка.ВсеЗАказы КАК ВсеЗАказы,
-	ТабГруппировка.ВсеЗАказы - ТабГруппировка.АвтоВыполнение КАК Остальные,
-	ВЫБОР
-		КОГДА ТабГруппировка.ВсеЗАказы = 0
-			ТОГДА 0
-		ИНАЧЕ 100 * ТабГруппировка.АвтоВыполнение / ТабГруппировка.ВсеЗАказы
-	КОНЕЦ КАК Процент,
-	ВЫБОР
-		КОГДА ТабГруппировка.АвтоВыполнение = 0
-			ТОГДА 0
-		ИНАЧЕ 100 * ТабГруппировка.Оператор / ТабГруппировка.АвтоВыполнение
-	КОНЕЦ КАК ПроцентОператор,
-	ТабГруппировка.Оператор КАК Оператор,
-	ТабГруппировка.СотрудникКЦ
-ИЗ
-	ТабГруппировка КАК ТабГруппировка</query>
+	ТабЗаказы КАК ТабЗаказы</query>
 	</dataSet>
+	<calculatedField>
+		<dataPath>Процент</dataPath>
+		<expression>0</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Процент</v8:content>
+			</v8:item>
+		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>Формат</dcscor:parameter>
+				<dcscor:value xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>ЧДЦ=3</v8:content>
+					</v8:item>
+				</dcscor:value>
+			</dcscor:item>
+		</appearance>
+		<inputParameters/>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>Остальные</dataPath>
+		<expression>ВсеЗАказы - АвтоВыполнение</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Остальные</v8:content>
+			</v8:item>
+		</title>
+		<appearance/>
+		<inputParameters/>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>ПроцентОператор</dataPath>
+		<expression>0</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Процент оператор</v8:content>
+			</v8:item>
+		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>Формат</dcscor:parameter>
+				<dcscor:value xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>ЧДЦ=3</v8:content>
+					</v8:item>
+				</dcscor:value>
+			</dcscor:item>
+		</appearance>
+		<inputParameters/>
+	</calculatedField>
 	<totalField>
 		<dataPath>АвтоВыполнение</dataPath>
 		<expression>Сумма(АвтоВыполнение)</expression>
@@ -236,40 +259,36 @@
 		<expression>Сумма(ВсеЗАказы)</expression>
 	</totalField>
 	<totalField>
-		<dataPath>Остальные</dataPath>
-		<expression>Сумма(Остальные)</expression>
-	</totalField>
-	<totalField>
-		<dataPath>Процент</dataPath>
-		<expression>Сумма(Процент)</expression>
-		<group>День</group>
-	</totalField>
-	<totalField>
-		<dataPath>Процент</dataPath>
-		<expression>ВЫБОР
-   КОГДА Сумма(ВсеЗаказы) &lt;&gt; 0
-   ТОГДА 100*Сумма(АвтоВыполнение)/Сумма(ВсеЗаказы)
-   ИНАЧЕ 0
-КОНЕЦ</expression>
-		<group>СотрудникКЦ</group>
-		<group>ОбщийИтог</group>
-	</totalField>
-	<totalField>
 		<dataPath>Оператор</dataPath>
 		<expression>Сумма(Оператор)</expression>
 	</totalField>
 	<totalField>
-		<dataPath>ПроцентОператор</dataPath>
-		<expression>Сумма(ПроцентОператор)</expression>
+		<dataPath>Процент</dataPath>
+		<expression>ВЫБОР
+		КОГДА Сумма(ВсеЗАказы) = 0
+			ТОГДА 0
+		ИНАЧЕ 100 * Сумма(АвтоВыполнение) /Сумма(ВсеЗАказы)
+	КОНЕЦ</expression>
+		<group>Год</group>
 		<group>День</group>
+		<group>Месяц</group>
+		<group>СотрудникКЦ</group>
+		<group>ОбщийИтог</group>
+	</totalField>
+	<totalField>
+		<dataPath>Остальные</dataPath>
+		<expression>Сумма(Остальные)</expression>
 	</totalField>
 	<totalField>
 		<dataPath>ПроцентОператор</dataPath>
 		<expression>ВЫБОР
-   КОГДА Сумма(АвтоВыполнение) &lt;&gt; 0
-   ТОГДА 100*Сумма(Оператор)/Сумма(АвтоВыполнение)
-   ИНАЧЕ 0
-КОНЕЦ</expression>
+        КОГДА Сумма(АвтоВыполнение) = 0
+            ТОГДА 0
+        ИНАЧЕ 100 * Сумма(Оператор) /Сумма(АвтоВыполнение)
+    КОНЕЦ</expression>
+		<group>Год</group>
+		<group>День</group>
+		<group>Месяц</group>
 		<group>СотрудникКЦ</group>
 		<group>ОбщийИтог</group>
 	</totalField>
@@ -345,10 +364,10 @@
 					<dcsset:field>Остальные</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Процент</dcsset:field>
+					<dcsset:field>Оператор</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Оператор</dcsset:field>
+					<dcsset:field>Процент</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>ПроцентОператор</dcsset:field>
@@ -372,13 +391,60 @@
 					<dcsset:orderType>Asc</dcsset:orderType>
 				</dcsset:item>
 			</dcsset:order>
+			<dcsset:outputParameters/>
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Год</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
 				<dcsset:order>
 					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
 				</dcsset:order>
 				<dcsset:selection>
 					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
 				</dcsset:selection>
+				<dcsset:outputParameters/>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Месяц</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+					<dcsset:outputParameters/>
+					<dcsset:item xsi:type="dcsset:StructureItemGroup">
+						<dcsset:groupItems>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>День</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+						</dcsset:groupItems>
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						</dcsset:selection>
+						<dcsset:outputParameters/>
+					</dcsset:item>
+				</dcsset:item>
 			</dcsset:item>
 		</dcsset:settings>
 	</settingsVariant>
@@ -433,6 +499,7 @@
 					<dcsset:orderType>Asc</dcsset:orderType>
 				</dcsset:item>
 			</dcsset:order>
+			<dcsset:outputParameters/>
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
 				<dcsset:groupItems>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
@@ -449,10 +516,11 @@
 				<dcsset:selection>
 					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
 				</dcsset:selection>
+				<dcsset:outputParameters/>
 				<dcsset:item xsi:type="dcsset:StructureItemGroup">
 					<dcsset:groupItems>
 						<dcsset:item xsi:type="dcsset:GroupItemField">
-							<dcsset:field>День</dcsset:field>
+							<dcsset:field>Год</dcsset:field>
 							<dcsset:groupType>Items</dcsset:groupType>
 							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -465,6 +533,43 @@
 					<dcsset:selection>
 						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
 					</dcsset:selection>
+					<dcsset:outputParameters/>
+					<dcsset:item xsi:type="dcsset:StructureItemGroup">
+						<dcsset:groupItems>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>Месяц</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+						</dcsset:groupItems>
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						</dcsset:selection>
+						<dcsset:outputParameters/>
+						<dcsset:item xsi:type="dcsset:StructureItemGroup">
+							<dcsset:groupItems>
+								<dcsset:item xsi:type="dcsset:GroupItemField">
+									<dcsset:field>День</dcsset:field>
+									<dcsset:groupType>Items</dcsset:groupType>
+									<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+									<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+									<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+								</dcsset:item>
+							</dcsset:groupItems>
+							<dcsset:order>
+								<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+							</dcsset:order>
+							<dcsset:selection>
+								<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+							</dcsset:selection>
+							<dcsset:outputParameters/>
+						</dcsset:item>
+					</dcsset:item>
 				</dcsset:item>
 			</dcsset:item>
 		</dcsset:settings>
