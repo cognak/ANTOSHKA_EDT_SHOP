@@ -31,7 +31,7 @@
     <type>UsualGroup</type>
     <extInfo xsi:type="form:UsualGroupExtInfo">
       <group>Vertical</group>
-      <behavior>Auto</behavior>
+      <behavior>Collapsible</behavior>
       <representation>WeakSeparation</representation>
       <showLeftMargin>true</showLeftMargin>
       <united>true</united>
@@ -61,7 +61,7 @@
         <common>true</common>
       </userVisible>
       <dataPath xsi:type="form:DataPath">
-        <segments>Список.Number</segments>
+        <segments>Список.Номер</segments>
       </dataPath>
       <defaultItem>true</defaultItem>
       <extendedTooltip>
@@ -108,7 +108,7 @@
         <common>true</common>
       </userVisible>
       <dataPath xsi:type="form:DataPath">
-        <segments>Список.Date</segments>
+        <segments>Список.Дата</segments>
       </dataPath>
       <extendedTooltip>
         <name>ДатаРасширеннаяПодсказка</name>
@@ -217,6 +217,60 @@
       <contextMenu>
         <name>МагазинСкладКонтекстноеМеню</name>
         <id>26</id>
+        <visible>true</visible>
+        <enabled>true</enabled>
+        <userVisible>
+          <common>true</common>
+        </userVisible>
+        <autoFill>true</autoFill>
+      </contextMenu>
+      <type>InputField</type>
+      <editMode>Enter</editMode>
+      <showInHeader>true</showInHeader>
+      <headerHorizontalAlign>Left</headerHorizontalAlign>
+      <showInFooter>true</showInFooter>
+      <extInfo xsi:type="form:InputFieldExtInfo">
+        <autoMaxWidth>true</autoMaxWidth>
+        <autoMaxHeight>true</autoMaxHeight>
+        <wrap>true</wrap>
+        <chooseType>true</chooseType>
+        <typeDomainEnabled>true</typeDomainEnabled>
+        <textEdit>true</textEdit>
+      </extInfo>
+    </items>
+    <items xsi:type="form:FormField">
+      <name>КоличествоЭН</name>
+      <id>28</id>
+      <title>
+        <key>ru</key>
+        <value>Количество ЭН</value>
+      </title>
+      <visible>true</visible>
+      <enabled>true</enabled>
+      <userVisible>
+        <common>true</common>
+      </userVisible>
+      <dataPath xsi:type="form:DataPath">
+        <segments>Список.КоличествоЭН</segments>
+      </dataPath>
+      <extendedTooltip>
+        <name>КоличествоЭНРасширеннаяПодсказка</name>
+        <id>30</id>
+        <visible>true</visible>
+        <enabled>true</enabled>
+        <userVisible>
+          <common>true</common>
+        </userVisible>
+        <type>Label</type>
+        <autoMaxWidth>true</autoMaxWidth>
+        <autoMaxHeight>true</autoMaxHeight>
+        <extInfo xsi:type="form:LabelDecorationExtInfo">
+          <horizontalAlign>Left</horizontalAlign>
+        </extInfo>
+      </extendedTooltip>
+      <contextMenu>
+        <name>КоличествоЭНКонтекстноеМеню</name>
+        <id>29</id>
         <visible>true</visible>
         <enabled>true</enabled>
         <userVisible>
@@ -469,25 +523,38 @@
       <common>true</common>
     </edit>
     <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
-      <segments>Список.Ref</segments>
+      <segments>Список.Ссылка</segments>
     </notDefaultUseAlwaysAttributes>
     <main>true</main>
     <extInfo xsi:type="form:DynamicListExtInfo">
       <queryText>ВЫБРАТЬ
-	РеестрЭН.Ссылка,
-	РеестрЭН.ПометкаУдаления,
-	РеестрЭН.Номер,
-	РеестрЭН.Дата,
-	РеестрЭН.Проведен,
-	РеестрЭН.Напечатан,
-	РеестрЭН.ВнешняяСсылка,
-	РеестрЭН.МагазинСклад,
-	РеестрЭН.МоментВремени
+	РеестрЭН.Ссылка КАК Ссылка,
+	РеестрЭН.ПометкаУдаления КАК ПометкаУдаления,
+	РеестрЭН.Номер КАК Номер,
+	РеестрЭН.Дата КАК Дата,
+	РеестрЭН.Проведен КАК Проведен,
+	РеестрЭН.Напечатан КАК Напечатан,
+	РеестрЭН.ВнешняяСсылка КАК ВнешняяСсылка,
+	РеестрЭН.МагазинСклад КАК МагазинСклад,
+	РеестрЭН.МоментВремени КАК МоментВремени,
+	КОЛИЧЕСТВО(РеестрЭНСписокЭН.ЭлектронныеНакладные) КАК КоличествоЭН
 ИЗ
-	Документ.РеестрЭН КАК РеестрЭН
+	Документ.РеестрЭН.СписокЭН КАК РеестрЭНСписокЭН
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.РеестрЭН КАК РеестрЭН
+		ПО РеестрЭНСписокЭН.Ссылка = РеестрЭН.Ссылка
 ГДЕ
 	РеестрЭН.МагазинСклад = &amp;МагазинСклад
-	Или &amp;ЦентральныйУзел</queryText>
+	Или &amp;ЦентральныйУзел
+СГРУППИРОВАТЬ ПО
+	РеестрЭН.ВнешняяСсылка,
+	РеестрЭН.Дата,
+	РеестрЭН.МагазинСклад,
+	РеестрЭН.МоментВремени,
+	РеестрЭН.Напечатан,
+	РеестрЭН.Номер,
+	РеестрЭН.ПометкаУдаления,
+	РеестрЭН.Проведен,
+	РеестрЭН.Ссылка</queryText>
       <mainTable>Document.РеестрЭН</mainTable>
       <dynamicDataRead>true</dynamicDataRead>
       <autoFillAvailableFields>true</autoFillAvailableFields>
