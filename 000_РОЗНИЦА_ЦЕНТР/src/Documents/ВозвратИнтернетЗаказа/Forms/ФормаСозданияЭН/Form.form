@@ -71,7 +71,7 @@
       <dataPath xsi:type="form:DataPath">
         <segments>НомерЭН</segments>
       </dataPath>
-      <titleLocation>None</titleLocation>
+      <titleLocation>Left</titleLocation>
       <extendedTooltip>
         <name>НомерЭНРасширеннаяПодсказка</name>
         <id>3</id>
@@ -184,6 +184,58 @@
       <currentRowUse>Auto</currentRowUse>
     </extInfo>
   </items>
+  <items xsi:type="form:Decoration">
+    <name>ТекстШпаргалки</name>
+    <id>11</id>
+    <title>
+      <key>ru</key>
+      <value>Щоб відкрити форму створення Електронної накладної, залиште поле &quot;Номер ЕН&quot; порожнім і натисніть кнопку &quot;Створити&quot;. 
+Якщо ви вже маєте номер створеної накладної, то введіть його і натисніть кнопку &quot;Створити&quot;.</value>
+    </title>
+    <visible>true</visible>
+    <enabled>true</enabled>
+    <userVisible>
+      <common>true</common>
+    </userVisible>
+    <extendedTooltip>
+      <name>ТекстШпаргалкиРасширеннаяПодсказка</name>
+      <id>13</id>
+      <visible>true</visible>
+      <enabled>true</enabled>
+      <userVisible>
+        <common>true</common>
+      </userVisible>
+      <type>Label</type>
+      <autoMaxWidth>true</autoMaxWidth>
+      <autoMaxHeight>true</autoMaxHeight>
+      <extInfo xsi:type="form:LabelDecorationExtInfo">
+        <horizontalAlign>Left</horizontalAlign>
+      </extInfo>
+    </extendedTooltip>
+    <contextMenu>
+      <name>ТекстШпаргалкиКонтекстноеМеню</name>
+      <id>12</id>
+      <visible>true</visible>
+      <enabled>true</enabled>
+      <userVisible>
+        <common>true</common>
+      </userVisible>
+      <autoFill>true</autoFill>
+    </contextMenu>
+    <type>Label</type>
+    <autoMaxWidth>true</autoMaxWidth>
+    <autoMaxHeight>true</autoMaxHeight>
+    <textColor xsi:type="core:ColorRef">
+      <color>Style.ПоясняющийТекст</color>
+    </textColor>
+    <font xsi:type="core:FontDef">
+      <height>10.0</height>
+      <italic>true</italic>
+    </font>
+    <extInfo xsi:type="form:LabelDecorationExtInfo">
+      <horizontalAlign>Left</horizontalAlign>
+    </extInfo>
+  </items>
   <autoCommandBar>
     <name>ФормаКоманднаяПанель</name>
     <id>-1</id>
@@ -197,6 +249,10 @@
   <handlers>
     <event>OnCreateAtServer</event>
     <name>ПриСозданииНаСервере</name>
+  </handlers>
+  <handlers>
+    <event>NotificationProcessing</event>
+    <name>ОбработкаОповещения</name>
   </handlers>
   <saveWindowSettings>true</saveWindowSettings>
   <autoUrl>true</autoUrl>
@@ -235,6 +291,26 @@
     <id>3</id>
     <valueType>
       <types>DocumentRef.ВозвратИнтернетЗаказа</types>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
+  </attributes>
+  <attributes>
+    <name>УИФормы</name>
+    <title>
+      <key>ru</key>
+      <value>УИФормы</value>
+    </title>
+    <id>4</id>
+    <valueType>
+      <types>String</types>
+      <stringQualifiers>
+        <length>36</length>
+      </stringQualifiers>
     </valueType>
     <view>
       <common>true</common>
