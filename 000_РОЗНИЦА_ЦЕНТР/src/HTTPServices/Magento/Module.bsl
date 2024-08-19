@@ -91,8 +91,13 @@
 				ИначеЕсли Действие = "GetBuyerExtendedInfo" Тогда	//	/Customer/{Action} - последняя лексема
 					ТекстОтвета = GetBuyerExtendedInfo(RequestData);	//	
 					HTTPОтвет = СформироватьHTTPОтвет(ТекстОтвета);
-				ИначеЕсли Действие = "GetDiscountCalc" Тогда	//	/Customer/{Action} - последняя лексема
+				ИначеЕсли Действие = "GetDiscountCalcOld" Тогда	//	/Customer/{Action} - последняя лексема
 					ТекстОтвета = GetDiscountCalc(RequestData);	//	
+					HTTPОтвет = СформироватьHTTPОтвет(ТекстОтвета);
+				ИначеЕсли Действие = "GetDiscountCalc" Тогда	//	/Customer/{Action} - последняя лексема
+					ТекстОтвета = GetDiscountCalc(RequestData);	//
+					ТекстОтвета = GetDistributedBonus(ТекстОтвета);	//	
+					
 					HTTPОтвет = СформироватьHTTPОтвет(ТекстОтвета);
 				Иначе
 
@@ -2188,8 +2193,13 @@
 					РезультатЗащиты = РегистрыСведений.ПротоколСервисов.Разрешено(
 						  ДанныеЗапроса.OrderData.Buyer.phoneNumber
 						, "GetDiscountCalc"
-						, ?(ПустаяСтрока(ДанныеЗапроса.OrderData.Number)
-							, "Card."  + ?(ПустаяСтрока(ДанныеЗапроса.OrderData.Buyer.cardNumber), "NO_CARD", ДанныеЗапроса.OrderData.Buyer.cardNumber)
+						
+						//2024-08-16 sa Отказались от обязательного использования полей Number,cardNumber 
+						//, ?(ПустаяСтрока(ДанныеЗапроса.OrderData.Number)
+						//	, "Card."  + ?(ПустаяСтрока(ДанныеЗапроса.OrderData.Buyer.cardNumber), "NO_CARD", ДанныеЗапроса.OrderData.Buyer.cardNumber)
+						//	, "Order." + ДанныеЗапроса.OrderData.Number
+						, ?(Не ДанныеЗапроса.OrderData.Свойство("Number")
+							, "Card."  + ?(ДанныеЗапроса.OrderData.Buyer.Свойство("cardNumber"), ДанныеЗапроса.OrderData.Buyer.cardNumber, "NO_CARD")
 							, "Order." + ДанныеЗапроса.OrderData.Number
 						)
 					);
@@ -2231,7 +2241,9 @@
 						ЗаписьJSON.ЗаписатьИмяСвойства("OrderData");
 
 						ЗаписьJSON.ЗаписатьНачалоОбъекта();
-
+							Если ДанныеЗапроса.OrderData.Свойство("SummaBonusPay") Тогда
+								JSON.ЗаписатьСвойство("SummaBonusPay" , ДанныеЗапроса.OrderData.SummaBonusPay,ЗаписьJSON);
+							КонецЕсли;
 							ЗаписатьРасчётСкидкиВJSON(ДокументОбъект, ЗаписьJSON, Ложь);
 
 						ЗаписьJSON.ЗаписатьКонецОбъекта();
@@ -2261,13 +2273,13 @@
 
 					ЗаписьJSON.ЗаписатьНачалоОбъекта();
 					
-						JSON.ЗаписатьСвойство("cardNumber"	, ДанныеЗапроса.OrderData.Buyer.cardNumber, ЗаписьJSON);
+						//JSON.ЗаписатьСвойство("cardNumber"	, ДанныеЗапроса.OrderData.Buyer.cardNumber, ЗаписьJSON);
 						JSON.ЗаписатьСвойство("phoneNumber"	, ДанныеЗапроса.OrderData.Buyer.phoneNumber, ЗаписьJSON);
 						JSON.ЗаписатьСвойство("email"		, ДанныеЗапроса.OrderData.Buyer.email, ЗаписьJSON);
 
 						JSON.ЗаписатьСвойство("IDC"   , ДанныеЗапроса.OrderData.Buyer.IDC, ЗаписьJSON);
 						JSON.ЗаписатьСвойство("IDMGT" , ДанныеЗапроса.OrderData.Buyer.IDMGT, ЗаписьJSON);
-						JSON.ЗаписатьСвойство("EDRPOU", ДанныеЗапроса.OrderData.Buyer.EDRPOU, ЗаписьJSON);
+						//JSON.ЗаписатьСвойство("EDRPOU", ДанныеЗапроса.OrderData.Buyer.EDRPOU, ЗаписьJSON);
 
 					ЗаписьJSON.ЗаписатьКонецОбъекта();
 
@@ -2327,10 +2339,11 @@
 
 	JSON.ЗаписатьСвойство("Number" , ДокументОбъект.Номер, ЗаписьJSON);
 	JSON.ЗаписатьСвойство("Date"   , Формат(ДокументОбъект.Дата, "ДФ='yyyy/MM/dd ЧЧ:мм:сс'"), ЗаписьJSON);
+	
 
 	Если НЕ СокращенныйВариант = Истина Тогда
 
-		JSON.ЗаписатьСвойство("Сompany", СокрЛП(РеквизитыШапки.КодПоЕДРПОУ), ЗаписьJSON);
+		JSON.ЗаписатьСвойство("Company", СокрЛП(РеквизитыШапки.КодПоЕДРПОУ), ЗаписьJSON);
 		JSON.ЗаписатьСвойство("Depot"  , СокрЛП(РеквизитыШапки.IDNМагазина), ЗаписьJSON);
 		JSON.ЗаписатьСвойство("TaxInclud" 	 , JSON.БулевоКакЧисло(ДокументОбъект.ЦенаВключаетНДС), ЗаписьJSON);
 		JSON.ЗаписатьСвойство("CreditProgram", ОбменMagentoСлужебный.IDC_Строкой(ДокументОбъект.УслугаБанка), ЗаписьJSON);
@@ -2344,13 +2357,13 @@
 
 		ЗаписьJSON.ЗаписатьНачалоОбъекта();
 		
-			JSON.ЗаписатьСвойство("cardNumber"	, СокрЛП(РеквизитыШапки.КодКарты), ЗаписьJSON);
+			//JSON.ЗаписатьСвойство("cardNumber"	, СокрЛП(РеквизитыШапки.КодКарты), ЗаписьJSON);
 			JSON.ЗаписатьСвойство("phoneNumber"	, СокрЛП(РеквизитыШапки.НомерТелефона), ЗаписьJSON);
 			JSON.ЗаписатьСвойство("email"		, СокрЛП(РеквизитыШапки.Почта), ЗаписьJSON);
 
 			JSON.ЗаписатьСвойство("IDC"   , ОбменMagentoСлужебный.IDC_Строкой(РеквизитыШапки.Контрагент), ЗаписьJSON);
 			JSON.ЗаписатьСвойство("IDMGT" , "", ЗаписьJSON);
-			JSON.ЗаписатьСвойство("EDRPOU", СокрЛП(РеквизитыШапки.КонтрагентКодПоЕДРПОУ), ЗаписьJSON);
+			//JSON.ЗаписатьСвойство("EDRPOU", СокрЛП(РеквизитыШапки.КонтрагентКодПоЕДРПОУ), ЗаписьJSON);
 
 		ЗаписьJSON.ЗаписатьКонецОбъекта();
 
@@ -2900,10 +2913,11 @@
 	Если ДанныеЗапроса.OrderData.BuyerSpecified Тогда
 
 		ДанныеЗапроса.OrderData.BuyerSpecified = (
-				НЕ ПустаяСтрока(ДанныеЗапроса.OrderData.Buyer.EDRPOU)
-			ИЛИ НЕ ПустаяСтрока(ДанныеЗапроса.OrderData.Buyer.IDC)
+				//НЕ ПустаяСтрока(ДанныеЗапроса.OrderData.Buyer.EDRPOU)
+			//ИЛИ
+			НЕ ПустаяСтрока(ДанныеЗапроса.OrderData.Buyer.IDC)
 			ИЛИ НЕ ПустаяСтрока(ДанныеЗапроса.OrderData.Buyer.IDMGT)
-			ИЛИ НЕ ПустаяСтрока(ДанныеЗапроса.OrderData.Buyer.cardNumber)
+			//ИЛИ НЕ ПустаяСтрока(ДанныеЗапроса.OrderData.Buyer.cardNumber)
 			ИЛИ НЕ ПустаяСтрока(ДанныеЗапроса.OrderData.Buyer.email)
 			ИЛИ НЕ ПустаяСтрока(ДанныеЗапроса.OrderData.Buyer.phoneNumber)
 		);
@@ -2912,9 +2926,8 @@
 
 		ДанныеЗапроса.OrderData.Вставить("Buyer"
 			, Новый Структура(
-				"EDRPOU, IDC, IDMGT, cardNumber, email, phoneNumber"
-				, ""
-				, ""
+				//"EDRPOU, IDC, IDMGT, cardNumber, email, phoneNumber"
+				"IDC, IDMGT, email, phoneNumber"
 				, ""
 				, ""
 				, ""
