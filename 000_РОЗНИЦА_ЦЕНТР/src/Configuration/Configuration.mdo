@@ -21,7 +21,7 @@
   <defaultRoles>Role.БазовыеПрава</defaultRoles>
   <defaultRoles>Role.БазовыеПраваРТ</defaultRoles>
   <vendor>ЧПТФ «Антошка»</vendor>
-  <version>2.1.2.106</version>
+  <version>2.1.2.125</version>
   <includeHelpInContents>true</includeHelpInContents>
   <help>
     <pages>
@@ -1384,7 +1384,6 @@
   <commonModules>CommonModule.КачествоОбслуживанияПродаж</commonModules>
   <commonModules>CommonModule.КомандыРаботыСБизнесПроцессамиКлиент</commonModules>
   <commonModules>CommonModule.КомандыРаботыСФайламиКлиент</commonModules>
-  <commonModules>CommonModule.КоннекторHTTP</commonModules>
   <commonModules>CommonModule.КонтактнаяИнформацияВызовСервера</commonModules>
   <commonModules>CommonModule.КонтактнаяИнформацияКлиент</commonModules>
   <commonModules>CommonModule.КонтактнаяИнформацияКлиентСервер</commonModules>
@@ -1804,6 +1803,7 @@
   <commonModules>CommonModule.ЭлектроннаяЦифроваяПодписьКлиент</commonModules>
   <commonModules>CommonModule.ЭлектроннаяЦифроваяПодписьКлиентСервер</commonModules>
   <commonModules>CommonModule.ЭлектроннаяЦифроваяПодписьПовтИсп</commonModules>
+  <commonModules>CommonModule.КоннекторHTTP</commonModules>
   <commonAttributes>CommonAttribute.IDN</commonAttributes>
   <commonAttributes>CommonAttribute.Автор</commonAttributes>
   <commonAttributes>CommonAttribute.ОбластьДанныхВспомогательныеДанные</commonAttributes>
@@ -1827,6 +1827,7 @@
   <exchangePlans>ExchangePlan.ПоРабочемуМесту</exchangePlans>
   <exchangePlans>ExchangePlan.ПоУстройствамАнтошка</exchangePlans>
   <exchangePlans>ExchangePlan.ТранспортТерминалов</exchangePlans>
+  <exchangePlans>ExchangePlan.ОбменМаженто2</exchangePlans>
   <xDTOPackages>XDTOPackage.AgentScripts</xDTOPackages>
   <xDTOPackages>XDTOPackage.ApplicationExtensionsCompatibility_1_0_0_1</xDTOPackages>
   <xDTOPackages>XDTOPackage.ApplicationExtensionsManifest_1_0_0_1</xDTOPackages>
@@ -1988,6 +1989,7 @@
   <eventSubscriptions>EventSubscription.УстановитьПометкуУдаленияЗадач</eventSubscriptions>
   <eventSubscriptions>EventSubscription.УстановитьПометкуУдаленияПрисоединенныхФайлов</eventSubscriptions>
   <eventSubscriptions>EventSubscription.УстановитьПометкуУдаленияФайлов</eventSubscriptions>
+  <eventSubscriptions>EventSubscription.ОбменСМ2ПриЗаписи</eventSubscriptions>
   <scheduledJobs>ScheduledJob.ВерификацияПокупателей</scheduledJobs>
   <scheduledJobs>ScheduledJob.ВосстановлениеПоследовательностиБонуснойСистемы</scheduledJobs>
   <scheduledJobs>ScheduledJob.ВыгрузкаДляNavisionБонусныхБалловMagento</scheduledJobs>
@@ -2051,6 +2053,7 @@
   <scheduledJobs>ScheduledJob.УчетРабочегоВремени</scheduledJobs>
   <scheduledJobs>ScheduledJob.ФормированиеГруппПолучателейСкидки</scheduledJobs>
   <scheduledJobs>ScheduledJob.ФормированиеСегментов</scheduledJobs>
+  <scheduledJobs>ScheduledJob.ОтправкаРеализацийНаПочту</scheduledJobs>
   <settingsStorages>SettingsStorage.ХранилищеВариантовОтчетов</settingsStorages>
   <settingsStorages>SettingsStorage.ХранилищеНастроекСписков</settingsStorages>
   <functionalOptions>FunctionalOption.АктуальнаяДатаОбновленияПовторноИспользуемыхЗначенийМРО</functionalOptions>
@@ -2370,7 +2373,6 @@
   <constants>Constant.ПарольСлужебногоПользователяМенеджераСервиса</constants>
   <constants>Constant.ПерсональныеПродажиПродавца</constants>
   <constants>Constant.ПоддержкаРезервногоКопирования</constants>
-  <constants>Constant.ПоследнийНомерИнтернетЗаказа</constants>
   <constants>Constant.ПредставлениеОбластиДанных</constants>
   <constants>Constant.ПрефиксВнутреннегоШтрихкодаВесовогоТовара</constants>
   <constants>Constant.ПрефиксВнутреннегоШтрихкодаШтучногоТовара</constants>
@@ -2418,6 +2420,7 @@
   <constants>Constant.ЦентрУправляющейсистемы</constants>
   <constants>Constant.ЧасовойПоясОбластиДанных</constants>
   <constants>Constant.ЭтоАвтономноеРабочееМесто</constants>
+  <constants>Constant.ПоследнийНомерИнтернетЗаказа</constants>
   <commonForms>CommonForm.АвтономнаяРабота</commonForms>
   <commonForms>CommonForm.АвтономнаяРаботаВМоделиСервиса</commonForms>
   <commonForms>CommonForm.АутентификацияВСервисе</commonForms>
@@ -2789,7 +2792,6 @@
   <documentJournals>DocumentJournal.СкладскиеОрдераНаИзлишкиНедостачи</documentJournals>
   <enums>Enum.ВариантОпределенияПериодаНакопительнойСкидки</enums>
   <enums>Enum.ВариантыSMTPАутентификации</enums>
-  <enums>Enum.ВариантыАдресногоКлассификатора</enums>
   <enums>Enum.ВариантыВажностиЗадачи</enums>
   <enums>Enum.ВариантыВеденияДополнительныхДанныхПоНоменклатуре</enums>
   <enums>Enum.ВариантыВерсионированияОбъектов</enums>
@@ -2996,6 +2998,8 @@
   <enums>Enum.ЦветностиИзображения</enums>
   <enums>Enum.ЮрФизЛицо</enums>
   <enums>Enum.ЯзыкКонтрагента</enums>
+  <enums>Enum.ВариантыАдресногоКлассификатора</enums>
+  <enums>Enum.ВидыВозвратаИнтернетЗаказа</enums>
   <reports>Report.АвтоВыполнениеЗаказов</reports>
   <reports>Report.АктАннулированныхТоваров</reports>
   <reports>Report.АнализБонусныхНакоплений</reports>
@@ -3513,6 +3517,10 @@
   <informationRegisters>InformationRegister.ШаблонПравПользователей</informationRegisters>
   <informationRegisters>InformationRegister.ШаблоныРегистрацииНовыхКарт</informationRegisters>
   <informationRegisters>InformationRegister.Штрихкоды</informationRegisters>
+  <informationRegisters>InformationRegister.ФискальныеНомераЧеков</informationRegisters>
+  <informationRegisters>InformationRegister.ПолучателиРеализаций</informationRegisters>
+  <informationRegisters>InformationRegister.РеализацииДляОтправки</informationRegisters>
+  <informationRegisters>InformationRegister.ИсторияИзмененияРеквизитовНоменклатуры</informationRegisters>
   <accumulationRegisters>AccumulationRegister.БонусныеБаллы</accumulationRegisters>
   <accumulationRegisters>AccumulationRegister.БонусныеБаллыВРезерве</accumulationRegisters>
   <accumulationRegisters>AccumulationRegister.БонусныеБаллыПогашение</accumulationRegisters>

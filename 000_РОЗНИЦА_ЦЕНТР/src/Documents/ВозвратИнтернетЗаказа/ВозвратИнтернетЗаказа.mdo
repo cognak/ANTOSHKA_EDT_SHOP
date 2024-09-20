@@ -72,9 +72,27 @@
   <numberLength>13</numberLength>
   <defaultObjectForm>Document.ВозвратИнтернетЗаказа.Form.ФормаДокумента</defaultObjectForm>
   <defaultListForm>Document.ВозвратИнтернетЗаказа.Form.ФормаСписка</defaultListForm>
+  <posting>Deny</posting>
   <realTimePosting>Deny</realTimePosting>
+  <registerRecords>AccumulationRegister.ТТН</registerRecords>
   <postInPrivilegedMode>true</postInPrivilegedMode>
   <unpostInPrivilegedMode>true</unpostInPrivilegedMode>
+  <attributes uuid="cbab4b99-518a-42d0-9058-9bc85f5e539d">
+    <name>ВидВозврата</name>
+    <synonym>
+      <key>ru</key>
+      <value>Вид возврата</value>
+    </synonym>
+    <type>
+      <types>EnumRef.ВидыВозвратаИнтернетЗаказа</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
   <attributes uuid="c9e82d53-9cd3-4ab7-bf26-6d9e029c067d">
     <name>ВладелецДисконтнойКарты</name>
     <synonym>
@@ -90,6 +108,21 @@
       <key>ru</key>
       <value>Объект-владелец дисконтной карты</value>
     </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="6a19aeed-2c9d-49f9-b3e8-758ef68cf69f">
+    <name>ВозвратДоставки</name>
+    <synonym>
+      <key>ru</key>
+      <value>Возврат доставки</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
     <minValue xsi:type="core:UndefinedValue"/>
     <maxValue xsi:type="core:UndefinedValue"/>
     <fillValue xsi:type="core:UndefinedValue"/>
@@ -196,6 +229,7 @@
       <value>Магазин возврата</value>
     </synonym>
     <type>
+      <types>CatalogRef.Склады</types>
       <types>CatalogRef.Магазины</types>
     </type>
     <toolTip>
@@ -325,6 +359,26 @@
     <fullTextSearch>Use</fullTextSearch>
     <dataHistory>Use</dataHistory>
   </attributes>
+  <attributes uuid="ae55df06-0ab4-406c-915c-6d40a8f9f2b9">
+    <name>СуммаБонусныхБалловСписано</name>
+    <synonym>
+      <key>ru</key>
+      <value>Сумма бонусных баллов списано</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <scale>2</scale>
+        <nonNegative>true</nonNegative>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
   <attributes uuid="d6c06ab4-1e46-43cb-b4ef-7d966b1a9605">
     <name>СуммаДокумента</name>
     <synonym>
@@ -343,6 +397,25 @@
       <key>ru</key>
       <value>Итоговая сумма документа</value>
     </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="13f231ea-d957-438b-879d-b3b2abf51415">
+    <name>СуммаДоставки</name>
+    <synonym>
+      <key>ru</key>
+      <value>Сумма доставки</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>15</precision>
+        <scale>2</scale>
+      </numberQualifiers>
+    </type>
     <minValue xsi:type="core:UndefinedValue"/>
     <maxValue xsi:type="core:UndefinedValue"/>
     <fillValue xsi:type="core:UndefinedValue"/>
@@ -410,6 +483,21 @@
     </synonym>
     <type>
       <types>DocumentRef.ЭлектроннаяНакладная</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="98a0363a-fa6b-420e-a2db-d7c103753353">
+    <name>ПочтаОтправлена</name>
+    <synonym>
+      <key>ru</key>
+      <value>Почта отправлена</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
     </type>
     <minValue xsi:type="core:UndefinedValue"/>
     <maxValue xsi:type="core:UndefinedValue"/>
@@ -512,6 +600,21 @@
         <key>ru</key>
         <value>Необходимо указать возвращенное количество упаковок номенклатуры. Если для выбранной номенклатуры не используются упаковки, то следует указать количество единиц номенклатуры.</value>
       </toolTip>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="a20120df-33cf-4cf5-bdfc-f88cd389a4c1">
+      <name>ДатаДокумента</name>
+      <synonym>
+        <key>ru</key>
+        <value>Дата документа</value>
+      </synonym>
+      <type>
+        <types>Date</types>
+        <dateQualifiers/>
+      </type>
       <minValue xsi:type="core:UndefinedValue"/>
       <maxValue xsi:type="core:UndefinedValue"/>
       <dataHistory>Use</dataHistory>
