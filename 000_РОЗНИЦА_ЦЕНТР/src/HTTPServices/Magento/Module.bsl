@@ -80,24 +80,24 @@
 				Возврат HTTPОтвет;
 				
 			КонецЕсли;
-		
-				Если Действие = "Get" Тогда	//	/Customer/{Action} - последняя лексема
+		        Действие = Нрег(Действие);
+				Если Действие = "get" Тогда	//	/Customer/{Action} - последняя лексема
 					ТекстОтвета = GetClients(ДанныеЗапроса);	//	
 					HTTPОтвет = СформироватьHTTPОтвет(ТекстОтвета);
 					
-				ИначеЕсли Действие = "Register" Тогда	//	/Customer/{Action} - последняя лексема
+				ИначеЕсли Действие = "register" Тогда	//	/Customer/{Action} - последняя лексема
 					ТекстОтвета = RegisterClient(ДанныеЗапроса);	//	
 					HTTPОтвет = СформироватьHTTPОтвет(ТекстОтвета);
-				ИначеЕсли Действие = "Update" Тогда	//	/Customer/{Action} - последняя лексема
+				ИначеЕсли Действие = "update" Тогда	//	/Customer/{Action} - последняя лексема
 					ТекстОтвета = UpdateClient(ДанныеЗапроса);	//	
 					HTTPОтвет = СформироватьHTTPОтвет(ТекстОтвета);
-				ИначеЕсли Действие = "Delete" Тогда	//	/Customer/{Action} - последняя лексема
+				ИначеЕсли Действие = "delete" Тогда	//	/Customer/{Action} - последняя лексема
 					ТекстОтвета = DeleteClient(ДанныеЗапроса);	//	
 					HTTPОтвет = СформироватьHTTPОтвет(ТекстОтвета);
-				ИначеЕсли Действие = "Accepted" Тогда	//	/Customer/{Action} - последняя лексема
+				ИначеЕсли Действие = "accepted" Тогда	//	/Customer/{Action} - последняя лексема
 					ТекстОтвета = AcceptedClient(ДанныеЗапроса);	//	
 					HTTPОтвет = СформироватьHTTPОтвет(ТекстОтвета);
-				ИначеЕсли Действие = "GetChanges" Тогда	//	/Customer/{Action} - последняя лексема
+				ИначеЕсли Действие = "getchanges" Тогда	//	/Customer/{Action} - последняя лексема
 					//Если HTTPЗапрос.ПараметрыЗапроса.Получить("Page") = Неопределено Тогда
 					//	НомерСтраницы = 0;
 					//Иначе
@@ -105,27 +105,27 @@
 					//КонецЕсли;
 					ТекстОтвета = GetChanges(ДанныеЗапроса);	//	
 					HTTPОтвет = СформироватьHTTPОтвет(ТекстОтвета);
-				ИначеЕсли Действие = "GetBuyerBonusInfo" Тогда	//	/Customer/{Action} - последняя лексема
+				ИначеЕсли Действие = "getbuyerbonusinfo" Тогда	//	/Customer/{Action} - последняя лексема
 
 					//РазрешеноСоздание = ?(HTTPЗапрос.Заголовки["Create-If-Need"] = 1 ИЛИ HTTPЗапрос.Заголовки["Create-If-Need"] = "1", Истина, Ложь);
 					ТекстОтвета = GetBuyerBonusInfo(RequestData);	//	
 					HTTPОтвет = СформироватьHTTPОтвет(ТекстОтвета);
-				ИначеЕсли Действие = "GetBuyerInfo" Тогда	//	/Customer/{Action} - последняя лексема
+				ИначеЕсли Действие = "getbuyerinfo" Тогда	//	/Customer/{Action} - последняя лексема
 					ТекстОтвета = GetBuyerInfo(RequestData);	//	
 					HTTPОтвет = СформироватьHTTPОтвет(ТекстОтвета);
-				ИначеЕсли Действие = "GetRegisteredBalances" Тогда	//	/Customer/{Action} - последняя лексема
+				ИначеЕсли Действие = "getregisteredbalances" Тогда	//	/Customer/{Action} - последняя лексема
 					ТекстОтвета = GetRegisteredBalances(RequestData);	//	
 					HTTPОтвет = СформироватьHTTPОтвет(ТекстОтвета);
-				ИначеЕсли Действие = "GetDistributedBonus" Тогда	//	/Customer/{Action} - последняя лексема
+				ИначеЕсли Действие = "getdistributedbonus" Тогда	//	/Customer/{Action} - последняя лексема
 					ТекстОтвета = GetDistributedBonus(RequestData);	//	
 					HTTPОтвет = СформироватьHTTPОтвет(ТекстОтвета);
-				ИначеЕсли Действие = "GetBuyerExtendedInfo" Тогда	//	/Customer/{Action} - последняя лексема
+				ИначеЕсли Действие = "getbuyerextendedinfo" Тогда	//	/Customer/{Action} - последняя лексема
 					ТекстОтвета = GetBuyerExtendedInfo(RequestData);	//	
 					HTTPОтвет = СформироватьHTTPОтвет(ТекстОтвета);
-				ИначеЕсли Действие = "GetDiscountCalcOld" Тогда	//	/Customer/{Action} - последняя лексема
+				ИначеЕсли Действие = "getdiscountcalc" Тогда	//	/Customer/{Action} - последняя лексема
 					ТекстОтвета = GetDiscountCalc(RequestData);	//	
 					HTTPОтвет = СформироватьHTTPОтвет(ТекстОтвета);
-				ИначеЕсли Действие = "GetDiscountCalc" Тогда	//	/Customer/{Action} - последняя лексема
+				ИначеЕсли Действие = "getdiscountcalcv2" Тогда	//	/Customer/{Action} - последняя лексема
 					ТекстОтвета = GetDiscountCalc(RequestData);	//
 					ТекстОтвета = GetDistributedBonus(ТекстОтвета);	//	
 					
