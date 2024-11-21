@@ -403,7 +403,7 @@
               </userVisible>
               <autoFill>true</autoFill>
             </contextMenu>
-            <source>СтатусыЗапросовДоступностиСтрокаПоиска</source>
+            <source>СтатусыЗапросовДоступности</source>
             <extInfo xsi:type="form:SearchStringAdditionExtInfo">
               <autoMaxWidth>true</autoMaxWidth>
             </extInfo>
@@ -442,7 +442,7 @@
               <autoFill>true</autoFill>
             </contextMenu>
             <type>ViewStatusAddition</type>
-            <source>СтатусыЗапросовДоступностиСостояниеПросмотра</source>
+            <source>СтатусыЗапросовДоступности</source>
             <extInfo xsi:type="form:ViewStatusAdditionExtInfo">
               <autoMaxWidth>true</autoMaxWidth>
             </extInfo>
@@ -481,7 +481,7 @@
               <autoFill>true</autoFill>
             </contextMenu>
             <type>SearchControlAddition</type>
-            <source>СтатусыЗапросовДоступностиУправлениеПоиском</source>
+            <source>СтатусыЗапросовДоступности</source>
             <extInfo xsi:type="form:SearchControlAdditionExtInfo">
               <autoMaxWidth>true</autoMaxWidth>
             </extInfo>
@@ -1327,7 +1327,7 @@
               </userVisible>
               <autoFill>true</autoFill>
             </contextMenu>
-            <source>ЗапросыДоступностиСтрокаПоиска</source>
+            <source>ЗапросыДоступности</source>
             <extInfo xsi:type="form:SearchStringAdditionExtInfo">
               <autoMaxWidth>true</autoMaxWidth>
             </extInfo>
@@ -1366,7 +1366,7 @@
               <autoFill>true</autoFill>
             </contextMenu>
             <type>ViewStatusAddition</type>
-            <source>ЗапросыДоступностиСостояниеПросмотра</source>
+            <source>ЗапросыДоступности</source>
             <extInfo xsi:type="form:ViewStatusAdditionExtInfo">
               <autoMaxWidth>true</autoMaxWidth>
             </extInfo>
@@ -1405,7 +1405,7 @@
               <autoFill>true</autoFill>
             </contextMenu>
             <type>SearchControlAddition</type>
-            <source>ЗапросыДоступностиУправлениеПоиском</source>
+            <source>ЗапросыДоступности</source>
             <extInfo xsi:type="form:SearchControlAdditionExtInfo">
               <autoMaxWidth>true</autoMaxWidth>
             </extInfo>
@@ -1814,6 +1814,8 @@
 	РегистрСведений.УчетнаяПолитика.СрезПоследних КАК УчетнаяПолитикаСрезПоследних,
 	Документ.ЗапросДоступностиТоваров КАК ЗДТ
 		ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.ЗапросДоступностиТоваров.Товары КАК ЗДТТовары
+			ВНУТРЕННЕЕ СОЕДИНЕНИЕ Справочник.Номенклатура КАК ТаблицаТоваров
+			ПО ЗДТТовары.Номенклатура = ТаблицаТоваров.Ссылка
 		ПО ЗДТТовары.Ссылка = ЗДТ.Ссылка
 		ЛЕВОЕ СОЕДИНЕНИЕ Документ.ЭлектроннаяНакладная КАК ЭН
 			ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.СтатусыЭН.СрезПоследних КАК СтатусыЭНСрезПоследних
@@ -1874,7 +1876,7 @@
 	ИЛИ &amp;ТипПоиска = 3
 	И КонтрагентыКИ.НомерТелефона ПОДОБНО &quot;%&quot; + &amp;Номерзаказа + &quot;%&quot;
 	ИЛИ &amp;ТипПоиска = 4
-	И ЗДТТовары.Номенклатура.IDN = &amp;Номерзаказа)
+	И ТаблицаТоваров.IDN = &amp;Номерзаказа)
 	И (((&amp;ВсеЗапросыДляОтображения
 	ИЛИ ВЫБОР
 		КОГДА &amp;УзелМагазина
@@ -1886,7 +1888,9 @@
 	КОНЕЦ)))
 	И ВЫБОР
 		КОГДА Склады.НазначениеСклада = ЗНАЧЕНИЕ(Перечисление.НазначенияСкладов.УправляющаяСистема)
-			ТОГДА НЕ ЗДТ.МагазинПолучатель = УчетнаяПолитикаСрезПоследних.ИнтернетМагазин ИЛИ Склады.Ссылка = УчетнаяПолитикаСрезПоследних.СкладЗакупки
+			ТОГДА НЕ ЗДТ.МагазинПолучатель = УчетнаяПолитикаСрезПоследних.ИнтернетМагазин
+			ИЛИ Склады.Ссылка = УчетнаяПолитикаСрезПоследних.СкладЗакупки
+			ИЛИ ЗДТ.ТипДоставки = ЗНАЧЕНИЕ(перечисление.ТипДоставкиЗаказПокупателя.СлужбаДоставки)
 		ИНАЧЕ ИСТИНА
 	КОНЕЦ
 СГРУППИРОВАТЬ ПО
