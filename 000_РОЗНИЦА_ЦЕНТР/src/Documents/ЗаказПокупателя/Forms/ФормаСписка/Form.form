@@ -528,6 +528,7 @@
     </extendedTooltip>
     <type>UsualGroup</type>
     <extInfo xsi:type="form:UsualGroupExtInfo">
+      <behavior>Collapsible</behavior>
       <showLeftMargin>true</showLeftMargin>
       <united>true</united>
       <throughAlign>Auto</throughAlign>
@@ -568,6 +569,7 @@
     <type>UsualGroup</type>
     <extInfo xsi:type="form:UsualGroupExtInfo">
       <group>Vertical</group>
+      <behavior>Collapsible</behavior>
       <showLeftMargin>true</showLeftMargin>
       <united>true</united>
       <throughAlign>Auto</throughAlign>
@@ -1272,6 +1274,7 @@
         </contextMenu>
         <type>CheckBoxField</type>
         <editMode>Enter</editMode>
+        <cellHyperlink>true</cellHyperlink>
         <showInHeader>true</showInHeader>
         <headerPicture xsi:type="core:PictureRef">
           <picture>CommonPicture.ОбменДаннымиСМобильнымиПриложениями</picture>
@@ -1281,18 +1284,24 @@
         <extInfo xsi:type="form:CheckBoxFieldExtInfo"/>
       </items>
       <items xsi:type="form:FormField">
-        <name>Ссылка</name>
-        <id>435</id>
+        <name>СотрудникАнтошки</name>
+        <id>369</id>
+        <title>
+          <key>ru</key>
+          <value>Сотрудник Антошки</value>
+        </title>
+        <visible>true</visible>
         <enabled>true</enabled>
         <userVisible>
           <common>true</common>
         </userVisible>
         <dataPath xsi:type="form:DataPath">
-          <segments>Список.Ref</segments>
+          <segments>Список.СотрудникАнтошки</segments>
         </dataPath>
+        <titleLocation>None</titleLocation>
         <extendedTooltip>
-          <name>СсылкаРасширеннаяПодсказка</name>
-          <id>437</id>
+          <name>СотрудникАнтошкиРасширеннаяПодсказка</name>
+          <id>371</id>
           <visible>true</visible>
           <enabled>true</enabled>
           <userVisible>
@@ -1306,8 +1315,8 @@
           </extInfo>
         </extendedTooltip>
         <contextMenu>
-          <name>СсылкаКонтекстноеМеню</name>
-          <id>436</id>
+          <name>СотрудникАнтошкиКонтекстноеМеню</name>
+          <id>370</id>
           <visible>true</visible>
           <enabled>true</enabled>
           <userVisible>
@@ -1315,19 +1324,15 @@
           </userVisible>
           <autoFill>true</autoFill>
         </contextMenu>
-        <type>InputField</type>
+        <type>CheckBoxField</type>
         <editMode>Enter</editMode>
         <showInHeader>true</showInHeader>
+        <headerPicture xsi:type="core:PictureRef">
+          <picture>CommonPicture.Партнер</picture>
+        </headerPicture>
         <headerHorizontalAlign>Left</headerHorizontalAlign>
         <showInFooter>true</showInFooter>
-        <extInfo xsi:type="form:InputFieldExtInfo">
-          <autoMaxWidth>true</autoMaxWidth>
-          <autoMaxHeight>true</autoMaxHeight>
-          <wrap>true</wrap>
-          <chooseType>true</chooseType>
-          <typeDomainEnabled>true</typeDomainEnabled>
-          <textEdit>true</textEdit>
-        </extInfo>
+        <extInfo xsi:type="form:CheckBoxFieldExtInfo"/>
       </items>
       <items xsi:type="form:FormField">
         <name>Номер</name>
@@ -2067,57 +2072,6 @@
           <typeDomainEnabled>true</typeDomainEnabled>
           <textEdit>true</textEdit>
         </extInfo>
-      </items>
-      <items xsi:type="form:FormField">
-        <name>СотрудникАнтошки</name>
-        <id>369</id>
-        <title>
-          <key>ru</key>
-          <value>Сотрудник Антошки</value>
-        </title>
-        <visible>true</visible>
-        <enabled>true</enabled>
-        <userVisible>
-          <common>true</common>
-        </userVisible>
-        <dataPath xsi:type="form:DataPath">
-          <segments>Список.СотрудникАнтошки</segments>
-        </dataPath>
-        <titleLocation>None</titleLocation>
-        <extendedTooltip>
-          <name>СотрудникАнтошкиРасширеннаяПодсказка</name>
-          <id>371</id>
-          <visible>true</visible>
-          <enabled>true</enabled>
-          <userVisible>
-            <common>true</common>
-          </userVisible>
-          <type>Label</type>
-          <autoMaxWidth>true</autoMaxWidth>
-          <autoMaxHeight>true</autoMaxHeight>
-          <extInfo xsi:type="form:LabelDecorationExtInfo">
-            <horizontalAlign>Left</horizontalAlign>
-          </extInfo>
-        </extendedTooltip>
-        <contextMenu>
-          <name>СотрудникАнтошкиКонтекстноеМеню</name>
-          <id>370</id>
-          <visible>true</visible>
-          <enabled>true</enabled>
-          <userVisible>
-            <common>true</common>
-          </userVisible>
-          <autoFill>true</autoFill>
-        </contextMenu>
-        <type>CheckBoxField</type>
-        <editMode>Enter</editMode>
-        <showInHeader>true</showInHeader>
-        <headerPicture xsi:type="core:PictureRef">
-          <picture>CommonPicture.Партнер</picture>
-        </headerPicture>
-        <headerHorizontalAlign>Left</headerHorizontalAlign>
-        <showInFooter>true</showInFooter>
-        <extInfo xsi:type="form:CheckBoxFieldExtInfo"/>
       </items>
       <items xsi:type="form:FormField">
         <name>Контрагент</name>
@@ -2976,7 +2930,7 @@
           </userVisible>
           <autoFill>true</autoFill>
         </contextMenu>
-        <source>СписокSearchString</source>
+        <source>Список</source>
         <extInfo xsi:type="form:SearchStringAdditionExtInfo">
           <autoMaxWidth>true</autoMaxWidth>
         </extInfo>
@@ -3015,7 +2969,7 @@
           <autoFill>true</autoFill>
         </contextMenu>
         <type>ViewStatusAddition</type>
-        <source>СписокViewStatus</source>
+        <source>Список</source>
         <extInfo xsi:type="form:ViewStatusAdditionExtInfo">
           <autoMaxWidth>true</autoMaxWidth>
         </extInfo>
@@ -3054,7 +3008,7 @@
           <autoFill>true</autoFill>
         </contextMenu>
         <type>SearchControlAddition</type>
-        <source>СписокSearchControl</source>
+        <source>Список</source>
         <extInfo xsi:type="form:SearchControlAdditionExtInfo">
           <autoMaxWidth>true</autoMaxWidth>
         </extInfo>
@@ -3601,6 +3555,7 @@
           <type>UsualGroup</type>
           <extInfo xsi:type="form:UsualGroupExtInfo">
             <group>Vertical</group>
+            <behavior>Collapsible</behavior>
             <showLeftMargin>true</showLeftMargin>
             <united>true</united>
             <throughAlign>Auto</throughAlign>
@@ -4065,6 +4020,7 @@
           <type>UsualGroup</type>
           <extInfo xsi:type="form:UsualGroupExtInfo">
             <group>Vertical</group>
+            <behavior>Collapsible</behavior>
             <showLeftMargin>true</showLeftMargin>
             <united>true</united>
             <throughAlign>Auto</throughAlign>
@@ -4094,6 +4050,7 @@
         </extendedTooltip>
         <type>UsualGroup</type>
         <extInfo xsi:type="form:UsualGroupExtInfo">
+          <behavior>Collapsible</behavior>
           <representation>StrongSeparation</representation>
           <showLeftMargin>true</showLeftMargin>
           <united>true</united>
@@ -4255,6 +4212,7 @@
       <type>UsualGroup</type>
       <extInfo xsi:type="form:UsualGroupExtInfo">
         <group>Vertical</group>
+        <behavior>Collapsible</behavior>
         <showLeftMargin>true</showLeftMargin>
         <united>true</united>
         <throughAlign>Auto</throughAlign>
@@ -4291,6 +4249,7 @@
     </extendedTooltip>
     <type>UsualGroup</type>
     <extInfo xsi:type="form:UsualGroupExtInfo">
+      <behavior>Collapsible</behavior>
       <showLeftMargin>true</showLeftMargin>
       <united>true</united>
       <throughAlign>Auto</throughAlign>
@@ -4545,7 +4504,7 @@
           </userVisible>
           <autoFill>true</autoFill>
         </contextMenu>
-        <source>КомментарийКЗаказуСтрокаПоиска</source>
+        <source>КомментарийКЗаказу</source>
         <extInfo xsi:type="form:SearchStringAdditionExtInfo">
           <autoMaxWidth>true</autoMaxWidth>
         </extInfo>
@@ -4584,7 +4543,7 @@
           <autoFill>true</autoFill>
         </contextMenu>
         <type>ViewStatusAddition</type>
-        <source>КомментарийКЗаказуСостояниеПросмотра</source>
+        <source>КомментарийКЗаказу</source>
         <extInfo xsi:type="form:ViewStatusAdditionExtInfo">
           <autoMaxWidth>true</autoMaxWidth>
         </extInfo>
@@ -4623,7 +4582,7 @@
           <autoFill>true</autoFill>
         </contextMenu>
         <type>SearchControlAddition</type>
-        <source>КомментарийКЗаказуУправлениеПоиском</source>
+        <source>КомментарийКЗаказу</source>
         <extInfo xsi:type="form:SearchControlAdditionExtInfo">
           <autoMaxWidth>true</autoMaxWidth>
         </extInfo>
@@ -5312,7 +5271,7 @@
           </userVisible>
           <autoFill>true</autoFill>
         </contextMenu>
-        <source>СписокЗапросаДоступностиСтрокаПоиска</source>
+        <source>СписокЗапросаДоступности</source>
         <extInfo xsi:type="form:SearchStringAdditionExtInfo">
           <autoMaxWidth>true</autoMaxWidth>
         </extInfo>
@@ -5351,7 +5310,7 @@
           <autoFill>true</autoFill>
         </contextMenu>
         <type>ViewStatusAddition</type>
-        <source>СписокЗапросаДоступностиСостояниеПросмотра</source>
+        <source>СписокЗапросаДоступности</source>
         <extInfo xsi:type="form:ViewStatusAdditionExtInfo">
           <autoMaxWidth>true</autoMaxWidth>
         </extInfo>
@@ -5390,7 +5349,7 @@
           <autoFill>true</autoFill>
         </contextMenu>
         <type>SearchControlAddition</type>
-        <source>СписокЗапросаДоступностиУправлениеПоиском</source>
+        <source>СписокЗапросаДоступности</source>
         <extInfo xsi:type="form:SearchControlAdditionExtInfo">
           <autoMaxWidth>true</autoMaxWidth>
         </extInfo>
@@ -5484,6 +5443,7 @@
     </extendedTooltip>
     <type>UsualGroup</type>
     <extInfo xsi:type="form:UsualGroupExtInfo">
+      <behavior>Collapsible</behavior>
       <showLeftMargin>true</showLeftMargin>
       <united>true</united>
       <throughAlign>Auto</throughAlign>
@@ -5535,105 +5495,66 @@
       <common>true</common>
     </edit>
     <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
-      <segments>Список.IDN</segments>
-    </notDefaultUseAlwaysAttributes>
-    <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
       <segments>Список.Ref</segments>
-    </notDefaultUseAlwaysAttributes>
-    <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
-      <segments>Список.Контрагент</segments>
-    </notDefaultUseAlwaysAttributes>
-    <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
-      <segments>Список.Магазин</segments>
-    </notDefaultUseAlwaysAttributes>
-    <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
-      <segments>Список.МагазинПолучатель</segments>
-    </notDefaultUseAlwaysAttributes>
-    <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
-      <segments>Список.НомерЗаказаОсновной</segments>
-    </notDefaultUseAlwaysAttributes>
-    <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
-      <segments>Список.Состояние</segments>
-    </notDefaultUseAlwaysAttributes>
-    <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
-      <segments>Список.СотрудникАнтошки</segments>
-    </notDefaultUseAlwaysAttributes>
-    <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
-      <segments>Список.Статус</segments>
-    </notDefaultUseAlwaysAttributes>
-    <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
-      <segments>Список.СтатусИМ</segments>
-    </notDefaultUseAlwaysAttributes>
-    <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
-      <segments>Список.СтатусОплаты</segments>
-    </notDefaultUseAlwaysAttributes>
-    <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
-      <segments>Список.ТипДоставки</segments>
-    </notDefaultUseAlwaysAttributes>
-    <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
-      <segments>Список.ТипОплаты</segments>
-    </notDefaultUseAlwaysAttributes>
-    <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
-      <segments>Список.УчтеноNavision</segments>
     </notDefaultUseAlwaysAttributes>
     <main>true</main>
     <extInfo xsi:type="form:DynamicListExtInfo">
       <queryText>ВЫБРАТЬ
-	ТаблицаДокументы.Ссылка КАК Ссылка,
-	ТаблицаДокументы.ВерсияДанных КАК ВерсияДанных,
-	ТаблицаДокументы.ПометкаУдаления КАК ПометкаУдаления,
-	ТаблицаДокументы.Номер КАК Номер,
-	ТаблицаДокументы.IDN КАК IDN,
-	ТаблицаДокументы.Дата КАК Дата,
-	ТаблицаДокументы.Проведен КАК Проведен,
-	ТаблицаДокументы.Склад КАК Склад,
-	ТаблицаДокументы.Магазин КАК Магазин,
-	ТаблицаДокументы.МагазинПолучатель КАК МагазинПолучатель,
-	ТаблицаДокументы.Комментарий КАК Комментарий,
-	ТаблицаДокументы.СуммаДокумента КАК СуммаДокумента,
-	ТаблицаДокументы.ДисконтнаяКарта КАК ДисконтнаяКарта,
-	ТаблицаДокументы.Ответственный КАК Ответственный,
-	ТаблицаДокументы.УчитыватьНДС КАК УчитыватьНДС,
-	ТаблицаДокументы.ЦенаВключаетНДС КАК ЦенаВключаетНДС,
-	ТаблицаДокументы.АдресДоставки КАК АдресДоставки,
-	ТаблицаДокументы.ВладелецДисконтнойКарты КАК ВладелецДисконтнойКарты,
-	ТаблицаДокументы.Контрагент КАК Контрагент,
+	ТаблицаЗаказ.Ссылка КАК Ссылка,
+	ТаблицаЗаказ.ВерсияДанных КАК ВерсияДанных,
+	ТаблицаЗаказ.ПометкаУдаления КАК ПометкаУдаления,
+	ТаблицаЗаказ.Номер КАК Номер,
+	ТаблицаЗаказ.IDN КАК IDN,
+	ТаблицаЗаказ.Дата КАК Дата,
+	ТаблицаЗаказ.Проведен КАК Проведен,
+	ТаблицаЗаказ.Склад КАК Склад,
+	ТаблицаЗаказ.Магазин КАК Магазин,
+	ТаблицаЗаказ.МагазинПолучатель КАК МагазинПолучатель,
+	ТаблицаЗаказ.Комментарий КАК Комментарий,
+	ТаблицаЗаказ.СуммаДокумента КАК СуммаДокумента,
+	ТаблицаЗаказ.ДисконтнаяКарта КАК ДисконтнаяКарта,
+	ТаблицаЗаказ.Ответственный КАК Ответственный,
+	ТаблицаЗаказ.УчитыватьНДС КАК УчитыватьНДС,
+	ТаблицаЗаказ.ЦенаВключаетНДС КАК ЦенаВключаетНДС,
+	ТаблицаЗаказ.АдресДоставки КАК АдресДоставки,
+	ТаблицаЗаказ.ВладелецДисконтнойКарты КАК ВладелецДисконтнойКарты,
+	ТаблицаЗаказ.Контрагент КАК Контрагент,
 	ЕСТЬNULL(ТаблицаСостояния.СотрудникАнтошки, ЛОЖЬ) КАК СотрудникАнтошки,
-	ТаблицаДокументы.Продавец КАК Продавец,
-	ТаблицаДокументы.ПродавецИдентификатор КАК ПродавецИдентификатор,
-	ТаблицаДокументы.Организация КАК Организация,
-	ТаблицаДокументы.СкидкиРассчитаны КАК СкидкиРассчитаны,
-	ТаблицаДокументы.МаксимальныйКодСтроки КАК МаксимальныйКодСтроки,
-	ТаблицаДокументы.КоррекцияНачисленийПоПродаже КАК КоррекцияНачисленийПоПродаже,
-	ТаблицаДокументы.Статус КАК Статус,
-	ТаблицаДокументы.НомерЗаказаОсновной КАК НомерЗаказаОсновной,
-	ТаблицаДокументы.НомерЗаказаНаСайте КАК НомерЗаказаНаСайте,
-	ТаблицаДокументы.СтатусИМ КАК СтатусИМ,
-	ТаблицаДокументы.СтатусОплаты КАК СтатусОплаты,
-	ТаблицаДокументы.ТипДоставки КАК ТипДоставки,
-	ТаблицаДокументы.ТипОплаты КАК ТипОплаты,
-	ТаблицаДокументы.ДатаПродажиЖелаемая КАК ДатаПродажиЖелаемая,
-	ТаблицаДокументы.НаличиеНезарезервированныхСтрок КАК НаличиеНезарезервированныхСтрок,
+	ТаблицаЗаказ.Продавец КАК Продавец,
+	ТаблицаЗаказ.ПродавецИдентификатор КАК ПродавецИдентификатор,
+	ТаблицаЗаказ.Организация КАК Организация,
+	ТаблицаЗаказ.СкидкиРассчитаны КАК СкидкиРассчитаны,
+	ТаблицаЗаказ.МаксимальныйКодСтроки КАК МаксимальныйКодСтроки,
+	ТаблицаЗаказ.КоррекцияНачисленийПоПродаже КАК КоррекцияНачисленийПоПродаже,
+	ТаблицаЗаказ.Статус КАК Статус,
+	ТаблицаЗаказ.НомерЗаказаОсновной КАК НомерЗаказаОсновной,
+	ТаблицаЗаказ.НомерЗаказаНаСайте КАК НомерЗаказаНаСайте,
+	ТаблицаЗаказ.СтатусИМ КАК СтатусИМ,
+	ТаблицаЗаказ.СтатусОплаты КАК СтатусОплаты,
+	ТаблицаЗаказ.ТипДоставки КАК ТипДоставки,
+	ТаблицаЗаказ.ТипОплаты КАК ТипОплаты,
+	ТаблицаЗаказ.ДатаПродажиЖелаемая КАК ДатаПродажиЖелаемая,
+	ТаблицаЗаказ.НаличиеНезарезервированныхСтрок КАК НаличиеНезарезервированныхСтрок,
 	ТаблицаСостояния.СуммаБалловНачисление КАК СуммаБалловНачисление,
 	ТаблицаСостояния.СуммаБалловСписание КАК СуммаБалловСписание,
-	ТаблицаДокументы.Отменено КАК Отменено,
-	ТаблицаДокументы.Автор КАК Автор,
-	ТаблицаДокументы.УзелСоздания КАК УзелСоздания,
-	ТаблицаДокументы.УчетнаяСистема КАК УчетнаяСистема,
-	ТаблицаДокументы.СуммаДоставки КАК СуммаДоставки,
-	ТаблицаДокументы.СуммаДоставкиОператор КАК СуммаДоставкиОператор,
-	ТаблицаДокументы.СуммаДоставкиОплачена КАК СуммаДоставкиОплачена,
-	ТаблицаДокументы.УчтеноNavision КАК УчтеноNavision,
+	ТаблицаЗаказ.Отменено КАК Отменено,
+	ТаблицаЗаказ.Автор КАК Автор,
+	ТаблицаЗаказ.УзелСоздания КАК УзелСоздания,
+	ТаблицаЗаказ.УчетнаяСистема КАК УчетнаяСистема,
+	ТаблицаЗаказ.СуммаДоставки КАК СуммаДоставки,
+	ТаблицаЗаказ.СуммаДоставкиОператор КАК СуммаДоставкиОператор,
+	ТаблицаЗаказ.СуммаДоставкиОплачена КАК СуммаДоставкиОплачена,
+	ТаблицаЗаказ.УчтеноNavision КАК УчтеноNavision,
 	ТаблицаСостояния.Состояние КАК Состояние,
-	ТаблицаДокументы.ЧастичнаяПродажа КАК ЧастичнаяПродажа,
-	ТаблицаДокументы.НеПерезванивать КАК НеПерезванивать,
+	ТаблицаЗаказ.ЧастичнаяПродажа КАК ЧастичнаяПродажа,
+	ТаблицаЗаказ.НеПерезванивать КАК НеПерезванивать,
 	ВЫБОР
-		КОГДА ТаблицаДокументы.УчетнаяСистема = ЗНАЧЕНИЕ(Перечисление.УчетныеСистемыКомпании.Розница)
-		ИЛИ ТаблицаДокументы.УчетнаяСистема = ЗНАЧЕНИЕ(Перечисление.УчетныеСистемыКомпании.ПустаяСсылка)
+		КОГДА ТаблицаЗаказ.УчетнаяСистема = ЗНАЧЕНИЕ(Перечисление.УчетныеСистемыКомпании.Розница)
+		ИЛИ ТаблицаЗаказ.УчетнаяСистема = ЗНАЧЕНИЕ(Перечисление.УчетныеСистемыКомпании.ПустаяСсылка)
 			ТОГДА ЛОЖЬ
 		ИНАЧЕ ИСТИНА
 	КОНЕЦ КАК ОбработкаВМадженто,
-	ТаблицаДокументы.Телефон КАК Телефон,
+	ТаблицаЗаказ.Телефон КАК Телефон,
 	ТаблицаСостояния.ЕстьВозврат КАК ЕстьВозврат,
 	ТаблицаСостояния.ПочтаКлиента КАК ПочтаКлиента,
 	ТаблицаСостояния.СообщениеЦентр КАК СообщениеЦентр,
@@ -5641,11 +5562,11 @@
 	ТаблицаСостояния.ВозвратныйДокумент КАК ВозвратныйДокумент,
 	ТаблицаСостояния.ДокументОбмена КАК ДокументОбмена
 {ГДЕ
-	ТаблицаДокументы.Ссылка.*}
+	ТаблицаЗаказ.Ссылка.*}
 ИЗ
-	Документ.ЗаказПокупателя КАК ТаблицаДокументы
+	Документ.ЗаказПокупателя КАК ТаблицаЗаказ
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СостояниеЗаказаПокупателя КАК ТаблицаСостояния
-		ПО ТаблицаСостояния.ЗаказПокупателя = ТаблицаДокументы.Ссылка</queryText>
+		ПО ТаблицаСостояния.ЗаказПокупателя = ТаблицаЗаказ.Ссылка</queryText>
       <mainTable>Document.ЗаказПокупателя</mainTable>
       <dynamicDataRead>true</dynamicDataRead>
       <autoFillAvailableFields>true</autoFillAvailableFields>
@@ -5786,17 +5707,21 @@
     <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
       <segments>КомментарийКЗаказу.СтатусКомментария</segments>
     </notDefaultUseAlwaysAttributes>
+    <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
+      <segments>КомментарийКЗаказу.УзелСоздания</segments>
+    </notDefaultUseAlwaysAttributes>
     <extInfo xsi:type="form:DynamicListExtInfo">
       <queryText>ВЫБРАТЬ
 	РегистрСведенийКомментарийИнтернетЗаказа.Период КАК Период,
 	РегистрСведенийКомментарийИнтернетЗаказа.Автор КАК Автор,
-	РегистрСведенийКомментарийИнтернетЗаказа.ЗаказПокупателя КАК ЗаказПокупателя,
+	РегистрСведенийКомментарийИнтернетЗаказа.ДокументКоментария КАК ЗаказПокупателя,
 	РегистрСведенийКомментарийИнтернетЗаказа.Комментарий КАК Комментарий,
-	РегистрСведенийКомментарийИнтернетЗаказа.СтатусКомментария КАК СтатусКомментария
+	РегистрСведенийКомментарийИнтернетЗаказа.СтатусКомментария КАК СтатусКомментария,
+	РегистрСведенийКомментарийИнтернетЗаказа.УзелСоздания
 ИЗ
 	РегистрСведений.КомментарийИнтернетЗаказа КАК РегистрСведенийКомментарийИнтернетЗаказа
 ГДЕ
-	РегистрСведенийКомментарийИнтернетЗаказа.ЗаказПокупателя = &amp;ЗаказПокупателя</queryText>
+	РегистрСведенийКомментарийИнтернетЗаказа.ДокументКоментария = &amp;ЗаказПокупателя</queryText>
       <mainTable>InformationRegister.КомментарийИнтернетЗаказа</mainTable>
       <dynamicDataRead>true</dynamicDataRead>
       <autoFillAvailableFields>true</autoFillAvailableFields>
@@ -5871,25 +5796,20 @@
 	ДокументЗапросДоступностиТоваров.ДоставкаНаАдрес КАК ДоставкаНаАдрес,
 	ДокументЗапросДоступностиТоваров.МоментВремени КАК МоментВремени,
 	ВЫБОР
-		КОГДА ЭлектроннаяНакладная.Ссылка ЕСТЬ NULL
+		КОГДА ВЗ_СтатусТТН.Ссылка ЕСТЬ NULL
 			ТОГДА &quot;&quot;
-		ИНАЧЕ ЕСТЬNULL(СтатусыТТНСрезПоследних.СтатусЭН, &quot;Создана&quot;)
+		ИНАЧЕ ЕСТЬNULL(СтатусыЭНСрезПоследних.СтатусЭН, &quot;Создана&quot;)
 	КОНЕЦ КАК СтатусЭН,
-	КоличествоСообщений.СообщениеЦентр,
-	КоличествоСообщений.СообщениеМагазин,
-	КлючевыеАтрибутыЗапросовДоступностиСрезПоследних.ОправленоВNavision,
+	КоличествоСообщений.СообщениеЦентр КАК СообщениеЦентр,
+	КоличествоСообщений.СообщениеМагазин КАК СообщениеМагазин,
+	КлючевыеАтрибутыЗапросовДоступностиСрезПоследних.ОправленоВNavision КАК ОправленоВNavision,
 	ВЫБОР
-		КОГДА ЭлектроннаяНакладная.Ссылка ЕСТЬ NULL
+		КОГДА ВЗ_СтатусТТН.Ссылка ЕСТЬ NULL
 			ТОГДА &quot;&quot;
-		ИНАЧЕ ЭлектроннаяНакладная.Дата
+		ИНАЧЕ ВЗ_СтатусТТН.Ссылка.Дата
 	КОНЕЦ КАК ДатаТТН
 ИЗ
 	Документ.ЗапросДоступностиТоваров КАК ДокументЗапросДоступностиТоваров
-		ЛЕВОЕ СОЕДИНЕНИЕ Документ.ЭлектроннаяНакладная КАК ЭлектроннаяНакладная
-			ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.СтатусыЭН.СрезПоследних КАК СтатусыТТНСрезПоследних
-			ПО ЭлектроннаяНакладная.Ссылка = СтатусыТТНСрезПоследних.ДокументРегистратор
-			И НЕ СтатусыТТНСрезПоследних.СтатусЭН.СтатусПосылки = ЗНАЧЕНИЕ(Перечисление.СтатусыПосылокСлужбыДоставки.Отменена)
-		ПО ЭлектроннаяНакладная.ДокументОснование = ДокументЗапросДоступностиТоваров.Ссылка
 		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
 			ВложенныйЗапрос.Ссылка КАК Ссылка,
 			КОЛИЧЕСТВО(РАЗЛИЧНЫЕ ВЫБОР
@@ -5934,6 +5854,20 @@
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.КлючевыеАтрибутыЗапросовДоступности.СрезПоследних КАК
 			КлючевыеАтрибутыЗапросовДоступностиСрезПоследних
 		ПО ДокументЗапросДоступностиТоваров.Ссылка = КлючевыеАтрибутыЗапросовДоступностиСрезПоследних.ЗапросДоступности
+		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+			МАКСИМУМ(ЭлектроннаяНакладная.Ссылка) КАК Ссылка,
+			ЭлектроннаяНакладная.ДокументОснование КАК ДокументОснование
+		ИЗ
+			Документ.ЭлектроннаяНакладная КАК ЭлектроннаяНакладная
+				ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.СтатусыЭН.СрезПоследних КАК СтатусыЭНСрезПоследних
+				ПО ЭлектроннаяНакладная.Ссылка = СтатусыЭНСрезПоследних.ДокументРегистратор
+				И (НЕ
+					СтатусыЭНСрезПоследних.СтатусЭН.СтатусПосылки = ЗНАЧЕНИЕ(Перечисление.СтатусыПосылокСлужбыДоставки.Отменена))
+		СГРУППИРОВАТЬ ПО
+			ЭлектроннаяНакладная.ДокументОснование) КАК ВЗ_СтатусТТН
+			ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СтатусыЭН.СрезПоследних КАК СтатусыЭНСрезПоследних
+			ПО ВЗ_СтатусТТН.Ссылка = СтатусыЭНСрезПоследних.ДокументРегистратор
+		ПО ДокументЗапросДоступностиТоваров.Ссылка = ВЗ_СтатусТТН.ДокументОснование
 ГДЕ
 	ДокументЗапросДоступностиТоваров.ДокументОснование = &amp;ДокументОснование</queryText>
       <mainTable>Document.ЗапросДоступностиТоваров</mainTable>

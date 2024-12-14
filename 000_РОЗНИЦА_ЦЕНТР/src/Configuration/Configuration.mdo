@@ -13,6 +13,7 @@
   <containedObjects classId="51f2d5d8-ea4d-4064-8892-82951750031e" objectId="2b1bb4db-5d30-4dab-ab2e-2b25debd8cd4"/>
   <containedObjects classId="e68182ea-4237-4383-967f-90c1e3370bc7" objectId="a10512f3-297f-4d8e-af7e-9cf2d2b8f4ec"/>
   <containedObjects classId="fb282519-d103-4dd3-bc12-cb271d631dfc" objectId="647e5b6f-4b34-44e1-b4c0-5b5ddaf55c02"/>
+  <configurationExtensionCompatibilityMode>8.3.24</configurationExtensionCompatibilityMode>
   <defaultRunMode>ManagedApplication</defaultRunMode>
   <usePurposes>PersonalComputer</usePurposes>
   <scriptVariant>Russian</scriptVariant>
@@ -21,7 +22,7 @@
   <defaultRoles>Role.БазовыеПрава</defaultRoles>
   <defaultRoles>Role.БазовыеПраваРТ</defaultRoles>
   <vendor>ЧПТФ «Антошка»</vendor>
-  <version>2.1.2.106</version>
+  <version>2.1.2.152</version>
   <includeHelpInContents>true</includeHelpInContents>
   <help>
     <pages>
@@ -1200,6 +1201,8 @@
   <roles>Role.ЧтениеЦенНоменклатуры</roles>
   <roles>Role.ЧтениеЧековККМ</roles>
   <roles>Role.ЧтениеЧерногоСпискаNPS</roles>
+  <roles>Role.АрхивированиеРазархивированиеКлиентов</roles>
+  <roles>Role.ПолучениеЧековИзЦентральнойБазы</roles>
   <commonTemplates>CommonTemplate.Драйвер1CФискальныйРегистратор</commonTemplates>
   <commonTemplates>CommonTemplate.Драйвер1ССканерШтрихкода</commonTemplates>
   <commonTemplates>CommonTemplate.Драйвер1ССканерШтрихкодаExe</commonTemplates>
@@ -1259,6 +1262,7 @@
   <commonTemplates>CommonTemplate.РеестрНН_Сертификаты</commonTemplates>
   <commonTemplates>CommonTemplate.СоответствиеТэговОбщимФормам</commonTemplates>
   <commonTemplates>CommonTemplate.СтруктураПодчиненности</commonTemplates>
+  <commonTemplates>CommonTemplate.ДрайверПриватбанкTCPClient</commonTemplates>
   <filterCriteria>FilterCriterion.СвязанныеДокументы</filterCriteria>
   <filterCriteria>FilterCriterion.ФайлыВТоме</filterCriteria>
   <commonModules>CommonModule.JSON</commonModules>
@@ -1804,6 +1808,7 @@
   <commonModules>CommonModule.ЭлектроннаяЦифроваяПодписьКлиентСервер</commonModules>
   <commonModules>CommonModule.ЭлектроннаяЦифроваяПодписьПовтИсп</commonModules>
   <commonModules>CommonModule.КоннекторHTTP</commonModules>
+  <commonModules>CommonModule.ПодключаемоеОборудованиеБанковскийТерминалПриватбанк</commonModules>
   <commonAttributes>CommonAttribute.IDN</commonAttributes>
   <commonAttributes>CommonAttribute.Автор</commonAttributes>
   <commonAttributes>CommonAttribute.ОбластьДанныхВспомогательныеДанные</commonAttributes>
@@ -1827,6 +1832,7 @@
   <exchangePlans>ExchangePlan.ПоРабочемуМесту</exchangePlans>
   <exchangePlans>ExchangePlan.ПоУстройствамАнтошка</exchangePlans>
   <exchangePlans>ExchangePlan.ТранспортТерминалов</exchangePlans>
+  <exchangePlans>ExchangePlan.ОбменМаженто2</exchangePlans>
   <xDTOPackages>XDTOPackage.AgentScripts</xDTOPackages>
   <xDTOPackages>XDTOPackage.ApplicationExtensionsCompatibility_1_0_0_1</xDTOPackages>
   <xDTOPackages>XDTOPackage.ApplicationExtensionsManifest_1_0_0_1</xDTOPackages>
@@ -1988,6 +1994,7 @@
   <eventSubscriptions>EventSubscription.УстановитьПометкуУдаленияЗадач</eventSubscriptions>
   <eventSubscriptions>EventSubscription.УстановитьПометкуУдаленияПрисоединенныхФайлов</eventSubscriptions>
   <eventSubscriptions>EventSubscription.УстановитьПометкуУдаленияФайлов</eventSubscriptions>
+  <eventSubscriptions>EventSubscription.ОбменСМ2ПриЗаписи</eventSubscriptions>
   <scheduledJobs>ScheduledJob.ВерификацияПокупателей</scheduledJobs>
   <scheduledJobs>ScheduledJob.ВосстановлениеПоследовательностиБонуснойСистемы</scheduledJobs>
   <scheduledJobs>ScheduledJob.ВыгрузкаДляNavisionБонусныхБалловMagento</scheduledJobs>
@@ -2051,6 +2058,7 @@
   <scheduledJobs>ScheduledJob.УчетРабочегоВремени</scheduledJobs>
   <scheduledJobs>ScheduledJob.ФормированиеГруппПолучателейСкидки</scheduledJobs>
   <scheduledJobs>ScheduledJob.ФормированиеСегментов</scheduledJobs>
+  <scheduledJobs>ScheduledJob.ОтправкаРеализацийНаПочту</scheduledJobs>
   <settingsStorages>SettingsStorage.ХранилищеВариантовОтчетов</settingsStorages>
   <settingsStorages>SettingsStorage.ХранилищеНастроекСписков</settingsStorages>
   <functionalOptions>FunctionalOption.АктуальнаяДатаОбновленияПовторноИспользуемыхЗначенийМРО</functionalOptions>
@@ -2418,6 +2426,7 @@
   <constants>Constant.ЧасовойПоясОбластиДанных</constants>
   <constants>Constant.ЭтоАвтономноеРабочееМесто</constants>
   <constants>Constant.ПоследнийНомерИнтернетЗаказа</constants>
+  <constants>Constant.КвоМесяцевДляПринятнияКлиентаАрхивным</constants>
   <commonForms>CommonForm.АвтономнаяРабота</commonForms>
   <commonForms>CommonForm.АвтономнаяРаботаВМоделиСервиса</commonForms>
   <commonForms>CommonForm.АутентификацияВСервисе</commonForms>
@@ -2559,9 +2568,9 @@
   <commonForms>CommonForm.ФормаРМКУправляемаяИнформацииОбОшибке</commonForms>
   <commonForms>CommonForm.ФормаСменыПароля</commonForms>
   <commonForms>CommonForm.ФормаСменыПароляДиректора</commonForms>
+  <commonForms>CommonForm.ФормаНастройкиIngenicoПриватбанкJSON</commonForms>
   <catalogs>Catalog.АдресаСлужбыДоставки</catalogs>
   <catalogs>Catalog.Алгоритмы</catalogs>
-  <catalogs>Catalog.АналитикаХозяйственныхОпераций</catalogs>
   <catalogs>Catalog.АнкетаЛистаЖеланий</catalogs>
   <catalogs>Catalog.БазовыеЕдиницыИзмерения</catalogs>
   <catalogs>Catalog.БанковскиеСчетаКонтрагентов</catalogs>
@@ -2708,6 +2717,8 @@
   <catalogs>Catalog.ШаблоныРаботыДисплеяПокупателя</catalogs>
   <catalogs>Catalog.ШаблоныЧеков</catalogs>
   <catalogs>Catalog.ЭквайринговыеТерминалы</catalogs>
+  <catalogs>Catalog.АналитикаХозяйственныхОпераций</catalogs>
+  <catalogs>Catalog.СлужбыКурьерскойДоставки</catalogs>
   <documents>Document.ВводНачальныхОстатковУзла</documents>
   <documents>Document.ВводОстатковДенежныхСредств</documents>
   <documents>Document.ВводОстатковПоНакопительнымСкидкам</documents>
@@ -2789,7 +2800,6 @@
   <documentJournals>DocumentJournal.СкладскиеОрдераНаИзлишкиНедостачи</documentJournals>
   <enums>Enum.ВариантОпределенияПериодаНакопительнойСкидки</enums>
   <enums>Enum.ВариантыSMTPАутентификации</enums>
-  <enums>Enum.ВариантыАдресногоКлассификатора</enums>
   <enums>Enum.ВариантыВажностиЗадачи</enums>
   <enums>Enum.ВариантыВеденияДополнительныхДанныхПоНоменклатуре</enums>
   <enums>Enum.ВариантыВерсионированияОбъектов</enums>
@@ -2996,6 +3006,8 @@
   <enums>Enum.ЦветностиИзображения</enums>
   <enums>Enum.ЮрФизЛицо</enums>
   <enums>Enum.ЯзыкКонтрагента</enums>
+  <enums>Enum.ВариантыАдресногоКлассификатора</enums>
+  <enums>Enum.ВидыВозвратаИнтернетЗаказа</enums>
   <reports>Report.АвтоВыполнениеЗаказов</reports>
   <reports>Report.АктАннулированныхТоваров</reports>
   <reports>Report.АнализБонусныхНакоплений</reports>
@@ -3187,6 +3199,9 @@
   <reports>Report.УсловияПравилЦенообразования</reports>
   <reports>Report.УчетРабочегоВремени</reports>
   <reports>Report.ЦеныПоВидамЦен</reports>
+  <reports>Report.НоменклатураСКешбэком</reports>
+  <reports>Report.ПоискЗаказовПоНоменклатуре</reports>
+  <reports>Report.НеСвязанныеПодразделения</reports>
   <dataProcessors>DataProcessor.АвтоматическоеИзвлечениеТекстов</dataProcessors>
   <dataProcessors>DataProcessor.АвтоматическоеИзвлечениеТекстовДляВсехОбластейДанных</dataProcessors>
   <dataProcessors>DataProcessor.АктивныеПользователи</dataProcessors>
@@ -3513,6 +3528,10 @@
   <informationRegisters>InformationRegister.ШаблонПравПользователей</informationRegisters>
   <informationRegisters>InformationRegister.ШаблоныРегистрацииНовыхКарт</informationRegisters>
   <informationRegisters>InformationRegister.Штрихкоды</informationRegisters>
+  <informationRegisters>InformationRegister.ФискальныеНомераЧеков</informationRegisters>
+  <informationRegisters>InformationRegister.ПолучателиРеализаций</informationRegisters>
+  <informationRegisters>InformationRegister.ИсторияИзмененияРеквизитовНоменклатуры</informationRegisters>
+  <informationRegisters>InformationRegister.РеализацииДляОтправки</informationRegisters>
   <accumulationRegisters>AccumulationRegister.БонусныеБаллы</accumulationRegisters>
   <accumulationRegisters>AccumulationRegister.БонусныеБаллыВРезерве</accumulationRegisters>
   <accumulationRegisters>AccumulationRegister.БонусныеБаллыПогашение</accumulationRegisters>
