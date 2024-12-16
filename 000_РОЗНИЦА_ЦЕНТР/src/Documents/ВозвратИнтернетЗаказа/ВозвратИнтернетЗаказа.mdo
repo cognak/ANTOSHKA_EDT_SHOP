@@ -303,6 +303,21 @@
     <fullTextSearch>Use</fullTextSearch>
     <dataHistory>Use</dataHistory>
   </attributes>
+  <attributes uuid="98a0363a-fa6b-420e-a2db-d7c103753353">
+    <name>ПочтаОтправлена</name>
+    <synonym>
+      <key>ru</key>
+      <value>Почта отправлена</value>
+    </synonym>
+    <type>
+      <types>Boolean</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
   <attributes uuid="a17def1a-b391-4b90-8c35-ac22f92aa289">
     <name>СкидкиРассчитаны</name>
     <synonym>
@@ -483,21 +498,6 @@
     </synonym>
     <type>
       <types>DocumentRef.ЭлектроннаяНакладная</types>
-    </type>
-    <minValue xsi:type="core:UndefinedValue"/>
-    <maxValue xsi:type="core:UndefinedValue"/>
-    <fillValue xsi:type="core:UndefinedValue"/>
-    <fullTextSearch>Use</fullTextSearch>
-    <dataHistory>Use</dataHistory>
-  </attributes>
-  <attributes uuid="98a0363a-fa6b-420e-a2db-d7c103753353">
-    <name>ПочтаОтправлена</name>
-    <synonym>
-      <key>ru</key>
-      <value>Почта отправлена</value>
-    </synonym>
-    <type>
-      <types>Boolean</types>
     </type>
     <minValue xsi:type="core:UndefinedValue"/>
     <maxValue xsi:type="core:UndefinedValue"/>
@@ -843,6 +843,24 @@
       <dataHistory>Use</dataHistory>
       <fullTextSearch>Use</fullTextSearch>
     </attributes>
+    <attributes uuid="c1bc9a38-e8d8-4479-9946-4c2db487ba31">
+      <name>СуммаДоставки</name>
+      <synonym>
+        <key>ru</key>
+        <value>Сумма доставки</value>
+      </synonym>
+      <type>
+        <types>Number</types>
+        <numberQualifiers>
+          <precision>15</precision>
+          <scale>2</scale>
+        </numberQualifiers>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
     <attributes uuid="c0f6bbf7-4620-416e-bcc7-a3ded32bd05b">
       <name>СуммаОкругления</name>
       <synonym>
@@ -957,23 +975,6 @@
       <dataHistory>Use</dataHistory>
       <fullTextSearch>Use</fullTextSearch>
     </attributes>
-    <attributes uuid="c1bc9a38-e8d8-4479-9946-4c2db487ba31">
-      <name>СуммаДоставки</name>
-      <synonym>
-        <key>ru</key>
-        <value>Сумма доставки</value>
-      </synonym>
-      <type>
-        <types>String</types>
-        <stringQualifiers>
-          <length>10</length>
-        </stringQualifiers>
-      </type>
-      <minValue xsi:type="core:UndefinedValue"/>
-      <maxValue xsi:type="core:UndefinedValue"/>
-      <dataHistory>Use</dataHistory>
-      <fullTextSearch>Use</fullTextSearch>
-    </attributes>
   </tabularSections>
   <tabularSections uuid="86d1b84d-dd60-43fb-addd-ef706d26d549">
     <producedTypes>
@@ -993,6 +994,37 @@
       <minValue xsi:type="core:UndefinedValue"/>
       <maxValue xsi:type="core:UndefinedValue"/>
     </standardAttributes>
+    <attributes uuid="ab0811f4-341b-42fb-b678-7318f2abbc52">
+      <name>ВидОплаты</name>
+      <synonym>
+        <key>ru</key>
+        <value>Вид оплаты</value>
+      </synonym>
+      <type>
+        <types>EnumRef.ВидыОплатыЗаказаПокупателя</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="8643bd20-07c3-4599-a54c-1cad6f2b275b">
+      <name>ИДОплаты</name>
+      <synonym>
+        <key>ru</key>
+        <value>ИДОплаты</value>
+      </synonym>
+      <type>
+        <types>String</types>
+        <stringQualifiers>
+          <length>32</length>
+        </stringQualifiers>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
     <attributes uuid="cc5dc45e-943a-4e09-96d8-fc879464e13b">
       <name>НомерОплаты</name>
       <synonym>
@@ -1011,32 +1043,17 @@
       <dataHistory>Use</dataHistory>
       <fullTextSearch>Use</fullTextSearch>
     </attributes>
-    <attributes uuid="ab0811f4-341b-42fb-b678-7318f2abbc52">
-      <name>ВидОплаты</name>
+    <attributes uuid="fceb5aa5-bc95-49dd-877b-116e380fdbe0">
+      <name>Отменён</name>
       <synonym>
         <key>ru</key>
-        <value>Вид оплаты</value>
+        <value>Отменён</value>
       </synonym>
       <type>
-        <types>EnumRef.ВидыОплатыЗаказаПокупателя</types>
+        <types>Boolean</types>
       </type>
       <minValue xsi:type="core:UndefinedValue"/>
       <maxValue xsi:type="core:UndefinedValue"/>
-      <dataHistory>Use</dataHistory>
-      <fullTextSearch>Use</fullTextSearch>
-    </attributes>
-    <attributes uuid="8104a760-6c17-4d8d-b2e4-5919570fac8d">
-      <name>ТипОплаты</name>
-      <synonym>
-        <key>ru</key>
-        <value>Тип оплаты</value>
-      </synonym>
-      <type>
-        <types>EnumRef.ТипОплатыЗаказПокупателя</types>
-      </type>
-      <minValue xsi:type="core:UndefinedValue"/>
-      <maxValue xsi:type="core:UndefinedValue"/>
-      <fillChecking>ShowError</fillChecking>
       <dataHistory>Use</dataHistory>
       <fullTextSearch>Use</fullTextSearch>
     </attributes>
@@ -1074,34 +1091,18 @@
       <dataHistory>Use</dataHistory>
       <fullTextSearch>Use</fullTextSearch>
     </attributes>
-    <attributes uuid="fceb5aa5-bc95-49dd-877b-116e380fdbe0">
-      <name>Отменён</name>
+    <attributes uuid="8104a760-6c17-4d8d-b2e4-5919570fac8d">
+      <name>ТипОплаты</name>
       <synonym>
         <key>ru</key>
-        <value>Отменён</value>
+        <value>Тип оплаты</value>
       </synonym>
       <type>
-        <types>Boolean</types>
+        <types>EnumRef.ТипОплатыЗаказПокупателя</types>
       </type>
       <minValue xsi:type="core:UndefinedValue"/>
       <maxValue xsi:type="core:UndefinedValue"/>
-      <dataHistory>Use</dataHistory>
-      <fullTextSearch>Use</fullTextSearch>
-    </attributes>
-    <attributes uuid="8643bd20-07c3-4599-a54c-1cad6f2b275b">
-      <name>ИДОплаты</name>
-      <synonym>
-        <key>ru</key>
-        <value>ИДОплаты</value>
-      </synonym>
-      <type>
-        <types>String</types>
-        <stringQualifiers>
-          <length>32</length>
-        </stringQualifiers>
-      </type>
-      <minValue xsi:type="core:UndefinedValue"/>
-      <maxValue xsi:type="core:UndefinedValue"/>
+      <fillChecking>ShowError</fillChecking>
       <dataHistory>Use</dataHistory>
       <fullTextSearch>Use</fullTextSearch>
     </attributes>
