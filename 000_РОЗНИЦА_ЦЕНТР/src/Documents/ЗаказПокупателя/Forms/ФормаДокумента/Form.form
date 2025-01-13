@@ -4636,6 +4636,36 @@
               <representationInContextMenu>Auto</representationInContextMenu>
             </items>
             <items xsi:type="form:Button">
+              <name>ТоварыУсстановитьПричинуРучнойСкидки</name>
+              <id>1224</id>
+              <visible>true</visible>
+              <enabled>true</enabled>
+              <userVisible>
+                <common>true</common>
+              </userVisible>
+              <extendedTooltip>
+                <name>ТоварыУсстановитьПричинуРучнойСкидкиРасширеннаяПодсказка</name>
+                <id>1225</id>
+                <visible>true</visible>
+                <enabled>true</enabled>
+                <userVisible>
+                  <common>true</common>
+                </userVisible>
+                <type>Label</type>
+                <autoMaxWidth>true</autoMaxWidth>
+                <autoMaxHeight>true</autoMaxHeight>
+                <extInfo xsi:type="form:LabelDecorationExtInfo">
+                  <horizontalAlign>Left</horizontalAlign>
+                </extInfo>
+              </extendedTooltip>
+              <commandName>Form.Command.УсстановитьПричинуРучнойСкидки</commandName>
+              <representation>Auto</representation>
+              <autoMaxWidth>true</autoMaxWidth>
+              <autoMaxHeight>true</autoMaxHeight>
+              <placementArea>UserCmds</placementArea>
+              <representationInContextMenu>Auto</representationInContextMenu>
+            </items>
+            <items xsi:type="form:Button">
               <name>ТоварыОтменитьРучныеСкидки</name>
               <id>168</id>
               <visible>true</visible>
@@ -17996,8 +18026,35 @@
     </action>
     <currentRowUse>DontUse</currentRowUse>
   </formCommands>
+  <formCommands>
+    <name>УсстановитьПричинуРучнойСкидки</name>
+    <title>
+      <key>ru</key>
+      <value>Усстановить общую причину ручной скидки</value>
+    </title>
+    <id>30</id>
+    <toolTip>
+      <key>ru</key>
+      <value>Усстановить причину ручной скидки</value>
+    </toolTip>
+    <use>
+      <common>true</common>
+    </use>
+    <action xsi:type="form:FormCommandHandlerContainer">
+      <handler>
+        <name>УсстановитьПричинуРучнойСкидки</name>
+      </handler>
+    </action>
+    <currentRowUse>DontUse</currentRowUse>
+  </formCommands>
   <commandInterface>
     <navigationPanel>
+      <cmiFragmentRecord>
+        <command>0</command>
+        <group>FormNavigationPanelImportant</group>
+        <index>0</index>
+        <userVisible/>
+      </cmiFragmentRecord>
       <cmiFragmentRecord>
         <command>CommonCommand.СтруктураПодчиненности</command>
         <group>FormNavigationPanelGoTo</group>
@@ -18013,6 +18070,10 @@
         <userVisible>
           <common>true</common>
         </userVisible>
+      </cmiFragmentRecord>
+      <cmiFragmentRecord>
+        <command>CommonCommand.ИсторияИзменений</command>
+        <userVisible/>
       </cmiFragmentRecord>
       <cmiFragmentRecord>
         <command>AccumulationRegister.ЗаказыПокупателей.StandardCommand.OpenByRecorder</command>
@@ -18093,6 +18154,18 @@
     </navigationPanel>
     <commandBar>
       <cmiFragmentRecord>
+        <command>0</command>
+        <group>CommandGroup.Печать</group>
+        <index>0</index>
+        <userVisible/>
+      </cmiFragmentRecord>
+      <cmiFragmentRecord>
+        <command>0</command>
+        <group>FormCommandBarCreateBasedOn</group>
+        <index>0</index>
+        <userVisible/>
+      </cmiFragmentRecord>
+      <cmiFragmentRecord>
         <command>Document.ЗаказПоставщику.StandardCommand.CreateBasedOn</command>
         <group>FormCommandBarCreateBasedOn</group>
         <index>1</index>
@@ -18111,6 +18184,18 @@
         <userVisible/>
       </cmiFragmentRecord>
       <cmiFragmentRecord>
+        <command>Document.ЧекККМ.StandardCommand.CreateBasedOn</command>
+        <group>FormCommandBarCreateBasedOn</group>
+        <index>4</index>
+        <userVisible/>
+      </cmiFragmentRecord>
+      <cmiFragmentRecord>
+        <command>0</command>
+        <group>CommandGroup.Печать</group>
+        <index>1</index>
+        <userVisible/>
+      </cmiFragmentRecord>
+      <cmiFragmentRecord>
         <command>CommonCommand.ИсторияИзменений</command>
         <index>2</index>
         <userVisible/>
@@ -18120,14 +18205,13 @@
         <userVisible/>
       </cmiFragmentRecord>
       <cmiFragmentRecord>
-        <command>CommonCommand.СтруктураПодчиненности</command>
-        <index>3</index>
+        <command>0</command>
+        <index>1</index>
         <userVisible/>
       </cmiFragmentRecord>
       <cmiFragmentRecord>
-        <command>Document.ЧекККМ.StandardCommand.CreateBasedOn</command>
-        <group>FormCommandBarCreateBasedOn</group>
-        <index>4</index>
+        <command>CommonCommand.СтруктураПодчиненности</command>
+        <index>3</index>
         <userVisible/>
       </cmiFragmentRecord>
     </commandBar>

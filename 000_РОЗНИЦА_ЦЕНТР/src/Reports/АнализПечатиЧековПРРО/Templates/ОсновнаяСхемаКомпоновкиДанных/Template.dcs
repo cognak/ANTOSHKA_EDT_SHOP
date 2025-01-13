@@ -141,6 +141,71 @@
 	И НЕ ПОДСТРОКА(ТаблицаДокумента.ФлагиПроведения, 10, 1) = ""
 	и ТаблицаДокумента.Дата МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания</query>
 	</dataSet>
+	<dataSet xsi:type="DataSetQuery">
+		<name>ВсегоЧепков</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>МагазинВсего</dataPath>
+			<field>МагазинВсего</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Магазин</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВсегоЧеков</dataPath>
+			<field>ВсегоЧеков</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Всего чеков</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:periodNumber>1</dcscom:periodNumber>
+				<dcscom:periodType>Main</dcscom:periodType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВсегоПрдаж</dataPath>
+			<field>ВсегоПрдаж</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Всего прдаж</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДатаЧеков</dataPath>
+			<field>ДатаЧеков</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:periodNumber>2</dcscom:periodNumber>
+				<dcscom:periodType>Main</dcscom:periodType>
+			</role>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	КОЛИЧЕСТВО(РАЗЛИЧНЫЕ ПродажиПоЧекам.Регистратор) КАК ВсегоЧеков,
+	ПродажиПоЧекам.Магазин КАК МагазинВсего,
+	СУММА(ПродажиПоЧекам.СуммаПродажи) КАК ВсегоПрдаж,
+	НАЧАЛОПЕРИОДА(ПродажиПоЧекам.Период, ДЕНЬ) КАК ДатаЧеков
+ИЗ
+	РегистрНакопления.ПродажиПоЧекам КАК ПродажиПоЧекам
+ГДЕ
+	ПродажиПоЧекам.Период МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания
+
+СГРУППИРОВАТЬ ПО
+	ПродажиПоЧекам.Магазин,
+	НАЧАЛОПЕРИОДА(ПродажиПоЧекам.Период, ДЕНЬ)</query>
+	</dataSet>
 	<calculatedField>
 		<dataPath>ПроцентSMS</dataPath>
 		<expression>1</expression>
@@ -252,6 +317,14 @@
 ТОГДА СУММА(ФлагПечатьПоЗапросу) / СУММА(Количество) * 100
 ИНАЧЕ 0
 КОНЕЦ</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ВсегоЧеков</dataPath>
+		<expression>Сумма(ВсегоЧеков)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ВсегоПрдаж</dataPath>
+		<expression>Сумма(ВсегоПрдаж)</expression>
 	</totalField>
 	<parameter>
 		<name>Период</name>
@@ -384,6 +457,28 @@
 				</dcsset:order>
 				<dcsset:selection>
 					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+			</dcsset:item>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>МагазинВсего</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>МагазинВсего</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ВсегоЧеков</dcsset:field>
+					</dcsset:item>
 				</dcsset:selection>
 			</dcsset:item>
 		</dcsset:settings>
