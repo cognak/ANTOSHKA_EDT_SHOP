@@ -9,6 +9,12 @@
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Сумма</dataPath>
 			<field>Сумма</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма продажи</v8:content>
+				</v8:item>
+			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>СуммаРучнойСкидки</dataPath>
@@ -36,6 +42,30 @@
 			<dataPath>ПричинаРучнойСкидки</dataPath>
 			<field>ПричинаРучнойСкидки</field>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Документ</dataPath>
+			<field>Документ</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документ</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаБезСкидки</dataPath>
+			<field>СуммаБезСкидки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма без скидки</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПроцентРучнойСкидки</dataPath>
+			<field>ПроцентРучнойСкидки</field>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	ЧекККМТовары.Сумма КАК Сумма,
@@ -43,7 +73,10 @@
 	ЧекККМТовары.СуммаРучнойСкидки КАК СуммаРучнойСкидки,
 	НАЧАЛОПЕРИОДА(ЧекККМТовары.Ссылка.Дата, ДЕНЬ) КАК Дата,
 	ЧекККМТовары.Ссылка.Магазин КАК Магазин,
-	ЧекККМТовары.ПричинаРучнойСкидки КАК ПричинаРучнойСкидки
+	ЧекККМТовары.ПричинаРучнойСкидки КАК ПричинаРучнойСкидки,
+	ЧекККМТовары.Ссылка КАК Документ,
+	ЧекККМТовары.Сумма + ЧекККМТовары.СуммаРучнойСкидки КАК СуммаБезСкидки,
+	ЧекККМТовары.ПроцентРучнойСкидки КАК ПроцентРучнойСкидки
 ИЗ
 	Документ.ЧекККМ.Товары КАК ЧекККМТовары
 ГДЕ
@@ -59,7 +92,10 @@
 	ЗаказПокупателяТовары.СуммаРучнойСкидки,
 	НАЧАЛОПЕРИОДА(ЗаказПокупателяТовары.Ссылка.Дата, ДЕНЬ),
 	ЗаказПокупателяТовары.Ссылка.Магазин,
-	ЗаказПокупателяТовары.ПричинаРучнойСкидки
+	ЗаказПокупателяТовары.ПричинаРучнойСкидки,
+	ЗаказПокупателяТовары.Ссылка,
+	ЗаказПокупателяТовары.СуммаРучнойСкидки + ЗаказПокупателяТовары.Сумма,
+	ЗаказПокупателяТовары.ПроцентРучнойСкидки
 ИЗ
 	Документ.ЗаказПокупателя.Товары КАК ЗаказПокупателяТовары
 ГДЕ
@@ -80,6 +116,10 @@
 	<totalField>
 		<dataPath>СуммаРучнойСкидки</dataPath>
 		<expression>Сумма(СуммаРучнойСкидки)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СуммаБезСкидки</dataPath>
+		<expression>Сумма(СуммаБезСкидки)</expression>
 	</totalField>
 	<parameter>
 		<name>ДатаПо</name>
@@ -177,10 +217,16 @@
 					<dcsset:field>Количество</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Сумма</dcsset:field>
+					<dcsset:field>СуммаБезСкидки</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>СуммаРучнойСкидки</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Сумма</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Документ</dcsset:field>
 				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:dataParameters>
@@ -231,6 +277,20 @@
 						<dcsset:groupItems>
 							<dcsset:item xsi:type="dcsset:GroupItemField">
 								<dcsset:field>ПричинаРучнойСкидки</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>Документ</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>ПроцентРучнойСкидки</dcsset:field>
 								<dcsset:groupType>Items</dcsset:groupType>
 								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
