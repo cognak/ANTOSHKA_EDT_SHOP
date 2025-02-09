@@ -12,13 +12,19 @@
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Сумма продажи</v8:content>
+					<v8:content>Сумма продажи за вычетом скидки</v8:content>
 				</v8:item>
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>СуммаРучнойСкидки</dataPath>
 			<field>СуммаРучнойСкидки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма ручных скидок</v8:content>
+				</v8:item>
+			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Магазин</dataPath>
@@ -37,6 +43,12 @@
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Количество</dataPath>
 			<field>Количество</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество чеков и ИЗ со скидкой</v8:content>
+				</v8:item>
+			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>ПричинаРучнойСкидки</dataPath>
@@ -58,7 +70,7 @@
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Сумма без скидки</v8:content>
+					<v8:content>Сумма документов в которых есть скидка</v8:content>
 				</v8:item>
 			</title>
 		</field>
@@ -66,23 +78,56 @@
 			<dataPath>ПроцентРучнойСкидки</dataPath>
 			<field>ПроцентРучнойСкидки</field>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Номенклатура</dataPath>
+			<field>Номенклатура</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ТипДокумента</dataPath>
+			<field>ТипДокумента</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тип документа</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
-	ЧекККМТовары.Сумма КАК Сумма,
+	ВЫБОР
+		КОГДА ЧекККМТовары.Ссылка.ВидОперации = ЗНАЧЕНИЕ(Перечисление.ВидыОперацийЧекККМ.Возврат)
+			ТОГДА -1
+		ИНАЧЕ 1
+	КОНЕЦ * ЧекККМТовары.Сумма КАК Сумма,
 	ЧекККМТовары.Количество КАК Количество,
-	ЧекККМТовары.СуммаРучнойСкидки КАК СуммаРучнойСкидки,
+	ВЫБОР
+		КОГДА ЧекККМТовары.Ссылка.ВидОперации = ЗНАЧЕНИЕ(Перечисление.ВидыОперацийЧекККМ.Возврат)
+			ТОГДА -1
+		ИНАЧЕ 1
+	КОНЕЦ * ЧекККМТовары.СуммаРучнойСкидки КАК СуммаРучнойСкидки,
 	НАЧАЛОПЕРИОДА(ЧекККМТовары.Ссылка.Дата, ДЕНЬ) КАК Дата,
 	ЧекККМТовары.Ссылка.Магазин КАК Магазин,
 	ЧекККМТовары.ПричинаРучнойСкидки КАК ПричинаРучнойСкидки,
 	ЧекККМТовары.Ссылка КАК Документ,
-	ЧекККМТовары.Сумма + ЧекККМТовары.СуммаРучнойСкидки КАК СуммаБезСкидки,
-	ЧекККМТовары.ПроцентРучнойСкидки КАК ПроцентРучнойСкидки
+	ВЫБОР
+		КОГДА ЧекККМТовары.Ссылка.ВидОперации = ЗНАЧЕНИЕ(Перечисление.ВидыОперацийЧекККМ.Возврат)
+			ТОГДА -1
+		ИНАЧЕ 1
+	КОНЕЦ * (ЧекККМТовары.Сумма + ЧекККМТовары.СуммаРучнойСкидки) КАК СуммаБезСкидки,
+	ВЫБОР
+		КОГДА ЧекККМТовары.Ссылка.ВидОперации = ЗНАЧЕНИЕ(Перечисление.ВидыОперацийЧекККМ.Возврат)
+			ТОГДА -1
+		ИНАЧЕ 1
+	КОНЕЦ * ЧекККМТовары.ПроцентРучнойСкидки КАК ПроцентРучнойСкидки,
+	NULL КАК Номенклатура,
+	ТИП(Документ.ЧекККМ) КАК ТипДокумента
 ИЗ
 	Документ.ЧекККМ.Товары КАК ЧекККМТовары
 ГДЕ
 	ЧекККМТовары.Ссылка.Дата МЕЖДУ &amp;ДатаС И &amp;ДатаПо
 	И ЧекККМТовары.Ссылка.Проведен = ИСТИНА
 	И НЕ ЧекККМТовары.ПричинаРучнойСкидки = ЗНАЧЕНИЕ(Справочник.ПричиныРучнойСкидки.ПустаяСсылка)
+	И НЕ ЧекККМТовары.Номенклатура.ТипНоменклатуры = ЗНАЧЕНИЕ(Перечисление.ТипыНоменклатуры.Услуга)
 
 ОБЪЕДИНИТЬ ВСЕ
 
@@ -95,7 +140,9 @@
 	ЗаказПокупателяТовары.ПричинаРучнойСкидки,
 	ЗаказПокупателяТовары.Ссылка,
 	ЗаказПокупателяТовары.СуммаРучнойСкидки + ЗаказПокупателяТовары.Сумма,
-	ЗаказПокупателяТовары.ПроцентРучнойСкидки
+	ЗаказПокупателяТовары.ПроцентРучнойСкидки,
+	ЗаказПокупателяТовары.Номенклатура,
+	ТИП(Документ.ЗаказПокупателя)
 ИЗ
 	Документ.ЗаказПокупателя.Товары КАК ЗаказПокупателяТовары
 ГДЕ
@@ -103,8 +150,111 @@
 	И ЗаказПокупателяТовары.Ссылка.Проведен = ИСТИНА
 	И ЗаказПокупателяТовары.Ссылка.Статус = &amp;Статус
 	И НЕ ЗаказПокупателяТовары.ПричинаРучнойСкидки = ЗНАЧЕНИЕ(Справочник.ПричиныРучнойСкидки.ПустаяСсылка)
-	И ЗаказПокупателяТовары.Отменено = ЛОЖЬ</query>
+	И ЗаказПокупателяТовары.Отменено = ЛОЖЬ
+	И НЕ ЗаказПокупателяТовары.Номенклатура.ТипНоменклатуры = ЗНАЧЕНИЕ(Перечисление.ТипыНоменклатуры.Услуга)</query>
 	</dataSet>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных2</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Ссылка</dataPath>
+			<field>Ссылка</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоВсего</dataPath>
+			<field>КоличествоВсего</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество чеков за день</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаДокумента</dataPath>
+			<field>СуммаДокумента</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма чеков за день</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Магазин</dataPath>
+			<field>Магазин</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Дата</dataPath>
+			<field>Дата</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ТипДокумента</dataPath>
+			<field>ТипДокумента</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тип документа</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	1 КАК КоличествоВсего,
+	НАЧАЛОПЕРИОДА(ЧекККМ.Дата, ДЕНЬ) КАК Дата,
+	ЧекККМ.Ссылка КАК Ссылка,
+	ЧекККМ.Магазин КАК Магазин,
+	ВЫБОР
+		КОГДА ЧекККМ.ВидОперации = ЗНАЧЕНИЕ(Перечисление.ВидыОперацийЧекККМ.Возврат)
+			ТОГДА -1
+		ИНАЧЕ 1
+	КОНЕЦ * ЧекККМ.СуммаДокумента КАК СуммаДокумента,
+	ТИП(Документ.ЧекККМ) КАК ТипДокумента
+ИЗ
+	Документ.ЧекККМ КАК ЧекККМ
+ГДЕ
+	ЧекККМ.Дата МЕЖДУ &amp;ДатаС И &amp;ДатаПо
+	И ЧекККМ.Проведен = ИСТИНА
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	1,
+	НАЧАЛОПЕРИОДА(ЗаказПокупателя.Дата, ДЕНЬ),
+	ЗаказПокупателя.Ссылка,
+	ЗаказПокупателя.Магазин,
+	ЗаказПокупателя.СуммаДокумента,
+	ТИП(Документ.ЗаказПокупателя)
+ИЗ
+	Документ.ЗаказПокупателя КАК ЗаказПокупателя
+ГДЕ
+	ЗаказПокупателя.Дата МЕЖДУ &amp;ДатаС И &amp;ДатаПо
+	И ЗаказПокупателя.Проведен = ИСТИНА
+	И ЗаказПокупателя.Статус = &amp;Статус</query>
+	</dataSet>
+	<dataSetLink>
+		<sourceDataSet>НаборДанных1</sourceDataSet>
+		<destinationDataSet>НаборДанных2</destinationDataSet>
+		<sourceExpression>Магазин</sourceExpression>
+		<destinationExpression>Магазин</destinationExpression>
+	</dataSetLink>
+	<dataSetLink>
+		<sourceDataSet>НаборДанных1</sourceDataSet>
+		<destinationDataSet>НаборДанных2</destinationDataSet>
+		<sourceExpression>Дата</sourceExpression>
+		<destinationExpression>Дата</destinationExpression>
+	</dataSetLink>
+	<dataSetLink>
+		<sourceDataSet>НаборДанных1</sourceDataSet>
+		<destinationDataSet>НаборДанных2</destinationDataSet>
+		<sourceExpression>ТипДокумента</sourceExpression>
+		<destinationExpression>ТипДокумента</destinationExpression>
+	</dataSetLink>
 	<totalField>
 		<dataPath>Количество</dataPath>
 		<expression>Сумма(Количество)</expression>
@@ -120,6 +270,14 @@
 	<totalField>
 		<dataPath>СуммаБезСкидки</dataPath>
 		<expression>Сумма(СуммаБезСкидки)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>КоличествоВсего</dataPath>
+		<expression>Сумма(КоличествоВсего)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СуммаДокумента</dataPath>
+		<expression>Сумма(СуммаДокумента)</expression>
 	</totalField>
 	<parameter>
 		<name>ДатаПо</name>
@@ -208,25 +366,40 @@
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:selection>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Магазин</dcsset:field>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Дата</dcsset:field>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Количество</dcsset:field>
+					<dcsset:lwsTitle>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Количество чеков и ИЗ со скидкой</v8:content>
+						</v8:item>
+					</dcsset:lwsTitle>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>СуммаБезСкидки</dcsset:field>
+					<dcsset:lwsTitle>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма документов в которых есть скидка</v8:content>
+						</v8:item>
+					</dcsset:lwsTitle>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>СуммаРучнойСкидки</dcsset:field>
+					<dcsset:lwsTitle>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма ручных скидок</v8:content>
+						</v8:item>
+					</dcsset:lwsTitle>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Сумма</dcsset:field>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Документ</dcsset:field>
+					<dcsset:lwsTitle>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма продажи за вычетом скидки</v8:content>
+						</v8:item>
+					</dcsset:lwsTitle>
 				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:dataParameters>
@@ -255,7 +428,27 @@
 					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
 				</dcsset:order>
 				<dcsset:selection>
-					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Магазин</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Количество</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>СуммаБезСкидки</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>СуммаРучнойСкидки</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Сумма</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>КоличествоВсего</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>СуммаДокумента</dcsset:field>
+					</dcsset:item>
 				</dcsset:selection>
 				<dcsset:item xsi:type="dcsset:StructureItemGroup">
 					<dcsset:groupItems>
@@ -271,7 +464,27 @@
 						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
 					</dcsset:order>
 					<dcsset:selection>
-						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>Дата</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>Количество</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>СуммаБезСкидки</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>СуммаРучнойСкидки</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>Сумма</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>КоличествоВсего</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>СуммаДокумента</dcsset:field>
+						</dcsset:item>
 					</dcsset:selection>
 					<dcsset:item xsi:type="dcsset:StructureItemGroup">
 						<dcsset:groupItems>
@@ -301,7 +514,27 @@
 							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
 						</dcsset:order>
 						<dcsset:selection>
-							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>Документ</dcsset:field>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>ПричинаРучнойСкидки</dcsset:field>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>ПроцентРучнойСкидки</dcsset:field>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>Количество</dcsset:field>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>СуммаБезСкидки</dcsset:field>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>СуммаРучнойСкидки</dcsset:field>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>Сумма</dcsset:field>
+							</dcsset:item>
 						</dcsset:selection>
 					</dcsset:item>
 				</dcsset:item>
