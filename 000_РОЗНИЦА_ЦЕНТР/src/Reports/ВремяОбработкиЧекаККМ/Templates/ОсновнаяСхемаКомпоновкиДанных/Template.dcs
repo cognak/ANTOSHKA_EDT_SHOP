@@ -28,6 +28,17 @@
 		<field xsi:type="DataSetFieldField">
 			<dataPath>ВремяОбработки</dataPath>
 			<field>ВремяОбработки</field>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ЧДЦ=1</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>ВремяОбработкиОдногоТовара</dataPath>
@@ -38,6 +49,17 @@
 					<v8:content>Время обработки одного товара</v8:content>
 				</v8:item>
 			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ЧДЦ=1</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>КоличествоСтрокЧека</dataPath>
@@ -62,10 +84,32 @@
 		<field xsi:type="DataSetFieldField">
 			<dataPath>ВремяОплаты</dataPath>
 			<field>ВремяОплаты</field>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ЧДЦ=1</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>ВремяРасчетаСкидок</dataPath>
 			<field>ВремяРасчетаСкидок</field>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ЧДЦ=1</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
@@ -82,8 +126,8 @@
 		КОНЕЦ) КАК ЕстьУслуги,
 	ВремяОбработкиЧека.ВремяОплаты КАК ВремяОплаты,
 	ВремяОбработкиЧека.ВремяРасчетаСкидок КАК ВремяРасчетаСкидок,
-	МАКСИМУМ(ЧекККМПогашениеСкидочныхКупонов.НомерСтроки) КАК КолКупонов,
-	МАКСИМУМ(ЧекККМПогашениеПодарочныхСертификатов.НомерСтроки) КАК КолСертификатов
+	МАКСИМУМ(ЕСТЬNULL(ЧекККМПогашениеСкидочныхКупонов.НомерСтроки, 0)) КАК КолКупонов,
+	МАКСИМУМ(ЕСТЬNULL(ЧекККМПогашениеПодарочныхСертификатов.НомерСтроки, 0)) КАК КолСертификатов
 ПОМЕСТИТЬ ТабВіборка
 ИЗ
 	РегистрСведений.ВремяОбработкиЧека КАК ВремяОбработкиЧека
@@ -135,11 +179,11 @@
 	</totalField>
 	<totalField>
 		<dataPath>ВремяРасчетаСкидок</dataPath>
-		<expression>Сумма(ВремяРасчетаСкидок)</expression>
+		<expression>Среднее(ВремяРасчетаСкидок)</expression>
 	</totalField>
 	<totalField>
 		<dataPath>ВремяОплаты</dataPath>
-		<expression>Сумма(ВремяОплаты)</expression>
+		<expression>Среднее(ВремяОплаты)</expression>
 	</totalField>
 	<parameter>
 		<name>СписокНоменклатуры</name>
@@ -152,8 +196,8 @@
 		<valueType>
 			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Номенклатура</v8:Type>
 		</valueType>
-		<value xsi:nil="true"/>
 		<useRestriction>false</useRestriction>
+		<valueListAllowed>true</valueListAllowed>
 	</parameter>
 	<parameter>
 		<name>ДатаПо</name>
