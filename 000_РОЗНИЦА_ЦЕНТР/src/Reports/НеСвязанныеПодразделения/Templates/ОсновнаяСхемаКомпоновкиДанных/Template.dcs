@@ -89,7 +89,9 @@
 			</v8:DateQualifiers>
 		</valueType>
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-		<useRestriction>false</useRestriction>
+		<useRestriction>true</useRestriction>
+		<expression>КонецДня(ТекущаяДата())</expression>
+		<use>Always</use>
 	</parameter>
 	<parameter>
 		<name>ДатаС</name>
@@ -106,7 +108,9 @@
 			</v8:DateQualifiers>
 		</valueType>
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-		<useRestriction>false</useRestriction>
+		<useRestriction>true</useRestriction>
+		<expression>НачалоДня(ТекущаяДата())</expression>
+		<use>Always</use>
 	</parameter>
 	<parameter>
 		<name>ТипОтправителя</name>
@@ -124,11 +128,22 @@
 			</v8:StringQualifiers>
 		</valueType>
 		<value xsi:type="xs:string"/>
-		<useRestriction>false</useRestriction>
+		<useRestriction>true</useRestriction>
+		<expression>"Справочник.ПодразделенияОрганизаций"</expression>
+		<use>Always</use>
 	</parameter>
 	<settingsVariant>
-		<dcsset:name>Основной</dcsset:name>
-		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
+		<dcsset:name>НеСвязанныеПодразделения</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Не связанные подразделения</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>uk</v8:lang>
+				<v8:content>Основной</v8:content>
+			</v8:item>
+		</dcsset:presentation>
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:selection>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
