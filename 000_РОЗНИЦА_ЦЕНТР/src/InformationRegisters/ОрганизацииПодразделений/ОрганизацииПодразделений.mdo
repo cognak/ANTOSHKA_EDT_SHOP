@@ -16,9 +16,19 @@
   </synonym>
   <useStandardCommands>true</useStandardCommands>
   <editType>InDialog</editType>
+  <defaultRecordForm>InformationRegister.ОрганизацииПодразделений.Form.ФормаЗаписи</defaultRecordForm>
+  <defaultListForm>InformationRegister.ОрганизацииПодразделений.Form.ФормаСписка</defaultListForm>
   <informationRegisterPeriodicity>Day</informationRegisterPeriodicity>
   <mainFilterOnPeriod>true</mainFilterOnPeriod>
   <dataLockControlMode>Managed</dataLockControlMode>
+  <recordPresentation>
+    <key>ru</key>
+    <value>Организация подразделения</value>
+  </recordPresentation>
+  <extendedRecordPresentation>
+    <key>ru</key>
+    <value>Организация подразделения текущая</value>
+  </extendedRecordPresentation>
   <resources uuid="e7398cb1-234a-4b57-97a5-dd09019d6b36">
     <name>Организация</name>
     <synonym>
@@ -33,28 +43,71 @@
     <fullTextSearch>Use</fullTextSearch>
     <dataHistory>Use</dataHistory>
     <fillValue xsi:type="core:UndefinedValue"/>
+    <indexing>Index</indexing>
   </resources>
+  <attributes uuid="3cbfabb6-4ba1-4a8d-9969-9952a88e3e50">
+    <name>ДатаИзменения</name>
+    <synonym>
+      <key>ru</key>
+      <value>Дата изменения</value>
+    </synonym>
+    <type>
+      <types>Date</types>
+      <dateQualifiers/>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </attributes>
   <dimensions uuid="0b6f5274-9295-4bc7-852a-3f6b50f38c3f">
     <name>Владелец</name>
     <synonym>
       <key>ru</key>
       <value>Владелец</value>
     </synonym>
-    <comment>строка для обеспечения множественного типа... временно</comment>
+    <comment>Элемент справочника, периодичность реквизита которого мы обеспечиваем.</comment>
     <type>
       <types>String</types>
       <types>CatalogRef.Магазины</types>
       <stringQualifiers>
-        <length>10</length>
+        <length>50</length>
       </stringQualifiers>
     </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Элемент справочника, периодичность реквизита которого мы обеспечиваем.</value>
+    </toolTip>
+    <toolTip>
+      <key>uk</key>
+      <value>Елемент довідника, періодичність реквізиту якого ми забезпечуємо.</value>
+    </toolTip>
     <minValue xsi:type="core:UndefinedValue"/>
     <maxValue xsi:type="core:UndefinedValue"/>
     <fullTextSearch>Use</fullTextSearch>
     <dataHistory>Use</dataHistory>
-    <fillValue xsi:type="core:StringValue">
-      <value></value>
-    </fillValue>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
     <mainFilter>true</mainFilter>
   </dimensions>
+  <forms uuid="a3190e4c-c48a-4bd7-80a9-d5dcaacddd97">
+    <name>ФормаЗаписи</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма записи</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <forms uuid="e7d139c0-1604-4231-97ec-164e9367d485">
+    <name>ФормаСписка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма списка</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
 </mdclass:InformationRegister>

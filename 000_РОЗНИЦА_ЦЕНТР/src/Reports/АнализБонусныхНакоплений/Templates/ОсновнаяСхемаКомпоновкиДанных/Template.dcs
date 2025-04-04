@@ -36,6 +36,17 @@
 		<field xsi:type="DataSetFieldField">
 			<dataPath>СписаниеПартий</dataPath>
 			<field>СписаниеПартий</field>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>БЛ=Нет; БИ=Да</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Авария</dataPath>
@@ -131,12 +142,23 @@
 				</dcscor:item>
 			</appearance>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ТипБонусов</dataPath>
+			<field>ТипБонусов</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тип бонусов</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	ТаблицаРегистра.Период КАК Период,
 	ТаблицаРегистра.Регистратор КАК Регистратор,
 	ТаблицаРегистра.ВидДвижения КАК ВидДвижения,
 	ТаблицаРегистра.ПрограммаЛояльности КАК ПрограммаЛояльности,
+	ТаблицаРегистра.ПрограммаЛояльности.ТипБонусов КАК ТипБонусов,
 	ТаблицаРегистра.Контрагент КАК Контрагент,
 	ТаблицаРегистра.ДокументНачисления КАК ДокументНачисления,
 	ВЫБОР
@@ -265,6 +287,7 @@
 			</dcsset:selection>
 			<dcsset:filter>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
 					<dcsset:left xsi:type="dcscor:Field">Контрагент</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:userSettingID>5a101f95-ee22-4b7f-b234-de68ad8696e2</dcsset:userSettingID>
@@ -286,6 +309,14 @@
 					<dcsset:left xsi:type="dcscor:Field">ДокументОперации</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:userSettingID>5e9f216f-c7dc-4350-aef6-1cc2aba93ae9</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:left xsi:type="dcscor:Field">ТипБонусов</dcsset:left>
+					<dcsset:comparisonType>InList</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Перечисление.ТипыБонусов.Органический</dcsset:right>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Перечисление.ТипыБонусов.Привлечение</dcsset:right>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Перечисление.ТипыБонусов.Акционный</dcsset:right>
+					<dcsset:userSettingID>b30f6e1c-46f6-49cc-9bc7-6cc808ebdb60</dcsset:userSettingID>
 				</dcsset:item>
 			</dcsset:filter>
 			<dcsset:dataParameters>

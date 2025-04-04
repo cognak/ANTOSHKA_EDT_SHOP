@@ -86,6 +86,27 @@
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Номенклатура</dataPath>
+			<field>Номенклатура</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЗапросДоступностиТоваров</dataPath>
+			<field>ЗапросДоступностиТоваров</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ЗД</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СогласованоВNavision</dataPath>
+			<field>СогласованоВNavision</field>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	СостояниеСтрокЗаказаПокупателя.ЗаказПокупателя.Ссылка КАК Заказ,
@@ -95,14 +116,26 @@
 	СостояниеСтрокЗаказаПокупателя.ЗаказПокупателя.СтатусОплаты КАК СтатусОплаты,
 	СостояниеСтрокЗаказаПокупателя.ЗаказПокупателя.ТипОплаты КАК ТипОплаты,
 	СостояниеСтрокЗаказаПокупателя.ЗаказПокупателя.СтатусИМ КАК СтатусИМ,
-	СостояниеСтрокЗаказаПокупателя.ЗаказПокупателя.СуммаДокумента КАК Сумма
+	СостояниеСтрокЗаказаПокупателя.ЗаказПокупателя.СуммаДокумента КАК Сумма,
+	ЗапросДоступностиТоваровТовары.Номенклатура КАК Номенклатура,
+	СостояниеСтрокЗаказаПокупателя.ЗапросДоступностиТоваров КАК ЗапросДоступностиТоваров,
+	СостояниеСтрокЗаказаПокупателя.СогласованоВNavision КАК СогласованоВNavision
 ИЗ
 	РегистрСведений.СостояниеСтрокЗаказаПокупателя КАК СостояниеСтрокЗаказаПокупателя
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.ЗапросДоступностиТоваров.Товары КАК ЗапросДоступностиТоваровТовары
+		ПО СостояниеСтрокЗаказаПокупателя.ЗапросДоступностиТоваров = ЗапросДоступностиТоваровТовары.Ссылка
+			И СостояниеСтрокЗаказаПокупателя.КлючСвязи = ЗапросДоступностиТоваровТовары.КлючСвязи
 ГДЕ
 	СостояниеСтрокЗаказаПокупателя.Продано = ЛОЖЬ
 	И СостояниеСтрокЗаказаПокупателя.ГотовКПродаже = ИСТИНА
-	И НЕ(СостояниеСтрокЗаказаПокупателя.ЗаказПокупателя.ТипДоставки = &amp;ТипДоставки
-				И СостояниеСтрокЗаказаПокупателя.ЗаказПокупателя.СтатусОплаты = &amp;СтатусОплаты)
+	И (НЕ ЗапросДоступностиТоваровТовары.Ссылка.ТипДоставки = &amp;ТипДоставки
+			ИЛИ ЗапросДоступностиТоваровТовары.Ссылка.ТипДоставки = &amp;ТипДоставки
+				И НЕ СостояниеСтрокЗаказаПокупателя.ЗаказПокупателя.СтатусОплаты = &amp;СтатусОплаты)
+	И СостояниеСтрокЗаказаПокупателя.ЗаказПокупателя.Дата МЕЖДУ &amp;ДатаС И &amp;ДатаПо
+	И ЗапросДоступностиТоваровТовары.Ссылка.ТипОплаты &lt;&gt; &amp;ТипОплаты
+	И ЗапросДоступностиТоваровТовары.Ссылка.ТипОплаты &lt;&gt; &amp;ТипОплатыПостОплата
+	И СостояниеСтрокЗаказаПокупателя.ЗаказПокупателя.Контрагент.ЮрФизЛицо &lt;&gt; &amp;ЮрФизЛицо
+	И СостояниеСтрокЗаказаПокупателя.ЗаказПокупателя.Контрагент.ЮрФизЛицо &lt;&gt; &amp;ЮрФизЛицо2
 
 СГРУППИРОВАТЬ ПО
 	СостояниеСтрокЗаказаПокупателя.ЗаказПокупателя.Ссылка,
@@ -112,7 +145,10 @@
 	СостояниеСтрокЗаказаПокупателя.ЗаказПокупателя.СтатусОплаты,
 	СостояниеСтрокЗаказаПокупателя.ЗаказПокупателя.СтатусИМ,
 	СостояниеСтрокЗаказаПокупателя.ЗаказПокупателя.Статус,
-	СостояниеСтрокЗаказаПокупателя.ЗаказПокупателя.СуммаДокумента</query>
+	СостояниеСтрокЗаказаПокупателя.ЗаказПокупателя.СуммаДокумента,
+	ЗапросДоступностиТоваровТовары.Номенклатура,
+	СостояниеСтрокЗаказаПокупателя.ЗапросДоступностиТоваров,
+	СостояниеСтрокЗаказаПокупателя.СогласованоВNavision</query>
 	</dataSet>
 	<parameter>
 		<name>СтатусОплаты</name>
@@ -142,11 +178,126 @@
 		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ТипДоставкиЗаказПокупателя.Самовывоз</value>
 		<useRestriction>true</useRestriction>
 	</parameter>
+	<parameter>
+		<name>ДатаПо</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата по</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаОкончания</expression>
+	</parameter>
+	<parameter>
+		<name>ДатаС</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата С</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаНачала</expression>
+	</parameter>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>ТипОплаты</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Тип оплаты</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:EnumRef.ТипОплатыЗаказПокупателя</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ТипОплатыЗаказПокупателя.БРПредоплата</value>
+		<useRestriction>true</useRestriction>
+		<use>Always</use>
+	</parameter>
+	<parameter>
+		<name>ТипОплатыПостОплата</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Тип оплаты пост оплата</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:EnumRef.ТипОплатыЗаказПокупателя</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ТипОплатыЗаказПокупателя.БРПостоплата</value>
+		<useRestriction>true</useRestriction>
+		<use>Always</use>
+	</parameter>
+	<parameter>
+		<name>ЮрФизЛицо</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Юр физ лицо</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:EnumRef.ЮрФизЛицо</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ЮрФизЛицо.ЮрЛицо</value>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<parameter>
+		<name>ЮрФизЛицо2</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Юр физ лицо2</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:EnumRef.ЮрФизЛицо</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ЮрФизЛицо.ЮрЛицоНеРезидент</value>
+		<useRestriction>true</useRestriction>
+	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
 		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Номенклатура</dcsset:field>
+				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Заказ</dcsset:field>
 				</dcsset:item>
@@ -171,46 +322,153 @@
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>ТипОплаты</dcsset:field>
 				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СогласованоВNavision</dcsset:field>
+				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:filter>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
-					<dcsset:left xsi:type="dcscor:Field">Дата</dcsset:left>
-					<dcsset:comparisonType>GreaterOrEqual</dcsset:comparisonType>
-					<dcsset:right xsi:type="v8:StandardBeginningDate">
-						<v8:variant xsi:type="v8:StandardBeginningDateVariant">Custom</v8:variant>
-						<v8:date>0001-01-01T00:00:00</v8:date>
-					</dcsset:right>
-					<dcsset:userSettingID>79bac1a4-b1ed-4839-8577-6a2904f57e97</dcsset:userSettingID>
-					<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>ДатаС</v8:content>
-						</v8:item>
-					</dcsset:userSettingPresentation>
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Статус</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>9735e8e0-ce1c-4cd9-8364-6a0798d440e6</dcsset:userSettingID>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
-					<dcsset:left xsi:type="dcscor:Field">Дата</dcsset:left>
-					<dcsset:comparisonType>LessOrEqual</dcsset:comparisonType>
-					<dcsset:right xsi:type="v8:StandardBeginningDate">
-						<v8:variant xsi:type="v8:StandardBeginningDateVariant">Custom</v8:variant>
-						<v8:date>0001-01-01T00:00:00</v8:date>
-					</dcsset:right>
-					<dcsset:userSettingID>fdf9b951-7f18-4679-8db6-4dd51e52e101</dcsset:userSettingID>
-					<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Дата по</v8:content>
-						</v8:item>
-					</dcsset:userSettingPresentation>
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">СогласованоВNavision</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					<dcsset:userSettingID>92a5a7ca-150a-4bc4-af97-5294c9d90362</dcsset:userSettingID>
 				</dcsset:item>
 			</dcsset:filter>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Период</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+					</dcscor:value>
+					<dcsset:userSettingID>1b6e4de6-56e1-4f72-b548-c309ae1e89f9</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Заказ.Организация</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
 				<dcsset:order>
 					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
 				</dcsset:order>
 				<dcsset:selection>
 					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
 				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Заказ</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Номер</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Статус</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>СтатусИМ</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>СтатусОплаты</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Сумма</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>ТипОплаты</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>СогласованоВNavision</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+					<dcsset:item xsi:type="dcsset:StructureItemGroup">
+						<dcsset:groupItems>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>ЗапросДоступностиТоваров</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+						</dcsset:groupItems>
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						</dcsset:selection>
+						<dcsset:item xsi:type="dcsset:StructureItemGroup">
+							<dcsset:groupItems>
+								<dcsset:item xsi:type="dcsset:GroupItemField">
+									<dcsset:field>Номенклатура</dcsset:field>
+									<dcsset:groupType>Items</dcsset:groupType>
+									<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+									<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+									<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+								</dcsset:item>
+							</dcsset:groupItems>
+							<dcsset:order>
+								<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+							</dcsset:order>
+							<dcsset:selection>
+								<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+							</dcsset:selection>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:item>
 			</dcsset:item>
 		</dcsset:settings>
 	</settingsVariant>

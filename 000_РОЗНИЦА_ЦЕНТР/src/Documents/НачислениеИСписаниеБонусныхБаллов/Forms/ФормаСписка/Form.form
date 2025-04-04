@@ -31,6 +31,7 @@
     <type>UsualGroup</type>
     <extInfo xsi:type="form:UsualGroupExtInfo">
       <group>Vertical</group>
+      <behavior>Auto</behavior>
       <representation>WeakSeparation</representation>
       <showLeftMargin>true</showLeftMargin>
       <united>true</united>
@@ -60,7 +61,7 @@
         <common>true</common>
       </userVisible>
       <dataPath xsi:type="form:DataPath">
-        <segments>Список.Date</segments>
+        <segments>Список.Дата</segments>
       </dataPath>
       <defaultItem>true</defaultItem>
       <extendedTooltip>
@@ -111,7 +112,7 @@
           <common>true</common>
         </userVisible>
         <dataPath xsi:type="form:DataPath">
-          <segments>Список.Number</segments>
+          <segments>Список.Номер</segments>
         </dataPath>
         <extendedTooltip>
           <name>НомерРасширеннаяПодсказка</name>
@@ -228,6 +229,54 @@
       <extInfo xsi:type="form:ColumnGroupExtInfo">
         <group>Vertical</group>
         <showTitle>true</showTitle>
+      </extInfo>
+    </items>
+    <items xsi:type="form:FormField">
+      <name>ВидОперации</name>
+      <id>69</id>
+      <visible>true</visible>
+      <enabled>true</enabled>
+      <userVisible>
+        <common>true</common>
+      </userVisible>
+      <dataPath xsi:type="form:DataPath">
+        <segments>Список.ВидОперации</segments>
+      </dataPath>
+      <extendedTooltip>
+        <name>ВидОперацииРасширеннаяПодсказка</name>
+        <id>71</id>
+        <visible>true</visible>
+        <enabled>true</enabled>
+        <userVisible>
+          <common>true</common>
+        </userVisible>
+        <type>Label</type>
+        <autoMaxWidth>true</autoMaxWidth>
+        <autoMaxHeight>true</autoMaxHeight>
+        <extInfo xsi:type="form:LabelDecorationExtInfo">
+          <horizontalAlign>Left</horizontalAlign>
+        </extInfo>
+      </extendedTooltip>
+      <contextMenu>
+        <name>ВидОперацииКонтекстноеМеню</name>
+        <id>70</id>
+        <visible>true</visible>
+        <enabled>true</enabled>
+        <userVisible>
+          <common>true</common>
+        </userVisible>
+        <autoFill>true</autoFill>
+      </contextMenu>
+      <type>LabelField</type>
+      <editMode>Enter</editMode>
+      <showInHeader>true</showInHeader>
+      <headerHorizontalAlign>Left</headerHorizontalAlign>
+      <showInFooter>true</showInFooter>
+      <extInfo xsi:type="form:LabelFieldExtInfo">
+        <width>10</width>
+        <autoMaxWidth>true</autoMaxWidth>
+        <autoMaxHeight>true</autoMaxHeight>
+        <horizontalStretch>false</horizontalStretch>
       </extInfo>
     </items>
     <items xsi:type="form:FormField">
@@ -367,6 +416,171 @@
       <extInfo xsi:type="form:LabelFieldExtInfo">
         <autoMaxWidth>true</autoMaxWidth>
         <autoMaxHeight>true</autoMaxHeight>
+      </extInfo>
+    </items>
+    <items xsi:type="form:FormGroup">
+      <name>ГруппаСуммыБаллов</name>
+      <id>72</id>
+      <items xsi:type="form:FormField">
+        <name>СуммаБонусныхБалловНачислено</name>
+        <id>74</id>
+        <visible>true</visible>
+        <enabled>true</enabled>
+        <userVisible>
+          <common>true</common>
+        </userVisible>
+        <dataPath xsi:type="form:DataPath">
+          <segments>Список.СуммаБонусныхБалловНачислено</segments>
+        </dataPath>
+        <titleLocation>None</titleLocation>
+        <extendedTooltip>
+          <name>СуммаБонусныхБалловНачисленоРасширеннаяПодсказка</name>
+          <id>76</id>
+          <visible>true</visible>
+          <enabled>true</enabled>
+          <userVisible>
+            <common>true</common>
+          </userVisible>
+          <type>Label</type>
+          <autoMaxWidth>true</autoMaxWidth>
+          <autoMaxHeight>true</autoMaxHeight>
+          <extInfo xsi:type="form:LabelDecorationExtInfo">
+            <horizontalAlign>Left</horizontalAlign>
+          </extInfo>
+        </extendedTooltip>
+        <contextMenu>
+          <name>СуммаБонусныхБалловНачисленоКонтекстноеМеню</name>
+          <id>75</id>
+          <visible>true</visible>
+          <enabled>true</enabled>
+          <userVisible>
+            <common>true</common>
+          </userVisible>
+          <autoFill>true</autoFill>
+        </contextMenu>
+        <type>LabelField</type>
+        <editMode>Enter</editMode>
+        <showInHeader>true</showInHeader>
+        <headerPicture xsi:type="core:PictureRef">
+          <picture>CommonPicture.СерыйПлюс</picture>
+        </headerPicture>
+        <headerHorizontalAlign>Center</headerHorizontalAlign>
+        <showInFooter>true</showInFooter>
+        <extInfo xsi:type="form:LabelFieldExtInfo">
+          <width>10</width>
+          <autoMaxHeight>true</autoMaxHeight>
+          <horizontalStretch>false</horizontalStretch>
+          <backColor xsi:type="core:ColorRef">
+            <color>Web.HoneyDew</color>
+          </backColor>
+          <font xsi:type="core:FontRef">
+            <font>Style.NormalTextFont</font>
+            <height>10.0</height>
+          </font>
+        </extInfo>
+      </items>
+      <items xsi:type="form:FormField">
+        <name>СуммаБонусныхБалловСписано</name>
+        <id>77</id>
+        <title>
+          <key>ru</key>
+          <value>Сумма Списано</value>
+        </title>
+        <visible>true</visible>
+        <enabled>true</enabled>
+        <userVisible>
+          <common>true</common>
+        </userVisible>
+        <dataPath xsi:type="form:DataPath">
+          <segments>Список.СуммаБонусныхБалловСписано</segments>
+        </dataPath>
+        <titleLocation>None</titleLocation>
+        <extendedTooltip>
+          <name>СуммаБонусныхБалловСписаноРасширеннаяПодсказка</name>
+          <id>79</id>
+          <visible>true</visible>
+          <enabled>true</enabled>
+          <userVisible>
+            <common>true</common>
+          </userVisible>
+          <type>Label</type>
+          <autoMaxWidth>true</autoMaxWidth>
+          <autoMaxHeight>true</autoMaxHeight>
+          <extInfo xsi:type="form:LabelDecorationExtInfo">
+            <horizontalAlign>Left</horizontalAlign>
+          </extInfo>
+        </extendedTooltip>
+        <contextMenu>
+          <name>СуммаБонусныхБалловСписаноКонтекстноеМеню</name>
+          <id>78</id>
+          <visible>true</visible>
+          <enabled>true</enabled>
+          <userVisible>
+            <common>true</common>
+          </userVisible>
+          <autoFill>true</autoFill>
+        </contextMenu>
+        <type>LabelField</type>
+        <editMode>Enter</editMode>
+        <showInHeader>true</showInHeader>
+        <headerPicture xsi:type="core:PictureRef">
+          <picture>CommonPicture.СерыйМинус</picture>
+        </headerPicture>
+        <headerHorizontalAlign>Center</headerHorizontalAlign>
+        <showInFooter>true</showInFooter>
+        <extInfo xsi:type="form:LabelFieldExtInfo">
+          <width>10</width>
+          <autoMaxHeight>true</autoMaxHeight>
+          <horizontalStretch>false</horizontalStretch>
+          <backColor xsi:type="core:ColorRef">
+            <color>Web.SeaShell</color>
+          </backColor>
+          <font xsi:type="core:FontRef">
+            <font>Style.NormalTextFont</font>
+            <height>10.0</height>
+          </font>
+        </extInfo>
+      </items>
+      <visible>true</visible>
+      <enabled>true</enabled>
+      <userVisible>
+        <common>true</common>
+      </userVisible>
+      <title>
+        <key>ru</key>
+        <value>Суммы баллов</value>
+      </title>
+      <titleFont xsi:type="core:FontRef">
+        <font>Style.NormalTextFont</font>
+        <bold>true</bold>
+        <italic>false</italic>
+        <underline>false</underline>
+        <strikeout>false</strikeout>
+      </titleFont>
+      <toolTip>
+        <key>ru</key>
+        <value>Группа суммы баллов</value>
+      </toolTip>
+      <extendedTooltip>
+        <name>ГруппаСуммыБалловРасширеннаяПодсказка</name>
+        <id>73</id>
+        <visible>true</visible>
+        <enabled>true</enabled>
+        <userVisible>
+          <common>true</common>
+        </userVisible>
+        <type>Label</type>
+        <autoMaxWidth>true</autoMaxWidth>
+        <autoMaxHeight>true</autoMaxHeight>
+        <extInfo xsi:type="form:LabelDecorationExtInfo">
+          <horizontalAlign>Left</horizontalAlign>
+        </extInfo>
+      </extendedTooltip>
+      <type>ColumnGroup</type>
+      <extInfo xsi:type="form:ColumnGroupExtInfo">
+        <showTitle>true</showTitle>
+        <showInHeader>true</showInHeader>
+        <headerHorizontalAlign>Center</headerHorizontalAlign>
       </extInfo>
     </items>
     <items xsi:type="form:FormField">
@@ -959,7 +1173,7 @@
         </userVisible>
         <autoFill>true</autoFill>
       </contextMenu>
-      <source>СписокСтрокаПоиска</source>
+      <source>Список</source>
       <extInfo xsi:type="form:SearchStringAdditionExtInfo">
         <autoMaxWidth>true</autoMaxWidth>
       </extInfo>
@@ -998,7 +1212,7 @@
         <autoFill>true</autoFill>
       </contextMenu>
       <type>ViewStatusAddition</type>
-      <source>СписокСостояниеПросмотра</source>
+      <source>Список</source>
       <extInfo xsi:type="form:ViewStatusAdditionExtInfo">
         <autoMaxWidth>true</autoMaxWidth>
       </extInfo>
@@ -1037,7 +1251,7 @@
         <autoFill>true</autoFill>
       </contextMenu>
       <type>SearchControlAddition</type>
-      <source>СписокУправлениеПоиском</source>
+      <source>Список</source>
       <extInfo xsi:type="form:SearchControlAdditionExtInfo">
         <autoMaxWidth>true</autoMaxWidth>
       </extInfo>
@@ -1113,6 +1327,11 @@
     <horizontalAlign>Left</horizontalAlign>
     <autoFill>true</autoFill>
   </autoCommandBar>
+  <handlers>
+    <event>OnCreateAtServer</event>
+    <name>ПриСозданииНаСервере</name>
+  </handlers>
+  <saveWindowSettings>true</saveWindowSettings>
   <autoTitle>true</autoTitle>
   <autoUrl>true</autoUrl>
   <group>Vertical</group>
@@ -1135,12 +1354,102 @@
     </edit>
     <main>true</main>
     <extInfo xsi:type="form:DynamicListExtInfo">
+      <queryText>ВЫБРАТЬ
+	ТаблицаДокумента.Ссылка КАК Ссылка,
+	ТаблицаДокумента.ПометкаУдаления КАК ПометкаУдаления,
+	ТаблицаДокумента.Номер КАК Номер,
+	ТаблицаДокумента.Дата КАК Дата,
+	ТаблицаДокумента.Проведен КАК Проведен,
+	ТаблицаДокумента.ВидОперации КАК ВидОперации,
+	ТаблицаДокумента.ДатаОкончанияСрокаДействия КАК ДатаОкончанияСрокаДействия,
+	ТаблицаДокумента.КодБюджета КАК КодБюджета,
+	ТаблицаДокумента.КоличествоПериодовДействия КАК КоличествоПериодовДействия,
+	ТаблицаДокумента.КоличествоПериодовОтсрочкиНачалаДействия КАК КоличествоПериодовОтсрочкиНачалаДействия,
+	ТаблицаДокумента.Комментарий КАК Комментарий,
+	ТаблицаДокумента.Магазин КАК Магазин,
+	ТаблицаДокумента.Ответственный КАК Ответственный,
+	ТаблицаДокумента.ПериодДействия КАК ПериодДействия,
+	ТаблицаДокумента.ПериодОтсрочкиНачалаДействия КАК ПериодОтсрочкиНачалаДействия,
+	ТаблицаДокумента.ПрограммаЛояльности КАК ПрограммаЛояльности,
+	ТаблицаДокумента.IDN КАК IDN,
+	ТаблицаДокумента.Автор КАК Автор,
+	ТаблицаДокумента.УзелСоздания КАК УзелСоздания,
+	ТаблицаДокумента.МоментВремени КАК МоментВремени,
+	ЕСТЬNULL(ТаблицаНачисление.СуммаБонусныхБаллов, 0) КАК СуммаБонусныхБалловНачислено,
+	ЕСТЬNULL(ТаблицаСписание.СуммаБонусныхБаллов, 0) КАК СуммаБонусныхБалловСписано
+{ВЫБРАТЬ
+	Ссылка.*}
+ИЗ
+	Документ.НачислениеИСписаниеБонусныхБаллов КАК ТаблицаДокумента
+		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+			ТабличнаяЧасть.Ссылка КАК Ссылка,
+			СУММА(ТабличнаяЧасть.СуммаБонусныхБаллов) КАК СуммаБонусныхБаллов
+		{ВЫБРАТЬ
+			Ссылка.*}
+		ИЗ
+			Документ.НачислениеИСписаниеБонусныхБаллов.Начисление КАК ТабличнаяЧасть
+		{ГДЕ
+			ТабличнаяЧасть.Ссылка.*}
+		
+		СГРУППИРОВАТЬ ПО
+			ТабличнаяЧасть.Ссылка) КАК ТаблицаНачисление
+		ПО ТаблицаДокумента.Ссылка = ТаблицаНачисление.Ссылка
+		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+			ТабличнаяЧасть.Ссылка КАК Ссылка,
+			СУММА(ТабличнаяЧасть.СуммаБонусныхБаллов) КАК СуммаБонусныхБаллов
+		{ВЫБРАТЬ
+			Ссылка.*}
+		ИЗ
+			Документ.НачислениеИСписаниеБонусныхБаллов.Списание КАК ТабличнаяЧасть
+		{ГДЕ
+			ТабличнаяЧасть.Ссылка.*}
+		
+		СГРУППИРОВАТЬ ПО
+			ТабличнаяЧасть.Ссылка) КАК ТаблицаСписание
+		ПО ТаблицаДокумента.Ссылка = ТаблицаСписание.Ссылка
+{ГДЕ
+	ТаблицаДокумента.Ссылка.*}</queryText>
       <mainTable>Document.НачислениеИСписаниеБонусныхБаллов</mainTable>
       <dynamicDataRead>true</dynamicDataRead>
       <autoFillAvailableFields>true</autoFillAvailableFields>
+      <customQuery>true</customQuery>
       <autoSaveUserSettings>true</autoSaveUserSettings>
       <getInvisibleFieldPresentations>true</getInvisibleFieldPresentations>
     </extInfo>
+  </attributes>
+  <attributes>
+    <name>РазрешитьПередачуБонусныхБалловНаБлаготворительныйФонд</name>
+    <title>
+      <key>ru</key>
+      <value>Разрешить передачу бонусных баллов на благотворительный фонд</value>
+    </title>
+    <id>2</id>
+    <valueType>
+      <types>Boolean</types>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
+  </attributes>
+  <attributes>
+    <name>РаботаетАдминистратор</name>
+    <title>
+      <key>ru</key>
+      <value>Работает администратор</value>
+    </title>
+    <id>3</id>
+    <valueType>
+      <types>Boolean</types>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
   </attributes>
   <commandInterface>
     <navigationPanel/>

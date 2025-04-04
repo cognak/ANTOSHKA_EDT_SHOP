@@ -32,6 +32,16 @@
 			<dataPath>Ссылка</dataPath>
 			<field>Ссылка</field>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СсылкаОрганизация</dataPath>
+			<field>СсылкаОрганизация</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	ЧекККМОплата.Ссылка КАК Ссылка,
@@ -104,7 +114,8 @@
 	ТабОтчетВозвраты.СуммаПродажи КАК СуммаПродажи,
 	ТабОтчетВозвраты.СуммаВсехСкидок КАК СуммаВсехСкидок,
 	ТабОтчетВозвраты.Поле1 КАК СуммаСертификатов,
-	ТабОтчетВозвраты.Ссылка КАК Ссылка
+	ТабОтчетВозвраты.Ссылка КАК Ссылка,
+	ТабОтчетВозвраты.Ссылка.Организация КАК СсылкаОрганизация
 ИЗ
 	ТабОтчетВозвраты КАК ТабОтчетВозвраты
 
@@ -115,9 +126,22 @@
 	ТабОтчет.СуммаПродажи,
 	ТабОтчет.СуммаВсехСкидок,
 	ТабОтчет.Сумма,
-	ТабОтчет.Ссылка
+	ТабОтчет.Ссылка,
+	ТабОтчет.Ссылка.Организация
 ИЗ
-	ТабОтчет КАК ТабОтчет</query>
+	ТабОтчет КАК ТабОтчет
+;
+
+////////////////////////////////////////////////////////////////////////////////
+УНИЧТОЖИТЬ ТабЧеки
+;
+
+////////////////////////////////////////////////////////////////////////////////
+УНИЧТОЖИТЬ ТабОтчет
+;
+
+////////////////////////////////////////////////////////////////////////////////
+УНИЧТОЖИТЬ ТабОтчетВозвраты</query>
 	</dataSet>
 	<totalField>
 		<dataPath>СуммаВсехСкидок</dataPath>
@@ -247,6 +271,21 @@
 					<dcsset:field>СуммаСертификатов</dcsset:field>
 				</dcsset:item>
 			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Ссылка.Организация</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.Организации.ПустаяСсылка</dcsset:right>
+					<dcsset:userSettingID>c5996df2-e8e7-4aa8-a458-7276eff5042a</dcsset:userSettingID>
+					<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация</v8:content>
+						</v8:item>
+					</dcsset:userSettingPresentation>
+				</dcsset:item>
+			</dcsset:filter>
 			<dcsset:dataParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:use>false</dcscor:use>
@@ -284,7 +323,7 @@
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
 				<dcsset:groupItems>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
-						<dcsset:field>Магазин</dcsset:field>
+						<dcsset:field>СсылкаОрганизация</dcsset:field>
 						<dcsset:groupType>Items</dcsset:groupType>
 						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -298,12 +337,29 @@
 					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
 				</dcsset:selection>
 				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Магазин</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
 					<dcsset:order>
 						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
 					</dcsset:order>
 					<dcsset:selection>
 						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
 					</dcsset:selection>
+					<dcsset:item xsi:type="dcsset:StructureItemGroup">
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						</dcsset:selection>
+					</dcsset:item>
 				</dcsset:item>
 			</dcsset:item>
 		</dcsset:settings>

@@ -91,6 +91,7 @@
           <type>UsualGroup</type>
           <extInfo xsi:type="form:UsualGroupExtInfo">
             <group>Vertical</group>
+            <behavior>Auto</behavior>
             <showLeftMargin>true</showLeftMargin>
             <united>true</united>
             <throughAlign>Auto</throughAlign>
@@ -112,6 +113,7 @@
             <segments>ПереключательТиповПО</segments>
           </dataPath>
           <titleLocation>None</titleLocation>
+          <titleHeight>30</titleHeight>
           <handlers>
             <event>OnChange</event>
             <name>ПереключательСтраницПриИзменении</name>
@@ -149,7 +151,7 @@
           <showInFooter>true</showInFooter>
           <extInfo xsi:type="form:RadioButtonsFieldExtInfo">
             <itemHeight>2</itemHeight>
-            <itemTitleHeight>2</itemTitleHeight>
+            <itemTitleHeight>30</itemTitleHeight>
             <columnsCount>1</columnsCount>
           </extInfo>
         </items>
@@ -184,6 +186,7 @@
         </extendedTooltip>
         <type>UsualGroup</type>
         <extInfo xsi:type="form:UsualGroupExtInfo">
+          <behavior>Auto</behavior>
           <showLeftMargin>true</showLeftMargin>
           <united>true</united>
           <throughAlign>Auto</throughAlign>
@@ -311,6 +314,7 @@
         <type>UsualGroup</type>
         <extInfo xsi:type="form:UsualGroupExtInfo">
           <group>Vertical</group>
+          <behavior>Auto</behavior>
           <representation>WeakSeparation</representation>
           <showLeftMargin>true</showLeftMargin>
           <united>true</united>
@@ -342,6 +346,7 @@
       <type>UsualGroup</type>
       <extInfo xsi:type="form:UsualGroupExtInfo">
         <group>Vertical</group>
+        <behavior>Auto</behavior>
         <showLeftMargin>true</showLeftMargin>
         <united>true</united>
         <showTitle>true</showTitle>
@@ -654,7 +659,7 @@
           </userVisible>
           <autoFill>true</autoFill>
         </contextMenu>
-        <source>СписокУстройствСтрокаПоиска</source>
+        <source>СписокУстройств</source>
         <extInfo xsi:type="form:SearchStringAdditionExtInfo">
           <autoMaxWidth>true</autoMaxWidth>
         </extInfo>
@@ -693,7 +698,7 @@
           <autoFill>true</autoFill>
         </contextMenu>
         <type>ViewStatusAddition</type>
-        <source>СписокУстройствСостояниеПросмотра</source>
+        <source>СписокУстройств</source>
         <extInfo xsi:type="form:ViewStatusAdditionExtInfo">
           <autoMaxWidth>true</autoMaxWidth>
         </extInfo>
@@ -732,7 +737,7 @@
           <autoFill>true</autoFill>
         </contextMenu>
         <type>SearchControlAddition</type>
-        <source>СписокУстройствУправлениеПоиском</source>
+        <source>СписокУстройств</source>
         <extInfo xsi:type="form:SearchControlAdditionExtInfo">
           <autoMaxWidth>true</autoMaxWidth>
         </extInfo>
@@ -824,6 +829,7 @@
     </extendedTooltip>
     <type>UsualGroup</type>
     <extInfo xsi:type="form:UsualGroupExtInfo">
+      <behavior>Auto</behavior>
       <representation>WeakSeparation</representation>
       <showLeftMargin>true</showLeftMargin>
       <united>true</united>
@@ -1014,6 +1020,7 @@
   </handlers>
   <excludedCommands>RestoreValues</excludedCommands>
   <excludedCommands>SaveValues</excludedCommands>
+  <saveWindowSettings>true</saveWindowSettings>
   <autoUrl>true</autoUrl>
   <group>Vertical</group>
   <autoFillCheck>true</autoFillCheck>
@@ -1024,7 +1031,10 @@
   <attributes>
     <name>Объект</name>
     <id>1</id>
-    <valueType/>
+    <valueType>
+      <types>String</types>
+      <stringQualifiers/>
+    </valueType>
     <view>
       <common>true</common>
     </view>
@@ -1217,11 +1227,15 @@
         <role>Role.ДобавлениеИзменениеПодключаемогоОборудования</role>
       </for>
     </use>
+    <picture xsi:type="core:PictureRef">
+      <picture>CommonPicture.Настройка</picture>
+    </picture>
     <action xsi:type="form:FormCommandHandlerContainer">
       <handler>
         <name>НастроитьВыполнить</name>
       </handler>
     </action>
+    <representation>TextPicture</representation>
     <currentRowUse>DontUse</currentRowUse>
   </formCommands>
   <formCommands>

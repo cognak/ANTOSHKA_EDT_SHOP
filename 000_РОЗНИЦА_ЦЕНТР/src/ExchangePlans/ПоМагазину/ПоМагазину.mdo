@@ -646,6 +646,9 @@
     <mdObject>AccumulationRegister.УчетРабочегоВремени</mdObject>
   </content>
   <content>
+    <mdObject>InformationRegister.ОповещенияКонтрагентов</mdObject>
+  </content>
+  <content>
     <mdObject>InformationRegister.ОграниченияДвиженийПоИнвентаризации</mdObject>
   </content>
   <content>
@@ -752,6 +755,9 @@
   </content>
   <content>
     <mdObject>Catalog.НоменклатураПрисоединенныеФайлы</mdObject>
+  </content>
+  <content>
+    <mdObject>InformationRegister.ВремяОбработкиЧека</mdObject>
   </content>
   <content>
     <mdObject>InformationRegister.РеализацияЗаказовПокупателей</mdObject>
@@ -913,6 +919,9 @@
     <mdObject>Document.ЗаказПоставщику</mdObject>
   </content>
   <content>
+    <mdObject>Catalog.Фонды</mdObject>
+  </content>
+  <content>
     <mdObject>Catalog.ТипыУлиц</mdObject>
   </content>
   <content>
@@ -1012,6 +1021,9 @@
     <mdObject>InformationRegister.ДействиеСкидокНаценок</mdObject>
   </content>
   <content>
+    <mdObject>InformationRegister.НоменклатурнаяИнформация</mdObject>
+  </content>
+  <content>
     <mdObject>Catalog.ПроизводителиРекламныхМатериалов</mdObject>
   </content>
   <content>
@@ -1072,6 +1084,9 @@
     <mdObject>Catalog.Контрагенты</mdObject>
   </content>
   <content>
+    <mdObject>Document.ВозвратИнтернетЗаказа</mdObject>
+  </content>
+  <content>
     <mdObject>ChartOfCharacteristicTypes.ОбъектыАдресацииЗадач</mdObject>
   </content>
   <content>
@@ -1094,6 +1109,13 @@
   </content>
   <content>
     <mdObject>Catalog.ГруппыИсполнителейЗадач</mdObject>
+  </content>
+  <content>
+    <mdObject>InformationRegister.КлючевыеАтрибутыЗапросовДоступности</mdObject>
+  </content>
+  <content>
+    <mdObject>InformationRegister.ИсторияИзмененияРеквизитовНоменклатуры</mdObject>
+    <autoRecord>Allow</autoRecord>
   </content>
   <content>
     <mdObject>Catalog.ЗначенияСвойствОбъектов</mdObject>
@@ -1315,6 +1337,9 @@
     <mdObject>InformationRegister.ДатыЗапретаИзменения</mdObject>
   </content>
   <content>
+    <mdObject>InformationRegister.РазмерыЦенников</mdObject>
+  </content>
+  <content>
     <mdObject>Constant.SKUУстанавливаетсяВГлавномУзлеРИБ</mdObject>
   </content>
   <content>
@@ -1484,6 +1509,9 @@
     <mdObject>Document.ВводОстатковПоНакопительнымСкидкам</mdObject>
   </content>
   <content>
+    <mdObject>InformationRegister.СостояниеЗаказаПокупателя</mdObject>
+  </content>
+  <content>
     <mdObject>InformationRegister.КодыТоваровSKU</mdObject>
   </content>
   <content>
@@ -1512,9 +1540,6 @@
   </content>
   <content>
     <mdObject>AccumulationRegister.ТоварыОрганизаций</mdObject>
-  </content>
-  <content>
-    <mdObject>InformationRegister.НоменклатурнаяИнформация</mdObject>
   </content>
   <defaultPresentation>AsDescription</defaultPresentation>
   <editType>InDialog</editType>
@@ -1768,6 +1793,72 @@
       </type>
       <minValue xsi:type="core:UndefinedValue"/>
       <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+  </tabularSections>
+  <tabularSections uuid="c03cbab8-db2c-4ea8-ba91-ce2928b73bde">
+    <producedTypes>
+      <objectType typeId="63ef72a7-24cc-4da8-b5f7-a3409572be23" valueTypeId="1be64f0e-292d-4e26-a739-d542545ee732"/>
+      <rowType typeId="05f62c88-81e4-4adc-9cf8-d54b82887f5f" valueTypeId="b8c46ee9-eca2-4d53-8b64-099d4e2bbbcd"/>
+    </producedTypes>
+    <name>Организации</name>
+    <synonym>
+      <key>ru</key>
+      <value>Организации</value>
+    </synonym>
+    <comment>Организации, используемые вне магазина</comment>
+    <toolTip>
+      <key>ru</key>
+      <value>Организации, используемые вне магазина.
+Используется для возможности торговли в контексте
+кассового дня по другой организации</value>
+    </toolTip>
+    <attributes uuid="e97eec4d-c9b8-441b-be95-ef4995eb1889">
+      <name>Организация</name>
+      <synonym>
+        <key>ru</key>
+        <value>Организация</value>
+      </synonym>
+      <type>
+        <types>CatalogRef.Организации</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <fillChecking>ShowError</fillChecking>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+  </tabularSections>
+  <tabularSections uuid="6d901637-5082-490b-9ef4-dc88d14e8263">
+    <producedTypes>
+      <objectType typeId="9a7586ef-676f-4c2f-8d15-ce44b599c418" valueTypeId="9c432069-cfa9-45a3-bc50-050da88195d1"/>
+      <rowType typeId="a4ce7554-742d-411d-80f5-02f018b890d0" valueTypeId="f5dc2837-568d-474a-a624-b1c64ad95887"/>
+    </producedTypes>
+    <name>ОбъектыИсключения</name>
+    <synonym>
+      <key>ru</key>
+      <value>Объекты исключения</value>
+    </synonym>
+    <attributes uuid="70056165-4bfe-4353-b4fa-837ae12be095">
+      <name>ПолноеИмя</name>
+      <synonym>
+        <key>ru</key>
+        <value>Полное имя</value>
+      </synonym>
+      <type>
+        <types>String</types>
+        <stringQualifiers>
+          <length>512</length>
+        </stringQualifiers>
+      </type>
+      <toolTip>
+        <key>ru</key>
+        <value>Полное имя метаданных, требующих исключения в обмене</value>
+      </toolTip>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <fillChecking>ShowError</fillChecking>
       <dataHistory>Use</dataHistory>
       <fullTextSearch>Use</fullTextSearch>
     </attributes>

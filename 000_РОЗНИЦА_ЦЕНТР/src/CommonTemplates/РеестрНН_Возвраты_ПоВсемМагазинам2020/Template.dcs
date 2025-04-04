@@ -157,6 +157,7 @@
 	И ДанныеДляНН.Регистратор.Дата &gt;= ДАТАВРЕМЯ(2023, 8, 1)
 	И (ДанныеДляНН.ДатаПродажи &gt;= ДАТАВРЕМЯ(2023, 8, 1)
 			ИЛИ ДанныеДляНН.ДатаПродажи &lt; ДАТАВРЕМЯ(2022, 4, 1))
+	И ДанныеДляНН.Регистратор.Организация.КодПоЕДРПОУ = &amp;КодПоЕДРПОУ
 
 СГРУППИРОВАТЬ ПО
 	НоменклатураДополнительныеРеквизиты.Значение.Код,
@@ -214,6 +215,25 @@
 			</v8:DateQualifiers>
 		</valueType>
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+		<use>Always</use>
+	</parameter>
+	<parameter>
+		<name>КодПоЕДРПОУ</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Код по ЕДРПОУ</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:string</v8:Type>
+			<v8:StringQualifiers>
+				<v8:Length>10</v8:Length>
+				<v8:AllowedLength>Variable</v8:AllowedLength>
+			</v8:StringQualifiers>
+		</valueType>
+		<value xsi:type="xs:string"/>
 		<useRestriction>false</useRestriction>
 		<use>Always</use>
 	</parameter>
@@ -280,6 +300,12 @@
 					<dcscor:parameter>ДатаС</dcscor:parameter>
 					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
 					<dcsset:userSettingID>f20d453d-8878-400b-9dd4-193a1ff36cea</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>КодПоЕДРПОУ</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string"/>
+					<dcsset:userSettingID>5edc08a0-2bd7-441c-85bc-6a5e74d23d35</dcsset:userSettingID>
 				</dcscor:item>
 			</dcsset:dataParameters>
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">

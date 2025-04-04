@@ -194,6 +194,7 @@
     </extendedTooltip>
     <type>UsualGroup</type>
     <extInfo xsi:type="form:UsualGroupExtInfo">
+      <behavior>Auto</behavior>
       <showLeftMargin>true</showLeftMargin>
       <united>true</united>
       <throughAlign>Auto</throughAlign>
@@ -319,7 +320,7 @@
           </userVisible>
           <autoFill>true</autoFill>
         </contextMenu>
-        <source>ДеревоСтрокаПоиска</source>
+        <source>Дерево</source>
         <extInfo xsi:type="form:SearchStringAdditionExtInfo">
           <autoMaxWidth>true</autoMaxWidth>
         </extInfo>
@@ -358,7 +359,7 @@
           <autoFill>true</autoFill>
         </contextMenu>
         <type>ViewStatusAddition</type>
-        <source>ДеревоСостояниеПросмотра</source>
+        <source>Дерево</source>
         <extInfo xsi:type="form:ViewStatusAdditionExtInfo">
           <autoMaxWidth>true</autoMaxWidth>
         </extInfo>
@@ -397,7 +398,7 @@
           <autoFill>true</autoFill>
         </contextMenu>
         <type>SearchControlAddition</type>
-        <source>ДеревоУправлениеПоиском</source>
+        <source>Дерево</source>
         <extInfo xsi:type="form:SearchControlAdditionExtInfo">
           <autoMaxWidth>true</autoMaxWidth>
         </extInfo>
@@ -824,9 +825,7 @@
         </title>
         <visible>true</visible>
         <enabled>true</enabled>
-        <userVisible>
-          <common>true</common>
-        </userVisible>
+        <userVisible/>
         <dataPath xsi:type="form:DataPath">
           <segments>Список.СуммаНакоплено</segments>
         </dataPath>
@@ -1037,9 +1036,7 @@
         </items>
         <visible>true</visible>
         <enabled>true</enabled>
-        <userVisible>
-          <common>true</common>
-        </userVisible>
+        <userVisible/>
         <title>
           <key>ru</key>
           <value>Юр.реквизиты</value>
@@ -1209,40 +1206,10 @@
           <autoMaxHeight>true</autoMaxHeight>
         </extInfo>
       </items>
+      <commandBarLocation>None</commandBarLocation>
       <autoCommandBar>
         <name>СписокКоманднаяПанель</name>
         <id>9</id>
-        <items xsi:type="form:Button">
-          <name>ФормаИзменитьВыделенные</name>
-          <id>24</id>
-          <visible>true</visible>
-          <enabled>true</enabled>
-          <userVisible>
-            <common>true</common>
-          </userVisible>
-          <extendedTooltip>
-            <name>ФормаИзменитьВыделенныеРасширеннаяПодсказка</name>
-            <id>27</id>
-            <visible>true</visible>
-            <enabled>true</enabled>
-            <userVisible>
-              <common>true</common>
-            </userVisible>
-            <type>Label</type>
-            <autoMaxWidth>true</autoMaxWidth>
-            <autoMaxHeight>true</autoMaxHeight>
-            <extInfo xsi:type="form:LabelDecorationExtInfo">
-              <horizontalAlign>Left</horizontalAlign>
-            </extInfo>
-          </extendedTooltip>
-          <commandName>Form.Command.ИзменитьВыделенные</commandName>
-          <representation>Auto</representation>
-          <autoMaxWidth>true</autoMaxWidth>
-          <autoMaxHeight>true</autoMaxHeight>
-          <placementArea>UserCmds</placementArea>
-          <representationInContextMenu>Auto</representationInContextMenu>
-          <locationInCommandBar>InAdditionalSubmenu</locationInCommandBar>
-        </items>
         <visible>true</visible>
         <enabled>true</enabled>
         <userVisible>
@@ -1284,7 +1251,7 @@
           </userVisible>
           <autoFill>true</autoFill>
         </contextMenu>
-        <source>СписокСтрокаПоиска</source>
+        <source>Список</source>
         <extInfo xsi:type="form:SearchStringAdditionExtInfo">
           <autoMaxWidth>true</autoMaxWidth>
         </extInfo>
@@ -1323,7 +1290,7 @@
           <autoFill>true</autoFill>
         </contextMenu>
         <type>ViewStatusAddition</type>
-        <source>СписокСостояниеПросмотра</source>
+        <source>Список</source>
         <extInfo xsi:type="form:ViewStatusAdditionExtInfo">
           <autoMaxWidth>true</autoMaxWidth>
         </extInfo>
@@ -1362,7 +1329,7 @@
           <autoFill>true</autoFill>
         </contextMenu>
         <type>SearchControlAddition</type>
-        <source>СписокУправлениеПоиском</source>
+        <source>Список</source>
         <extInfo xsi:type="form:SearchControlAdditionExtInfo">
           <autoMaxWidth>true</autoMaxWidth>
         </extInfo>
@@ -1458,6 +1425,7 @@
     </extendedTooltip>
     <type>UsualGroup</type>
     <extInfo xsi:type="form:UsualGroupExtInfo">
+      <behavior>Auto</behavior>
       <showLeftMargin>true</showLeftMargin>
       <united>true</united>
       <slaveItemsWidth>LeftNarrowest</slaveItemsWidth>
@@ -1465,16 +1433,47 @@
       <currentRowUse>Auto</currentRowUse>
     </extInfo>
   </items>
-  <commandBarLocation>None</commandBarLocation>
   <autoCommandBar>
     <name>ФормаКоманднаяПанель</name>
     <id>-1</id>
+    <items xsi:type="form:Button">
+      <name>ФормаИзменитьВыделенные</name>
+      <id>24</id>
+      <visible>true</visible>
+      <enabled>true</enabled>
+      <userVisible>
+        <common>true</common>
+      </userVisible>
+      <extendedTooltip>
+        <name>ФормаИзменитьВыделенныеРасширеннаяПодсказка</name>
+        <id>27</id>
+        <visible>true</visible>
+        <enabled>true</enabled>
+        <userVisible>
+          <common>true</common>
+        </userVisible>
+        <type>Label</type>
+        <autoMaxWidth>true</autoMaxWidth>
+        <autoMaxHeight>true</autoMaxHeight>
+        <extInfo xsi:type="form:LabelDecorationExtInfo">
+          <horizontalAlign>Left</horizontalAlign>
+        </extInfo>
+      </extendedTooltip>
+      <commandName>Form.Command.ИзменитьВыделенные</commandName>
+      <representation>Auto</representation>
+      <autoMaxWidth>true</autoMaxWidth>
+      <autoMaxHeight>true</autoMaxHeight>
+      <placementArea>UserCmds</placementArea>
+      <representationInContextMenu>Auto</representationInContextMenu>
+      <locationInCommandBar>InAdditionalSubmenu</locationInCommandBar>
+    </items>
     <visible>true</visible>
     <enabled>true</enabled>
     <userVisible>
       <common>true</common>
     </userVisible>
     <horizontalAlign>Left</horizontalAlign>
+    <autoFill>true</autoFill>
   </autoCommandBar>
   <handlers>
     <event>OnOpen</event>
@@ -1485,6 +1484,7 @@
     <name>ПриСозданииНаСервере</name>
   </handlers>
   <autoSaveDataInSettings>Use</autoSaveDataInSettings>
+  <saveWindowSettings>true</saveWindowSettings>
   <autoTitle>true</autoTitle>
   <autoUrl>true</autoUrl>
   <group>Vertical</group>
@@ -1521,6 +1521,9 @@
     <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
       <segments>Список.Ссылка</segments>
     </notDefaultUseAlwaysAttributes>
+    <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
+      <segments>Список.ЭтоГруппа</segments>
+    </notDefaultUseAlwaysAttributes>
     <main>true</main>
     <extInfo xsi:type="form:DynamicListExtInfo">
       <queryText>ВЫБРАТЬ
@@ -1546,8 +1549,10 @@
 	ТаблицаСправочник.УзелСоздания КАК УзелСоздания
 ИЗ
 	Справочник.Контрагенты КАК ТаблицаСправочник
-		{ЛЕВОЕ СОЕДИНЕНИЕ РегистрНакопления.ПродажиПоДисконтнымКартам.Остатки(, ВладелецДисконтнойКарты ССЫЛКА Справочник.Контрагенты) КАК ТаблицаНакоплений
-		ПО ТаблицаСправочник.Ссылка = ТаблицаНакоплений.ВладелецДисконтнойКарты}</queryText>
+		{ЛЕВОЕ СОЕДИНЕНИЕ РегистрНакопления.ПродажиПоДисконтнымКартам.Остатки(, ВладелецДисконтнойКарты ССЫЛКА Справочник.Контрагенты {(ВладелецДисконтнойКарты) КАК Ссылка}) КАК ТаблицаНакоплений
+		ПО ТаблицаСправочник.Ссылка = ТаблицаНакоплений.ВладелецДисконтнойКарты}
+{ГДЕ
+	ТаблицаСправочник.Ссылка.* КАК Ссылка}</queryText>
       <mainTable>Catalog.Контрагенты</mainTable>
       <dynamicDataRead>true</dynamicDataRead>
       <autoFillAvailableFields>true</autoFillAvailableFields>
@@ -1647,7 +1652,12 @@
   </formCommands>
   <commandInterface>
     <navigationPanel/>
-    <commandBar/>
+    <commandBar>
+      <cmiFragmentRecord>
+        <command>CommonCommand.ДополнительныеОтчетыИОбработкиСозданиеСвязанныхОбъектов</command>
+        <userVisible/>
+      </cmiFragmentRecord>
+    </commandBar>
   </commandInterface>
   <extInfo xsi:type="form:DynamicListFormExtInfo">
     <groupList>Дерево</groupList>

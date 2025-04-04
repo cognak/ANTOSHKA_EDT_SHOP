@@ -101,6 +101,10 @@
               <valuesPicture xsi:type="core:PictureRef">
                 <picture>CommonPicture.ВыполненоУспешно</picture>
               </valuesPicture>
+              <border xsi:type="core:BorderDef">
+                <style>Single</style>
+                <width>1</width>
+              </border>
             </extInfo>
           </items>
           <items xsi:type="form:FormField">
@@ -346,6 +350,14 @@
           <items xsi:type="form:FormField">
             <name>СотрудникиКоллЦентраПродажа</name>
             <id>319</id>
+            <title>
+              <key>ru</key>
+              <value>Продажа/Доставка</value>
+            </title>
+            <title>
+              <key>uk</key>
+              <value>Продаж/Доставка</value>
+            </title>
             <visible>true</visible>
             <enabled>true</enabled>
             <userVisible>
@@ -613,7 +625,7 @@
             </userVisible>
             <autoFill>true</autoFill>
           </contextMenu>
-          <source>СотрудникиКоллЦентраСтрокаПоиска</source>
+          <source>СотрудникиКоллЦентра</source>
           <extInfo xsi:type="form:SearchStringAdditionExtInfo">
             <autoMaxWidth>true</autoMaxWidth>
           </extInfo>
@@ -652,7 +664,7 @@
             <autoFill>true</autoFill>
           </contextMenu>
           <type>ViewStatusAddition</type>
-          <source>СотрудникиКоллЦентраСостояниеПросмотра</source>
+          <source>СотрудникиКоллЦентра</source>
           <extInfo xsi:type="form:ViewStatusAdditionExtInfo">
             <autoMaxWidth>true</autoMaxWidth>
           </extInfo>
@@ -691,7 +703,7 @@
             <autoFill>true</autoFill>
           </contextMenu>
           <type>SearchControlAddition</type>
-          <source>СотрудникиКоллЦентраУправлениеПоиском</source>
+          <source>СотрудникиКоллЦентра</source>
           <extInfo xsi:type="form:SearchControlAdditionExtInfo">
             <autoMaxWidth>true</autoMaxWidth>
           </extInfo>
@@ -770,7 +782,7 @@
       <type>UsualGroup</type>
       <extInfo xsi:type="form:UsualGroupExtInfo">
         <group>HorizontalIfPossible</group>
-        <behavior>Auto</behavior>
+        <behavior>Collapsible</behavior>
         <showLeftMargin>true</showLeftMargin>
         <united>true</united>
         <throughAlign>Auto</throughAlign>
@@ -799,7 +811,7 @@
         <dataPath xsi:type="form:DataPath">
           <segments>ЗаказыКлиентов</segments>
         </dataPath>
-        <titleLocation>Top</titleLocation>
+        <titleLocation>None</titleLocation>
         <items xsi:type="form:FormField">
           <name>ЗаказыКлиентовДата</name>
           <id>63</id>
@@ -1108,7 +1120,7 @@
             </userVisible>
             <autoFill>true</autoFill>
           </contextMenu>
-          <source>ЗаказыКлиентовСтрокаПоиска</source>
+          <source>ЗаказыКлиентов</source>
           <extInfo xsi:type="form:SearchStringAdditionExtInfo">
             <autoMaxWidth>true</autoMaxWidth>
           </extInfo>
@@ -1147,7 +1159,7 @@
             <autoFill>true</autoFill>
           </contextMenu>
           <type>ViewStatusAddition</type>
-          <source>ЗаказыКлиентовСостояниеПросмотра</source>
+          <source>ЗаказыКлиентов</source>
           <extInfo xsi:type="form:ViewStatusAdditionExtInfo">
             <autoMaxWidth>true</autoMaxWidth>
           </extInfo>
@@ -1186,7 +1198,7 @@
             <autoFill>true</autoFill>
           </contextMenu>
           <type>SearchControlAddition</type>
-          <source>ЗаказыКлиентовУправлениеПоиском</source>
+          <source>ЗаказыКлиентов</source>
           <extInfo xsi:type="form:SearchControlAdditionExtInfo">
             <autoMaxWidth>true</autoMaxWidth>
           </extInfo>
@@ -1774,6 +1786,7 @@
             <type>UsualGroup</type>
             <extInfo xsi:type="form:UsualGroupExtInfo">
               <group>Vertical</group>
+              <behavior>Collapsible</behavior>
               <showLeftMargin>true</showLeftMargin>
               <united>true</united>
               <throughAlign>Auto</throughAlign>
@@ -1881,7 +1894,7 @@
               <extInfo xsi:type="form:LabelDecorationExtInfo">
                 <handlers>
                   <event>Click</event>
-                  <name>НовыйТекстНажатие</name>
+                  <name>НовыйНажатие</name>
                 </handlers>
                 <hyperlink>true</hyperlink>
                 <horizontalAlign>Left</horizontalAlign>
@@ -1937,7 +1950,7 @@
               <extInfo xsi:type="form:LabelDecorationExtInfo">
                 <handlers>
                   <event>Click</event>
-                  <name>ВРаботеТекстНажатие</name>
+                  <name>ВРаботеНажатие</name>
                 </handlers>
                 <hyperlink>true</hyperlink>
                 <horizontalAlign>Left</horizontalAlign>
@@ -1993,7 +2006,7 @@
               <extInfo xsi:type="form:LabelDecorationExtInfo">
                 <handlers>
                   <event>Click</event>
-                  <name>ЗапросДоступностиТекстНажатие</name>
+                  <name>ЗапросДоступностиНажатие</name>
                 </handlers>
                 <hyperlink>true</hyperlink>
                 <horizontalAlign>Left</horizontalAlign>
@@ -2049,7 +2062,7 @@
               <extInfo xsi:type="form:LabelDecorationExtInfo">
                 <handlers>
                   <event>Click</event>
-                  <name>ПеремещениеТекстНажатие</name>
+                  <name>ПеремещениеНажатие</name>
                 </handlers>
                 <hyperlink>true</hyperlink>
                 <horizontalAlign>Left</horizontalAlign>
@@ -2105,7 +2118,7 @@
               <extInfo xsi:type="form:LabelDecorationExtInfo">
                 <handlers>
                   <event>Click</event>
-                  <name>ПродажаТекстНажатие</name>
+                  <name>ПродажаНажатие</name>
                 </handlers>
                 <hyperlink>true</hyperlink>
                 <horizontalAlign>Left</horizontalAlign>
@@ -2161,7 +2174,7 @@
               <extInfo xsi:type="form:LabelDecorationExtInfo">
                 <handlers>
                   <event>Click</event>
-                  <name>ДоставкаТекстНажатие</name>
+                  <name>ДоставкаНажатие</name>
                 </handlers>
                 <hyperlink>true</hyperlink>
                 <horizontalAlign>Left</horizontalAlign>
@@ -2238,6 +2251,7 @@
             <type>UsualGroup</type>
             <extInfo xsi:type="form:UsualGroupExtInfo">
               <group>Vertical</group>
+              <behavior>Collapsible</behavior>
               <showLeftMargin>true</showLeftMargin>
               <united>true</united>
               <throughAlign>Auto</throughAlign>
@@ -2267,6 +2281,7 @@
           </extendedTooltip>
           <type>UsualGroup</type>
           <extInfo xsi:type="form:UsualGroupExtInfo">
+            <behavior>Collapsible</behavior>
             <representation>StrongSeparation</representation>
             <showLeftMargin>true</showLeftMargin>
             <united>true</united>
@@ -2451,7 +2466,8 @@
         </extendedTooltip>
         <type>UsualGroup</type>
         <extInfo xsi:type="form:UsualGroupExtInfo">
-          <group>HorizontalIfPossible</group>
+          <group>Vertical</group>
+          <behavior>Collapsible</behavior>
           <showLeftMargin>true</showLeftMargin>
           <united>true</united>
           <throughAlign>Auto</throughAlign>
@@ -2484,8 +2500,7 @@
       </extendedTooltip>
       <type>UsualGroup</type>
       <extInfo xsi:type="form:UsualGroupExtInfo">
-        <group>AlwaysHorizontal</group>
-        <behavior>Auto</behavior>
+        <behavior>Collapsible</behavior>
         <showLeftMargin>true</showLeftMargin>
         <united>true</united>
         <throughAlign>Auto</throughAlign>
@@ -2515,6 +2530,7 @@
     <type>UsualGroup</type>
     <extInfo xsi:type="form:UsualGroupExtInfo">
       <group>Vertical</group>
+      <behavior>Collapsible</behavior>
       <showLeftMargin>true</showLeftMargin>
       <united>true</united>
       <throughAlign>Auto</throughAlign>
@@ -2539,6 +2555,7 @@
     <event>OnCreateAtServer</event>
     <name>ПриСозданииНаСервере</name>
   </handlers>
+  <saveWindowSettings>true</saveWindowSettings>
   <autoUrl>true</autoUrl>
   <group>Vertical</group>
   <autoFillCheck>true</autoFillCheck>
@@ -2612,14 +2629,13 @@
 	ДокументЗаказПокупателя.ЦенаВключаетНДС КАК ЦенаВключаетНДС,
 	ДокументЗаказПокупателя.ОператорДоставки КАК ОператорДоставки,
 	ДокументЗаказПокупателя.ДоставкаНаАдрес КАК ДоставкаНаАдрес,
-	ДокументЗаказПокупателя.IDN КАК IDN,
-	ДокументЗаказПокупателя.Автор КАК Автор,
-	ДокументЗаказПокупателя.УзелСоздания КАК УзелСоздания,
 	ДокументЗаказПокупателя.МоментВремени КАК МоментВремени
 ИЗ
-	Документ.ЗаказПокупателя КАК ДокументЗаказПокупателя
+	РегистрСведений.СостояниеЗаказаПокупателя КАК СостояниеЗаказаПокупателя
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.ЗаказПокупателя КАК ДокументЗаказПокупателя
+		ПО СостояниеЗаказаПокупателя.ЗаказПокупателя = ДокументЗаказПокупателя.Ссылка
 ГДЕ
-	ДокументЗаказПокупателя.Ответственный = &amp;Ответственный
+	СостояниеЗаказаПокупателя.Ответственный = &amp;Ответственный
 	И ДокументЗаказПокупателя.Проведен</queryText>
       <mainTable>Document.ЗаказПокупателя</mainTable>
       <dynamicDataRead>true</dynamicDataRead>

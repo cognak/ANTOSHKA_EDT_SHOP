@@ -161,6 +161,7 @@
     </extendedTooltip>
     <type>UsualGroup</type>
     <extInfo xsi:type="form:UsualGroupExtInfo">
+      <behavior>Auto</behavior>
       <showLeftMargin>true</showLeftMargin>
       <united>true</united>
       <throughAlign>Auto</throughAlign>
@@ -1248,7 +1249,7 @@
             </userVisible>
             <autoFill>true</autoFill>
           </contextMenu>
-          <source>СписокСтрокаПоиска</source>
+          <source>Список</source>
           <extInfo xsi:type="form:SearchStringAdditionExtInfo">
             <autoMaxWidth>true</autoMaxWidth>
           </extInfo>
@@ -1287,7 +1288,7 @@
             <autoFill>true</autoFill>
           </contextMenu>
           <type>ViewStatusAddition</type>
-          <source>СписокСостояниеПросмотра</source>
+          <source>Список</source>
           <extInfo xsi:type="form:ViewStatusAdditionExtInfo">
             <autoMaxWidth>true</autoMaxWidth>
           </extInfo>
@@ -1326,7 +1327,7 @@
             <autoFill>true</autoFill>
           </contextMenu>
           <type>SearchControlAddition</type>
-          <source>СписокУправлениеПоиском</source>
+          <source>Список</source>
           <extInfo xsi:type="form:SearchControlAdditionExtInfo">
             <autoMaxWidth>true</autoMaxWidth>
           </extInfo>
@@ -1665,6 +1666,7 @@
           <type>UsualGroup</type>
           <extInfo xsi:type="form:UsualGroupExtInfo">
             <group>Vertical</group>
+            <behavior>Auto</behavior>
             <showLeftMargin>true</showLeftMargin>
             <united>true</united>
             <throughAlign>Auto</throughAlign>
@@ -1697,6 +1699,7 @@
         </extendedTooltip>
         <type>UsualGroup</type>
         <extInfo xsi:type="form:UsualGroupExtInfo">
+          <behavior>Auto</behavior>
           <showLeftMargin>true</showLeftMargin>
           <united>true</united>
           <throughAlign>Auto</throughAlign>
@@ -2074,7 +2077,7 @@
             </userVisible>
             <autoFill>true</autoFill>
           </contextMenu>
-          <source>СписокРаспоряженийСтрокаПоиска</source>
+          <source>СписокРаспоряжений</source>
           <extInfo xsi:type="form:SearchStringAdditionExtInfo">
             <autoMaxWidth>true</autoMaxWidth>
           </extInfo>
@@ -2113,7 +2116,7 @@
             <autoFill>true</autoFill>
           </contextMenu>
           <type>ViewStatusAddition</type>
-          <source>СписокРаспоряженийСостояниеПросмотра</source>
+          <source>СписокРаспоряжений</source>
           <extInfo xsi:type="form:ViewStatusAdditionExtInfo">
             <autoMaxWidth>true</autoMaxWidth>
           </extInfo>
@@ -2152,7 +2155,7 @@
             <autoFill>true</autoFill>
           </contextMenu>
           <type>SearchControlAddition</type>
-          <source>СписокРаспоряженийУправлениеПоиском</source>
+          <source>СписокРаспоряжений</source>
           <extInfo xsi:type="form:SearchControlAdditionExtInfo">
             <autoMaxWidth>true</autoMaxWidth>
           </extInfo>
@@ -2300,6 +2303,7 @@
   </handlers>
   <excludedCommands>Create</excludedCommands>
   <autoSaveDataInSettings>Use</autoSaveDataInSettings>
+  <saveWindowSettings>true</saveWindowSettings>
   <autoUrl>true</autoUrl>
   <group>Vertical</group>
   <autoFillCheck>true</autoFillCheck>
@@ -2346,7 +2350,7 @@
 	ТаблицаДокумента.ДокументОснование.ЗаказПокупателя КАК ЗаказПокупателя,
 	ТаблицаДокумента.Магазин КАК Магазин,
 	ТаблицаДокумента.ДокументОснование.МагазинПолучательКонечный КАК МагазинПолучательКонечный,
-	ТаблицаДокумента.Магазин.Организация КАК Организация,
+	ЕСТЬNULL(ТаблицаОрганизаций.Организация, ЗНАЧЕНИЕ(Справочник.Организации.ПустаяСсылка)) КАК Организация,
 	ТаблицаДокумента.СуммаДокумента КАК СуммаДокумента,
 	ТаблицаДокумента.Ответственный КАК Ответственный,
 	ТаблицаДокумента.IDN КАК IDN,
@@ -2393,11 +2397,13 @@
 		СГРУППИРОВАТЬ ПО
 			ТаблицаТовары.Ссылка) КАК ТаблицаТовары
 		ПО ТаблицаДокумента.Ссылка = ТаблицаТовары.Ссылка}
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.ОрганизацииПодразделений.СрезПоследних(&amp;Период, ) КАК ТаблицаОрганизаций
+		ПО ТаблицаДокумента.Магазин = ТаблицаОрганизаций.Владелец
 ГДЕ
 	ВЫБОР
 			КОГДА &amp;Организация = НЕОПРЕДЕЛЕНО
 				ТОГДА ИСТИНА
-			ИНАЧЕ ТаблицаДокумента.Магазин.Организация = &amp;Организация
+			ИНАЧЕ ТаблицаОрганизаций.Организация = &amp;Организация
 		КОНЕЦ
 {ГДЕ
 	ТаблицаДокумента.Ссылка.*}</queryText>

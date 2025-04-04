@@ -199,21 +199,32 @@
 			<dataPath>УслугаБанка</dataPath>
 			<field>УслугаБанка</field>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Организация</dataPath>
+			<field>Организация</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	НАЧАЛОПЕРИОДА(ТаблицаРегистра.ПериодДень, ДЕНЬ) КАК Дата,
 	ТаблицаРегистра.Магазин.СкладПродажи КАК Склад,
-	ТаблицаРегистра.Номенклатура,
+	ТаблицаРегистра.Номенклатура КАК Номенклатура,
 	ТаблицаРегистра.Номенклатура.IDN КАК КодТовара,
-	ТаблицаРегистра.КоличествоОборот,
-	ТаблицаРегистра.СуммаБезСкидкиОборот,
-	ТаблицаРегистра.СуммаРучнойСкидкиОборот,
-	ТаблицаРегистра.СуммаПродажиОборот,
+	ТаблицаРегистра.КоличествоОборот КАК КоличествоОборот,
+	ТаблицаРегистра.СуммаБезСкидкиОборот КАК СуммаБезСкидкиОборот,
+	ТаблицаРегистра.СуммаРучнойСкидкиОборот КАК СуммаРучнойСкидкиОборот,
+	ТаблицаРегистра.СуммаПродажиОборот КАК СуммаПродажиОборот,
 	ТаблицаРегистра.СуммаБезСкидкиОборот / ТаблицаРегистра.КоличествоОборот КАК Цена,
 	ТаблицаРегистра.СуммаПродажиОборот / ТаблицаРегистра.КоличествоОборот КАК ЦенаПродажи,
 	ТаблицаРегистра.СуммаРучнойСкидкиОборот / ТаблицаРегистра.СуммаБезСкидкиОборот * 100 КАК ПроцентСкидки,
 	ТаблицаРегистра.Магазин.НомерМагазина КАК НомерМагазина,
-	ТаблицаРегистра.Регистратор КАК ДокументДвижения
+	ТаблицаРегистра.Регистратор КАК ДокументДвижения,
+	ТаблицаРегистра.Регистратор.Организация КАК Организация
 ПОМЕСТИТЬ ТаблицаПромежуточная
 ИЗ
 	РегистрНакопления.СкидкиНаценкиПоЧекам.Обороты({(&amp;ДатаНачала)}, {(&amp;ДатаКонца)}, Авто, ) КАК ТаблицаРегистра
@@ -224,11 +235,11 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 ВЫБРАТЬ
-	ТаблицаПромежуточная.Дата,
-	ТаблицаПромежуточная.НомерМагазина,
-	ТаблицаПромежуточная.Склад,
-	ТаблицаПромежуточная.Номенклатура,
-	ТаблицаПромежуточная.КодТовара,
+	ТаблицаПромежуточная.Дата КАК Дата,
+	ТаблицаПромежуточная.НомерМагазина КАК НомерМагазина,
+	ТаблицаПромежуточная.Склад КАК Склад,
+	ТаблицаПромежуточная.Номенклатура КАК Номенклатура,
+	ТаблицаПромежуточная.КодТовара КАК КодТовара,
 	СУММА(ТаблицаПромежуточная.КоличествоОборот) КАК КоличествоОборот,
 	СУММА(ТаблицаПромежуточная.СуммаБезСкидкиОборот) КАК СуммаБезСкидкиОборот,
 	СУММА(ТаблицаПромежуточная.СуммаРучнойСкидкиОборот) КАК СуммаРучнойСкидкиОборот,
@@ -236,7 +247,8 @@
 	СРЕДНЕЕ(ТаблицаПромежуточная.Цена) КАК Цена,
 	СРЕДНЕЕ(ТаблицаПромежуточная.ЦенаПродажи) КАК ЦенаПродажи,
 	СРЕДНЕЕ(ТаблицаПромежуточная.ПроцентСкидки) КАК ПроцентСкидки,
-	ТаблицаПромежуточная.ДокументДвижения
+	ТаблицаПромежуточная.ДокументДвижения КАК ДокументДвижения,
+	ТаблицаПромежуточная.Организация КАК Организация
 ИЗ
 	ТаблицаПромежуточная КАК ТаблицаПромежуточная
 
@@ -246,7 +258,8 @@
 	ТаблицаПромежуточная.КодТовара,
 	ТаблицаПромежуточная.Номенклатура,
 	ТаблицаПромежуточная.НомерМагазина,
-	ТаблицаПромежуточная.ДокументДвижения
+	ТаблицаПромежуточная.ДокументДвижения,
+	ТаблицаПромежуточная.Организация
 
 ИМЕЮЩИЕ
 	СУММА(ТаблицаПромежуточная.КоличествоОборот) &lt;&gt; 0</query>
@@ -389,13 +402,22 @@
 					<dcsset:use>false</dcsset:use>
 					<dcsset:left xsi:type="dcscor:Field">Магазин</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.Магазины.ПустаяСсылка</dcsset:right>
 					<dcsset:userSettingID>219154da-47b4-4380-95b1-c4478faa688e</dcsset:userSettingID>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
 					<dcsset:use>false</dcsset:use>
 					<dcsset:left xsi:type="dcscor:Field">Номенклатура</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.Номенклатура.ПустаяСсылка</dcsset:right>
 					<dcsset:userSettingID>4ce4455c-c243-463b-9bc2-ab1d28b50307</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Организация</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.Организации.ПустаяСсылка</dcsset:right>
+					<dcsset:userSettingID>45b0210d-4264-4c67-a207-387fea810bb5</dcsset:userSettingID>
 				</dcsset:item>
 			</dcsset:filter>
 			<dcsset:dataParameters>
@@ -450,12 +472,29 @@
 				</dcscor:item>
 			</dcsset:outputParameters>
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Организация</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
 				<dcsset:order>
 					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
 				</dcsset:order>
 				<dcsset:selection>
 					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
 				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+				</dcsset:item>
 			</dcsset:item>
 		</dcsset:settings>
 	</settingsVariant>

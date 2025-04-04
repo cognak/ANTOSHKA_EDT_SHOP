@@ -74,4 +74,55 @@
 			</dcscor:item>
 		</appearance>
 	</item>
+	<item>
+		<selection>
+			<item>
+				<field>Номер</field>
+			</item>
+			<item>
+				<field>Дата</field>
+			</item>
+			<item>
+				<field>ВидОперации</field>
+			</item>
+			<item>
+				<field>СтатусЧекаККМ</field>
+			</item>
+			<item>
+				<field>ВладелецДисконтнойКарты</field>
+			</item>
+			<item>
+				<field>ДисконтнаяКарта</field>
+			</item>
+			<item>
+				<field>Магазин</field>
+			</item>
+			<item>
+				<field>КассаККМ</field>
+			</item>
+		</selection>
+		<filter>
+			<item xsi:type="FilterItemComparison">
+				<left xsi:type="dcscor:Field">Список.Проведен</left>
+				<comparisonType>Equal</comparisonType>
+				<right xsi:type="xs:boolean">true</right>
+			</item>
+			<item xsi:type="FilterItemComparison">
+				<left xsi:type="dcscor:Field">Список.ЭтоПРРО</left>
+				<comparisonType>Equal</comparisonType>
+				<right xsi:type="xs:boolean">true</right>
+			</item>
+		</filter>
+		<appearance>
+			<dcscor:item xsi:type="SettingsParameterValue">
+				<dcscor:parameter>ЦветТекста</dcscor:parameter>
+				<dcscor:value xsi:type="v8ui:Color">web:Indigo</dcscor:value>
+			</dcscor:item>
+			<dcscor:item xsi:type="SettingsParameterValue">
+				<dcscor:use>false</dcscor:use>
+				<dcscor:parameter>Шрифт</dcscor:parameter>
+				<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" height="9" kind="WindowsFont"/>
+			</dcscor:item>
+		</appearance>
+	</item>
 </ConditionalAppearance>

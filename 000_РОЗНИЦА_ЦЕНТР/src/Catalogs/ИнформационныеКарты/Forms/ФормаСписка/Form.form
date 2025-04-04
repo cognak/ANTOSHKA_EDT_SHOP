@@ -165,9 +165,7 @@
       </title>
       <visible>true</visible>
       <enabled>true</enabled>
-      <userVisible>
-        <common>true</common>
-      </userVisible>
+      <userVisible/>
       <dataPath xsi:type="form:DataPath">
         <segments>Список.СуммаНакоплено</segments>
       </dataPath>
@@ -837,7 +835,7 @@
         </userVisible>
         <autoFill>true</autoFill>
       </contextMenu>
-      <source>СписокСтрокаПоиска</source>
+      <source>Список</source>
       <extInfo xsi:type="form:SearchStringAdditionExtInfo">
         <autoMaxWidth>true</autoMaxWidth>
       </extInfo>
@@ -876,7 +874,7 @@
         <autoFill>true</autoFill>
       </contextMenu>
       <type>ViewStatusAddition</type>
-      <source>СписокСостояниеПросмотра</source>
+      <source>Список</source>
       <extInfo xsi:type="form:ViewStatusAdditionExtInfo">
         <autoMaxWidth>true</autoMaxWidth>
       </extInfo>
@@ -915,7 +913,7 @@
         <autoFill>true</autoFill>
       </contextMenu>
       <type>SearchControlAddition</type>
-      <source>СписокУправлениеПоиском</source>
+      <source>Список</source>
       <extInfo xsi:type="form:SearchControlAdditionExtInfo">
         <autoMaxWidth>true</autoMaxWidth>
       </extInfo>
@@ -1098,6 +1096,7 @@
     <event>OnClose</event>
     <name>ПриЗакрытии</name>
   </handlers>
+  <saveWindowSettings>true</saveWindowSettings>
   <autoTitle>true</autoTitle>
   <autoUrl>true</autoUrl>
   <group>Vertical</group>
@@ -1120,9 +1119,6 @@
       <common>true</common>
     </edit>
     <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
-      <segments>Список.Ref</segments>
-    </notDefaultUseAlwaysAttributes>
-    <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
       <segments>Список.Блокирована</segments>
     </notDefaultUseAlwaysAttributes>
     <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
@@ -1136,6 +1132,9 @@
     </notDefaultUseAlwaysAttributes>
     <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
       <segments>Список.Резерв</segments>
+    </notDefaultUseAlwaysAttributes>
+    <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
+      <segments>Список.Ссылка</segments>
     </notDefaultUseAlwaysAttributes>
     <main>true</main>
     <extInfo xsi:type="form:DynamicListExtInfo">
@@ -1180,7 +1179,7 @@
 			ИНАЧЕ НЕ Ведущая.Резерв
 		КОНЕЦ
 {ГДЕ
-	Ведущая.Ссылка.*}</queryText>
+	Ведущая.Ссылка.* КАК Ссылка}</queryText>
       <mainTable>Catalog.ИнформационныеКарты</mainTable>
       <dynamicDataRead>true</dynamicDataRead>
       <autoFillAvailableFields>true</autoFillAvailableFields>

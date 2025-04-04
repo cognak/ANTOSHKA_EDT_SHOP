@@ -287,6 +287,7 @@
     <minValue xsi:type="core:UndefinedValue"/>
     <maxValue xsi:type="core:UndefinedValue"/>
     <fillValue xsi:type="core:UndefinedValue"/>
+    <indexing>Index</indexing>
     <fullTextSearch>Use</fullTextSearch>
     <dataHistory>Use</dataHistory>
   </attributes>
@@ -408,6 +409,29 @@
     <minValue xsi:type="core:UndefinedValue"/>
     <maxValue xsi:type="core:UndefinedValue"/>
     <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="8e2f0cb9-c247-4f0e-921b-f0f98a6e3f23">
+    <name>ОбработчикДрайвера</name>
+    <synonym>
+      <key>ru</key>
+      <value>Обработчик драйвера</value>
+    </synonym>
+    <comment>Упр. Определитель вида ФР на момент пробития чека</comment>
+    <type>
+      <types>EnumRef.ОбработчикиДрайверовПодключаемогоОборудования</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Слежебный реквизит.
+Определитель вида ФР на момент пробития чека</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:ReferenceValue">
+      <value>Enum.ОбработчикиДрайверовПодключаемогоОборудования.EmptyRef</value>
+    </fillValue>
     <fullTextSearch>Use</fullTextSearch>
     <dataHistory>Use</dataHistory>
   </attributes>
@@ -634,6 +658,39 @@
     <minValue xsi:type="core:UndefinedValue"/>
     <maxValue xsi:type="core:UndefinedValue"/>
     <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="7779132d-4b41-40b0-bbaa-52eb053031be">
+    <name>ФлагиПроведения</name>
+    <synonym>
+      <key>ru</key>
+      <value>Флаги проведения</value>
+    </synonym>
+    <comment>(Служ) Последовательность флагов, определяющих различные режимы.</comment>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>10</length>
+      </stringQualifiers>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Длина с запасом. При записи дополняется справа &quot;0&quot;.
+1. &quot;0&quot; или &quot;1&quot; - отправлен е-чек (ПРРО)
+2. &quot;0&quot;, &quot;1&quot;, &quot;2&quot; - нет печати, есть печать, есть печать по запросу клиента (ПРРО)</value>
+    </toolTip>
+    <toolTip>
+      <key>uk</key>
+      <value>Довжина із запасом. Під час запису доповнюється праворуч &quot;0&quot;.
+1. &quot;0&quot; або &quot;1&quot; - надіслано е-чек (ПРРО)
+2. &quot;0&quot;, &quot;1&quot;, &quot;2&quot; - немає друку, є друк, є друк на запит клієнта (ПРР)</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
     <fullTextSearch>Use</fullTextSearch>
     <dataHistory>Use</dataHistory>
   </attributes>

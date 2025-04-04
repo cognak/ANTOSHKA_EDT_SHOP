@@ -22,7 +22,7 @@
         <common>true</common>
       </userVisible>
       <dataPath xsi:type="form:DataPath">
-        <segments>Список.Period</segments>
+        <segments>Список.Период</segments>
       </dataPath>
       <defaultItem>true</defaultItem>
       <extendedTooltip>
@@ -75,7 +75,7 @@
         <common>true</common>
       </userVisible>
       <dataPath xsi:type="form:DataPath">
-        <segments>Список.LineNumber</segments>
+        <segments>Список.НомерСтроки</segments>
       </dataPath>
       <extendedTooltip>
         <name>НомерСтрокиРасширеннаяПодсказка</name>
@@ -127,7 +127,7 @@
         <common>true</common>
       </userVisible>
       <dataPath xsi:type="form:DataPath">
-        <segments>Список.ОбъектЦенообразования.НомерМагазина</segments>
+        <segments>Список.НомерМагазина</segments>
       </dataPath>
       <extendedTooltip>
         <name>НомерМагазинаРасширеннаяПодсказка</name>
@@ -217,7 +217,7 @@
       </extInfo>
     </items>
     <items xsi:type="form:FormField">
-      <name>НоменклатураIDN</name>
+      <name>IDN</name>
       <id>53</id>
       <title>
         <key>ru</key>
@@ -229,10 +229,10 @@
         <common>true</common>
       </userVisible>
       <dataPath xsi:type="form:DataPath">
-        <segments>Список.Номенклатура.IDN</segments>
+        <segments>Список.IDN</segments>
       </dataPath>
       <extendedTooltip>
-        <name>НоменклатураIDNРасширеннаяПодсказка</name>
+        <name>IDNРасширеннаяПодсказка</name>
         <id>55</id>
         <visible>true</visible>
         <enabled>true</enabled>
@@ -247,7 +247,7 @@
         </extInfo>
       </extendedTooltip>
       <contextMenu>
-        <name>НоменклатураIDNКонтекстноеМеню</name>
+        <name>IDNКонтекстноеМеню</name>
         <id>54</id>
         <visible>true</visible>
         <enabled>true</enabled>
@@ -312,6 +312,57 @@
       <extInfo xsi:type="form:LabelFieldExtInfo">
         <width>25</width>
         <autoMaxWidth>true</autoMaxWidth>
+        <autoMaxHeight>true</autoMaxHeight>
+        <horizontalStretch>false</horizontalStretch>
+      </extInfo>
+    </items>
+    <items xsi:type="form:FormField">
+      <name>СтавкаНДС</name>
+      <id>56</id>
+      <title>
+        <key>ru</key>
+        <value>НДС</value>
+      </title>
+      <visible>true</visible>
+      <enabled>true</enabled>
+      <userVisible>
+        <common>true</common>
+      </userVisible>
+      <dataPath xsi:type="form:DataPath">
+        <segments>Список.СтавкаНДС</segments>
+      </dataPath>
+      <extendedTooltip>
+        <name>СтавкаНДСРасширеннаяПодсказка</name>
+        <id>58</id>
+        <visible>true</visible>
+        <enabled>true</enabled>
+        <userVisible>
+          <common>true</common>
+        </userVisible>
+        <type>Label</type>
+        <autoMaxWidth>true</autoMaxWidth>
+        <autoMaxHeight>true</autoMaxHeight>
+        <extInfo xsi:type="form:LabelDecorationExtInfo">
+          <horizontalAlign>Left</horizontalAlign>
+        </extInfo>
+      </extendedTooltip>
+      <contextMenu>
+        <name>СтавкаНДСКонтекстноеМеню</name>
+        <id>57</id>
+        <visible>true</visible>
+        <enabled>true</enabled>
+        <userVisible>
+          <common>true</common>
+        </userVisible>
+        <autoFill>true</autoFill>
+      </contextMenu>
+      <type>LabelField</type>
+      <editMode>Enter</editMode>
+      <showInHeader>true</showInHeader>
+      <headerHorizontalAlign>Left</headerHorizontalAlign>
+      <showInFooter>true</showInFooter>
+      <extInfo xsi:type="form:LabelFieldExtInfo">
+        <width>6</width>
         <autoMaxHeight>true</autoMaxHeight>
         <horizontalStretch>false</horizontalStretch>
       </extInfo>
@@ -555,7 +606,7 @@
         <common>true</common>
       </userVisible>
       <dataPath xsi:type="form:DataPath">
-        <segments>Список.Recorder</segments>
+        <segments>Список.Регистратор</segments>
       </dataPath>
       <extendedTooltip>
         <name>РегистраторРасширеннаяПодсказка</name>
@@ -637,7 +688,7 @@
         </userVisible>
         <autoFill>true</autoFill>
       </contextMenu>
-      <source>СписокСтрокаПоиска</source>
+      <source>Список</source>
       <extInfo xsi:type="form:SearchStringAdditionExtInfo">
         <autoMaxWidth>true</autoMaxWidth>
       </extInfo>
@@ -676,7 +727,7 @@
         <autoFill>true</autoFill>
       </contextMenu>
       <type>ViewStatusAddition</type>
-      <source>СписокСостояниеПросмотра</source>
+      <source>Список</source>
       <extInfo xsi:type="form:ViewStatusAdditionExtInfo">
         <autoMaxWidth>true</autoMaxWidth>
       </extInfo>
@@ -715,7 +766,7 @@
         <autoFill>true</autoFill>
       </contextMenu>
       <type>SearchControlAddition</type>
-      <source>СписокУправлениеПоиском</source>
+      <source>Список</source>
       <extInfo xsi:type="form:SearchControlAdditionExtInfo">
         <autoMaxWidth>true</autoMaxWidth>
       </extInfo>
@@ -790,6 +841,7 @@
     <horizontalAlign>Left</horizontalAlign>
     <autoFill>true</autoFill>
   </autoCommandBar>
+  <saveWindowSettings>true</saveWindowSettings>
   <autoTitle>true</autoTitle>
   <autoUrl>true</autoUrl>
   <group>Vertical</group>
@@ -812,9 +864,27 @@
     </edit>
     <main>true</main>
     <extInfo xsi:type="form:DynamicListExtInfo">
+      <queryText>ВЫБРАТЬ
+	ТаблицаРегистра.Период КАК Период,
+	ТаблицаРегистра.Регистратор КАК Регистратор,
+	ТаблицаРегистра.НомерСтроки КАК НомерСтроки,
+	ТаблицаРегистра.Активность КАК Активность,
+	ТаблицаРегистра.ОбъектЦенообразования.НомерМагазина КАК НомерМагазина,
+	ТаблицаРегистра.ОбъектЦенообразования КАК ОбъектЦенообразования,
+	ТаблицаРегистра.Номенклатура.IDN КАК IDN,
+	ТаблицаРегистра.Номенклатура КАК Номенклатура,
+	ТаблицаРегистра.Характеристика КАК Характеристика,
+	ТаблицаРегистра.Номенклатура.СтавкаНДС КАК СтавкаНДС,
+	ТаблицаРегистра.Цена КАК Цена,
+	ТаблицаРегистра.Упаковка КАК Упаковка,
+	ТаблицаРегистра.Акция КАК Акция,
+	ТаблицаРегистра.ВремяИзменения КАК ВремяИзменения
+ИЗ
+	РегистрСведений.ДействующиеЦеныНоменклатуры КАК ТаблицаРегистра</queryText>
       <mainTable>InformationRegister.ДействующиеЦеныНоменклатуры</mainTable>
       <dynamicDataRead>true</dynamicDataRead>
       <autoFillAvailableFields>true</autoFillAvailableFields>
+      <customQuery>true</customQuery>
       <autoSaveUserSettings>true</autoSaveUserSettings>
       <getInvisibleFieldPresentations>true</getInvisibleFieldPresentations>
     </extInfo>

@@ -187,7 +187,8 @@ SELECT
 	t.[Миним_ Заказ Магазин Кол-во] AS КратностьЗаказа,
 	t.[Авторепрайс Цен] AS WEB_АвторепрайсЦен,
 	t.[Выгружать в WEB] AS WEB_Выгружать,
-	t.[Мониторинг Цен] AS WEB_МониторингЦен
+	t.[Мониторинг Цен] AS WEB_МониторингЦен,
+	t.[Кешбек] AS Кешбек
 
 	from [dbo].[Европродукт 2009$Товар] t with(readuncommitted)
 	left join [dbo].[Европродукт 2009$Проект] pr
@@ -222,6 +223,7 @@ SELECT
 	[Но_] IN ('9999999999')
 
 	order by [Но_]
+
 
 #КонецОбласти 
 
@@ -525,7 +527,8 @@ SELECT
 	,[Расчетный счет] AS РАСЧЕТНЫЙСЧЕТ
 	,[Код ЕДРПОУ] AS КОДПОЕДРПОУ
   FROM [Euro2009].[dbo].[Европродукт 2009$Поставщик]
-  ORDER BY [Но_]
+  WHERE [timestamp] > CAST(CAST('000000000000' AS BIGINT) AS timestamp)
+  ORDER BY [timestamp], [Но_]
  
 #КонецОбласти 
 
@@ -565,7 +568,8 @@ SELECT
 	,CASE WHEN [НДС Бизнес Группа] = 'НДС20' THEN 1 ELSE 0 END AS ПЛАТЕЛЬЩИКНДС
 FROM [Euro2009].[dbo].[Европродукт 2009$Клиент]
 	WHERE [Код Страны] = 'UA' AND ([Налоговый Код] <> '' OR ИНН <> '') AND NOT [Название] LIKE '<Новый %'
-	ORDER BY [Но_]
+		AND [timestamp] > CAST(CAST('000000000000' AS BIGINT) AS timestamp)
+	ORDER BY [timestamp], [Но_]
 
 #КонецОбласти 
 

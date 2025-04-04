@@ -257,6 +257,37 @@
     <placementArea>UserCmds</placementArea>
     <representationInContextMenu>Auto</representationInContextMenu>
   </items>
+  <items xsi:type="form:Button">
+    <name>ВыборКонтрагента</name>
+    <id>16</id>
+    <visible>true</visible>
+    <enabled>true</enabled>
+    <userVisible>
+      <common>true</common>
+    </userVisible>
+    <extendedTooltip>
+      <name>ВыборКонтрагентаРасширеннаяПодсказка</name>
+      <id>17</id>
+      <visible>true</visible>
+      <enabled>true</enabled>
+      <userVisible>
+        <common>true</common>
+      </userVisible>
+      <type>Label</type>
+      <autoMaxWidth>true</autoMaxWidth>
+      <autoMaxHeight>true</autoMaxHeight>
+      <extInfo xsi:type="form:LabelDecorationExtInfo">
+        <horizontalAlign>Left</horizontalAlign>
+      </extInfo>
+    </extendedTooltip>
+    <type>UsualButton</type>
+    <commandName>Form.Command.ВыборКонтрагента</commandName>
+    <representation>Auto</representation>
+    <autoMaxWidth>true</autoMaxWidth>
+    <autoMaxHeight>true</autoMaxHeight>
+    <placementArea>UserCmds</placementArea>
+    <representationInContextMenu>Auto</representationInContextMenu>
+  </items>
   <autoCommandBar>
     <name>ФормаКоманднаяПанель</name>
     <id>-1</id>
@@ -273,6 +304,7 @@
     <name>ПриСозданииНаСервере</name>
   </handlers>
   <autoSaveDataInSettings>Use</autoSaveDataInSettings>
+  <saveWindowSettings>true</saveWindowSettings>
   <autoTitle>true</autoTitle>
   <autoUrl>true</autoUrl>
   <group>Vertical</group>
@@ -362,7 +394,7 @@
     <name>Подтвердить</name>
     <title>
       <key>ru</key>
-      <value>Подтвердить</value>
+      <value>Подтвердить (Аутентификация)</value>
     </title>
     <id>1</id>
     <toolTip>
@@ -417,6 +449,27 @@
     <action xsi:type="form:FormCommandHandlerContainer">
       <handler>
         <name>ВерификацияДержателяКарты</name>
+      </handler>
+    </action>
+    <currentRowUse>DontUse</currentRowUse>
+  </formCommands>
+  <formCommands>
+    <name>ВыборКонтрагента</name>
+    <title>
+      <key>ru</key>
+      <value>Выбор контрагента</value>
+    </title>
+    <id>4</id>
+    <toolTip>
+      <key>ru</key>
+      <value>Выбор контрагента</value>
+    </toolTip>
+    <use>
+      <common>true</common>
+    </use>
+    <action xsi:type="form:FormCommandHandlerContainer">
+      <handler>
+        <name>ВыборКонтрагента</name>
       </handler>
     </action>
     <currentRowUse>DontUse</currentRowUse>

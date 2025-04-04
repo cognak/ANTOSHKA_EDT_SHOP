@@ -76,6 +76,16 @@
 				</dcscor:item>
 			</appearance>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Организация</dataPath>
+			<field>Организация</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	ОтчетОРозничныхПродажах.Ссылка КАК Документ,
@@ -463,7 +473,8 @@
 	СУММА(Результат.СуммаПродажа) КАК СуммаПродажа,
 	СУММА(Результат.СуммаВозврат) КАК СуммаВозврат,
 	Результат.Документ КАК Документ,
-	Результат.Магазин КАК Магазин
+	Результат.Магазин КАК Магазин,
+	Результат.Документ.Организация КАК Организация
 ИЗ
 	Результат КАК Результат
 ГДЕ
@@ -474,7 +485,8 @@
 	Результат.ТипОплаты,
 	Результат.ВидОплаты,
 	Результат.Документ,
-	Результат.Магазин
+	Результат.Магазин,
+	Результат.Документ.Организация
 
 ОБЪЕДИНИТЬ ВСЕ
 
@@ -484,7 +496,8 @@
 	РеализацияТоваровТовары.Сумма,
 	0,
 	РеализацияТоваровТовары.Ссылка,
-	РеализацияТоваровТовары.Ссылка.Магазин
+	РеализацияТоваровТовары.Ссылка.Магазин,
+	NULL
 ИЗ
 	Документ.РеализацияТоваров.Товары КАК РеализацияТоваровТовары
 ГДЕ
@@ -659,6 +672,12 @@
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:userSettingID>284ad5ad-8635-4473-a642-f0379fe72ea0</dcsset:userSettingID>
 				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Организация</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>cd4caaaa-113e-45a4-81b0-54d353020bcf</dcsset:userSettingID>
+				</dcsset:item>
 				<dcsset:userSettingID>8abe9893-a24c-4e15-940b-3eb73aab1001</dcsset:userSettingID>
 			</dcsset:filter>
 			<dcsset:dataParameters>
@@ -696,7 +715,7 @@
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
 				<dcsset:groupItems>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
-						<dcsset:field>Магазин</dcsset:field>
+						<dcsset:field>Организация</dcsset:field>
 						<dcsset:groupType>Items</dcsset:groupType>
 						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -712,7 +731,7 @@
 				<dcsset:item xsi:type="dcsset:StructureItemGroup">
 					<dcsset:groupItems>
 						<dcsset:item xsi:type="dcsset:GroupItemField">
-							<dcsset:field>ТипОплаты</dcsset:field>
+							<dcsset:field>Магазин</dcsset:field>
 							<dcsset:groupType>Items</dcsset:groupType>
 							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -728,7 +747,7 @@
 					<dcsset:item xsi:type="dcsset:StructureItemGroup">
 						<dcsset:groupItems>
 							<dcsset:item xsi:type="dcsset:GroupItemField">
-								<dcsset:field>ВидОплаты</dcsset:field>
+								<dcsset:field>ТипОплаты</dcsset:field>
 								<dcsset:groupType>Items</dcsset:groupType>
 								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -741,6 +760,23 @@
 						<dcsset:selection>
 							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
 						</dcsset:selection>
+						<dcsset:item xsi:type="dcsset:StructureItemGroup">
+							<dcsset:groupItems>
+								<dcsset:item xsi:type="dcsset:GroupItemField">
+									<dcsset:field>ВидОплаты</dcsset:field>
+									<dcsset:groupType>Items</dcsset:groupType>
+									<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+									<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+									<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+								</dcsset:item>
+							</dcsset:groupItems>
+							<dcsset:order>
+								<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+							</dcsset:order>
+							<dcsset:selection>
+								<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+							</dcsset:selection>
+						</dcsset:item>
 					</dcsset:item>
 				</dcsset:item>
 			</dcsset:item>
