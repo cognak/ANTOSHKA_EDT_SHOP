@@ -111,6 +111,16 @@
 				</dcscor:item>
 			</appearance>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ОбщееВремя</dataPath>
+			<field>ОбщееВремя</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Общее время</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	ВремяОбработкиЧека.ЧекККМ КАК ЧекККМ,
@@ -165,7 +175,8 @@
 	КОНЕЦ КАК ВремяОбработкиОдногоТовара,
 	ТабВіборка.ЕстьУслуги КАК ЕстьУслуги,
 	ТабВіборка.ВремяОплаты КАК ВремяОплаты,
-	ТабВіборка.ВремяРасчетаСкидок КАК ВремяРасчетаСкидок
+	ТабВіборка.ВремяРасчетаСкидок КАК ВремяРасчетаСкидок,
+	ТабВіборка.ВремяОплаты + ТабВіборка.ВремяРасчетаСкидок + ТабВіборка.ВремяОбработки КАК ОбщееВремя
 ИЗ
 	ТабВіборка КАК ТабВіборка</query>
 	</dataSet>
@@ -184,6 +195,10 @@
 	<totalField>
 		<dataPath>ВремяОплаты</dataPath>
 		<expression>Среднее(ВремяОплаты)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ОбщееВремя</dataPath>
+		<expression>Сумма(ОбщееВремя)</expression>
 	</totalField>
 	<parameter>
 		<name>СписокНоменклатуры</name>
@@ -272,6 +287,9 @@
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>ВремяОплаты</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ОбщееВремя</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>ЕстьУслуги</dcsset:field>
