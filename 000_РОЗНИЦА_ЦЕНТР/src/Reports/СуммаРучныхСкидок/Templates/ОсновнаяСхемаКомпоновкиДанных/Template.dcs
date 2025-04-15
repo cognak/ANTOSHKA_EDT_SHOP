@@ -92,6 +92,26 @@
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НомерПроекта</dataPath>
+			<field>НомерПроекта</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номер проекта</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВидНоменклатуры</dataPath>
+			<field>ВидНоменклатуры</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид номенклатуры</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	ВЫБОР
@@ -119,8 +139,10 @@
 			ТОГДА -1
 		ИНАЧЕ 1
 	КОНЕЦ * ЧекККМТовары.ПроцентРучнойСкидки КАК ПроцентРучнойСкидки,
-	NULL КАК Номенклатура,
-	ТИП(Документ.ЧекККМ) КАК ТипДокумента
+	ЧекККМТовары.Номенклатура КАК Номенклатура,
+	ТИП(Документ.ЧекККМ) КАК ТипДокумента,
+	ЧекККМТовары.Номенклатура.ВидНоменклатуры КАК ВидНоменклатуры,
+	ЧекККМТовары.Номенклатура.ВидНоменклатуры.НомерПроекта КАК НомерПроекта
 ИЗ
 	Документ.ЧекККМ.Товары КАК ЧекККМТовары
 ГДЕ
@@ -142,7 +164,9 @@
 	ЗаказПокупателяТовары.СуммаРучнойСкидки + ЗаказПокупателяТовары.Сумма,
 	ЗаказПокупателяТовары.ПроцентРучнойСкидки,
 	ЗаказПокупателяТовары.Номенклатура,
-	ТИП(Документ.ЗаказПокупателя)
+	ТИП(Документ.ЗаказПокупателя),
+	ЗаказПокупателяТовары.Номенклатура.ВидНоменклатуры,
+	ЗаказПокупателяТовары.Номенклатура.ВидНоменклатуры.НомерПроекта
 ИЗ
 	Документ.ЗаказПокупателя.Товары КАК ЗаказПокупателяТовары
 ГДЕ
@@ -402,6 +426,33 @@
 					</dcsset:lwsTitle>
 				</dcsset:item>
 			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">НомерПроекта</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
+					<dcsset:userSettingID>57a80d03-2704-4d9b-876a-4ede01261b62</dcsset:userSettingID>
+					<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер проекта</v8:content>
+						</v8:item>
+					</dcsset:userSettingPresentation>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">ВидНоменклатуры</dcsset:left>
+					<dcsset:comparisonType>InHierarchy</dcsset:comparisonType>
+					<dcsset:userSettingID>39b47ca2-c2d9-451d-90ef-a539aa849ae9</dcsset:userSettingID>
+					<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вид номенклатуры</v8:content>
+						</v8:item>
+					</dcsset:userSettingPresentation>
+				</dcsset:item>
+			</dcsset:filter>
 			<dcsset:dataParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:use>false</dcscor:use>
