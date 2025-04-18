@@ -1,0 +1,4 @@
+call deployka loadcfg "/IBConnectionString""Srvr=[ИмяСервераНовая]:1541;Ref='[ИмяИнформационнойБазыНовая]'""" "[КаталогОбновления]" /mode -auto -db-user [ИмяАдминистратораНовая] -db-pwd [ПарольАдминистратораНовая] -uccode ПакетноеОбновлениеКонфигурациИБ
+call deployka dbupdate "/IBConnectionString""Srvr=[ИмяСервераНовая]:1541;Ref='[ИмяИнформационнойБазыНовая]'""" -db-user [ИмяАдминистратораНовая] -db-pwd [ПарольАдминистратораНовая] -uccode ПакетноеОбновлениеКонфигурациИБ -allow-warnings -dynamic
+call deployka run "/IBConnectionString""Srvr=[ИмяСервераНовая]:1541;Ref='[ИмяИнформационнойБазыНовая]'""" -db-user [ИмяАдминистратораНовая] -db-pwd [ПарольАдминистратораНовая] -thin-client
+
