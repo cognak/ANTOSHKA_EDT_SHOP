@@ -158,6 +158,15 @@
     <usePurposes>PersonalComputer</usePurposes>
     <usePurposes>MobileDevice</usePurposes>
   </forms>
+  <forms uuid="267f59fb-febc-4995-bf2a-043f30de5868">
+    <name>ФормаВводаКода</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма ввода кода</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
   <tabularSections uuid="38dc35cb-1054-46a1-93b7-0ab205cf78cd">
     <producedTypes>
       <objectType typeId="5015ed5e-5c06-4aab-bc1b-682a8a04dbd1" valueTypeId="8a255989-14b0-4b2f-ac26-2cdb0c400e83"/>
@@ -228,8 +237,11 @@
         <value>Часов факт</value>
       </synonym>
       <type>
-        <types>Date</types>
-        <dateQualifiers/>
+        <types>Number</types>
+        <numberQualifiers>
+          <precision>5</precision>
+          <scale>2</scale>
+        </numberQualifiers>
       </type>
       <minValue xsi:type="core:UndefinedValue"/>
       <maxValue xsi:type="core:UndefinedValue"/>
@@ -243,8 +255,11 @@
         <value>Часов корр</value>
       </synonym>
       <type>
-        <types>Date</types>
-        <dateQualifiers/>
+        <types>Number</types>
+        <numberQualifiers>
+          <precision>5</precision>
+          <scale>2</scale>
+        </numberQualifiers>
       </type>
       <minValue xsi:type="core:UndefinedValue"/>
       <maxValue xsi:type="core:UndefinedValue"/>
@@ -275,27 +290,11 @@
         <value>Код подтверждения</value>
       </synonym>
       <type>
-        <types>String</types>
-        <stringQualifiers>
-          <length>6</length>
-        </stringQualifiers>
-      </type>
-      <minValue xsi:type="core:UndefinedValue"/>
-      <maxValue xsi:type="core:UndefinedValue"/>
-      <dataHistory>Use</dataHistory>
-      <fullTextSearch>Use</fullTextSearch>
-    </attributes>
-    <attributes uuid="4caa6fc9-b1c6-4870-bfd9-8a92a5c5bb94">
-      <name>Подтверждено</name>
-      <synonym>
-        <key>ru</key>
-        <value>Подтверждено</value>
-      </synonym>
-      <type>
-        <types>String</types>
-        <stringQualifiers>
-          <length>10</length>
-        </stringQualifiers>
+        <types>Number</types>
+        <numberQualifiers>
+          <precision>6</precision>
+          <nonNegative>true</nonNegative>
+        </numberQualifiers>
       </type>
       <minValue xsi:type="core:UndefinedValue"/>
       <maxValue xsi:type="core:UndefinedValue"/>
@@ -370,10 +369,10 @@
       <fullTextSearch>Use</fullTextSearch>
     </attributes>
     <attributes uuid="237f56cc-3f7e-4beb-a580-f7007d3c8f0e">
-      <name>Сотрудник</name>
+      <name>Адресат</name>
       <synonym>
         <key>ru</key>
-        <value>Сотрудник</value>
+        <value>Адресат</value>
       </synonym>
       <type>
         <types>CatalogRef.ФизическиеЛица</types>

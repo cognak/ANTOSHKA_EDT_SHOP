@@ -431,6 +431,10 @@
           <dataPath xsi:type="form:DataPath">
             <segments>Объект.Сотрудники[0].ДатаК</segments>
           </dataPath>
+          <handlers>
+            <event>OnChange</event>
+            <name>КорректирумаяДатаПриИзменении</name>
+          </handlers>
           <extendedTooltip>
             <name>КорректирумаяДатаРасширеннаяПодсказка</name>
             <id>71</id>
@@ -465,23 +469,19 @@
           </extInfo>
         </items>
         <items xsi:type="form:FormField">
-          <name>ЧасовКорр</name>
-          <id>83</id>
-          <title>
-            <key>ru</key>
-            <value>Было</value>
-          </title>
+          <name>КорректируемоеВремя</name>
+          <id>124</id>
           <visible>true</visible>
           <enabled>true</enabled>
           <userVisible>
             <common>true</common>
           </userVisible>
           <dataPath xsi:type="form:DataPath">
-            <segments>Объект.Сотрудники[0].ЧасовКорр</segments>
+            <segments>КорректируемоеВремя</segments>
           </dataPath>
           <extendedTooltip>
-            <name>ЧасовКоррРасширеннаяПодсказка</name>
-            <id>85</id>
+            <name>КорректируемоеВремяРасширеннаяПодсказка</name>
+            <id>126</id>
             <type>Label</type>
             <autoMaxWidth>true</autoMaxWidth>
             <autoMaxHeight>true</autoMaxHeight>
@@ -490,8 +490,8 @@
             </extInfo>
           </extendedTooltip>
           <contextMenu>
-            <name>ЧасовКоррКонтекстноеМеню</name>
-            <id>84</id>
+            <name>КорректируемоеВремяКонтекстноеМеню</name>
+            <id>125</id>
             <autoFill>true</autoFill>
           </contextMenu>
           <type>InputField</type>
@@ -506,7 +506,7 @@
             <wrap>true</wrap>
             <editFormat>
               <key>ru</key>
-              <value>ДФ=мм:сс</value>
+              <value>ДФ=ЧЧ:мм</value>
             </editFormat>
             <chooseType>true</chooseType>
             <typeDomainEnabled>true</typeDomainEnabled>
@@ -514,23 +514,23 @@
           </extInfo>
         </items>
         <items xsi:type="form:FormField">
-          <name>ОтработаноФакт</name>
-          <id>78</id>
-          <title>
-            <key>ru</key>
-            <value>Отработано</value>
-          </title>
+          <name>ФактВремя</name>
+          <id>127</id>
           <visible>true</visible>
           <enabled>true</enabled>
           <userVisible>
             <common>true</common>
           </userVisible>
           <dataPath xsi:type="form:DataPath">
-            <segments>Объект.Сотрудники[0].ЧасовФакт</segments>
+            <segments>ФактВремя</segments>
           </dataPath>
+          <handlers>
+            <event>OnChange</event>
+            <name>ФактВремяПриИзменении</name>
+          </handlers>
           <extendedTooltip>
-            <name>ОтработаноФактРасширеннаяПодсказка</name>
-            <id>80</id>
+            <name>ФактВремяРасширеннаяПодсказка</name>
+            <id>129</id>
             <type>Label</type>
             <autoMaxWidth>true</autoMaxWidth>
             <autoMaxHeight>true</autoMaxHeight>
@@ -539,8 +539,8 @@
             </extInfo>
           </extendedTooltip>
           <contextMenu>
-            <name>ОтработаноФактКонтекстноеМеню</name>
-            <id>79</id>
+            <name>ФактВремяКонтекстноеМеню</name>
+            <id>128</id>
             <autoFill>true</autoFill>
           </contextMenu>
           <type>InputField</type>
@@ -554,7 +554,7 @@
             <wrap>true</wrap>
             <editFormat>
               <key>ru</key>
-              <value>ДФ=мм:сс</value>
+              <value>ДФ=ЧЧ:мм</value>
             </editFormat>
             <chooseType>true</chooseType>
             <typeDomainEnabled>true</typeDomainEnabled>
@@ -885,7 +885,6 @@
   <items xsi:type="form:Table">
     <name>Сообщения</name>
     <id>86</id>
-    <visible>true</visible>
     <enabled>true</enabled>
     <userVisible>
       <common>true</common>
@@ -979,7 +978,7 @@
         <common>true</common>
       </userVisible>
       <dataPath xsi:type="form:DataPath">
-        <segments>Объект.Сообщения.Сотрудник</segments>
+        <segments>Объект.Сообщения.Адресат</segments>
       </dataPath>
       <extendedTooltip>
         <name>СообщенияСотрудникРасширеннаяПодсказка</name>
@@ -1203,6 +1202,46 @@
     </notDefaultUseAlwaysAttributes>
     <main>true</main>
     <savedData>true</savedData>
+  </attributes>
+  <attributes>
+    <name>КорректируемоеВремя</name>
+    <title>
+      <key>ru</key>
+      <value>Корректируемое время</value>
+    </title>
+    <id>2</id>
+    <valueType>
+      <types>Date</types>
+      <dateQualifiers>
+        <dateFractions>Time</dateFractions>
+      </dateQualifiers>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
+  </attributes>
+  <attributes>
+    <name>ФактВремя</name>
+    <title>
+      <key>ru</key>
+      <value>Факт время</value>
+    </title>
+    <id>3</id>
+    <valueType>
+      <types>Date</types>
+      <dateQualifiers>
+        <dateFractions>Time</dateFractions>
+      </dateQualifiers>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
   </attributes>
   <formCommands>
     <name>КомандаОтправитьКодПодтверждения</name>
