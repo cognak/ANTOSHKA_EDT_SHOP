@@ -151,8 +151,10 @@
           <chooseType>true</chooseType>
           <typeDomainEnabled>true</typeDomainEnabled>
           <textEdit>true</textEdit>
-          <font xsi:type="core:AutoFont">
-            <height>16.0</height>
+          <font xsi:type="core:FontRef">
+            <font>System.DefaultGUIFont</font>
+            <height>12.0</height>
+            <bold>true</bold>
           </font>
         </extInfo>
       </items>
@@ -249,6 +251,50 @@
         <segments>ТоварыВДороге</segments>
       </dataPath>
       <titleLocation>Top</titleLocation>
+      <items xsi:type="form:FormField">
+        <name>ТоварыВДорогеЗапросДоступностиТоваровСтатусЗапроса</name>
+        <id>196</id>
+        <title>
+          <key>ru</key>
+          <value>Статус</value>
+        </title>
+        <visible>true</visible>
+        <enabled>true</enabled>
+        <userVisible>
+          <common>true</common>
+        </userVisible>
+        <dataPath xsi:type="form:DataPath">
+          <segments>ТоварыВДороге.ЗапросДоступностиТоваровСтатусЗапроса</segments>
+        </dataPath>
+        <extendedTooltip>
+          <name>ТоварыВДорогеЗапросДоступностиТоваровСтатусЗапросаРасширеннаяПодсказка</name>
+          <id>198</id>
+          <type>Label</type>
+          <autoMaxWidth>true</autoMaxWidth>
+          <autoMaxHeight>true</autoMaxHeight>
+          <extInfo xsi:type="form:LabelDecorationExtInfo">
+            <horizontalAlign>Left</horizontalAlign>
+          </extInfo>
+        </extendedTooltip>
+        <contextMenu>
+          <name>ТоварыВДорогеЗапросДоступностиТоваровСтатусЗапросаКонтекстноеМеню</name>
+          <id>197</id>
+          <autoFill>true</autoFill>
+        </contextMenu>
+        <type>InputField</type>
+        <editMode>Enter</editMode>
+        <showInHeader>true</showInHeader>
+        <headerHorizontalAlign>Left</headerHorizontalAlign>
+        <showInFooter>true</showInFooter>
+        <extInfo xsi:type="form:InputFieldExtInfo">
+          <autoMaxWidth>true</autoMaxWidth>
+          <autoMaxHeight>true</autoMaxHeight>
+          <wrap>true</wrap>
+          <chooseType>true</chooseType>
+          <typeDomainEnabled>true</typeDomainEnabled>
+          <textEdit>true</textEdit>
+        </extInfo>
+      </items>
       <items xsi:type="form:FormField">
         <name>ТоварыВДорогеКод</name>
         <id>178</id>
@@ -1324,7 +1370,8 @@
 	ЗаказПокупателяТовары.Номенклатура.Код КАК Код,
 	ЗаказПокупателяТовары.Номенклатура.Артикул КАК Артикул,
 	ЗаказПокупателяТовары.Номенклатура КАК Номенклатура,
-	ЗаказПокупателяТовары.Количество КАК Количество
+	ЗаказПокупателяТовары.Количество КАК Количество,
+	СостояниеСтрокЗаказаПокупателя.ЗапросДоступностиТоваров.СтатусЗапроса
 ИЗ
 	Документ.ЗаказПокупателя.Товары КАК ЗаказПокупателяТовары
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СостояниеСтрокЗаказаПокупателя КАК СостояниеСтрокЗаказаПокупателя
