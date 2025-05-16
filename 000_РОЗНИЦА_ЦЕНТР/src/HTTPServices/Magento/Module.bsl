@@ -1700,7 +1700,7 @@
 КонецФункции
 
 Функция ПолучитьОписаниеКлиентаДЖСОН(Контрагент)
-	ОписаниеКлиента = Новый Структура("IDC,ClientDateBorn,ClientGender,ClientFirstName,ClientLastName,ClientMiddleName,ClientEmail,ClientPhone,VersionNo,Error,Message");
+	ОписаниеКлиента = Новый Структура("IDC,ClientDateBorn,ClientGender,ClientFirstName,ClientLastName,ClientMiddleName,ClientEmail,ClientPhone,VersionNo,Error,Message, isInaktive");
 	Запрос = Новый Запрос;
 	Запрос.Текст = "ВЫБРАТЬ
 	               |	"""" КАК IDC,
@@ -1722,7 +1722,8 @@
 	               |	ЛОЖЬ КАК Error,
 	               |	"""" КАК Message,
 	               |	Контрагенты.Ссылка КАК Ссылка,
-	               |	Контрагенты.ВерсияДанных КАК VersionNo
+	               |	Контрагенты.ВерсияДанных КАК VersionNo,
+	               |	Контрагенты.ПометкаУдаления КАК isInaktive
 	               |ИЗ
 	               |	Справочник.Контрагенты КАК Контрагенты
 	               |		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ФИОФизЛиц.СрезПоследних КАК ФИОФизЛицСрезПоследних
