@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form:Form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:form="http://g5.1c.ru/v8/dt/form">
+<form:Form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:form="http://g5.1c.ru/v8/dt/form" xmlns:schema="http://g5.1c.ru/v8/dt/data-composition-system/schema">
   <items xsi:type="form:Table">
     <name>Список</name>
     <id>1</id>
@@ -19,7 +19,7 @@
       <enabled>true</enabled>
       <userVisible/>
       <dataPath xsi:type="form:DataPath">
-        <segments>Список.Ref</segments>
+        <segments>Список.Ссылка</segments>
       </dataPath>
       <extendedTooltip>
         <name>СсылкаРасширеннаяПодсказка</name>
@@ -69,7 +69,7 @@
         <common>true</common>
       </userVisible>
       <dataPath xsi:type="form:DataPath">
-        <segments>Список.Description</segments>
+        <segments>Список.Наименование</segments>
       </dataPath>
       <defaultItem>true</defaultItem>
       <extendedTooltip>
@@ -116,7 +116,7 @@
         <common>true</common>
       </userVisible>
       <dataPath xsi:type="form:DataPath">
-        <segments>Список.Code</segments>
+        <segments>Список.Код</segments>
       </dataPath>
       <extendedTooltip>
         <name>КодРасширеннаяПодсказка</name>
@@ -378,15 +378,56 @@
       <common>true</common>
     </edit>
     <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
-      <segments>Список.Ref</segments>
+      <segments>Список.Ссылка</segments>
     </notDefaultUseAlwaysAttributes>
     <main>true</main>
     <extInfo xsi:type="form:DynamicListExtInfo">
+      <queryText>ВЫБРАТЬ
+	ПричиныРучнойСкидки.Ссылка,
+	ПричиныРучнойСкидки.ПометкаУдаления,
+	ПричиныРучнойСкидки.Код,
+	ПричиныРучнойСкидки.Наименование,
+	ПричиныРучнойСкидки.ИспользованиеДляЗаказаКлиента,
+	ПричиныРучнойСкидки.Предопределенный,
+	ПричиныРучнойСкидки.ИмяПредопределенныхДанных
+ИЗ
+	Справочник.ПричиныРучнойСкидки КАК ПричиныРучнойСкидки
+ГДЕ
+	НЕ ПричиныРучнойСкидки.ПометкаУдаления</queryText>
       <mainTable>Catalog.ПричиныРучнойСкидки</mainTable>
       <dynamicDataRead>true</dynamicDataRead>
       <autoFillAvailableFields>true</autoFillAvailableFields>
+      <customQuery>true</customQuery>
       <autoSaveUserSettings>true</autoSaveUserSettings>
       <getInvisibleFieldPresentations>true</getInvisibleFieldPresentations>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Ссылка</dataPath>
+        <field>Ссылка</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ПометкаУдаления</dataPath>
+        <field>ПометкаУдаления</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Код</dataPath>
+        <field>Код</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Наименование</dataPath>
+        <field>Наименование</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Предопределенный</dataPath>
+        <field>Предопределенный</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ИмяПредопределенныхДанных</dataPath>
+        <field>ИмяПредопределенныхДанных</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ИспользованиеДляЗаказаКлиента</dataPath>
+        <field>ИспользованиеДляЗаказаКлиента</field>
+      </fields>
     </extInfo>
   </attributes>
   <commandInterface>
