@@ -252,6 +252,7 @@
           <height>10</height>
           <autoMaxHeight>true</autoMaxHeight>
           <autoMaxRowsCount>true</autoMaxRowsCount>
+          <choiceMode>true</choiceMode>
           <selectionMode>MultiRow</selectionMode>
           <rowSelectionMode>Row</rowSelectionMode>
           <headerHeight>1</headerHeight>
@@ -902,6 +903,7 @@
           <height>10</height>
           <autoMaxHeight>true</autoMaxHeight>
           <autoMaxRowsCount>true</autoMaxRowsCount>
+          <choiceMode>true</choiceMode>
           <selectionMode>MultiRow</selectionMode>
           <headerHeight>1</headerHeight>
           <footerHeight>1</footerHeight>
@@ -1619,7 +1621,6 @@
       </extendedTooltip>
       <commandName>Form.Command.ЗавершитьИЗакрыть</commandName>
       <representation>Auto</representation>
-      <defaultButton>true</defaultButton>
       <autoMaxWidth>true</autoMaxWidth>
       <autoMaxHeight>true</autoMaxHeight>
       <placementArea>UserCmds</placementArea>
@@ -1933,6 +1934,10 @@
   <handlers>
     <event>BeforeClose</event>
     <name>ПередЗакрытием</name>
+  </handlers>
+  <handlers>
+    <event>OnLoadDataFromSettingsAtServer</event>
+    <name>ПриЗагрузкеДанныхИзНастроекНаСервере</name>
   </handlers>
   <handlers>
     <event>OnCreateAtServer</event>
@@ -2357,6 +2362,30 @@
       </handler>
     </action>
     <currentRowUse>DontUse</currentRowUse>
+  </formCommands>
+  <formCommands>
+    <name>ВыбратьГруппуПользователей</name>
+    <title>
+      <key>ru</key>
+      <value>Выбрать группу пользователей</value>
+    </title>
+    <id>9</id>
+    <use>
+      <common>true</common>
+    </use>
+    <currentRowUse>Auto</currentRowUse>
+  </formCommands>
+  <formCommands>
+    <name>ВыбратьПользователя</name>
+    <title>
+      <key>ru</key>
+      <value>Выбрать пользователя</value>
+    </title>
+    <id>10</id>
+    <use>
+      <common>true</common>
+    </use>
+    <currentRowUse>Auto</currentRowUse>
   </formCommands>
   <parameters>
     <name>ВыборГруппПользователей</name>

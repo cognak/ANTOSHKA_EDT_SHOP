@@ -3543,7 +3543,6 @@
         </dataPath>
         <titleLocation>None</titleLocation>
         <excludedCommands>CancelSearch</excludedCommands>
-        <excludedCommands>Choose</excludedCommands>
         <excludedCommands>CopyToClipboard</excludedCommands>
         <excludedCommands>DynamicListStandardSettings</excludedCommands>
         <excludedCommands>Find</excludedCommands>
@@ -3564,7 +3563,7 @@
             <common>true</common>
           </userVisible>
           <dataPath xsi:type="form:DataPath">
-            <segments>Статусы.Period</segments>
+            <segments>Статусы.Период</segments>
           </dataPath>
           <extendedTooltip>
             <name>СтатусыПериодРасширеннаяПодсказка</name>
@@ -3639,6 +3638,46 @@
             <userVisible>
               <common>true</common>
             </userVisible>
+            <autoFill>true</autoFill>
+          </contextMenu>
+          <type>InputField</type>
+          <editMode>Enter</editMode>
+          <showInHeader>true</showInHeader>
+          <headerHorizontalAlign>Left</headerHorizontalAlign>
+          <showInFooter>true</showInFooter>
+          <extInfo xsi:type="form:InputFieldExtInfo">
+            <autoMaxWidth>true</autoMaxWidth>
+            <autoMaxHeight>true</autoMaxHeight>
+            <wrap>true</wrap>
+            <chooseType>true</chooseType>
+            <typeDomainEnabled>true</typeDomainEnabled>
+            <textEdit>true</textEdit>
+          </extInfo>
+        </items>
+        <items xsi:type="form:FormField">
+          <name>СтатусыСтоимостьДокумента</name>
+          <id>337</id>
+          <visible>true</visible>
+          <enabled>true</enabled>
+          <userVisible>
+            <common>true</common>
+          </userVisible>
+          <dataPath xsi:type="form:DataPath">
+            <segments>Статусы.СтоимостьДокумента</segments>
+          </dataPath>
+          <extendedTooltip>
+            <name>СтатусыСтоимостьДокументаРасширеннаяПодсказка</name>
+            <id>339</id>
+            <type>Label</type>
+            <autoMaxWidth>true</autoMaxWidth>
+            <autoMaxHeight>true</autoMaxHeight>
+            <extInfo xsi:type="form:LabelDecorationExtInfo">
+              <horizontalAlign>Left</horizontalAlign>
+            </extInfo>
+          </extendedTooltip>
+          <contextMenu>
+            <name>СтатусыСтоимостьДокументаКонтекстноеМеню</name>
+            <id>338</id>
             <autoFill>true</autoFill>
           </contextMenu>
           <type>InputField</type>
@@ -3966,7 +4005,8 @@
       <queryText>ВЫБРАТЬ
 	СтатусыТТН.Период,
 	СтатусыТТН.ДокументРегистратор,
-	СтатусыТТН.СтатусЭН
+	СтатусыТТН.СтатусЭН,
+	СтатусыТТН.СтоимостьДокумента
 ИЗ
 	РегистрСведений.СтатусыЭН КАК СтатусыТТН
 ГДЕ
