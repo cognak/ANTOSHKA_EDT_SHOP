@@ -52,6 +52,16 @@
 			<dataPath>Характеристика</dataPath>
 			<field>Характеристика</field>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Статус</dataPath>
+			<field>Статус</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Статус</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	ОпорныеЦеныНоменклатурыСрезПоследних.Магазин КАК Магазин,
@@ -59,9 +69,13 @@
 	ОпорныеЦеныНоменклатурыСрезПоследних.Цена КАК Цена,
 	ОпорныеЦеныНоменклатурыСрезПоследних.ВремяИзменения КАК ВремяИзменения,
 	ОпорныеЦеныНоменклатурыСрезПоследних.Номенклатура.IDN КАК НоменклатураIDN,
-	ОпорныеЦеныНоменклатурыСрезПоследних.Номенклатура.Производитель КАК НоменклатураПроизводитель
+	ОпорныеЦеныНоменклатурыСрезПоследних.Номенклатура.Производитель КАК НоменклатураПроизводитель,
+	НоменклатураДополнительныеРеквизиты.Значение КАК Статус
 ИЗ
 	РегистрСведений.ОпорныеЦеныНоменклатуры.СрезПоследних(, ) КАК ОпорныеЦеныНоменклатурыСрезПоследних
+		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.Номенклатура.ДополнительныеРеквизиты КАК НоменклатураДополнительныеРеквизиты
+		ПО ОпорныеЦеныНоменклатурыСрезПоследних.Номенклатура = НоменклатураДополнительныеРеквизиты.Ссылка
+			И (НоменклатураДополнительныеРеквизиты.Свойство = &amp;Сатус)
 ГДЕ
 	ОпорныеЦеныНоменклатурыСрезПоследних.Магазин = &amp;Магазин
 
@@ -100,6 +114,21 @@
 		<useRestriction>true</useRestriction>
 		<expression>ТекущаяДата()</expression>
 	</parameter>
+	<parameter>
+		<name>Сатус</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Сатус</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:ChartOfCharacteristicTypesRef.ДополнительныеРеквизитыИСведения</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">ПланВидовХарактеристик.ДополнительныеРеквизитыИСведения.СтатусТовара</value>
+		<useRestriction>true</useRestriction>
+		<use>Always</use>
+	</parameter>
 	<settingsVariant>
 		<dcsset:name>Опорные цены</dcsset:name>
 		<dcsset:presentation xsi:type="v8:LocalStringType">
@@ -119,6 +148,9 @@
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Номенклатура</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Статус</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>НоменклатураIDN</dcsset:field>
