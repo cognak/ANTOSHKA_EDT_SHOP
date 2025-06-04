@@ -46,17 +46,17 @@
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
-	ЧекККМТовары.Ссылка КАК Ссылка
+	ЧекККМСкидкиНаценки.Ссылка КАК Ссылка
 ПОМЕСТИТЬ Таб
 ИЗ
-	Документ.ЧекККМ.Товары КАК ЧекККМТовары
+	Документ.ЧекККМ.СкидкиНаценки КАК ЧекККМСкидкиНаценки
 ГДЕ
-	ЧекККМТовары.Ссылка.Дата МЕЖДУ &amp;ДатаС И &amp;ДатаПо
-	И ЧекККМТовары.Ссылка.Проведен = ИСТИНА
-	И ЧекККМТовары.Номенклатура = &amp;Номенклатура
+	ЧекККМСкидкиНаценки.Ссылка.Дата МЕЖДУ &amp;ДатаС И &amp;ДатаПо
+	И ЧекККМСкидкиНаценки.Ссылка.Проведен = ИСТИНА
+	И ЧекККМСкидкиНаценки.СкидкаНаценка = &amp;СкидкаНаценка
 
 СГРУППИРОВАТЬ ПО
-	ЧекККМТовары.Ссылка
+	ЧекККМСкидкиНаценки.Ссылка
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -119,15 +119,20 @@
 		<useRestriction>false</useRestriction>
 	</parameter>
 	<parameter>
-		<name>Номенклатура</name>
+		<name>СкидкаНаценка</name>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
-				<v8:content>Номенклатура</v8:content>
+				<v8:content>Скидка наценка</v8:content>
 			</v8:item>
 		</title>
 		<valueType>
-			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Номенклатура</v8:Type>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.СкидкиНаценки</v8:Type>
+			<v8:Type>xs:string</v8:Type>
+			<v8:StringQualifiers>
+				<v8:Length>512</v8:Length>
+				<v8:AllowedLength>Variable</v8:AllowedLength>
+			</v8:StringQualifiers>
 		</valueType>
 		<value xsi:nil="true"/>
 		<useRestriction>false</useRestriction>
@@ -171,9 +176,9 @@
 				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:use>false</dcscor:use>
-					<dcscor:parameter>Номенклатура</dcscor:parameter>
+					<dcscor:parameter>СкидкаНаценка</dcscor:parameter>
 					<dcscor:value xsi:nil="true"/>
-					<dcsset:userSettingID>83d9f903-cdce-41de-a435-7542df4773e6</dcsset:userSettingID>
+					<dcsset:userSettingID>37bfe80e-ae48-4c3b-942a-b5da949c3915</dcsset:userSettingID>
 				</dcscor:item>
 			</dcsset:dataParameters>
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
