@@ -414,8 +414,9 @@
           <items xsi:type="form:FormField">
             <name>ТипОплаты</name>
             <id>282</id>
-            <titleFont xsi:type="core:FontDef">
-              <height>10.0</height>
+            <titleFont xsi:type="core:FontRef">
+              <font>Style.NormalTextFont</font>
+              <height>12.0</height>
             </titleFont>
             <visible>true</visible>
             <enabled>true</enabled>
@@ -458,7 +459,8 @@
             <extInfo xsi:type="form:LabelFieldExtInfo">
               <autoMaxWidth>true</autoMaxWidth>
               <autoMaxHeight>true</autoMaxHeight>
-              <font xsi:type="core:FontDef">
+              <font xsi:type="core:FontRef">
+                <font>Style.NormalTextFont</font>
                 <height>12.0</height>
               </font>
             </extInfo>
@@ -507,7 +509,51 @@
             <extInfo xsi:type="form:LabelFieldExtInfo">
               <autoMaxWidth>true</autoMaxWidth>
               <autoMaxHeight>true</autoMaxHeight>
-              <font xsi:type="core:FontDef">
+              <font xsi:type="core:FontRef">
+                <font>Style.NormalTextFont</font>
+                <height>12.0</height>
+              </font>
+            </extInfo>
+          </items>
+          <items xsi:type="form:FormField">
+            <name>СтатусОплаты</name>
+            <id>314</id>
+            <visible>true</visible>
+            <enabled>true</enabled>
+            <userVisible>
+              <common>true</common>
+            </userVisible>
+            <dataPath xsi:type="form:DataPath">
+              <segments>Объект.СтатусОплаты</segments>
+            </dataPath>
+            <extendedTooltip>
+              <name>СтатусОплатыРасширеннаяПодсказка</name>
+              <id>316</id>
+              <type>Label</type>
+              <autoMaxWidth>true</autoMaxWidth>
+              <autoMaxHeight>true</autoMaxHeight>
+              <extInfo xsi:type="form:LabelDecorationExtInfo">
+                <horizontalAlign>Left</horizontalAlign>
+              </extInfo>
+            </extendedTooltip>
+            <contextMenu>
+              <name>СтатусОплатыКонтекстноеМеню</name>
+              <id>315</id>
+              <autoFill>true</autoFill>
+            </contextMenu>
+            <type>LabelField</type>
+            <editMode>Enter</editMode>
+            <showInHeader>true</showInHeader>
+            <headerHorizontalAlign>Left</headerHorizontalAlign>
+            <showInFooter>true</showInFooter>
+            <extInfo xsi:type="form:LabelFieldExtInfo">
+              <autoMaxWidth>true</autoMaxWidth>
+              <autoMaxHeight>true</autoMaxHeight>
+              <border xsi:type="core:BorderDef">
+                <width>1</width>
+              </border>
+              <font xsi:type="core:FontRef">
+                <font>Style.NormalTextFont</font>
                 <height>12.0</height>
               </font>
             </extInfo>
