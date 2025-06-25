@@ -71,47 +71,9 @@
 ИЗ
 	РегистрСведений.ОчередьОтказанныхСообщений КАК ОчередьОтказанныхСообщений
 ГДЕ
-	ОчередьОтказанныхСообщений.ДатаИзменения МЕЖДУ &amp;ДатаС И &amp;ДатаПо
+	НАЧАЛОПЕРИОДА(ОчередьОтказанныхСообщений.ДатаИзменения, ДЕНЬ) = НАЧАЛОПЕРИОДА(&amp;ТекДата, ДЕНЬ)
 	И ОчередьОтказанныхСообщений.ТипОтправителя ПОДОБНО &amp;ТипОтправителя</query>
 	</dataSet>
-	<parameter>
-		<name>ДатаПо</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Дата по</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:dateTime</v8:Type>
-			<v8:DateQualifiers>
-				<v8:DateFractions>DateTime</v8:DateFractions>
-			</v8:DateQualifiers>
-		</valueType>
-		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-		<useRestriction>true</useRestriction>
-		<expression>КонецДня(ТекущаяДата())</expression>
-		<use>Always</use>
-	</parameter>
-	<parameter>
-		<name>ДатаС</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Дата С</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:dateTime</v8:Type>
-			<v8:DateQualifiers>
-				<v8:DateFractions>DateTime</v8:DateFractions>
-			</v8:DateQualifiers>
-		</valueType>
-		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-		<useRestriction>true</useRestriction>
-		<expression>НачалоДня(ТекущаяДата())</expression>
-		<use>Always</use>
-	</parameter>
 	<parameter>
 		<name>ТипОтправителя</name>
 		<title xsi:type="v8:LocalStringType">
@@ -130,6 +92,25 @@
 		<value xsi:type="xs:string"/>
 		<useRestriction>true</useRestriction>
 		<expression>"Справочник.ПодразделенияОрганизаций"</expression>
+		<use>Always</use>
+	</parameter>
+	<parameter>
+		<name>ТекДата</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Тек дата</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>ТекущаяДата()</expression>
 		<use>Always</use>
 	</parameter>
 	<settingsVariant>
@@ -175,18 +156,6 @@
 				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:dataParameters>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:use>false</dcscor:use>
-					<dcscor:parameter>ДатаПо</dcscor:parameter>
-					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
-					<dcsset:userSettingID>fee1196a-5a91-47ca-9e63-0e231a6754a9</dcsset:userSettingID>
-				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:use>false</dcscor:use>
-					<dcscor:parameter>ДатаС</dcscor:parameter>
-					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
-					<dcsset:userSettingID>e9b047ee-52b6-4406-a21b-0b79ec418ce7</dcsset:userSettingID>
-				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:use>false</dcscor:use>
 					<dcscor:parameter>ТипОтправителя</dcscor:parameter>

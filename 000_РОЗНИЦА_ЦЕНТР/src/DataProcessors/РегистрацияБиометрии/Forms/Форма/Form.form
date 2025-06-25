@@ -57,23 +57,23 @@
       <common>true</common>
     </userVisible>
     <dataPath xsi:type="form:DataPath">
-      <segments>Сотрудники</segments>
+      <segments>Объект.Сотрудники</segments>
     </dataPath>
     <titleLocation>None</titleLocation>
     <items xsi:type="form:FormField">
-      <name>СотрудникиЗарегистрирован</name>
-      <id>20</id>
+      <name>СотрудникиНомерСтроки</name>
+      <id>25</id>
       <visible>true</visible>
       <enabled>true</enabled>
       <userVisible>
         <common>true</common>
       </userVisible>
       <dataPath xsi:type="form:DataPath">
-        <segments>Сотрудники.Зарегистрирован</segments>
+        <segments>Объект.Сотрудники.LineNumber</segments>
       </dataPath>
       <extendedTooltip>
-        <name>СотрудникиЗарегистрированРасширеннаяПодсказка</name>
-        <id>22</id>
+        <name>СотрудникиНомерСтрокиРасширеннаяПодсказка</name>
+        <id>27</id>
         <type>Label</type>
         <autoMaxWidth>true</autoMaxWidth>
         <autoMaxHeight>true</autoMaxHeight>
@@ -82,8 +82,44 @@
         </extInfo>
       </extendedTooltip>
       <contextMenu>
-        <name>СотрудникиЗарегистрированКонтекстноеМеню</name>
-        <id>21</id>
+        <name>СотрудникиНомерСтрокиКонтекстноеМеню</name>
+        <id>26</id>
+        <autoFill>true</autoFill>
+      </contextMenu>
+      <type>LabelField</type>
+      <editMode>EnterOnInput</editMode>
+      <showInHeader>true</showInHeader>
+      <headerHorizontalAlign>Left</headerHorizontalAlign>
+      <showInFooter>true</showInFooter>
+      <extInfo xsi:type="form:LabelFieldExtInfo">
+        <autoMaxWidth>true</autoMaxWidth>
+        <autoMaxHeight>true</autoMaxHeight>
+      </extInfo>
+    </items>
+    <items xsi:type="form:FormField">
+      <name>СотрудникиЗарегистриован</name>
+      <id>34</id>
+      <visible>true</visible>
+      <enabled>true</enabled>
+      <userVisible>
+        <common>true</common>
+      </userVisible>
+      <dataPath xsi:type="form:DataPath">
+        <segments>Объект.Сотрудники.Зарегистрирован</segments>
+      </dataPath>
+      <extendedTooltip>
+        <name>СотрудникиЗарегистриованРасширеннаяПодсказка</name>
+        <id>36</id>
+        <type>Label</type>
+        <autoMaxWidth>true</autoMaxWidth>
+        <autoMaxHeight>true</autoMaxHeight>
+        <extInfo xsi:type="form:LabelDecorationExtInfo">
+          <horizontalAlign>Left</horizontalAlign>
+        </extInfo>
+      </extendedTooltip>
+      <contextMenu>
+        <name>СотрудникиЗарегистриованКонтекстноеМеню</name>
+        <id>35</id>
         <autoFill>true</autoFill>
       </contextMenu>
       <type>CheckBoxField</type>
@@ -95,18 +131,18 @@
     </items>
     <items xsi:type="form:FormField">
       <name>СотрудникиСотрудник</name>
-      <id>17</id>
+      <id>28</id>
       <visible>true</visible>
       <enabled>true</enabled>
       <userVisible>
         <common>true</common>
       </userVisible>
       <dataPath xsi:type="form:DataPath">
-        <segments>Сотрудники.Сотрудник</segments>
+        <segments>Объект.Сотрудники.Сотрудник</segments>
       </dataPath>
       <extendedTooltip>
         <name>СотрудникиСотрудникРасширеннаяПодсказка</name>
-        <id>19</id>
+        <id>30</id>
         <type>Label</type>
         <autoMaxWidth>true</autoMaxWidth>
         <autoMaxHeight>true</autoMaxHeight>
@@ -116,7 +152,7 @@
       </extendedTooltip>
       <contextMenu>
         <name>СотрудникиСотрудникКонтекстноеМеню</name>
-        <id>18</id>
+        <id>29</id>
         <autoFill>true</autoFill>
       </contextMenu>
       <type>InputField</type>
@@ -333,57 +369,6 @@
     <edit>
       <common>true</common>
     </edit>
-  </attributes>
-  <attributes>
-    <name>Сотрудники</name>
-    <title>
-      <key>ru</key>
-      <value>Сотрудники</value>
-    </title>
-    <id>4</id>
-    <valueType>
-      <types>ValueTable</types>
-    </valueType>
-    <view>
-      <common>true</common>
-    </view>
-    <edit>
-      <common>true</common>
-    </edit>
-    <columns>
-      <name>Сотрудник</name>
-      <title>
-        <key>ru</key>
-        <value>Сотрудник</value>
-      </title>
-      <id>1</id>
-      <valueType>
-        <types>CatalogRef.ФизическиеЛица</types>
-      </valueType>
-      <view>
-        <common>true</common>
-      </view>
-      <edit>
-        <common>true</common>
-      </edit>
-    </columns>
-    <columns>
-      <name>Зарегистрирован</name>
-      <title>
-        <key>ru</key>
-        <value>Зарегистрирован</value>
-      </title>
-      <id>2</id>
-      <valueType>
-        <types>Boolean</types>
-      </valueType>
-      <view>
-        <common>true</common>
-      </view>
-      <edit>
-        <common>true</common>
-      </edit>
-    </columns>
   </attributes>
   <formCommands>
     <name>КомандаЗарегистрировать</name>
