@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Количество</dataPath>
+			<field>Количество</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Магазин</dataPath>
+			<field>Магазин</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаПродажи</dataPath>
+			<field>СуммаПродажи</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Дата</dataPath>
+			<field>Дата</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Скидка</dataPath>
+			<field>Скидка</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Скидка</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ТипКомпенсации</dataPath>
+			<field>ТипКомпенсации</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тип компенсации</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Поставщик</dataPath>
+			<field>Поставщик</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поставщик</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДоляКомпенсации</dataPath>
+			<field>ДоляКомпенсации</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Доля компенсации</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НомерМагазина</dataPath>
+			<field>НомерМагазина</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номер магазина</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>IDN</dataPath>
+			<field>IDN</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>IDN</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Номенклатура</dataPath>
+			<field>Номенклатура</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номенклатура</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Компенсация</dataPath>
+			<field>Компенсация</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Компенсация</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	СкидкиНаценкиПоЧекам.ДокументПродажи.Магазин КАК Магазин,
+	СкидкиНаценкиПоЧекам.ДокументПродажи.Магазин.НомерМагазина КАК НомерМагазина,
+	СкидкиНаценкиПоЧекам.Номенклатура.IDN КАК IDN,
+	СкидкиНаценкиПоЧекам.Номенклатура.НаименованиеПолное КАК Номенклатура,
+	СУММА(ВЫБОР
+			КОГДА СкидкиНаценкиПоЧекам.ДокументПродажи.ЧекККМПродажа.Дата &lt; &amp;ДатаНачала
+				ТОГДА 0
+			ИНАЧЕ СкидкиНаценкиПоЧекам.СуммаПродажи
+		КОНЕЦ) КАК СуммаПродажи,
+	СУММА(ВЫБОР
+			КОГДА СкидкиНаценкиПоЧекам.ДокументПродажи.Дата &lt; &amp;ДатаНачала
+				ТОГДА 0
+			КОГДА СкидкиНаценкиПоЧекам.Регистратор.ВидОперации = ЗНАЧЕНИЕ(Перечисление.ВидыОперацийЧекККМ.Возврат)
+				ТОГДА ВЫРАЗИТЬ(СкидкиНаценкиПоЧекам.Количество - 0.499 КАК ЧИСЛО(15, 0))
+			ИНАЧЕ ВЫРАЗИТЬ(СкидкиНаценкиПоЧекам.Количество + 0.499 КАК ЧИСЛО(15, 0))
+		КОНЕЦ) КАК Количество,
+	СкидкиНаценкиПоЧекам.АвтоматическаяСкидкаНаценка.ТипКомпенсации КАК ТипКомпенсации,
+	СкидкиНаценкиПоЧекам.АвтоматическаяСкидкаНаценка.Поставщик КАК Поставщик,
+	СкидкиНаценкиПоЧекам.АвтоматическаяСкидкаНаценка.ДоляКомпенсации КАК ДоляКомпенсации,
+	ВЫБОР
+		КОГДА СкидкиНаценкиПоЧекам.ДокументПродажи.Дата &lt; &amp;ДатаНачала
+			ТОГДА НАЧАЛОПЕРИОДА(СкидкиНаценкиПоЧекам.Период, ДЕНЬ)
+		ИНАЧЕ НАЧАЛОПЕРИОДА(СкидкиНаценкиПоЧекам.ДокументПродажи.Дата, ДЕНЬ)
+	КОНЕЦ КАК Дата,
+	СкидкиНаценкиПоЧекам.АвтоматическаяСкидкаНаценка КАК Скидка,
+	СУММА(ВЫБОР
+			КОГДА СкидкиНаценкиПоЧекам.ДокументПродажи.Дата &lt; &amp;ДатаНачала
+				ТОГДА 0
+			КОГДА СкидкиНаценкиПоЧекам.АвтоматическаяСкидкаНаценка.ТипКомпенсации = ЗНАЧЕНИЕ(Перечисление.ТипКомпенсации.ОтЦеныПолки)
+				ТОГДА СкидкиНаценкиПоЧекам.СуммаАвтоматическойСкидки * СкидкиНаценкиПоЧекам.АвтоматическаяСкидкаНаценка.ДоляКомпенсации / 100
+			ИНАЧЕ 0
+		КОНЕЦ) КАК Компенсация
+ПОМЕСТИТЬ Таб
+ИЗ
+	РегистрНакопления.СкидкиНаценкиПоЧекам КАК СкидкиНаценкиПоЧекам
+ГДЕ
+	СкидкиНаценкиПоЧекам.АвтоматическаяСкидкаНаценка.Поставщик &lt;&gt; ""
+	И СкидкиНаценкиПоЧекам.Период МЕЖДУ &amp;ДатаНачала И &amp;ДатаКонца
+
+СГРУППИРОВАТЬ ПО
+	СкидкиНаценкиПоЧекам.АвтоматическаяСкидкаНаценка.ТипКомпенсации,
+	СкидкиНаценкиПоЧекам.Номенклатура.НаименованиеПолное,
+	СкидкиНаценкиПоЧекам.АвтоматическаяСкидкаНаценка.Поставщик,
+	СкидкиНаценкиПоЧекам.Номенклатура.IDN,
+	СкидкиНаценкиПоЧекам.АвтоматическаяСкидкаНаценка.ДоляКомпенсации,
+	СкидкиНаценкиПоЧекам.АвтоматическаяСкидкаНаценка,
+	СкидкиНаценкиПоЧекам.ДокументПродажи.Магазин,
+	СкидкиНаценкиПоЧекам.ДокументПродажи.Магазин.НомерМагазина,
+	ВЫБОР
+		КОГДА СкидкиНаценкиПоЧекам.ДокументПродажи.Дата &lt; &amp;ДатаНачала
+			ТОГДА НАЧАЛОПЕРИОДА(СкидкиНаценкиПоЧекам.Период, ДЕНЬ)
+		ИНАЧЕ НАЧАЛОПЕРИОДА(СкидкиНаценкиПоЧекам.ДокументПродажи.Дата, ДЕНЬ)
+	КОНЕЦ
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	Таб.Магазин КАК Магазин,
+	Таб.НомерМагазина КАК НомерМагазина,
+	Таб.IDN КАК IDN,
+	Таб.Номенклатура КАК Номенклатура,
+	Таб.СуммаПродажи КАК СуммаПродажи,
+	Таб.Количество КАК Количество,
+	Таб.ТипКомпенсации КАК ТипКомпенсации,
+	Таб.Поставщик КАК Поставщик,
+	Таб.ДоляКомпенсации КАК ДоляКомпенсации,
+	Таб.Дата КАК Дата,
+	Таб.Скидка КАК Скидка,
+	Таб.Компенсация КАК Компенсация
+ИЗ
+	Таб КАК Таб
+ГДЕ
+	Таб.Количество &lt;&gt; 0
+;
+
+////////////////////////////////////////////////////////////////////////////////
+УНИЧТОЖИТЬ Таб</query>
+	</dataSet>
+	<totalField>
+		<dataPath>Количество</dataPath>
+		<expression>Сумма(Количество)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СуммаПродажи</dataPath>
+		<expression>Сумма(СуммаПродажи)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Компенсация</dataPath>
+		<expression>Сумма(Компенсация)</expression>
+	</totalField>
+	<parameter>
+		<name>ДатаКонца</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата конца</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаОкончания</expression>
+	</parameter>
+	<parameter>
+		<name>ДатаНачала</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата начала</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаНачала</expression>
+	</parameter>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
+		<use>Always</use>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Компенсация</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Компенсация</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>uk</v8:lang>
+				<v8:content>Основной</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Дата</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Магазин</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>НомерМагазина</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Скидка</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Поставщик</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Номенклатура</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>IDN</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Поставщик</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ДоляКомпенсации</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ТипКомпенсации</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Количество</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СуммаПродажи</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Компенсация</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Период</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+					</dcscor:value>
+					<dcsset:userSettingID>545daf4e-cca8-440b-b09e-14a7947d4783</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:order>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>Дата</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>Магазин</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+			</dcsset:order>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>
