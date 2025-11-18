@@ -12,7 +12,7 @@
 	Попытка
 
 	//	Выполняем подключение к серверу "https://graphql.awdev.pro/graphql"...
-		HTTP = Новый HTTPСоединение("graphql.awdev.pro", 443,,,, 10, Новый ЗащищенноеСоединениеOpenSSL);
+		HTTP = Новый HTTPСоединение("graphql.awdev.pro", 443,,,, 60, Новый ЗащищенноеСоединениеOpenSSL);
 
 		Попытка
 
