@@ -54,23 +54,18 @@ balances {
 
 #Область Данные_о_товаре_GraphQL
 {
-  productsSummary(sku: ["#sku#"]) {
-    id
-    sku
-    contentM2Product {
+  contentM2Products(sku: ["#sku#"]) {
+    data {
       sku
       ru_name
       uk_name
       ru_url
       uk_url
       image_link
-      image_links
-      gender
-      age_from
-      age_to
+      created_at
+      changed_at
+      updated_at
     }
-    created_at
-    updated_at
   }
 }
 #КонецОбласти 

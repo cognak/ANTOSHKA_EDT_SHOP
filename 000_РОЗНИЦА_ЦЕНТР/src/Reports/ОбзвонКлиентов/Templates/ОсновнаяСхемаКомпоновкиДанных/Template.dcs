@@ -62,6 +62,23 @@
 	КонтрагентыСегмента.Контрагент,
 	КонтрагентыКонтактнаяИнформация.Представление</query>
 	</dataSet>
+	<calculatedField>
+		<dataPath>СписокМагазинов</dataPath>
+		<expression>ДополнительныеОтчетыИОбработки.ПолучитьСписокМагазиновГдеБылиПокупки(Контрагент)</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Список магазинов</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:string</v8:Type>
+			<v8:StringQualifiers>
+				<v8:Length>500</v8:Length>
+				<v8:AllowedLength>Variable</v8:AllowedLength>
+			</v8:StringQualifiers>
+		</valueType>
+	</calculatedField>
 	<parameter>
 		<name>Вид</name>
 		<title xsi:type="v8:LocalStringType">
@@ -127,6 +144,9 @@
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>IDN</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СписокМагазинов</dcsset:field>
 				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
