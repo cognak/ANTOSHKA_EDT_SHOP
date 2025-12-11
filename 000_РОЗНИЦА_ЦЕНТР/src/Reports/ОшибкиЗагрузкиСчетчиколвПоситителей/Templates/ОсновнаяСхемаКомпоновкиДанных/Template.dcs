@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Магазин</dataPath>
+			<field>Магазин</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПропущенныйЧас</dataPath>
+			<field>ПропущенныйЧас</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пропущенный час</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>            ВЫБРАТЬ
+	0 КАК Смещение
+ПОМЕСТИТЬ ТЗ_Смещения
+
+ОБЪЕДИНИТЬ
+
+ВЫБРАТЬ
+	1
+
+ОБЪЕДИНИТЬ
+
+ВЫБРАТЬ
+	2
+
+ОБЪЕДИНИТЬ
+
+ВЫБРАТЬ
+	3
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	График.Магазин КАК Магазин,
+	&amp;ЧасПроверки - ТЗ_Смещения.Смещение КАК ПропущенныйЧас
+ИЗ
+	Справочник.ИнтервалыРаботыМагазинов КАК График
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ ТЗ_Смещения КАК ТЗ_Смещения
+		ПО (&amp;ЧасПроверки - ТЗ_Смещения.Смещение &gt;= ЧАС(График.НачалоИнтервала))
+			И (&amp;ЧасПроверки - ТЗ_Смещения.Смещение &lt;= ЧАС(График.ОкончаниеИнтервала))
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.РегистрацияПодсчетаПосетителей.ДанныеПодсчета КАК ФактТЧ
+		ПО График.Магазин = ФактТЧ.Ссылка.Магазин
+			И (ФактТЧ.Ссылка.Дата МЕЖДУ &amp;НачалоДня И &amp;КонецДня)
+			И (ФактТЧ.Ссылка.Проведен = ИСТИНА)
+			И (ЧАС(ФактТЧ.ВремяРегистрации) = &amp;ЧасПроверки - ТЗ_Смещения.Смещение)
+ГДЕ
+	ФактТЧ.Ссылка ЕСТЬ NULL
+	И График.Магазин.ВведенВЭксплуатацию = ИСТИНА
+	И График.Магазин.Блокирован = ЛОЖЬ
+	И График.Магазин.НомерМагазина &lt;&gt; 104</query>
+	</dataSet>
+	<parameter>
+		<name>КонецДня</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец дня</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>КонецПериода(ТекущаяДата(), "День")</expression>
+	</parameter>
+	<parameter>
+		<name>НачалоДня</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало дня</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>НачалоПериода(ТекущаяДата(), "День")</expression>
+	</parameter>
+	<parameter>
+		<name>ЧасПроверки</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Час проверки</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:decimal</v8:Type>
+			<v8:NumberQualifiers>
+				<v8:Digits>0</v8:Digits>
+				<v8:FractionDigits>0</v8:FractionDigits>
+				<v8:AllowedSign>Any</v8:AllowedSign>
+			</v8:NumberQualifiers>
+		</valueType>
+		<value xsi:type="xs:decimal">0</value>
+		<useRestriction>true</useRestriction>
+		<expression>Час(ТекущаяДата())-2</expression>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ПропущенныйЧас</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:order>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>Магазин</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+			</dcsset:order>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Магазин</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+				</dcsset:item>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

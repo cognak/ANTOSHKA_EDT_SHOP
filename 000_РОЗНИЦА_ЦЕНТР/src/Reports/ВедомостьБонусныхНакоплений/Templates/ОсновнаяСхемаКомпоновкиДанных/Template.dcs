@@ -251,6 +251,56 @@
 			<dataPath>НомерТелефона</dataPath>
 			<field>НомерТелефона</field>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВРезервеНачальныйОстаток</dataPath>
+			<field>ВРезервеНачальныйОстаток</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>В резерве начальный остаток</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:balance>true</dcscom:balance>
+				<dcscom:balanceGroupName>ВРезерве</dcscom:balanceGroupName>
+				<dcscom:balanceType>OpeningBalance</dcscom:balanceType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВРезервеПриход</dataPath>
+			<field>ВРезервеПриход</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>В резерве приход</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВРезервеРасход</dataPath>
+			<field>ВРезервеРасход</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>В резерве расход</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВРезервеКонечныйОстаток</dataPath>
+			<field>ВРезервеКонечныйОстаток</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>В резерве конечный остаток</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:balance>true</dcscom:balance>
+				<dcscom:balanceGroupName>ВРезерве</dcscom:balanceGroupName>
+				<dcscom:balanceType>ClosingBalance</dcscom:balanceType>
+			</role>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	ТаблицаРегистра.ПериодСекунда КАК Период,
@@ -270,11 +320,47 @@
 	ТаблицаРегистра.ПериодМесяц КАК ПериодМесяц,
 	ТаблицаРегистра.ПериодКвартал КАК ПериодКвартал,
 	ТаблицаРегистра.ПериодПолугодие КАК ПериодПолугодие,
-	ТаблицаРегистра.ПериодГод КАК ПериодГод
+	ТаблицаРегистра.ПериодГод КАК ПериодГод,
+	0 КАК ВРезервеНачальныйОстаток,
+	0 КАК ВРезервеПриход,
+	0 КАК ВРезервеРасход,
+	0 КАК ВРезервеКонечныйОстаток
 ИЗ
 	РегистрНакопления.БонусныеБаллы.ОстаткиИОбороты({(&amp;ДатаНачала)}, {(КОНЕЦПЕРИОДА(&amp;ДатаОкончания, ДЕНЬ))}, Авто, , {(Контрагент).* КАК Контрагент, (ПрограммаЛояльности).* КАК ПрограммаЛояльности}) КАК ТаблицаРегистра
 		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.Контрагенты.КонтактнаяИнформация КАК ТабличнаяЧасть
 		ПО ТаблицаРегистра.Контрагент = ТабличнаяЧасть.Ссылка
+			И (ТабличнаяЧасть.Вид = ЗНАЧЕНИЕ(Справочник.ВидыКонтактнойИнформации.ТелефонКонтрагента))
+			И (НЕ ТабличнаяЧасть.НомерТелефона = "")
+
+ОБЪЕДИНИТЬ
+
+ВЫБРАТЬ
+	БонусныеБаллыВРезервеОстаткиИОбороты.ПериодСекунда,
+	БонусныеБаллыВРезервеОстаткиИОбороты.Регистратор,
+	БонусныеБаллыВРезервеОстаткиИОбороты.ПрограммаЛояльности,
+	БонусныеБаллыВРезервеОстаткиИОбороты.Контрагент,
+	ЕСТЬNULL(ТабличнаяЧасть.НомерТелефона, ""),
+	БонусныеБаллыВРезервеОстаткиИОбороты.ДокументНачисления,
+	БонусныеБаллыВРезервеОстаткиИОбороты.ПрограммаЛояльности.ТипБонусов,
+	0,
+	0,
+	0,
+	0,
+	БонусныеБаллыВРезервеОстаткиИОбороты.ПериодДень,
+	БонусныеБаллыВРезервеОстаткиИОбороты.ПериодНеделя,
+	БонусныеБаллыВРезервеОстаткиИОбороты.ПериодДекада,
+	БонусныеБаллыВРезервеОстаткиИОбороты.ПериодМесяц,
+	БонусныеБаллыВРезервеОстаткиИОбороты.ПериодКвартал,
+	БонусныеБаллыВРезервеОстаткиИОбороты.ПериодПолугодие,
+	БонусныеБаллыВРезервеОстаткиИОбороты.ПериодГод,
+	БонусныеБаллыВРезервеОстаткиИОбороты.СуммаБонусныхБалловНачальныйОстаток,
+	БонусныеБаллыВРезервеОстаткиИОбороты.СуммаБонусныхБалловПриход,
+	БонусныеБаллыВРезервеОстаткиИОбороты.СуммаБонусныхБалловРасход,
+	БонусныеБаллыВРезервеОстаткиИОбороты.СуммаБонусныхБалловКонечныйОстаток
+ИЗ
+	РегистрНакопления.БонусныеБаллыВРезерве.ОстаткиИОбороты({(&amp;ДатаНачала)}, {(КОНЕЦПЕРИОДА(&amp;ДатаОкончания, ДЕНЬ))}, Авто, , {(Контрагент).* КАК Контрагент, (ПрограммаЛояльности).* КАК ПрограммаЛояльности}) КАК БонусныеБаллыВРезервеОстаткиИОбороты
+		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.Контрагенты.КонтактнаяИнформация КАК ТабличнаяЧасть
+		ПО БонусныеБаллыВРезервеОстаткиИОбороты.Контрагент = ТабличнаяЧасть.Ссылка
 			И (ТабличнаяЧасть.Вид = ЗНАЧЕНИЕ(Справочник.ВидыКонтактнойИнформации.ТелефонКонтрагента))
 			И (НЕ ТабличнаяЧасть.НомерТелефона = "")</query>
 	</dataSet>
@@ -293,6 +379,22 @@
 	<totalField>
 		<dataPath>НачисленоРасход</dataPath>
 		<expression>Сумма(НачисленоРасход)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ВРезервеКонечныйОстаток</dataPath>
+		<expression>Сумма(ВРезервеКонечныйОстаток)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ВРезервеНачальныйОстаток</dataPath>
+		<expression>Сумма(ВРезервеНачальныйОстаток)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ВРезервеПриход</dataPath>
+		<expression>Сумма(ВРезервеПриход)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ВРезервеРасход</dataPath>
+		<expression>Сумма(ВРезервеРасход)</expression>
 	</totalField>
 	<parameter>
 		<name>ДатаНачала</name>
@@ -382,6 +484,27 @@
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
 						<dcsset:field>НачисленоКонечныйОстаток</dcsset:field>
+					</dcsset:item>
+					<dcsset:placement>Auto</dcsset:placement>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+					<dcsset:lwsTitle>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Бонусы в резерве</v8:content>
+						</v8:item>
+					</dcsset:lwsTitle>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ВРезервеНачальныйОстаток</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ВРезервеПриход</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ВРезервеРасход</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ВРезервеКонечныйОстаток</dcsset:field>
 					</dcsset:item>
 					<dcsset:placement>Auto</dcsset:placement>
 				</dcsset:item>
@@ -562,6 +685,27 @@
 					</dcsset:item>
 					<dcsset:placement>Auto</dcsset:placement>
 				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+					<dcsset:lwsTitle>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Бонусы в резерве</v8:content>
+						</v8:item>
+					</dcsset:lwsTitle>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ВРезервеНачальныйОстаток</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ВРезервеПриход</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ВРезервеРасход</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ВРезервеКонечныйОстаток</dcsset:field>
+					</dcsset:item>
+					<dcsset:placement>Auto</dcsset:placement>
+				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:filter>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
@@ -719,6 +863,27 @@
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
 						<dcsset:field>НачисленоКонечныйОстаток</dcsset:field>
+					</dcsset:item>
+					<dcsset:placement>Auto</dcsset:placement>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+					<dcsset:lwsTitle>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Бонусы в резерве</v8:content>
+						</v8:item>
+					</dcsset:lwsTitle>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ВРезервеНачальныйОстаток</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ВРезервеПриход</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ВРезервеРасход</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ВРезервеКонечныйОстаток</dcsset:field>
 					</dcsset:item>
 					<dcsset:placement>Auto</dcsset:placement>
 				</dcsset:item>
