@@ -39,6 +39,10 @@
 			<dataPath>IDN</dataPath>
 			<field>IDN</field>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЧекККМ</dataPath>
+			<field>ЧекККМ</field>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	МАКСИМУМ(КонтрагентыСегмента.ДатаПродажи) КАК Период,
@@ -46,7 +50,8 @@
 	МАКСИМУМ(КонтрагентыСегмента.Магазин) КАК Магазин,
 	МАКСИМУМ(КонтрагентыСегмента.Сегмент) КАК Сегмент,
 	КонтрагентыКонтактнаяИнформация.Представление КАК Представление,
-	КонтрагентыКонтактнаяИнформация.Ссылка.IDN КАК IDN
+	КонтрагентыКонтактнаяИнформация.Ссылка.IDN КАК IDN,
+	МАКСИМУМ(КонтрагентыСегмента.ЧекККМ) КАК ЧекККМ
 ИЗ
 	РегистрСведений.КонтрагентыСегмента КАК КонтрагентыСегмента
 		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.Контрагенты.КонтактнаяИнформация КАК КонтрагентыКонтактнаяИнформация
@@ -62,23 +67,6 @@
 	КонтрагентыСегмента.Контрагент,
 	КонтрагентыКонтактнаяИнформация.Представление</query>
 	</dataSet>
-	<calculatedField>
-		<dataPath>СписокМагазинов</dataPath>
-		<expression>ДополнительныеОтчетыИОбработки.ПолучитьСписокМагазиновГдеБылиПокупки(Контрагент)</expression>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Список магазинов</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:string</v8:Type>
-			<v8:StringQualifiers>
-				<v8:Length>500</v8:Length>
-				<v8:AllowedLength>Variable</v8:AllowedLength>
-			</v8:StringQualifiers>
-		</valueType>
-	</calculatedField>
 	<parameter>
 		<name>Вид</name>
 		<title xsi:type="v8:LocalStringType">
@@ -146,7 +134,13 @@
 					<dcsset:field>IDN</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>СписокМагазинов</dcsset:field>
+					<dcsset:field>ЧекККМ.Номер</dcsset:field>
+					<dcsset:lwsTitle>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер чека</v8:content>
+						</v8:item>
+					</dcsset:lwsTitle>
 				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
