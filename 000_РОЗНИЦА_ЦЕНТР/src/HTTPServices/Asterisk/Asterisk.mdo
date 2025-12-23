@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:HTTPService xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="943d1898-679b-4050-b8b6-8c997366c437">
+  <name>Asterisk</name>
+  <synonym>
+    <key>ru</key>
+    <value>Asterisk</value>
+  </synonym>
+  <rootURL>Asterisk</rootURL>
+  <reuseSessions>AutoUse</reuseSessions>
+  <sessionMaxAge>20</sessionMaxAge>
+  <urlTemplates uuid="91339d97-b395-436f-8cb0-fe13c976dc4f">
+    <name>Call_in</name>
+    <synonym>
+      <key>ru</key>
+      <value>Call in</value>
+    </synonym>
+    <template>/call_in/*</template>
+    <methods uuid="ca88f129-da80-4aa6-b638-98b6c1999002">
+      <name>POST</name>
+      <synonym>
+        <key>ru</key>
+        <value>POST</value>
+      </synonym>
+      <httpMethod>POST</httpMethod>
+      <handler>Call_inPOST</handler>
+    </methods>
+  </urlTemplates>
+</mdclass:HTTPService>
