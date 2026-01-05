@@ -70,6 +70,7 @@
         <autoMaxHeight>true</autoMaxHeight>
         <wrap>true</wrap>
         <extendedEditMultipleValues>true</extendedEditMultipleValues>
+        <choiceButton>false</choiceButton>
         <autoMarkIncomplete>true</autoMarkIncomplete>
         <chooseType>true</chooseType>
         <typeDomainEnabled>true</typeDomainEnabled>
@@ -538,6 +539,10 @@
       <headerHorizontalAlign>Left</headerHorizontalAlign>
       <showInFooter>true</showInFooter>
       <extInfo xsi:type="form:InputFieldExtInfo">
+        <handlers>
+          <event>EditTextChange</event>
+          <name>ТелефонИзменениеТекстаРедактирования</name>
+        </handlers>
         <autoMaxWidth>true</autoMaxWidth>
         <autoMaxHeight>true</autoMaxHeight>
         <wrap>true</wrap>
@@ -2428,7 +2433,7 @@
                 <horizontalAlign>Left</horizontalAlign>
               </extInfo>
             </extendedTooltip>
-            <commandName>Form.Item.СписокЗаказов.StandardCommand.Copy</commandName>
+            <commandName>0</commandName>
             <representation>Auto</representation>
             <autoMaxWidth>true</autoMaxWidth>
             <autoMaxHeight>true</autoMaxHeight>
@@ -2453,7 +2458,7 @@
                 <horizontalAlign>Left</horizontalAlign>
               </extInfo>
             </extendedTooltip>
-            <commandName>Form.Item.СписокЗаказов.StandardCommand.Change</commandName>
+            <commandName>0</commandName>
             <representation>Auto</representation>
             <autoMaxWidth>true</autoMaxWidth>
             <autoMaxHeight>true</autoMaxHeight>
@@ -2478,7 +2483,7 @@
                 <horizontalAlign>Left</horizontalAlign>
               </extInfo>
             </extendedTooltip>
-            <commandName>Form.Item.СписокЗаказов.StandardCommand.SetDeletionMark</commandName>
+            <commandName>0</commandName>
             <representation>Auto</representation>
             <autoMaxWidth>true</autoMaxWidth>
             <autoMaxHeight>true</autoMaxHeight>
@@ -3557,6 +3562,13 @@
           <segments>ЗвонкиКлиента</segments>
         </dataPath>
         <titleLocation>None</titleLocation>
+        <excludedCommands>Change</excludedCommands>
+        <excludedCommands>Copy</excludedCommands>
+        <excludedCommands>CopyToClipboard</excludedCommands>
+        <excludedCommands>Create</excludedCommands>
+        <excludedCommands>Delete</excludedCommands>
+        <excludedCommands>GetURL</excludedCommands>
+        <excludedCommands>OutputList</excludedCommands>
         <items xsi:type="form:FormField">
           <name>ЗвонкиКлиентаПериод</name>
           <id>317</id>
@@ -3908,6 +3920,8 @@
           <segments>НеОтвеченныеЗвонки</segments>
         </dataPath>
         <titleLocation>None</titleLocation>
+        <excludedCommands>CopyToClipboard</excludedCommands>
+        <excludedCommands>OutputList</excludedCommands>
         <items xsi:type="form:FormField">
           <name>НеОтвеченныеЗвонкиПериод</name>
           <id>350</id>
@@ -4764,7 +4778,7 @@
       <common>true</common>
     </edit>
     <extInfo xsi:type="form:DynamicListExtInfo">
-      <queryText>ВЫБРАТЬ
+      <queryText>ВЫБРАТЬ ПЕРВЫЕ 20
 	ТаблицаЗаказ.Ссылка КАК Ссылка,
 	ТаблицаЗаказ.ВерсияДанных КАК ВерсияДанных,
 	ТаблицаЗаказ.ПометкаУдаления КАК ПометкаУдаления,
@@ -4826,17 +4840,77 @@
 	ТаблицаСостояния.СообщениеМагазин КАК СообщениеМагазин,
 	ТаблицаСостояния.ВозвратныйДокумент КАК ВозвратныйДокумент,
 	ТаблицаСостояния.ДокументОбмена КАК ДокументОбмена
+ПОМЕСТИТЬ ВТ
 ИЗ
 	Документ.ЗаказПокупателя КАК ТаблицаЗаказ
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СостояниеЗаказаПокупателя КАК ТаблицаСостояния
 		ПО (ТаблицаСостояния.ЗаказПокупателя = ТаблицаЗаказ.Ссылка)
 ГДЕ
 	ТаблицаЗаказ.Контрагент = &amp;Контрагент
-	И ТаблицаСостояния.Состояние &lt;> &amp;Состояние
 {ГДЕ
-	ТаблицаЗаказ.Ссылка.*}</queryText>
-      <mainTable>Document.ЗаказПокупателя</mainTable>
-      <dynamicDataRead>true</dynamicDataRead>
+	ТаблицаЗаказ.Ссылка.*}
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ВТ.Ссылка КАК Ссылка,
+	ВТ.ВерсияДанных КАК ВерсияДанных,
+	ВТ.ПометкаУдаления КАК ПометкаУдаления,
+	ВТ.Номер КАК Номер,
+	ВТ.IDN КАК IDN,
+	ВТ.Дата КАК Дата,
+	ВТ.Проведен КАК Проведен,
+	ВТ.Склад КАК Склад,
+	ВТ.Магазин КАК Магазин,
+	ВТ.МагазинПолучатель КАК МагазинПолучатель,
+	ВТ.Комментарий КАК Комментарий,
+	ВТ.СуммаДокумента КАК СуммаДокумента,
+	ВТ.ДисконтнаяКарта КАК ДисконтнаяКарта,
+	ВТ.Ответственный КАК Ответственный,
+	ВТ.УчитыватьНДС КАК УчитыватьНДС,
+	ВТ.ЦенаВключаетНДС КАК ЦенаВключаетНДС,
+	ВТ.АдресДоставки КАК АдресДоставки,
+	ВТ.ВладелецДисконтнойКарты КАК ВладелецДисконтнойКарты,
+	ВТ.Контрагент КАК Контрагент,
+	ВТ.СотрудникАнтошки КАК СотрудникАнтошки,
+	ВТ.Продавец КАК Продавец,
+	ВТ.ПродавецИдентификатор КАК ПродавецИдентификатор,
+	ВТ.Организация КАК Организация,
+	ВТ.СкидкиРассчитаны КАК СкидкиРассчитаны,
+	ВТ.МаксимальныйКодСтроки КАК МаксимальныйКодСтроки,
+	ВТ.КоррекцияНачисленийПоПродаже КАК КоррекцияНачисленийПоПродаже,
+	ВТ.Статус КАК Статус,
+	ВТ.НомерЗаказаОсновной КАК НомерЗаказаОсновной,
+	ВТ.НомерЗаказаНаСайте КАК НомерЗаказаНаСайте,
+	ВТ.СтатусИМ КАК СтатусИМ,
+	ВТ.СтатусОплаты КАК СтатусОплаты,
+	ВТ.ТипДоставки КАК ТипДоставки,
+	ВТ.ТипОплаты КАК ТипОплаты,
+	ВТ.ДатаПродажиЖелаемая КАК ДатаПродажиЖелаемая,
+	ВТ.НаличиеНезарезервированныхСтрок КАК НаличиеНезарезервированныхСтрок,
+	ВТ.СуммаБалловНачисление КАК СуммаБалловНачисление,
+	ВТ.СуммаБалловСписание КАК СуммаБалловСписание,
+	ВТ.Отменено КАК Отменено,
+	ВТ.Автор КАК Автор,
+	ВТ.УзелСоздания КАК УзелСоздания,
+	ВТ.УчетнаяСистема КАК УчетнаяСистема,
+	ВТ.СуммаДоставки КАК СуммаДоставки,
+	ВТ.СуммаДоставкиОператор КАК СуммаДоставкиОператор,
+	ВТ.СуммаДоставкиОплачена КАК СуммаДоставкиОплачена,
+	ВТ.УчтеноNavision КАК УчтеноNavision,
+	ВТ.Состояние КАК Состояние,
+	ВТ.ЧастичнаяПродажа КАК ЧастичнаяПродажа,
+	ВТ.НеПерезванивать КАК НеПерезванивать,
+	ВТ.ОбработкаВМадженто КАК ОбработкаВМадженто,
+	ВТ.Телефон КАК Телефон,
+	ВТ.ЕстьВозврат КАК ЕстьВозврат,
+	ВТ.ПочтаКлиента КАК ПочтаКлиента,
+	ВТ.СообщениеЦентр КАК СообщениеЦентр,
+	ВТ.СообщениеМагазин КАК СообщениеМагазин,
+	ВТ.ВозвратныйДокумент КАК ВозвратныйДокумент,
+	ВТ.ДокументОбмена КАК ДокументОбмена
+ИЗ
+	ВТ КАК ВТ</queryText>
       <autoFillAvailableFields>true</autoFillAvailableFields>
       <customQuery>true</customQuery>
       <autoSaveUserSettings>true</autoSaveUserSettings>
@@ -5081,162 +5155,6 @@
         <dataPath>ВозвратныйДокумент</dataPath>
         <field>ВозвратныйДокумент</field>
       </fields>
-      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
-        <dataPath>ДатаРезервированияЗаказа</dataPath>
-        <field>ДатаРезервированияЗаказа</field>
-      </fields>
-      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
-        <dataPath>ДокументОснование</dataPath>
-        <field>ДокументОснование</field>
-      </fields>
-      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
-        <dataPath>АвтоВыполнение</dataPath>
-        <field>АвтоВыполнение</field>
-      </fields>
-      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
-        <dataPath>БонусАкцияСписан</dataPath>
-        <field>БонусАкцияСписан</field>
-      </fields>
-      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
-        <dataPath>ОплатаЗаказа</dataPath>
-        <field>ОплатаЗаказа</field>
-      </fields>
-      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
-        <dataPath>Квартира</dataPath>
-        <field>Квартира</field>
-      </fields>
-      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
-        <dataPath>Дом</dataPath>
-        <field>Дом</field>
-      </fields>
-      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
-        <dataPath>БонусБазаСписан</dataPath>
-        <field>БонусБазаСписан</field>
-      </fields>
-      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
-        <dataPath>Город</dataPath>
-        <field>Город</field>
-      </fields>
-      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
-        <dataPath>Имя</dataPath>
-        <field>Имя</field>
-      </fields>
-      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
-        <dataPath>КомментарийДляДоставки</dataPath>
-        <field>КомментарийДляДоставки</field>
-      </fields>
-      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
-        <dataPath>ДатаЗаказаНаСайте</dataPath>
-        <field>ДатаЗаказаНаСайте</field>
-      </fields>
-      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
-        <dataPath>СуммаБонусныхБалловСписано</dataPath>
-        <field>СуммаБонусныхБалловСписано</field>
-      </fields>
-      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
-        <dataPath>ДоставкаНаАдрес</dataPath>
-        <field>ДоставкаНаАдрес</field>
-      </fields>
-      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
-        <dataPath>Область</dataPath>
-        <field>Область</field>
-      </fields>
-      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
-        <dataPath>СуммаДоставкиВРучную</dataPath>
-        <field>СуммаДоставкиВРучную</field>
-      </fields>
-      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
-        <dataPath>ОператорДоставки</dataPath>
-        <field>ОператорДоставки</field>
-      </fields>
-      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
-        <dataPath>НачислениеБонусныхБаллов</dataPath>
-        <field>НачислениеБонусныхБаллов</field>
-      </fields>
-      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
-        <dataPath>Отделение</dataPath>
-        <field>Отделение</field>
-      </fields>
-      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
-        <dataPath>Отчество</dataPath>
-        <field>Отчество</field>
-      </fields>
-      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
-        <dataPath>ПогашениеПодарочныхСертификатов</dataPath>
-        <field>ПогашениеПодарочныхСертификатов</field>
-      </fields>
-      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
-        <dataPath>ПолучательТретееЛицо</dataPath>
-        <field>ПолучательТретееЛицо</field>
-      </fields>
-      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
-        <dataPath>ПричинаОтмены</dataPath>
-        <field>ПричинаОтмены</field>
-      </fields>
-      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
-        <dataPath>Район</dataPath>
-        <field>Район</field>
-      </fields>
-      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
-        <dataPath>СлужбаКурьерскойДоставки</dataPath>
-        <field>СлужбаКурьерскойДоставки</field>
-      </fields>
-      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
-        <dataPath>СуммаОплаты</dataPath>
-        <field>СуммаОплаты</field>
-      </fields>
-      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
-        <dataPath>Улица</dataPath>
-        <field>Улица</field>
-      </fields>
-      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
-        <dataPath>УслугаБанка</dataPath>
-        <field>УслугаБанка</field>
-      </fields>
-      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
-        <dataPath>УслугаБанкаПериодПредоставления</dataPath>
-        <field>УслугаБанкаПериодПредоставления</field>
-      </fields>
-      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
-        <dataPath>Фамилия</dataPath>
-        <field>Фамилия</field>
-      </fields>
-      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
-        <dataPath>ВыдачаСкидочныхКупонов</dataPath>
-        <field>ВыдачаСкидочныхКупонов</field>
-      </fields>
-      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
-        <dataPath>Товары</dataPath>
-        <field>Товары</field>
-      </fields>
-      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
-        <dataPath>ДополнительнаяИнформация</dataPath>
-        <field>ДополнительнаяИнформация</field>
-      </fields>
-      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
-        <dataPath>ОплатаБонуснымиБаллами</dataPath>
-        <field>ОплатаБонуснымиБаллами</field>
-      </fields>
-      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
-        <dataPath>ПогашениеСкидочныхКупонов</dataPath>
-        <field>ПогашениеСкидочныхКупонов</field>
-      </fields>
-      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
-        <dataPath>Подарки</dataPath>
-        <field>Подарки</field>
-      </fields>
-      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
-        <dataPath>СкидкиНаценки</dataPath>
-        <field>СкидкиНаценки</field>
-      </fields>
-      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
-        <dataPath>СерийныеНомера</dataPath>
-        <field>СерийныеНомера</field>
-      </fields>
-      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
-        <dataPath>МоментВремени</dataPath>
-        <field>МоментВремени</field>
-      </fields>
       <parameters>
         <name>Контрагент</name>
         <title>
@@ -5249,22 +5167,6 @@
         </title>
         <valueType>
           <types>CatalogRef.Контрагенты</types>
-        </valueType>
-        <values xsi:type="core:UndefinedValue"/>
-        <useRestriction>true</useRestriction>
-      </parameters>
-      <parameters>
-        <name>Состояние</name>
-        <title>
-          <localValue>
-            <content>
-              <key>ru</key>
-              <value>Состояние</value>
-            </content>
-          </localValue>
-        </title>
-        <valueType>
-          <types>EnumRef.СостоянияЗаказовПокупателей</types>
         </valueType>
         <values xsi:type="core:UndefinedValue"/>
         <useRestriction>true</useRestriction>
