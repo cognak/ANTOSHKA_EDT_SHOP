@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЧекККМСсылка</dataPath>
+			<field>ЧекККМСсылка</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Чек ККМСсылка</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Промокод</dataPath>
+			<field>Промокод</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Промокод</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Акция</dataPath>
+			<field>Акция</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Акция</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Количество</dataPath>
+			<field>Количество</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Дата</dataPath>
+			<field>Дата</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ДФ='ММММ гггг'</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НоминалКупона</dataPath>
+			<field>НоминалКупона</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СкидочныйКупонНоминал</dataPath>
+			<field>СкидочныйКупонНоминал</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СкидкаНаценка</dataPath>
+			<field>СкидкаНаценка</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Скидка наценка</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Сумма</dataPath>
+			<field>Сумма</field>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ РАЗЛИЧНЫЕ
+	СкидкиНаценкиУсловияПредоставления.УсловиеПредоставления КАК УсловиеПредоставления,
+	УсловияПредоставленияСкидокНаценокПолучатели.Получатель КАК Номенклатура,
+	МаркетинговаяАкцияСкидкиНаценки.Ссылка КАК Акция,
+	СкидкиНаценкиУсловияПредоставления.Ссылка КАК СкидкаНаценка
+ПОМЕСТИТЬ ТаблицаАкций
+ИЗ
+	Документ.МаркетинговаяАкция.СкидкиНаценки КАК МаркетинговаяАкцияСкидкиНаценки
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ Справочник.СкидкиНаценки.УсловияПредоставления КАК СкидкиНаценкиУсловияПредоставления
+			ВНУТРЕННЕЕ СОЕДИНЕНИЕ Справочник.УсловияПредоставленияСкидокНаценок.Получатели КАК УсловияПредоставленияСкидокНаценокПолучатели
+			ПО СкидкиНаценкиУсловияПредоставления.УсловиеПредоставления = УсловияПредоставленияСкидокНаценокПолучатели.Ссылка
+			ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.ЧекККМ.СкидкиНаценки КАК ЧекККМСкидкиНаценки
+			ПО (ЧекККМСкидкиНаценки.СкидкаНаценка = СкидкиНаценкиУсловияПредоставления.Ссылка)
+		ПО МаркетинговаяАкцияСкидкиНаценки.СкидкаНаценка = СкидкиНаценкиУсловияПредоставления.Ссылка
+ГДЕ
+	ЧекККМСкидкиНаценки.Ссылка.Дата МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+	И ЧекККМСкидкиНаценки.Ссылка.Проведен
+	И УсловияПредоставленияСкидокНаценокПолучатели.Получатель ССЫЛКА Справочник.Номенклатура
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ЧекККМПогашениеСкидочныхКупонов.Ссылка КАК ЧекККМСсылка,
+	ЧекККМПогашениеСкидочныхКупонов.СкидочныйКупон КАК Акция,
+	ЧекККМПогашениеСкидочныхКупонов.СерийныйНомер КАК Промокод,
+	ЧекККМПогашениеСкидочныхКупонов.НоминалКупона КАК НоминалКупона,
+	ЧекККМПогашениеСкидочныхКупонов.СкидочныйКупон.Номинал КАК СкидочныйКупонНоминал,
+	НАЧАЛОПЕРИОДА(ЧекККМПогашениеСкидочныхКупонов.Ссылка.Дата, МЕСЯЦ) КАК Дата,
+	1 КАК Количество,
+	ТаблицаАкций.СкидкаНаценка КАК СкидкаНаценка
+ПОМЕСТИТЬ Предварительная
+ИЗ
+	Документ.ЧекККМ.ПогашениеСкидочныхКупонов КАК ЧекККМПогашениеСкидочныхКупонов
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ ТаблицаАкций КАК ТаблицаАкций
+		ПО ЧекККМПогашениеСкидочныхКупонов.СкидочныйКупон = ТаблицаАкций.Номенклатура
+ГДЕ
+	ЧекККМПогашениеСкидочныхКупонов.Ссылка.Проведен
+	И ЧекККМПогашениеСкидочныхКупонов.Ссылка.Дата МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	Предварительная.ЧекККМСсылка КАК ЧекККМСсылка,
+	Предварительная.Акция КАК Акция,
+	Предварительная.Промокод КАК Промокод,
+	Предварительная.НоминалКупона КАК НоминалКупона,
+	Предварительная.СкидочныйКупонНоминал КАК СкидочныйКупонНоминал,
+	Предварительная.Дата КАК Дата,
+	Предварительная.Количество КАК Количество,
+	Предварительная.СкидкаНаценка КАК СкидкаНаценка,
+	СУММА(ЧекККМСкидкиНаценки.Сумма) КАК Сумма
+ИЗ
+	Предварительная КАК Предварительная
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.ЧекККМ.СкидкиНаценки КАК ЧекККМСкидкиНаценки
+		ПО Предварительная.ЧекККМСсылка = ЧекККМСкидкиНаценки.Ссылка
+			И Предварительная.СкидкаНаценка = ЧекККМСкидкиНаценки.СкидкаНаценка
+ГДЕ
+	ЧекККМСкидкиНаценки.Ссылка.Дата МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+	И ЧекККМСкидкиНаценки.Ссылка.Проведен
+
+СГРУППИРОВАТЬ ПО
+	Предварительная.ЧекККМСсылка,
+	Предварительная.Акция,
+	Предварительная.Промокод,
+	Предварительная.НоминалКупона,
+	Предварительная.СкидочныйКупонНоминал,
+	Предварительная.Дата,
+	Предварительная.Количество,
+	Предварительная.СкидкаНаценка</query>
+	</dataSet>
+	<totalField>
+		<dataPath>Сумма</dataPath>
+		<expression>Сумма(Сумма)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Количество</dataPath>
+		<expression>Сумма(Количество)</expression>
+	</totalField>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>Date</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>КонецПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>Date</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+		<expression>КонецПериода(&amp;КонецПериода,"ДЕНЬ")</expression>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Количество</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Сумма</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>НачалоПериода</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardBeginningDate">
+						<v8:variant xsi:type="v8:StandardBeginningDateVariant">BeginningOfThisMonth</v8:variant>
+					</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>КонецПериода</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardBeginningDate">
+						<v8:variant xsi:type="v8:StandardBeginningDateVariant">BeginningOfThisDay</v8:variant>
+					</dcscor:value>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Дата</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Акция</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+					<dcsset:item xsi:type="dcsset:StructureItemGroup">
+						<dcsset:groupItems>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>ЧекККМСсылка</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>Промокод</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+						</dcsset:groupItems>
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						</dcsset:selection>
+					</dcsset:item>
+				</dcsset:item>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>
