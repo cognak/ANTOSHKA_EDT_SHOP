@@ -1,5 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form:Form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:form="http://g5.1c.ru/v8/dt/form">
+  <items xsi:type="form:Decoration">
+    <name>ДекорацияЛокал</name>
+    <id>44</id>
+    <title>
+      <key>ru</key>
+      <value>Локал Експрес</value>
+    </title>
+    <title>
+      <key>uk</key>
+      <value>Локал Експрес</value>
+    </title>
+    <visible>true</visible>
+    <enabled>true</enabled>
+    <userVisible>
+      <common>true</common>
+    </userVisible>
+    <extendedTooltip>
+      <name>ДекорацияЛокалРасширеннаяПодсказка</name>
+      <id>46</id>
+      <type>Label</type>
+      <autoMaxWidth>true</autoMaxWidth>
+      <autoMaxHeight>true</autoMaxHeight>
+      <extInfo xsi:type="form:LabelDecorationExtInfo">
+        <horizontalAlign>Left</horizontalAlign>
+      </extInfo>
+    </extendedTooltip>
+    <contextMenu>
+      <name>ДекорацияЛокалКонтекстноеМеню</name>
+      <id>45</id>
+      <autoFill>true</autoFill>
+    </contextMenu>
+    <type>Label</type>
+    <autoMaxWidth>true</autoMaxWidth>
+    <autoMaxHeight>true</autoMaxHeight>
+    <textColor xsi:type="core:ColorDef">
+      <red>255</red>
+    </textColor>
+    <font xsi:type="core:FontRef">
+      <font>Style.NormalTextFont</font>
+      <height>16.0</height>
+    </font>
+    <extInfo xsi:type="form:LabelDecorationExtInfo">
+      <horizontalAlign>Left</horizontalAlign>
+    </extInfo>
+  </items>
   <items xsi:type="form:FormGroup">
     <name>Группа1</name>
     <id>32</id>
@@ -406,6 +451,7 @@
       <dataPath xsi:type="form:DataPath">
         <segments>Объект.СписокЭН.ЭлектронныеНакладные</segments>
       </dataPath>
+      <skipOnInput>true</skipOnInput>
       <extendedTooltip>
         <name>СписокЭНЭлектронныеНакладныеРасширеннаяПодсказка</name>
         <id>31</id>
@@ -440,9 +486,15 @@
         <autoMaxWidth>true</autoMaxWidth>
         <autoMaxHeight>true</autoMaxHeight>
         <wrap>true</wrap>
-        <chooseType>true</chooseType>
+        <dropListButton>false</dropListButton>
+        <choiceButton>false</choiceButton>
+        <clearButton>false</clearButton>
+        <spinButton>false</spinButton>
+        <openButton>true</openButton>
+        <createButton>false</createButton>
+        <quickChoice>false</quickChoice>
         <typeDomainEnabled>true</typeDomainEnabled>
-        <textEdit>true</textEdit>
+        <choiceHistoryOnInput>DontUse</choiceHistoryOnInput>
       </extInfo>
     </items>
     <autoCommandBar>
@@ -627,7 +679,6 @@
       </userVisible>
       <autoFill>true</autoFill>
     </contextMenu>
-    <readOnly>true</readOnly>
     <changeRowSet>true</changeRowSet>
     <changeRowOrder>true</changeRowOrder>
     <autoMaxWidth>true</autoMaxWidth>
@@ -663,6 +714,10 @@
     <horizontalAlign>Left</horizontalAlign>
     <autoFill>true</autoFill>
   </autoCommandBar>
+  <handlers>
+    <event>OnOpen</event>
+    <name>ПриОткрытии</name>
+  </handlers>
   <saveWindowSettings>true</saveWindowSettings>
   <autoTitle>true</autoTitle>
   <autoUrl>true</autoUrl>
