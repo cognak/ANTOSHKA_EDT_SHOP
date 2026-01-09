@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>МагазинОтправитель</dataPath>
+			<field>МагазинОтправитель</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Магазин отправитель</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличетсвоОтправленийМежгород</dataPath>
+			<field>КоличетсвоОтправленийМежгород</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количетсво отправлений межгород</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличетсвоОтправленийЛокал</dataPath>
+			<field>КоличетсвоОтправленийЛокал</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количетсво отправлений локал</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПериодДень</dataPath>
+			<field>ПериодДень</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Период день</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПериодМесяц</dataPath>
+			<field>ПериодМесяц</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Период месяц</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПроцентМеждугороднихОтправок</dataPath>
+			<field>ПроцентМеждугороднихОтправок</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>% междугородних отправок</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПроцентЛокальныхОтправок</dataPath>
+			<field>ПроцентЛокальныхОтправок</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>% локальных отправок</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	ЭлектроннаяНакладная.ДокументОснование.МагазинОтправитель КАК МагазинОтправитель,
+	НАЧАЛОПЕРИОДА(ЭлектроннаяНакладная.ДокументОснование.Дата, ДЕНЬ) КАК Дата,
+	КОЛИЧЕСТВО(РАЗЛИЧНЫЕ ЭлектроннаяНакладная.Ссылка) КАК Ссылка
+ПОМЕСТИТЬ ВТ_Локал
+ИЗ
+	Документ.ЭлектроннаяНакладная КАК ЭлектроннаяНакладная
+ГДЕ
+	ЭлектроннаяНакладная.ГородОтправитель = ЭлектроннаяНакладная.ГородПолучатель
+	И ЭлектроннаяНакладная.Проведен = ИСТИНА
+	И ЭлектроннаяНакладная.ПометкаУдаления = ЛОЖЬ
+	И ЭлектроннаяНакладная.ДокументОснование.Дата МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+	И (ЭлектроннаяНакладная.ДокументОснование.МагазинОтправитель ССЫЛКА Справочник.Магазины
+			ИЛИ ЭлектроннаяНакладная.ДокументОснование.МагазинОтправитель ССЫЛКА Справочник.Склады)
+
+СГРУППИРОВАТЬ ПО
+	НАЧАЛОПЕРИОДА(ЭлектроннаяНакладная.ДокументОснование.Дата, ДЕНЬ),
+	ЭлектроннаяНакладная.ДокументОснование.МагазинОтправитель
+
+ИНДЕКСИРОВАТЬ ПО
+	Дата,
+	МагазинОтправитель
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ЭлектроннаяНакладная.ДокументОснование.МагазинОтправитель КАК МагазинОтправитель,
+	НАЧАЛОПЕРИОДА(ЭлектроннаяНакладная.ДокументОснование.Дата, ДЕНЬ) КАК Дата,
+	КОЛИЧЕСТВО(РАЗЛИЧНЫЕ ЭлектроннаяНакладная.Ссылка) КАК Ссылка
+ПОМЕСТИТЬ ВТ_Междугородние
+ИЗ
+	Документ.ЭлектроннаяНакладная КАК ЭлектроннаяНакладная
+ГДЕ
+	НЕ ЭлектроннаяНакладная.ГородОтправитель = ЭлектроннаяНакладная.ГородПолучатель
+	И ЭлектроннаяНакладная.Проведен = ИСТИНА
+	И ЭлектроннаяНакладная.ПометкаУдаления = ЛОЖЬ
+	И ЭлектроннаяНакладная.ДокументОснование.Дата МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+	И (ЭлектроннаяНакладная.ДокументОснование.МагазинОтправитель ССЫЛКА Справочник.Магазины
+			ИЛИ ЭлектроннаяНакладная.ДокументОснование.МагазинОтправитель ССЫЛКА Справочник.Склады)
+
+СГРУППИРОВАТЬ ПО
+	ЭлектроннаяНакладная.ДокументОснование.МагазинОтправитель,
+	НАЧАЛОПЕРИОДА(ЭлектроннаяНакладная.ДокументОснование.Дата, ДЕНЬ)
+
+ИНДЕКСИРОВАТЬ ПО
+	Дата,
+	МагазинОтправитель
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ВТ_Локал.Дата КАК ПериодДень,
+	НАЧАЛОПЕРИОДА(ВТ_Локал.Дата, МЕСЯЦ) КАК ПериодМесяц,
+	ВТ_Локал.МагазинОтправитель КАК МагазинОтправитель,
+	ВТ_Локал.Ссылка КАК КоличетсвоОтправленийЛокал,
+	ВТ_Междугородние.Ссылка КАК КоличетсвоОтправленийМежгород,
+	ВЫРАЗИТЬ(ВТ_Локал.Ссылка / (ВТ_Локал.Ссылка + ВТ_Междугородние.Ссылка) * 100 КАК ЧИСЛО(15, 2)) КАК ПроцентЛокальныхОтправок,
+	ВЫРАЗИТЬ(ВТ_Междугородние.Ссылка / (ВТ_Локал.Ссылка + ВТ_Междугородние.Ссылка) * 100 КАК ЧИСЛО(15, 2)) КАК ПроцентМеждугороднихОтправок
+ИЗ
+	ВТ_Локал КАК ВТ_Локал
+		ЛЕВОЕ СОЕДИНЕНИЕ ВТ_Междугородние КАК ВТ_Междугородние
+		ПО (ВТ_Локал.МагазинОтправитель = ВТ_Междугородние.МагазинОтправитель)
+			И (ВТ_Локал.Дата = ВТ_Междугородние.Дата)</query>
+	</dataSet>
+	<totalField>
+		<dataPath>КоличетсвоОтправленийЛокал</dataPath>
+		<expression>Сумма(КоличетсвоОтправленийЛокал)</expression>
+		<group>ПериодДень</group>
+		<group>ПериодМесяц</group>
+		<group>ОбщийИтог</group>
+	</totalField>
+	<totalField>
+		<dataPath>КоличетсвоОтправленийМежгород</dataPath>
+		<expression>Сумма(КоличетсвоОтправленийМежгород)</expression>
+		<group>ПериодДень</group>
+		<group>ПериодМесяц</group>
+		<group>ОбщийИтог</group>
+	</totalField>
+	<totalField>
+		<dataPath>ПроцентМеждугороднихОтправок</dataPath>
+		<expression>ПроцентМеждугороднихОтправок</expression>
+		<group>МагазинОтправитель</group>
+	</totalField>
+	<totalField>
+		<dataPath>ПроцентЛокальныхОтправок</dataPath>
+		<expression>ПроцентЛокальныхОтправок</expression>
+		<group>МагазинОтправитель</group>
+	</totalField>
+	<totalField>
+		<dataPath>ПроцентЛокальныхОтправок</dataPath>
+		<expression>Сумма(КоличетсвоОтправленийЛокал) / (Сумма(КоличетсвоОтправленийЛокал) + Сумма(КоличетсвоОтправленийМежгород)) * 100 </expression>
+		<group>ПериодДень</group>
+		<group>ПериодМесяц</group>
+		<group>ОбщийИтог</group>
+	</totalField>
+	<totalField>
+		<dataPath>ПроцентМеждугороднихОтправок</dataPath>
+		<expression>Сумма(КоличетсвоОтправленийМежгород) / (Сумма(КоличетсвоОтправленийЛокал) + Сумма(КоличетсвоОтправленийМежгород)) * 100 </expression>
+		<group>ПериодДень</group>
+		<group>ПериодМесяц</group>
+		<group>ОбщийИтог</group>
+	</totalField>
+	<parameter>
+		<name>КонецПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаОкончания</expression>
+	</parameter>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаНачала</expression>
+	</parameter>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>ПоДням</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>По дням</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>uk</v8:lang>
+				<v8:content>По дням</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>КоличетсвоОтправленийЛокал</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>КоличетсвоОтправленийМежгород</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ПроцентЛокальныхОтправок</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ПроцентМеждугороднихОтправок</dcsset:field>
+				</dcsset:item>
+				<dcsset:userSettingID>6edb813e-c032-4d18-9ab1-f5d519c1e409</dcsset:userSettingID>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">МагазинОтправитель</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>e5c4c65b-b5af-44a3-95e3-41aafde4246f</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:userSettingID>1b3417eb-187c-4ed4-af89-d5de23d3b13a</dcsset:userSettingID>
+			</dcsset:filter>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Период</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
+					</dcscor:value>
+					<dcsset:userSettingID>447d24bf-3f77-4d54-bc2f-1b146184626e</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:order>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>ПериодДень</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>ПериодМесяц</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>МагазинОтправитель.Наименование</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+				<dcsset:userSettingID>8133f13b-4e3b-45f6-845c-0b5e39d8d6bf</dcsset:userSettingID>
+			</dcsset:order>
+			<dcsset:conditionalAppearance>
+				<dcsset:item>
+					<dcsset:selection>
+						<dcsset:item>
+							<dcsset:field>ПроцентЛокальныхОтправок</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>ПроцентМеждугороднихОтправок</dcsset:field>
+						</dcsset:item>
+					</dcsset:selection>
+					<dcsset:filter/>
+					<dcsset:appearance>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>Формат</dcscor:parameter>
+							<dcscor:value xsi:type="v8:LocalStringType">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ЧЦ=15; ЧДЦ=2</v8:content>
+								</v8:item>
+							</dcscor:value>
+						</dcscor:item>
+					</dcsset:appearance>
+				</dcsset:item>
+			</dcsset:conditionalAppearance>
+			<dcsset:item xsi:type="dcsset:StructureItemTable">
+				<dcsset:column>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+				</dcsset:column>
+				<dcsset:row>
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>ПериодДень</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+					<dcsset:item>
+						<dcsset:groupItems>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>МагазинОтправитель</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+						</dcsset:groupItems>
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						</dcsset:selection>
+					</dcsset:item>
+				</dcsset:row>
+			</dcsset:item>
+			<dcsset:itemsUserSettingID>c1c230ba-8f85-448e-9c00-daf1e5af7779</dcsset:itemsUserSettingID>
+		</dcsset:settings>
+	</settingsVariant>
+	<settingsVariant>
+		<dcsset:name>ПоМесяцам</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>По месяцам</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>uk</v8:lang>
+				<v8:content>По місяцям</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>КоличетсвоОтправленийЛокал</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>КоличетсвоОтправленийМежгород</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ПроцентЛокальныхОтправок</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ПроцентМеждугороднихОтправок</dcsset:field>
+				</dcsset:item>
+				<dcsset:userSettingID>6edb813e-c032-4d18-9ab1-f5d519c1e409</dcsset:userSettingID>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">МагазинОтправитель</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>e5c4c65b-b5af-44a3-95e3-41aafde4246f</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:userSettingID>1b3417eb-187c-4ed4-af89-d5de23d3b13a</dcsset:userSettingID>
+			</dcsset:filter>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Период</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
+					</dcscor:value>
+					<dcsset:userSettingID>447d24bf-3f77-4d54-bc2f-1b146184626e</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:order>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>ПериодДень</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>ПериодМесяц</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>МагазинОтправитель.Наименование</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+				<dcsset:userSettingID>8133f13b-4e3b-45f6-845c-0b5e39d8d6bf</dcsset:userSettingID>
+			</dcsset:order>
+			<dcsset:conditionalAppearance>
+				<dcsset:item>
+					<dcsset:selection>
+						<dcsset:item>
+							<dcsset:field>ПроцентЛокальныхОтправок</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>ПроцентМеждугороднихОтправок</dcsset:field>
+						</dcsset:item>
+					</dcsset:selection>
+					<dcsset:filter/>
+					<dcsset:appearance>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>Формат</dcscor:parameter>
+							<dcscor:value xsi:type="v8:LocalStringType">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ЧЦ=15; ЧДЦ=2</v8:content>
+								</v8:item>
+							</dcscor:value>
+						</dcscor:item>
+					</dcsset:appearance>
+				</dcsset:item>
+			</dcsset:conditionalAppearance>
+			<dcsset:item xsi:type="dcsset:StructureItemTable">
+				<dcsset:column>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+				</dcsset:column>
+				<dcsset:row>
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>ПериодМесяц</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+					<dcsset:item>
+						<dcsset:groupItems>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>МагазинОтправитель</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+						</dcsset:groupItems>
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						</dcsset:selection>
+					</dcsset:item>
+				</dcsset:row>
+			</dcsset:item>
+			<dcsset:itemsUserSettingID>c1c230ba-8f85-448e-9c00-daf1e5af7779</dcsset:itemsUserSettingID>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>
