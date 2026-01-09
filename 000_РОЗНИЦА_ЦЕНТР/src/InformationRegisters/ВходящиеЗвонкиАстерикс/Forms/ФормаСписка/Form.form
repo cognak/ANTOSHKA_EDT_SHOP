@@ -437,10 +437,12 @@
 	РегистрСведений.ВходящиеЗвонкиАстерикс КАК РегистрСведенийВходящиеЗвонкиАстерикс
 ГДЕ
 	ВЫБОР
-			КОГДА ТипЗначения(&amp;СотрудникКоллЦентра) = Тип(Справочник.СотрудникиКоллЦентра)
+			КОГДА НЕ &amp;СотрудникКоллЦентра = ЗНАЧЕНИЕ(Справочник.СотрудникиКоллЦентра.ПустаяСсылка)
 				ТОГДА РегистрСведенийВходящиеЗвонкиАстерикс.СотрудникКоллЦентра = &amp;СотрудникКоллЦентра
 			ИНАЧЕ ИСТИНА
-		КОНЕЦ</queryText>
+		КОНЕЦ
+
+</queryText>
       <mainTable>InformationRegister.ВходящиеЗвонкиАстерикс</mainTable>
       <dynamicDataRead>true</dynamicDataRead>
       <autoFillAvailableFields>true</autoFillAvailableFields>
@@ -490,6 +492,7 @@
           </value>
         </values>
         <useRestriction>true</useRestriction>
+        <use>Always</use>
       </parameters>
     </extInfo>
   </attributes>

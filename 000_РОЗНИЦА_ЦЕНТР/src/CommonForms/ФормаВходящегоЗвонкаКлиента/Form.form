@@ -1786,6 +1786,42 @@
           </extInfo>
         </items>
         <items xsi:type="form:FormField">
+          <name>СписокЗаказовСтатус</name>
+          <id>358</id>
+          <visible>true</visible>
+          <enabled>true</enabled>
+          <userVisible>
+            <common>true</common>
+          </userVisible>
+          <dataPath xsi:type="form:DataPath">
+            <segments>СписокЗаказов.Статус</segments>
+          </dataPath>
+          <extendedTooltip>
+            <name>СписокЗаказовСтатусРасширеннаяПодсказка</name>
+            <id>360</id>
+            <type>Label</type>
+            <autoMaxWidth>true</autoMaxWidth>
+            <autoMaxHeight>true</autoMaxHeight>
+            <extInfo xsi:type="form:LabelDecorationExtInfo">
+              <horizontalAlign>Left</horizontalAlign>
+            </extInfo>
+          </extendedTooltip>
+          <contextMenu>
+            <name>СписокЗаказовСтатусКонтекстноеМеню</name>
+            <id>359</id>
+            <autoFill>true</autoFill>
+          </contextMenu>
+          <type>LabelField</type>
+          <editMode>Enter</editMode>
+          <showInHeader>true</showInHeader>
+          <headerHorizontalAlign>Left</headerHorizontalAlign>
+          <showInFooter>true</showInFooter>
+          <extInfo xsi:type="form:LabelFieldExtInfo">
+            <autoMaxWidth>true</autoMaxWidth>
+            <autoMaxHeight>true</autoMaxHeight>
+          </extInfo>
+        </items>
+        <items xsi:type="form:FormField">
           <name>СписокЗаказовСостояние</name>
           <id>166</id>
           <visible>true</visible>
@@ -2433,7 +2469,7 @@
                 <horizontalAlign>Left</horizontalAlign>
               </extInfo>
             </extendedTooltip>
-            <commandName>0</commandName>
+            <commandName>Form.Item.СписокЗаказов.StandardCommand.Copy</commandName>
             <representation>Auto</representation>
             <autoMaxWidth>true</autoMaxWidth>
             <autoMaxHeight>true</autoMaxHeight>
@@ -2458,7 +2494,7 @@
                 <horizontalAlign>Left</horizontalAlign>
               </extInfo>
             </extendedTooltip>
-            <commandName>0</commandName>
+            <commandName>Form.Item.СписокЗаказов.StandardCommand.Change</commandName>
             <representation>Auto</representation>
             <autoMaxWidth>true</autoMaxWidth>
             <autoMaxHeight>true</autoMaxHeight>
@@ -2483,7 +2519,7 @@
                 <horizontalAlign>Left</horizontalAlign>
               </extInfo>
             </extendedTooltip>
-            <commandName>0</commandName>
+            <commandName>Form.Item.СписокЗаказов.StandardCommand.SetDeletionMark</commandName>
             <representation>Auto</representation>
             <autoMaxWidth>true</autoMaxWidth>
             <autoMaxHeight>true</autoMaxHeight>
@@ -4778,7 +4814,7 @@
       <common>true</common>
     </edit>
     <extInfo xsi:type="form:DynamicListExtInfo">
-      <queryText>ВЫБРАТЬ ПЕРВЫЕ 20
+      <queryText>ВЫБРАТЬ
 	ТаблицаЗаказ.Ссылка КАК Ссылка,
 	ТаблицаЗаказ.ВерсияДанных КАК ВерсияДанных,
 	ТаблицаЗаказ.ПометкаУдаления КАК ПометкаУдаления,
@@ -4840,7 +4876,6 @@
 	ТаблицаСостояния.СообщениеМагазин КАК СообщениеМагазин,
 	ТаблицаСостояния.ВозвратныйДокумент КАК ВозвратныйДокумент,
 	ТаблицаСостояния.ДокументОбмена КАК ДокументОбмена
-ПОМЕСТИТЬ ВТ
 ИЗ
 	Документ.ЗаказПокупателя КАК ТаблицаЗаказ
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СостояниеЗаказаПокупателя КАК ТаблицаСостояния
@@ -4848,69 +4883,9 @@
 ГДЕ
 	ТаблицаЗаказ.Контрагент = &amp;Контрагент
 {ГДЕ
-	ТаблицаЗаказ.Ссылка.*}
-;
-
-////////////////////////////////////////////////////////////////////////////////
-ВЫБРАТЬ
-	ВТ.Ссылка КАК Ссылка,
-	ВТ.ВерсияДанных КАК ВерсияДанных,
-	ВТ.ПометкаУдаления КАК ПометкаУдаления,
-	ВТ.Номер КАК Номер,
-	ВТ.IDN КАК IDN,
-	ВТ.Дата КАК Дата,
-	ВТ.Проведен КАК Проведен,
-	ВТ.Склад КАК Склад,
-	ВТ.Магазин КАК Магазин,
-	ВТ.МагазинПолучатель КАК МагазинПолучатель,
-	ВТ.Комментарий КАК Комментарий,
-	ВТ.СуммаДокумента КАК СуммаДокумента,
-	ВТ.ДисконтнаяКарта КАК ДисконтнаяКарта,
-	ВТ.Ответственный КАК Ответственный,
-	ВТ.УчитыватьНДС КАК УчитыватьНДС,
-	ВТ.ЦенаВключаетНДС КАК ЦенаВключаетНДС,
-	ВТ.АдресДоставки КАК АдресДоставки,
-	ВТ.ВладелецДисконтнойКарты КАК ВладелецДисконтнойКарты,
-	ВТ.Контрагент КАК Контрагент,
-	ВТ.СотрудникАнтошки КАК СотрудникАнтошки,
-	ВТ.Продавец КАК Продавец,
-	ВТ.ПродавецИдентификатор КАК ПродавецИдентификатор,
-	ВТ.Организация КАК Организация,
-	ВТ.СкидкиРассчитаны КАК СкидкиРассчитаны,
-	ВТ.МаксимальныйКодСтроки КАК МаксимальныйКодСтроки,
-	ВТ.КоррекцияНачисленийПоПродаже КАК КоррекцияНачисленийПоПродаже,
-	ВТ.Статус КАК Статус,
-	ВТ.НомерЗаказаОсновной КАК НомерЗаказаОсновной,
-	ВТ.НомерЗаказаНаСайте КАК НомерЗаказаНаСайте,
-	ВТ.СтатусИМ КАК СтатусИМ,
-	ВТ.СтатусОплаты КАК СтатусОплаты,
-	ВТ.ТипДоставки КАК ТипДоставки,
-	ВТ.ТипОплаты КАК ТипОплаты,
-	ВТ.ДатаПродажиЖелаемая КАК ДатаПродажиЖелаемая,
-	ВТ.НаличиеНезарезервированныхСтрок КАК НаличиеНезарезервированныхСтрок,
-	ВТ.СуммаБалловНачисление КАК СуммаБалловНачисление,
-	ВТ.СуммаБалловСписание КАК СуммаБалловСписание,
-	ВТ.Отменено КАК Отменено,
-	ВТ.Автор КАК Автор,
-	ВТ.УзелСоздания КАК УзелСоздания,
-	ВТ.УчетнаяСистема КАК УчетнаяСистема,
-	ВТ.СуммаДоставки КАК СуммаДоставки,
-	ВТ.СуммаДоставкиОператор КАК СуммаДоставкиОператор,
-	ВТ.СуммаДоставкиОплачена КАК СуммаДоставкиОплачена,
-	ВТ.УчтеноNavision КАК УчтеноNavision,
-	ВТ.Состояние КАК Состояние,
-	ВТ.ЧастичнаяПродажа КАК ЧастичнаяПродажа,
-	ВТ.НеПерезванивать КАК НеПерезванивать,
-	ВТ.ОбработкаВМадженто КАК ОбработкаВМадженто,
-	ВТ.Телефон КАК Телефон,
-	ВТ.ЕстьВозврат КАК ЕстьВозврат,
-	ВТ.ПочтаКлиента КАК ПочтаКлиента,
-	ВТ.СообщениеЦентр КАК СообщениеЦентр,
-	ВТ.СообщениеМагазин КАК СообщениеМагазин,
-	ВТ.ВозвратныйДокумент КАК ВозвратныйДокумент,
-	ВТ.ДокументОбмена КАК ДокументОбмена
-ИЗ
-	ВТ КАК ВТ</queryText>
+	ТаблицаЗаказ.Ссылка.*}</queryText>
+      <mainTable>Document.ЗаказПокупателя</mainTable>
+      <dynamicDataRead>true</dynamicDataRead>
       <autoFillAvailableFields>true</autoFillAvailableFields>
       <customQuery>true</customQuery>
       <autoSaveUserSettings>true</autoSaveUserSettings>
@@ -5154,6 +5129,162 @@
       <fields xsi:type="schema:DataCompositionSchemaDataSetField">
         <dataPath>ВозвратныйДокумент</dataPath>
         <field>ВозвратныйДокумент</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ДатаРезервированияЗаказа</dataPath>
+        <field>ДатаРезервированияЗаказа</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ДокументОснование</dataPath>
+        <field>ДокументОснование</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>АвтоВыполнение</dataPath>
+        <field>АвтоВыполнение</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>БонусАкцияСписан</dataPath>
+        <field>БонусАкцияСписан</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ОплатаЗаказа</dataPath>
+        <field>ОплатаЗаказа</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Квартира</dataPath>
+        <field>Квартира</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Дом</dataPath>
+        <field>Дом</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>БонусБазаСписан</dataPath>
+        <field>БонусБазаСписан</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Город</dataPath>
+        <field>Город</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Имя</dataPath>
+        <field>Имя</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>КомментарийДляДоставки</dataPath>
+        <field>КомментарийДляДоставки</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ДатаЗаказаНаСайте</dataPath>
+        <field>ДатаЗаказаНаСайте</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>СуммаБонусныхБалловСписано</dataPath>
+        <field>СуммаБонусныхБалловСписано</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ДоставкаНаАдрес</dataPath>
+        <field>ДоставкаНаАдрес</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Область</dataPath>
+        <field>Область</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>СуммаДоставкиВРучную</dataPath>
+        <field>СуммаДоставкиВРучную</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ОператорДоставки</dataPath>
+        <field>ОператорДоставки</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>НачислениеБонусныхБаллов</dataPath>
+        <field>НачислениеБонусныхБаллов</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Отделение</dataPath>
+        <field>Отделение</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Отчество</dataPath>
+        <field>Отчество</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ПогашениеПодарочныхСертификатов</dataPath>
+        <field>ПогашениеПодарочныхСертификатов</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ПолучательТретееЛицо</dataPath>
+        <field>ПолучательТретееЛицо</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ПричинаОтмены</dataPath>
+        <field>ПричинаОтмены</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Район</dataPath>
+        <field>Район</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>СлужбаКурьерскойДоставки</dataPath>
+        <field>СлужбаКурьерскойДоставки</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>СуммаОплаты</dataPath>
+        <field>СуммаОплаты</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Улица</dataPath>
+        <field>Улица</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>УслугаБанка</dataPath>
+        <field>УслугаБанка</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>УслугаБанкаПериодПредоставления</dataPath>
+        <field>УслугаБанкаПериодПредоставления</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Фамилия</dataPath>
+        <field>Фамилия</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ВыдачаСкидочныхКупонов</dataPath>
+        <field>ВыдачаСкидочныхКупонов</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Товары</dataPath>
+        <field>Товары</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ДополнительнаяИнформация</dataPath>
+        <field>ДополнительнаяИнформация</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ОплатаБонуснымиБаллами</dataPath>
+        <field>ОплатаБонуснымиБаллами</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ПогашениеСкидочныхКупонов</dataPath>
+        <field>ПогашениеСкидочныхКупонов</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Подарки</dataPath>
+        <field>Подарки</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>СкидкиНаценки</dataPath>
+        <field>СкидкиНаценки</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>СерийныеНомера</dataPath>
+        <field>СерийныеНомера</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>МоментВремени</dataPath>
+        <field>МоментВремени</field>
       </fields>
       <parameters>
         <name>Контрагент</name>
@@ -5649,7 +5780,8 @@
 ИЗ
 	РегистрСведений.ВходящиеЗвонкиАстерикс КАК ВходящиеЗвонкиАстерикс
 ГДЕ
-	ВходящиеЗвонкиАстерикс.Контрагент = &amp;Контрагент</queryText>
+	ВходящиеЗвонкиАстерикс.Контрагент = &amp;Контрагент
+	И ВходящиеЗвонкиАстерикс.ЗвонокПринят = ИСТИНА</queryText>
       <mainTable>InformationRegister.ВходящиеЗвонкиАстерикс</mainTable>
       <dynamicDataRead>true</dynamicDataRead>
       <autoFillAvailableFields>true</autoFillAvailableFields>
@@ -5669,16 +5801,16 @@
         <field>Период</field>
       </fields>
       <fields xsi:type="schema:DataCompositionSchemaDataSetField">
-        <dataPath>СотрудниковКоллЦентра</dataPath>
-        <field>СотрудниковКоллЦентра</field>
-      </fields>
-      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
         <dataPath>НомерОператора</dataPath>
         <field>НомерОператора</field>
       </fields>
       <fields xsi:type="schema:DataCompositionSchemaDataSetField">
         <dataPath>ЗвонокПринят</dataPath>
         <field>ЗвонокПринят</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>СотрудникКоллЦентра</dataPath>
+        <field>СотрудникКоллЦентра</field>
       </fields>
       <parameters>
         <name>Контрагент</name>
@@ -5725,7 +5857,10 @@
 ИЗ
 	РегистрСведений.ВходящиеЗвонкиАстерикс КАК ВходящиеЗвонкиАстерикс
 ГДЕ
-	ВходящиеЗвонкиАстерикс.ЗвонокПринят = &amp;ЗвонокПринят</queryText>
+	ВходящиеЗвонкиАстерикс.ЗвонокПринят = &amp;ЗвонокПринят
+	И ВходящиеЗвонкиАстерикс.Контрагент = &amp;Контрагент</queryText>
+      <mainTable>InformationRegister.ВходящиеЗвонкиАстерикс</mainTable>
+      <dynamicDataRead>true</dynamicDataRead>
       <autoFillAvailableFields>true</autoFillAvailableFields>
       <customQuery>true</customQuery>
       <autoSaveUserSettings>true</autoSaveUserSettings>
@@ -5743,16 +5878,16 @@
         <field>Период</field>
       </fields>
       <fields xsi:type="schema:DataCompositionSchemaDataSetField">
-        <dataPath>СотрудниковКоллЦентра</dataPath>
-        <field>СотрудниковКоллЦентра</field>
-      </fields>
-      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
         <dataPath>НомерОператора</dataPath>
         <field>НомерОператора</field>
       </fields>
       <fields xsi:type="schema:DataCompositionSchemaDataSetField">
         <dataPath>ЗвонокПринят</dataPath>
         <field>ЗвонокПринят</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>СотрудникКоллЦентра</dataPath>
+        <field>СотрудникКоллЦентра</field>
       </fields>
       <parameters>
         <name>ЗвонокПринят</name>
@@ -5768,6 +5903,22 @@
           <types>Boolean</types>
         </valueType>
         <values xsi:type="core:BooleanValue"/>
+        <useRestriction>true</useRestriction>
+      </parameters>
+      <parameters>
+        <name>Контрагент</name>
+        <title>
+          <localValue>
+            <content>
+              <key>ru</key>
+              <value>Контрагент</value>
+            </content>
+          </localValue>
+        </title>
+        <valueType>
+          <types>CatalogRef.Контрагенты</types>
+        </valueType>
+        <values xsi:type="core:UndefinedValue"/>
         <useRestriction>true</useRestriction>
       </parameters>
     </extInfo>
