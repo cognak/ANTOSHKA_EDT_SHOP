@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form:Form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:form="http://g5.1c.ru/v8/dt/form">
+<form:Form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:form="http://g5.1c.ru/v8/dt/form" xmlns:schema="http://g5.1c.ru/v8/dt/data-composition-system/schema">
   <items xsi:type="form:FormGroup">
     <name>ГруппаЗапросаДоступности</name>
     <id>120</id>
@@ -288,6 +288,31 @@
                 </extInfo>
               </extendedTooltip>
               <commandName>Form.Command.ВсеЗапросы</commandName>
+              <representation>Auto</representation>
+              <autoMaxWidth>true</autoMaxWidth>
+              <autoMaxHeight>true</autoMaxHeight>
+              <placementArea>UserCmds</placementArea>
+              <representationInContextMenu>Auto</representationInContextMenu>
+            </items>
+            <items xsi:type="form:Button">
+              <name>СтатусыЗапросовДоступностиТолькоЛокал</name>
+              <id>302</id>
+              <visible>true</visible>
+              <enabled>true</enabled>
+              <userVisible>
+                <common>true</common>
+              </userVisible>
+              <extendedTooltip>
+                <name>СтатусыЗапросовДоступностиТолькоЛокалРасширеннаяПодсказка</name>
+                <id>303</id>
+                <type>Label</type>
+                <autoMaxWidth>true</autoMaxWidth>
+                <autoMaxHeight>true</autoMaxHeight>
+                <extInfo xsi:type="form:LabelDecorationExtInfo">
+                  <horizontalAlign>Left</horizontalAlign>
+                </extInfo>
+              </extendedTooltip>
+              <commandName>Form.Command.ТолькоЛокал</commandName>
               <representation>Auto</representation>
               <autoMaxWidth>true</autoMaxWidth>
               <autoMaxHeight>true</autoMaxHeight>
@@ -1612,6 +1637,11 @@
 			ПО КонтрагентыКИ.Ссылка = ЗП.Контрагент
 			И КонтрагентыКИ.Тип = ЗНАЧЕНИЕ(Перечисление.ТипыКонтактнойИнформации.Телефон)
 		ПО ЗДТ.ДокументОснование = ЗП.Ссылка
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.НастройкиСлужбДоставки КАК ТаблицаНастроек
+		ПО ЗДТ.МагазинОтправитель = ТаблицаНастроек.Магазин
+		И ЗДТ.ОператорДоставки = ТаблицаНастроек.ОператорДоставки
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.УчетнаяПолитикаМагазинов.СрезПоследних(&amp;ДатаДокумента,) КАК ТаблицаПолитикМагазина
+		ПО ЗДТ.МагазинОтправитель = ТаблицаПолитикМагазина.Магазин
 		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
 			ВложенныйЗапрос.Ссылка КАК Ссылка,
 			КОЛИЧЕСТВО(ВложенныйЗапрос.Дата) КАК КолСообщений
@@ -1660,7 +1690,7 @@
 	И КонтрагентыКИ.НомерТелефона ПОДОБНО &quot;%&quot; + &amp;Номерзаказа + &quot;%&quot;
 	ИЛИ &amp;ТипПоиска = 4
 	И ТаблицаТоваров.IDN = &amp;Номерзаказа)
-	И (((&amp;ВсеЗапросыДляОтображения
+	И (&amp;ВсеЗапросыДляОтображения
 	ИЛИ ВЫБОР
 		КОГДА &amp;УзелМагазина
 			ТОГДА ЗДТ.МагазинПолучатель = &amp;Магазин
@@ -1668,12 +1698,18 @@
 			ИЛИ ЗДТ.МагазинОтправитель = &amp;Магазин
 			И &amp;ОтправляемТовар
 		ИНАЧЕ Склады.НазначениеСклада = ЗНАЧЕНИЕ(Перечисление.НазначенияСкладов.УправляющаяСистема)
-	КОНЕЦ)))
+	КОНЕЦ)
 	И ВЫБОР
 		КОГДА Склады.НазначениеСклада = ЗНАЧЕНИЕ(Перечисление.НазначенияСкладов.УправляющаяСистема)
 			ТОГДА НЕ ЗДТ.МагазинПолучатель = УчетнаяПолитикаСрезПоследних.ИнтернетМагазин
 			ИЛИ Склады.Ссылка = УчетнаяПолитикаСрезПоследних.СкладЗакупки
 			ИЛИ ЗДТ.ТипДоставки = ЗНАЧЕНИЕ(перечисление.ТипДоставкиЗаказПокупателя.СлужбаДоставки)
+		ИНАЧЕ ИСТИНА
+	КОНЕЦ
+	И ВЫБОР
+		КОГДА &amp;ТолькоЛокал
+			ТОГДА ЕСТЬNULL(ЗП.Город = ТаблицаНастроек.Город, ЛОЖЬ)
+			И ЕСТЬNULL(ТаблицаПолитикМагазина.ИспользоватьЛокалЕкспрес, ЛОЖЬ)
 		ИНАЧЕ ИСТИНА
 	КОНЕЦ
 СГРУППИРОВАТЬ ПО
@@ -1707,6 +1743,392 @@
       <customQuery>true</customQuery>
       <autoSaveUserSettings>true</autoSaveUserSettings>
       <getInvisibleFieldPresentations>true</getInvisibleFieldPresentations>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Ссылка</dataPath>
+        <field>Ссылка</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ПометкаУдаления</dataPath>
+        <field>ПометкаУдаления</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Номер</dataPath>
+        <field>Номер</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Дата</dataPath>
+        <field>Дата</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Проведен</dataPath>
+        <field>Проведен</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>МоментВремени</dataPath>
+        <field>МоментВремени</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ДокументОснование</dataPath>
+        <field>ДокументОснование</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>МагазинОтправитель</dataPath>
+        <field>МагазинОтправитель</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>МагазинПолучатель</dataPath>
+        <field>МагазинПолучатель</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ОператорДоставки</dataPath>
+        <field>ОператорДоставки</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Организация</dataPath>
+        <field>Организация</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Ответственный</dataPath>
+        <field>Ответственный</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>СтатусЗапроса</dataPath>
+        <field>СтатусЗапроса</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ТипДоставки</dataPath>
+        <field>ТипДоставки</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ДоставкаНаАдрес</dataPath>
+        <field>ДоставкаНаАдрес</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Автор</dataPath>
+        <field>Автор</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>УзелСоздания</dataPath>
+        <field>УзелСоздания</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>КоличествоСтрок</dataPath>
+        <field>КоличествоСтрок</field>
+        <title>
+          <localValue>
+            <content>
+              <key>ru</key>
+              <value>Количество строк</value>
+            </content>
+          </localValue>
+        </title>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Обработано</dataPath>
+        <field>Обработано</field>
+        <title>
+          <localValue>
+            <content>
+              <key>ru</key>
+              <value>Обработано</value>
+            </content>
+          </localValue>
+        </title>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>НомерТТН</dataPath>
+        <field>НомерТТН</field>
+        <title>
+          <localValue>
+            <content>
+              <key>ru</key>
+              <value>Номер ТТН</value>
+            </content>
+          </localValue>
+        </title>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>КолСообщений</dataPath>
+        <field>КолСообщений</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ОтмененнаяТТН</dataPath>
+        <field>ОтмененнаяТТН</field>
+        <title>
+          <localValue>
+            <content>
+              <key>ru</key>
+              <value>Отмененная ТТН</value>
+            </content>
+          </localValue>
+        </title>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ДокументРегистратор</dataPath>
+        <field>ДокументРегистратор</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Магазин</dataPath>
+        <field>Магазин</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ВерсияИМ</dataPath>
+        <field>ВерсияИМ</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ВерсияП</dataPath>
+        <field>ВерсияП</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ДокументОснованиеТекст</dataPath>
+        <field>ДокументОснованиеТекст</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Комментарий</dataPath>
+        <field>Комментарий</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ОтправлятьВNavision</dataPath>
+        <field>ОтправлятьВNavision</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>СуммаДокумента</dataPath>
+        <field>СуммаДокумента</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>СуммаОплатыДоставки</dataPath>
+        <field>СуммаОплатыДоставки</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ТипОплаты</dataPath>
+        <field>ТипОплаты</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ТовароТранспортнаяНакладная</dataPath>
+        <field>ТовароТранспортнаяНакладная</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>СтатусОплаты</dataPath>
+        <field>СтатусОплаты</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Товары</dataPath>
+        <field>Товары</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Упаковки</dataPath>
+        <field>Упаковки</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Оплата</dataPath>
+        <field>Оплата</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ПричинаИзменений</dataPath>
+        <field>ПричинаИзменений</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>IDN</dataPath>
+        <field>IDN</field>
+      </fields>
+      <parameters>
+        <name>ПолучаемТовар</name>
+        <title>
+          <localValue>
+            <content>
+              <key>ru</key>
+              <value>Получаем товар</value>
+            </content>
+          </localValue>
+        </title>
+        <valueType>
+          <types>Boolean</types>
+        </valueType>
+        <values xsi:type="core:UndefinedValue"/>
+        <useRestriction>true</useRestriction>
+      </parameters>
+      <parameters>
+        <name>Период</name>
+        <title>
+          <localValue>
+            <content>
+              <key>ru</key>
+              <value>Период</value>
+            </content>
+          </localValue>
+        </title>
+        <valueType>
+          <types>Date</types>
+          <dateQualifiers/>
+        </valueType>
+        <values xsi:type="core:UndefinedValue"/>
+      </parameters>
+      <parameters>
+        <name>ВсеЗаказы</name>
+        <title>
+          <localValue>
+            <content>
+              <key>ru</key>
+              <value>Все заказы</value>
+            </content>
+          </localValue>
+        </title>
+        <valueType>
+          <types>Boolean</types>
+        </valueType>
+        <values xsi:type="core:UndefinedValue"/>
+        <useRestriction>true</useRestriction>
+      </parameters>
+      <parameters>
+        <name>ТипПоиска</name>
+        <title>
+          <localValue>
+            <content>
+              <key>ru</key>
+              <value>Тип поиска</value>
+            </content>
+          </localValue>
+        </title>
+        <valueType>
+          <types>Number</types>
+          <numberQualifiers/>
+        </valueType>
+        <values xsi:type="core:UndefinedValue"/>
+        <useRestriction>true</useRestriction>
+      </parameters>
+      <parameters>
+        <name>Номерзаказа</name>
+        <title>
+          <localValue>
+            <content>
+              <key>ru</key>
+              <value>Номерзаказа</value>
+            </content>
+          </localValue>
+        </title>
+        <valueType>
+          <types>String</types>
+          <stringQualifiers>
+            <length>10</length>
+            <fixed>true</fixed>
+          </stringQualifiers>
+        </valueType>
+        <values xsi:type="core:UndefinedValue"/>
+        <useRestriction>true</useRestriction>
+      </parameters>
+      <parameters>
+        <name>ВсеЗапросыДляОтображения</name>
+        <title>
+          <localValue>
+            <content>
+              <key>ru</key>
+              <value>Все запросы для отображения</value>
+            </content>
+          </localValue>
+        </title>
+        <valueType>
+          <types>Boolean</types>
+        </valueType>
+        <values xsi:type="core:UndefinedValue"/>
+        <useRestriction>true</useRestriction>
+      </parameters>
+      <parameters>
+        <name>Магазин</name>
+        <title>
+          <localValue>
+            <content>
+              <key>ru</key>
+              <value>Магазин</value>
+            </content>
+          </localValue>
+        </title>
+        <valueType>
+          <types>CatalogRef.Магазины</types>
+        </valueType>
+        <values xsi:type="core:UndefinedValue"/>
+        <useRestriction>true</useRestriction>
+      </parameters>
+      <parameters>
+        <name>ОтправляемТовар</name>
+        <title>
+          <localValue>
+            <content>
+              <key>ru</key>
+              <value>Отправляем товар</value>
+            </content>
+          </localValue>
+        </title>
+        <valueType>
+          <types>Boolean</types>
+        </valueType>
+        <values xsi:type="core:UndefinedValue"/>
+        <useRestriction>true</useRestriction>
+      </parameters>
+      <parameters>
+        <name>СтатусЗапроса</name>
+        <title>
+          <localValue>
+            <content>
+              <key>ru</key>
+              <value>Статус запроса</value>
+            </content>
+          </localValue>
+        </title>
+        <valueType>
+          <types>EnumRef.СтатусыЗапросовДоступностиТоваровШапка</types>
+        </valueType>
+        <values xsi:type="core:UndefinedValue"/>
+        <useRestriction>true</useRestriction>
+      </parameters>
+      <parameters>
+        <name>УзелМагазина</name>
+        <title>
+          <localValue>
+            <content>
+              <key>ru</key>
+              <value>Узел магазина</value>
+            </content>
+          </localValue>
+        </title>
+        <valueType>
+          <types>Boolean</types>
+        </valueType>
+        <values xsi:type="core:UndefinedValue"/>
+        <useRestriction>true</useRestriction>
+      </parameters>
+      <parameters>
+        <name>ДатаДокумента</name>
+        <title>
+          <localValue>
+            <content>
+              <key>ru</key>
+              <value>Дата документа</value>
+            </content>
+          </localValue>
+        </title>
+        <valueType>
+          <types>Date</types>
+          <dateQualifiers/>
+        </valueType>
+        <values xsi:type="core:UndefinedValue"/>
+        <useRestriction>true</useRestriction>
+      </parameters>
+      <parameters>
+        <name>ТолькоЛокал</name>
+        <title>
+          <localValue>
+            <content>
+              <key>ru</key>
+              <value>Только локал</value>
+            </content>
+          </localValue>
+        </title>
+        <valueType>
+          <types>Boolean</types>
+        </valueType>
+        <values xsi:type="core:UndefinedValue"/>
+        <useRestriction>true</useRestriction>
+      </parameters>
     </extInfo>
   </attributes>
   <attributes>
@@ -1932,6 +2354,23 @@
       <common>true</common>
     </edit>
   </attributes>
+  <attributes>
+    <name>ТолькоЛокал</name>
+    <title>
+      <key>ru</key>
+      <value>Только локал</value>
+    </title>
+    <id>18</id>
+    <valueType>
+      <types>Boolean</types>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
+  </attributes>
   <formCommands>
     <name>Обновить</name>
     <title>
@@ -2136,6 +2575,23 @@
       </handler>
     </action>
     <currentRowUse>DontUse</currentRowUse>
+  </formCommands>
+  <formCommands>
+    <name>ТолькоЛокал</name>
+    <title>
+      <key>ru</key>
+      <value>Только ЛокалЭкспраесс</value>
+    </title>
+    <id>12</id>
+    <use>
+      <common>true</common>
+    </use>
+    <action xsi:type="form:FormCommandHandlerContainer">
+      <handler>
+        <name>ТолькоЛокал</name>
+      </handler>
+    </action>
+    <currentRowUse>Auto</currentRowUse>
   </formCommands>
   <commandInterface>
     <navigationPanel/>
