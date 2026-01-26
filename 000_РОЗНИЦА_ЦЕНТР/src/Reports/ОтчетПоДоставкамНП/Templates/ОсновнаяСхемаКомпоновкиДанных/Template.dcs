@@ -7,30 +7,6 @@
 	<dataSet xsi:type="DataSetQuery">
 		<name>НаборДанных1</name>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>ДокументОснованиеСуммаДокумента</dataPath>
-			<field>ДокументОснованиеСуммаДокумента</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Сумма документа</v8:content>
-				</v8:item>
-			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>ДокументОснованиеМагазинОтправитель</dataPath>
-			<field>ДокументОснованиеМагазинОтправитель</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Магазин отправитель</v8:content>
-				</v8:item>
-			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>ОператорДоставки</dataPath>
-			<field>ОператорДоставки</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>СуммаДоставки</dataPath>
 			<field>СуммаДоставки</field>
 		</field>
@@ -45,14 +21,16 @@
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Количество</dataPath>
-			<field>Количество</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Количество</v8:content>
-				</v8:item>
-			</title>
+			<dataPath>МагазинОтправитель</dataPath>
+			<field>МагазинОтправитель</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НашаСуммаДоставки</dataPath>
+			<field>НашаСуммаДоставки</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаДокумента</dataPath>
+			<field>СуммаДокумента</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>ДокументОснование</dataPath>
@@ -60,37 +38,68 @@
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>ЗД</v8:content>
+					<v8:content>Документ основание</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Номер</dataPath>
+			<field>Номер</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДокументРегистратор</dataPath>
+			<field>ДокументРегистратор</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СтатусЭН</dataPath>
+			<field>СтатусЭН</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Заказ</dataPath>
+			<field>Заказ</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заказ</v8:content>
 				</v8:item>
 			</title>
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
-	ЭлектроннаяНакладная.СуммаДоставки КАК СуммаДоставки,
-	ЭлектроннаяНакладная.ДокументОснование.ОператорДоставки КАК ОператорДоставки,
-	1 КАК Количество,
-	ЭлектроннаяНакладная.ДокументОснование.МагазинОтправитель КАК ДокументОснованиеМагазинОтправитель,
-	ЭлектроннаяНакладная.ДокументОснование.СуммаДокумента КАК ДокументОснованиеСуммаДокумента,
-	НАЧАЛОПЕРИОДА(ЭлектроннаяНакладная.Дата, ДЕНЬ) КАК День,
-	ЭлектроннаяНакладная.ДокументОснование КАК ДокументОснование
+	НАЧАЛОПЕРИОДА(ТаблицаНакладной.Дата, ДЕНЬ) КАК День,
+	ТаблицаНакладной.СуммаДоставки КАК СуммаДоставки,
+	ТаблицаНакладной.НашаСуммаДоставки КАК НашаСуммаДоставки,
+	ТаблицаЗапроса.СуммаДокумента КАК СуммаДокумента,
+	ТаблицаЗапроса.Ссылка КАК ДокументОснование,
+	ТаблицаЗапроса.МагазинОтправитель КАК МагазинОтправитель,
+	ТаблицаНакладной.Номер КАК Номер,
+	СтатусыЭНСрезПоследних.СтатусЭН КАК СтатусЭН,
+	ТаблицаЗаказа.Ссылка КАК Заказ
 ИЗ
-	Документ.ЭлектроннаяНакладная КАК ЭлектроннаяНакладная
+	Документ.ЗаказПокупателя КАК ТаблицаЗаказа
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.ЗапросДоступностиТоваров КАК ТаблицаЗапроса
+			ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.ЭлектроннаяНакладная КАК ТаблицаНакладной
+				ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.СтатусыЭН.СрезПоследних(&amp;ДатаПо, ) КАК СтатусыЭНСрезПоследних
+				ПО (СтатусыЭНСрезПоследних.ДокументРегистратор = ТаблицаНакладной.Ссылка)
+			ПО ТаблицаЗапроса.Ссылка = ТаблицаНакладной.ДокументОснование
+		ПО ТаблицаЗаказа.Ссылка = ТаблицаЗапроса.ДокументОснование
 ГДЕ
-	ЭлектроннаяНакладная.Дата МЕЖДУ &amp;ДатаС И &amp;ДатаПо
-	И ЭлектроннаяНакладная.Статус &lt;&gt; &amp;Статус
-	И НЕ ЭлектроннаяНакладная.Номер = ""</query>
+	ТаблицаНакладной.Дата МЕЖДУ &amp;ДатаС И &amp;ДатаПо
+	И СтатусыЭНСрезПоследних.СтатусЭН &lt;&gt; &amp;Статус
+	И НЕ ТаблицаНакладной.Номер = ""
+	И НЕ ТаблицаНакладной.ПереадресацияНакладная</query>
 	</dataSet>
-	<totalField>
-		<dataPath>Количество</dataPath>
-		<expression>Сумма(Количество)</expression>
-	</totalField>
 	<totalField>
 		<dataPath>СуммаДоставки</dataPath>
 		<expression>Сумма(СуммаДоставки)</expression>
 	</totalField>
 	<totalField>
-		<dataPath>ДокументОснованиеСуммаДокумента</dataPath>
-		<expression>Сумма(ДокументОснованиеСуммаДокумента)</expression>
+		<dataPath>СуммаДокумента</dataPath>
+		<expression>Сумма(СуммаДокумента)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>НашаСуммаДоставки</dataPath>
+		<expression>Сумма(НашаСуммаДоставки)</expression>
 	</totalField>
 	<parameter>
 		<name>ДатаПо</name>
@@ -108,7 +117,7 @@
 		</valueType>
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 		<useRestriction>true</useRestriction>
-		<expression>&amp;Период.ДатаОкончания</expression>
+		<expression>&amp;ПериодНакладных.ДатаОкончания</expression>
 	</parameter>
 	<parameter>
 		<name>ДатаС</name>
@@ -126,7 +135,7 @@
 		</valueType>
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 		<useRestriction>true</useRestriction>
-		<expression>&amp;Период.ДатаНачала</expression>
+		<expression>&amp;ПериодНакладных.ДатаНачала</expression>
 	</parameter>
 	<parameter>
 		<name>Период</name>
@@ -144,7 +153,7 @@
 			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
 			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
 		</value>
-		<useRestriction>false</useRestriction>
+		<useRestriction>true</useRestriction>
 	</parameter>
 	<parameter>
 		<name>Статус</name>
@@ -160,21 +169,53 @@
 		<value xsi:type="dcscor:DesignTimeValue">Перечисление.СтатусыПосылокСлужбыДоставки.Отменена</value>
 		<useRestriction>true</useRestriction>
 	</parameter>
+	<parameter>
+		<name>ПериодНакладных</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период накладных</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
 	<settingsVariant>
 		<dcsset:name>Отпрвавки магазинов</dcsset:name>
 		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:selection>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Количество</dcsset:field>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>СуммаДоставки</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>ДокументОснованиеСуммаДокумента</dcsset:field>
+					<dcsset:field>НашаСуммаДоставки</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СуммаДокумента</dcsset:field>
 				</dcsset:item>
 			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">СтатусЭН</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>61122357-9c5c-4427-8c8b-588dc5119ca7</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">МагазинОтправитель</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>fe9f0c51-d922-4218-9ced-c5c61a845bc4</dcsset:userSettingID>
+				</dcsset:item>
+			</dcsset:filter>
 			<dcsset:dataParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:use>false</dcscor:use>
@@ -186,11 +227,21 @@
 					</dcscor:value>
 					<dcsset:userSettingID>a96e8238-b138-4276-b5ea-0275b26b5429</dcsset:userSettingID>
 				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ПериодНакладных</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+					</dcscor:value>
+					<dcsset:userSettingID>f8914379-dfd3-413f-ae77-700745a36c1d</dcsset:userSettingID>
+				</dcscor:item>
 			</dcsset:dataParameters>
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
 				<dcsset:groupItems>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
-						<dcsset:field>ДокументОснованиеМагазинОтправитель</dcsset:field>
+						<dcsset:field>СтатусЭН</dcsset:field>
 						<dcsset:groupType>Items</dcsset:groupType>
 						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -206,7 +257,7 @@
 				<dcsset:item xsi:type="dcsset:StructureItemGroup">
 					<dcsset:groupItems>
 						<dcsset:item xsi:type="dcsset:GroupItemField">
-							<dcsset:field>ОператорДоставки</dcsset:field>
+							<dcsset:field>МагазинОтправитель</dcsset:field>
 							<dcsset:groupType>Items</dcsset:groupType>
 							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -238,7 +289,7 @@
 						<dcsset:item xsi:type="dcsset:StructureItemGroup">
 							<dcsset:groupItems>
 								<dcsset:item xsi:type="dcsset:GroupItemField">
-									<dcsset:field>ДокументОснование</dcsset:field>
+									<dcsset:field>Заказ</dcsset:field>
 									<dcsset:groupType>Items</dcsset:groupType>
 									<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 									<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -251,6 +302,30 @@
 							<dcsset:selection>
 								<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
 							</dcsset:selection>
+							<dcsset:item xsi:type="dcsset:StructureItemGroup">
+								<dcsset:groupItems>
+									<dcsset:item xsi:type="dcsset:GroupItemField">
+										<dcsset:field>ДокументОснование</dcsset:field>
+										<dcsset:groupType>Items</dcsset:groupType>
+										<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+										<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+										<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+									</dcsset:item>
+									<dcsset:item xsi:type="dcsset:GroupItemField">
+										<dcsset:field>Номер</dcsset:field>
+										<dcsset:groupType>Items</dcsset:groupType>
+										<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+										<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+										<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+									</dcsset:item>
+								</dcsset:groupItems>
+								<dcsset:order>
+									<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+								</dcsset:order>
+								<dcsset:selection>
+									<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+								</dcsset:selection>
+							</dcsset:item>
 						</dcsset:item>
 					</dcsset:item>
 				</dcsset:item>
