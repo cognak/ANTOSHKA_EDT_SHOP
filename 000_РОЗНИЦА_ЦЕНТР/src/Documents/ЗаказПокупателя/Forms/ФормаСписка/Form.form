@@ -5259,6 +5259,32 @@
       <autoCommandBar>
         <name>СписокЗапросаДоступностиКоманднаяПанель</name>
         <id>229</id>
+        <items xsi:type="form:Button">
+          <name>СписокЗапросаДоступностиПовторноПередатьВNAV</name>
+          <id>446</id>
+          <visible>true</visible>
+          <enabled>true</enabled>
+          <userVisible>
+            <common>true</common>
+          </userVisible>
+          <extendedTooltip>
+            <name>СписокЗапросаДоступностиПовторноПередатьВNAVРасширеннаяПодсказка</name>
+            <id>447</id>
+            <type>Label</type>
+            <autoMaxWidth>true</autoMaxWidth>
+            <autoMaxHeight>true</autoMaxHeight>
+            <extInfo xsi:type="form:LabelDecorationExtInfo">
+              <horizontalAlign>Left</horizontalAlign>
+            </extInfo>
+          </extendedTooltip>
+          <commandName>Form.Command.ПовторноПередатьВNAV</commandName>
+          <representation>Auto</representation>
+          <autoMaxWidth>true</autoMaxWidth>
+          <autoMaxHeight>true</autoMaxHeight>
+          <placementArea>UserCmds</placementArea>
+          <representationInContextMenu>Auto</representationInContextMenu>
+          <locationInCommandBar>InAdditionalSubmenu</locationInCommandBar>
+        </items>
         <visible>true</visible>
         <enabled>true</enabled>
         <userVisible>
@@ -5805,6 +5831,9 @@
     <edit>
       <common>true</common>
     </edit>
+    <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
+      <segments>СписокЗапросаДоступности.Ссылка</segments>
+    </notDefaultUseAlwaysAttributes>
     <extInfo xsi:type="form:DynamicListExtInfo">
       <queryText>ВЫБРАТЬ
 	ДокументЗапросДоступностиТоваров.Ссылка КАК Ссылка,
@@ -6210,6 +6239,23 @@
     <action xsi:type="form:FormCommandHandlerContainer">
       <handler>
         <name>ОткрытьВходящиеЗвонки</name>
+      </handler>
+    </action>
+    <currentRowUse>Auto</currentRowUse>
+  </formCommands>
+  <formCommands>
+    <name>ПовторноПередатьВNAV</name>
+    <title>
+      <key>ru</key>
+      <value>Повторно передать в NAV</value>
+    </title>
+    <id>11</id>
+    <use>
+      <common>true</common>
+    </use>
+    <action xsi:type="form:FormCommandHandlerContainer">
+      <handler>
+        <name>ПовторноПередатьВNAV</name>
       </handler>
     </action>
     <currentRowUse>Auto</currentRowUse>

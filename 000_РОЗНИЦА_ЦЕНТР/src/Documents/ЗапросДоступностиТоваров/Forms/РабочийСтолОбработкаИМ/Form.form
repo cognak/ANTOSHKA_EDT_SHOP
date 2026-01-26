@@ -795,6 +795,43 @@
           </dataPath>
           <titleLocation>None</titleLocation>
           <items xsi:type="form:FormField">
+            <name>ЗапросыДоступностиЗапросЛокал</name>
+            <id>304</id>
+            <visible>true</visible>
+            <enabled>true</enabled>
+            <userVisible>
+              <common>true</common>
+            </userVisible>
+            <dataPath xsi:type="form:DataPath">
+              <segments>ЗапросыДоступности.ЗапросЛокал</segments>
+            </dataPath>
+            <titleLocation>None</titleLocation>
+            <extendedTooltip>
+              <name>ЗапросыДоступностиЗапросЛокалРасширеннаяПодсказка</name>
+              <id>306</id>
+              <type>Label</type>
+              <autoMaxWidth>true</autoMaxWidth>
+              <autoMaxHeight>true</autoMaxHeight>
+              <extInfo xsi:type="form:LabelDecorationExtInfo">
+                <horizontalAlign>Left</horizontalAlign>
+              </extInfo>
+            </extendedTooltip>
+            <contextMenu>
+              <name>ЗапросыДоступностиЗапросЛокалКонтекстноеМеню</name>
+              <id>305</id>
+              <autoFill>true</autoFill>
+            </contextMenu>
+            <type>CheckBoxField</type>
+            <editMode>Enter</editMode>
+            <showInHeader>true</showInHeader>
+            <headerPicture xsi:type="core:PictureRef">
+              <picture>CommonPicture.РазделНМАиОС16</picture>
+            </headerPicture>
+            <headerHorizontalAlign>Left</headerHorizontalAlign>
+            <showInFooter>true</showInFooter>
+            <extInfo xsi:type="form:CheckBoxFieldExtInfo"/>
+          </items>
+          <items xsi:type="form:FormField">
             <name>ЗапросыДоступностиДата</name>
             <id>138</id>
             <visible>true</visible>
@@ -1972,7 +2009,9 @@
 		КОГДА ЭН.Ссылка ЕСТЬ NULL
 			ТОГДА НЕ ЭНОтменена.Ссылка ЕСТЬ NULL
 		ИНАЧЕ ЛОЖЬ
-	КОНЕЦ КАК ОтмененнаяТТН
+	КОНЕЦ КАК ОтмененнаяТТН,
+	ЕСТЬNULL(ЗП.Город = ТаблицаНастроек.Город, ЛОЖЬ)
+	И ЕСТЬNULL(ТаблицаПолитикМагазина.ИспользоватьЛокалЕкспрес, ЛОЖЬ) КАК ЗапросЛокал
 ИЗ
 	РегистрСведений.УчетнаяПолитика.СрезПоследних КАК УчетнаяПолитикаСрезПоследних,
 	Документ.ЗапросДоступностиТоваров КАК ЗДТ
@@ -2091,7 +2130,9 @@
 		КОГДА ЭН.Ссылка ЕСТЬ NULL
 			ТОГДА НЕ ЭНОтменена.Ссылка ЕСТЬ NULL
 		ИНАЧЕ ЛОЖЬ
-	КОНЕЦ</queryText>
+	КОНЕЦ,
+	ЕСТЬNULL(ЗП.Город = ТаблицаНастроек.Город, ЛОЖЬ)
+	И ЕСТЬNULL(ТаблицаПолитикМагазина.ИспользоватьЛокалЕкспрес, ЛОЖЬ)</queryText>
       <mainTable>Document.ЗапросДоступностиТоваров</mainTable>
       <dynamicDataRead>true</dynamicDataRead>
       <autoFillAvailableFields>true</autoFillAvailableFields>
@@ -2225,6 +2266,18 @@
       <fields xsi:type="schema:DataCompositionSchemaDataSetField">
         <dataPath>Магазин</dataPath>
         <field>Магазин</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ЗапросЛокал</dataPath>
+        <field>ЗапросЛокал</field>
+        <title>
+          <localValue>
+            <content>
+              <key>ru</key>
+              <value>Запрос локал</value>
+            </content>
+          </localValue>
+        </title>
       </fields>
       <fields xsi:type="schema:DataCompositionSchemaDataSetField">
         <dataPath>ВерсияИМ</dataPath>
