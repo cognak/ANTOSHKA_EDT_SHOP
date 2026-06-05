@@ -22,7 +22,7 @@
   <defaultRoles>Role.БазовыеПрава</defaultRoles>
   <defaultRoles>Role.БазовыеПраваРТ</defaultRoles>
   <vendor>ЧПТФ «Антошка»</vendor>
-  <version>2.1.2.321</version>
+  <version>2.1.2.322</version>
   <includeHelpInContents>true</includeHelpInContents>
   <help>
     <pages>
@@ -1271,9 +1271,13 @@
   <commonTemplates>CommonTemplate.РеестрНН_Сертификаты</commonTemplates>
   <commonTemplates>CommonTemplate.СоответствиеТэговОбщимФормам</commonTemplates>
   <commonTemplates>CommonTemplate.СтруктураПодчиненности</commonTemplates>
+  <commonTemplates>CommonTemplate.КафкаАдаптерKafka</commonTemplates>
+  <commonTemplates>CommonTemplate.КафкаJSONEditor</commonTemplates>
+  <commonTemplates>CommonTemplate.КафкаСвойстваLibrdKafka</commonTemplates>
+  <commonTemplates>CommonTemplate.ХрупкоКартинкаДляНаклейки</commonTemplates>
   <filterCriteria>FilterCriterion.СвязанныеДокументы</filterCriteria>
   <filterCriteria>FilterCriterion.ФайлыВТоме</filterCriteria>
-  <commonModules>CommonModule.JSON</commonModules>
+  <commonModules>CommonModule.РаботаСJSONСервер</commonModules>
   <commonModules>CommonModule.АвтономнаяРабота</commonModules>
   <commonModules>CommonModule.АвтономнаяРаботаСлужебный</commonModules>
   <commonModules>CommonModule.АвтономнаяРаботаСлужебныйВызовСервера</commonModules>
@@ -1393,6 +1397,13 @@
   <commonModules>CommonModule.ИнформационныйЦентрСлужебный</commonModules>
   <commonModules>CommonModule.ИнформацияПриЗапуске</commonModules>
   <commonModules>CommonModule.ИнформацияПриЗапускеКлиент</commonModules>
+  <commonModules>CommonModule.КафкаИнтеграция</commonModules>
+  <commonModules>CommonModule.КафкаИнтеграцияКлиент</commonModules>
+  <commonModules>CommonModule.КафкаИнтеграцияСлужебный</commonModules>
+  <commonModules>CommonModule.КафкаИнтеграцияСлужебныйВызовСервера</commonModules>
+  <commonModules>CommonModule.КафкаИнтеграцияСлужебныйКлиент</commonModules>
+  <commonModules>CommonModule.КафкаИнтеграцияСлужебныйПовтИсп</commonModules>
+  <commonModules>CommonModule.КафкаОбработкаСобытийСлужебный</commonModules>
   <commonModules>CommonModule.КачествоОбслуживанияПродаж</commonModules>
   <commonModules>CommonModule.КомандыРаботыСБизнесПроцессамиКлиент</commonModules>
   <commonModules>CommonModule.КомандыРаботыСФайламиКлиент</commonModules>
@@ -1533,6 +1544,8 @@
   <commonModules>CommonModule.ОбщегоНазначенияРТКлиентСервер</commonModules>
   <commonModules>CommonModule.ОбщегоНазначенияРТповтИсп</commonModules>
   <commonModules>CommonModule.ОбщегоНазначенияРТСервер</commonModules>
+  <commonModules>CommonModule.ОповещенияПользователей</commonModules>
+  <commonModules>CommonModule.ОповещенияПользователейВызовСервера</commonModules>
   <commonModules>CommonModule.ОрганизацииСлужебный</commonModules>
   <commonModules>CommonModule.ОтборыСписковКлиентСервер</commonModules>
   <commonModules>CommonModule.ОтправкаSMS</commonModules>
@@ -1824,6 +1837,7 @@
   <commonModules>CommonModule.ЭлектроннаяЦифроваяПодписьКлиентСервер</commonModules>
   <commonModules>CommonModule.ЭлектроннаяЦифроваяПодписьПовтИсп</commonModules>
   <commonModules>CommonModule.ОбменДаннымиКСОСервер</commonModules>
+  <commonModules>CommonModule.КафкаОбщегоНазначенияСлужебный</commonModules>
   <commonAttributes>CommonAttribute.IDN</commonAttributes>
   <commonAttributes>CommonAttribute.Автор</commonAttributes>
   <commonAttributes>CommonAttribute.ОбластьДанныхВспомогательныеДанные</commonAttributes>
@@ -1874,6 +1888,7 @@
   <xDTOPackages>XDTOPackage.УдаленноеАдминистрированиеВМоделиСервиса_1_0_3_4</xDTOPackages>
   <xDTOPackages>XDTOPackage.УправлениеПриложениями</xDTOPackages>
   <xDTOPackages>XDTOPackage.УправлениеРезервнымКопированиемОбластейДанных_1_0_2_1</xDTOPackages>
+  <xDTOPackages>XDTOPackage.Кафка_1</xDTOPackages>
   <webServices>WebService.Account</webServices>
   <webServices>WebService.ADCT</webServices>
   <webServices>WebService.BPS</webServices>
@@ -2454,6 +2469,8 @@
   <constants>Constant.ЧасовойПоясОбластиДанных</constants>
   <constants>Constant.ЭтоАвтономноеРабочееМесто</constants>
   <constants>Constant.КоличествоПотоковШина</constants>
+  <constants>Constant.КафкаКаталогЛогированияКомпоненты</constants>
+  <constants>Constant.КафкаФорматИмениФайловЛогированияКомпоненты</constants>
   <commonForms>CommonForm.АвтономнаяРабота</commonForms>
   <commonForms>CommonForm.АвтономнаяРаботаВМоделиСервиса</commonForms>
   <commonForms>CommonForm.АутентификацияВСервисе</commonForms>
@@ -2598,6 +2615,7 @@
   <commonForms>CommonForm.ФормаРМКУправляемаяИнформацииОбОшибке</commonForms>
   <commonForms>CommonForm.ФормаСменыПароля</commonForms>
   <commonForms>CommonForm.ФормаСменыПароляДиректора</commonForms>
+  <commonForms>CommonForm.КафкаФормаВыбораСвойстваLibrdKafka</commonForms>
   <catalogs>Catalog.АдресаСлужбыДоставки</catalogs>
   <catalogs>Catalog.Алгоритмы</catalogs>
   <catalogs>Catalog.АналитикаХозяйственныхОпераций</catalogs>
@@ -2643,6 +2661,9 @@
   <catalogs>Catalog.ИнформационныеСсылкиДляФорм</catalogs>
   <catalogs>Catalog.Кассы</catalogs>
   <catalogs>Catalog.КассыККМ</catalogs>
+  <catalogs>Catalog.КафкаБрокеры</catalogs>
+  <catalogs>Catalog.КафкаКонсьюмеры</catalogs>
+  <catalogs>Catalog.КафкаПродюсеры</catalogs>
   <catalogs>Catalog.КлассификаторБанков</catalogs>
   <catalogs>Catalog.КодыБюджетов</catalogs>
   <catalogs>Catalog.КодыОшибокСлужбыДоставки</catalogs>
@@ -2658,7 +2679,7 @@
   <catalogs>Catalog.НаборыДополнительныхРеквизитовИСведений</catalogs>
   <catalogs>Catalog.НаборыУпаковок</catalogs>
   <catalogs>Catalog.НазначенияСертификатовЭЦП</catalogs>
-  <catalogs>Catalog.УДАЛИТЬНаименованияКомплектовДляПечати</catalogs>
+  <catalogs>Catalog.НастройкиБотов</catalogs>
   <catalogs>Catalog.НастройкиЗагрузкиДанныхСчетчиковПодсчетаПосетителей</catalogs>
   <catalogs>Catalog.НастройкиРМК</catalogs>
   <catalogs>Catalog.НастройкиРМКПрисоединенныеФайлы</catalogs>
@@ -2731,6 +2752,7 @@
   <catalogs>Catalog.ТипыУлиц</catalogs>
   <catalogs>Catalog.ТоварныеКатегории</catalogs>
   <catalogs>Catalog.ТомаХраненияФайлов</catalogs>
+  <catalogs>Catalog.УДАЛИТЬНаименованияКомплектовДляПечати</catalogs>
   <catalogs>Catalog.Улицы</catalogs>
   <catalogs>Catalog.УпаковкиНоменклатуры</catalogs>
   <catalogs>Catalog.УсловияПредоставленияСкидокНаценок</catalogs>
@@ -2749,6 +2771,7 @@
   <catalogs>Catalog.ШаблоныРаботыДисплеяПокупателя</catalogs>
   <catalogs>Catalog.ШаблоныЧеков</catalogs>
   <catalogs>Catalog.ЭквайринговыеТерминалы</catalogs>
+  <catalogs>Catalog.КафкаНастройки</catalogs>
   <documents>Document.ВводНачальныхОстатковУзла</documents>
   <documents>Document.ВводОстатковДенежныхСредств</documents>
   <documents>Document.ВводОстатковПоНакопительнымСкидкам</documents>
@@ -3044,6 +3067,9 @@
   <enums>Enum.ЦветностиИзображения</enums>
   <enums>Enum.ЮрФизЛицо</enums>
   <enums>Enum.ЯзыкКонтрагента</enums>
+  <enums>Enum.ТипыСобытийОповещений</enums>
+  <enums>Enum.СпособыОповещения</enums>
+  <enums>Enum.КафкаСтатус</enums>
   <reports>Report.АвтоВыполнениеЗаказов</reports>
   <reports>Report.АктАннулированныхТоваров</reports>
   <reports>Report.АнализБонусныхНакоплений</reports>
@@ -3355,6 +3381,7 @@
   <dataProcessors>DataProcessor.ФормированиеСводныхОтчетовПоКассовойСмене</dataProcessors>
   <dataProcessors>DataProcessor.ФормированиеШтрихкодов</dataProcessors>
   <dataProcessors>DataProcessor.КопированиеАкций</dataProcessors>
+  <dataProcessors>DataProcessor.КафкаИнтеграция</dataProcessors>
   <informationRegisters>InformationRegister.АдресаWebДоступа</informationRegisters>
   <informationRegisters>InformationRegister.АктивностьПользователей</informationRegisters>
   <informationRegisters>InformationRegister.АннуляцияПродажи</informationRegisters>
@@ -3429,6 +3456,7 @@
   <informationRegisters>InformationRegister.КодыПодтверждения</informationRegisters>
   <informationRegisters>InformationRegister.КодыТоваровPLUНаОборудовании</informationRegisters>
   <informationRegisters>InformationRegister.КодыТоваровSKU</informationRegisters>
+  <informationRegisters>InformationRegister.КомментарииК_Контрагенту</informationRegisters>
   <informationRegisters>InformationRegister.КомментарийИнтернетЗаказа</informationRegisters>
   <informationRegisters>InformationRegister.КомментарийПоСтрокам</informationRegisters>
   <informationRegisters>InformationRegister.КомплексОбменаMagento</informationRegisters>
@@ -3470,6 +3498,7 @@
   <informationRegisters>InformationRegister.ОграниченияДвиженийПоИнвентаризации</informationRegisters>
   <informationRegisters>InformationRegister.ОплатаЗаказаКлиента</informationRegisters>
   <informationRegisters>InformationRegister.ОповещенияКонтрагентов</informationRegisters>
+  <informationRegisters>InformationRegister.ОповещенияПользователей</informationRegisters>
   <informationRegisters>InformationRegister.ОповещенияПользователя</informationRegisters>
   <informationRegisters>InformationRegister.ОпорныеЦеныНоменклатуры</informationRegisters>
   <informationRegisters>InformationRegister.ОрганизацииПодразделений</informationRegisters>
@@ -3478,6 +3507,7 @@
   <informationRegisters>InformationRegister.ОтложенныеПродажиПоДисконтнымКартам</informationRegisters>
   <informationRegisters>InformationRegister.ОтложенныеПроцессы</informationRegisters>
   <informationRegisters>InformationRegister.Отметки_timestamp</informationRegisters>
+  <informationRegisters>InformationRegister.ОтправленныеСобытия_еСпутник</informationRegisters>
   <informationRegisters>InformationRegister.ОтсуствиеНаРаботе</informationRegisters>
   <informationRegisters>InformationRegister.ОчередьИзвлеченияТекста</informationRegisters>
   <informationRegisters>InformationRegister.ОчередьИнсталляцииПоставляемыхДополнительныхОтчетовИОбработокВОбластиДанных</informationRegisters>
@@ -3599,8 +3629,7 @@
   <informationRegisters>InformationRegister.ШаблонПравПользователей</informationRegisters>
   <informationRegisters>InformationRegister.ШаблоныРегистрацииНовыхКарт</informationRegisters>
   <informationRegisters>InformationRegister.Штрихкоды</informationRegisters>
-  <informationRegisters>InformationRegister.КомментарииК_Контрагенту</informationRegisters>
-  <informationRegisters>InformationRegister.ОтправленныеСобытия_еСпутник</informationRegisters>
+  <informationRegisters>InformationRegister.КафкаИсходящиеСообщения</informationRegisters>
   <accumulationRegisters>AccumulationRegister.БонусныеБаллы</accumulationRegisters>
   <accumulationRegisters>AccumulationRegister.БонусныеБаллыВРезерве</accumulationRegisters>
   <accumulationRegisters>AccumulationRegister.БонусныеБаллыПогашение</accumulationRegisters>

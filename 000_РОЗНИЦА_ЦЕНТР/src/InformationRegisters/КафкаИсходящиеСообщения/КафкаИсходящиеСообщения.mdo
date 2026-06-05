@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="71b7be78-d55e-4f47-8088-a08ac5521be2">
+  <producedTypes>
+    <selectionType typeId="2921b9f5-f896-4784-a869-8cddb77ffadc" valueTypeId="67004115-c88d-43eb-9777-5d5c1d4921a7"/>
+    <listType typeId="6128a41f-6d13-470d-bde1-5d1d16987df2" valueTypeId="b0e796c2-c08b-454f-95ad-fb21eb223fe4"/>
+    <managerType typeId="1b69396f-9e39-425d-971f-ba27a920ba81" valueTypeId="4699d67e-94e5-4b0a-8831-7dd7b8dee407"/>
+    <recordSetType typeId="1841cdd3-a3a3-4e2a-ba78-7fc15b20989f" valueTypeId="d03c50ee-178b-4601-9837-40e13969ad8f"/>
+    <recordKeyType typeId="84998aa2-f356-4df3-b9d6-d50a4143f10d" valueTypeId="e7eab8a4-1eb7-4734-9df6-2e6fab70f80d"/>
+    <recordType typeId="2171e501-e407-4510-9b15-76f071b2f9aa" valueTypeId="81e0e1a3-69fc-44b8-88bc-32ee9e61c4c7"/>
+    <recordManagerType typeId="64d71825-665e-41d0-9bcf-9dd148cd42b6" valueTypeId="1215b975-7b1b-4075-b194-7ff971c46ae9"/>
+  </producedTypes>
+  <name>КафкаИсходящиеСообщения</name>
+  <synonym>
+    <key>ru</key>
+    <value>Кафка исходящие сообщения</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <editType>InDialog</editType>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <recordPresentation>
+    <key>ru</key>
+    <value>Кафка исходящие сообщение</value>
+  </recordPresentation>
+  <listPresentation>
+    <key>ru</key>
+    <value>КафкаИсходящиеСообщения</value>
+  </listPresentation>
+  <resources uuid="bc648725-f105-434d-943f-0bc878cfe8b1">
+    <name>СсылкаДляВыгрузки</name>
+    <synonym>
+      <key>ru</key>
+      <value>Ссылка для выгрузки</value>
+    </synonym>
+    <type>
+      <types>BusinessProcessRoutePointRef</types>
+      <types>BusinessProcessRef</types>
+      <types>DocumentRef</types>
+      <types>TaskRef</types>
+      <types>ChartOfCharacteristicTypesRef</types>
+      <types>CatalogRef</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="3d17a640-0c76-4513-b098-d38b932e0b00">
+    <name>ОтборДляВыгрузки</name>
+    <synonym>
+      <key>ru</key>
+      <value>Отбор для выгрузки</value>
+    </synonym>
+    <type>
+      <types>ValueStorage</types>
+    </type>
+    <toolTip>
+      <key>ru</key>
+      <value>Строка JSON в которой описан отбор регистра.</value>
+    </toolTip>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <resources uuid="9619c8a5-ff91-4724-be5c-6e6fc7a5730d">
+    <name>ПолноеНаименованиеОбъектаВыгрузки</name>
+    <synonym>
+      <key>ru</key>
+      <value>Полное наименование объекта выгрузки</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>500</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:StringValue"/>
+  </resources>
+  <resources uuid="38a93ede-1558-4961-8cde-4cbd3bd7fbe1">
+    <name>ДанныеВыгрузки</name>
+    <synonym>
+      <key>ru</key>
+      <value>Данные выгрузки</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers/>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:StringValue"/>
+  </resources>
+  <resources uuid="3bdb2edc-fa21-432f-ac59-9d14d80c849f">
+    <name>СтатусВыгрузки</name>
+    <synonym>
+      <key>ru</key>
+      <value>Статус выгрузки</value>
+    </synonym>
+    <type>
+      <types>EnumRef.КафкаСтатус</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <attributes uuid="d22293cd-8fc1-44b9-aab8-0e18b7e351ff">
+    <name>ТекстОшибки</name>
+    <synonym>
+      <key>ru</key>
+      <value>Текст ошибки</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers/>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:StringValue"/>
+  </attributes>
+  <dimensions uuid="672fa962-04da-47b8-99a7-878b6acf9436">
+    <name>ВремяСоздания</name>
+    <synonym>
+      <key>ru</key>
+      <value>Время создания</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>18</precision>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="70ab99a6-c21c-4795-abfe-5c157b1abf08">
+    <name>УникальныйИдентификатор</name>
+    <synonym>
+      <key>ru</key>
+      <value>Уникальный идентификатор</value>
+    </synonym>
+    <type>
+      <types>UUID</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <master>true</master>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="83a3c93c-2d1a-4802-91a7-8ddd5b9e6745">
+    <name>НомерПотока</name>
+    <synonym>
+      <key>ru</key>
+      <value>Номер потока</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>3</precision>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+</mdclass:InformationRegister>
