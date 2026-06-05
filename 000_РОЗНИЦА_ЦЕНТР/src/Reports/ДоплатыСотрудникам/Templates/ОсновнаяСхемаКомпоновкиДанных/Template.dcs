@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Номенклатура</dataPath>
+			<field>Номенклатура</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Количество</dataPath>
+			<field>Количество</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Сумма</dataPath>
+			<field>Сумма</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Магазин</dataPath>
+			<field>Магазин</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Дата</dataPath>
+			<field>Дата</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ДФ=dd.MM.yyyy</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Тип</dataPath>
+			<field>Тип</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тип</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КодБюджета</dataPath>
+			<field>КодБюджета</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Код бюджета</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	ЧекККМТовары.Номенклатура КАК Номенклатура,
+	ЧекККМТовары.Количество КАК Количество,
+	ЧекККМТовары.Сумма КАК Сумма,
+	ЧекККМТовары.Ссылка.Магазин КАК Магазин,
+	НАЧАЛОПЕРИОДА(ЧекККМТовары.Ссылка.Дата, ДЕНЬ) КАК Дата,
+	"Касса" КАК Тип,
+	"200500" КАК КодБюджета
+ИЗ
+	Документ.ЧекККМ.Товары КАК ЧекККМТовары
+ГДЕ
+	(ЧекККМТовары.Ссылка.СтатусЧекаККМ = ЗНАЧЕНИЕ(Перечисление.СтатусыЧековККМ.Архивный)
+			ИЛИ ЧекККМТовары.Ссылка.СтатусЧекаККМ = ЗНАЧЕНИЕ(Перечисление.СтатусыЧековККМ.Пробитый))
+	И ЧекККМТовары.Ссылка.Проведен = ИСТИНА
+	И НЕ ЧекККМТовары.Ссылка.ЗаказПокупателя = ЗНАЧЕНИЕ(Документ.ЗаказПокупателя.ПустаяСсылка)
+	И ЧекККМТовары.Ссылка.ЗаказПокупателя.Дата МЕЖДУ &amp;ДатаС И &amp;ДатаПо
+	И ЧекККМТовары.Ссылка.ЗаказПокупателя.ТипОплаты В(&amp;ТипОплаты)
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	РасходныйОрдерНаТоварыТовары.Номенклатура,
+	РасходныйОрдерНаТоварыТовары.Количество,
+	РасходныйОрдерНаТоварыТовары.Сумма,
+	РасходныйОрдерНаТоварыТовары.Ссылка.Магазин,
+	НАЧАЛОПЕРИОДА(РасходныйОрдерНаТоварыТовары.Ссылка.Дата, ДЕНЬ),
+	"Самовывоз",
+	"200500"
+ИЗ
+	Документ.РасходныйОрдерНаТовары.Товары КАК РасходныйОрдерНаТоварыТовары
+ГДЕ
+	РасходныйОрдерНаТоварыТовары.Ссылка.Проведен = ИСТИНА
+	И ТИПЗНАЧЕНИЯ(РасходныйОрдерНаТоварыТовары.Ссылка.ДокументОснование.ДокументОснование) = ТИП(Документ.ЗапросдоступностиТоваров)
+	И РасходныйОрдерНаТоварыТовары.Ссылка.ДокументОснование.ДокументОснование.ДокументОснование.Дата МЕЖДУ &amp;ДатаС И &amp;ДатаПо
+	И РасходныйОрдерНаТоварыТовары.Ссылка.ДокументОснование.ДокументОснование.ТипОплаты В(&amp;ТипОплаты)
+	И (РасходныйОрдерНаТоварыТовары.Ссылка.ДокументОснование.ДокументОснование.СтатусОплаты = &amp;СтатусОплаты
+			ИЛИ &amp;ВключитьНеоплаченные)
+	И РасходныйОрдерНаТоварыТовары.Ссылка.ДокументОснование.ЗаказПокупателя.ТипДоставки = &amp;ТипДоставки
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	РасходныйОрдерНаТоварыТовары.Номенклатура,
+	РасходныйОрдерНаТоварыТовары.Количество,
+	РасходныйОрдерНаТоварыТовары.Сумма,
+	РасходныйОрдерНаТоварыТовары.Ссылка.Магазин,
+	НАЧАЛОПЕРИОДА(РасходныйОрдерНаТоварыТовары.Ссылка.Дата, ДЕНЬ),
+	"Самовывоз",
+	"200600"
+ИЗ
+	Документ.РасходныйОрдерНаТовары.Товары КАК РасходныйОрдерНаТоварыТовары
+ГДЕ
+	РасходныйОрдерНаТоварыТовары.Ссылка.Проведен = ИСТИНА
+	И ТИПЗНАЧЕНИЯ(РасходныйОрдерНаТоварыТовары.Ссылка.ДокументОснование.ДокументОснование) = ТИП(Документ.ЗапросдоступностиТоваров)
+	И РасходныйОрдерНаТоварыТовары.Ссылка.ДокументОснование.ДокументОснование.Дата МЕЖДУ &amp;ДатаС И &amp;ДатаПо
+	И РасходныйОрдерНаТоварыТовары.Ссылка.ДокументОснование.ДокументОснование.ТипОплаты В(&amp;ТипОплатыБезнал)
+	И РасходныйОрдерНаТоварыТовары.Ссылка.ДокументОснование.ЗаказПокупателя.ТипДоставки = &amp;ТипДоставки
+	И (РасходныйОрдерНаТоварыТовары.Ссылка.ДокументОснование.ДокументОснование.СтатусОплаты = &amp;СтатусОплаты
+			ИЛИ &amp;ВключитьНеоплаченные)
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	РасходныйОрдерНаТоварыТовары.Номенклатура,
+	РасходныйОрдерНаТоварыТовары.Количество,
+	РасходныйОрдерНаТоварыТовары.Сумма,
+	РасходныйОрдерНаТоварыТовары.Ссылка.Магазин,
+	НАЧАЛОПЕРИОДА(РасходныйОрдерНаТоварыТовары.Ссылка.Дата, ДЕНЬ),
+	"Переброска",
+	"200500"
+ИЗ
+	Документ.РасходныйОрдерНаТовары.Товары КАК РасходныйОрдерНаТоварыТовары
+ГДЕ
+	РасходныйОрдерНаТоварыТовары.Ссылка.Проведен = ИСТИНА
+	И ТИПЗНАЧЕНИЯ(РасходныйОрдерНаТоварыТовары.Ссылка.ДокументОснование.ДокументОснование) = ТИП(Документ.ЗапросдоступностиТоваров)
+	И РасходныйОрдерНаТоварыТовары.Ссылка.ДокументОснование.ДокументОснование.Дата МЕЖДУ &amp;ДатаС И &amp;ДатаПо
+	И РасходныйОрдерНаТоварыТовары.Ссылка.ДокументОснование.ДокументОснование.ТипОплаты В(&amp;ТипОплаты)
+	И РасходныйОрдерНаТоварыТовары.Ссылка.ДокументОснование.ЗаказПокупателя.ТипДоставки &lt;&gt; &amp;ТипДоставки
+	И (РасходныйОрдерНаТоварыТовары.Ссылка.ДокументОснование.ДокументОснование.СтатусОплаты = &amp;СтатусОплаты
+			ИЛИ &amp;ВключитьНеоплаченные)
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	РасходныйОрдерНаТоварыТовары.Номенклатура,
+	РасходныйОрдерНаТоварыТовары.Количество,
+	РасходныйОрдерНаТоварыТовары.Сумма,
+	РасходныйОрдерНаТоварыТовары.Ссылка.Магазин,
+	НАЧАЛОПЕРИОДА(РасходныйОрдерНаТоварыТовары.Ссылка.Дата, ДЕНЬ),
+	"Переброска",
+	"200600"
+ИЗ
+	Документ.РасходныйОрдерНаТовары.Товары КАК РасходныйОрдерНаТоварыТовары
+ГДЕ
+	РасходныйОрдерНаТоварыТовары.Ссылка.Проведен = ИСТИНА
+	И ТИПЗНАЧЕНИЯ(РасходныйОрдерНаТоварыТовары.Ссылка.ДокументОснование.ДокументОснование) = ТИП(Документ.ЗапросдоступностиТоваров)
+	И РасходныйОрдерНаТоварыТовары.Ссылка.ДокументОснование.ДокументОснование.Дата МЕЖДУ &amp;ДатаС И &amp;ДатаПо
+	И РасходныйОрдерНаТоварыТовары.Ссылка.ДокументОснование.ДокументОснование.ТипОплаты В(&amp;ТипОплатыБезнал)
+	И РасходныйОрдерНаТоварыТовары.Ссылка.ДокументОснование.ЗаказПокупателя.ТипДоставки &lt;&gt; &amp;ТипДоставки
+	И (РасходныйОрдерНаТоварыТовары.Ссылка.ДокументОснование.ДокументОснование.СтатусОплаты = &amp;СтатусОплаты
+			ИЛИ &amp;ВключитьНеоплаченные)
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	РеализацияТоваровТовары.Номенклатура,
+	РеализацияТоваровТовары.Количество,
+	РеализацияТоваровТовары.Сумма,
+	РеализацияТоваровТовары.Ссылка.Магазин,
+	НАЧАЛОПЕРИОДА(РеализацияТоваровТовары.Ссылка.Дата, ДЕНЬ),
+	"Самовывоз",
+	"200600"
+ИЗ
+	Документ.РеализацияТоваров.Товары КАК РеализацияТоваровТовары
+ГДЕ
+	РеализацияТоваровТовары.Ссылка.Проведен = ИСТИНА
+	И РеализацияТоваровТовары.Ссылка.Дата МЕЖДУ &amp;ДатаС И &amp;ДатаПо
+	И НЕ РеализацияТоваровТовары.Ссылка.ДатаОплаты = ДАТАВРЕМЯ(1, 1, 1)</query>
+	</dataSet>
+	<totalField>
+		<dataPath>Количество</dataPath>
+		<expression>Сумма(Количество)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Сумма</dataPath>
+		<expression>Сумма(Сумма)</expression>
+	</totalField>
+	<parameter>
+		<name>ДатаПо</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата по</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаОкончания</expression>
+	</parameter>
+	<parameter>
+		<name>ДатаС</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата С</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаНачала</expression>
+	</parameter>
+	<parameter>
+		<name>ТипОплаты</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Тип оплаты</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:EnumRef.ТипОплатыЗаказПокупателя</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ТипОплатыЗаказПокупателя.Наличные</value>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ТипОплатыЗаказПокупателя.ОплатаКартойПриват</value>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ТипОплатыЗаказПокупателя.БанковскаяКарта</value>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ТипОплатыЗаказПокупателя.amida_payparts</value>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ТипОплатыЗаказПокупателя.monobank</value>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ТипОплатыЗаказПокупателя.alfabank</value>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ТипОплатыЗаказПокупателя.НаличныеУкрПочта</value>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ТипОплатыЗаказПокупателя.ipay</value>
+		<useRestriction>true</useRestriction>
+		<valueListAllowed>true</valueListAllowed>
+	</parameter>
+	<parameter>
+		<name>ТипОплатыБезнал</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Тип оплаты безнал</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:EnumRef.ТипОплатыЗаказПокупателя</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ТипОплатыЗаказПокупателя.БРПредоплата</value>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ТипОплатыЗаказПокупателя.БезналичныйРасчетДляФизЛиц</value>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ТипОплатыЗаказПокупателя.БРПостоплата</value>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ТипОплатыЗаказПокупателя.НаличныеЗаявкаЧерезБанк</value>
+		<useRestriction>true</useRestriction>
+		<valueListAllowed>true</valueListAllowed>
+	</parameter>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>ВключитьНеоплаченные</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Включить неоплаченные</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:boolean</v8:Type>
+		</valueType>
+		<value xsi:type="xs:boolean">false</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>СтатусОплаты</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Статус оплаты</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:EnumRef.СтатусОплаты</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.СтатусОплаты.Оплачен</value>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<parameter>
+		<name>ТипДоставки</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Тип доставки</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:EnumRef.ТипДоставкиЗаказПокупателя</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ТипДоставкиЗаказПокупателя.Самовывоз</value>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>ДоплатыСотрудникам</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Доплаты сотрудникам</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:userFields>
+				<dcsset:item xsi:type="dcsset:UserFieldExpression">
+					<dcsset:dataPath>ПользовательскиеПоля.Поле1</dcsset:dataPath>
+					<dcsset:lwsTitle>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>1%</v8:content>
+						</v8:item>
+					</dcsset:lwsTitle>
+					<dcsset:detailExpression>Сумма * 0.01</dcsset:detailExpression>
+					<dcsset:detailExpressionPresentation>Сумма * 0.01</dcsset:detailExpressionPresentation>
+					<dcsset:totalExpression>Сумма(Сумма) * 0.01</dcsset:totalExpression>
+					<dcsset:totalExpressionPresentation>Сумма(Сумма) * 0.01</dcsset:totalExpressionPresentation>
+				</dcsset:item>
+			</dcsset:userFields>
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Магазин</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>КодБюджета</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Сумма</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Тип</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ПользовательскиеПоля.Поле1</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Период</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+					</dcscor:value>
+					<dcsset:userSettingID>aee62455-75f5-40b6-83dc-4c4523091e67</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВключитьНеоплаченные</dcscor:parameter>
+					<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					<dcsset:userSettingID>77f4e9f8-c290-4227-8a16-613d9567a63b</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:order>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>Магазин</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+			</dcsset:order>
+			<dcsset:item xsi:type="dcsset:StructureItemTable">
+				<dcsset:column>
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>КодБюджета</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+					<dcsset:item>
+						<dcsset:groupItems>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>Тип</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+						</dcsset:groupItems>
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						</dcsset:selection>
+					</dcsset:item>
+				</dcsset:column>
+				<dcsset:row>
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Магазин</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+				</dcsset:row>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

@@ -22,7 +22,7 @@
   <defaultRoles>Role.БазовыеПрава</defaultRoles>
   <defaultRoles>Role.БазовыеПраваРТ</defaultRoles>
   <vendor>ЧПТФ «Антошка»</vendor>
-  <version>2.1.2.322</version>
+  <version>2.1.2.333</version>
   <includeHelpInContents>true</includeHelpInContents>
   <help>
     <pages>
@@ -1207,9 +1207,9 @@
   <roles>Role.ЧтениеЦенНоменклатуры</roles>
   <roles>Role.ЧтениеЧековККМ</roles>
   <roles>Role.ЧтениеЧерногоСпискаNPS</roles>
+  <roles>Role.КассирЦБ</roles>
   <commonTemplates>CommonTemplate.Драйвер1CФискальныйРегистратор</commonTemplates>
   <commonTemplates>CommonTemplate.Драйвер1ССканерШтрихкода</commonTemplates>
-  <commonTemplates>CommonTemplate.Драйвер1ССканерШтрихкодаExe</commonTemplates>
   <commonTemplates>CommonTemplate.ДрайверResonanceФискальныйРегистратор</commonTemplates>
   <commonTemplates>CommonTemplate.ДрайверScaleCASВесыСПечатьюЭтикеток</commonTemplates>
   <commonTemplates>CommonTemplate.ДрайверZKTecoBioScaner</commonTemplates>
@@ -1274,14 +1274,13 @@
   <commonTemplates>CommonTemplate.КафкаАдаптерKafka</commonTemplates>
   <commonTemplates>CommonTemplate.КафкаJSONEditor</commonTemplates>
   <commonTemplates>CommonTemplate.КафкаСвойстваLibrdKafka</commonTemplates>
+  <commonTemplates>CommonTemplate.Драйвер1ССканерШтрихкодаExe</commonTemplates>
   <commonTemplates>CommonTemplate.ХрупкоКартинкаДляНаклейки</commonTemplates>
   <filterCriteria>FilterCriterion.СвязанныеДокументы</filterCriteria>
   <filterCriteria>FilterCriterion.ФайлыВТоме</filterCriteria>
   <commonModules>CommonModule.РаботаСJSONСервер</commonModules>
   <commonModules>CommonModule.АвтономнаяРабота</commonModules>
-  <commonModules>CommonModule.АвтономнаяРаботаСлужебный</commonModules>
   <commonModules>CommonModule.АвтономнаяРаботаСлужебныйВызовСервера</commonModules>
-  <commonModules>CommonModule.АктивностьПользователейКлиент</commonModules>
   <commonModules>CommonModule.АктивностьПользователейКлиентГлобальный</commonModules>
   <commonModules>CommonModule.АктивностьПользователейСервер</commonModules>
   <commonModules>CommonModule.АнализЖурналаРегистрацииСлужебный</commonModules>
@@ -1838,6 +1837,8 @@
   <commonModules>CommonModule.ЭлектроннаяЦифроваяПодписьПовтИсп</commonModules>
   <commonModules>CommonModule.ОбменДаннымиКСОСервер</commonModules>
   <commonModules>CommonModule.КафкаОбщегоНазначенияСлужебный</commonModules>
+  <commonModules>CommonModule.АвтономнаяРаботаСлужебный</commonModules>
+  <commonModules>CommonModule.АктивностьПользователейКлиент</commonModules>
   <commonAttributes>CommonAttribute.IDN</commonAttributes>
   <commonAttributes>CommonAttribute.Автор</commonAttributes>
   <commonAttributes>CommonAttribute.ОбластьДанныхВспомогательныеДанные</commonAttributes>
@@ -2032,6 +2033,8 @@
   <eventSubscriptions>EventSubscription.УстановитьПометкуУдаленияЗадач</eventSubscriptions>
   <eventSubscriptions>EventSubscription.УстановитьПометкуУдаленияПрисоединенныхФайлов</eventSubscriptions>
   <eventSubscriptions>EventSubscription.УстановитьПометкуУдаленияФайлов</eventSubscriptions>
+  <eventSubscriptions>EventSubscription.КСОСправочникиРегистрацияИзменений</eventSubscriptions>
+  <eventSubscriptions>EventSubscription.КСОРегистрыРегистрацияИзменений</eventSubscriptions>
   <scheduledJobs>ScheduledJob.ВерификацияПокупателей</scheduledJobs>
   <scheduledJobs>ScheduledJob.ВосстановлениеПоследовательностиБонуснойСистемы</scheduledJobs>
   <scheduledJobs>ScheduledJob.ВыгрузкаДляNavisionБонусныхБалловMagento</scheduledJobs>
@@ -2100,6 +2103,8 @@
   <scheduledJobs>ScheduledJob.ШинаДанных</scheduledJobs>
   <scheduledJobs>ScheduledJob.УдалениеВзрослыхДетей</scheduledJobs>
   <scheduledJobs>ScheduledJob.ОбменДаннымиКСО</scheduledJobs>
+  <scheduledJobs>ScheduledJob.ОбновлениеЦенВТСД</scheduledJobs>
+  <scheduledJobs>ScheduledJob.ЗакрытиеКассДняИМ</scheduledJobs>
   <settingsStorages>SettingsStorage.ХранилищеВариантовОтчетов</settingsStorages>
   <settingsStorages>SettingsStorage.ХранилищеНастроекСписков</settingsStorages>
   <functionalOptions>FunctionalOption.АктуальнаяДатаОбновленияПовторноИспользуемыхЗначенийМРО</functionalOptions>
@@ -2679,7 +2684,6 @@
   <catalogs>Catalog.НаборыДополнительныхРеквизитовИСведений</catalogs>
   <catalogs>Catalog.НаборыУпаковок</catalogs>
   <catalogs>Catalog.НазначенияСертификатовЭЦП</catalogs>
-  <catalogs>Catalog.НастройкиБотов</catalogs>
   <catalogs>Catalog.НастройкиЗагрузкиДанныхСчетчиковПодсчетаПосетителей</catalogs>
   <catalogs>Catalog.НастройкиРМК</catalogs>
   <catalogs>Catalog.НастройкиРМКПрисоединенныеФайлы</catalogs>
@@ -2772,6 +2776,7 @@
   <catalogs>Catalog.ШаблоныЧеков</catalogs>
   <catalogs>Catalog.ЭквайринговыеТерминалы</catalogs>
   <catalogs>Catalog.КафкаНастройки</catalogs>
+  <catalogs>Catalog.НастройкиБотов</catalogs>
   <documents>Document.ВводНачальныхОстатковУзла</documents>
   <documents>Document.ВводОстатковДенежныхСредств</documents>
   <documents>Document.ВводОстатковПоНакопительнымСкидкам</documents>
@@ -3282,6 +3287,8 @@
   <reports>Report.УчетРабочегоВремени</reports>
   <reports>Report.ЦеныПоВидамЦен</reports>
   <reports>Report.ОтпракиСложбойДоставки</reports>
+  <reports>Report.ДоплатыСотрудникам</reports>
+  <reports>Report.НеЗакрытыйКассовыйДеньИМ</reports>
   <dataProcessors>DataProcessor.АвтоматическоеИзвлечениеТекстов</dataProcessors>
   <dataProcessors>DataProcessor.АвтоматическоеИзвлечениеТекстовДляВсехОбластейДанных</dataProcessors>
   <dataProcessors>DataProcessor.АктивныеПользователи</dataProcessors>
@@ -3498,7 +3505,6 @@
   <informationRegisters>InformationRegister.ОграниченияДвиженийПоИнвентаризации</informationRegisters>
   <informationRegisters>InformationRegister.ОплатаЗаказаКлиента</informationRegisters>
   <informationRegisters>InformationRegister.ОповещенияКонтрагентов</informationRegisters>
-  <informationRegisters>InformationRegister.ОповещенияПользователей</informationRegisters>
   <informationRegisters>InformationRegister.ОповещенияПользователя</informationRegisters>
   <informationRegisters>InformationRegister.ОпорныеЦеныНоменклатуры</informationRegisters>
   <informationRegisters>InformationRegister.ОрганизацииПодразделений</informationRegisters>
@@ -3508,6 +3514,7 @@
   <informationRegisters>InformationRegister.ОтложенныеПроцессы</informationRegisters>
   <informationRegisters>InformationRegister.Отметки_timestamp</informationRegisters>
   <informationRegisters>InformationRegister.ОтправленныеСобытия_еСпутник</informationRegisters>
+  <informationRegisters>InformationRegister.ОповещенияПользователей</informationRegisters>
   <informationRegisters>InformationRegister.ОтсуствиеНаРаботе</informationRegisters>
   <informationRegisters>InformationRegister.ОчередьИзвлеченияТекста</informationRegisters>
   <informationRegisters>InformationRegister.ОчередьИнсталляцииПоставляемыхДополнительныхОтчетовИОбработокВОбластиДанных</informationRegisters>
