@@ -81,3 +81,12 @@ mutation {
  }
 }
 #КонецОбласти 
+
+#Область Статус_заказа_М2
+mutation CreateOrderEvent($eventTypeKey: String!, $keyValue: String!, $params: [OrderParamInput!]!) {
+  createOrderEvent(eventTypeKey: $eventTypeKey, keyValue: $keyValue, params: $params) {
+    success
+    message
+  }
+}
+#КонецОбласти
