@@ -79,14 +79,26 @@ mutation {
   created_at
   updated_at
  }
-}
+} 
 #КонецОбласти 
 
 #Область Статус_заказа_М2
-mutation CreateOrderEvent($eventTypeKey: String!, $keyValue: String!, $params: [OrderParamInput!]!) {
-  createOrderEvent(eventTypeKey: $eventTypeKey, keyValue: $keyValue, params: $params) {
+mutation {
+  orderSuccessCallback(
+    input: {
+      number: "#number#"
+      success: #success#
+      error_text: "#error_text#"
+      order_1c_status: "#order_1c_status#"
+    }
+  ) {
+    number
     success
-    message
+    error_text
+    order_1c_status
+    created_at
+    updated_at
   }
 }
-#КонецОбласти
+#КонецОбласти 
+
