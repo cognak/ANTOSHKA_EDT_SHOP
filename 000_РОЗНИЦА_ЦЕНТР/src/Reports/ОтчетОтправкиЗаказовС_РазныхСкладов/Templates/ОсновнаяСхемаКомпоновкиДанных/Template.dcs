@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЗаказПокупателя</dataPath>
+			<field>ЗаказПокупателя</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заказ покупателя</v8:content>
+				</v8:item>
+			</title>
+			<attributeUseRestriction>
+				<field>true</field>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</attributeUseRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НашаСуммаДоставки</dataPath>
+			<field>НашаСуммаДоставки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Наша сумма доставки</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаДоставки</dataPath>
+			<field>СуммаДоставки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма доставки</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаЗаказа</dataPath>
+			<field>СуммаЗаказа</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма заказа</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	ЭлектроннаяНакладная.ЗаказПокупателя КАК ЗаказПокупателя,
+	ЭлектроннаяНакладная.Ссылка КАК ЭлектроннаяНакладная,
+	СУММА(ЭлектроннаяНакладная.НашаСуммаДоставки) КАК НашаСуммаДоставки,
+	СУММА(ЭлектроннаяНакладная.СуммаДоставки) КАК СуммаДоставки,
+	ЭлектроннаяНакладная.ОтправкаИзМагазина КАК ОтправкаИзМагазина,
+	ЭлектроннаяНакладная.ОператорДоставки КАК ОператорДоставки,
+	ЭлектроннаяНакладная.ОтделениеОтправитель КАК ОтделениеОтправитель,
+	ЭлектроннаяНакладная.ОтделениеПолучатель КАК ОтделениеПолучатель,
+	ЭлектроннаяНакладная.МагазинПолучатель КАК МагазинПолучатель,
+	СтатусыЭН.СтатусЭН КАК СтатусЭН,
+	ВЫБОР
+		КОГДА ЭлектроннаяНакладная.ОтправкаИзМагазина
+				И НЕ ЭлектроннаяНакладная.МагазинПолучатель = ЗНАЧЕНИЕ(Справочник.Магазины.ПустаяСсылка)
+			ТОГДА ИСТИНА
+		ИНАЧЕ ЛОЖЬ
+	КОНЕЦ КАК ЭтоПеремещениеНаМагазин,
+	1 КАК КоличествоДоставок
+ПОМЕСТИТЬ ВТ_Доставка
+ИЗ
+	РегистрСведений.СтатусыЭН КАК СтатусыЭН
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.ЭлектроннаяНакладная КАК ЭлектроннаяНакладная
+		ПО СтатусыЭН.ДокументРегистратор = ЭлектроннаяНакладная.Ссылка
+ГДЕ
+	ЭлектроннаяНакладная.ПометкаУдаления = ЛОЖЬ
+	И ЭлектроннаяНакладная.ЗаказПокупателя.Дата МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+	И НЕ СтатусыЭН.СтатусЭН.СтатусПосылки В (&amp;СтатусЭН)
+
+СГРУППИРОВАТЬ ПО
+	ЭлектроннаяНакладная.ЗаказПокупателя,
+	ЭлектроннаяНакладная.ОтправкаИзМагазина,
+	ЭлектроннаяНакладная.ОператорДоставки,
+	ЭлектроннаяНакладная.ОтделениеОтправитель,
+	ЭлектроннаяНакладная.ОтделениеПолучатель,
+	ЭлектроннаяНакладная.МагазинПолучатель,
+	СтатусыЭН.СтатусЭН,
+	ВЫБОР
+		КОГДА ЭлектроннаяНакладная.ОтправкаИзМагазина
+				И НЕ ЭлектроннаяНакладная.МагазинПолучатель = ЗНАЧЕНИЕ(Справочник.Магазины.ПустаяСсылка)
+			ТОГДА ИСТИНА
+		ИНАЧЕ ЛОЖЬ
+	КОНЕЦ,
+	ЭлектроннаяНакладная.Ссылка
+
+ИНДЕКСИРОВАТЬ ПО
+	ЗаказПокупателя
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ВТ_Доставка.ЗаказПокупателя КАК ЗаказПокупателя,
+	СУММА(ВТ_Доставка.НашаСуммаДоставки) КАК НашаСуммаДоставки,
+	СУММА(ВТ_Доставка.СуммаДоставки) КАК СуммаДоставки,
+	СУММА(ВТ_Доставка.КоличествоДоставок) КАК КоличествоДоставок,
+	МАКСИМУМ(ВТ_Доставка.ЭтоПеремещениеНаМагазин) КАК ЭтоПеремещениеНаМагазин
+ПОМЕСТИТЬ ВТ_Промежуточная
+ИЗ
+	ВТ_Доставка КАК ВТ_Доставка
+
+СГРУППИРОВАТЬ ПО
+	ВТ_Доставка.ЗаказПокупателя
+
+ИНДЕКСИРОВАТЬ ПО
+	ЗаказПокупателя
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ВТ_Промежуточная.ЗаказПокупателя КАК ЗаказПокупателя,
+	ВТ_Промежуточная.ЗаказПокупателя.СуммаДокумента КАК СуммаЗаказа,
+	ВТ_Промежуточная.СуммаДоставки КАК СуммаДоставки,
+	ВТ_Промежуточная.НашаСуммаДоставки КАК НашаСуммаДоставки,
+	ВТ_Промежуточная.КоличествоДоставок КАК КоличествоДоставок,
+	ВЫБОР
+		КОГДА ВТ_Промежуточная.КоличествоДоставок &gt; 1
+			ТОГДА "Разбитая отправка"
+		ИНАЧЕ "Одиночная отправка"
+	КОНЕЦ КАК ТипОтправки,
+	ВЫБОР
+		КОГДА ВТ_Промежуточная.ЭтоПеремещениеНаМагазин
+			ТОГДА "Перемещение на магазин"
+		ИНАЧЕ "Отправка НП"
+	КОНЕЦ КАК ЭтоПеремещениеНаМагазин,
+	ВЫБОР
+		КОГДА ВТ_Промежуточная.КоличествоДоставок = 1
+			ТОГДА "1 отправки"
+		КОГДА ВТ_Промежуточная.КоличествоДоставок = 2
+			ТОГДА "2 отправки"
+		КОГДА ВТ_Промежуточная.КоличествоДоставок = 3
+			ТОГДА "3 отправки"
+		КОГДА ВТ_Промежуточная.КоличествоДоставок = 4
+			ТОГДА "4 отправки"
+		КОГДА ВТ_Промежуточная.КоличествоДоставок = 5
+			ТОГДА "5 отправок"
+		КОГДА ВТ_Промежуточная.КоличествоДоставок = 6
+			ТОГДА "6 отправок"
+		КОГДА ВТ_Промежуточная.КоличествоДоставок = 7
+			ТОГДА "7 отправок"
+		КОГДА ВТ_Промежуточная.КоличествоДоставок = 8
+			ТОГДА "8 отправок"
+		КОГДА ВТ_Промежуточная.КоличествоДоставок = 9
+			ТОГДА "9 отправок"
+		КОГДА ВТ_Промежуточная.КоличествоДоставок = 10
+			ТОГДА "10 отправок"
+		ИНАЧЕ "Более 10 отправок"
+	КОНЕЦ КАК КоличествоОтправок
+ПОМЕСТИТЬ ВТ
+ИЗ
+	ВТ_Промежуточная КАК ВТ_Промежуточная
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ВТ.ЗаказПокупателя КАК ЗаказПокупателя,
+	ВТ.СуммаЗаказа КАК СуммаЗаказа,
+	ВТ.СуммаДоставки КАК СуммаДоставки,
+	ВТ.НашаСуммаДоставки КАК НашаСуммаДоставки
+ИЗ
+	ВТ КАК ВТ
+
+УПОРЯДОЧИТЬ ПО
+	ЗаказПокупателя</query>
+	</dataSet>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных2</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЗаказПокупателя</dataPath>
+			<field>ЗаказПокупателя</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Доставок</dataPath>
+			<field>Доставок</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Доставок</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЭтоПеремещениеНаМагазин</dataPath>
+			<field>ЭтоПеремещениеНаМагазин</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Это перемещение на магазин</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ТипОтправки</dataPath>
+			<field>ТипОтправки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тип отправки</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	ЭлектроннаяНакладная.ЗаказПокупателя КАК ЗаказПокупателя,
+	СУММА(1) КАК Доставок,
+	МАКСИМУМ(ВЫБОР
+			КОГДА ЭлектроннаяНакладная.ОтправкаИзМагазина
+					И НЕ ЭлектроннаяНакладная.МагазинПолучатель = ЗНАЧЕНИЕ(Справочник.Магазины.ПустаяСсылка)
+				ТОГДА ИСТИНА
+			ИНАЧЕ ЛОЖЬ
+		КОНЕЦ) КАК ЭтоПеремещениеНаМагазин
+ПОМЕСТИТЬ ВТ
+ИЗ
+	Документ.ЭлектроннаяНакладная КАК ЭлектроннаяНакладная
+ГДЕ
+	ЭлектроннаяНакладная.ЗаказПокупателя = &amp;ЗаказПокупателя
+
+СГРУППИРОВАТЬ ПО
+	ЭлектроннаяНакладная.ЗаказПокупателя
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ВТ.ЗаказПокупателя КАК ЗаказПокупателя,
+	ВТ.Доставок КАК Доставок,
+	ВЫБОР
+		КОГДА ВТ.ЭтоПеремещениеНаМагазин
+			ТОГДА "Перемещение на магазин"
+		ИНАЧЕ "Отправка НП"
+	КОНЕЦ КАК ЭтоПеремещениеНаМагазин,
+	ВЫБОР
+		КОГДА ВТ.Доставок &gt; 1
+			ТОГДА "Разбитая отправка"
+		ИНАЧЕ "Одиночная отправка"
+	КОНЕЦ КАК ТипОтправки
+ИЗ
+	ВТ КАК ВТ</query>
+	</dataSet>
+	<dataSetLink>
+		<sourceDataSet>НаборДанных1</sourceDataSet>
+		<destinationDataSet>НаборДанных2</destinationDataSet>
+		<sourceExpression>ЗаказПокупателя</sourceExpression>
+		<destinationExpression>ЗаказПокупателя</destinationExpression>
+		<parameter>ЗаказПокупателя</parameter>
+		<parameterListAllowed>false</parameterListAllowed>
+	</dataSetLink>
+	<calculatedField>
+		<dataPath>РазделениеДоставок</dataPath>
+		<expression>ВЫБОР
+	КОГДА Доставок = 1
+		ТОГДА "1 отправки"
+	КОГДА Доставок = 2
+		ТОГДА "2 отправки"
+	КОГДА Доставок = 3
+		ТОГДА "3 отправки"
+	КОГДА Доставок = 4
+		ТОГДА "4 отправки"
+	КОГДА Доставок = 5
+		ТОГДА "5 отправок"
+	КОГДА Доставок = 6
+		ТОГДА "6 отправок"
+	КОГДА Доставок = 7
+		ТОГДА "7 отправок"
+	КОГДА Доставок = 8
+		ТОГДА "8 отправок"
+	КОГДА Доставок = 9
+		ТОГДА "9 отправок"
+	КОГДА Доставок = 10
+		ТОГДА "10 отправок"
+	ИНАЧЕ "Более 10 отправок"
+КОНЕЦ</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Разделение доставок</v8:content>
+			</v8:item>
+		</title>
+	</calculatedField>
+	<totalField>
+		<dataPath>НашаСуммаДоставки</dataPath>
+		<expression>Сумма(НашаСуммаДоставки)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СуммаДоставки</dataPath>
+		<expression>Сумма(СуммаДоставки)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СуммаЗаказа</dataPath>
+		<expression>Сумма(СуммаЗаказа)</expression>
+	</totalField>
+	<parameter>
+		<name>КонецПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаОкончания</expression>
+	</parameter>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаНачала</expression>
+	</parameter>
+	<parameter>
+		<name>СтатусЭН</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Статус ЭН</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:EnumRef.СтатусыПосылокСлужбыДоставки</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.СтатусыПосылокСлужбыДоставки.Новая</value>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.СтатусыПосылокСлужбыДоставки.ВДороге</value>
+		<useRestriction>true</useRestriction>
+		<valueListAllowed>true</valueListAllowed>
+	</parameter>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>ЗаказПокупателя</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Заказ покупателя</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:DocumentRef.ЗаказПокупателя</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СуммаЗаказа</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СуммаДоставки</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>НашаСуммаДоставки</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>СтатусЭН</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DesignTimeValue">Перечисление.СтатусыПосылокСлужбыДоставки.Новая</dcscor:value>
+					<dcscor:value xsi:type="dcscor:DesignTimeValue">Перечисление.СтатусыПосылокСлужбыДоставки.ВДороге</dcscor:value>
+					<dcsset:userSettingID>e3f49afb-1f32-4262-b992-d88c4222a00c</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Период</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Month</v8:variant>
+					</dcscor:value>
+					<dcsset:userSettingID>50283baa-ae76-460b-a79d-f7513ea0f7f7</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ЗаказПокупателя</dcscor:parameter>
+					<dcscor:value xsi:nil="true"/>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ТипОтправки</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>ЭтоПеремещениеНаМагазин</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+					<dcsset:item xsi:type="dcsset:StructureItemGroup">
+						<dcsset:groupItems>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>РазделениеДоставок</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+						</dcsset:groupItems>
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						</dcsset:selection>
+						<dcsset:item xsi:type="dcsset:StructureItemGroup">
+							<dcsset:groupItems>
+								<dcsset:item xsi:type="dcsset:GroupItemField">
+									<dcsset:field>ЗаказПокупателя</dcsset:field>
+									<dcsset:groupType>Items</dcsset:groupType>
+									<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+									<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+									<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+								</dcsset:item>
+							</dcsset:groupItems>
+							<dcsset:order>
+								<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+							</dcsset:order>
+							<dcsset:selection>
+								<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+							</dcsset:selection>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:item>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>
