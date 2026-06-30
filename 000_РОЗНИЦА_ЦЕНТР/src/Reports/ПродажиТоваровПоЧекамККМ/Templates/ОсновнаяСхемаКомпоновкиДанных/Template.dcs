@@ -475,6 +475,16 @@
 	ТабличнаяЧасть.Ссылка.ЧекККМПродажа.*,
 	ТабличнаяЧасть.Номенклатура.*}</query>
 	</dataSet>
+	<calculatedField>
+		<dataPath>НомерТелефонаПокупателя</dataPath>
+		<expression>Справочники.Контрагенты.ПолучитьНомерТелефона(Контрагент)</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Номер телефона покупателя</v8:content>
+			</v8:item>
+		</title>
+	</calculatedField>
 	<totalField>
 		<dataPath>Количество</dataPath>
 		<expression>Сумма(Количество)</expression>
