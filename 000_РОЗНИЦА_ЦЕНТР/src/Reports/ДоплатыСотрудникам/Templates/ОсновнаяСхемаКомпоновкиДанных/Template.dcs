@@ -81,6 +81,8 @@
 	И НЕ ЧекККМТовары.Ссылка.ЗаказПокупателя = ЗНАЧЕНИЕ(Документ.ЗаказПокупателя.ПустаяСсылка)
 	И ЧекККМТовары.Ссылка.ЗаказПокупателя.Дата МЕЖДУ &amp;ДатаС И &amp;ДатаПо
 	И ЧекККМТовары.Ссылка.ЗаказПокупателя.ТипОплаты В(&amp;ТипОплаты)
+	И НЕ ТИПЗНАЧЕНИЯ(ЧекККМТовары.Ссылка.ЗаказПокупателя) = ТИП(Документ.СчетНаОплатуПокупателю)
+	И ЧекККМТовары.Ссылка.Магазин = &amp;МагазинНачисления
 
 ОБЪЕДИНИТЬ ВСЕ
 
@@ -119,7 +121,8 @@
 	РасходныйОрдерНаТоварыТовары.Ссылка.Проведен = ИСТИНА
 	И ТИПЗНАЧЕНИЯ(РасходныйОрдерНаТоварыТовары.Ссылка.ДокументОснование.ДокументОснование) = ТИП(Документ.ЗапросдоступностиТоваров)
 	И РасходныйОрдерНаТоварыТовары.Ссылка.ДокументОснование.ДокументОснование.Дата МЕЖДУ &amp;ДатаС И &amp;ДатаПо
-	И РасходныйОрдерНаТоварыТовары.Ссылка.ДокументОснование.ДокументОснование.ТипОплаты В(&amp;ТипОплатыБезнал)
+	И НЕ РасходныйОрдерНаТоварыТовары.Ссылка.ДокументОснование.ДокументОснование.ТипОплаты В (&amp;ТипОплаты)
+	И НЕ РасходныйОрдерНаТоварыТовары.Ссылка.ДокументОснование.ДокументОснование.ТипОплаты ЕСТЬ NULL
 	И РасходныйОрдерНаТоварыТовары.Ссылка.ДокументОснование.ЗаказПокупателя.ТипДоставки = &amp;ТипДоставки
 	И (РасходныйОрдерНаТоварыТовары.Ссылка.ДокументОснование.ДокументОснование.СтатусОплаты = &amp;СтатусОплаты
 			ИЛИ &amp;ВключитьНеоплаченные)
@@ -161,7 +164,8 @@
 	РасходныйОрдерНаТоварыТовары.Ссылка.Проведен = ИСТИНА
 	И ТИПЗНАЧЕНИЯ(РасходныйОрдерНаТоварыТовары.Ссылка.ДокументОснование.ДокументОснование) = ТИП(Документ.ЗапросдоступностиТоваров)
 	И РасходныйОрдерНаТоварыТовары.Ссылка.ДокументОснование.ДокументОснование.Дата МЕЖДУ &amp;ДатаС И &amp;ДатаПо
-	И РасходныйОрдерНаТоварыТовары.Ссылка.ДокументОснование.ДокументОснование.ТипОплаты В(&amp;ТипОплатыБезнал)
+	И НЕ РасходныйОрдерНаТоварыТовары.Ссылка.ДокументОснование.ДокументОснование.ТипОплаты В (&amp;ТипОплаты)
+	И НЕ РасходныйОрдерНаТоварыТовары.Ссылка.ДокументОснование.ДокументОснование.ТипОплаты ЕСТЬ NULL
 	И РасходныйОрдерНаТоварыТовары.Ссылка.ДокументОснование.ЗаказПокупателя.ТипДоставки &lt;&gt; &amp;ТипДоставки
 	И (РасходныйОрдерНаТоварыТовары.Ссылка.ДокументОснование.ДокументОснование.СтатусОплаты = &amp;СтатусОплаты
 			ИЛИ &amp;ВключитьНеоплаченные)
@@ -239,31 +243,6 @@
 			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:EnumRef.ТипОплатыЗаказПокупателя</v8:Type>
 		</valueType>
 		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ТипОплатыЗаказПокупателя.Наличные</value>
-		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ТипОплатыЗаказПокупателя.ОплатаКартойПриват</value>
-		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ТипОплатыЗаказПокупателя.БанковскаяКарта</value>
-		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ТипОплатыЗаказПокупателя.amida_payparts</value>
-		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ТипОплатыЗаказПокупателя.monobank</value>
-		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ТипОплатыЗаказПокупателя.alfabank</value>
-		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ТипОплатыЗаказПокупателя.НаличныеУкрПочта</value>
-		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ТипОплатыЗаказПокупателя.ipay</value>
-		<useRestriction>true</useRestriction>
-		<valueListAllowed>true</valueListAllowed>
-	</parameter>
-	<parameter>
-		<name>ТипОплатыБезнал</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Тип оплаты безнал</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:EnumRef.ТипОплатыЗаказПокупателя</v8:Type>
-		</valueType>
-		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ТипОплатыЗаказПокупателя.БРПредоплата</value>
-		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ТипОплатыЗаказПокупателя.БезналичныйРасчетДляФизЛиц</value>
-		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ТипОплатыЗаказПокупателя.БРПостоплата</value>
-		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ТипОплатыЗаказПокупателя.НаличныеЗаявкаЧерезБанк</value>
 		<useRestriction>true</useRestriction>
 		<valueListAllowed>true</valueListAllowed>
 	</parameter>
@@ -327,6 +306,20 @@
 		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ТипДоставкиЗаказПокупателя.Самовывоз</value>
 		<useRestriction>true</useRestriction>
 	</parameter>
+	<parameter>
+		<name>МагазинНачисления</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Магазин начисления</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Магазины</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>false</useRestriction>
+	</parameter>
 	<settingsVariant>
 		<dcsset:name>ДоплатыСотрудникам</dcsset:name>
 		<dcsset:presentation xsi:type="v8:LocalStringType">
@@ -383,6 +376,12 @@
 					<dcscor:parameter>ВключитьНеоплаченные</dcscor:parameter>
 					<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
 					<dcsset:userSettingID>77f4e9f8-c290-4227-8a16-613d9567a63b</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>МагазинНачисления</dcscor:parameter>
+					<dcscor:value xsi:nil="true"/>
+					<dcsset:userSettingID>be0c2102-938a-4623-ad0d-3b723ecf3a49</dcsset:userSettingID>
 				</dcscor:item>
 			</dcsset:dataParameters>
 			<dcsset:order>
