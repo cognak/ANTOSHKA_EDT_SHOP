@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mdclass:Catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="7096f2d5-c53a-409b-a1b4-29add289fcf1">
+<mdclass:Catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="6b1f20f9-7069-470e-a1f4-851774e1ab3b">
   <producedTypes>
-    <objectType typeId="0472a3b9-1a71-4cee-bebb-70bf73affd30" valueTypeId="5016ffa5-c5b2-4176-9302-ef08b0925b4a"/>
-    <refType typeId="846a81ea-245f-4839-9ba4-c1c3393caa83" valueTypeId="7c8578c6-4e27-4ffb-a695-bb17f9146dc4"/>
-    <selectionType typeId="bca6739b-c628-4559-b306-1f3db0d56ea2" valueTypeId="046f18bf-3840-4245-9fa7-3ecd1e1990e4"/>
-    <listType typeId="6cd92672-cd77-4e20-b196-360e14a0d2d8" valueTypeId="f3f7e208-3629-4b2b-8b80-fb1e0f42ef01"/>
-    <managerType typeId="02997fba-f382-4f53-b793-ca8a3800ade6" valueTypeId="3021a423-d930-455f-b5e7-c5100d84cb47"/>
+    <objectType typeId="9925dea5-e6db-4b8e-bd73-7341ce9d3d9e" valueTypeId="f8d0fdc1-d90b-453f-b7ae-e45ed356eda7"/>
+    <refType typeId="24555c5c-057e-4e8b-be6c-37f6d3949704" valueTypeId="0db03b65-1172-409c-9d63-75d389d57419"/>
+    <selectionType typeId="b9f45c8b-bb70-4dbf-b89f-dd42e8b1e4b8" valueTypeId="20cd4580-e191-41ee-afa8-3242e9f65448"/>
+    <listType typeId="3bd6fd50-53fa-47dc-aec8-d1828fd10086" valueTypeId="8c82a43b-3d31-42fe-90bd-927b5bdd3585"/>
+    <managerType typeId="6826382f-aa99-4051-9a91-4c3c6ce5e86c" valueTypeId="d6c68e7a-3afc-4a00-83a5-4cdf369bb045"/>
   </producedTypes>
-  <name>КафкаНастройки</name>
+  <name>НастройкиСлужбДоставки</name>
   <synonym>
     <key>ru</key>
-    <value>Настройки  (Кафка)</value>
+    <value>Настройки служб доставки</value>
   </synonym>
   <useStandardCommands>true</useStandardCommands>
-  <inputByString>Catalog.КафкаНастройки.StandardAttribute.Description</inputByString>
+  <inputByString>Catalog.НастройкиСлужбДоставки.StandardAttribute.Code</inputByString>
+  <inputByString>Catalog.НастройкиСлужбДоставки.StandardAttribute.Description</inputByString>
   <fullTextSearchOnInputByString>DontUse</fullTextSearchOnInputByString>
   <standardAttributes>
     <dataHistory>Use</dataHistory>
@@ -94,65 +95,41 @@
   <createOnInput>Use</createOnInput>
   <dataLockControlMode>Managed</dataLockControlMode>
   <fullTextSearch>Use</fullTextSearch>
-  <objectPresentation>
-    <key>ru</key>
-    <value>Настройка  (Кафка)</value>
-  </objectPresentation>
   <levelCount>2</levelCount>
   <foldersOnTop>true</foldersOnTop>
-  <descriptionLength>100</descriptionLength>
+  <codeLength>9</codeLength>
+  <descriptionLength>25</descriptionLength>
   <codeType>String</codeType>
   <codeAllowedLength>Variable</codeAllowedLength>
+  <checkUnique>true</checkUnique>
+  <autonumbering>true</autonumbering>
   <defaultPresentation>AsDescription</defaultPresentation>
   <editType>InDialog</editType>
   <choiceMode>BothWays</choiceMode>
-  <defaultObjectForm>Catalog.КафкаНастройки.Form.ФормаЭлемента</defaultObjectForm>
-  <attributes uuid="a682de72-d84b-485d-9ca3-1f87aae32ca2">
-    <name>ВидОбъекта</name>
+  <attributes uuid="6a0c2030-4053-4b9b-ae15-8d00dbc46836">
+    <name>СлужбаДоставки</name>
     <synonym>
       <key>ru</key>
-      <value>Вид объекта</value>
+      <value>Служба доставки</value>
     </synonym>
     <type>
-      <types>String</types>
-      <stringQualifiers>
-        <length>25</length>
-      </stringQualifiers>
+      <types>EnumRef.ОператорыДоставки</types>
     </type>
     <minValue xsi:type="core:UndefinedValue"/>
     <maxValue xsi:type="core:UndefinedValue"/>
-    <fillChecking>ShowError</fillChecking>
-    <fillValue xsi:type="core:StringValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
     <fullTextSearch>Use</fullTextSearch>
     <dataHistory>Use</dataHistory>
   </attributes>
-  <attributes uuid="b94321c1-e930-4bc0-8316-5476766813d9">
-    <name>ПолноеИмя</name>
-    <synonym>
-      <key>ru</key>
-      <value>Полное имя</value>
-    </synonym>
-    <type>
-      <types>String</types>
-      <stringQualifiers>
-        <length>500</length>
-      </stringQualifiers>
-    </type>
-    <minValue xsi:type="core:UndefinedValue"/>
-    <maxValue xsi:type="core:UndefinedValue"/>
-    <fillValue xsi:type="core:StringValue"/>
-    <fullTextSearch>Use</fullTextSearch>
-    <dataHistory>Use</dataHistory>
-  </attributes>
-  <tabularSections uuid="12ac1c84-281a-47b1-8c4a-e3aa0a72416a">
+  <tabularSections uuid="f7098b1e-ea0f-4503-afa5-bd263ea3152a">
     <producedTypes>
-      <objectType typeId="f6633a8f-2520-4a33-bda9-02f765a88094" valueTypeId="b400634a-ad2c-4543-a413-a97162b439b9"/>
-      <rowType typeId="46b93f1b-7146-4164-8ca1-359e4dfe7ddf" valueTypeId="e09c025c-d0ba-4b5f-880c-7340786f08f6"/>
+      <objectType typeId="39f47466-8a01-4a69-9a92-4d9bcfa088f3" valueTypeId="33b861e0-6f50-4c19-8932-a3c9dfdf4703"/>
+      <rowType typeId="e72d5f50-fcf5-4648-b32a-a2f82ca97202" valueTypeId="55f792ea-4773-403c-871e-11733989996b"/>
     </producedTypes>
-    <name>Топики</name>
+    <name>СтоимостьДоставки</name>
     <synonym>
       <key>ru</key>
-      <value>Топики</value>
+      <value>Стоимость доставки</value>
     </synonym>
     <standardAttributes>
       <dataHistory>Use</dataHistory>
@@ -162,44 +139,52 @@
       <minValue xsi:type="core:UndefinedValue"/>
       <maxValue xsi:type="core:UndefinedValue"/>
     </standardAttributes>
-    <attributes uuid="17ac21ce-ad7e-4c0b-970b-408ec763cdf5">
-      <name>Топик</name>
+    <attributes uuid="b91b0540-c924-4f3a-b0f7-d78820574d74">
+      <name>ТипДоставки</name>
       <synonym>
         <key>ru</key>
-        <value>Топик</value>
+        <value>Тип доставки</value>
       </synonym>
       <type>
-        <types>CatalogRef.КафкаТопики</types>
+        <types>EnumRef.ТипыДоставки</types>
       </type>
       <minValue xsi:type="core:UndefinedValue"/>
       <maxValue xsi:type="core:UndefinedValue"/>
       <dataHistory>Use</dataHistory>
       <fullTextSearch>Use</fullTextSearch>
     </attributes>
-    <attributes uuid="c447bb3b-0bc1-4b17-b672-d8874a7f36f8">
-      <name>ЗапросНаПолучателей</name>
+    <attributes uuid="a0587dbc-762a-441e-84ae-2a4267844dae">
+      <name>МаксимальнаяСуммаПосылки</name>
       <synonym>
         <key>ru</key>
-        <value>Запрос на получателей</value>
+        <value>Максимальная сумма посылки</value>
       </synonym>
       <type>
-        <types>String</types>
-        <stringQualifiers/>
+        <types>Number</types>
+        <numberQualifiers>
+          <precision>15</precision>
+          <scale>2</scale>
+          <nonNegative>true</nonNegative>
+        </numberQualifiers>
       </type>
       <minValue xsi:type="core:UndefinedValue"/>
       <maxValue xsi:type="core:UndefinedValue"/>
       <dataHistory>Use</dataHistory>
       <fullTextSearch>Use</fullTextSearch>
     </attributes>
-    <attributes uuid="5fd50975-a3fc-4b4a-bd34-ad787519bd85">
-      <name>ПропускаемыеРеквизиты</name>
+    <attributes uuid="5b3ed79e-482d-4fac-9129-ab5253826801">
+      <name>СуммаДоставки</name>
       <synonym>
         <key>ru</key>
-        <value>Пропускаемые реквизиты</value>
+        <value>Сумма доставки</value>
       </synonym>
       <type>
-        <types>String</types>
-        <stringQualifiers/>
+        <types>Number</types>
+        <numberQualifiers>
+          <precision>15</precision>
+          <scale>2</scale>
+          <nonNegative>true</nonNegative>
+        </numberQualifiers>
       </type>
       <minValue xsi:type="core:UndefinedValue"/>
       <maxValue xsi:type="core:UndefinedValue"/>
@@ -207,13 +192,4 @@
       <fullTextSearch>Use</fullTextSearch>
     </attributes>
   </tabularSections>
-  <forms uuid="ab62e5fa-7b31-4be7-89fb-fd7847303073">
-    <name>ФормаЭлемента</name>
-    <synonym>
-      <key>ru</key>
-      <value>Форма элемента</value>
-    </synonym>
-    <usePurposes>PersonalComputer</usePurposes>
-    <usePurposes>MobileDevice</usePurposes>
-  </forms>
 </mdclass:Catalog>
