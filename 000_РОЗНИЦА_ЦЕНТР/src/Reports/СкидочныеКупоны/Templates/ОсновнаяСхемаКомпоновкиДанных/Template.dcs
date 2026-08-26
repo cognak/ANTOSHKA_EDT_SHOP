@@ -78,6 +78,16 @@
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Себестоимость</dataPath>
+			<field>Себестоимость</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Себестоимость</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	ПогашениеСкидочныхКупонов.Ссылка КАК Чек,
@@ -109,7 +119,8 @@
 	ЧекККМТовары.Количество КАК Количество,
 	ЧекККМТовары.Цена КАК Цена,
 	ЧекККМТовары.Сумма КАК Сумма,
-	ЧекККМСкидкиНаценки.Сумма КАК СуммаСкидки
+	ЧекККМСкидкиНаценки.Сумма КАК СуммаСкидки,
+	ЧекККМТовары.Количество * ЧекККМТовары.Номенклатура.УчетнаяЦена КАК Себестоимость
 ИЗ
 	ЧекиСКупонами КАК ЧекиСКупонами
 		ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.ЧекККМ.СкидкиНаценки КАК ЧекККМСкидкиНаценки
@@ -136,6 +147,10 @@
 	<totalField>
 		<dataPath>СуммаСкидки</dataPath>
 		<expression>Сумма(СуммаСкидки)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Себестоимость</dataPath>
+		<expression>Сумма(Себестоимость)</expression>
 	</totalField>
 	<parameter>
 		<name>Дата1</name>
@@ -240,6 +255,9 @@
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>СуммаСкидки</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Себестоимость</dcsset:field>
 				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:filter>
@@ -407,6 +425,9 @@
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>СуммаСкидки</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Себестоимость</dcsset:field>
 				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:filter>
