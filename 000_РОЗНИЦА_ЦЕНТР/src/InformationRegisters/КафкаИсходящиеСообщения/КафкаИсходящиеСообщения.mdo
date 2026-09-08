@@ -147,6 +147,7 @@
     <fullTextSearch>Use</fullTextSearch>
     <dataHistory>Use</dataHistory>
     <fillValue xsi:type="core:UndefinedValue"/>
+    <indexing>Index</indexing>
   </resources>
   <resources uuid="d07fc831-f7f8-4289-9d3a-bcb9f2dc1637">
     <name>ХешДанных</name>
@@ -230,16 +231,33 @@
     <dataHistory>Use</dataHistory>
     <fillValue xsi:type="core:UndefinedValue"/>
   </attributes>
-  <dimensions uuid="672fa962-04da-47b8-99a7-878b6acf9436">
-    <name>ВремяСоздания</name>
+  <dimensions uuid="bbb2d952-e4eb-469d-bec3-52deb0555050">
+    <name>Топик</name>
     <synonym>
       <key>ru</key>
-      <value>Время создания</value>
+      <value>Топик</value>
+    </synonym>
+    <type>
+      <types>CatalogRef.КафкаТопики</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <indexing>Index</indexing>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <dimensions uuid="83a3c93c-2d1a-4802-91a7-8ddd5b9e6745">
+    <name>НомерПотока</name>
+    <synonym>
+      <key>ru</key>
+      <value>Номер потока</value>
     </synonym>
     <type>
       <types>Number</types>
       <numberQualifiers>
-        <precision>18</precision>
+        <precision>3</precision>
       </numberQualifiers>
     </type>
     <minValue xsi:type="core:UndefinedValue"/>
@@ -247,7 +265,6 @@
     <indexing>Index</indexing>
     <fullTextSearch>Use</fullTextSearch>
     <dataHistory>Use</dataHistory>
-    <fillFromFillingValue>true</fillFromFillingValue>
     <fillValue xsi:type="core:UndefinedValue"/>
     <mainFilter>true</mainFilter>
   </dimensions>
@@ -272,16 +289,16 @@
     <master>true</master>
     <mainFilter>true</mainFilter>
   </dimensions>
-  <dimensions uuid="83a3c93c-2d1a-4802-91a7-8ddd5b9e6745">
-    <name>НомерПотока</name>
+  <dimensions uuid="672fa962-04da-47b8-99a7-878b6acf9436">
+    <name>ВремяСоздания</name>
     <synonym>
       <key>ru</key>
-      <value>Номер потока</value>
+      <value>Время создания</value>
     </synonym>
     <type>
       <types>Number</types>
       <numberQualifiers>
-        <precision>3</precision>
+        <precision>18</precision>
       </numberQualifiers>
     </type>
     <minValue xsi:type="core:UndefinedValue"/>
@@ -289,23 +306,7 @@
     <indexing>Index</indexing>
     <fullTextSearch>Use</fullTextSearch>
     <dataHistory>Use</dataHistory>
-    <fillValue xsi:type="core:UndefinedValue"/>
-    <mainFilter>true</mainFilter>
-  </dimensions>
-  <dimensions uuid="bbb2d952-e4eb-469d-bec3-52deb0555050">
-    <name>Топик</name>
-    <synonym>
-      <key>ru</key>
-      <value>Топик</value>
-    </synonym>
-    <type>
-      <types>CatalogRef.КафкаТопики</types>
-    </type>
-    <minValue xsi:type="core:UndefinedValue"/>
-    <maxValue xsi:type="core:UndefinedValue"/>
-    <indexing>Index</indexing>
-    <fullTextSearch>Use</fullTextSearch>
-    <dataHistory>Use</dataHistory>
+    <fillFromFillingValue>true</fillFromFillingValue>
     <fillValue xsi:type="core:UndefinedValue"/>
     <mainFilter>true</mainFilter>
   </dimensions>
