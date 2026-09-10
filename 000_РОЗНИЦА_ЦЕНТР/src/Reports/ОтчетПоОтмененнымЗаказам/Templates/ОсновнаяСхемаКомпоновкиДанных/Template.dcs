@@ -43,6 +43,16 @@
 			<dataPath>СтатусЗапроса</dataPath>
 			<field>СтатусЗапроса</field>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПричинаОтмены</dataPath>
+			<field>ПричинаОтмены</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Причина отмены</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	ЗаказПокупателя.Ссылка КАК Ссылка
@@ -60,7 +70,8 @@
 	ЗапросДоступностиТоваров.Ссылка КАК ЗапросДоступности,
 	ЗапросДоступностиТоваров.МагазинОтправитель КАК Магазин,
 	ЗапросДоступностиТоваров.СтатусЗапроса КАК СтатусЗапроса,
-	ЗапросДоступностиТоваров.ДокументОснование КАК ЗаказПокупателя
+	ЗапросДоступностиТоваров.ДокументОснование КАК ЗаказПокупателя,
+	ЗапросДоступностиТоваров.ДокументОснование.ПричинаОтмены КАК ПричинаОтмены
 ИЗ
 	Документ.ЗапросДоступностиТоваров КАК ЗапросДоступностиТоваров
 ГДЕ
@@ -164,6 +175,12 @@
 					<dcsset:userSettingID>54cb9223-9fbb-4d98-94e1-0a291d08ca2c</dcsset:userSettingID>
 				</dcscor:item>
 			</dcsset:dataParameters>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>РасположениеРеквизитов</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionAttributesPlacement">Separately</dcscor:value>
+				</dcscor:item>
+			</dcsset:outputParameters>
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
 				<dcsset:groupItems>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
@@ -184,6 +201,13 @@
 					<dcsset:groupItems>
 						<dcsset:item xsi:type="dcsset:GroupItemField">
 							<dcsset:field>ЗаказПокупателя</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>ПричинаОтмены</dcsset:field>
 							<dcsset:groupType>Items</dcsset:groupType>
 							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>

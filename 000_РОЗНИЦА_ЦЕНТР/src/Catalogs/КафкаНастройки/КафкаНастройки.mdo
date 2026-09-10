@@ -107,6 +107,7 @@
   <editType>InDialog</editType>
   <choiceMode>BothWays</choiceMode>
   <defaultObjectForm>Catalog.КафкаНастройки.Form.ФормаЭлемента</defaultObjectForm>
+  <defaultListForm>Catalog.КафкаНастройки.Form.ФормаСписка</defaultListForm>
   <attributes uuid="a682de72-d84b-485d-9ca3-1f87aae32ca2">
     <name>ВидОбъекта</name>
     <synonym>
@@ -122,24 +123,6 @@
     <minValue xsi:type="core:UndefinedValue"/>
     <maxValue xsi:type="core:UndefinedValue"/>
     <fillChecking>ShowError</fillChecking>
-    <fillValue xsi:type="core:StringValue"/>
-    <fullTextSearch>Use</fullTextSearch>
-    <dataHistory>Use</dataHistory>
-  </attributes>
-  <attributes uuid="b94321c1-e930-4bc0-8316-5476766813d9">
-    <name>ПолноеИмя</name>
-    <synonym>
-      <key>ru</key>
-      <value>Полное имя</value>
-    </synonym>
-    <type>
-      <types>String</types>
-      <stringQualifiers>
-        <length>500</length>
-      </stringQualifiers>
-    </type>
-    <minValue xsi:type="core:UndefinedValue"/>
-    <maxValue xsi:type="core:UndefinedValue"/>
     <fillValue xsi:type="core:StringValue"/>
     <fullTextSearch>Use</fullTextSearch>
     <dataHistory>Use</dataHistory>
@@ -220,12 +203,49 @@
       <dataHistory>Use</dataHistory>
       <fullTextSearch>Use</fullTextSearch>
     </attributes>
+    <attributes uuid="6855907e-540a-44c6-ad61-c0aa97267ad1">
+      <name>ОтправлятьИзЦентра</name>
+      <synonym>
+        <key>ru</key>
+        <value>Отправлять из центра</value>
+      </synonym>
+      <type>
+        <types>Boolean</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
+    <attributes uuid="54e6c006-0405-48f9-844d-18de14573e8a">
+      <name>ОтправлятьИзПереферии</name>
+      <synonym>
+        <key>ru</key>
+        <value>Отправлять из переферии</value>
+      </synonym>
+      <type>
+        <types>Boolean</types>
+      </type>
+      <minValue xsi:type="core:UndefinedValue"/>
+      <maxValue xsi:type="core:UndefinedValue"/>
+      <dataHistory>Use</dataHistory>
+      <fullTextSearch>Use</fullTextSearch>
+    </attributes>
   </tabularSections>
   <forms uuid="ab62e5fa-7b31-4be7-89fb-fd7847303073">
     <name>ФормаЭлемента</name>
     <synonym>
       <key>ru</key>
       <value>Форма элемента</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+  <forms uuid="1ec85a36-5ced-41f9-bc6e-ef969638475a">
+    <name>ФормаСписка</name>
+    <synonym>
+      <key>ru</key>
+      <value>Форма списка</value>
     </synonym>
     <usePurposes>PersonalComputer</usePurposes>
     <usePurposes>MobileDevice</usePurposes>
