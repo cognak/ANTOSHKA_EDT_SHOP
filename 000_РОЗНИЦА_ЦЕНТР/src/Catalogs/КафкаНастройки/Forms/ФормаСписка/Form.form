@@ -49,19 +49,23 @@
       </extInfo>
     </items>
     <items xsi:type="form:FormField">
-      <name>ОтправлятьИзЦентра</name>
-      <id>28</id>
+      <name>НаправлениеОтправки</name>
+      <id>36</id>
       <visible>true</visible>
       <enabled>true</enabled>
       <userVisible>
         <common>true</common>
       </userVisible>
       <dataPath xsi:type="form:DataPath">
-        <segments>ОтправлятьИзЦентра</segments>
+        <segments>НаправлениеОтправки</segments>
       </dataPath>
+      <handlers>
+        <event>OnChange</event>
+        <name>НаправлениеОтправкиПриИзменении</name>
+      </handlers>
       <extendedTooltip>
-        <name>ОтправлятьИзЦентраРасширеннаяПодсказка</name>
-        <id>30</id>
+        <name>НаправлениеОтправкиРасширеннаяПодсказка</name>
+        <id>38</id>
         <type>Label</type>
         <autoMaxWidth>true</autoMaxWidth>
         <autoMaxHeight>true</autoMaxHeight>
@@ -70,8 +74,8 @@
         </extInfo>
       </extendedTooltip>
       <contextMenu>
-        <name>ОтправлятьИзЦентраКонтекстноеМеню</name>
-        <id>29</id>
+        <name>НаправлениеОтправкиКонтекстноеМеню</name>
+        <id>37</id>
         <autoFill>true</autoFill>
       </contextMenu>
       <type>InputField</type>
@@ -80,12 +84,15 @@
       <headerHorizontalAlign>Left</headerHorizontalAlign>
       <showInFooter>true</showInFooter>
       <extInfo xsi:type="form:InputFieldExtInfo">
+        <handlers>
+          <event>Clearing</event>
+          <name>НаправлениеОтправкиОчистка</name>
+        </handlers>
         <autoMaxWidth>true</autoMaxWidth>
         <autoMaxHeight>true</autoMaxHeight>
         <wrap>true</wrap>
         <clearButton>true</clearButton>
         <listChoiceMode>true</listChoiceMode>
-        <typeDomainEnabled>true</typeDomainEnabled>
         <textEdit>true</textEdit>
         <choiceList>
           <presentation>
@@ -99,7 +106,7 @@
         <choiceList>
           <presentation>
             <key>ru</key>
-            <value>Да</value>
+            <value>Из центра</value>
           </presentation>
           <value xsi:type="core:StringValue">
             <value>2</value>
@@ -108,10 +115,28 @@
         <choiceList>
           <presentation>
             <key>ru</key>
-            <value>Нет</value>
+            <value>Из переферии</value>
           </presentation>
           <value xsi:type="core:StringValue">
             <value>3</value>
+          </value>
+        </choiceList>
+        <choiceList>
+          <presentation>
+            <key>ru</key>
+            <value>Не отправлять</value>
+          </presentation>
+          <value xsi:type="core:StringValue">
+            <value>4</value>
+          </value>
+        </choiceList>
+        <choiceList>
+          <presentation>
+            <key>ru</key>
+            <value>Отправляют все</value>
+          </presentation>
+          <value xsi:type="core:StringValue">
+            <value>5</value>
           </value>
         </choiceList>
       </extInfo>
@@ -298,6 +323,39 @@
         <autoMaxHeight>true</autoMaxHeight>
       </extInfo>
     </items>
+    <items xsi:type="form:FormField">
+      <name>ИсключитьИзОбменов</name>
+      <id>33</id>
+      <visible>true</visible>
+      <enabled>true</enabled>
+      <userVisible>
+        <common>true</common>
+      </userVisible>
+      <dataPath xsi:type="form:DataPath">
+        <segments>Список.ИсключитьИзОбменов</segments>
+      </dataPath>
+      <extendedTooltip>
+        <name>ИсключитьИзОбменовРасширеннаяПодсказка</name>
+        <id>35</id>
+        <type>Label</type>
+        <autoMaxWidth>true</autoMaxWidth>
+        <autoMaxHeight>true</autoMaxHeight>
+        <extInfo xsi:type="form:LabelDecorationExtInfo">
+          <horizontalAlign>Left</horizontalAlign>
+        </extInfo>
+      </extendedTooltip>
+      <contextMenu>
+        <name>ИсключитьИзОбменовКонтекстноеМеню</name>
+        <id>34</id>
+        <autoFill>true</autoFill>
+      </contextMenu>
+      <type>CheckBoxField</type>
+      <editMode>EnterOnInput</editMode>
+      <showInHeader>true</showInHeader>
+      <headerHorizontalAlign>Left</headerHorizontalAlign>
+      <showInFooter>true</showInFooter>
+      <extInfo xsi:type="form:CheckBoxFieldExtInfo"/>
+    </items>
     <commandBarLocation>None</commandBarLocation>
     <autoCommandBar>
       <name>СписокКоманднаяПанель</name>
@@ -465,14 +523,26 @@
       <queryText>ВЫБРАТЬ
 	КафкаНастройки.Ссылка КАК Ссылка,
 	КафкаНастройки.Наименование КАК Наименование,
-	КафкаНастройки.ВидОбъекта КАК ВидОбъекта
+	КафкаНастройки.ВидОбъекта КАК ВидОбъекта,
+	КафкаНастройки.ИсключитьИзОбменов КАК ИсключитьИзОбменов
 ИЗ
-	Справочник.КафкаНастройки.Топики КАК КафкаНастройкиТопики
-		ВНУТРЕННЕЕ СОЕДИНЕНИЕ Справочник.КафкаНастройки КАК КафкаНастройки
-		ПО КафкаНастройкиТопики.Ссылка = КафкаНастройки.Ссылка
+	Справочник.КафкаНастройки КАК КафкаНастройки
+		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.КафкаНастройки.Топики КАК КафкаНастройкиТопики
+		ПО (КафкаНастройкиТопики.Ссылка = КафкаНастройки.Ссылка)
 ГДЕ
-	КафкаНастройкиТопики.Топик = &amp;Топик
-	ИЛИ &amp;ВсеТопики</queryText>
+	(КафкаНастройкиТопики.Топик = &amp;Топик
+			ИЛИ &amp;ВсеТопики)
+	И (&amp;НаправлениеОтправки = 1
+			ИЛИ &amp;НаправлениеОтправки = 2
+				И КафкаНастройкиТопики.ОтправлятьИзЦентра
+			ИЛИ &amp;НаправлениеОтправки = 3
+				И КафкаНастройкиТопики.ОтправлятьИзПереферии
+			ИЛИ &amp;НаправлениеОтправки = 4
+				И НЕ КафкаНастройкиТопики.ОтправлятьИзЦентра
+				И НЕ КафкаНастройкиТопики.ОтправлятьИзПереферии
+			ИЛИ &amp;НаправлениеОтправки = 5
+				И КафкаНастройкиТопики.ОтправлятьИзЦентра
+				И КафкаНастройкиТопики.ОтправлятьИзПереферии)</queryText>
       <mainTable>Catalog.КафкаНастройки</mainTable>
       <dynamicDataRead>true</dynamicDataRead>
       <autoFillAvailableFields>true</autoFillAvailableFields>
@@ -490,6 +560,10 @@
       <fields xsi:type="schema:DataCompositionSchemaDataSetField">
         <dataPath>ВидОбъекта</dataPath>
         <field>ВидОбъекта</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ИсключитьИзОбменов</dataPath>
+        <field>ИсключитьИзОбменов</field>
       </fields>
       <fields xsi:type="schema:DataCompositionSchemaDataSetField">
         <dataPath>Топики</dataPath>
@@ -539,6 +613,23 @@
         <values xsi:type="core:UndefinedValue"/>
         <useRestriction>true</useRestriction>
       </parameters>
+      <parameters>
+        <name>НаправлениеОтправки</name>
+        <title>
+          <localValue>
+            <content>
+              <key>ru</key>
+              <value>Направление отправки</value>
+            </content>
+          </localValue>
+        </title>
+        <valueType>
+          <types>Number</types>
+          <numberQualifiers/>
+        </valueType>
+        <values xsi:type="core:UndefinedValue"/>
+        <useRestriction>true</useRestriction>
+      </parameters>
     </extInfo>
   </attributes>
   <attributes>
@@ -559,10 +650,10 @@
     </edit>
   </attributes>
   <attributes>
-    <name>ОтправлятьИзЦентра</name>
+    <name>НаправлениеОтправки</name>
     <title>
       <key>ru</key>
-      <value>Отправлять из центра</value>
+      <value>Направление отправки</value>
     </title>
     <id>3</id>
     <valueType>

@@ -52,6 +52,31 @@ balances {
 }
 #КонецОбласти 
 
+#Область Склад_поставщика_GraphQL_new
+{
+  products (sku: ["#sku#"]) {
+     data {
+        sku
+          balances {
+                qty
+                r1
+                available
+                changed_at
+                warehouse {
+                    code
+                    source
+                }
+            }
+        }
+        paginatorInfo {
+            lastPage
+            currentPage
+            uuid
+        }    
+      }
+}
+#КонецОбласти 
+
 #Область Данные_о_товаре_GraphQL
 {
   contentM2Products(sku: ["#sku#"]) {
@@ -68,7 +93,32 @@ balances {
     }
   }
 }
+#КонецОбласти    
+
+#Область Данные_о_последнем_изменении_товара_GraphQL
+{
+  contentM2Products(date: "#DATE#", page: 1, first: #COUNT#,) {
+    data {
+      sku
+      ru_name
+      uk_name
+      ru_url
+      uk_url
+      image_link
+      created_at
+      changed_at
+      updated_at
+    }     
+    paginatorInfo {
+            lastPage
+            lastDate
+            currentPage
+            uuid
+        } 
+  }
+}
 #КонецОбласти 
+
 
 #Область Состояние_создания_заказа_GraphQL
 mutation {
