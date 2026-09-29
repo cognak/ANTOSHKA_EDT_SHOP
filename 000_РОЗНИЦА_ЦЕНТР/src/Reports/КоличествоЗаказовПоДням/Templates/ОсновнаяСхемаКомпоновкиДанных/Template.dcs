@@ -106,6 +106,76 @@
 СГРУППИРОВАТЬ ПО
 	НАЧАЛОПЕРИОДА(ЗаказПокупателя.Дата, ДЕНЬ)</query>
 	</dataSet>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных2</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Магазин</dataPath>
+			<field>Магазин</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоЗаказов</dataPath>
+			<field>КоличествоЗаказов</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество заказов</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЗаказПокупателя</dataPath>
+			<field>ЗаказПокупателя</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заказ покупателя</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	Заказы.Магазин КАК Магазин,
+	КОЛИЧЕСТВО(РАЗЛИЧНЫЕ Заказы.ЗаказПокупателя) КАК КоличествоЗаказов
+ИЗ
+	(ВЫБРАТЬ
+		Чек.Магазин КАК Магазин,
+		Заказ.Ссылка КАК ЗаказПокупателя
+	ИЗ
+		Документ.ЗаказПокупателя КАК Заказ
+			ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.ЧекККМ КАК Чек
+			ПО (Чек.ЗаказПокупателя = Заказ.Ссылка)
+	ГДЕ
+		Заказ.Дата МЕЖДУ &amp;ДатаС И &amp;ДатаПо
+		И Чек.Дата &gt;= &amp;ДатаС
+		И Чек.Проведен
+	
+	ОБЪЕДИНИТЬ ВСЕ
+	
+	ВЫБРАТЬ
+		Ордер.Магазин,
+		Заказ.Ссылка
+	ИЗ
+		Документ.ЗаказПокупателя КАК Заказ
+			ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.ЗапросДоступностиТоваров КАК ЗапросДоступности
+			ПО (ЗапросДоступности.ДокументОснование = Заказ.Ссылка)
+			ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.ПеремещениеТоваров КАК Перемещение
+			ПО (Перемещение.ДокументОснование = ЗапросДоступности.Ссылка)
+			ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.РасходныйОрдерНаТовары КАК Ордер
+			ПО (Ордер.ДокументОснование = Перемещение.Ссылка)
+	ГДЕ
+		Заказ.Дата МЕЖДУ &amp;ДатаС И &amp;ДатаПо
+		И Перемещение.Дата &gt;= &amp;ДатаС
+		И Ордер.Дата &gt;= &amp;ДатаС
+		И Ордер.Проведен
+		И (ЗапросДоступности.СтатусОплаты = &amp;СтатусОплаты
+				ИЛИ &amp;ВключитьНеоплаченные)) КАК Заказы
+
+СГРУППИРОВАТЬ ПО
+	Заказы.Магазин
+
+УПОРЯДОЧИТЬ ПО
+	Магазин</query>
+	</dataSet>
 	<totalField>
 		<dataPath>Розница</dataPath>
 		<expression>Сумма(Розница)</expression>
@@ -117,6 +187,10 @@
 	<totalField>
 		<dataPath>Сайт</dataPath>
 		<expression>Сумма(Сайт)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>КоличествоЗаказов</dataPath>
+		<expression>Сумма(КоличествоЗаказов)</expression>
 	</totalField>
 	<parameter>
 		<name>ДатаПо</name>
@@ -172,6 +246,34 @@
 		</value>
 		<useRestriction>false</useRestriction>
 	</parameter>
+	<parameter>
+		<name>ВключитьНеоплаченные</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Включить неоплаченные</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:boolean</v8:Type>
+		</valueType>
+		<value xsi:type="xs:boolean">false</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>СтатусОплаты</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Статус оплаты</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:EnumRef.СтатусОплаты</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.СтатусОплаты.Оплачен</value>
+		<useRestriction>true</useRestriction>
+	</parameter>
 	<settingsVariant>
 		<dcsset:name>КоличествоЗаказовПоДням</dcsset:name>
 		<dcsset:presentation xsi:type="v8:LocalStringType">
@@ -186,15 +288,7 @@
 		</dcsset:presentation>
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:selection>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Всего</dcsset:field>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Сайт</dcsset:field>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Розница</dcsset:field>
-				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
 			</dcsset:selection>
 			<dcsset:dataParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
@@ -206,6 +300,12 @@
 						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
 					</dcscor:value>
 					<dcsset:userSettingID>b19e49de-7f29-4cda-8517-59332c859e9a</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ВключитьНеоплаченные</dcscor:parameter>
+					<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					<dcsset:userSettingID>76582073-f258-43ae-a422-44fff2e56d7d</dcsset:userSettingID>
 				</dcscor:item>
 			</dcsset:dataParameters>
 			<dcsset:order>
@@ -228,7 +328,28 @@
 					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
 				</dcsset:order>
 				<dcsset:selection>
-					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Всего</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Сайт</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Розница</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+			</dcsset:item>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Магазин</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>КоличествоЗаказов</dcsset:field>
+					</dcsset:item>
 				</dcsset:selection>
 			</dcsset:item>
 		</dcsset:settings>
