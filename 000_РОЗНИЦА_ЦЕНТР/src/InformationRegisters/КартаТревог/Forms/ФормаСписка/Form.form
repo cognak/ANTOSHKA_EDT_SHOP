@@ -434,7 +434,6 @@
     <items xsi:type="form:Button">
       <name>ФормаАктивныеТревоги</name>
       <id>37</id>
-      <visible>true</visible>
       <enabled>true</enabled>
       <userVisible>
         <common>true</common>
@@ -459,7 +458,6 @@
     <items xsi:type="form:Button">
       <name>ФормаИсторияТревог</name>
       <id>39</id>
-      <visible>true</visible>
       <enabled>true</enabled>
       <userVisible>
         <common>true</common>
@@ -475,6 +473,31 @@
         </extInfo>
       </extendedTooltip>
       <commandName>Form.Command.ИсторияТревог</commandName>
+      <representation>Auto</representation>
+      <autoMaxWidth>true</autoMaxWidth>
+      <autoMaxHeight>true</autoMaxHeight>
+      <placementArea>UserCmds</placementArea>
+      <representationInContextMenu>Auto</representationInContextMenu>
+    </items>
+    <items xsi:type="form:Button">
+      <name>ФормаКомандаЗагрузитьКартуТревог</name>
+      <id>41</id>
+      <visible>true</visible>
+      <enabled>true</enabled>
+      <userVisible>
+        <common>true</common>
+      </userVisible>
+      <extendedTooltip>
+        <name>ФормаКомандаЗагрузитьКартуТревогРасширеннаяПодсказка</name>
+        <id>42</id>
+        <type>Label</type>
+        <autoMaxWidth>true</autoMaxWidth>
+        <autoMaxHeight>true</autoMaxHeight>
+        <extInfo xsi:type="form:LabelDecorationExtInfo">
+          <horizontalAlign>Left</horizontalAlign>
+        </extInfo>
+      </extendedTooltip>
+      <commandName>Form.Command.КомандаЗагрузитьКартуТревог</commandName>
       <representation>Auto</representation>
       <autoMaxWidth>true</autoMaxWidth>
       <autoMaxHeight>true</autoMaxHeight>
@@ -552,6 +575,27 @@
     <action xsi:type="form:FormCommandHandlerContainer">
       <handler>
         <name>ИсторияТревог</name>
+      </handler>
+    </action>
+    <currentRowUse>Auto</currentRowUse>
+  </formCommands>
+  <formCommands>
+    <name>КомандаЗагрузитьКартуТревог</name>
+    <title>
+      <key>ru</key>
+      <value>Загрузить карту тревог</value>
+    </title>
+    <id>3</id>
+    <toolTip>
+      <key>ru</key>
+      <value>Команда загрузить карту тревог</value>
+    </toolTip>
+    <use>
+      <common>true</common>
+    </use>
+    <action xsi:type="form:FormCommandHandlerContainer">
+      <handler>
+        <name>КомандаЗагрузитьКартуТревог</name>
       </handler>
     </action>
     <currentRowUse>Auto</currentRowUse>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form:Form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:form="http://g5.1c.ru/v8/dt/form">
+<form:Form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:form="http://g5.1c.ru/v8/dt/form" xmlns:schema="http://g5.1c.ru/v8/dt/data-composition-system/schema">
   <items xsi:type="form:FormGroup">
     <name>ГруппаБыстрыйПоискИОтборы</name>
     <id>106</id>
@@ -1136,6 +1136,42 @@
           <autoMaxWidth>true</autoMaxWidth>
           <autoMaxHeight>true</autoMaxHeight>
           <horizontalStretch>false</horizontalStretch>
+        </extInfo>
+      </items>
+      <items xsi:type="form:FormField">
+        <name>Резерв</name>
+        <id>198</id>
+        <visible>true</visible>
+        <enabled>true</enabled>
+        <userVisible>
+          <common>true</common>
+        </userVisible>
+        <dataPath xsi:type="form:DataPath">
+          <segments>Список.Резерв</segments>
+        </dataPath>
+        <extendedTooltip>
+          <name>РезервРасширеннаяПодсказка</name>
+          <id>200</id>
+          <type>Label</type>
+          <autoMaxWidth>true</autoMaxWidth>
+          <autoMaxHeight>true</autoMaxHeight>
+          <extInfo xsi:type="form:LabelDecorationExtInfo">
+            <horizontalAlign>Left</horizontalAlign>
+          </extInfo>
+        </extendedTooltip>
+        <contextMenu>
+          <name>РезервКонтекстноеМеню</name>
+          <id>199</id>
+          <autoFill>true</autoFill>
+        </contextMenu>
+        <type>LabelField</type>
+        <editMode>Enter</editMode>
+        <showInHeader>true</showInHeader>
+        <headerHorizontalAlign>Left</headerHorizontalAlign>
+        <showInFooter>true</showInFooter>
+        <extInfo xsi:type="form:LabelFieldExtInfo">
+          <autoMaxWidth>true</autoMaxWidth>
+          <autoMaxHeight>true</autoMaxHeight>
         </extInfo>
       </items>
       <items xsi:type="form:FormField">
@@ -2563,10 +2599,10 @@
       <segments>Список.Code</segments>
     </notDefaultUseAlwaysAttributes>
     <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
-      <segments>Список.IDN</segments>
+      <segments>Список.Ссылка</segments>
     </notDefaultUseAlwaysAttributes>
     <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
-      <segments>Список.Ref</segments>
+      <segments>Список.IDN</segments>
     </notDefaultUseAlwaysAttributes>
     <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
       <segments>Список.Блокирован</segments>
@@ -2579,6 +2615,9 @@
     </notDefaultUseAlwaysAttributes>
     <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
       <segments>Список.ПометкаУдаления</segments>
+    </notDefaultUseAlwaysAttributes>
+    <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
+      <segments>Список.Ссылка</segments>
     </notDefaultUseAlwaysAttributes>
     <notDefaultUseAlwaysAttributes xsi:type="form:DataPath">
       <segments>Список.ТипНоменклатуры</segments>
@@ -2634,7 +2673,8 @@
 	ЕСТЬNULL(ТаблицаМатрица.КоличествоМинимальное, 0) КАК КоличествоМинимальное,
 	ТаблицаВедущая.ИспользоватьСерийныеНомера КАК ИспользоватьСерийныеНомера,
 	ТаблицаВедущая.Номинал КАК Номинал,
-	ТаблицаВедущая.ПечатьЦенниковБезПиктограмм КАК ПечатьЦенниковБезПиктограмм
+	ТаблицаВедущая.ПечатьЦенниковБезПиктограмм КАК ПечатьЦенниковБезПиктограмм,
+	ТаблицаРезерва.Количество КАК Резерв
 ИЗ
 	Справочник.Номенклатура КАК ТаблицаВедущая
 		{ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
@@ -2702,6 +2742,19 @@
 		СГРУППИРОВАТЬ ПО
 			ТаблицаВедущая.Ссылка) КАК ТаблицаМатрица
 		ПО ТаблицаВедущая.Ссылка = ТаблицаМатрица.Номенклатура}
+		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+			ТаблицаВедущая.Ссылка КАК Номенклатура,
+			СУММА(ЗаказыПокупателейОстатки.КоличествоОстаток) КАК Количество
+		ИЗ
+			Справочник.Номенклатура КАК ТаблицаВедущая
+				{ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрНакопления.ЗаказыПокупателей.Остатки(, Магазин = &amp;Магазин) КАК ЗаказыПокупателейОстатки
+				ПО ТаблицаВедущая.Ссылка = ЗаказыПокупателейОстатки.Номенклатура}
+		{ГДЕ
+			ТаблицаВедущая.Ссылка.*}
+		
+		СГРУППИРОВАТЬ ПО
+			ТаблицаВедущая.Ссылка) КАК ТаблицаРезерва
+		ПО ТаблицаВедущая.Ссылка = ТаблицаРезерва.Номенклатура
 ГДЕ
 	ВЫБОР
 			КОГДА &amp;ПоказыватьТолькоСОстатками = ЛОЖЬ
@@ -2723,6 +2776,485 @@
       <customQuery>true</customQuery>
       <autoSaveUserSettings>true</autoSaveUserSettings>
       <getInvisibleFieldPresentations>true</getInvisibleFieldPresentations>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ПометкаУдаления</dataPath>
+        <field>ПометкаУдаления</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>НеСписыватьБонусы</dataPath>
+        <field>НеСписыватьБонусы</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Ссылка</dataPath>
+        <field>Ссылка</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Предопределенный</dataPath>
+        <field>Предопределенный</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>УчетнаяЦена</dataPath>
+        <field>УчетнаяЦена</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>WEB_АвторепрайсЦен</dataPath>
+        <field>WEB_АвторепрайсЦен</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ДатаИзменения</dataPath>
+        <field>ДатаИзменения</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>WEB_Выгружать</dataPath>
+        <field>WEB_Выгружать</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>WEB_МониторингЦен</dataPath>
+        <field>WEB_МониторингЦен</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Эксклюзив</dataPath>
+        <field>Эксклюзив</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ТоварнаяКатегория</dataPath>
+        <field>ТоварнаяКатегория</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>СтатусТовара</dataPath>
+        <field>СтатусТовара</field>
+        <title>
+          <localValue>
+            <content>
+              <key>ru</key>
+              <value>Статус товара</value>
+            </content>
+          </localValue>
+        </title>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>IDN</dataPath>
+        <field>IDN</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Весовой</dataPath>
+        <field>Весовой</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>КоличествоПериодовДействия</dataPath>
+        <field>КоличествоПериодовДействия</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Склад</dataPath>
+        <field>Склад</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ДатаОкончанияДействия</dataPath>
+        <field>ДатаОкончанияДействия</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>КодИзменения</dataPath>
+        <field>КодИзменения</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>НаборУпаковок</dataPath>
+        <field>НаборУпаковок</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ЦеноваяГруппа</dataPath>
+        <field>ЦеноваяГруппа</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>НоменклатурнаяГруппа</dataPath>
+        <field>НоменклатурнаяГруппа</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Пол</dataPath>
+        <field>Пол</field>
+        <title>
+          <localValue>
+            <content>
+              <key>ru</key>
+              <value>Пол</value>
+            </content>
+          </localValue>
+        </title>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ТорговаяМарка</dataPath>
+        <field>ТорговаяМарка</field>
+        <title>
+          <localValue>
+            <content>
+              <key>ru</key>
+              <value>Торговая марка</value>
+            </content>
+          </localValue>
+        </title>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>УзелСоздания</dataPath>
+        <field>УзелСоздания</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Описание</dataPath>
+        <field>Описание</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ЦенаВРознице</dataPath>
+        <field>ЦенаВРознице</field>
+        <title>
+          <localValue>
+            <content>
+              <key>ru</key>
+              <value>Цена в рознице</value>
+            </content>
+          </localValue>
+        </title>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Периодичность</dataPath>
+        <field>Периодичность</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Номинал</dataPath>
+        <field>Номинал</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ПодакцизныйТовар</dataPath>
+        <field>ПодакцизныйТовар</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ТипСерийногоНомера</dataPath>
+        <field>ТипСерийногоНомера</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ТипСрокаДействия</dataPath>
+        <field>ТипСрокаДействия</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ТолькоОбычныйЦенник</dataPath>
+        <field>ТолькоОбычныйЦенник</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ФайлКартинки</dataPath>
+        <field>ФайлКартинки</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Цвет</dataPath>
+        <field>Цвет</field>
+        <title>
+          <localValue>
+            <content>
+              <key>ru</key>
+              <value>Цвет</value>
+            </content>
+          </localValue>
+        </title>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Кешбек</dataPath>
+        <field>Кешбек</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Новинка</dataPath>
+        <field>Новинка</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ИсключитьИзОбменаNavision</dataPath>
+        <field>ИсключитьИзОбменаNavision</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Хеш</dataPath>
+        <field>Хеш</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ДополнительныеРеквизиты</dataPath>
+        <field>ДополнительныеРеквизиты</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Производитель</dataPath>
+        <field>Производитель</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ИмяПредопределенныхДанных</dataPath>
+        <field>ИмяПредопределенныхДанных</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Код</dataPath>
+        <field>Код</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>НаименованиеПолное</dataPath>
+        <field>НаименованиеПолное</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ЕдиницаИзмерения</dataPath>
+        <field>ЕдиницаИзмерения</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Наименование</dataPath>
+        <field>Наименование</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ВидНоменклатуры</dataPath>
+        <field>ВидНоменклатуры</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Блокирован</dataPath>
+        <field>Блокирован</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Коллекция</dataPath>
+        <field>Коллекция</field>
+        <title>
+          <localValue>
+            <content>
+              <key>ru</key>
+              <value>Коллекция</value>
+            </content>
+          </localValue>
+        </title>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Артикул</dataPath>
+        <field>Артикул</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Марка</dataPath>
+        <field>Марка</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>НазначениеТовара</dataPath>
+        <field>НазначениеТовара</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>НовинкаДо</dataPath>
+        <field>НовинкаДо</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>КодПоУКТЗЕД</dataPath>
+        <field>КодПоУКТЗЕД</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ИндексКартинки</dataPath>
+        <field>ИндексКартинки</field>
+        <title>
+          <localValue>
+            <content>
+              <key>ru</key>
+              <value>Индекс картинки</value>
+            </content>
+          </localValue>
+        </title>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Вес</dataPath>
+        <field>Вес</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>СтавкаНДС</dataPath>
+        <field>СтавкаНДС</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ТипНоменклатуры</dataPath>
+        <field>ТипНоменклатуры</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Сезонность</dataPath>
+        <field>Сезонность</field>
+        <title>
+          <localValue>
+            <content>
+              <key>ru</key>
+              <value>Сезонность</value>
+            </content>
+          </localValue>
+        </title>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>IDNG</dataPath>
+        <field>IDNG</field>
+        <title>
+          <localValue>
+            <content>
+              <key>ru</key>
+              <value>IDNG</value>
+            </content>
+          </localValue>
+        </title>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Маржинальность</dataPath>
+        <field>Маржинальность</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ИспользоватьСерийныеНомера</dataPath>
+        <field>ИспользоватьСерийныеНомера</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Количество</dataPath>
+        <field>Количество</field>
+        <title>
+          <localValue>
+            <content>
+              <key>ru</key>
+              <value>Количество</value>
+            </content>
+          </localValue>
+        </title>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Размерность</dataPath>
+        <field>Размерность</field>
+        <title>
+          <localValue>
+            <content>
+              <key>ru</key>
+              <value>Размерность</value>
+            </content>
+          </localValue>
+        </title>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>КоличествоМинимальное</dataPath>
+        <field>КоличествоМинимальное</field>
+        <title>
+          <localValue>
+            <content>
+              <key>ru</key>
+              <value>Количество минимальное</value>
+            </content>
+          </localValue>
+        </title>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ПечатьЦенниковБезПиктограмм</dataPath>
+        <field>ПечатьЦенниковБезПиктограмм</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Родитель</dataPath>
+        <field>Родитель</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ЭтоГруппа</dataPath>
+        <field>ЭтоГруппа</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Номенклатура</dataPath>
+        <field>Номенклатура</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Характеристика</dataPath>
+        <field>Характеристика</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>ОбъектЦенообразования</dataPath>
+        <field>ОбъектЦенообразования</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Заказ</dataPath>
+        <field>Заказ</field>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Резерв</dataPath>
+        <field>Резерв</field>
+        <title>
+          <localValue>
+            <content>
+              <key>ru</key>
+              <value>Резерв</value>
+            </content>
+          </localValue>
+        </title>
+      </fields>
+      <fields xsi:type="schema:DataCompositionSchemaDataSetField">
+        <dataPath>Магазин</dataPath>
+        <field>Магазин</field>
+      </fields>
+      <parameters>
+        <name>Период</name>
+        <title>
+          <localValue>
+            <content>
+              <key>ru</key>
+              <value>Период</value>
+            </content>
+          </localValue>
+        </title>
+        <valueType>
+          <types>Date</types>
+          <dateQualifiers/>
+        </valueType>
+        <values xsi:type="core:DateValue">
+          <value>0001-01-01T00:00:00</value>
+        </values>
+      </parameters>
+      <parameters>
+        <name>Магазин</name>
+        <title>
+          <localValue>
+            <content>
+              <key>ru</key>
+              <value>Магазин</value>
+            </content>
+          </localValue>
+        </title>
+        <valueType>
+          <types>CatalogRef.Магазины</types>
+        </valueType>
+        <values xsi:type="core:UndefinedValue"/>
+        <useRestriction>true</useRestriction>
+      </parameters>
+      <parameters>
+        <name>ПоказыватьБлокированные</name>
+        <title>
+          <localValue>
+            <content>
+              <key>ru</key>
+              <value>Показывать блокированные</value>
+            </content>
+          </localValue>
+        </title>
+        <valueType>
+          <types>Boolean</types>
+        </valueType>
+        <values xsi:type="core:BooleanValue"/>
+        <useRestriction>true</useRestriction>
+      </parameters>
+      <parameters>
+        <name>ПоказыватьТолькоСОстатками</name>
+        <title>
+          <localValue>
+            <content>
+              <key>ru</key>
+              <value>Показывать только с остатками</value>
+            </content>
+          </localValue>
+        </title>
+        <valueType>
+          <types>Boolean</types>
+        </valueType>
+        <values xsi:type="core:BooleanValue"/>
+        <useRestriction>true</useRestriction>
+      </parameters>
+      <parameters>
+        <name>Склады</name>
+        <title>
+          <localValue>
+            <content>
+              <key>ru</key>
+              <value>Склады</value>
+            </content>
+          </localValue>
+        </title>
+        <valueType>
+          <types>CatalogRef.Склады</types>
+        </valueType>
+        <values xsi:type="core:UndefinedValue"/>
+        <useRestriction>true</useRestriction>
+        <valueListAllowed>true</valueListAllowed>
+      </parameters>
     </extInfo>
   </attributes>
   <attributes>
