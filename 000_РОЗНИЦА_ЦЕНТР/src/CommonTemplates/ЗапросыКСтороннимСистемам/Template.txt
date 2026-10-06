@@ -152,3 +152,20 @@ mutation {
 }
 #КонецОбласти 
 
+#Область Статус_запроса_доступности_GraphQL
+mutation {
+    subOrderSuccessCallback(
+     input: {
+      number: "#order_number#"          
+      sub_order_number: "#number#"
+      suborder_1c_status: "#suborder_1c_status#"
+      delivery_type: "#delivery_type#"
+      error_text: "#error_text#" 
+      warehouse: "#warehouse#"
+      ttn: "#ttn#"
+      products:["#products#"]]
+    }) {
+      number
+    }
+  }
+#КонецОбласти 
