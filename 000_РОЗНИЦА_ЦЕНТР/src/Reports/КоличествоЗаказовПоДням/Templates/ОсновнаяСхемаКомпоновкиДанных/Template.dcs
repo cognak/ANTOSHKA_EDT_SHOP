@@ -132,14 +132,26 @@
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Дата</dataPath>
+			<field>Дата</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	Заказы.Магазин КАК Магазин,
-	КОЛИЧЕСТВО(РАЗЛИЧНЫЕ Заказы.ЗаказПокупателя) КАК КоличествоЗаказов
+	КОЛИЧЕСТВО(РАЗЛИЧНЫЕ Заказы.ЗаказПокупателя) КАК КоличествоЗаказов,
+	Заказы.Дата КАК Дата
 ИЗ
 	(ВЫБРАТЬ
 		Чек.Магазин КАК Магазин,
-		Заказ.Ссылка КАК ЗаказПокупателя
+		Заказ.Ссылка КАК ЗаказПокупателя,
+		НАЧАЛОПЕРИОДА(Чек.Дата, ДЕНЬ) КАК Дата
 	ИЗ
 		Документ.ЗаказПокупателя КАК Заказ
 			ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.ЧекККМ КАК Чек
@@ -153,7 +165,8 @@
 	
 	ВЫБРАТЬ
 		Ордер.Магазин,
-		Заказ.Ссылка
+		Заказ.Ссылка,
+		НАЧАЛОПЕРИОДА(Ордер.Дата, ДЕНЬ)
 	ИЗ
 		Документ.ЗаказПокупателя КАК Заказ
 			ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.ЗапросДоступностиТоваров КАК ЗапросДоступности
@@ -167,11 +180,11 @@
 		И Перемещение.Дата &gt;= &amp;ДатаС
 		И Ордер.Дата &gt;= &amp;ДатаС
 		И Ордер.Проведен
-		И (ЗапросДоступности.СтатусОплаты = &amp;СтатусОплаты
-				ИЛИ &amp;ВключитьНеоплаченные)) КАК Заказы
+		) КАК Заказы
 
 СГРУППИРОВАТЬ ПО
-	Заказы.Магазин
+	Заказы.Магазин,
+	Заказы.Дата
 
 УПОРЯДОЧИТЬ ПО
 	Магазин</query>
@@ -246,34 +259,6 @@
 		</value>
 		<useRestriction>false</useRestriction>
 	</parameter>
-	<parameter>
-		<name>ВключитьНеоплаченные</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Включить неоплаченные</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:boolean</v8:Type>
-		</valueType>
-		<value xsi:type="xs:boolean">false</value>
-		<useRestriction>false</useRestriction>
-	</parameter>
-	<parameter>
-		<name>СтатусОплаты</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Статус оплаты</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:EnumRef.СтатусОплаты</v8:Type>
-		</valueType>
-		<value xsi:type="dcscor:DesignTimeValue">Перечисление.СтатусОплаты.Оплачен</value>
-		<useRestriction>true</useRestriction>
-	</parameter>
 	<settingsVariant>
 		<dcsset:name>КоличествоЗаказовПоДням</dcsset:name>
 		<dcsset:presentation xsi:type="v8:LocalStringType">
@@ -301,12 +286,6 @@
 					</dcscor:value>
 					<dcsset:userSettingID>b19e49de-7f29-4cda-8517-59332c859e9a</dcsset:userSettingID>
 				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:use>false</dcscor:use>
-					<dcscor:parameter>ВключитьНеоплаченные</dcscor:parameter>
-					<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
-					<dcsset:userSettingID>76582073-f258-43ae-a422-44fff2e56d7d</dcsset:userSettingID>
-				</dcscor:item>
 			</dcsset:dataParameters>
 			<dcsset:order>
 				<dcsset:item xsi:type="dcsset:OrderItemField">
@@ -329,6 +308,9 @@
 				</dcsset:order>
 				<dcsset:selection>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>День</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
 						<dcsset:field>Всего</dcsset:field>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
@@ -339,14 +321,42 @@
 					</dcsset:item>
 				</dcsset:selection>
 			</dcsset:item>
-			<dcsset:item xsi:type="dcsset:StructureItemGroup">
-				<dcsset:order>
-					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
-				</dcsset:order>
+			<dcsset:item xsi:type="dcsset:StructureItemTable">
+				<dcsset:column>
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Дата</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+				</dcsset:column>
+				<dcsset:row>
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Магазин</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+				</dcsset:row>
 				<dcsset:selection>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Магазин</dcsset:field>
-					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
 						<dcsset:field>КоличествоЗаказов</dcsset:field>
 					</dcsset:item>
