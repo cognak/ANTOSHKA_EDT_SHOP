@@ -758,5 +758,23 @@ ORDER BY ДатаВремя
 
 #КонецОбласти
 
+#Область ДанныеМинимальныхЗапасов
+
+SELECT
+	[Дата Выгрузки],
+	[Код Склада] AS КодСклада,
+	[Код Товара] AS IDN,
+	Тип,
+	Дата,
+	[Кол-во]  AS Количество,
+	CAST(CAST(timestamp AS bigint) AS varchar(40)) AS КодИзменения,
+	Резерв
+FROM
+	ADU_Reserv
+WHERE [timestamp] > CAST(CAST('000000000000' AS BIGINT) AS timestamp)
+ORDER BY timestamp DESC
+
+#КонецОбласти
+
 
 
