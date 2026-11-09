@@ -285,7 +285,11 @@
 			sum_topay	= ПолучитьЗначениеСоответствия(printinfo, "sum_topay", "");
 			sum_0		= ПолучитьЗначениеСоответствия(printinfo, "sum_0", "");
 			sum_disc	= ПолучитьЗначениеСоответствия(printinfo,"sum_disc", "");
-			round		= sum_0 - sum_topay - sum_disc;
+			// + Бакан 01102026  RETAIL1C-1490
+			//round		= sum_0 - sum_topay - sum_disc;
+			//	Знак как у "round" в ПРРО: надбавка (вверх) - плюс, знижка (вниз) - минус.
+			round		= sum_topay - (sum_0 - sum_disc);
+			// - Бакан
 			
 			Если НЕ round = 0 Тогда
 
